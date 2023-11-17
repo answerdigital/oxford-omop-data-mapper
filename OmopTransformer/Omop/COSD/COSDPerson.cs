@@ -6,5 +6,5 @@ namespace OmopTransformer.Omop.COSD;
 internal class COSDPerson : OmopPerson<CNSRecord>
 {
     [CopyValue("NhsNumber")]
-    public override string person_source_value { get; set; }
+    public override string? person_source_value { get; set; }
 }

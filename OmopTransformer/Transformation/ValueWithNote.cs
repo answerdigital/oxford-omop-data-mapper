@@ -2,6 +2,12 @@
 
 internal class ValueWithNote
 {
-    public string Value { get; init; }
-    public string Notes { get; init; }
+    public ValueWithNote(string value, string notes)
+    {
+        Value = value ?? throw new ArgumentNullException(nameof(value));
+        Notes = notes ?? throw new ArgumentNullException(nameof(notes));
+    }
+
+    public string Value { get; }
+    public string Notes { get; }
 }

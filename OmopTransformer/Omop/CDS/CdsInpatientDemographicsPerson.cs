@@ -10,7 +10,7 @@ internal class CdsInpatientDemographicsPerson : OmopPerson<CdsInpatientDemograph
     public override int gender_concept_id { get; set; }
 
     [CopyValue("nhs_number")]
-    public override string person_source_value { get; set; }
+    public override string? person_source_value { get; set; }
 
     [Transform(typeof(MonthOfYearSelector), "person_birth_date")]
     public override int month_of_birth { get; set; }

@@ -2,5 +2,5 @@
 
 internal interface IOmopRecord<T> : IOmopTarget
 {
-    T Source { get; }
+    T? Source { get; }
 }

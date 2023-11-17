@@ -6,13 +6,13 @@ internal class GenderLookup : ILookup
         new()
         {
             {
-                "m", new ValueWithNote() { Value = "123", Notes = "value notes can go here" }
+                "m", new ValueWithNote("123", "value notes can go here")
             },
             {
-                "f", new ValueWithNote() { Value = "345", Notes = "" }
+                "f", new ValueWithNote("345", "")
             },
             {
-                "u", new ValueWithNote() { Value = "567", Notes = "" }
+                "u", new ValueWithNote("567", "")
             }
         };
 
