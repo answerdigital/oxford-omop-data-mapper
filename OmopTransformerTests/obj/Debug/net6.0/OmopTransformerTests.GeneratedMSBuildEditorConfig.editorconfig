@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OmopTransformerTests
-build_property.ProjectDir = C:\Code\oxford-omop-transformer\OmopTransformerTests\
+build_property.ProjectDir = c:\Code\oxford-omop-transformer\OmopTransformerTests\
