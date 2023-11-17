@@ -17,6 +17,9 @@
     <None Update="CDS\InpatientDemographics\v_CDS_Inpatient_Demographics.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="CDS\ObservationPeriod\CDSObservationPeriod.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

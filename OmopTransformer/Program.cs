@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
+using OmopTransformer.Transformation;
 
 [assembly: InternalsVisibleTo("OmopTransformerTests")]
 
@@ -10,7 +12,19 @@ internal class Program
     {
         Console.WriteLine("Hello World!");
 
-        string documentation = DocumentationRenderer.Render();
+        string runningDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+        string[] queryFilePaths = Directory.GetFiles(runningDirectory, "*.xml", SearchOption.AllDirectories);
+
+        var aggregateQueries =
+            queryFilePaths
+                .ToDictionary(
+                    keySelector: Path.GetFileName,
+                    elementSelector: path => AggregateQueryParser.ParseAggregateQuery(File.ReadAllText(path)));
+
+        Assembly currentAssembly = Assembly.GetExecutingAssembly();
+
+        string documentation = new DocumentationRenderer(currentAssembly.GetTypes(), aggregateQueries).Render();
 
         File.WriteAllText("readme.md", documentation);
     }

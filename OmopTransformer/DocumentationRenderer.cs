@@ -8,13 +8,20 @@ namespace OmopTransformer;
 
 public class DocumentationRenderer
 {
-    public static string Render()
+    private readonly IReadOnlyCollection<Type> _types;
+    private readonly Dictionary<string, AggregateQuery> _aggregateQueries;
+    
+    public DocumentationRenderer(IReadOnlyCollection<Type> types, Dictionary<string, AggregateQuery> aggregateQueries)
     {
-        Assembly currentAssembly = Assembly.GetExecutingAssembly();
+        _types = types;
+        _aggregateQueries = aggregateQueries;
+    }
 
-        var typesImplementingIOmopRecord = 
-            currentAssembly.GetTypes()
-            .Where(type => GetAllInterfaces(type).Any(i => i.Name == typeof(IOmopRecord<>).Name) && type is { IsInterface: false, IsAbstract: false })
+    public string Render()
+    {
+        var typesImplementingIOmopRecord =
+            _types
+            .Where(type => GetAllInterfaces(type).Any(i => i == typeof(IOmopTarget)) && type is { IsInterface: false, IsAbstract: false })
             .ToList();
 
         var mapperByOmopTarget =
@@ -37,23 +44,53 @@ public class DocumentationRenderer
 
             foreach (var omopMappers in omopTarget)
             {
-                var sourceTypeInterface = GetAllInterfaces(omopMappers.MapperType).Single(i => i.Name == typeof(IOmopRecord<>).Name);
+                var aggregateTransform = omopMappers.MapperType.GetCustomAttributes(typeof(AggregateTransformAttribute), inherit: false).FirstOrDefault();
 
-                var sourceType = sourceTypeInterface.GetGenericArguments().Single();
-
-                foreach (var sourceDescription in sourceType.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false))
+                if (aggregateTransform == null)
                 {
-                    stringBuilder.AppendLine($"## {((DescriptionAttribute)sourceDescription).Value}");
+                    var sourceTypeInterface = GetAllInterfaces(omopMappers.MapperType).Single(i => i.Name == typeof(IOmopRecord<>).Name);
+
+                    var sourceType = sourceTypeInterface.GetGenericArguments().Single();
+
+                    foreach (var sourceDescription in sourceType.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false))
+                    {
+                        stringBuilder.AppendLine($"## {((DescriptionAttribute)sourceDescription).Value}");
+                    }
+
+                    foreach (var property in omopMappers.MapperType.GetProperties())
+                    {
+                        RenderProperty(property, stringBuilder);
+                    }
                 }
-
-                foreach (var property in omopMappers.MapperType.GetProperties())
+                else
                 {
-                    RenderProperty(property, stringBuilder);
+                    string queryFileName = ((AggregateTransformAttribute)aggregateTransform).QueryFileName;
+
+                    RenderAggregateTransform(queryFileName, stringBuilder);
                 }
             }
         }
 
         return stringBuilder.ToString();
+    }
+
+    private void RenderAggregateTransform(string queryFileName, StringBuilder stringBuilder)
+    {
+        var query = _aggregateQueries[queryFileName];
+
+        foreach (var explanation in query.Explanation.Explanations)
+        {
+            stringBuilder.AppendLine($"### {explanation.ColumnName} column");
+
+            stringBuilder.AppendLine($"* {explanation.Text}");
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine("```");
+
+            var whitespace = new[] { ' ', '\r', '\n' };
+            stringBuilder.AppendLine(query.Sql.TrimStart(whitespace).TrimEnd(whitespace));
+            stringBuilder.AppendLine("```");
+            stringBuilder.AppendLine();
+        }
     }
 
     private static void RenderProperty(PropertyInfo property, StringBuilder stringBuilder)
