@@ -1,0 +1,5 @@
+select
+	person_birth_date,
+	person_current_gender,
+	ethnic_category
+from standardised.v_CDS_Inpatient_Demographics
