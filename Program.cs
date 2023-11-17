@@ -1,4 +1,8 @@
-﻿namespace OmopTransformer;
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("OmopTransformerTests")]
+
+namespace OmopTransformer;
 
 internal class Program
 {

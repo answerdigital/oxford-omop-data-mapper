@@ -1,4 +1,5 @@
-﻿using OmopTransformer.Annotations;
+﻿using System.Runtime.CompilerServices;
+using OmopTransformer.Annotations;
 
 namespace OmopTransformer.Transformation;
 
