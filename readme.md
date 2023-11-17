@@ -1,3 +1,5 @@
+`Automatically generated documentation`
+
 # Person
 ## CNSRecord xml record
 ### person_source_value column
