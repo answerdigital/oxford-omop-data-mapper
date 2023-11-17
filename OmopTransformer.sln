@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmopTransformer", "OmopTransformer.csproj", "{E9ADD738-58F7-4ADA-A20D-6A1B745BED05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmopTransformer", "OmopTransformer\OmopTransformer.csproj", "{E9ADD738-58F7-4ADA-A20D-6A1B745BED05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmopTransformerTests", "..\OmopTransformerTests\OmopTransformerTests.csproj", "{A2263A72-6587-42CE-A891-80D04D93C014}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmopTransformerTests", "OmopTransformerTests\OmopTransformerTests.csproj", "{A2263A72-6587-42CE-A891-80D04D93C014}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
