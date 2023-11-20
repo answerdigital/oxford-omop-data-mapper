@@ -38,6 +38,9 @@ public class DocumentationRenderer
 
         var stringBuilder = new StringBuilder();
 
+        stringBuilder.AppendLine("`Automatically generated documentation`");
+        stringBuilder.AppendLine();
+
         foreach (var omopTarget in mapperByOmopTarget)
         {
             stringBuilder.AppendLine($"# {omopTarget.Key}");
@@ -95,6 +98,9 @@ public class DocumentationRenderer
 
     private static void RenderProperty(PropertyInfo property, StringBuilder stringBuilder)
     {
+        if (property.Name == "OmopTargetTypeDescription")
+            return;
+
         var attributes = property.GetCustomAttributes(inherit: false);
 
         if (attributes.Any())

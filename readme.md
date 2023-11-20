@@ -4,7 +4,6 @@
 ## CNSRecord xml record
 ### person_source_value column
 Value copied from `NhsNumber`
-### OmopTargetTypeDescription column
 ## CdsInpatientDemographics table
 ### gender_concept_id column
 
@@ -22,7 +21,6 @@ Value copied from `nhs_number`
 ### month_of_birth column
 Source column  `person_birth_date`.
 Selects the month of the year or null if the date is null.
-### OmopTargetTypeDescription column
 # Observation Period
 ### observation_period_start_date column
 * Is the earliest date using `v_CDS_AccidentEmergency.cdw_arrival_date_time` and `v_CDS_Inpatient_ConsultantEpisode.start_date_episode` records.
