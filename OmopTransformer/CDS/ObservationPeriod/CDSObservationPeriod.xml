@@ -46,8 +46,8 @@ select
 from PatientIdentifer patientIdentifier
 )
 select
-	(select min(Date) from (values (e.EDArrival), (e.InpatientArrival)) as Dates(Date)) as Arrival,
-	(select max(Date) from (values (e.EDDeparture), (e.InpatientDeparture)) as Dates(Date)) as Discharge,
+	(select min(Date) from (values (e.EDArrival), (e.InpatientArrival)) as Dates(Date)) as observation_period_start_date,
+	(select max(Date) from (values (e.EDDeparture), (e.InpatientDeparture)) as Dates(Date)) as observation_period_end_date,
 	e.nhs_number
 from Episode e;
     </Sql>
