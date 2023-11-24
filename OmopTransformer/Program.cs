@@ -1,6 +1,8 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using OmopTransformer.Transformation;
+﻿using System.Runtime.CompilerServices;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
+using CommandLine;
 
 [assembly: InternalsVisibleTo("OmopTransformerTests")]
 
@@ -8,24 +10,49 @@ namespace OmopTransformer;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
-        Console.WriteLine("Hello World!");
+        HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
 
-        string runningDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        var result = Parser.Default.ParseArguments<GenerateDocumentationOption, MigrateOption>(args);
 
-        string[] queryFilePaths = Directory.GetFiles(runningDirectory, "*.xml", SearchOption.AllDirectories);
+        if (result.Value == null)
+        {
+            return;
+        }
 
-        var aggregateQueries =
-            queryFilePaths
-                .ToDictionary(
-                    keySelector: Path.GetFileName,
-                    elementSelector: path => AggregateQueryParser.ParseAggregateQuery(File.ReadAllText(path)));
+        if (result.Value is GenerateDocumentationOption generateDocumentation)
+        {
+            builder.Services.AddTransient(_ => generateDocumentation);
+            builder.Services.AddHostedService<DocumentationGenerationHostedService>();
+        }
 
-        Assembly currentAssembly = Assembly.GetExecutingAssembly();
+        builder.Services.AddTransient<IDocumentationWriter, DocumentationWriter>();
 
-        string documentation = new DocumentationRenderer(currentAssembly.GetTypes(), aggregateQueries).Render();
+        IHostEnvironment env = builder.Environment;
 
-        File.WriteAllText("readme.md", documentation);
+        builder.Configuration
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true);
+
+        builder.Services.Configure<Configuration>(builder.Configuration);
+
+        using IHost host = builder.Build();
+
+        await host.RunAsync();
     }
+}
+
+[Verb("docs", HelpText = "Documentation generation")]
+public class GenerateDocumentationOption
+{
+    [Option('f', "file-path", Required = true, HelpText = "Target path for the generated documentation.")]
+    public string FilePath { get; set; }
+}
+
+[Verb("migrate", HelpText = "Data migration")]
+public class MigrateOption
+{
+    [Option('d', "dry-run", Required = false, HelpText = "Dry run. Does not record to OMOP database.")]
+    public bool DryRun { get; set; }
 }

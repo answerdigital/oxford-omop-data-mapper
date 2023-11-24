@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "OmopTransformer": {
+      "commandName": "Project",
+      "commandLineArgs": "docs -f out.md"
+    }
+  }
+}
