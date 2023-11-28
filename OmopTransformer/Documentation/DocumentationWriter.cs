@@ -1,19 +1,24 @@
 ﻿using System.Reflection;
+using Microsoft.Extensions.Logging;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer;
+namespace OmopTransformer.Documentation;
 
 internal class DocumentationWriter : IDocumentationWriter
 {
-    private readonly GenerateDocumentationOption _documentationOption;
+    private readonly DocumentationOptions _documentationOption;
+    private readonly ILogger<DocumentationWriter> _logger;
 
-    public DocumentationWriter(GenerateDocumentationOption documentationOption)
+    public DocumentationWriter(DocumentationOptions documentationOption, ILogger<DocumentationWriter> logger)
     {
         _documentationOption = documentationOption;
+        _logger = logger;
     }
 
     public async Task WriteToPath(CancellationToken cancellationToken)
     {
+        _logger.LogInformation("Generating documentation.");
+
         string runningDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
         string[] queryFilePaths = Directory.GetFiles(runningDirectory, "*.xml", SearchOption.AllDirectories);

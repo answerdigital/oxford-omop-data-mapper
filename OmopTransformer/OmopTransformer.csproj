@@ -5,6 +5,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <AssemblyName>omop</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="CDS\InpatientDemographics\v_CDS_Inpatient_Demographics.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

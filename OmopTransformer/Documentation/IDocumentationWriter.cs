@@ -1,4 +1,4 @@
-﻿namespace OmopTransformer;
+﻿namespace OmopTransformer.Documentation;
 
 internal interface IDocumentationWriter
 {

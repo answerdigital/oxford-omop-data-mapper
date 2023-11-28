@@ -4,13 +4,13 @@ using OmopTransformer.Transformation;
 using System.Reflection;
 using System.Text;
 
-namespace OmopTransformer;
+namespace OmopTransformer.Documentation;
 
 public class DocumentationRenderer
 {
     private readonly IReadOnlyCollection<Type> _types;
     private readonly Dictionary<string, AggregateQuery> _aggregateQueries;
-    
+
     public DocumentationRenderer(IReadOnlyCollection<Type> types, Dictionary<string, AggregateQuery> aggregateQueries)
     {
         _types = types;
@@ -28,7 +28,7 @@ public class DocumentationRenderer
             typesImplementingIOmopRecord
                 .Select(
                     mapperType =>
-                    new 
+                    new
                     {
                         MapperType = mapperType,
                         OmopTarget = (IOmopTarget)Activator.CreateInstance(mapperType)!
