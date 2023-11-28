@@ -81,6 +81,11 @@ public class DocumentationRenderer
     {
         var query = _aggregateQueries[queryFileName];
 
+        if (query.Explanation?.Explanations == null)
+        {
+            throw new InvalidOperationException("query.Explanation must be defined.");
+        }
+
         foreach (var explanation in query.Explanation.Explanations)
         {
             stringBuilder.AppendLine($"### {explanation.ColumnName} column");
@@ -90,7 +95,7 @@ public class DocumentationRenderer
             stringBuilder.AppendLine("```");
 
             var whitespace = new[] { ' ', '\r', '\n' };
-            stringBuilder.AppendLine(query.Sql.TrimStart(whitespace).TrimEnd(whitespace));
+            stringBuilder.AppendLine(query.Sql?.TrimStart(whitespace).TrimEnd(whitespace));
             stringBuilder.AppendLine("```");
             stringBuilder.AppendLine();
         }

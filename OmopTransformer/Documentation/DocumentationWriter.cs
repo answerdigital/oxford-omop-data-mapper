@@ -19,6 +19,12 @@ internal class DocumentationWriter : IDocumentationWriter
     {
         _logger.LogInformation("Generating documentation.");
 
+        if (_documentationOption.FilePath == null)
+        {
+            _logger.LogCritical("Path must be specified.");
+            return;
+        }
+
         string runningDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
         string[] queryFilePaths = Directory.GetFiles(runningDirectory, "*.xml", SearchOption.AllDirectories);

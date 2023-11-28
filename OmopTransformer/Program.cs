@@ -37,6 +37,11 @@ internal class Program
             {
                 builder.Services.AddTransient<ICosdStagingSchema, CosdStagingSchema>();
 
+                if (stagingOptions.Action == null)
+                {
+                    return;
+                }
+
                 switch (stagingOptions.Action.ToLower())
                 {
                     case "load":
@@ -76,18 +81,18 @@ internal class Program
 public class StagingOptions
 {
     [Value(0, MetaName = "action", Required = true, HelpText = "Action to be performed (e.g., load).")]
-    public string Action { get; set; }
+    public string? Action { get; set; }
 
     [Option('t', "type", Required = false, HelpText = "Type of the operation (e.g., cosd).")]
-    public string Type { get; set; }
+    public string? Type { get; set; }
 
     [Value(1, MetaName = "filename", Required = false, HelpText = "Filename to be processed (e.g., file.zip).")]
-    public string FileName { get; set; }
+    public string? FileName { get; set; }
 }
 
 [Verb("docs", HelpText = "Documentation generation.")]
 public class DocumentationOptions
 {
     [Value(0, MetaName = "filename", Required = true, HelpText = "Target path for the generated documentation.")]
-    public string FilePath { get; set; }
+    public string? FilePath { get; set; }
 }

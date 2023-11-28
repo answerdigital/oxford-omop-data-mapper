@@ -10,6 +10,6 @@ internal class AggregateQueryParser
 
         using TextReader reader = new StringReader(xml);
 
-        return (AggregateQuery)serializer.Deserialize(reader);
+        return (AggregateQuery)serializer.Deserialize(reader)!;
     }
 }
