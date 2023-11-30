@@ -27,6 +27,9 @@
     <None Update="CDS\ObservationPeriod\CDSObservationPeriod.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Demographics\OmopDemographics.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,23 @@
+﻿<Query>
+    <Sql>
+		select
+			T.staging.value('(Address/StructuredAddress/StreetAddressLine[1]/text())[1]', 'VARCHAR(255)') as StreetAddressLine1,
+			T.staging.value('(Address/StructuredAddress/StreetAddressLine[2]/text())[1]', 'VARCHAR(255)') as StreetAddressLine2,
+			T.staging.value('(Address/StructuredAddress/StreetAddressLine[3]/text())[1]', 'VARCHAR(255)') as StreetAddressLine3,
+			T.staging.value('(Address/StructuredAddress/StreetAddressLine[4]/text())[1]', 'VARCHAR(255)') as StreetAddressLine4,
+			T.staging.value('(PostcodeOfUsualAddressAtDiagnosis/text())[1]', 'VARCHAR(10)') as PostcodeOfUsualAddressAtDiagnosis,
+			T.staging.value('(../LinkagePatientId/NhsNumber/@extension)[1]', 'VARCHAR(255)') as NhsNumber,
+			T.staging.value('(../LinkagePatientId/PersonBirthDate/text())[1]', 'VARCHAR(10)') as PersonBirthDate
+		from cosd_staging
+		cross apply content.nodes('//*:Demographics') as T(staging);
+	</Sql>
+    <Explanation>
+		<OmopColumnExplanation columName="StreetAddressLine1">The first element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
+		<OmopColumnExplanation columName="StreetAddressLine2">The second element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
+		<OmopColumnExplanation columName="StreetAddressLine3">The third element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
+		<OmopColumnExplanation columName="StreetAddressLine4">The fourth and final element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
+		<OmopColumnExplanation columName="PostcodeOfUsualAddressAtDiagnosis">The value of the PostcodeOfUsualAddressAtDiagnosis element within the Demographics element.</OmopColumnExplanation>
+	    <OmopColumnExplanation columName="NhsNumber">The value of the NhsNumber within the sibling LinkagePatientId element.</OmopColumnExplanation>
+		<OmopColumnExplanation columName="PersonBirthDate">The value of the PersonBirthDate within the sibling LinkagePatientId element.</OmopColumnExplanation>
+    </Explanation>
+</Query>

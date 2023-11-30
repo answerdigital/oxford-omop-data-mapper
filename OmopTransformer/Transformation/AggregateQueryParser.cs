@@ -4,12 +4,12 @@ namespace OmopTransformer.Transformation;
 
 internal class AggregateQueryParser
 {
-    public static AggregateQuery ParseAggregateQuery(string xml)
+    public static Query ParseAggregateQuery(string xml)
     {
-        XmlSerializer serializer = new(typeof(AggregateQuery));
+        XmlSerializer serializer = new(typeof(Query));
 
         using TextReader reader = new StringReader(xml);
 
-        return (AggregateQuery)serializer.Deserialize(reader)!;
+        return (Query)serializer.Deserialize(reader)!;
     }
 }

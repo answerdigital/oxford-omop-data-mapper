@@ -2,8 +2,8 @@
 
 namespace OmopTransformer.Transformation;
 
-public class AggregateQueryExplanation
+public class QueryExplanation
 {
     [XmlElement("OmopColumnExplanation")]
-    public AggregateQueryColumnExplanation[]? Explanations { get; set; }
+    public QueryColumnExplanation[]? Explanations { get; set; }
 }

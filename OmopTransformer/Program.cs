@@ -5,18 +5,21 @@ using Microsoft.Extensions.Configuration;
 using CommandLine;
 using OmopTransformer.Documentation;
 using OmopTransformer.COSD;
+using OmopTransformer.Transformation;
+using OmopTransformer.COSD.Demographics;
+using OmopTransformer.Omop;
 
 [assembly: InternalsVisibleTo("OmopTransformerTests")]
-
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2, PublicKey=0024000004800000940000000602000000240000525341310004000001000100c547cac37abd99c8db225ef2f6c8a3602f3b3606cc9891605d02baa56104f4cfc0734aa39b93bf7852f7d9266654753cc297e7d2edfe0bac1cdcf9f717241550e0a7b191195b7667bb4f64bcb8e2121380fd1d9d46ad2d92d2d15605093924cceaf74c4861eff62abf69b9291ed0a340e113be11e6a7d3113e92484cf7045cc7")]
 namespace OmopTransformer;
 
 internal class Program
 {
     private static async Task Main(string[] args)
     {
-        HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
+        var builder = Host.CreateApplicationBuilder(args);
 
-        var result = Parser.Default.ParseArguments<StagingOptions, DocumentationOptions>(args);
+        var result = Parser.Default.ParseArguments<StagingOptions, DocumentationOptions, TransformOptions>(args);
 
         if (result.Value == null)
         {
@@ -35,10 +38,9 @@ internal class Program
 
             if (string.Equals(stagingOptions.Type, "cosd", StringComparison.OrdinalIgnoreCase))
             {
-                builder.Services.AddTransient<ICosdStagingSchema, CosdStagingSchema>();
-
                 if (stagingOptions.Action == null)
                 {
+                    await Console.Error.WriteLineAsync("Command not found.");
                     return;
                 }
 
@@ -52,8 +54,28 @@ internal class Program
                         builder.Services.AddHostedService<ClearStagingHostedService>();
                         break;
                     default:
+                        await Console.Error.WriteLineAsync("Command not found.");
                         return;
                 }
+            }
+            else
+            {
+                await Console.Error.WriteLineAsync("Command not found.");
+                return;
+            }
+        }
+
+        if (result.Value is TransformOptions transformOptions)
+        {
+            builder.Services.AddTransient(_ => transformOptions);
+
+            builder.Services.AddTransient<ILocationRecorder, LocationRecorder>();
+
+            if (string.Equals(transformOptions.Type, "cosd", StringComparison.OrdinalIgnoreCase))
+            {
+                builder.Services.AddTransient<CosdDemographicsProvider>();
+                builder.Services.AddTransient<CosdLocationTransformer>();
+                builder.Services.AddHostedService<CosdTransformHostedService>();
             }
             else
             {
@@ -62,6 +84,11 @@ internal class Program
         }
 
         builder.Services.AddTransient<IDocumentationWriter, DocumentationWriter>();
+        builder.Services.AddTransient<ITransformer, Transformer>();
+        builder.Services.AddTransient<ICosdStagingSchema, CosdStagingSchema>();
+
+        var queryLocator = await QueryLocator.Create();
+        builder.Services.AddSingleton<IQueryLocator, QueryLocator>(_ => queryLocator);
 
         IHostEnvironment env = builder.Environment;
 
@@ -77,7 +104,7 @@ internal class Program
     }
 }
 
-[Verb("staging", HelpText = "Handles staging operations.")]
+[Verb("stage", HelpText = "Handles staging operations.")]
 public class StagingOptions
 {
     [Value(0, MetaName = "action", Required = true, HelpText = "Action to be performed (e.g., load).")]
@@ -88,6 +115,16 @@ public class StagingOptions
 
     [Value(1, MetaName = "filename", Required = false, HelpText = "Filename to be processed (e.g., file.zip).")]
     public string? FileName { get; set; }
+}
+
+[Verb("transform", HelpText = "Handles transformation operations.")]
+public class TransformOptions
+{
+    [Option('t', "type", Required = true, HelpText = "Type of the transformation (e.g., omop).")]
+    public string? Type { get; set; }
+
+    [Option("dry-run", Required = false, Default = false, HelpText = "Run the transformation in dry-run mode.")]
+    public bool DryRun { get; set; }
 }
 
 [Verb("docs", HelpText = "Documentation generation.")]

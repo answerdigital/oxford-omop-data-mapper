@@ -1,3 +1,9 @@
-docker build . --tag omop-flyway
-docker run --name flyway omop-flyway
-docker rmi omop-flyway --force
+docker run `
+    --rm `
+    -v ${pwd}/sql:/flyway/sql `
+    -v ${pwd}/conf:/flyway/conf `
+    flyway/flyway `
+    -url=jdbc:"sqlserver://host.docker.internal:1433;databaseName=yourDatabase;encrypt=false" `
+    -user=user `
+    -password=password `
+    migrate migrate

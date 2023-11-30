@@ -26,7 +26,7 @@ internal class CosdStagingSchema : ICosdStagingSchema
 
     public async Task DropStagingTables(CancellationToken cancellationToken)
     {
-        var connection = new SqlConnection(_configuration.StagingConnectionString);
+        await using var connection = new SqlConnection(_configuration.StagingConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
@@ -41,9 +41,9 @@ internal class CosdStagingSchema : ICosdStagingSchema
         }
     }
 
-    private async Task<bool> StagingTablesExist(CancellationToken cancellationToken)
+    public async Task<bool> StagingTablesExist(CancellationToken cancellationToken)
     {
-        var connection = new SqlConnection(_configuration.StagingConnectionString);
+        await using var connection = new SqlConnection(_configuration.StagingConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
@@ -54,7 +54,7 @@ internal class CosdStagingSchema : ICosdStagingSchema
 
     private async Task CreateTables(CancellationToken cancellationToken)
     {
-        var connection = new SqlConnection(_configuration.StagingConnectionString);
+        await using var connection = new SqlConnection(_configuration.StagingConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 

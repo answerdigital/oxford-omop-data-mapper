@@ -2,7 +2,7 @@
 
 namespace OmopTransformer.Transformation;
 
-public class AggregateQueryColumnExplanation
+public class QueryColumnExplanation
 {
     [XmlAttribute("columName")]
     public string? ColumnName { get; set; }

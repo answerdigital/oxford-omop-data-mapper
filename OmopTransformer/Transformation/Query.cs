@@ -3,10 +3,10 @@
 namespace OmopTransformer.Transformation;
 
 [XmlRoot("Query")]
-public class AggregateQuery
+public class Query
 {
     public string? Sql { get; set; }
 
     [XmlElement("Explanation")]
-    public AggregateQueryExplanation? Explanation { get; set; }
+    public QueryExplanation? Explanation { get; set; }
 }

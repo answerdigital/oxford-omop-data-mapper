@@ -9,9 +9,9 @@ namespace OmopTransformer.Documentation;
 public class DocumentationRenderer
 {
     private readonly IReadOnlyCollection<Type> _types;
-    private readonly Dictionary<string, AggregateQuery> _aggregateQueries;
+    private readonly Dictionary<string, Query> _aggregateQueries;
 
-    public DocumentationRenderer(IReadOnlyCollection<Type> types, Dictionary<string, AggregateQuery> aggregateQueries)
+    public DocumentationRenderer(IReadOnlyCollection<Type> types, Dictionary<string, Query> aggregateQueries)
     {
         _types = types;
         _aggregateQueries = aggregateQueries;
