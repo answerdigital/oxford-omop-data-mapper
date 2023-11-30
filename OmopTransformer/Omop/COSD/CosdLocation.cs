@@ -6,10 +6,6 @@ namespace OmopTransformer.Omop.COSD;
 
 internal class CosdLocation : OmopLocation<CosdDemographics>
 {
-    public CosdLocation(CosdDemographics source) : base(source)
-    {
-    }
-
     [CopyValue(nameof(Source.StreetAddressLine1))]
     public override string? address_1 { get; set; }
 

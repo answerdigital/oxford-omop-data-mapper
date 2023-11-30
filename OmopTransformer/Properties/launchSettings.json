@@ -2,8 +2,8 @@
   "profiles": {
     "OmopTransformer": {
         "commandName": "Project",
-        "commandLineArgs": "transform --type cosd"
-        //"commandLineArgs": "docs out.md"
+        //"commandLineArgs": "transform --type cosd"
+        "commandLineArgs": "docs out.md"
         //"commandLineArgs": "staging clear --type cosd"
     }
   }

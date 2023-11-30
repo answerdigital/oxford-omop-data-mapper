@@ -45,7 +45,7 @@ internal class CosdLocationTransformer
 
         var locations =
             patientDemographics
-                .Select(demographics => new CosdLocation(demographics))
+                .Select(demographics => new CosdLocation { Source = demographics })
                 .ToList();
 
         var stopwatch = Stopwatch.StartNew();

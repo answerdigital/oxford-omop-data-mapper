@@ -1,14 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace OmopTransformer.Omop;
+﻿namespace OmopTransformer.Omop;
 
 internal abstract class OmopLocation<T> : IOmopRecord<T>
 {
-    protected OmopLocation([DisallowNull] T source)
-    {
-        Source = source ?? throw new ArgumentNullException(nameof(source));
-    }
-
     public virtual string? address_1 { get; set; }
     public virtual string? address_2 { get; set; }
     public virtual string? city { get; set; }
@@ -21,5 +14,5 @@ internal abstract class OmopLocation<T> : IOmopRecord<T>
     public virtual double? latitude { get; set; }
     public virtual double? longitude { get; set; }
     public string OmopTargetTypeDescription => "Location";
-    public T? Source { get; }
+    public T? Source { get; init; }
 }
