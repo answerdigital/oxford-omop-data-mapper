@@ -65,7 +65,7 @@ internal class LocationRecorder : ILocationRecorder
 
             var parameter = new
             {
-                Locations = dataTable.AsTableValuedParameter("[Location]")
+                Locations = dataTable.AsTableValuedParameter("cdm.[Location]")
             };
 
             await connection.ExecuteAsync("cdm.InsertUpdateLocation", parameter, commandType: CommandType.StoredProcedure);

@@ -6,7 +6,7 @@ end
 go
 
 create procedure cdm.InsertUpdateLocation
-	@Locations [Location] readonly
+	@Locations cdm.[Location] readonly
 as
 begin
 	
