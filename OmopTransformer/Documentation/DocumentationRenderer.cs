@@ -51,9 +51,7 @@ internal class DocumentationRenderer
 
                 if (aggregateTransform == null)
                 {
-                    var sourceTypeInterface = GetAllInterfaces(omopMappers.MapperType).Single(i => i.Name == typeof(IOmopRecord<>).Name);
-
-                    var sourceType = sourceTypeInterface.GetGenericArguments().Single();
+                    var sourceType = GetOmopSourceType(omopMappers.MapperType);
 
                     foreach (var sourceDescription in sourceType.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false))
                     {
@@ -62,7 +60,7 @@ internal class DocumentationRenderer
 
                     foreach (var property in omopMappers.MapperType.GetProperties())
                     {
-                        RenderProperty(property, stringBuilder);
+                        RenderProperty(omopMappers.MapperType, property, stringBuilder);
                     }
                 }
                 else
@@ -101,7 +99,7 @@ internal class DocumentationRenderer
         }
     }
 
-    private static void RenderProperty(PropertyInfo property, StringBuilder stringBuilder)
+    private void RenderProperty(Type mapperType, PropertyInfo property, StringBuilder stringBuilder)
     {
         if (property.Name == "OmopTargetTypeDescription")
             return;
@@ -110,7 +108,7 @@ internal class DocumentationRenderer
 
         if (attributes.Any())
         {
-            stringBuilder.AppendLine($"### {property.Name} column");
+            stringBuilder.AppendLine($"### {property.Name}");
         }
 
         foreach (var attribute in attributes)
@@ -118,6 +116,7 @@ internal class DocumentationRenderer
             if (attribute is CopyValueAttribute copyValueAttribute)
             {
                 stringBuilder.AppendLine($"Value copied from `{copyValueAttribute.Value}`");
+                RenderQueryIfAny(mapperType, stringBuilder, copyValueAttribute.Value);
             }
 
             if (attribute is DescriptionAttribute description)
@@ -128,6 +127,51 @@ internal class DocumentationRenderer
             if (attribute is TransformAttribute transformAttribute)
             {
                 RenderTransform(stringBuilder, transformAttribute);
+                RenderQueryIfAny(mapperType, stringBuilder, transformAttribute.Value);
+            }
+        }
+    }
+
+    private static Type GetOmopSourceType(Type type)
+    {
+        var sourceTypeInterface = GetAllInterfaces(type).Single(i => i.Name == typeof(IOmopRecord<>).Name);
+
+        return sourceTypeInterface.GetGenericArguments().Single();
+    }
+
+    private void RenderQueryIfAny(Type mapperType, StringBuilder stringBuilder, params string[] sourceColumns)
+    {
+        var sourceType = GetOmopSourceType(mapperType);
+
+        var queryTransform = sourceType.GetCustomAttributes(typeof(SourceQueryAttribute), inherit: false).FirstOrDefault();
+
+        if (queryTransform != null)
+        {
+            var query = _queryLocator.GetQuery(((SourceQueryAttribute)queryTransform).QueryFileName);
+
+            bool anyMatches = false;
+
+            foreach (var explanation in query.Explanation!.Explanations!)
+            {
+                if (!sourceColumns.Contains(explanation.ColumnName))
+                    continue;
+
+                anyMatches = true;
+
+                stringBuilder.AppendLine($"* `{explanation.ColumnName}` {explanation.Text}");
+            }
+
+            if (anyMatches)
+            {
+                stringBuilder.AppendLine("<details>");
+                stringBuilder.AppendLine("<summary>SQL</summary>");
+                stringBuilder.AppendLine();
+                stringBuilder.AppendLine("```");
+                var whitespace = new[] { ' ', '\r', '\n' };
+                stringBuilder.AppendLine(query.Sql?.TrimStart(whitespace).TrimEnd(whitespace));
+                stringBuilder.AppendLine("```");
+                stringBuilder.AppendLine("</details>");
+                stringBuilder.AppendLine();
             }
         }
     }
