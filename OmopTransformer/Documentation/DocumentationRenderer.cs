@@ -51,13 +51,6 @@ internal class DocumentationRenderer
 
                 if (aggregateTransform == null)
                 {
-                    var sourceType = GetOmopSourceType(omopMappers.MapperType);
-
-                    foreach (var sourceDescription in sourceType.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false))
-                    {
-                        stringBuilder.AppendLine($"## {((DescriptionAttribute)sourceDescription).Value}");
-                    }
-
                     foreach (var property in omopMappers.MapperType.GetProperties())
                     {
                         RenderProperty(omopMappers.MapperType, property, stringBuilder);
@@ -86,7 +79,7 @@ internal class DocumentationRenderer
 
         foreach (var explanation in query.Explanation.Explanations)
         {
-            stringBuilder.AppendLine($"### {explanation.ColumnName} column");
+            stringBuilder.AppendLine($"## {explanation.ColumnName} column");
 
             stringBuilder.AppendLine($"* {explanation.Text}");
             stringBuilder.AppendLine();
@@ -108,7 +101,7 @@ internal class DocumentationRenderer
 
         if (attributes.Any())
         {
-            stringBuilder.AppendLine($"### {property.Name}");
+            stringBuilder.AppendLine($"## {property.Name}");
 
             var sourceType = GetOmopSourceType(mapperType);
 
@@ -116,7 +109,7 @@ internal class DocumentationRenderer
 
             if (description != null)
             {
-                stringBuilder.AppendLine($"#### {((DescriptionAttribute)description).Value}");
+                stringBuilder.AppendLine($"### {((DescriptionAttribute)description).Value}");
             }
         }
 
