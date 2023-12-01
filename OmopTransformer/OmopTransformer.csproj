@@ -8,6 +8,7 @@
 	  <AssemblyName>omop</AssemblyName>
   </PropertyGroup>
 
+
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="Dapper" Version="2.1.24" />
@@ -31,5 +32,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Message Importance="high" Text="Generating documentation." />
+		<Exec Command="dotnet &quot;$(TargetPath)&quot; docs $(MSBuildProjectDirectory)\..\transformation-documentation.md" />
+	</Target>
 
 </Project>
