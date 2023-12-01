@@ -117,7 +117,7 @@ internal class DocumentationRenderer
         {
             if (attribute is CopyValueAttribute copyValueAttribute)
             {
-                stringBuilder.AppendLine($"Value copied from `{copyValueAttribute.Value}`");
+                stringBuilder.AppendLine($"* Value copied from `{copyValueAttribute.Value}`");
                 RenderQueryIfAny(mapperType, stringBuilder, copyValueAttribute.Value);
             }
 
