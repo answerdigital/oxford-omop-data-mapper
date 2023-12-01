@@ -17,6 +17,15 @@ Copyright (C) 2023 omop
 
 ```
 
+# Supported Transformations
+
+|          | **Location** | **Person** |
+|----------|--------------|------------|
+| **CDS**  |              |           |
+| **COSD** |     ✔️      |            |
+| **RTDS** |              |            |
+| **SACT** |              |            |
+
 ## Docs command
 
 Generates transform documentation and records it to file.
