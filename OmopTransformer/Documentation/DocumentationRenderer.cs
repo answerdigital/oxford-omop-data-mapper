@@ -6,15 +6,15 @@ using System.Text;
 
 namespace OmopTransformer.Documentation;
 
-public class DocumentationRenderer
+internal class DocumentationRenderer
 {
     private readonly IReadOnlyCollection<Type> _types;
-    private readonly Dictionary<string, Query> _aggregateQueries;
+    private readonly IQueryLocator _queryLocator;
 
-    public DocumentationRenderer(IReadOnlyCollection<Type> types, Dictionary<string, Query> aggregateQueries)
+    public DocumentationRenderer(IReadOnlyCollection<Type> types, IQueryLocator queryLocator)
     {
         _types = types;
-        _aggregateQueries = aggregateQueries;
+        _queryLocator = queryLocator;
     }
 
     public string Render()
@@ -79,7 +79,7 @@ public class DocumentationRenderer
 
     private void RenderAggregateTransform(string queryFileName, StringBuilder stringBuilder)
     {
-        var query = _aggregateQueries[queryFileName];
+        var query = _queryLocator.GetQuery(queryFileName);
 
         if (query.Explanation?.Explanations == null)
         {

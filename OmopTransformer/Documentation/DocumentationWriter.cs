@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.Logging;
-using OmopTransformer.Transformation;
 
 namespace OmopTransformer.Documentation;
 
@@ -8,11 +7,13 @@ internal class DocumentationWriter : IDocumentationWriter
 {
     private readonly DocumentationOptions _documentationOption;
     private readonly ILogger<DocumentationWriter> _logger;
+    private readonly IQueryLocator _queryLocator;
 
-    public DocumentationWriter(DocumentationOptions documentationOption, ILogger<DocumentationWriter> logger)
+    public DocumentationWriter(DocumentationOptions documentationOption, ILogger<DocumentationWriter> logger, IQueryLocator queryLocator)
     {
         _documentationOption = documentationOption;
         _logger = logger;
+        _queryLocator = queryLocator;
     }
 
     public async Task WriteToPath(CancellationToken cancellationToken)
@@ -25,31 +26,9 @@ internal class DocumentationWriter : IDocumentationWriter
             return;
         }
 
-        string runningDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-        string[] queryFilePaths = Directory.GetFiles(runningDirectory, "*.xml", SearchOption.AllDirectories);
-
-        var queryFiles =
-            queryFilePaths
-                .Select(async path =>
-                    new
-                    {
-                        Path = path,
-                        Text = await File.ReadAllTextAsync(path, cancellationToken)
-                    })
-                .ToList();
-
-        await Task.WhenAll(queryFiles);
-
-        var aggregateQueries =
-            queryFiles
-                .ToDictionary(
-                    keySelector: query => Path.GetFileName(query.Result.Path),
-                    elementSelector: query => AggregateQueryParser.ParseAggregateQuery(query.Result.Text));
-
         Assembly currentAssembly = Assembly.GetExecutingAssembly();
 
-        string documentation = new DocumentationRenderer(currentAssembly.GetTypes(), aggregateQueries).Render();
+        string documentation = new DocumentationRenderer(currentAssembly.GetTypes(), _queryLocator).Render();
 
         await File.WriteAllTextAsync(_documentationOption.FilePath, documentation, cancellationToken);
     }
