@@ -2,7 +2,7 @@
 
 namespace OmopTransformer.Transformation;
 
-[Description("Deliminate text with newlines.")]
+[Description("Separates text with newlines.")]
 internal class TextDeliminator : ISelector
 {
     private readonly IReadOnlyCollection<string> _textParts;
