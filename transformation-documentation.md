@@ -1,7 +1,9 @@
 `Automatically generated documentation`
 
 # Location
+## COSD Demographics
 ### address_1
+#### COSD Demographics
 Value copied from `StreetAddressLine1`
 * `StreetAddressLine1` The first element of the StructuredAddress element, within the Demographics element.
 <details>
@@ -44,6 +46,7 @@ where
 </details>
 
 ### address_2
+#### COSD Demographics
 Value copied from `StreetAddressLine2`
 * `StreetAddressLine2` The second element of the StructuredAddress element, within the Demographics element.
 <details>
@@ -86,6 +89,7 @@ where
 </details>
 
 ### city
+#### COSD Demographics
 Value copied from `StreetAddressLine3`
 * `StreetAddressLine3` The third element of the StructuredAddress element, within the Demographics element.
 <details>
@@ -128,6 +132,7 @@ where
 </details>
 
 ### county
+#### COSD Demographics
 Value copied from `StreetAddressLine4`
 * `StreetAddressLine4` The fourth and final element of the StructuredAddress element, within the Demographics element.
 <details>
@@ -170,6 +175,7 @@ where
 </details>
 
 ### zip
+#### COSD Demographics
 Value copied from `PostcodeOfUsualAddressAtDiagnosis`
 * `PostcodeOfUsualAddressAtDiagnosis` The value of the PostcodeOfUsualAddressAtDiagnosis element within the Demographics element.
 <details>
@@ -212,6 +218,7 @@ where
 </details>
 
 ### location_source_value
+#### COSD Demographics
 Source columns  `StreetAddressLine1`, `StreetAddressLine2`, `StreetAddressLine3`, `StreetAddressLine4`, `PostcodeOfUsualAddressAtDiagnosis`.
 Deliminate text with newlines.
 * `StreetAddressLine1` The first element of the StructuredAddress element, within the Demographics element.

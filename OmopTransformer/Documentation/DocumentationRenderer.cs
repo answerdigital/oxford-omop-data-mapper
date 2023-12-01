@@ -109,6 +109,15 @@ internal class DocumentationRenderer
         if (attributes.Any())
         {
             stringBuilder.AppendLine($"### {property.Name}");
+
+            var sourceType = GetOmopSourceType(mapperType);
+
+            var description = sourceType.GetCustomAttributes(typeof(DescriptionAttribute)).FirstOrDefault();
+
+            if (description != null)
+            {
+                stringBuilder.AppendLine($"#### {((DescriptionAttribute)description).Value}");
+            }
         }
 
         foreach (var attribute in attributes)

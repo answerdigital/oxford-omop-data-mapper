@@ -2,6 +2,7 @@
 
 namespace OmopTransformer.COSD.Demographics;
 
+[Description("COSD Demographics")]
 [SourceQuery("OmopDemographics.xml")]
 internal class CosdDemographics
 {
