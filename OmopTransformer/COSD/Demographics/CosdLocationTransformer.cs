@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.Extensions.Logging;
-using OmopTransformer.Omop;
-using OmopTransformer.Omop.COSD;
+using OmopTransformer.Omop.Location;
 using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Demographics;

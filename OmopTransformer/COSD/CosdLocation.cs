@@ -1,8 +1,9 @@
 ﻿using OmopTransformer.Annotations;
 using OmopTransformer.COSD.Demographics;
+using OmopTransformer.Omop.Location;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.Omop.COSD;
+namespace OmopTransformer.COSD;
 
 internal class CosdLocation : OmopLocation<CosdDemographics>
 {
@@ -22,7 +23,7 @@ internal class CosdLocation : OmopLocation<CosdDemographics>
     public override string? zip { get; set; }
 
     [Transform(
-        typeof(TextDeliminator), 
+        typeof(TextDeliminator),
         nameof(Source.StreetAddressLine1),
         nameof(Source.StreetAddressLine2),
         nameof(Source.StreetAddressLine3),

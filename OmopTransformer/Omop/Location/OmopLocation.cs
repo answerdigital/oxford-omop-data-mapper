@@ -1,4 +1,4 @@
-﻿namespace OmopTransformer.Omop;
+﻿namespace OmopTransformer.Omop.Location;
 
 internal abstract class OmopLocation<T> : IOmopRecord<T>
 {

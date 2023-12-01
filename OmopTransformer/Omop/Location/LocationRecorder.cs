@@ -5,7 +5,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace OmopTransformer.Omop;
+namespace OmopTransformer.Omop.Location;
 
 internal class LocationRecorder : ILocationRecorder
 {
