@@ -8,7 +8,7 @@ Value copied from `StreetAddressLine1`
 <details>
 <summary>SQL</summary>
 
-```
+```sql
 with Demographics as (
 select
 	T.staging.value('(Demographics/Address/StructuredAddress/StreetAddressLine[1]/text())[1]', 'VARCHAR(255)') as StreetAddressLine1,
@@ -51,7 +51,7 @@ Value copied from `StreetAddressLine2`
 <details>
 <summary>SQL</summary>
 
-```
+```sql
 with Demographics as (
 select
 	T.staging.value('(Demographics/Address/StructuredAddress/StreetAddressLine[1]/text())[1]', 'VARCHAR(255)') as StreetAddressLine1,
@@ -94,7 +94,7 @@ Value copied from `StreetAddressLine3`
 <details>
 <summary>SQL</summary>
 
-```
+```sql
 with Demographics as (
 select
 	T.staging.value('(Demographics/Address/StructuredAddress/StreetAddressLine[1]/text())[1]', 'VARCHAR(255)') as StreetAddressLine1,
@@ -137,7 +137,7 @@ Value copied from `StreetAddressLine4`
 <details>
 <summary>SQL</summary>
 
-```
+```sql
 with Demographics as (
 select
 	T.staging.value('(Demographics/Address/StructuredAddress/StreetAddressLine[1]/text())[1]', 'VARCHAR(255)') as StreetAddressLine1,
@@ -180,7 +180,7 @@ Value copied from `PostcodeOfUsualAddressAtDiagnosis`
 <details>
 <summary>SQL</summary>
 
-```
+```sql
 with Demographics as (
 select
 	T.staging.value('(Demographics/Address/StructuredAddress/StreetAddressLine[1]/text())[1]', 'VARCHAR(255)') as StreetAddressLine1,
@@ -228,7 +228,7 @@ Deliminate text with newlines.
 <details>
 <summary>SQL</summary>
 
-```
+```sql
 with Demographics as (
 select
 	T.staging.value('(Demographics/Address/StructuredAddress/StreetAddressLine[1]/text())[1]', 'VARCHAR(255)') as StreetAddressLine1,

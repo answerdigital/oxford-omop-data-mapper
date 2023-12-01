@@ -168,7 +168,7 @@ internal class DocumentationRenderer
                 stringBuilder.AppendLine("<details>");
                 stringBuilder.AppendLine("<summary>SQL</summary>");
                 stringBuilder.AppendLine();
-                stringBuilder.AppendLine("```");
+                stringBuilder.AppendLine("```sql");
                 var whitespace = new[] { ' ', '\r', '\n' };
                 stringBuilder.AppendLine(query.Sql?.TrimStart(whitespace).TrimEnd(whitespace));
                 stringBuilder.AppendLine("```");
