@@ -1,3 +1,5 @@
+[![.NET](https://github.com/answerdigital/oxford-omop-data-mapper/actions/workflows/dotnet.yml/badge.svg)](https://github.com/answerdigital/oxford-omop-data-mapper/actions/workflows/dotnet.yml)
+
 # OMOP Transformer CLI tool
 
 ```
