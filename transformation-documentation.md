@@ -3,7 +3,8 @@
 # Location
 ## address_1
 ### COSD Demographics
-* Value copied from `StreetAddressLine1`
+Source column  `StreetAddressLine1`.
+Convert text to uppercase. Trim whitespace.
 * `StreetAddressLine1` The first element of the StructuredAddress element, within the Demographics element.
 <details>
 <summary>SQL</summary>
@@ -46,7 +47,8 @@ where
 
 ## address_2
 ### COSD Demographics
-* Value copied from `StreetAddressLine2`
+Source column  `StreetAddressLine2`.
+Convert text to uppercase. Trim whitespace.
 * `StreetAddressLine2` The second element of the StructuredAddress element, within the Demographics element.
 <details>
 <summary>SQL</summary>
@@ -89,7 +91,8 @@ where
 
 ## city
 ### COSD Demographics
-* Value copied from `StreetAddressLine3`
+Source column  `StreetAddressLine3`.
+Convert text to uppercase. Trim whitespace.
 * `StreetAddressLine3` The third element of the StructuredAddress element, within the Demographics element.
 <details>
 <summary>SQL</summary>
@@ -132,7 +135,8 @@ where
 
 ## county
 ### COSD Demographics
-* Value copied from `StreetAddressLine4`
+Source column  `StreetAddressLine4`.
+Convert text to uppercase. Trim whitespace.
 * `StreetAddressLine4` The fourth and final element of the StructuredAddress element, within the Demographics element.
 <details>
 <summary>SQL</summary>

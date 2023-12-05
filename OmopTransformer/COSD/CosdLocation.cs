@@ -7,16 +7,16 @@ namespace OmopTransformer.COSD;
 
 internal class CosdLocation : OmopLocation<CosdDemographics>
 {
-    [CopyValue(nameof(Source.StreetAddressLine1))]
+    [Transform(typeof(UppercaseAndTrimWhitespace), nameof(Source.StreetAddressLine1))]
     public override string? address_1 { get; set; }
 
-    [CopyValue(nameof(Source.StreetAddressLine2))]
+    [Transform(typeof(UppercaseAndTrimWhitespace), nameof(Source.StreetAddressLine2))]
     public override string? address_2 { get; set; }
 
-    [CopyValue(nameof(Source.StreetAddressLine3))]
+    [Transform(typeof(UppercaseAndTrimWhitespace), nameof(Source.StreetAddressLine3))]
     public override string? city { get; set; }
 
-    [CopyValue(nameof(Source.StreetAddressLine4))]
+    [Transform(typeof(UppercaseAndTrimWhitespace), nameof(Source.StreetAddressLine4))]
     public override string? county { get; set; }
 
     [Transform(typeof(PostcodeFormatter), nameof(Source.PostcodeOfUsualAddressAtDiagnosis))]
