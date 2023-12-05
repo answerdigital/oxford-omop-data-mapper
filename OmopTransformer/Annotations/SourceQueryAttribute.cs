@@ -1,5 +1,6 @@
 ﻿namespace OmopTransformer.Annotations;
 
+[AttributeUsage(AttributeTargets.Class)]
 internal class SourceQueryAttribute : Attribute
 {
     public SourceQueryAttribute(string queryFileName)

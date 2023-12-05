@@ -1,5 +1,6 @@
 ﻿namespace OmopTransformer.Annotations;
 
+[AttributeUsage(AttributeTargets.Property)]
 internal class TransformAttribute : Attribute
 {
     public TransformAttribute(Type type, params string[] value)

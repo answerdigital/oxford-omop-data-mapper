@@ -1,5 +1,6 @@
 ﻿namespace OmopTransformer.Annotations;
 
+[AttributeUsage(AttributeTargets.Property)]
 internal class CopyValueAttribute : Attribute
 {
     public CopyValueAttribute(string value)
