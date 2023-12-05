@@ -3,11 +3,11 @@ using Microsoft.Extensions.Logging;
 
 namespace OmopTransformer.COSD;
 
-internal class ClearStagingHostedService : FinalHostedService
+internal class CosdClearStagingHostedService : FinalHostedService
 {
     private readonly ICosdStagingSchema _cosdStagingSchema;
 
-    public ClearStagingHostedService(IHostApplicationLifetime appLifetime, ICosdStagingSchema cosdStagingSchema, ILogger<FinalHostedService> logger) : base(appLifetime, logger)
+    public CosdClearStagingHostedService(IHostApplicationLifetime appLifetime, ICosdStagingSchema cosdStagingSchema, ILogger<FinalHostedService> logger) : base(appLifetime, logger)
     {
         _cosdStagingSchema = cosdStagingSchema;
     }

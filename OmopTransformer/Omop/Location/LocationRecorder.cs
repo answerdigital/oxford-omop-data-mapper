@@ -30,7 +30,7 @@ internal class LocationRecorder : ILocationRecorder
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = Batch(locations, 1000);
+        var batches = locations.Batch(1000);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -75,23 +75,5 @@ internal class LocationRecorder : ILocationRecorder
 
         _logger.LogTrace("Inserting locations took {0}ms.", stopwatch.ElapsedMilliseconds);
 
-    }
-
-    public static IEnumerable<IEnumerable<T>> Batch<T>(IEnumerable<T> source, int batchSize)
-    {
-        using var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            yield return GetBatch(enumerator, batchSize);
-        }
-    }
-
-    private static IEnumerable<T> GetBatch<T>(IEnumerator<T> source, int batchSize)
-    {
-        do
-        {
-            yield return source.Current;
-        }
-        while (--batchSize > 0 && source.MoveNext());
     }
 }

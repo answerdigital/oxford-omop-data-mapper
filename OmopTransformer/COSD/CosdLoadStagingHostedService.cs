@@ -3,12 +3,12 @@ using Microsoft.Extensions.Logging;
 
 namespace OmopTransformer.COSD;
 
-internal class LoadStagingHostedService : FinalHostedService
+internal class CosdLoadStagingHostedService : FinalHostedService
 {
     private readonly ICosdStagingSchema _cosdStagingSchema;
     private readonly ICosdStaging _cosdStaging;
 
-    public LoadStagingHostedService(IHostApplicationLifetime appLifetime, ICosdStagingSchema cosdStagingSchema, ICosdStaging cosdStaging, ILogger<FinalHostedService> logger) : base(appLifetime, logger)
+    public CosdLoadStagingHostedService(IHostApplicationLifetime appLifetime, ICosdStagingSchema cosdStagingSchema, ICosdStaging cosdStaging, ILogger<FinalHostedService> logger) : base(appLifetime, logger)
     {
         _cosdStagingSchema = cosdStagingSchema;
         _cosdStaging = cosdStaging;

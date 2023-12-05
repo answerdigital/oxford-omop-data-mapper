@@ -19,7 +19,7 @@ internal class CosdLocation : OmopLocation<CosdDemographics>
     [CopyValue(nameof(Source.StreetAddressLine4))]
     public override string? county { get; set; }
 
-    [CopyValue(nameof(Source.PostcodeOfUsualAddressAtDiagnosis))]
+    [Transform(typeof(PostcodeFormatter), nameof(Source.PostcodeOfUsualAddressAtDiagnosis))]
     public override string? zip { get; set; }
 
     [Transform(

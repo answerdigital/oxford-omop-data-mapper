@@ -3,11 +3,11 @@
 # OMOP Transformer CLI tool
 
 ```
-PS C:\Code\oxford-omop-transformer\OmopTransformer\bin\Debug\net8.0> .\omop.exe --help
-omop 1.0.0+a77649bac12e84decb8237667b610409aa2071fb
+PS C:\Code\oxford-omop-transformer\OmopTransformer\bin\Debug\net8.0> omop --help
+omop 1.0.0+db84dcb0f45f5cb4450b40e6c11bf437e9515117
 Copyright (C) 2023 omop
 
-  staging      Handles staging operations.
+  stage        Handles staging operations.
 
   docs         Documentation generation.
 
@@ -26,7 +26,7 @@ Copyright (C) 2023 omop
 | **CDS**  |              |           |
 | **COSD** |     ✔️      |            |
 | **RTDS** |              |            |
-| **SACT** |              |            |
+| **SACT** |      ✔️       |            |
 
 [Transformation documentation](transformation-documentation.md)
 

@@ -2,5 +2,5 @@
 
 internal interface ISelector
 {
-    string GetValue();
+    string? GetValue();
 }

@@ -41,26 +41,38 @@ internal class DocumentationRenderer
         stringBuilder.AppendLine("`Automatically generated documentation`");
         stringBuilder.AppendLine();
 
+
         foreach (var omopTarget in mapperByOmopTarget)
         {
             stringBuilder.AppendLine($"# {omopTarget.Key}");
 
-            foreach (var omopMappers in omopTarget)
+            var mapperByProperty =
+                omopTarget
+                    .SelectMany(
+                        mapper =>
+                            mapper
+                                .MapperType
+                                .GetProperties()
+                                .Select(
+                                    property =>
+                                        new
+                                        {
+                                            Property = property,
+                                            Mapper = mapper
+                                        }))
+                    .GroupBy(property => property.Property.Name)
+                    .OrderBy(name => name.Key);
+
+            foreach (var propertyGroup in mapperByProperty)
             {
-                var aggregateTransform = omopMappers.MapperType.GetCustomAttributes(typeof(AggregateTransformAttribute), inherit: false).FirstOrDefault();
+                if (!AnyPropertyHasDocumentationAttributes(propertyGroup.Select(m => m.Property)))
+                    continue;
 
-                if (aggregateTransform == null)
-                {
-                    foreach (var property in omopMappers.MapperType.GetProperties())
-                    {
-                        RenderProperty(omopMappers.MapperType, property, stringBuilder);
-                    }
-                }
-                else
-                {
-                    string queryFileName = ((AggregateTransformAttribute)aggregateTransform).QueryFileName;
+                stringBuilder.AppendLine($"## {propertyGroup.First().Property.Name}");
 
-                    RenderAggregateTransform(queryFileName, stringBuilder);
+                foreach (var property in propertyGroup)
+                {
+                    RenderProperty(property.Mapper.MapperType, property.Property, stringBuilder);
                 }
             }
         }
@@ -68,28 +80,20 @@ internal class DocumentationRenderer
         return stringBuilder.ToString();
     }
 
-    private void RenderAggregateTransform(string queryFileName, StringBuilder stringBuilder)
+    private static bool AnyPropertyHasDocumentationAttributes(IEnumerable<PropertyInfo> properties)
     {
-        var query = _queryLocator.GetQuery(queryFileName);
+        var knownDocumentationAttributes =
+            new[]
+            {
+                nameof(TransformAttribute),
+                nameof(DescriptionAttribute),
+                nameof(CopyValueAttribute)
+            };
 
-        if (query.Explanation?.Explanations == null)
-        {
-            throw new InvalidOperationException("query.Explanation must be defined.");
-        }
-
-        foreach (var explanation in query.Explanation.Explanations)
-        {
-            stringBuilder.AppendLine($"## {explanation.ColumnName} column");
-
-            stringBuilder.AppendLine($"* {explanation.Text}");
-            stringBuilder.AppendLine();
-            stringBuilder.AppendLine("```");
-
-            var whitespace = new[] { ' ', '\r', '\n' };
-            stringBuilder.AppendLine(query.Sql?.TrimStart(whitespace).TrimEnd(whitespace));
-            stringBuilder.AppendLine("```");
-            stringBuilder.AppendLine();
-        }
+        return
+            properties
+                .SelectMany(property => property.GetCustomAttributes(inherit: false))
+                .Any(attribute => knownDocumentationAttributes.Contains(attribute.GetType().Name));
     }
 
     private void RenderProperty(Type mapperType, PropertyInfo property, StringBuilder stringBuilder)
@@ -101,8 +105,6 @@ internal class DocumentationRenderer
 
         if (attributes.Any())
         {
-            stringBuilder.AppendLine($"## {property.Name}");
-
             var sourceType = GetOmopSourceType(mapperType);
 
             var description = sourceType.GetCustomAttributes(typeof(DescriptionAttribute)).FirstOrDefault();
