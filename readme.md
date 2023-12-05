@@ -55,3 +55,23 @@ Example usage `omop stage clear --type cosd`
 Transforms and inserts the staged data to the omop database.
 
 Example usage `omop transform --type cosd`
+
+## SACT
+
+### Loading data
+
+Loads a SACT csv into a staging database.
+
+Example usage `omop stage load --type sact "SACT_v3-20200101-20200131.csv"`
+
+### Clear staging
+
+Clears the SACT staging tables.
+
+Example usage `omop stage clear --type sact`
+
+## Transform
+
+Transforms and inserts the staged data to the omop database.
+
+Example usage `omop transform --type sact`
