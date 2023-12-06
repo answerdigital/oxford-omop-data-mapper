@@ -178,6 +178,8 @@ where
 </details>
 
 ## location_source_value
+### SACT
+* Value copied from `Patient_Postcode`
 ### COSD Demographics
 Source columns  `StreetAddressLine1`, `StreetAddressLine2`, `StreetAddressLine3`, `StreetAddressLine4`, `PostcodeOfUsualAddressAtDiagnosis`.
 Separates text with newlines.
