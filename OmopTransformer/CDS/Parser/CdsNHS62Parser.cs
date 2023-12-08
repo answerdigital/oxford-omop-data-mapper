@@ -20,7 +20,7 @@ internal class CdsNhs62Parser
 
         using var reader = new StreamReader(path);
 
-        Message message = new();
+        Message message = new(Guid.NewGuid());
 
         while (reader.ReadLine() is { } row)
         {
@@ -42,7 +42,7 @@ internal class CdsNhs62Parser
                 {
                     messages.Add(message);
                         
-                    message = new();
+                    message = new(Guid.NewGuid());
                 }
 
                 message.Line01 = ParseLine01(row);

@@ -2,6 +2,12 @@
 
 internal class Message
 {
+    public Message(Guid messageId)
+    {
+        MessageId = messageId;
+    }
+
+    public Guid MessageId { get; }
     public Line01? Line01 { get; set; }
     public List<Line02> Line02 { get; set; } = new();
     public List<Line03> Line03 { get; set; } = new();
