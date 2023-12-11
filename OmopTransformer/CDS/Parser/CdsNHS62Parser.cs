@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace OmopTransformer.CDS.Parser;
 
-internal class CdsNhs62Parser
+internal class CdsNhs62Parser : ICdsNhs62Parser
 {
     private readonly ILogger<CdsNhs62Parser> _logger;
 

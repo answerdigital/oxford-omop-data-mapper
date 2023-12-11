@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using CommandLine;
+using OmopTransformer.CDS.Parser;
+using OmopTransformer.CDS.Staging;
 using OmopTransformer.Documentation;
 using OmopTransformer.COSD;
 using OmopTransformer.Transformation;
@@ -18,6 +20,9 @@ namespace OmopTransformer;
 
 internal class Program
 {
+    private static async Task ActionMustBeSpecifiedError() => await Console.Error.WriteLineAsync("Action flag must be specified.");
+    private static async Task UnknownActionMustBeSpecifiedError(string actionName) => await Console.Error.WriteLineAsync($"Unknown action {actionName}.");
+
     private static async Task Main(string[] args)
     {
         var builder = Host.CreateApplicationBuilder(args);
@@ -43,7 +48,7 @@ internal class Program
             {
                 if (stagingOptions.Action == null)
                 {
-                    await Console.Error.WriteLineAsync("Command not found.");
+                    await ActionMustBeSpecifiedError();
                     return;
                 }
 
@@ -57,7 +62,7 @@ internal class Program
                         builder.Services.AddHostedService<SactClearStagingHostedService>();
                         break;
                     default:
-                        await Console.Error.WriteLineAsync("Command not found.");
+                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
                         return;
                 }
             }
@@ -65,7 +70,7 @@ internal class Program
             {
                 if (stagingOptions.Action == null)
                 {
-                    await Console.Error.WriteLineAsync("Command not found.");
+                    await ActionMustBeSpecifiedError();
                     return;
                 }
 
@@ -80,13 +85,37 @@ internal class Program
                         builder.Services.AddHostedService<SactClearStagingHostedService>();
                         break;
                     default:
-                        await Console.Error.WriteLineAsync("Command not found.");
+                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
+                        return;
+                }
+            }
+            else if (string.Equals(stagingOptions.Type, "cds", StringComparison.OrdinalIgnoreCase))
+            {
+                if (stagingOptions.Action == null)
+                {
+                    await ActionMustBeSpecifiedError();
+                    return;
+                }
+
+                switch (stagingOptions.Action.ToLower())
+                {
+                    case "load":
+                        builder.Services.AddTransient<ICdsNhs62Parser, CdsNhs62Parser>();
+                        builder.Services.AddTransient<ICdsInserter, CdsInserter>();
+                        builder.Services.AddTransient<ICdsStaging, CdsStaging>();
+                        builder.Services.AddHostedService<CdsLoadStagingHostedService>();
+                        break;
+                    case "clear":
+                        builder.Services.AddHostedService<CdsClearStagingHostedService>();
+                        break;
+                    default:
+                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
                         return;
                 }
             }
             else
             {
-                await Console.Error.WriteLineAsync("Command not found.");
+                await Console.Error.WriteLineAsync("Unknown staging type {stagingOptions.Type}.");
                 return;
             }
         }
@@ -119,6 +148,8 @@ internal class Program
         builder.Services.AddTransient<ITransformer, Transformer>();
         builder.Services.AddTransient<ICosdStagingSchema, CosdStagingSchema>();
         builder.Services.AddTransient<ISactStagingSchema, SactStagingSchema>();
+        builder.Services.AddTransient<ICdsStagingSchema, CdsStagingSchema>();
+
 
         var queryLocator = await QueryLocator.Create();
         builder.Services.AddSingleton<IQueryLocator, QueryLocator>(_ => queryLocator);

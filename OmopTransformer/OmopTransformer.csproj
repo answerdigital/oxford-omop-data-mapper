@@ -29,6 +29,18 @@
     <None Update="CDS\ObservationPeriod\CDSObservationPeriod.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="CDS\Staging\create\insert_procedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CDS\Staging\create\create_staging_dto.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CDS\Staging\create\create_staging_table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CDS\Staging\delete_staging.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Demographics\OmopDemographics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
