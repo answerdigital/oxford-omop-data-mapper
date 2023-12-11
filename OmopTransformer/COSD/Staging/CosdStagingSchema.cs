@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace OmopTransformer.COSD;
+namespace OmopTransformer.COSD.Staging;
 
 internal class CosdStagingSchema : StagingSchema, ICosdStagingSchema
 {

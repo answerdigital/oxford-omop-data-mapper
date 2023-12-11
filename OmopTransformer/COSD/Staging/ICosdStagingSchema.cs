@@ -1,4 +1,4 @@
-﻿namespace OmopTransformer.COSD;
+﻿namespace OmopTransformer.COSD.Staging;
 
 internal interface ICosdStagingSchema
 {

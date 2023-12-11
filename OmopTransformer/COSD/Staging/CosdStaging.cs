@@ -4,7 +4,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace OmopTransformer.COSD;
+namespace OmopTransformer.COSD.Staging;
 
 internal class CosdStaging : ICosdStaging
 {
@@ -44,7 +44,7 @@ internal class CosdStaging : ICosdStaging
             await using var stream = entry.Open();
             using var memoryStream = new MemoryStream();
             await stream.CopyToAsync(memoryStream, cancellationToken);
-                
+
             _logger.LogInformation("Staging {0}.", entry.Name);
 
             await connection

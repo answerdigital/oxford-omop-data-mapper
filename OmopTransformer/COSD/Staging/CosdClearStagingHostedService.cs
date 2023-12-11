@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace OmopTransformer.COSD;
+namespace OmopTransformer.COSD.Staging;
 
 internal class CosdClearStagingHostedService : FinalHostedService
 {

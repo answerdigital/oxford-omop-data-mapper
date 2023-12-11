@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.Extensions.Logging;
+using OmopTransformer.COSD.Staging;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Transformation;
 
