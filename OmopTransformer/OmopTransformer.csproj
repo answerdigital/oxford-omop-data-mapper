@@ -40,10 +40,6 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CDS\Postcoded\" />
-  </ItemGroup>
-
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Message Importance="high" Text="Generating documentation." />
 		<Exec Command="dotnet &quot;$(TargetPath)&quot; docs $(MSBuildProjectDirectory)\..\transformation-documentation.md" />
