@@ -1,0 +1,30 @@
+﻿<Query>
+    <Sql>
+select
+	PatientAddressStructured1,
+	PatientAddressStructured2,
+	PatientAddressStructured3,
+	PatientAddressStructured4,
+	PatientAddressStructured5,
+	Postcode
+from cds_line01
+where PatientAddressType = '02'
+	and 
+	(
+		PatientAddressStructured1 is not null or 
+		PatientAddressStructured2 is not null or 
+		PatientAddressStructured3 is not null or 
+		PatientAddressStructured4 is not null or 
+		PatientAddressStructured5 is not null or 
+		Postcode is not null
+	);
+	</Sql>
+    <Explanation>
+		<OmopColumnExplanation columName="PatientAddressStructured1">The first line of the address.</OmopColumnExplanation>
+		<OmopColumnExplanation columName="PatientAddressStructured2">The second line of the address.</OmopColumnExplanation>
+	    <OmopColumnExplanation columName="PatientAddressStructured3">The third line of the address.</OmopColumnExplanation>
+	    <OmopColumnExplanation columName="PatientAddressStructured4">The fourth line of the address.</OmopColumnExplanation>
+	    <OmopColumnExplanation columName="PatientAddressStructured5">The fifth line of the address.</OmopColumnExplanation>
+	    <OmopColumnExplanation columName="Postcode">Postcode</OmopColumnExplanation>
+    </Explanation>
+</Query>

@@ -5,11 +5,11 @@ using OmopTransformer.Omop;
 
 namespace OmopTransformer.Transformation;
 
-internal class Transformer : ITransformer
+internal class RecordTransformer : IRecordTransformer
 {
-    private readonly ILogger<Transformer> _logger;
+    private readonly ILogger<RecordTransformer> _logger;
 
-    public Transformer(ILogger<Transformer> logger)
+    public RecordTransformer(ILogger<RecordTransformer> logger)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }

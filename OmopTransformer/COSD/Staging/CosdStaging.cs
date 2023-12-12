@@ -49,7 +49,7 @@ internal class CosdStaging : ICosdStaging
 
             await connection
                 .ExecuteAsync(
-                    "insert into cosd_staging values (@SubmissionName, @FileName, @Content)",
+                    "insert into [omop_staging].[cosd_staging] values (@SubmissionName, @FileName, @Content)",
                     param:
                     new
                     {

@@ -14,5 +14,5 @@ internal abstract class OmopLocation<T> : IOmopRecord<T>
     public virtual double? latitude { get; set; }
     public virtual double? longitude { get; set; }
     public string OmopTargetTypeDescription => "Location";
-    public T? Source { get; init; }
+    public T? Source { get; set; }
 }

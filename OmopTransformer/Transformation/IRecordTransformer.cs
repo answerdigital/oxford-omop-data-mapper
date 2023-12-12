@@ -2,7 +2,7 @@
 
 namespace OmopTransformer.Transformation;
 
-internal interface ITransformer
+internal interface IRecordTransformer
 {
     void Transform<T>(IOmopRecord<T> record);
 }

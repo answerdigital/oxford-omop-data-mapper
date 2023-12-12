@@ -133,10 +133,10 @@ internal class SactInserter : ISactInserter
 
             var parameter = new
             {
-                SactRows = dataTable.AsTableValuedParameter("[sact_staging_row]")
+                SactRows = dataTable.AsTableValuedParameter("[omop_staging].[sact_staging_row]")
             };
 
-            await connection.ExecuteAsync("insert_sact_rows", parameter, commandType: CommandType.StoredProcedure);
+            await connection.ExecuteAsync("[omop_staging].[insert_sact_rows]", parameter, commandType: CommandType.StoredProcedure);
         }
 
         stopwatch.Stop();

@@ -16,52 +16,17 @@ internal abstract class StagingSchema
         _configuration = configuration.Value;
     }
 
-    protected abstract string[] DropStagingSql { get; }
-    protected abstract string TableNameForExistenceCheck { get; }
-    protected abstract string[] CreateStagingSql { get; }
+    protected abstract string[] ClearStagingSql { get; }
 
-    public async Task CreateStagingTablesIfTheyDoNotExist(CancellationToken cancellationToken)
-    {
-        if (!await StagingTablesExist(cancellationToken))
-        {
-            await CreateTables(cancellationToken);
-        }
-    }
-
-    public async Task DropStagingTables(CancellationToken cancellationToken)
+    public async Task ClearStagingTables(CancellationToken cancellationToken)
     {
         await using var connection = new SqlConnection(_configuration.StagingConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        _logger.LogInformation("Dropping staging tables.");
+        _logger.LogInformation("Clearing staging tables.");
 
-        foreach (string sql in DropStagingSql)
-        {
-            await connection.ExecuteAsync(sql);
-        }
-    }
-
-    public async Task<bool> StagingTablesExist(CancellationToken cancellationToken)
-    {
-        await using var connection = new SqlConnection(_configuration.StagingConnectionString);
-
-        await connection.OpenAsync(cancellationToken);
-
-        var tableId = await connection.QuerySingleAsync<int?>($"select object_id ('{TableNameForExistenceCheck}')");
-
-        return tableId.HasValue;
-    }
-
-    private async Task CreateTables(CancellationToken cancellationToken)
-    {
-        await using var connection = new SqlConnection(_configuration.StagingConnectionString);
-
-        await connection.OpenAsync(cancellationToken);
-
-        _logger.LogInformation("Creating staging tables.");
-
-        foreach (string sql in CreateStagingSql)
+        foreach (string sql in ClearStagingSql)
         {
             await connection.ExecuteAsync(sql);
         }

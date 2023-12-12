@@ -14,6 +14,6 @@ internal class SactClearStagingHostedService : FinalHostedService
 
     protected override async Task RunTask(CancellationToken cancellationToken)
     {
-        await _sactStagingSchema.DropStagingTables(cancellationToken);
+        await _sactStagingSchema.ClearStagingTables(cancellationToken);
     }
 }

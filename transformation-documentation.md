@@ -45,6 +45,9 @@ where
 ```
 </details>
 
+### CDS Structured Address
+Source columns  `PatientAddressStructured1`, `PatientAddressStructured2`.
+Separates text with newlines.
 ## address_2
 ### COSD Demographics
 Source column  `StreetAddressLine2`.
@@ -89,6 +92,8 @@ where
 ```
 </details>
 
+### CDS Structured Address
+* Value copied from `PatientAddressStructured3`
 ## city
 ### COSD Demographics
 Source column  `StreetAddressLine3`.
@@ -133,6 +138,8 @@ where
 ```
 </details>
 
+### CDS Structured Address
+* Value copied from `PatientAddressStructured4`
 ## county
 ### COSD Demographics
 Source column  `StreetAddressLine4`.
@@ -177,6 +184,8 @@ where
 ```
 </details>
 
+### CDS Structured Address
+* Value copied from `PatientAddressStructured5`
 ## location_source_value
 ### SACT
 * Value copied from `Patient_Postcode`
@@ -227,6 +236,53 @@ where
 ```
 </details>
 
+### CDS UnstructuredAddress
+* Value copied from `Postcode`
+* `Postcode` Postcode
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	PatientAddressStructured1,
+	PatientAddressStructured2,
+	PatientAddressStructured3,
+	PatientAddressStructured4,
+	PatientAddressStructured5,
+	Postcode
+from cds_line01
+where PatientAddressType = '02'
+	and 
+	(
+		PatientAddressStructured1 is not null or 
+		PatientAddressStructured2 is not null or 
+		PatientAddressStructured3 is not null or 
+		PatientAddressStructured4 is not null or 
+		PatientAddressStructured5 is not null or 
+		Postcode is not null
+	);
+	
+```
+</details>
+
+### CDS Structured Address
+Source columns  `PatientAddressStructured1`, `PatientAddressStructured2`, `PatientAddressStructured3`, `PatientAddressStructured4`, `PatientAddressStructured5`, `Postcode`.
+Separates text with newlines.
+* `Postcode` Postcode
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	PatientUnstructuredAddress,
+	Postcode
+from cds_line01
+where PatientAddressType = '01'
+	and Postcode is not null;
+	
+```
+</details>
+
 ## zip
 ### SACT
 Source column  `Patient_Postcode`.
@@ -270,6 +326,54 @@ where
 		StreetAddressLine4 is not null or 
 		PostcodeOfUsualAddressAtDiagnosis is not null
 	);
+	
+```
+</details>
+
+### CDS UnstructuredAddress
+Source column  `Postcode`.
+Uppercase the postcode then insert the space in the correct location, if needed.
+* `Postcode` Postcode
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	PatientAddressStructured1,
+	PatientAddressStructured2,
+	PatientAddressStructured3,
+	PatientAddressStructured4,
+	PatientAddressStructured5,
+	Postcode
+from cds_line01
+where PatientAddressType = '02'
+	and 
+	(
+		PatientAddressStructured1 is not null or 
+		PatientAddressStructured2 is not null or 
+		PatientAddressStructured3 is not null or 
+		PatientAddressStructured4 is not null or 
+		PatientAddressStructured5 is not null or 
+		Postcode is not null
+	);
+	
+```
+</details>
+
+### CDS Structured Address
+Source column  `Postcode`.
+Uppercase the postcode then insert the space in the correct location, if needed.
+* `Postcode` Postcode
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	PatientUnstructuredAddress,
+	Postcode
+from cds_line01
+where PatientAddressType = '01'
+	and Postcode is not null;
 	
 ```
 </details>

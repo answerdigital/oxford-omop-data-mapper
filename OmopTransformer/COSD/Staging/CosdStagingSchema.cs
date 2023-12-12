@@ -9,22 +9,9 @@ internal class CosdStagingSchema : StagingSchema, ICosdStagingSchema
     {
     }
 
-    protected override string[] DropStagingSql =>
+    protected override string[] ClearStagingSql =>
         new[]
         {
-            "drop table cosd_staging"
-        };
-
-    protected override string TableNameForExistenceCheck => "cosd_staging";
-    protected override string[] CreateStagingSql =>
-        new[]
-        {
-            "create table cosd_staging                                                                      " +
-            "(                                                                                              " +
-            "    SubmissionName varchar(200) not null,                                                      " +
-            "	FileName varchar(200) not null,                                                             " +
-            "	Content xml not null,                                                                       " +
-            "	constraint PK_cosd_staging_SubmissionName_FileName primary key(SubmissionName, FileName)    " +
-            ");"
+            "if object_id('cosd_staging') is not null begin truncate table omop_staging.cosd_staging end"
         };
 }

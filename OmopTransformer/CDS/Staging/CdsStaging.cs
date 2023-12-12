@@ -1,6 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Globalization;
-using CsvHelper;
 using Microsoft.Extensions.Logging;
 using OmopTransformer.CDS.Parser;
 

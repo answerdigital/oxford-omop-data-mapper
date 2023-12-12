@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using CommandLine;
+using OmopTransformer.CDS;
 using OmopTransformer.CDS.Parser;
 using OmopTransformer.CDS.Staging;
 using OmopTransformer.Documentation;
@@ -128,28 +129,31 @@ internal class Program
 
             if (string.Equals(transformOptions.Type, "cosd", StringComparison.OrdinalIgnoreCase))
             {
-                builder.Services.AddTransient<CosdDemographicsProvider>();
                 builder.Services.AddTransient<CosdLocationTransformer>();
                 builder.Services.AddHostedService<CosdTransformHostedService>();
             }
             else if (string.Equals(transformOptions.Type, "sact", StringComparison.OrdinalIgnoreCase))
             {
-                builder.Services.AddTransient<ISactProvider, SactProvider>();
                 builder.Services.AddTransient<SactLocationTransformer>();
                 builder.Services.AddHostedService<SactTransformHostedService>();
             }
+            else if (string.Equals(transformOptions.Type, "cds", StringComparison.OrdinalIgnoreCase))
+            {
+                builder.Services.AddTransient<CdsLocationTransformer>();
+                builder.Services.AddHostedService<CdsTransformHostedService>();
+            }
             else
             {
-                return;
+                await Console.Error.WriteLineAsync("Unknown transform type {stagingOptions.Type}.");
             }
         }
 
         builder.Services.AddTransient<IDocumentationWriter, DocumentationWriter>();
-        builder.Services.AddTransient<ITransformer, Transformer>();
+        builder.Services.AddTransient<IRecordTransformer, RecordTransformer>();
+        builder.Services.AddTransient<IRecordProvider, RecordProvider>();
         builder.Services.AddTransient<ICosdStagingSchema, CosdStagingSchema>();
         builder.Services.AddTransient<ISactStagingSchema, SactStagingSchema>();
         builder.Services.AddTransient<ICdsStagingSchema, CdsStagingSchema>();
-
 
         var queryLocator = await QueryLocator.Create();
         builder.Services.AddSingleton<IQueryLocator, QueryLocator>(_ => queryLocator);

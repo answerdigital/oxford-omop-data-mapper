@@ -29,21 +29,19 @@
     <None Update="CDS\ObservationPeriod\CDSObservationPeriod.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="CDS\Staging\create\insert_procedure.sql">
+    <None Update="CDS\StructuredAddress\CdsStructuredAddress.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="CDS\Staging\create\create_staging_dto.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Staging\create\create_staging_table.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Staging\delete_staging.sql">
+    <None Update="CDS\UnstructuredAddress\CdsUnstructuredAddress.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="COSD\Demographics\OmopDemographics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CDS\Postcoded\" />
   </ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

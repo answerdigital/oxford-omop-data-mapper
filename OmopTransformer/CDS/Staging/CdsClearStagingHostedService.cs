@@ -14,6 +14,6 @@ internal class CdsClearStagingHostedService : FinalHostedService
 
     protected override async Task RunTask(CancellationToken cancellationToken)
     {
-        await _cdsStagingSchema.DropStagingTables(cancellationToken);
+        await _cdsStagingSchema.ClearStagingTables(cancellationToken);
     }
 }

@@ -121,7 +121,7 @@ internal class CdsInserter : ICdsInserter
             foreach (var row in batch)
             {
                 dataTable.Rows.Add(
-                 row.Line01.LineId,
+                 row.Line01!.LineId,
                     row.Line01.RecordConnectionIdentifier,
                     row.Line01.CdsVersion,
                     row.Line01.CdsRecordType,
@@ -204,10 +204,10 @@ internal class CdsInserter : ICdsInserter
 
             var parameter = new
             {
-                Rows = dataTable.AsTableValuedParameter("[cds_line01_row]")
+                Rows = dataTable.AsTableValuedParameter("[omop_staging].[cds_line01_row]")
             };
 
-            await connection.ExecuteAsync("insert_cds_line01", parameter, commandType: CommandType.StoredProcedure);
+            await connection.ExecuteAsync("[omop_staging].[insert_cds_line01]", parameter, commandType: CommandType.StoredProcedure);
         }
 
         stopwatch.Stop();

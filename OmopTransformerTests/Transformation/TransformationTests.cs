@@ -24,9 +24,9 @@ public class TransformationTests
 
         var testConcept = new TestConcept(sourceClass);
 
-        var logger = Substitute.For<ILogger<Transformer>>();
+        var logger = Substitute.For<ILogger<RecordTransformer>>();
 
-        new Transformer(logger).Transform(testConcept);
+        new RecordTransformer(logger).Transform(testConcept);
 
         Assert.AreEqual(testConcept.Text, "hello world");
         Assert.AreEqual(testConcept.JoinedText, "line 1\r\nline 2");
@@ -68,5 +68,5 @@ internal abstract class OmopTestConcept<T> : IOmopRecord<T>
     public virtual string? JoinedText { get; set; }
     
     public string OmopTargetTypeDescription => "";
-    public T? Source { get; }
+    public T? Source { get; set; }
 }
