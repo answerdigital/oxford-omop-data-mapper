@@ -54,5 +54,5 @@ internal class Line05 : ICdsFrame
     public string? DecidedtoAdmitDate { get; init; }
     public string? EarliestReasonableOfferDate { get; init; }
 
-    public List<OverseasVisitor>? OverseasVisitors { get; set; }
+    public List<OverseasVisitor> OverseasVisitors { get; set; } = new();
 }

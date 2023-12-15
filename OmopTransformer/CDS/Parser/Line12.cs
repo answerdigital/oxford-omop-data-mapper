@@ -15,5 +15,5 @@ internal class Line12 : ICdsFrame
 
     public string? PrimaryInvestigation { get; set; }
 
-    public List<string>? SecondaryInvestigations { get; set; }
+    public List<string> SecondaryInvestigations { get; set; } = new();
 }

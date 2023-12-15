@@ -18,5 +18,5 @@ internal class Line02 : ICdsFrame
 
     public Diagnosis? PrimaryDiagnosis { get; set; }
 
-    public List<Diagnosis>? SecondaryDiagnoses { get; set; }
+    public List<Diagnosis> SecondaryDiagnoses { get; set; } = new();
 }

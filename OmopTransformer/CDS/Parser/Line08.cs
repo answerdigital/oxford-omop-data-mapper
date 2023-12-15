@@ -41,5 +41,5 @@ internal class Line08 : ICdsFrame
     public string? PatientStructured5 { get; init; }
     public string? Postcode { get; init; }
     public string? OrganisationCodeResidenceResponsibility { get; init; }
-    public List<BirthDetails>? BirthDetails { get; set; }
+    public List<BirthDetails> BirthDetails { get; set; } = new();
 }

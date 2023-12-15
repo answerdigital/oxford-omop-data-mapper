@@ -69,7 +69,12 @@ internal class CdsNhs62Parser : ICdsNhs62Parser
             }
             else if (messageType == "07")
             {
-                message.Line07.Add(ParseLine07(row));
+                var line07 = ParseLine07(row);
+
+                if (line07 != null)
+                {
+                    message.Line07.Add(line07);
+                }
             }
             else if (messageType == "08")
             {
@@ -389,7 +394,7 @@ internal class CdsNhs62Parser : ICdsNhs62Parser
         return line06;
     }
 
-    private static Line07 ParseLine07(string row)
+    private Line07? ParseLine07(string row)
     {
         var line07 =
             new Line07(row)
@@ -399,48 +404,41 @@ internal class CdsNhs62Parser : ICdsNhs62Parser
                 CriticalCareCount = row.SubstringOrNullOffByOne(38, 3),
                 LineCount = row.SubstringOrNullOffByOne(41, 3),
                 ActivityDateCriticalCare = row.SubstringOrNullOffByOne(44, 8),
-                PersonWeight = row.SubstringOrNullOffByOne(52, 7),
-                CriticalCareActivityCode1 = row.SubstringOrNullOffByOne(59, 2),
-                CriticalCareActivityCode2 = row.SubstringOrNullOffByOne(61, 2),
-                CriticalCareActivityCode3 = row.SubstringOrNullOffByOne(63, 2),
-                CriticalCareActivityCode4 = row.SubstringOrNullOffByOne(65, 2),
-                CriticalCareActivityCode5 = row.SubstringOrNullOffByOne(67, 2),
-                CriticalCareActivityCode6 = row.SubstringOrNullOffByOne(69, 2),
-                CriticalCareActivityCode7 = row.SubstringOrNullOffByOne(71, 2),
-                CriticalCareActivityCode8 = row.SubstringOrNullOffByOne(73, 2),
-                CriticalCareActivityCode9 = row.SubstringOrNullOffByOne(75, 2),
-                CriticalCareActivityCode10 = row.SubstringOrNullOffByOne(77, 2),
-                CriticalCareActivityCode11 = row.SubstringOrNullOffByOne(79, 2),
-                CriticalCareActivityCode12 = row.SubstringOrNullOffByOne(81, 2),
-                CriticalCareActivityCode13 = row.SubstringOrNullOffByOne(83, 2),
-                CriticalCareActivityCode14 = row.SubstringOrNullOffByOne(85, 2),
-                CriticalCareActivityCode15 = row.SubstringOrNullOffByOne(87, 2),
-                CriticalCareActivityCode16 = row.SubstringOrNullOffByOne(89, 2),
-                CriticalCareActivityCode17 = row.SubstringOrNullOffByOne(91, 2),
-                CriticalCareActivityCode18 = row.SubstringOrNullOffByOne(93, 2),
-                CriticalCareActivityCode19 = row.SubstringOrNullOffByOne(95, 2),
-                CriticalCareActivityCode20 = row.SubstringOrNullOffByOne(97, 2),
-                HighCostDrugsOPCS1 = row.SubstringOrNullOffByOne(99, 4),
-                HighCostDrugsOPCS2 = row.SubstringOrNullOffByOne(103, 4),
-                HighCostDrugsOPCS3 = row.SubstringOrNullOffByOne(107, 4),
-                HighCostDrugsOPCS4 = row.SubstringOrNullOffByOne(111, 4),
-                HighCostDrugsOPCS5 = row.SubstringOrNullOffByOne(115, 4),
-                HighCostDrugsOPCS6 = row.SubstringOrNullOffByOne(119, 4),
-                HighCostDrugsOPCS7 = row.SubstringOrNullOffByOne(123, 4),
-                HighCostDrugsOPCS8 = row.SubstringOrNullOffByOne(127, 4),
-                HighCostDrugsOPCS9 = row.SubstringOrNullOffByOne(131, 4),
-                HighCostDrugsOPCS10 = row.SubstringOrNullOffByOne(135, 4),
-                HighCostDrugsOPCS11 = row.SubstringOrNullOffByOne(139, 4),
-                HighCostDrugsOPCS12 = row.SubstringOrNullOffByOne(143, 4),
-                HighCostDrugsOPCS13 = row.SubstringOrNullOffByOne(147, 4),
-                HighCostDrugsOPCS14 = row.SubstringOrNullOffByOne(151, 4),
-                HighCostDrugsOPCS15 = row.SubstringOrNullOffByOne(155, 4),
-                HighCostDrugsOPCS16 = row.SubstringOrNullOffByOne(159, 4),
-                HighCostDrugsOPCS17 = row.SubstringOrNullOffByOne(163, 4),
-                HighCostDrugsOPCS18 = row.SubstringOrNullOffByOne(167, 4),
-                HighCostDrugsOPCS19 = row.SubstringOrNullOffByOne(171, 4),
-                HighCostDrugsOPCS20 = row.SubstringOrNullOffByOne(175, 4)
+                PersonWeight = row.SubstringOrNullOffByOne(52, 7)
             };
+
+        line07.CriticalCareActivityCodes =
+            GetRepeating(
+                    row,
+                    59 - 1,
+                    2,
+                    20,
+                    text => text.IsEmpty() ? null : text)
+                .ToList();
+
+        line07.HighCostDrugsOPCSCodes =
+            GetRepeating(
+                row,
+                99 - 1,
+                4,
+                20,
+                text => text.IsEmpty() ? null : text)
+                .ToList();
+
+        if (line07.LineCount == null)
+        {
+            if (
+                line07.HighCostDrugsOPCSCodes.Any() || 
+                line07.HighCostDrugsOPCSCodes.Any() ||
+                line07.ActivityDateCriticalCare != null || 
+                line07.PersonWeight != null)
+            {
+                _logger.LogError("Line07 was detected without linecount, but has other fields defined.");
+            }
+
+            return null;
+        }
+
         return line07;
     }
 

@@ -19,7 +19,7 @@ select
 	T.staging.value('(Demographics/PostcodeOfUsualAddressAtDiagnosis/text())[1]', 'VARCHAR(10)') as PostcodeOfUsualAddressAtDiagnosis,
 	T.staging.value('(LinkagePatientId/NhsNumber/@extension)[1]', 'VARCHAR(255)') as NhsNumber,
 	T.staging.value('(LinkagePatientId/PersonBirthDate/text())[1]', 'VARCHAR(10)') as PersonBirthDate
-from cosd_staging
+from omop_staging.cosd_staging
 cross apply content.nodes('*:COSD/*') as T(staging)
 )
 select
@@ -66,7 +66,7 @@ select
 	T.staging.value('(Demographics/PostcodeOfUsualAddressAtDiagnosis/text())[1]', 'VARCHAR(10)') as PostcodeOfUsualAddressAtDiagnosis,
 	T.staging.value('(LinkagePatientId/NhsNumber/@extension)[1]', 'VARCHAR(255)') as NhsNumber,
 	T.staging.value('(LinkagePatientId/PersonBirthDate/text())[1]', 'VARCHAR(10)') as PersonBirthDate
-from cosd_staging
+from omop_staging.cosd_staging
 cross apply content.nodes('*:COSD/*') as T(staging)
 )
 select
@@ -112,7 +112,7 @@ select
 	T.staging.value('(Demographics/PostcodeOfUsualAddressAtDiagnosis/text())[1]', 'VARCHAR(10)') as PostcodeOfUsualAddressAtDiagnosis,
 	T.staging.value('(LinkagePatientId/NhsNumber/@extension)[1]', 'VARCHAR(255)') as NhsNumber,
 	T.staging.value('(LinkagePatientId/PersonBirthDate/text())[1]', 'VARCHAR(10)') as PersonBirthDate
-from cosd_staging
+from omop_staging.cosd_staging
 cross apply content.nodes('*:COSD/*') as T(staging)
 )
 select
@@ -158,7 +158,7 @@ select
 	T.staging.value('(Demographics/PostcodeOfUsualAddressAtDiagnosis/text())[1]', 'VARCHAR(10)') as PostcodeOfUsualAddressAtDiagnosis,
 	T.staging.value('(LinkagePatientId/NhsNumber/@extension)[1]', 'VARCHAR(255)') as NhsNumber,
 	T.staging.value('(LinkagePatientId/PersonBirthDate/text())[1]', 'VARCHAR(10)') as PersonBirthDate
-from cosd_staging
+from omop_staging.cosd_staging
 cross apply content.nodes('*:COSD/*') as T(staging)
 )
 select
@@ -210,7 +210,7 @@ select
 	T.staging.value('(Demographics/PostcodeOfUsualAddressAtDiagnosis/text())[1]', 'VARCHAR(10)') as PostcodeOfUsualAddressAtDiagnosis,
 	T.staging.value('(LinkagePatientId/NhsNumber/@extension)[1]', 'VARCHAR(255)') as NhsNumber,
 	T.staging.value('(LinkagePatientId/PersonBirthDate/text())[1]', 'VARCHAR(10)') as PersonBirthDate
-from cosd_staging
+from omop_staging.cosd_staging
 cross apply content.nodes('*:COSD/*') as T(staging)
 )
 select
@@ -304,7 +304,7 @@ select
 	T.staging.value('(Demographics/PostcodeOfUsualAddressAtDiagnosis/text())[1]', 'VARCHAR(10)') as PostcodeOfUsualAddressAtDiagnosis,
 	T.staging.value('(LinkagePatientId/NhsNumber/@extension)[1]', 'VARCHAR(255)') as NhsNumber,
 	T.staging.value('(LinkagePatientId/PersonBirthDate/text())[1]', 'VARCHAR(10)') as PersonBirthDate
-from cosd_staging
+from omop_staging.cosd_staging
 cross apply content.nodes('*:COSD/*') as T(staging)
 )
 select
