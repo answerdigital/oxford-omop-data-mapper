@@ -2,6 +2,7 @@
 using OmopTransformer.Annotations;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Options;
 using OmopTransformer.SACT;
 
 namespace OmopTransformer;
@@ -12,9 +13,9 @@ internal class RecordProvider : IRecordProvider
     private readonly ILogger<RecordProvider> _logger;
     private readonly IQueryLocator _queryLocator;
 
-    public RecordProvider(Configuration configuration, ILogger<RecordProvider> logger, IQueryLocator queryLocator)
+    public RecordProvider(IOptions<Configuration> configuration, ILogger<RecordProvider> logger, IQueryLocator queryLocator)
     {
-        _configuration = configuration;
+        _configuration = configuration.Value;
         _logger = logger;
         _queryLocator = queryLocator;
     }
@@ -43,7 +44,7 @@ internal class RecordProvider : IRecordProvider
     {
         if (typeof(T) == typeof(Sact))
         {
-            return "select * from sact_staging;";
+            return "select * from omop_staging.sact_staging;";
         }
 
         var sourceQuery = (SourceQueryAttribute)typeof(T).GetCustomAttributes(typeof(SourceQueryAttribute), inherit: false).Single();
