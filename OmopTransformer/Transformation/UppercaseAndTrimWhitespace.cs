@@ -12,7 +12,7 @@ internal class UppercaseAndTrimWhitespace : ISelector
         _text = text;
     }
 
-    public string? GetValue()
+    public object? GetValue()
     {
         return _text?.ToUpper().TrimStart(' ').TrimEnd(' ');
     }

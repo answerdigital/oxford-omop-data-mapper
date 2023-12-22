@@ -15,5 +15,5 @@ internal class TextDeliminator : ISelector
         _textParts = textParts.Cast<string>().ToList();
     }
 
-    public string GetValue() => string.Join("\r\n", _textParts);
+    public object GetValue() => string.Join("\r\n", _textParts);
 }

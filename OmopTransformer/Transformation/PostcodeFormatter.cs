@@ -13,7 +13,7 @@ internal class PostcodeFormatter : ISelector
         _value = value;
     }
 
-    public string? GetValue()
+    public object? GetValue()
     {
         if (_value == null)
             return _value;

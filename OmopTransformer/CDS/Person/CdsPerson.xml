@@ -1,0 +1,18 @@
+﻿<Query>
+    <Sql>
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	</Sql>
+    <Explanation>
+		<OmopColumnExplanation columName="NHSNumber">Patient NHS Number</OmopColumnExplanation>
+		<OmopColumnExplanation columName="DateOfBirth">Patient DateOfBirth</OmopColumnExplanation>
+		<OmopColumnExplanation columName="EthnicCategory">Patient EthnicCategory [Data Dictionary](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)</OmopColumnExplanation>
+		<OmopColumnExplanation columName="PersonCurrentGenderCode">Patient PersonCurrentGenderCode [Data Dictionary](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)</OmopColumnExplanation>
+	</Explanation>
+</Query>
