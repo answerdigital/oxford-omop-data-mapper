@@ -6,20 +6,22 @@ internal class GenderLookup : ILookup
         new()
         {
             {
-                "m", new ValueWithNote("123", "value notes can go here")
+                "1", new ValueWithNote("8507", "")
             },
             {
-                "f", new ValueWithNote("345", "")
+                "2", new ValueWithNote("8532", "")
             },
             {
-                "u", new ValueWithNote("567", "")
+                "9", new ValueWithNote("8551", "")
+            },
+            {
+                "X", new ValueWithNote("8551", "")
             }
         };
 
     public string[] ColumnNotes =>
-        new
-            []
-            {
-                "Overall gender notes can go here."
-            };
+    [
+        "[NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)",		
+        "[OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)"
+    ];
 }
