@@ -249,8 +249,9 @@ select
 	PatientAddressStructured3,
 	PatientAddressStructured4,
 	PatientAddressStructured5,
-	Postcode
-from cds_line01
+	Postcode,
+	NHSNumber
+from omop_staging.cds_line01
 where PatientAddressType = '02'
 	and 
 	(
@@ -260,7 +261,8 @@ where PatientAddressType = '02'
 		PatientAddressStructured4 is not null or 
 		PatientAddressStructured5 is not null or 
 		Postcode is not null
-	);
+	)
+	and NHSNumber is not null;
 	
 ```
 </details>
@@ -274,11 +276,13 @@ Separates text with newlines.
 
 ```sql
 select
+	NHSNumber,
 	PatientUnstructuredAddress,
 	Postcode
-from cds_line01
+from omop_staging.cds_line01
 where PatientAddressType = '01'
-	and Postcode is not null;
+	and Postcode is not null
+	and NHSNumber is not null;
 	
 ```
 </details>
@@ -344,8 +348,9 @@ select
 	PatientAddressStructured3,
 	PatientAddressStructured4,
 	PatientAddressStructured5,
-	Postcode
-from cds_line01
+	Postcode,
+	NHSNumber
+from omop_staging.cds_line01
 where PatientAddressType = '02'
 	and 
 	(
@@ -355,7 +360,8 @@ where PatientAddressType = '02'
 		PatientAddressStructured4 is not null or 
 		PatientAddressStructured5 is not null or 
 		Postcode is not null
-	);
+	)
+	and NHSNumber is not null;
 	
 ```
 </details>
@@ -369,11 +375,279 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 
 ```sql
 select
+	NHSNumber,
 	PatientUnstructuredAddress,
 	Postcode
-from cds_line01
+from omop_staging.cds_line01
 where PatientAddressType = '01'
-	and Postcode is not null;
+	and Postcode is not null
+	and NHSNumber is not null;
+	
+```
+</details>
+
+# Person
+## birth_datetime
+### CDS Person
+Source column  `DateOfBirth`.
+Converts text to dates.
+* `DateOfBirth` Patient DateOfBirth
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	
+```
+</details>
+
+## day_of_birth
+### CDS Person
+Source column  `DateOfBirth`.
+Selects the day of the month or null if the date is null.
+* `DateOfBirth` Patient DateOfBirth
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	
+```
+</details>
+
+## gender_concept_id
+### CDS Person
+
+
+|before|after|notes|
+|------|-----|-----|
+|1|8507||
+|2|8532||
+|9|8551||
+|X|8551||
+
+Notes
+* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
+* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
+* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [Data Dictionary](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	
+```
+</details>
+
+## gender_source_value
+### CDS Person
+* Value copied from `PersonCurrentGenderCode`
+* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [Data Dictionary](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	
+```
+</details>
+
+## month_of_birth
+### CDS Person
+Source column  `DateOfBirth`.
+Selects the month of the year or null if the date is null.
+* `DateOfBirth` Patient DateOfBirth
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	
+```
+</details>
+
+## person_source_value
+### CDS Person
+* Value copied from `NHSNumber`
+* `NHSNumber` Patient NHS Number
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	
+```
+</details>
+
+## race_concept_id
+### CDS Person
+
+
+|before|after|notes|
+|------|-----|-----|
+|A|8527|White - British|
+|B|8527|White - Irish|
+|C|8527|White - Any other White background|
+|D|0|Mixed - White and Black Caribbean|
+|E|0|Mixed - White and Black African|
+|F|0|Mixed - White and Asian|
+|G|0|Mixed - Any other mixed background|
+|H|38003574|Asian or Asian British - Indian|
+|J|38003589|Asian or Asian British - Pakistani|
+|K|38003575|Asian or Asian British - Bangladeshi|
+|L|8515|Asian or Asian British - Any other Asian background|
+|M|38003598|Black or Black British - Caribbean|
+|N|38003600|Black or Black British - African|
+|P|38003598|Black or Black British - Any other Black background|
+|R|38003579|Other Ethnic Groups - Chinese|
+|S|0|Other Ethnic Groups - Any other ethnic group|
+|Z|0|Not stated|
+|99|0|Not known|
+
+Notes
+* [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+* [OMOP Race](https://athena.ohdsi.org/search-terms/terms?conceptClass=Race&invalidReason=Valid&vocabulary=Race&page=1&pageSize=50&query=)
+* `EthnicCategory` Patient EthnicCategory [Data Dictionary](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	
+```
+</details>
+
+## race_source_concept_id
+### CDS Person
+
+
+|before|after|notes|
+|------|-----|-----|
+|A|700385|White - British|
+|B|700386|White - Irish|
+|C|700387|White - Any other White background|
+|D|700388|Mixed - White and Black Caribbean|
+|E|700389|Mixed - White and Black African|
+|F|700390|Mixed - White and Asian|
+|G|700391|Mixed - Any other mixed background|
+|H|700362|Asian or Asian British - Indian|
+|J|700363|Asian or Asian British - Pakistani|
+|K|700364|Asian or Asian British - Bangladeshi|
+|L|700365|Asian or Asian British - Any other Asian background|
+|M|700366|Black or Black British - Caribbean|
+|N|700367|Black or Black British - African|
+|P|700368|Black or Black British - Any other Black background|
+|R|700369|Other Ethnic Groups - Chinese|
+|S||Other Ethnic Groups - Any other ethnic group|
+|Z||Not stated|
+|99||Not known|
+
+Notes
+* [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+* [OMOP Race](https://athena.ohdsi.org/search-terms/terms?conceptClass=Race&invalidReason=Valid&vocabulary=Race&page=1&pageSize=50&query=)
+* `EthnicCategory` Patient EthnicCategory [Data Dictionary](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	
+```
+</details>
+
+## race_source_value
+### CDS Person
+* Value copied from `EthnicCategory`
+* `EthnicCategory` Patient EthnicCategory [Data Dictionary](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	
+```
+</details>
+
+## year_of_birth
+### CDS Person
+Source column  `DateOfBirth`.
+Selects the year from a date or null of the date is null.
+* `DateOfBirth` Patient DateOfBirth
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
 	
 ```
 </details>
