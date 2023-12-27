@@ -1,17 +1,9 @@
-﻿using System.Runtime.CompilerServices;
-using OmopTransformer.Annotations;
+﻿using OmopTransformer.Annotations;
 
 namespace OmopTransformer.Transformation;
 
 [Description("Selects the month of the year or null if the date is null.")]
-internal class MonthOfYearSelector
+internal class MonthOfYearSelector(string? date) : ISelector
 {
-    private readonly DateTime? _datetime;
-
-    public MonthOfYearSelector(DateTime? datetime)
-    {
-        _datetime = datetime;
-    }
-
-    public int? MonthOfYear => _datetime?.Month;
+    public object? GetValue() => new DateParser(date).GetAsDate()?.Month;
 }
