@@ -4,11 +4,11 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Demographics;
 
-internal class CosdLocationTransformer : Transformer
+internal class CosdTransformer : Transformer
 {
     private readonly ILocationRecorder _locationRecorder;
 
-    public CosdLocationTransformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, ILocationRecorder locationRecorder) : base(recordTransformer, logger, transformOptions, recordProvider)
+    public CosdTransformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, ILocationRecorder locationRecorder) : base(recordTransformer, logger, transformOptions, recordProvider)
     {
         _locationRecorder = locationRecorder;
     }

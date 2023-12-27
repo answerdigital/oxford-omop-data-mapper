@@ -6,9 +6,9 @@ namespace OmopTransformer.COSD;
 
 internal class CosdTransformHostedService : FinalHostedService
 {
-    private readonly CosdLocationTransformer _transformer;
+    private readonly CosdTransformer _transformer;
 
-    public CosdTransformHostedService(IHostApplicationLifetime appLifetime, ILogger<FinalHostedService> logger, CosdLocationTransformer transformer) : base(appLifetime, logger)
+    public CosdTransformHostedService(IHostApplicationLifetime appLifetime, ILogger<FinalHostedService> logger, CosdTransformer transformer) : base(appLifetime, logger)
     {
         _transformer = transformer;
     }

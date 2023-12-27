@@ -19,7 +19,7 @@ internal class CosdLocation : OmopLocation<CosdDemographics>
     [Transform(typeof(UppercaseAndTrimWhitespace), nameof(Source.StreetAddressLine4))]
     public override string? county { get; set; }
 
-    [Transform(typeof(PostcodeFormatter), nameof(Source.PostcodeOfUsualAddressAtDiagnosis))]
+    [Transform(typeof(PostcodeFormatter), nameof(Source.Postcode))]
     public override string? zip { get; set; }
 
     [Transform(
@@ -28,6 +28,6 @@ internal class CosdLocation : OmopLocation<CosdDemographics>
         nameof(Source.StreetAddressLine2),
         nameof(Source.StreetAddressLine3),
         nameof(Source.StreetAddressLine4),
-        nameof(Source.PostcodeOfUsualAddressAtDiagnosis))]
+        nameof(Source.Postcode))]
     public override string? location_source_value { get; set; }
 }
