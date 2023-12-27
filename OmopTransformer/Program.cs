@@ -131,7 +131,7 @@ internal class Program
 
             if (string.Equals(transformOptions.Type, "cosd", StringComparison.OrdinalIgnoreCase))
             {
-                builder.Services.AddTransient<CosdLocationTransformer>();
+                builder.Services.AddTransient<CosdTransformer>();
                 builder.Services.AddHostedService<CosdTransformHostedService>();
             }
             else if (string.Equals(transformOptions.Type, "sact", StringComparison.OrdinalIgnoreCase))
