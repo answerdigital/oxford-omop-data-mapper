@@ -29,6 +29,9 @@
     <None Update="CDS\ObservationPeriod\CDSObservationPeriod.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="CDS\Person\CdsPerson.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="CDS\StructuredAddress\CdsStructuredAddress.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

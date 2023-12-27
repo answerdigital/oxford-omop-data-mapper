@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using Microsoft.Extensions.Logging;
 using OmopTransformer.Annotations;
 using OmopTransformer.Omop;
@@ -33,11 +34,14 @@ internal class RecordTransformer : IRecordTransformer
                 if (attribute is CopyValueAttribute copyValueAttribute)
                 {
                     TransformCopyValue(record, property, sourceType, copyValueAttribute);
-                }
-
-                if (attribute is TransformAttribute transformAttribute)
+                } 
+                else if (attribute is TransformAttribute transformAttribute)
                 {
                     Transform(record, transformAttribute, property, sourceType);
+                }
+                else if (attribute is ConstantValueAttribute constantValueAttribute)
+                {
+                    TransformConstantValue(record, property, constantValueAttribute);
                 }
             }
         }
@@ -49,12 +53,73 @@ internal class RecordTransformer : IRecordTransformer
         {
             TransformSelector(record, transformAttribute, property, sourceType);
         }
+        else if (typeof(ILookup).IsAssignableFrom(transformAttribute.Type))
+        {
+            TransformLookup(record, transformAttribute, property, sourceType);
+        }
         else
         {
             throw new NotSupportedException($"Unknown transform action {transformAttribute.Value}.");
         }
     }
+    
+    private void TransformLookup<T>(IOmopRecord<T> record, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType)
+    {
+        _logger.LogTrace("Lookup transform found on property {0}", property.Name);
+        var lookup = (ILookup)Activator.CreateInstance(transformAttribute.Type)!;
 
+        var arguments =
+            transformAttribute
+                .Value
+                .Select(argumentName => sourceType.GetProperty(argumentName)!.GetValue(record.Source))
+                .ToArray();
+        
+        if (arguments.Length != 1)
+        {
+            throw new InvalidOperationException("Lookup transform must have one argument specified.");
+        }
+
+        string? argument = (string?)arguments[0];
+
+        if (argument == null)
+            return;
+        
+        if (lookup.Mappings.TryGetValue(argument, out ValueWithNote? value))
+        {
+            if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
+            {
+                var type = property.PropertyType.GetGenericArguments()[0];
+
+                if (type == typeof(int))
+                {
+                    if (int.TryParse(value.Value, out int number))
+                    {
+                        property.SetValue(record, number);
+                    }
+                }
+                else
+                {
+                    throw new NotSupportedException("Unknown nullable mapping type");
+                }
+            }
+            else
+            {
+                if (property.PropertyType == typeof(string))
+                {
+                    property.SetValue(record, value.Value);
+                }
+                else if (property.PropertyType == typeof(int))
+                {
+                    property.SetValue(record, int.Parse(value.Value));
+                }
+                else
+                {
+                    throw new NotSupportedException("Unknown nullable mapping type");
+                }
+            }
+        }
+    }
+    
     private void TransformSelector<T>(IOmopRecord<T> record, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType)
     {
         _logger.LogTrace("Selector transform found on property {0}", property.Name);
@@ -70,13 +135,19 @@ internal class RecordTransformer : IRecordTransformer
         property.SetValue(record, selector.GetValue());
     }
 
-    private void TransformCopyValue<T>(IOmopRecord<T> record, PropertyInfo property, Type sourceType,
-        CopyValueAttribute copyValueAttribute)
+    private void TransformCopyValue<T>(IOmopRecord<T> record, PropertyInfo property, Type sourceType, CopyValueAttribute copyValueAttribute)
     {
         _logger.LogTrace("{0} found on property {1}", nameof(CopyValueAttribute), property.Name);
 
         object value = sourceType.GetProperty(copyValueAttribute.Value)!.GetValue(record.Source)!;
 
         property.SetValue(record, value);
+    }
+
+    private void TransformConstantValue<T>(IOmopRecord<T> record, PropertyInfo property, ConstantValueAttribute constantValueAttribute)
+    {
+        _logger.LogTrace("Setting constant value. {0} found on property {1}", nameof(ConstantValueAttribute), property.Name);
+
+        property.SetValue(record, constantValueAttribute.Value);
     }
 }
