@@ -1,44 +1,77 @@
 ﻿<Query>
     <Sql>
-with Demographics as (
-select
-	T.staging.value('(Demographics/Address/StructuredAddress/StreetAddressLine[1]/text())[1]', 'VARCHAR(255)') as StreetAddressLine1,
-	T.staging.value('(Demographics/Address/StructuredAddress/StreetAddressLine[2]/text())[1]', 'VARCHAR(255)') as StreetAddressLine2,
-	T.staging.value('(Demographics/Address/StructuredAddress/StreetAddressLine[3]/text())[1]', 'VARCHAR(255)') as StreetAddressLine3,
-	T.staging.value('(Demographics/Address/StructuredAddress/StreetAddressLine[4]/text())[1]', 'VARCHAR(255)') as StreetAddressLine4,
-	T.staging.value('(Demographics/PostcodeOfUsualAddressAtDiagnosis/text())[1]', 'VARCHAR(10)') as PostcodeOfUsualAddressAtDiagnosis,
-	T.staging.value('(LinkagePatientId/NhsNumber/@extension)[1]', 'VARCHAR(255)') as NhsNumber,
-	T.staging.value('(LinkagePatientId/PersonBirthDate/text())[1]', 'VARCHAR(10)') as PersonBirthDate
-from omop_staging.cosd_staging
-cross apply content.nodes('*:COSD/*') as T(staging)
+with 
+	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81, 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
+	CosdRecords as ( 
+
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('*[local-name() != "Id"][1]/*[1]') as Node, -- Select the first inner element of the element that is not called Id.
+		convert(bit, 1) as Is81
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD81:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+	union all
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('.') as Node,
+		convert(bit, 0) as Is81
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD901:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+), UniqueCOSD as ( -- When nodes are detected more than once, pick one and discarded the others.
+	select *
+	from (
+		select
+			Id,
+			Node,
+			Is81,
+			row_number() over (partition by Id order by (select null)) as RowNumber
+		from CosdRecords
+	) t
+	where t.RowNumber = 1
+), COSDElements as (
+	select
+		Id,
+		Node.query('(*[1]/*[fn:contains (fn:local-name(.), "LinkagePatientId")])[1]') as LinkagePatient,
+		Node.query('(*[1]/*[fn:contains (fn:local-name(.), "Demographics")])[1]') as Demographics,
+		Is81
+	from CosdRecords
+), Patients as (
+	select
+		LinkagePatient.value('(*/*[local-name() = "NHSNumber" or local-name() = "NhsNumber"]/@extension)[1]', 'varchar(max)') as NhsNumber,
+		LinkagePatient.value('(*/*[local-name() = "PersonBirthDate" or local-name() = "Birthdate"])[1]', 'varchar(max)') as DateOfBirth,
+		Demographics.value('(*/EthnicCategory/@code)[1]', 'varchar(max)') as EthnicCategory,
+		Demographics.value('(*/Address/StructuredAddress/*[local-name() = "StreetAddressLine" or local-name() = "streetAddressLine"][1]/text())[1]', 'VARCHAR(255)') as StreetAddressLine1,
+		Demographics.value('(*/Address/StructuredAddress/*[local-name() = "StreetAddressLine" or local-name() = "streetAddressLine"][2]/text())[1]', 'VARCHAR(255)') as StreetAddressLine2,
+		Demographics.value('(*/Address/StructuredAddress/*[local-name() = "StreetAddressLine" or local-name() = "streetAddressLine"][3]/text())[1]', 'VARCHAR(255)') as StreetAddressLine3,
+		Demographics.value('(*/Address/StructuredAddress/*[local-name() = "StreetAddressLine" or local-name() = "streetAddressLine"][4]/text())[1]', 'VARCHAR(255)') as StreetAddressLine4,
+		case when Is81 = 1 then Demographics.value('(*/Postcode/postalCode)[1]', 'varchar(max)') else Demographics.value('(*/PostcodeOfUsualAddressAtDiagnosis/text())[1]', 'VARCHAR(10)') end as Postcode
+	from COSDElements
 )
 select
-	StreetAddressLine1,
-	StreetAddressLine2,
-	StreetAddressLine3,
-	StreetAddressLine4,
-	PostcodeOfUsualAddressAtDiagnosis,
-	NhsNumber,
-	PersonBirthDate
-from Demographics
-where 
-	NhsNumber is not null 
-	or 
-	(
-		StreetAddressLine1 is not null or 
-		StreetAddressLine2 is not null or 
-		StreetAddressLine3 is not null or 
-		StreetAddressLine4 is not null or 
-		PostcodeOfUsualAddressAtDiagnosis is not null
-	);
+	distinct
+		NhsNumber,
+		DateOfBirth,
+		EthnicCategory,
+		StreetAddressLine1,
+		StreetAddressLine2,
+		StreetAddressLine3,
+		StreetAddressLine4,
+		Postcode
+from Patients 
+where NhsNumber != '';
 	</Sql>
     <Explanation>
-		<OmopColumnExplanation columName="StreetAddressLine1">The first element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
-		<OmopColumnExplanation columName="StreetAddressLine2">The second element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
-		<OmopColumnExplanation columName="StreetAddressLine3">The third element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
-		<OmopColumnExplanation columName="StreetAddressLine4">The fourth and final element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
-		<OmopColumnExplanation columName="PostcodeOfUsualAddressAtDiagnosis">The value of the PostcodeOfUsualAddressAtDiagnosis element within the Demographics element.</OmopColumnExplanation>
-	    <OmopColumnExplanation columName="NhsNumber">The value of the NhsNumber within the sibling LinkagePatientId element.</OmopColumnExplanation>
-		<OmopColumnExplanation columName="PersonBirthDate">The value of the PersonBirthDate within the sibling LinkagePatientId element.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="NhsNumber">The patient's NHSNumber as specified in the `LinkagePatientId` or similar element.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="DateOfBirth">The patient's DateOfBirth as specified in the `LinkagePatientId` or similar element.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="EthnicCategory">The patient's ethnic category as specified in the `Demographics` element.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="StreetAddressLine1">The first element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="StreetAddressLine2">The second element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="StreetAddressLine3">The third element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="StreetAddressLine4">The fourth and final element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="PostcodeOfUsualAddressAtDiagnosis">The value of the PostcodeOfUsualAddressAtDiagnosis element within the Demographics element.</OmopColumnExplanation>
+	    <OmopColumnExplanation columnName="NhsNumber">The value of the NhsNumber within the sibling LinkagePatientId element.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="PersonBirthDate">The value of the PersonBirthDate within the sibling LinkagePatientId element.</OmopColumnExplanation>
     </Explanation>
 </Query>

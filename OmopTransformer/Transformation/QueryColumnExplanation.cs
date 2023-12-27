@@ -4,7 +4,7 @@ namespace OmopTransformer.Transformation;
 
 public class QueryColumnExplanation
 {
-    [XmlAttribute("columName")]
+    [XmlAttribute("columnName")]
     public string? ColumnName { get; set; }
 
     [XmlText]
