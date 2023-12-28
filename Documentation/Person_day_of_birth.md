@@ -77,3 +77,20 @@ where NhsNumber != '';
 ### CDS Person
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.
+* `DateOfBirth` Patient DateOfBirth
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	
+```
+</details>
+

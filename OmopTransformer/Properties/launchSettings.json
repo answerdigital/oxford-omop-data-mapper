@@ -3,7 +3,7 @@
     "OmopTransformer": {
         "commandName": "Project",
         //"commandLineArgs": "transform --type cosd"
-        "commandLineArgs": "docs out.md"
+        "commandLineArgs": "docs ."
         //"commandLineArgs": "staging clear --type cosd"
     }
   }

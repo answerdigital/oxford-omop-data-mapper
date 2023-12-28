@@ -107,7 +107,7 @@ internal class DocumentationRenderer
     {
         if (property.Name == "OmopTargetTypeDescription")
             return;
-
+        
         var attributes = property.GetCustomAttributes(inherit: false);
 
         if (attributes.Any())

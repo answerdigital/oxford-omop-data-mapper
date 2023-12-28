@@ -122,3 +122,20 @@ where NhsNumber != '';
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 * [OMOP Race](https://athena.ohdsi.org/search-terms/terms?conceptClass=Race&invalidReason=Valid&vocabulary=Race&page=1&pageSize=50&query=)
+* `EthnicCategory` Patient EthnicCategory [Data Dictionary](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	
+```
+</details>
+
