@@ -74,6 +74,8 @@ internal class DocumentationRenderer
                 indexStringBuilder.AppendLine($"* [{name}]({fileName})");
 
                 var stringBuilder = new StringBuilder();
+
+                stringBuilder.AppendLine($"# `{omopTarget.Key}` `{name}`");
                 
                 foreach (var property in propertyGroup)
                 {
