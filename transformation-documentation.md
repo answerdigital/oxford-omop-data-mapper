@@ -405,6 +405,9 @@ Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 # Person
 ## birth_datetime
+### SACT
+Source column  `Date_Of_Birth`.
+Converts text to dates.
 ### COSD Demographics
 Source column  `DateOfBirth`.
 Converts text to dates.
@@ -482,6 +485,9 @@ where NhsNumber != '';
 Source column  `DateOfBirth`.
 Converts text to dates.
 ## day_of_birth
+### SACT
+Source column  `Date_Of_Birth`.
+Selects the day of the month or null if the date is null.
 ### COSD Demographics
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.
@@ -572,10 +578,29 @@ Selects the day of the month or null if the date is null.
 Notes
 * [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
 * [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
+## gender_source_concept_id
+### SACT
+
+
+|before|after|notes|
+|------|-----|-----|
+|1|8507||
+|2|8532||
+|9|8551||
+|X|8551||
+
+Notes
+* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
+* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
 ## gender_source_value
+### SACT
+* Value copied from `Person_Stated_Gender_Code`
 ### CDS Person
 * Value copied from `PersonCurrentGenderCode`
 ## month_of_birth
+### SACT
+Source column  `Date_Of_Birth`.
+Selects the month of the year or null if the date is null.
 ### COSD Demographics
 Source column  `DateOfBirth`.
 Selects the month of the year or null if the date is null.
@@ -653,6 +678,8 @@ where NhsNumber != '';
 Source column  `DateOfBirth`.
 Selects the month of the year or null if the date is null.
 ## person_source_value
+### SACT
+* Value copied from `NHS_Number`
 ### COSD Demographics
 * Value copied from `NhsNumber`
 * `NhsNumber` The patient's NHSNumber as specified in the `LinkagePatientId` or similar element.
@@ -1054,6 +1081,9 @@ where NhsNumber != '';
 ### CDS Person
 * Value copied from `EthnicCategory`
 ## year_of_birth
+### SACT
+Source column  `Date_Of_Birth`.
+Selects the year from a date or null of the date is null.
 ### COSD Demographics
 Source column  `DateOfBirth`.
 Selects the year from a date or null of the date is null.

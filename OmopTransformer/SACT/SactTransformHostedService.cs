@@ -5,9 +5,9 @@ namespace OmopTransformer.SACT;
 
 internal class SactTransformHostedService : FinalHostedService
 {
-    private readonly SactLocationTransformer _transformer;
+    private readonly SactTransformer _transformer;
 
-    public SactTransformHostedService(IHostApplicationLifetime appLifetime, ILogger<FinalHostedService> logger, SactLocationTransformer transformer) : base(appLifetime, logger)
+    public SactTransformHostedService(IHostApplicationLifetime appLifetime, ILogger<FinalHostedService> logger, SactTransformer transformer) : base(appLifetime, logger)
     {
         _transformer = transformer;
     }

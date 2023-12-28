@@ -136,7 +136,7 @@ internal class Program
             }
             else if (string.Equals(transformOptions.Type, "sact", StringComparison.OrdinalIgnoreCase))
             {
-                builder.Services.AddTransient<SactLocationTransformer>();
+                builder.Services.AddTransient<SactTransformer>();
                 builder.Services.AddHostedService<SactTransformHostedService>();
             }
             else if (string.Equals(transformOptions.Type, "cds", StringComparison.OrdinalIgnoreCase))

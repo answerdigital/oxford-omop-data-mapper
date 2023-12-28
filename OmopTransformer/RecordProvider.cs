@@ -22,7 +22,7 @@ internal class RecordProvider : IRecordProvider
 
     public async Task<IReadOnlyCollection<T>> GetRecords<T>(CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Querying {0}", nameof(T));
+        _logger.LogInformation("Querying {0}", typeof(T));
 
         var query = GetQuery<T>();
 
