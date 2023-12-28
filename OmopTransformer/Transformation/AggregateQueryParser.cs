@@ -10,6 +10,20 @@ internal class AggregateQueryParser
 
         using TextReader reader = new StringReader(xml);
 
-        return (Query)serializer.Deserialize(reader)!;
+        var query = (Query)serializer.Deserialize(reader)!;
+
+        if (query.Explanation == null)
+            throw new InvalidDataException($"{nameof(query.Explanation)} is null");
+
+        foreach (var explanation in query.Explanation.Explanations!)
+        {
+            if (explanation.ColumnName == null)
+                throw new InvalidDataException($"{nameof(explanation.ColumnName)} is null");
+
+            if (explanation.Text == null)
+                throw new InvalidDataException($"{nameof(explanation.ColumnName)} is null");
+        }
+
+        return query;
     }
 }

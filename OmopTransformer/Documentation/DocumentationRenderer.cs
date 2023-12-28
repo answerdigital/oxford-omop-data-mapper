@@ -96,7 +96,8 @@ internal class DocumentationRenderer
             {
                 nameof(TransformAttribute),
                 nameof(DescriptionAttribute),
-                nameof(CopyValueAttribute)
+                nameof(CopyValueAttribute),
+                nameof(ConstantValueAttribute)
             };
 
         return
@@ -135,6 +136,11 @@ internal class DocumentationRenderer
             if (attribute is DescriptionAttribute description)
             {
                 stringBuilder.AppendLine(description.Value);
+            }
+            
+            if (attribute is ConstantValueAttribute constantValueAttribute)
+            {
+                stringBuilder.AppendLine($"* Constant value set to `{constantValueAttribute.Value}`. {constantValueAttribute.Description}");
             }
 
             if (attribute is TransformAttribute transformAttribute)
