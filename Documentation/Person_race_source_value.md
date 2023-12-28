@@ -1,3 +1,4 @@
+# `Person` `race_source_value`
 ### COSD Demographics
 * Value copied from `EthnicCategory`
 * `EthnicCategory` The patient's ethnic category as specified in the `Demographics` element.
