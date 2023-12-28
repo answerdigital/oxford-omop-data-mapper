@@ -17,7 +17,7 @@ internal class DocumentationRenderer
         _queryLocator = queryLocator;
     }
 
-    public string Render()
+    public IEnumerable<Document> Render()
     {
         var typesImplementingIOmopRecord =
             _types
@@ -36,15 +36,14 @@ internal class DocumentationRenderer
                 .GroupBy(target => target.OmopTarget.OmopTargetTypeDescription)
                 .ToList();
 
-        var stringBuilder = new StringBuilder();
+        var indexStringBuilder = new StringBuilder();
 
-        stringBuilder.AppendLine("`Automatically generated documentation`");
-        stringBuilder.AppendLine();
-
+        indexStringBuilder.AppendLine("`Automatically generated documentation`");
+        indexStringBuilder.AppendLine();
 
         foreach (var omopTarget in mapperByOmopTarget)
         {
-            stringBuilder.AppendLine($"# {omopTarget.Key}");
+            indexStringBuilder.AppendLine($"# {omopTarget.Key}");
 
             var mapperByProperty =
                 omopTarget
@@ -68,16 +67,24 @@ internal class DocumentationRenderer
                 if (!AnyPropertyHasDocumentationAttributes(propertyGroup.Select(m => m.Property)))
                     continue;
 
-                stringBuilder.AppendLine($"## {propertyGroup.First().Property.Name}");
+                var name = propertyGroup.First().Property.Name;
 
+                var fileName = $"{omopTarget.Key}_{name}.md";
+                
+                indexStringBuilder.AppendLine($"* [{name}]({fileName})");
+
+                var stringBuilder = new StringBuilder();
+                
                 foreach (var property in propertyGroup)
                 {
                     RenderProperty(property.Mapper.MapperType, property.Property, stringBuilder);
                 }
+
+                yield return new Document(fileName, stringBuilder.ToString());
             }
         }
 
-        return stringBuilder.ToString();
+        yield return new Document("transformation-documentation.md", indexStringBuilder.ToString());
     }
 
     private static bool AnyPropertyHasDocumentationAttributes(IEnumerable<PropertyInfo> properties)

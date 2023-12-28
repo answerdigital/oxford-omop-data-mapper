@@ -201,5 +201,5 @@ public class TransformOptions
 public class DocumentationOptions
 {
     [Value(0, MetaName = "filename", Required = true, HelpText = "Target path for the generated documentation.")]
-    public string? FilePath { get; set; }
+    public string? DirectoryPath { get; set; }
 }
