@@ -20,11 +20,11 @@ where PatientAddressType = '02'
 	);
 	</Sql>
     <Explanation>
-		<OmopColumnExplanation columName="PatientAddressStructured1">The first line of the address.</OmopColumnExplanation>
-		<OmopColumnExplanation columName="PatientAddressStructured2">The second line of the address.</OmopColumnExplanation>
-	    <OmopColumnExplanation columName="PatientAddressStructured3">The third line of the address.</OmopColumnExplanation>
-	    <OmopColumnExplanation columName="PatientAddressStructured4">The fourth line of the address.</OmopColumnExplanation>
-	    <OmopColumnExplanation columName="PatientAddressStructured5">The fifth line of the address.</OmopColumnExplanation>
-	    <OmopColumnExplanation columName="Postcode">Postcode</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="PatientAddressStructured1">The first line of the address.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="PatientAddressStructured2">The second line of the address.</OmopColumnExplanation>
+	    <OmopColumnExplanation columnName="PatientAddressStructured3">The third line of the address.</OmopColumnExplanation>
+	    <OmopColumnExplanation columnName="PatientAddressStructured4">The fourth line of the address.</OmopColumnExplanation>
+	    <OmopColumnExplanation columnName="PatientAddressStructured5">The fifth line of the address.</OmopColumnExplanation>
+	    <OmopColumnExplanation columnName="Postcode">Postcode</OmopColumnExplanation>
     </Explanation>
 </Query>

@@ -72,3 +72,20 @@ where NhsNumber != '';
 
 ### CDS Person
 * Value copied from `EthnicCategory`
+* `EthnicCategory` Patient EthnicCategory [Data Dictionary](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofBirth as DateOfBirth,
+		EthnicCategory,
+		PersonCurrentGenderCode
+from omop_staging.cds_line01
+where NHSNumber is not null;
+	
+```
+</details>
+

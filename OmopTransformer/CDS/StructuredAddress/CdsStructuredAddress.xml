@@ -8,7 +8,7 @@ where PatientAddressType = '01'
 	and Postcode is not null;
 	</Sql>
     <Explanation>
-		<OmopColumnExplanation columName="PatientUnstructuredAddress">A recognizable postal address comprised of up to five lines of 35 alphanumeric characters.</OmopColumnExplanation>
-		<OmopColumnExplanation columName="Postcode">Postcode</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="PatientUnstructuredAddress">A recognizable postal address comprised of up to five lines of 35 alphanumeric characters.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="Postcode">Postcode</OmopColumnExplanation>
     </Explanation>
 </Query>
