@@ -10,6 +10,7 @@
 # Person
 * [birth_datetime](Person_birth_datetime.md)
 * [day_of_birth](Person_day_of_birth.md)
+* [ethnicity_concept_id](Person_ethnicity_concept_id.md)
 * [gender_concept_id](Person_gender_concept_id.md)
 * [gender_source_concept_id](Person_gender_source_concept_id.md)
 * [gender_source_value](Person_gender_source_value.md)
