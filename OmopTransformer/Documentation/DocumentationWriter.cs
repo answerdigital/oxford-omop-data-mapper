@@ -20,16 +20,19 @@ internal class DocumentationWriter : IDocumentationWriter
     {
         _logger.LogInformation("Generating documentation.");
 
-        if (_documentationOption.FilePath == null)
+        if (_documentationOption.DirectoryPath == null)
         {
-            _logger.LogCritical("Path must be specified.");
+            _logger.LogCritical("Directory must be specified.");
             return;
         }
 
         Assembly currentAssembly = Assembly.GetExecutingAssembly();
 
-        string documentation = new DocumentationRenderer(currentAssembly.GetTypes(), _queryLocator).Render();
+        var documentation = new DocumentationRenderer(currentAssembly.GetTypes(), _queryLocator).Render();
 
-        await File.WriteAllTextAsync(_documentationOption.FilePath, documentation, cancellationToken);
+        foreach (Document document in documentation)
+        {
+            await File.WriteAllTextAsync(Path.Combine(_documentationOption.DirectoryPath, document.FileName), document.Contents, cancellationToken);
+        }
     }
 }
