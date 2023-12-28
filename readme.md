@@ -26,7 +26,7 @@ Copyright (C) 2023 omop
 | **CDS**  |      ✔️       |     ✔️      |
 | **COSD** |     ✔️      |       ✔️     |
 | **RTDS** |              |            |
-| **SACT** |      ✔️       |            |
+| **SACT** |      ✔️       |      ✔      |
 
 [Transformation documentation](transformation-documentation.md)
 
