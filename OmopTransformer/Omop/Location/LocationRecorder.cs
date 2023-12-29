@@ -46,6 +46,7 @@ internal class LocationRecorder : ILocationRecorder
             dataTable.Columns.Add("country_source_value");
             dataTable.Columns.Add("latitude");
             dataTable.Columns.Add("longitude");
+            dataTable.Columns.Add("NhsNumber");
 
             foreach (var omopLocation in batch)
             {
@@ -60,7 +61,8 @@ internal class LocationRecorder : ILocationRecorder
                     omopLocation.country_concept_id,
                     omopLocation.country_source_value,
                     omopLocation.latitude,
-                    omopLocation.longitude);
+                    omopLocation.longitude,
+                    omopLocation.nhs_number);
             }
 
             var parameter = new

@@ -13,6 +13,7 @@ internal abstract class OmopLocation<T> : IOmopRecord<T>
     public virtual string? country_source_value { get; set; }
     public virtual double? latitude { get; set; }
     public virtual double? longitude { get; set; }
+    public virtual string? nhs_number { get; set; }
     public string OmopTargetTypeDescription => "Location";
     public T? Source { get; set; }
 }

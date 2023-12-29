@@ -11,4 +11,7 @@ internal class SactLocation: OmopLocation<Sact>
 
     [CopyValue(nameof(Source.Patient_Postcode))]
     public override string? location_source_value { get; set; }
+
+    [CopyValue(nameof(Source.NHS_Number))]
+    public override string? nhs_number { get; set; }
 }

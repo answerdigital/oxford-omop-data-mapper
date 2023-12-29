@@ -44,8 +44,10 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 
 ```sql
 select
-	PatientUnstructuredAddress,
-	Postcode
+	distinct
+		PatientUnstructuredAddress,
+		Postcode,
+		NHSNumber
 from omop_staging.cds_line01
 where PatientAddressType = '01'
 	and Postcode is not null;

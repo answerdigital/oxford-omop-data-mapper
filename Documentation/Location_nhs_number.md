@@ -1,13 +1,10 @@
-# `Location` `location_source_value`
+# `Location` `nhs_number`
 ### SACT
-* Value copied from `Patient_Postcode`
+* Value copied from `NHS_Number`
 ### COSD Demographics
-Source columns  `StreetAddressLine1`, `StreetAddressLine2`, `StreetAddressLine3`, `StreetAddressLine4`, `Postcode`.
-Separates text with newlines.
-* `StreetAddressLine1` The first element of the StructuredAddress element, within the Demographics element.
-* `StreetAddressLine2` The second element of the StructuredAddress element, within the Demographics element.
-* `StreetAddressLine3` The third element of the StructuredAddress element, within the Demographics element.
-* `StreetAddressLine4` The fourth and final element of the StructuredAddress element, within the Demographics element.
+* Value copied from `NhsNumber`
+* `NhsNumber` The patient's NHSNumber as specified in the `LinkagePatientId` or similar element.
+* `NhsNumber` The value of the NhsNumber within the sibling LinkagePatientId element.
 <details>
 <summary>SQL</summary>
 
@@ -77,52 +74,5 @@ where NhsNumber != '';
 ```
 </details>
 
-### CDS UnstructuredAddress
-* Value copied from `Postcode`
-* `Postcode` Postcode
-<details>
-<summary>SQL</summary>
-
-```sql
-select
-	PatientAddressStructured1,
-	PatientAddressStructured2,
-	PatientAddressStructured3,
-	PatientAddressStructured4,
-	PatientAddressStructured5,
-	Postcode
-from omop_staging.cds_line01
-where PatientAddressType = '02'
-	and 
-	(
-		PatientAddressStructured1 is not null or 
-		PatientAddressStructured2 is not null or 
-		PatientAddressStructured3 is not null or 
-		PatientAddressStructured4 is not null or 
-		PatientAddressStructured5 is not null or 
-		Postcode is not null
-	);
-	
-```
-</details>
-
 ### CDS Structured Address
-Source columns  `PatientAddressStructured1`, `PatientAddressStructured2`, `PatientAddressStructured3`, `PatientAddressStructured4`, `PatientAddressStructured5`, `Postcode`.
-Separates text with newlines.
-* `Postcode` Postcode
-<details>
-<summary>SQL</summary>
-
-```sql
-select
-	distinct
-		PatientUnstructuredAddress,
-		Postcode,
-		NHSNumber
-from omop_staging.cds_line01
-where PatientAddressType = '01'
-	and Postcode is not null;
-	
-```
-</details>
-
+* Value copied from `NhsNumber`
