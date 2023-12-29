@@ -25,7 +25,7 @@ internal class CdsTransformer : Transformer
             _personRecorder.InsertUpdatePersons,
             "CDS Person",
             cancellationToken);
-        
+
         await Transform<CdsStructuredAddress, StructuredAddress.CdsLocation>(
             _locationRecorder.InsertUpdateLocations,
             "CDS Structured Address",

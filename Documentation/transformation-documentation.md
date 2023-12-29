@@ -6,6 +6,7 @@
 * [city](Location_city.md)
 * [county](Location_county.md)
 * [location_source_value](Location_location_source_value.md)
+* [nhs_number](Location_nhs_number.md)
 * [zip](Location_zip.md)
 # Person
 * [birth_datetime](Person_birth_datetime.md)

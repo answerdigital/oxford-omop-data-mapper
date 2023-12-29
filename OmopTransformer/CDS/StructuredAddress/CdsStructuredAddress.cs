@@ -12,4 +12,5 @@ internal class CdsStructuredAddress
 	public string? PatientAddressStructured4 { get; set; }
 	public string? PatientAddressStructured5 { get; set; }
 	public string? Postcode { get; set; }
+	public string? NhsNumber { get; set; }
 }
