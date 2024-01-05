@@ -50,8 +50,8 @@
 
 		<Message Importance="high" Text="Generating documentation." />
 
-		<RemoveDir Directories="@(DocumentationDirectory" />
-		<MakeDir Directories="@(DocumentationDirectory" />
+		<RemoveDir Directories="@(DocumentationDirectory)" />
+		<MakeDir Directories="@(DocumentationDirectory)" />
 		<Exec Command="dotnet &quot;$(TargetPath)&quot; docs @(DocumentationDirectory)" />
 	</Target>
 

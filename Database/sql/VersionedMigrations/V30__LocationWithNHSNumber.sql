@@ -1,4 +1,7 @@
-drop procedure cdm.InsertUpdateLocation;
+if object_id('cdm.InsertUpdateLocation') is not null
+begin
+	drop procedure cdm.InsertUpdateLocation;
+end
 
 drop type cdm.Location;
 
