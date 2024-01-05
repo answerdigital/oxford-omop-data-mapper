@@ -75,3 +75,23 @@ Example usage `omop stage clear --type sact`
 Transforms and inserts the staged data to the omop database.
 
 Example usage `omop transform --type sact`
+
+## RTDS
+
+### Loading data
+
+Loads a RTDS zip into a staging database.
+
+Example usage `omop stage load --type rtdS "Rtds.zip"`
+
+### Clear staging
+
+Clears the RTDS staging tables.
+
+Example usage `omop stage clear --type rtds`
+
+## Transform
+
+Transforms and inserts the staged data to the omop database.
+
+Example usage `omop transform --type rtds`

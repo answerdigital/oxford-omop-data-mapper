@@ -1,4 +1,4 @@
-﻿namespace OmopTransformer.CDS.Parser;
+﻿namespace OmopTransformer;
 
 public static class StringExtensions
 {
@@ -6,7 +6,7 @@ public static class StringExtensions
     {
         // The indexes of the infoflex documentation are off by one. (e.g their array index begins at one rather than zero.)
 
-        return SubstringOrNull(text, index - 1, length);
+        return text.SubstringOrNull(index - 1, length);
     }
 
     public static string? SubstringOrNull(this string text, int index, int length)
