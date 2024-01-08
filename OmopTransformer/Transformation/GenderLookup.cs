@@ -6,7 +6,13 @@ internal class GenderLookup : ILookup
         new()
         {
             {
+                "Male", new ValueWithNote("8507", "")
+            },
+            {
                 "1", new ValueWithNote("8507", "")
+            },
+            {
+                "Female", new ValueWithNote("8532", "")
             },
             {
                 "2", new ValueWithNote("8532", "")
@@ -16,6 +22,12 @@ internal class GenderLookup : ILookup
             },
             {
                 "X", new ValueWithNote("8551", "")
+            },
+            {
+                "Unknown", new ValueWithNote("8551", "")
+            },
+            {
+                "Not Stated", new ValueWithNote("8551", "")
             }
         };
 

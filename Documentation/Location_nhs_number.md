@@ -1,6 +1,24 @@
 # `Location` `nhs_number`
 ### SACT
 * Value copied from `NHS_Number`
+### Rtds PAS Location
+* Value copied from `NhsNumber`
+* `NhsNumber` The patient's NHSNumber.
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		p.FirstOfNHSNUMBER as NhsNumber,
+		p.FirstOfPOSTCODE as Postcode
+from omop_staging.RTDS_PASDATA p
+where p.FirstOfPOSTCODE is not null
+	and p.FirstOfNHSNUMBER is not null;
+	
+```
+</details>
+
 ### COSD Demographics
 * Value copied from `NhsNumber`
 * `NhsNumber` The patient's NHSNumber as specified in the `LinkagePatientId` or similar element.

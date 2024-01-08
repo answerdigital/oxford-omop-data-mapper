@@ -15,6 +15,7 @@ using OmopTransformer.SACT;
 using OmopTransformer.SACT.Staging;
 using OmopTransformer.COSD.Staging;
 using OmopTransformer.Omop.Person;
+using OmopTransformer.RTDS;
 using OmopTransformer.RTDS.Parser;
 using OmopTransformer.Rtds.Staging;
 using OmopTransformer.RTDS.Staging;
@@ -170,6 +171,11 @@ internal class Program
             {
                 builder.Services.AddTransient<CdsTransformer>();
                 builder.Services.AddHostedService<CdsTransformHostedService>();
+            }
+            else if (string.Equals(transformOptions.Type, "rtds", StringComparison.OrdinalIgnoreCase))
+            {
+                builder.Services.AddTransient<RtdsTransformer>();
+                builder.Services.AddHostedService<RtdsTransformHostedService>();
             }
             else
             {
