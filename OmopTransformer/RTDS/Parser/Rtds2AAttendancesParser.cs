@@ -17,7 +17,7 @@ internal class Rtds2AAttendancesParser(string text)
 
         while (csv.Read())
         {
-            if (csv.ColumnCount != 12) // I have no idea why but one of the rows in one of the files has a missing column.
+            if (csv.Parser.Record!.Length != csv.HeaderRecord!.Length) // I have no idea why but one of the rows in one of the files has a missing column.
                 continue;
 
             yield return new Rtds2AAttendances
