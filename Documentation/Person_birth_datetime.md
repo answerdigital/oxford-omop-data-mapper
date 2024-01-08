@@ -2,6 +2,26 @@
 ### SACT
 Source column  `Date_Of_Birth`.
 Converts text to dates.
+### Rtds Demographics
+Source column  `DateOfBirth`.
+Converts text to dates.
+* `DateOfBirth` The patient's DateOfBirth.
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct 
+		d.PatientId,
+		d.DateOfBirth,
+		d.Sex
+from omop_staging.RTDS_1_Demographics d
+where d.PatientId not like '%[^0-9]%'
+	and len(d.PatientId) = 10
+	
+```
+</details>
+
 ### COSD Demographics
 Source column  `DateOfBirth`.
 Converts text to dates.

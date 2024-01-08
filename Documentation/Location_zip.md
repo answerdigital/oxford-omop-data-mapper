@@ -2,6 +2,25 @@
 ### SACT
 Source column  `Patient_Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
+### Rtds PAS Location
+Source column  `Postcode`.
+Uppercase the postcode then insert the space in the correct location, if needed.
+* `Postcode` The patient's Postcode.
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		p.FirstOfNHSNUMBER as NhsNumber,
+		p.FirstOfPOSTCODE as Postcode
+from omop_staging.RTDS_PASDATA p
+where p.FirstOfPOSTCODE is not null
+	and p.FirstOfNHSNUMBER is not null;
+	
+```
+</details>
+
 ### COSD Demographics
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.

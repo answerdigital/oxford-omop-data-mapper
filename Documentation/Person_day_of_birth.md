@@ -2,6 +2,26 @@
 ### SACT
 Source column  `Date_Of_Birth`.
 Selects the day of the month or null if the date is null.
+### Rtds Demographics
+Source column  `DateOfBirth`.
+Selects the day of the month or null if the date is null.
+* `DateOfBirth` The patient's DateOfBirth.
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct 
+		d.PatientId,
+		d.DateOfBirth,
+		d.Sex
+from omop_staging.RTDS_1_Demographics d
+where d.PatientId not like '%[^0-9]%'
+	and len(d.PatientId) = 10
+	
+```
+</details>
+
 ### COSD Demographics
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.

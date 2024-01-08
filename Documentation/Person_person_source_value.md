@@ -1,6 +1,25 @@
 # `Person` `person_source_value`
 ### SACT
 * Value copied from `NHS_Number`
+### Rtds Demographics
+* Value copied from `PatientId`
+* `PatientId` The patient's NHSNumber.
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct 
+		d.PatientId,
+		d.DateOfBirth,
+		d.Sex
+from omop_staging.RTDS_1_Demographics d
+where d.PatientId not like '%[^0-9]%'
+	and len(d.PatientId) = 10
+	
+```
+</details>
+
 ### COSD Demographics
 * Value copied from `NhsNumber`
 * `NhsNumber` The patient's NHSNumber as specified in the `LinkagePatientId` or similar element.
