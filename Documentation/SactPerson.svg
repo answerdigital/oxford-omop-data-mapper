@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="760">
+  <rect width="100%" height="100%" fill="white" />
+  <a>
+    <rect x="10" y="10" width="250" height="50" fill="#fab10c" stroke="black" rx="10" />
+    <text x="20" y="40" fill="black" font-family="Helvetica" text-anchor="start">NHS_Number</text>
+  </a>
+  <a>
+    <rect x="10" y="110" width="250" height="50" fill="#fab10c" stroke="black" rx="10" />
+    <text x="20" y="140" fill="black" font-family="Helvetica" text-anchor="start">Date_Of_Birth</text>
+  </a>
+  <a>
+    <rect x="10" y="210" width="250" height="50" fill="#fab10c" stroke="black" rx="10" />
+    <text x="20" y="240" fill="black" font-family="Helvetica" text-anchor="start">Person_Stated_Gender_Code</text>
+  </a>
+  <a href="Person_year_of_birth.md">
+    <rect x="400" y="10" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
+    <text x="410" y="40" fill="white" font-family="Helvetica" text-anchor="start">year_of_birth</text>
+  </a>
+  <a href="Person_month_of_birth.md">
+    <rect x="400" y="110" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
+    <text x="410" y="140" fill="white" font-family="Helvetica" text-anchor="start">month_of_birth</text>
+  </a>
+  <a href="Person_day_of_birth.md">
+    <rect x="400" y="210" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
+    <text x="410" y="240" fill="white" font-family="Helvetica" text-anchor="start">day_of_birth</text>
+  </a>
+  <a href="Person_birth_datetime.md">
+    <rect x="400" y="310" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
+    <text x="410" y="340" fill="white" font-family="Helvetica" text-anchor="start">birth_datetime</text>
+  </a>
+  <a href="Person_person_source_value.md">
+    <rect x="400" y="410" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
+    <text x="410" y="440" fill="white" font-family="Helvetica" text-anchor="start">person_source_value</text>
+  </a>
+  <a href="Person_gender_source_value.md">
+    <rect x="400" y="510" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
+    <text x="410" y="540" fill="white" font-family="Helvetica" text-anchor="start">gender_source_value</text>
+  </a>
+  <a href="Person_gender_source_concept_id.md">
+    <rect x="400" y="610" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
+    <text x="410" y="640" fill="white" font-family="Helvetica" text-anchor="start">gender_source_concept_id</text>
+  </a>
+  <g>
+    <line x1="260" y1="35" x2="400" y2="435" stroke="#000000" stroke-width="2" />
+    <text x="660" y="440" fill="black" font-family="Helvetica" text-anchor="start">Copy value.</text>
+  </g>
+  <g>
+    <line x1="260" y1="135" x2="400" y2="35" stroke="#b0a9af" stroke-width="2" />
+    <text x="660" y="40" fill="black" font-family="Helvetica" text-anchor="start">Selects the year from a date or null of the date is null.</text>
+  </g>
+  <g>
+    <line x1="260" y1="135" x2="400" y2="135" stroke="#3c445a" stroke-width="2" />
+    <text x="660" y="140" fill="black" font-family="Helvetica" text-anchor="start">Selects the month of the year or null if the date is null.</text>
+  </g>
+  <g>
+    <line x1="260" y1="135" x2="400" y2="235" stroke="#000000" stroke-width="2" />
+    <text x="660" y="240" fill="black" font-family="Helvetica" text-anchor="start">Selects the day of the month or null if the date is null.</text>
+  </g>
+  <g>
+    <line x1="260" y1="135" x2="400" y2="335" stroke="#b0a9af" stroke-width="2" />
+    <text x="660" y="340" fill="black" font-family="Helvetica" text-anchor="start">Converts text to dates.</text>
+  </g>
+  <g>
+    <line x1="260" y1="235" x2="400" y2="635" stroke="#3c445a" stroke-width="2" />
+    <text x="660" y="640" fill="black" font-family="Helvetica" text-anchor="start">Lookup gender concept.</text>
+  </g>
+  <g>
+    <line x1="260" y1="235" x2="400" y2="535" stroke="#000000" stroke-width="2" />
+    <text x="660" y="540" fill="black" font-family="Helvetica" text-anchor="start">Copy value.</text>
+  </g>
+</svg>

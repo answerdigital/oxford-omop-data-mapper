@@ -1,5 +1,7 @@
 # `Person` `gender_concept_id`
 ### Rtds Demographics
+Source column  `Sex`.
+Lookup gender concept.
 
 
 |before|after|notes|
@@ -34,6 +36,8 @@ where d.PatientId not like '%[^0-9]%'
 </details>
 
 ### CDS Person
+Source column  `PersonCurrentGenderCode`.
+Lookup gender concept.
 
 
 |before|after|notes|

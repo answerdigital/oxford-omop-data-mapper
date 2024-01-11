@@ -1,5 +1,8 @@
-﻿namespace OmopTransformer.Transformation;
+﻿using OmopTransformer.Annotations;
 
+namespace OmopTransformer.Transformation;
+
+[Description("Lookup race source concept.")]
 internal class RaceSourceConceptLookup : ILookup
 {
     public Dictionary<string, ValueWithNote> Mappings { get; } =
