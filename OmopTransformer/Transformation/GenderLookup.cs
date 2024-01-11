@@ -1,5 +1,8 @@
-﻿namespace OmopTransformer.Transformation;
+﻿using OmopTransformer.Annotations;
 
+namespace OmopTransformer.Transformation;
+
+[Description("Lookup gender concept.")]
 internal class GenderLookup : ILookup
 {
     public Dictionary<string, ValueWithNote> Mappings { get; } =

@@ -3,6 +3,7 @@ using OmopTransformer.Omop;
 using OmopTransformer.Transformation;
 using System.Reflection;
 using System.Text;
+using OmopTransformer.Documentation.Charting;
 
 namespace OmopTransformer.Documentation;
 
@@ -24,6 +25,9 @@ internal class DocumentationRenderer
             .Where(type => GetAllInterfaces(type).Any(i => i == typeof(IOmopTarget)) && type is { IsInterface: false, IsAbstract: false })
             .ToList();
 
+        foreach (var diagram in RenderDiagrams(typesImplementingIOmopRecord))
+            yield return diagram;
+
         var mapperByOmopTarget =
             typesImplementingIOmopRecord
                 .Select(
@@ -31,9 +35,9 @@ internal class DocumentationRenderer
                     new
                     {
                         MapperType = mapperType,
-                        OmopTarget = (IOmopTarget)Activator.CreateInstance(mapperType)!
+                        OmopTargetDescription = OmopDescription(mapperType)
                     })
-                .GroupBy(target => target.OmopTarget.OmopTargetTypeDescription)
+                .GroupBy(target => target.OmopTargetDescription)
                 .ToList();
 
         var indexStringBuilder = new StringBuilder();
@@ -60,7 +64,8 @@ internal class DocumentationRenderer
                                             Mapper = mapper
                                         }))
                     .GroupBy(property => property.Property.Name)
-                    .OrderBy(name => name.Key);
+                    .OrderBy(name => name.Key)
+                    .ToList();
 
             foreach (var propertyGroup in mapperByProperty)
             {
@@ -84,34 +89,111 @@ internal class DocumentationRenderer
 
                 yield return new Document(fileName, stringBuilder.ToString());
             }
+
+            foreach (var target in omopTarget)
+            {
+                indexStringBuilder.AppendLine($"## {target.MapperType.Name}");
+                indexStringBuilder.AppendLine($"![]({target.MapperType.Name}.svg)");
+            }
         }
 
         yield return new Document("transformation-documentation.md", indexStringBuilder.ToString());
     }
 
-    private static bool AnyPropertyHasDocumentationAttributes(IEnumerable<PropertyInfo> properties)
+    private IEnumerable<Document> RenderDiagrams(IEnumerable<Type> omopTargets) =>
+        omopTargets
+            .Select(RenderDiagram);
+
+    private static string OmopDescription(Type type) => ((IOmopTarget)Activator.CreateInstance(type)!).OmopTargetTypeDescription;
+
+    private Document RenderDiagram(Type type)
     {
-        var knownDocumentationAttributes =
+        var targetMembers = 
+            type
+                .BaseType!
+                .GetProperties()
+                .Where(property => !IgnoreProperty(property))
+                .Select(property => new Box(property.Name, $"{OmopDescription(type)}_{property.Name}.md"))
+                .ToList();
+
+        var sourceMembers = GetOmopSourceType(type).GetProperties().Select(property => new Box(property.Name, null)).ToList();
+
+        var relationships = GetRelationships(type);
+
+        var svgRenderer = new SvgRenderer(sourceMembers, targetMembers, relationships);
+
+        return new Document($"{type.Name}.svg", svgRenderer.Render());
+    }
+
+    private static List<Relationship> GetRelationships(Type type) =>
+        type
+            .GetProperties()
+            .Where(PropertyHasDocumentationAttributes)
+            .SelectMany(
+                sourceMember => 
+                    GetDocumentableAttributes(sourceMember)
+                    .SelectMany(attribute => GetRelationship(attribute, sourceMember)))
+            .ToList();
+
+    private static IEnumerable<Relationship> GetRelationship(object attribute, PropertyInfo sourceMember)
+    {
+        if (attribute is CopyValueAttribute copyValueAttribute)
+        {
+            return new[] { new Relationship(source: copyValueAttribute.Value, target: sourceMember.Name, "Copy value.") }.ToList();
+        }
+
+        if (attribute is TransformAttribute transformAttribute)
+        {
+            var relationships = new List<Relationship>();
+
+            var descriptionAttribute = transformAttribute.Type.GetCustomAttributes(typeof(DescriptionAttribute)).FirstOrDefault();
+
+            string description = "";
+
+            if (descriptionAttribute != null)
+            {
+                description = ((DescriptionAttribute)descriptionAttribute).Value;
+            }
+
+            foreach (var source in transformAttribute.Value)
+            {
+                relationships.Add(new Relationship(source: source, target: sourceMember.Name, description));
+            }
+
+            return relationships;
+        }
+
+        return new List<Relationship>();
+    }
+
+    private static IReadOnlyCollection<object> GetDocumentableAttributes(PropertyInfo property)
+    {
+        return
             new[]
             {
-                nameof(TransformAttribute),
-                nameof(DescriptionAttribute),
-                nameof(CopyValueAttribute),
-                nameof(ConstantValueAttribute)
-            };
-
-        return
-            properties
-                .SelectMany(property => property.GetCustomAttributes(inherit: false))
-                .Any(attribute => knownDocumentationAttributes.Contains(attribute.GetType().Name));
+                typeof(TransformAttribute),
+                typeof(DescriptionAttribute),
+                typeof(CopyValueAttribute),
+                typeof(ConstantValueAttribute)
+            }
+            .SelectMany(type => property.GetCustomAttributes(type, false))
+            .ToList();
     }
+
+    private static bool PropertyHasDocumentationAttributes(PropertyInfo property) => GetDocumentableAttributes(property).Any();
+
+    private static bool AnyPropertyHasDocumentationAttributes(IEnumerable<PropertyInfo> properties) =>
+        properties
+            .Any(PropertyHasDocumentationAttributes);
+
+    private static bool IgnoreProperty(PropertyInfo property) => property.Name is "OmopTargetTypeDescription" or "Source";
 
     private void RenderProperty(Type mapperType, PropertyInfo property, StringBuilder stringBuilder)
     {
-        if (property.Name == "OmopTargetTypeDescription")
+        if (IgnoreProperty(property))
             return;
         
-        var attributes = property.GetCustomAttributes(inherit: false);
+        var attributes = GetDocumentableAttributes(property);
 
         if (attributes.Any())
         {

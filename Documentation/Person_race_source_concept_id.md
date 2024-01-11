@@ -1,5 +1,7 @@
 # `Person` `race_source_concept_id`
 ### COSD Demographics
+Source column  `EthnicCategory`.
+Lookup race source concept.
 
 
 |before|after|notes|
@@ -97,6 +99,8 @@ where NhsNumber != '';
 </details>
 
 ### CDS Person
+Source column  `EthnicCategory`.
+Lookup race source concept.
 
 
 |before|after|notes|
