@@ -1,5 +1,7 @@
 # `Person` `gender_source_concept_id`
 ### SACT
+Source column  `Person_Stated_Gender_Code`.
+Lookup gender concept.
 
 
 |before|after|notes|
