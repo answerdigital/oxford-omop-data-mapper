@@ -32,66 +32,78 @@ Copyright (C) 2023 omop
 
 ## Docs command
 
-Generates transform documentation and records it to file.
+Generates transformation documentation and records it to a specified directory.
 
-Example usage `omop docs report.md`
+### Example
 
-## COSD
+Generates transformation documentation to the current directory.
 
-### Loading data
+```
+omop docs .
+```
 
-Loads COSD zip archives into a staging database.
+### Remarks
 
-Example usage `omop stage load --type cosd "\\10.134.180.238\Cancer_Reporting\COSD\April 2022 Submission.zip"`
+The documentation comprises of a series of markdown documents and SVG diagrams.
 
-### Clear staging
+Each OMOP field has a document that describes how each field is mapped from all known data sources. This could be as simple as a copy, or include complex transformations or lookups. If a transformation includes a SQL query, this is included with an explanation of the query output.
 
-Clears the COSD staging tables.
+## Stage command
 
-Example usage `omop stage clear --type cosd`
+Loads staging data from a filesystem.
 
-## Transform
+### Example
+
+```
+omop stage load --type cosd "\\10.134.180.238\Cancer_Reporting\COSD\April 2022 Submission.zip"
+```
+
+```
+omop stage load --type sact "SACT_v3-20200101-20200131.csv"
+```
+
+```
+omop stage load --type rtds "Rtds.zip"
+```
+
+```
+omop stage load --type cds BNC62_1_20231020232835673
+```
+
+### Remarks
+
+Supported data formats include
+* CDS - EMIS Infoflex 6.2 fixed width multiline text format
+* COSD - v8-1 and v9-0-1 xml formats
+* [SACT - v3.0](https://digital.nhs.uk/data-and-information/information-standards/information-standards-and-data-collections-including-extractions/publications-and-notifications/standards-and-collections/dcb1533-systemic-anti-cancer-therapy-data-set)
+* RTDS
+
+Staged data is appended to existing staging tables. If the staging tables need to be cleared run the [`clear staging command`](#clear-staging-command) first.
+
+## Clear staging command
+
+Clears the staging tables.
+
+### Example
+
+```
+omop stage clear --type cds
+```
+
+### Remarks
+
+Supported type flags are `cds`, `rtds`, `cosd` and `sact`.
+
+## Transform command
 
 Transforms and inserts the staged data to the omop database.
 
-Example usage `omop transform --type cosd`
+### Example 
 
-## SACT
+```
+omop transform --type cds
+```
 
-### Loading data
+### Remarks
 
-Loads a SACT csv into a staging database.
-
-Example usage `omop stage load --type sact "SACT_v3-20200101-20200131.csv"`
-
-### Clear staging
-
-Clears the SACT staging tables.
-
-Example usage `omop stage clear --type sact`
-
-## Transform
-
-Transforms and inserts the staged data to the omop database.
-
-Example usage `omop transform --type sact`
-
-## RTDS
-
-### Loading data
-
-Loads a RTDS zip into a staging database.
-
-Example usage `omop stage load --type rtdS "Rtds.zip"`
-
-### Clear staging
-
-Clears the RTDS staging tables.
-
-Example usage `omop stage clear --type rtds`
-
-## Transform
-
-Transforms and inserts the staged data to the omop database.
-
-Example usage `omop transform --type rtds`
+Supported type flags are `cds`, `rtds`, `cosd` and `sact`.
