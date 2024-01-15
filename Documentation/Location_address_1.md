@@ -74,4 +74,4 @@ where NhsNumber != '';
 
 ### CDS Structured Address
 Source columns  `PatientAddressStructured1`, `PatientAddressStructured2`.
-Separates text with newlines.
+Separates text with newlines. Trim whitespace.
