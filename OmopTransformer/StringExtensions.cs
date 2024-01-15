@@ -28,4 +28,6 @@ public static class StringExtensions
     {
         return text.TrimEnd(' ').Length == 0;
     }
+
+    public static string? TrimWhitespace(this string? text) => text?.TrimStart(' ').TrimEnd(' ');
 }

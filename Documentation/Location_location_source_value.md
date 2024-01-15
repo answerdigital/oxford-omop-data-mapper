@@ -3,7 +3,7 @@
 * Value copied from `Patient_Postcode`
 ### COSD Demographics
 Source columns  `StreetAddressLine1`, `StreetAddressLine2`, `StreetAddressLine3`, `StreetAddressLine4`, `Postcode`.
-Separates text with newlines.
+Separates text with newlines. Trim whitespace.
 * `StreetAddressLine1` The first element of the StructuredAddress element, within the Demographics element.
 * `StreetAddressLine2` The second element of the StructuredAddress element, within the Demographics element.
 * `StreetAddressLine3` The third element of the StructuredAddress element, within the Demographics element.
@@ -108,7 +108,7 @@ where PatientAddressType = '02'
 
 ### CDS Structured Address
 Source columns  `PatientAddressStructured1`, `PatientAddressStructured2`, `PatientAddressStructured3`, `PatientAddressStructured4`, `PatientAddressStructured5`, `Postcode`.
-Separates text with newlines.
+Separates text with newlines. Trim whitespace.
 * `Postcode` Postcode
 <details>
 <summary>SQL</summary>

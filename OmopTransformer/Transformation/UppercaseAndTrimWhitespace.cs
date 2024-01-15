@@ -14,6 +14,6 @@ internal class UppercaseAndTrimWhitespace : ISelector
 
     public object? GetValue()
     {
-        return _text?.ToUpper().TrimStart(' ').TrimEnd(' ');
+        return _text?.ToUpper().TrimWhitespace();
     }
 }

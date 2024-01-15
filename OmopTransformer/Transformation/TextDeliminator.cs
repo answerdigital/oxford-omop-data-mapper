@@ -1,8 +1,9 @@
-﻿using OmopTransformer.Annotations;
+﻿using Microsoft.IdentityModel.Tokens;
+using OmopTransformer.Annotations;
 
 namespace OmopTransformer.Transformation;
 
-[Description("Separates text with newlines.")]
+[Description("Separates text with newlines. Trim whitespace.")]
 internal class TextDeliminator : ISelector
 {
     private readonly IReadOnlyCollection<string> _textParts;
@@ -12,8 +13,14 @@ internal class TextDeliminator : ISelector
         if (textParts == null) 
             throw new ArgumentNullException(nameof(textParts));
 
-        _textParts = textParts.Cast<string>().ToList();
+        _textParts = 
+            textParts
+                .Cast<string>()
+                .Select(text => text.TrimWhitespace())
+                .Where(text => text.IsNullOrEmpty() == false)
+                .Cast<string>()
+                .ToList();
     }
 
-    public object GetValue() => string.Join("\r\n", _textParts);
+    public object? GetValue() => _textParts.Count == 0 ? null : string.Join("\r\n", _textParts);
 }
