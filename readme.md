@@ -55,7 +55,7 @@ Loads staging data from a filesystem.
 ### Example
 
 ```
-omop stage load --type cosd "\\10.134.180.238\Cancer_Reporting\COSD\April 2022 Submission.zip"
+omop stage load --type cosd "Cancer_Reporting\COSD\April 2022 Submission.zip"
 ```
 
 ```
