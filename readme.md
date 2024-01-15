@@ -107,3 +107,21 @@ omop transform --type cds
 ### Remarks
 
 Supported type flags are `cds`, `rtds`, `cosd` and `sact`.
+
+## Prune command
+
+Prunes incomplete OMOP records.
+
+### Example
+
+```
+omop prune
+```
+
+### Remarks
+
+Removes any Person records that either
+* Have no gender
+* Have no ethnicity
+
+Removes any locations that are not used.
