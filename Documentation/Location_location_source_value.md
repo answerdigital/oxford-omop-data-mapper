@@ -77,6 +77,26 @@ where NhsNumber != '';
 ```
 </details>
 
+### CDS Structured Address
+Source columns  `PatientAddressStructured1`, `PatientAddressStructured2`, `PatientAddressStructured3`, `PatientAddressStructured4`, `PatientAddressStructured5`, `Postcode`.
+Separates text with newlines. Trim whitespace.
+* `Postcode` Postcode
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		PatientUnstructuredAddress,
+		Postcode,
+		NHSNumber
+from omop_staging.cds_line01
+where PatientAddressType = '01'
+	and Postcode is not null;
+	
+```
+</details>
+
 ### CDS UnstructuredAddress
 * Value copied from `Postcode`
 * `Postcode` Postcode
@@ -102,26 +122,6 @@ where PatientAddressType = '02'
 		PatientAddressStructured5 is not null or 
 		Postcode is not null
 	);
-	
-```
-</details>
-
-### CDS Structured Address
-Source columns  `PatientAddressStructured1`, `PatientAddressStructured2`, `PatientAddressStructured3`, `PatientAddressStructured4`, `PatientAddressStructured5`, `Postcode`.
-Separates text with newlines. Trim whitespace.
-* `Postcode` Postcode
-<details>
-<summary>SQL</summary>
-
-```sql
-select
-	distinct
-		PatientUnstructuredAddress,
-		Postcode,
-		NHSNumber
-from omop_staging.cds_line01
-where PatientAddressType = '01'
-	and Postcode is not null;
 	
 ```
 </details>

@@ -26,12 +26,12 @@ internal class CdsTransformer : Transformer
             "CDS Person",
             cancellationToken);
 
-        await Transform<CdsStructuredAddress, StructuredAddress.CdsLocation>(
+        await Transform<CdsStructuredAddress, CdsStructuredLocation>(
             _locationRecorder.InsertUpdateLocations,
             "CDS Structured Address",
             cancellationToken);
 
-        await Transform<CdsUnstructuredAddress, UnstructuredAddress.CdsLocation>(
+        await Transform<CdsUnstructuredAddress, CdsLocation>(
             _locationRecorder.InsertUpdateLocations,
             "CDS Unstructured Address",
             cancellationToken);

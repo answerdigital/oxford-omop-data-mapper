@@ -1,8 +1,9 @@
 ﻿using OmopTransformer.Annotations;
+using OmopTransformer.COSD.Demographics;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.COSD.Demographics;
+namespace OmopTransformer.COSD;
 
 internal class CosdPerson : OmopPerson<CosdDemographics>
 {
@@ -23,7 +24,7 @@ internal class CosdPerson : OmopPerson<CosdDemographics>
 
     [Transform(typeof(RaceConceptLookup), nameof(Source.EthnicCategory))]
     public override int? race_concept_id { get; set; }
-        
+
     [CopyValue(nameof(Source.EthnicCategory))]
     public override string? race_source_value { get; set; }
 

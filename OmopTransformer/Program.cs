@@ -9,7 +9,6 @@ using OmopTransformer.CDS.Staging;
 using OmopTransformer.Documentation;
 using OmopTransformer.COSD;
 using OmopTransformer.Transformation;
-using OmopTransformer.COSD.Demographics;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.SACT;
 using OmopTransformer.SACT.Staging;
