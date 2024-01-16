@@ -2,6 +2,5 @@
 
 internal class Configuration
 {
-    public string? OmopConnectionString { get; set; }
-    public string? StagingConnectionString { get; set; }
+    public string? ConnectionString { get; set; }
 }

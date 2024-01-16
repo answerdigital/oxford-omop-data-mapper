@@ -22,7 +22,7 @@ internal class RtdsInserter : IRtdsInserter
     
     public async Task Insert(RtdsRecords records, CancellationToken cancellationToken)
     {
-        await using var connection = new SqlConnection(_configuration.OmopConnectionString);
+        await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 

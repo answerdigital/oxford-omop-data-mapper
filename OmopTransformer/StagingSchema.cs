@@ -20,7 +20,7 @@ internal abstract class StagingSchema
 
     public async Task ClearStagingTables(CancellationToken cancellationToken)
     {
-        await using var connection = new SqlConnection(_configuration.StagingConnectionString);
+        await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
