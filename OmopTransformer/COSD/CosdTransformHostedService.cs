@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using OmopTransformer.COSD.Demographics;
 
 namespace OmopTransformer.COSD;
 

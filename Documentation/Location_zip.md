@@ -24,6 +24,26 @@ where p.FirstOfPOSTCODE is not null
 ### COSD Demographics
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
+### CDS Structured Address
+Source column  `Postcode`.
+Uppercase the postcode then insert the space in the correct location, if needed.
+* `Postcode` Postcode
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		PatientUnstructuredAddress,
+		Postcode,
+		NHSNumber
+from omop_staging.cds_line01
+where PatientAddressType = '01'
+	and Postcode is not null;
+	
+```
+</details>
+
 ### CDS UnstructuredAddress
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
@@ -50,26 +70,6 @@ where PatientAddressType = '02'
 		PatientAddressStructured5 is not null or 
 		Postcode is not null
 	);
-	
-```
-</details>
-
-### CDS Structured Address
-Source column  `Postcode`.
-Uppercase the postcode then insert the space in the correct location, if needed.
-* `Postcode` Postcode
-<details>
-<summary>SQL</summary>
-
-```sql
-select
-	distinct
-		PatientUnstructuredAddress,
-		Postcode,
-		NHSNumber
-from omop_staging.cds_line01
-where PatientAddressType = '01'
-	and Postcode is not null;
 	
 ```
 </details>

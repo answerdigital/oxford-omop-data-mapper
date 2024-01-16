@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Person;
-using OmopTransformer.SACT.Staging;
 using OmopTransformer.Transformation;
 
 namespace OmopTransformer.SACT;

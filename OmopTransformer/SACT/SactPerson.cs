@@ -2,7 +2,7 @@
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.SACT.Staging;
+namespace OmopTransformer.SACT;
 
 internal class SactPerson : OmopPerson<Sact>
 {

@@ -1,10 +1,11 @@
 ﻿using OmopTransformer.Annotations;
+using OmopTransformer.CDS.StructuredAddress;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.CDS.StructuredAddress;
+namespace OmopTransformer.CDS;
 
-internal class CdsLocation : OmopLocation<CdsStructuredAddress>
+internal class CdsStructuredLocation : OmopLocation<CdsStructuredAddress>
 {
     [Transform(
         typeof(TextDeliminator),

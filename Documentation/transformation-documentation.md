@@ -14,8 +14,8 @@
 ![](RtdsLocation.svg)
 ## CosdLocation
 ![](CosdLocation.svg)
-## CdsLocation
-![](CdsLocation.svg)
+## CdsStructuredLocation
+![](CdsStructuredLocation.svg)
 ## CdsLocation
 ![](CdsLocation.svg)
 # Person

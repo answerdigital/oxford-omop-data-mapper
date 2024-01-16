@@ -1,8 +1,9 @@
 ﻿using OmopTransformer.Annotations;
+using OmopTransformer.CDS.UnstructuredAddress;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.CDS.UnstructuredAddress;
+namespace OmopTransformer.CDS;
 
 internal class CdsLocation : OmopLocation<CdsUnstructuredAddress>
 {
