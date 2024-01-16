@@ -110,7 +110,7 @@ Supported type flags are `cds`, `rtds`, `cosd` and `sact`.
 
 ## Prune command
 
-Prunes incomplete OMOP records.
+Prunes incomplete OMOP records after all transformations are completed.
 
 ### Example
 
