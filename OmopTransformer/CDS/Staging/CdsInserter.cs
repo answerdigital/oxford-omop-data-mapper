@@ -27,7 +27,7 @@ internal class CdsInserter : ICdsInserter
 
         var stopwatch = Stopwatch.StartNew();
 
-        await using var connection = new SqlConnection(_configuration.OmopConnectionString);
+        await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 

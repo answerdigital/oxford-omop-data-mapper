@@ -26,7 +26,7 @@ internal class RecordProvider : IRecordProvider
 
         var query = GetQuery<T>();
 
-        await using var connection = new SqlConnection(_configuration.StagingConnectionString);
+        await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 

@@ -20,7 +20,7 @@ internal class OmopPruner
     {
         _logger.LogInformation("Clearing incomplete omop records.");
 
-        var connection = new SqlConnection(_configuration.OmopConnectionString);
+        var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
