@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Data.SqlClient;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Dapper;
-using Microsoft.Data.SqlClient;
 
 namespace OmopTransformer.Omop.Prune;
 

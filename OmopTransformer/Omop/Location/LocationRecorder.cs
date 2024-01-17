@@ -1,7 +1,7 @@
 ﻿using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using Dapper;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -18,7 +18,7 @@ internal class LocationRecorder : ILocationRecorder
         _configuration = configuration.Value;
     }
 
-    public async Task InsertUpdateLocations<T>(IReadOnlyCollection<OmopLocation<T>> locations, CancellationToken cancellationToken)
+    public async Task InsertUpdateLocations<T>(IReadOnlyCollection<OmopLocation<T>> locations, string dataSource, CancellationToken cancellationToken)
     {
         if (locations == null) throw new ArgumentNullException(nameof(locations));
 
@@ -67,7 +67,8 @@ internal class LocationRecorder : ILocationRecorder
 
             var parameter = new
             {
-                Locations = dataTable.AsTableValuedParameter("cdm.[Location]")
+                Locations = dataTable.AsTableValuedParameter("cdm.[Location]"),
+                DataSource = dataSource
             };
 
             await connection.ExecuteAsync("cdm.InsertUpdateLocation", parameter, commandType: CommandType.StoredProcedure);

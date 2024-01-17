@@ -11,7 +11,7 @@ internal class RtdsTransformer : Transformer
     private readonly ILocationRecorder _locationRecorder;
     private readonly IPersonRecorder _personRecorder;
     
-    public RtdsTransformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, ILocationRecorder locationRecorder, IPersonRecorder personRecorder) : base(recordTransformer, logger, transformOptions, recordProvider)
+    public RtdsTransformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, ILocationRecorder locationRecorder, IPersonRecorder personRecorder) : base(recordTransformer, logger, transformOptions, recordProvider, "RTDS")
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;

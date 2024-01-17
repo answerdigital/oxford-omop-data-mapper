@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Data.SqlClient;
+using Microsoft.Extensions.Logging;
 using OmopTransformer.Annotations;
 using Dapper;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 using OmopTransformer.SACT;
 

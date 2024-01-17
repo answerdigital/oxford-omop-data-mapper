@@ -1,5 +1,4 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using OmopTransformer.Annotations;
+﻿using OmopTransformer.Annotations;
 
 namespace OmopTransformer.Transformation;
 
@@ -17,7 +16,7 @@ internal class TextDeliminator : ISelector
             textParts
                 .Cast<string>()
                 .Select(text => text.TrimWhitespace())
-                .Where(text => text.IsNullOrEmpty() == false)
+                .Where(text => string.IsNullOrEmpty(text) == false)
                 .Cast<string>()
                 .ToList();
     }

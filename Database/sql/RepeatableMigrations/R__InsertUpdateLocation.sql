@@ -6,11 +6,17 @@ end
 go
 
 create procedure cdm.InsertUpdateLocation
-	@Locations cdm.[Location] readonly
+	@Locations cdm.[Location] readonly,
+	@DataSource varchar(20)
 as
 begin
 	
 	set nocount on;
+
+	declare @RecordedLocations table
+	(
+		[location_id] [int] not null
+	);
 
 	;with LocationWithRow as (
 		select 
@@ -53,6 +59,9 @@ begin
 		latitude,
 		longitude
 	)
+	output
+		inserted.location_id
+	into @RecordedLocations
 	select 
 		l.address_1,
 		l.address_2,
@@ -82,8 +91,50 @@ begin
 	)
 		and l.RowNumber = 1;
 
+	declare @locationColumns table (name varchar(max));
+
+	insert into @locationColumns
+	(
+		Name
+	)
+	values
+	('address_1'),
+	('address_2'),
+	('city'),
+	('state'),
+	('zip'),
+	('county'),
+	('location_source_value'),
+	('country_concept_id'),
+	('country_source_value'),
+	('latitude'),
+	('longitud');
+
+	insert into provenance
+	(
+		table_type_id,
+		table_key,
+		column_name,
+		data_source
+	)
+	select
+		23, -- Location,
+		location_id,
+		lc.name,
+		@DataSource
+	from @RecordedLocations rl
+	cross apply (select Name from @locationColumns) lc;
+	
+	declare @updatedPersons table
+	(
+		person_id int not null
+	);
+
 	update p
 		set location_id = cdm.location_id
+	output
+		inserted.person_id
+	into @updatedPersons
 	from cdm.person p
 		inner join @Locations l
 			on p.person_source_value = l.NhsNumber
@@ -100,5 +151,13 @@ begin
 				and (l.country_source_value = cdm.country_source_value or (l.country_source_value is null and cdm.country_source_value is null))
 				and (l.latitude = cdm.latitude or (l.latitude is null and cdm.latitude is null))
 				and (l.longitude = cdm.longitude or (l.longitude is null and cdm.longitude is null));
+
+	update p
+		set data_source = @DataSource
+	from provenance p
+		inner join @updatedPersons up
+			on p.table_key = up.person_id
+	where table_type_id = 31 -- person
+		and column_name = 'location_id';
 
 end
