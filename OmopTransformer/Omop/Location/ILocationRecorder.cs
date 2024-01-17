@@ -2,5 +2,5 @@
 
 internal interface ILocationRecorder
 {
-    Task InsertUpdateLocations<T>(IReadOnlyCollection<OmopLocation<T>> locations, CancellationToken cancellationToken);
+    Task InsertUpdateLocations<T>(IReadOnlyCollection<OmopLocation<T>> locations, string dataSource, CancellationToken cancellationToken);
 }

@@ -1,6 +1,6 @@
-﻿using System.IO.Compression;
+﻿using System.Data.SqlClient;
+using System.IO.Compression;
 using Dapper;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 

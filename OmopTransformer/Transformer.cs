@@ -11,17 +11,19 @@ internal abstract class Transformer
     private readonly ILogger<IRecordTransformer> _logger;
     private readonly TransformOptions _transformOptions;
     private readonly IRecordProvider _recordProvider;
+    private readonly string _dataSource;
 
-    protected Transformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider)
+    protected Transformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, string dataSource)
     {
         _recordTransformer = recordTransformer;
         _logger = logger;
         _transformOptions = transformOptions;
         _recordProvider = recordProvider;
+        _dataSource = dataSource;
     }
 
     public async Task Transform<TSource, TTarget>(
-        Func<IReadOnlyCollection<TTarget>, CancellationToken, Task> insertRecord,
+        Func<IReadOnlyCollection<TTarget>, string, CancellationToken, Task> insertRecord,
         string name,
         CancellationToken cancellationToken)
         where TTarget : IOmopRecord<TSource>, new()
@@ -51,7 +53,7 @@ internal abstract class Transformer
 
         if (_transformOptions.DryRun == false)
         {
-            await insertRecord(mappedRecords, cancellationToken);
+            await insertRecord(mappedRecords, _dataSource, cancellationToken);
         }
 
         stopwatch.Stop();

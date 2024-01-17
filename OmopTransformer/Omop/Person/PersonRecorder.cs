@@ -1,7 +1,7 @@
 ﻿using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using Dapper;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -18,7 +18,7 @@ internal class PersonRecorder : IPersonRecorder
         _configuration = configuration.Value;
     }
 
-    public async Task InsertUpdatePersons<T>(IReadOnlyCollection<OmopPerson<T>> persons, CancellationToken cancellationToken)
+    public async Task InsertUpdatePersons<T>(IReadOnlyCollection<OmopPerson<T>> persons, string dataSource, CancellationToken cancellationToken)
     {
         if (persons == null) throw new ArgumentNullException(nameof(persons));
 
@@ -75,7 +75,8 @@ internal class PersonRecorder : IPersonRecorder
 
             var parameter = new
             {
-                rows = dataTable.AsTableValuedParameter("cdm.person_row")
+                rows = dataTable.AsTableValuedParameter("cdm.person_row"),
+                DataSource = dataSource
             };
 
             await connection.ExecuteAsync("cdm.insert_update_person", parameter, commandType: CommandType.StoredProcedure);
