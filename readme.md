@@ -4,14 +4,16 @@
 
 ```
 PS C:\Code\oxford-omop-transformer\OmopTransformer\bin\Debug\net8.0> omop --help
-omop 1.0.0+db84dcb0f45f5cb4450b40e6c11bf437e9515117
-Copyright (C) 2023 omop
+omop 1.0.0+6da73ae9ec0fb4b0453328e149f8dd2facdf2a11
+Copyright (C) 2024 omop
 
   stage        Handles staging operations.
 
   docs         Documentation generation.
 
   transform    Handles transformation operations.
+
+  prune        Prunes incomplete OMOP records.
 
   help         Display more information on a specific command.
 
@@ -96,7 +98,7 @@ Supported type flags are `cds`, `rtds`, `cosd` and `sact`.
 
 ## Transform command
 
-Transforms and inserts the staged data to the omop database.
+Transforms and inserts the staged data and its origin to the OMOP database.
 
 ### Example 
 
@@ -107,6 +109,8 @@ omop transform --type cds
 ### Remarks
 
 Supported type flags are `cds`, `rtds`, `cosd` and `sact`.
+
+The OMOP data provenance is recorded as each data set is transformed. [See data provenance.](#data-provenance)
 
 ## Prune command
 
@@ -125,3 +129,41 @@ Removes any Person records that either
 * Have no ethnicity
 
 Removes any locations that are not used.
+
+# Data provenance
+
+The tool supports recording to a field level the origin of a OMOP record.
+
+This data is held in the `provenance` table that is defined by the following columns.
+
+| Column              | Explanation |
+|---------------------|-------------|
+| `table_type_id`    |  Table type, eg `21` for Location or `31` for Person.           |
+| `table_key`   |  Key of the reference table, eg `123` from the `location_id` table.           |
+| `column_name`   | Name of the tracked column, eg `address_1`.            |
+| `data_source`   |   Explanation of the data origin, eg `CDS`          |
+
+## Example usage - Persons report
+
+The following query reports the breakdown of the data sources for every `person` in the person table. 
+
+```
+select
+	data_source,
+	count (*)
+from provenance
+where table_type_id = 31 -- person
+	and column_name = 'person_source_value'
+group by data_source
+```
+
+## Example usage - Reveal data source for person 123
+
+The following query reports the data sources for each field in the `person` table for person id `123`.
+
+```
+select *
+from provenance
+where table_type_id = 31 -- person
+	and table_key = 123;
+```
