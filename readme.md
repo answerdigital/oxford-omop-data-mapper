@@ -167,3 +167,37 @@ from provenance
 where table_type_id = 31 -- person
 	and table_key = 123;
 ```
+
+# Data merging logic
+
+When OMOP records are recorded some records must be merged. An example of this would be if we detected patient is more than one data source.
+
+In some cases we may partially record a record with the hope of detecting the missing information in later transformations. For example if we have a person data source that does not define the patient's gender. 
+
+If all data is transformed and incomplete records still exist, use the [`prune command`](#prune-command). 
+
+## Person
+
+| Column | Merging rule |
+|--------|-------------|
+| gender_concept_id | If new value is not null, set it |
+| year_of_birth | If new value is not null, set it |
+| month_of_birth | If new value is not null, set it |
+| day_of_birth | If new value is not null, set it |
+| birth_datetime | If new value is not null, set it |
+| race_concept_id | If new value is not null, set it |
+| ethnicity_concept_id | If new value is not null, set it |
+| location_id | If new value is not null, set it |
+| provider_id | If new value is not null, set it |
+| care_site_id | If new value is not null, set it |
+| person_source_value | If new value is not null, set it |
+| gender_source_value | If new value is not null, set it |
+| gender_source_concept_id | If new value is not null, set it |
+| race_source_value | If new value is not null, set it |
+| race_source_concept_id | If new value is not null, set it |
+| ethnicity_source_value | If new value is not null, set it |
+| ethnicity_source_concept_id | If new value is not null, set it |
+
+## Location
+
+Merging logic is not needed as we only record unique locations. If the location already exists in the `location` table, do not record it. We never update records in this table.
