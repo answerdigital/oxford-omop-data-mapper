@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Microsoft.Extensions.Logging;
 using OmopTransformer.Annotations;
 using OmopTransformer.Omop;
@@ -9,10 +8,12 @@ namespace OmopTransformer.Transformation;
 internal class RecordTransformer : IRecordTransformer
 {
     private readonly ILogger<RecordTransformer> _logger;
+    private readonly Icd10Resolver _cd10Resolver;
 
-    public RecordTransformer(ILogger<RecordTransformer> logger)
+    public RecordTransformer(ILogger<RecordTransformer> logger, Icd10Resolver cd10Resolver)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _cd10Resolver = cd10Resolver;
     }
 
     public void Transform<T>(IOmopRecord<T> record)
@@ -124,10 +125,20 @@ internal class RecordTransformer : IRecordTransformer
     {
         _logger.LogTrace("Selector transform found on property {0}", property.Name);
 
+        var firstConstructorTypes = 
+            transformAttribute
+                .Type
+                .GetConstructors()
+                .First()
+                .GetParameters()
+                .Select(parameters => parameters.ParameterType)
+                .ToList();
+
         var arguments =
             transformAttribute
                 .Value
                 .Select(argumentName => sourceType.GetProperty(argumentName)!.GetValue(record.Source))
+                .Concat(firstConstructorTypes.Any(type => type == typeof(Icd10Resolver)) ? new[] { _cd10Resolver } : new List<object>())
                 .ToArray();
 
         var selector = (ISelector)Activator.CreateInstance(transformAttribute.Type, arguments)!;

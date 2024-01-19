@@ -39,3 +39,12 @@
 ![](CosdPerson.svg)
 ## CdsPerson
 ![](CdsPerson.svg)
+# ConditionOccurrence
+* [cds_diagnosis_id](ConditionOccurrence_cds_diagnosis_id.md)
+* [condition_concept_id](ConditionOccurrence_condition_concept_id.md)
+* [condition_source_value](ConditionOccurrence_condition_source_value.md)
+* [condition_start_date](ConditionOccurrence_condition_start_date.md)
+* [condition_type_concept_id](ConditionOccurrence_condition_type_concept_id.md)
+* [nhs_number](ConditionOccurrence_nhs_number.md)
+## CdsConditionOccurrence
+![](CdsConditionOccurrence.svg)

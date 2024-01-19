@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
+using OmopTransformer.CDS.ConditionOccurrence;
 using OmopTransformer.CDS.Person;
 using OmopTransformer.CDS.StructuredAddress;
 using OmopTransformer.CDS.UnstructuredAddress;
+using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Transformation;
@@ -12,11 +14,13 @@ internal class CdsTransformer : Transformer
 {
     private readonly ILocationRecorder _locationRecorder;
     private readonly IPersonRecorder _personRecorder;
+    private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
 
-    public CdsTransformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, ILocationRecorder locationRecorder, IPersonRecorder personRecorder) : base(recordTransformer, logger, transformOptions, recordProvider, "CDS")
+    public CdsTransformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, ILocationRecorder locationRecorder, IPersonRecorder personRecorder, IConditionOccurrenceRecorder conditionOccurrenceRecorder) : base(recordTransformer, logger, transformOptions, recordProvider, "CDS")
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
+        _conditionOccurrenceRecorder = conditionOccurrenceRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -34,6 +38,11 @@ internal class CdsTransformer : Transformer
         await Transform<CdsUnstructuredAddress, CdsLocation>(
             _locationRecorder.InsertUpdateLocations,
             "CDS Unstructured Address",
+            cancellationToken);
+
+        await Transform<CdsConditionOccurrenceRecord, CdsConditionOccurrence>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "CDS Condition Occurrences",
             cancellationToken);
     }
 }

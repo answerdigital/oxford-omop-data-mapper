@@ -13,6 +13,7 @@ using OmopTransformer.Omop.Location;
 using OmopTransformer.SACT;
 using OmopTransformer.SACT.Staging;
 using OmopTransformer.COSD.Staging;
+using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.RTDS;
 using OmopTransformer.RTDS.Parser;
@@ -156,6 +157,7 @@ internal class Program
 
             builder.Services.AddTransient<ILocationRecorder, LocationRecorder>();
             builder.Services.AddTransient<IPersonRecorder, PersonRecorder>();
+            builder.Services.AddTransient<IConditionOccurrenceRecorder, ConditionOccurrenceRecorder>();
 
             if (string.Equals(transformOptions.Type, "cosd", StringComparison.OrdinalIgnoreCase))
             {
@@ -196,6 +198,7 @@ internal class Program
         builder.Services.AddTransient<ISactStagingSchema, SactStagingSchema>();
         builder.Services.AddTransient<ICdsStagingSchema, CdsStagingSchema>();
         builder.Services.AddTransient<IRtdsStagingSchema, RtdsStagingSchema>();
+        builder.Services.AddSingleton<Icd10Resolver>();
 
         var queryLocator = await QueryLocator.Create();
         builder.Services.AddSingleton<IQueryLocator, QueryLocator>(_ => queryLocator);
