@@ -23,12 +23,12 @@ Copyright (C) 2024 omop
 
 # Supported Transformations
 
-|          | **Location** | **Person** |
-|----------|--------------|------------|
-| **CDS**  |      ✔️       |     ✔️      |
-| **COSD** |     ✔️      |       ✔️     |
-| **RTDS**  |     ✔️      |       ✔️     |
-| **SACT** |      ✔️       |      ✔️      |
+|          | **Location** | **Person** | **Condition Occurrence** |
+|----------|--------------|------------|--------------------------|
+| **CDS**  |      ✔️       |     ✔️      |✔️                      |
+| **COSD** |     ✔️      |       ✔️     |                         |
+| **RTDS**  |     ✔️      |       ✔️     |                        |
+| **SACT** |      ✔️       |      ✔️      |                       |
 
 [Transformation documentation](Documentation/transformation-documentation.md)
 
@@ -201,3 +201,7 @@ If all data is transformed and incomplete records still exist, use the [`prune c
 ## Location
 
 Merging logic is not needed as we only record unique locations. If the location already exists in the `location` table, do not record it. We never update records in this table.
+
+## Condition Occurrence
+
+Cds condition occurrences have a unique key `DiagnosisId`. Records are added if they do not exist already. No merging logic is required.
