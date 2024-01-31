@@ -9,10 +9,10 @@ Lookup race concept.
 |A|8527|White - British|
 |B|8527|White - Irish|
 |C|8527|White - Any other White background|
-|D|0|Mixed - White and Black Caribbean|
-|E|0|Mixed - White and Black African|
-|F|0|Mixed - White and Asian|
-|G|0|Mixed - Any other mixed background|
+|D|700388|Mixed - White and Black Caribbean [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700388)|
+|E|700389|Mixed - White and Black African [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700389)|
+|F|700390|Mixed - White and Asian [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700390)|
+|G|700391|Mixed - Any other mixed background [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700391)|
 |H|38003574|Asian or Asian British - Indian|
 |J|38003589|Asian or Asian British - Pakistani|
 |K|38003575|Asian or Asian British - Bangladeshi|
@@ -28,6 +28,7 @@ Lookup race concept.
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 * [OMOP Race](https://athena.ohdsi.org/search-terms/terms?conceptClass=Race&invalidReason=Valid&vocabulary=Race&page=1&pageSize=50&query=)
+* [D, E, F, G Race mapping](https://forums.ohdsi.org/t/mapping-nhs-ethnic-category-to-omop-race/20883/2)
 * `EthnicCategory` The patient's ethnic category as specified in the `Demographics` element.
 <details>
 <summary>SQL</summary>
@@ -108,10 +109,10 @@ Lookup race concept.
 |A|8527|White - British|
 |B|8527|White - Irish|
 |C|8527|White - Any other White background|
-|D|0|Mixed - White and Black Caribbean|
-|E|0|Mixed - White and Black African|
-|F|0|Mixed - White and Asian|
-|G|0|Mixed - Any other mixed background|
+|D|700388|Mixed - White and Black Caribbean [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700388)|
+|E|700389|Mixed - White and Black African [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700389)|
+|F|700390|Mixed - White and Asian [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700390)|
+|G|700391|Mixed - Any other mixed background [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700391)|
 |H|38003574|Asian or Asian British - Indian|
 |J|38003589|Asian or Asian British - Pakistani|
 |K|38003575|Asian or Asian British - Bangladeshi|
@@ -127,6 +128,7 @@ Lookup race concept.
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 * [OMOP Race](https://athena.ohdsi.org/search-terms/terms?conceptClass=Race&invalidReason=Valid&vocabulary=Race&page=1&pageSize=50&query=)
+* [D, E, F, G Race mapping](https://forums.ohdsi.org/t/mapping-nhs-ethnic-category-to-omop-race/20883/2)
 * `EthnicCategory` Patient EthnicCategory [Data Dictionary](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 <details>
 <summary>SQL</summary>
