@@ -108,7 +108,7 @@ begin
 	('country_concept_id'),
 	('country_source_value'),
 	('latitude'),
-	('longitud');
+	('longitude');
 
 	insert into provenance
 	(
