@@ -40,6 +40,12 @@
     <None Update="CDS\UnstructuredAddress\CdsUnstructuredAddress.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="CDS\VisitOccurrenceWithoutSpell\CdsVisitOccurrenceWithoutSpell.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CDS\VisitOccurrenceWithSpell\CdsVisitOccurrenceWithSpell.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Demographics\OmopDemographics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

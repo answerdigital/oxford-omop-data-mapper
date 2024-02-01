@@ -39,6 +39,20 @@
 ![](CosdPerson.svg)
 ## CdsPerson
 ![](CdsPerson.svg)
+# VisitOccurrence
+* [HospitalProviderSpellNumber](VisitOccurrence_HospitalProviderSpellNumber.md)
+* [NhsNumber](VisitOccurrence_NhsNumber.md)
+* [RecordConnectionIdentifier](VisitOccurrence_RecordConnectionIdentifier.md)
+* [visit_concept_id](VisitOccurrence_visit_concept_id.md)
+* [visit_end_date](VisitOccurrence_visit_end_date.md)
+* [visit_end_datetime](VisitOccurrence_visit_end_datetime.md)
+* [visit_start_date](VisitOccurrence_visit_start_date.md)
+* [visit_start_datetime](VisitOccurrence_visit_start_datetime.md)
+* [visit_type_concept_id](VisitOccurrence_visit_type_concept_id.md)
+## CdsVisitOccurrenceWithSpell
+![](CdsVisitOccurrenceWithSpell.svg)
+## CdsVisitOccurrenceWithoutSpell
+![](CdsVisitOccurrenceWithoutSpell.svg)
 # ConditionOccurrence
 * [cds_diagnosis_id](ConditionOccurrence_cds_diagnosis_id.md)
 * [condition_concept_id](ConditionOccurrence_condition_concept_id.md)
