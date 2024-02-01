@@ -58,6 +58,9 @@ internal class CdsInserter : ICdsInserter
         _logger.LogInformation("Inserting line03.");
         await InsertLine03(rows, connection, cancellationToken);
 
+        _logger.LogInformation("Inserting procedures.");
+        await InsertProcedures(rows, connection, cancellationToken);
+
         _logger.LogInformation("Inserting line04.");
         await InsertLine04(rows, connection, cancellationToken);
 
@@ -397,6 +400,78 @@ internal class CdsInserter : ICdsInserter
                     "omop_staging.insert_cds_birth_details",
                     parameter,
                     commandType: CommandType.StoredProcedure);
+        }
+    }
+
+    private static async Task InsertProcedures(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    {
+        var line03s =
+            rows
+            .SelectMany(
+                row =>
+                    row
+                    .Line03
+                    .Select(line03 => new { row.MessageId, line03 }));
+
+        var batches = line03s.Batch(500);
+        
+        foreach (var batch in batches)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var dataTable = new DataTable();
+
+            dataTable.Columns.Add("MessageId");
+            dataTable.Columns.Add("IsPrimaryProcedure");
+            dataTable.Columns.Add("PrimaryProcedure");
+            dataTable.Columns.Add("PrimaryProcedureDate");
+            dataTable.Columns.Add("MainOperatingHealthcareProfessionalRegistrationIssuerCode");
+            dataTable.Columns.Add("MainOperatingHealthcareProfessionalRegistrationEntryIdentifier");
+            dataTable.Columns.Add("ResponsibleAnaesthetistProfessionalRegistrationIssuerCode");
+            dataTable.Columns.Add("ResponsibleAnaesthetistProfessionalRegistrationEntryIdentifier");
+
+            foreach (var message in batch)
+            {
+                if (message.line03.PrimaryProcedure != null)
+                {
+                    dataTable.Rows.Add(
+                        message.MessageId,
+                        true,
+                        message.line03.PrimaryProcedure.PrimaryProcedure,
+                        message.line03.PrimaryProcedure.PrimaryProcedureDate,
+                        message.line03.PrimaryProcedure.MainOperatingHealthcareProfessionalRegistrationIssuerCode,
+                        message.line03.PrimaryProcedure.MainOperatingHealthcareProfessionalRegistrationEntryIdentifier,
+                        message.line03.PrimaryProcedure.ResponsibleAnaesthetistProfessionalRegistrationIssuerCode,
+                        message.line03.PrimaryProcedure.ResponsibleAnaesthetistProfessionalRegistrationEntryIdentifier);
+                }
+
+                if (message.line03.SecondaryProcedures != null)
+                {
+                    foreach (var procedure in message.line03.SecondaryProcedures)
+                    {
+                        dataTable.Rows.Add(
+                            message.MessageId,
+                            false,
+                            procedure.PrimaryProcedure,
+                            procedure.PrimaryProcedureDate,
+                            procedure.MainOperatingHealthcareProfessionalRegistrationIssuerCode,
+                            procedure.MainOperatingHealthcareProfessionalRegistrationEntryIdentifier,
+                            procedure.ResponsibleAnaesthetistProfessionalRegistrationIssuerCode,
+                            procedure.ResponsibleAnaesthetistProfessionalRegistrationEntryIdentifier);
+                    }
+                }
+            }
+
+            var parameter = new
+                {
+                    Rows = dataTable.AsTableValuedParameter("omop_staging.cds_procedure_row")
+                };
+
+                await connection
+                    .ExecuteAsync(
+                        "omop_staging.insert_cds_procedure",
+                        parameter,
+                        commandType: CommandType.StoredProcedure);
         }
     }
 
