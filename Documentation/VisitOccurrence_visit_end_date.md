@@ -56,9 +56,9 @@ group by
 </details>
 
 ### CDS VisitOccurrenceWithoutSpell
-Source column  `EpisodeStartDate`.
+Source column  `EpisodeEndDate`.
 Converts text to dates.
-* `EpisodeStartDate` The earliest date in the message group.
+* `EpisodeEndDate` The latest dte in the message group.
 <details>
 <summary>SQL</summary>
 

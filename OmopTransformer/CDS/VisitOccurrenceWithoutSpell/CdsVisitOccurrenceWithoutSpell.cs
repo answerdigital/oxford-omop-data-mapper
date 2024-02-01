@@ -18,7 +18,7 @@ internal class CdsVisitOccurrenceWithoutSpell : OmopVisitOccurrence<CdsVisitOccu
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.EpisodeStartDate), nameof(Source.EpisodeStartTime))]
     public override DateTime? visit_start_datetime { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.EpisodeStartDate))]
+    [Transform(typeof(DateConverter), nameof(Source.EpisodeEndDate))]
     public override DateTime? visit_end_date { get; set; }
 
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.EpisodeEndDate), nameof(Source.EpisodeEndTime))]
