@@ -85,7 +85,7 @@
     <text x="660" y="340" fill="black" font-family="Helvetica" text-anchor="start">Combines a date with a time of day.</text>
   </g>
   <g>
-    <line x1="260" y1="235" x2="400" y2="435" stroke="#3c445a" stroke-width="2" />
+    <line x1="260" y1="435" x2="400" y2="435" stroke="#3c445a" stroke-width="2" />
     <text x="660" y="440" fill="black" font-family="Helvetica" text-anchor="start">Converts text to dates.</text>
   </g>
   <g>

@@ -1,8 +1,8 @@
 # `VisitOccurrence` `visit_end_date`
 ### CDS VisitOccurrenceWithSpell
-Source column  `EpisodeStartDate`.
+Source column  `EpisodeEndDate`.
 Converts text to dates.
-* `EpisodeStartDate` The earliest episode start date for the spell, or the earliest activity date if none are specified.
+* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified.
 <details>
 <summary>SQL</summary>
 
