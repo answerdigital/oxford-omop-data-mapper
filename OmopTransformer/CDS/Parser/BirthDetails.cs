@@ -6,7 +6,6 @@ internal class BirthDetails
     {
     }
 
-
     public string? BirthOrder { get; set; }
     public string? DeliveryMethod { get; set; }
     public string? GestationLengthAssessment { get; set; }
@@ -75,7 +74,6 @@ internal class BirthDetails
         birthDetails.PersonGenderCurrent = text.SubstringOrNull(index, 1);
         index += 1;
         birthDetails.OverseasVisitorStatusClassificationAtCDSActivityDate = text.SubstringOrNull(index, 1);
-        index += 1;
 
         return birthDetails;
     }
