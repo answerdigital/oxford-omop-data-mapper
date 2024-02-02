@@ -197,6 +197,8 @@ internal class DocumentationRenderer
 
         var attributes = GetDocumentableAttributes(property);
 
+        string? title = null;
+
         if (attributes.Any())
         {
             var sourceType = GetOmopSourceType(mapperType);
@@ -205,7 +207,8 @@ internal class DocumentationRenderer
 
             if (description != null)
             {
-                stringBuilder.AppendLine($"### {((DescriptionAttribute)description).Value}");
+                title = ((DescriptionAttribute)description).Value;
+                stringBuilder.AppendLine($"### {title}");
             }
         }
 
@@ -237,7 +240,7 @@ internal class DocumentationRenderer
         if (attributes.Any())
         {
             stringBuilder.AppendLine();
-            stringBuilder.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20{omopTable}%20table%20{omopField}%20field%20mapping)");
+            stringBuilder.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20{omopTable}%20table%20{omopField}%20field%20{title.Replace(" ", "%20")}%20mapping)");
         }
     }
 

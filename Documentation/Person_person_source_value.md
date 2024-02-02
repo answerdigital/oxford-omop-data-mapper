@@ -2,7 +2,7 @@
 ### SACT
 * Value copied from `NHS_Number`
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20SACT%20mapping)
 ### Rtds Demographics
 * Value copied from `PatientId`
 * `PatientId` The patient's NHSNumber.
@@ -23,7 +23,7 @@ where d.PatientId not like '%[^0-9]%'
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20Rtds%20Demographics%20mapping)
 ### COSD Demographics
 * Value copied from `NhsNumber`
 * `NhsNumber` The patient's NHSNumber as specified in the `LinkagePatientId` or similar element.
@@ -98,7 +98,7 @@ where NhsNumber != '';
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20COSD%20Demographics%20mapping)
 ### CDS Person
 * Value copied from `NHSNumber`
 * `NHSNumber` Patient NHS Number
@@ -119,4 +119,4 @@ where NHSNumber is not null;
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20CDS%20Person%20mapping)

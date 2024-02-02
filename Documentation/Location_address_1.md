@@ -73,9 +73,9 @@ where NhsNumber != '';
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20address_1%20field%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20address_1%20field%20COSD%20Demographics%20mapping)
 ### CDS Structured Address
 Source columns  `PatientAddressStructured1`, `PatientAddressStructured2`.
 Separates text with newlines. Trim whitespace.
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20address_1%20field%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20address_1%20field%20CDS%20Structured%20Address%20mapping)

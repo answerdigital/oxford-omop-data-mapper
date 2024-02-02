@@ -3,7 +3,7 @@
 Source column  `Date_Of_Birth`.
 Converts text to dates.
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20SACT%20mapping)
 ### Rtds Demographics
 Source column  `DateOfBirth`.
 Converts text to dates.
@@ -25,7 +25,7 @@ where d.PatientId not like '%[^0-9]%'
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20Rtds%20Demographics%20mapping)
 ### COSD Demographics
 Source column  `DateOfBirth`.
 Converts text to dates.
@@ -100,7 +100,7 @@ where NhsNumber != '';
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20COSD%20Demographics%20mapping)
 ### CDS Person
 Source column  `DateOfBirth`.
 Converts text to dates.
@@ -122,4 +122,4 @@ where NHSNumber is not null;
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20CDS%20Person%20mapping)
