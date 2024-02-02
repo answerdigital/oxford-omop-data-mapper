@@ -55,6 +55,8 @@ group by
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_start_date%20field%20mapping)
 ### CDS VisitOccurrenceWithoutSpell
 Source column  `EpisodeStartDate`.
 Converts text to dates.
@@ -103,3 +105,5 @@ group by
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_start_date%20field%20mapping)

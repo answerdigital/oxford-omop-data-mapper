@@ -1,6 +1,8 @@
 # `Location` `location_source_value`
 ### SACT
 * Value copied from `Patient_Postcode`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20location_source_value%20field%20mapping)
 ### COSD Demographics
 Source columns  `StreetAddressLine1`, `StreetAddressLine2`, `StreetAddressLine3`, `StreetAddressLine4`, `Postcode`.
 Separates text with newlines. Trim whitespace.
@@ -77,6 +79,8 @@ where NhsNumber != '';
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20location_source_value%20field%20mapping)
 ### CDS Structured Address
 Source columns  `PatientAddressStructured1`, `PatientAddressStructured2`, `PatientAddressStructured3`, `PatientAddressStructured4`, `PatientAddressStructured5`, `Postcode`.
 Separates text with newlines. Trim whitespace.
@@ -97,6 +101,8 @@ where PatientAddressType = '01'
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20location_source_value%20field%20mapping)
 ### CDS UnstructuredAddress
 * Value copied from `Postcode`
 * `Postcode` Postcode
@@ -126,3 +132,5 @@ where PatientAddressType = '02'
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20location_source_value%20field%20mapping)

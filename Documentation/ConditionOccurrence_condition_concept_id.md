@@ -21,3 +21,5 @@ where line01.NHSNumber is not null;
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_concept_id%20field%20mapping)

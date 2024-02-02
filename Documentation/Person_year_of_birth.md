@@ -2,6 +2,8 @@
 ### SACT
 Source column  `Date_Of_Birth`.
 Selects the year from a date or null of the date is null.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20year_of_birth%20field%20mapping)
 ### Rtds Demographics
 Source column  `DateOfBirth`.
 Selects the year from a date or null of the date is null.
@@ -22,6 +24,8 @@ where d.PatientId not like '%[^0-9]%'
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20year_of_birth%20field%20mapping)
 ### COSD Demographics
 Source column  `DateOfBirth`.
 Selects the year from a date or null of the date is null.
@@ -95,6 +99,8 @@ where NhsNumber != '';
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20year_of_birth%20field%20mapping)
 ### CDS Person
 Source column  `DateOfBirth`.
 Selects the year from a date or null of the date is null.
@@ -115,3 +121,5 @@ where NHSNumber is not null;
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20year_of_birth%20field%20mapping)

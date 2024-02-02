@@ -1,6 +1,8 @@
 # `Location` `nhs_number`
 ### SACT
 * Value copied from `NHS_Number`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20mapping)
 ### Rtds PAS Location
 * Value copied from `NhsNumber`
 * `NhsNumber` The patient's NHSNumber.
@@ -19,6 +21,8 @@ where p.FirstOfPOSTCODE is not null
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20mapping)
 ### COSD Demographics
 * Value copied from `NhsNumber`
 * `NhsNumber` The patient's NHSNumber as specified in the `LinkagePatientId` or similar element.
@@ -92,5 +96,9 @@ where NhsNumber != '';
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20mapping)
 ### CDS Structured Address
 * Value copied from `NhsNumber`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20mapping)

@@ -10,14 +10,24 @@
 * [zip](Location_zip.md)
 ## SactLocation
 ![](SactLocation.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactLocation%20mapping)
 ## RtdsLocation
 ![](RtdsLocation.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsLocation%20mapping)
 ## CosdLocation
 ![](CosdLocation.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdLocation%20mapping)
 ## CdsStructuredLocation
 ![](CdsStructuredLocation.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsStructuredLocation%20mapping)
 ## CdsLocation
 ![](CdsLocation.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsLocation%20mapping)
 # Person
 * [birth_datetime](Person_birth_datetime.md)
 * [day_of_birth](Person_day_of_birth.md)
@@ -33,12 +43,20 @@
 * [year_of_birth](Person_year_of_birth.md)
 ## SactPerson
 ![](SactPerson.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactPerson%20mapping)
 ## RtdsPerson
 ![](RtdsPerson.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsPerson%20mapping)
 ## CosdPerson
 ![](CosdPerson.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdPerson%20mapping)
 ## CdsPerson
 ![](CdsPerson.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsPerson%20mapping)
 # VisitOccurrence
 * [HospitalProviderSpellNumber](VisitOccurrence_HospitalProviderSpellNumber.md)
 * [NhsNumber](VisitOccurrence_NhsNumber.md)
@@ -51,8 +69,12 @@
 * [visit_type_concept_id](VisitOccurrence_visit_type_concept_id.md)
 ## CdsVisitOccurrenceWithSpell
 ![](CdsVisitOccurrenceWithSpell.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsVisitOccurrenceWithSpell%20mapping)
 ## CdsVisitOccurrenceWithoutSpell
 ![](CdsVisitOccurrenceWithoutSpell.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsVisitOccurrenceWithoutSpell%20mapping)
 # ConditionOccurrence
 * [cds_diagnosis_id](ConditionOccurrence_cds_diagnosis_id.md)
 * [condition_concept_id](ConditionOccurrence_condition_concept_id.md)
@@ -62,3 +84,5 @@
 * [nhs_number](ConditionOccurrence_nhs_number.md)
 ## CdsConditionOccurrence
 ![](CdsConditionOccurrence.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsConditionOccurrence%20mapping)

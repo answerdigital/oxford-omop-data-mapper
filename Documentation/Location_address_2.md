@@ -72,5 +72,9 @@ where NhsNumber != '';
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20address_2%20field%20mapping)
 ### CDS Structured Address
 * Value copied from `PatientAddressStructured3`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20address_2%20field%20mapping)

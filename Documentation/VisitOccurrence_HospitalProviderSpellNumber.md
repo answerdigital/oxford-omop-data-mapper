@@ -55,3 +55,5 @@ group by
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20HospitalProviderSpellNumber%20field%20mapping)

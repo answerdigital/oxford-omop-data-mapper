@@ -2,6 +2,8 @@
 ### SACT
 Source column  `Patient_Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20mapping)
 ### Rtds PAS Location
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
@@ -21,9 +23,13 @@ where p.FirstOfPOSTCODE is not null
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20mapping)
 ### COSD Demographics
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20mapping)
 ### CDS Structured Address
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
@@ -44,6 +50,8 @@ where PatientAddressType = '01'
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20mapping)
 ### CDS UnstructuredAddress
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
@@ -74,3 +82,5 @@ where PatientAddressType = '02'
 ```
 </details>
 
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20mapping)

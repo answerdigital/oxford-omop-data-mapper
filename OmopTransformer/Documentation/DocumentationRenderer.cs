@@ -84,7 +84,7 @@ internal class DocumentationRenderer
                 
                 foreach (var property in propertyGroup)
                 {
-                    RenderProperty(property.Mapper.MapperType, property.Property, stringBuilder);
+                    RenderProperty(property.Mapper.MapperType, property.Property, stringBuilder, omopTarget.Key, name);
                 }
 
                 yield return new Document(fileName, stringBuilder.ToString());
@@ -94,6 +94,8 @@ internal class DocumentationRenderer
             {
                 indexStringBuilder.AppendLine($"## {target.MapperType.Name}");
                 indexStringBuilder.AppendLine($"![]({target.MapperType.Name}.svg)");
+                indexStringBuilder.AppendLine();
+                indexStringBuilder.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title={target.MapperType.Name}%20mapping)");
             }
         }
 
@@ -188,11 +190,11 @@ internal class DocumentationRenderer
 
     private static bool IgnoreProperty(PropertyInfo property) => property.Name is "OmopTargetTypeDescription" or "Source";
 
-    private void RenderProperty(Type mapperType, PropertyInfo property, StringBuilder stringBuilder)
+    private void RenderProperty(Type mapperType, PropertyInfo property, StringBuilder stringBuilder, string omopTable, string omopField)
     {
         if (IgnoreProperty(property))
             return;
-        
+
         var attributes = GetDocumentableAttributes(property);
 
         if (attributes.Any())
@@ -219,7 +221,7 @@ internal class DocumentationRenderer
             {
                 stringBuilder.AppendLine(description.Value);
             }
-            
+
             if (attribute is ConstantValueAttribute constantValueAttribute)
             {
                 stringBuilder.AppendLine($"* Constant value set to `{constantValueAttribute.Value}`. {constantValueAttribute.Description}");
@@ -230,6 +232,12 @@ internal class DocumentationRenderer
                 RenderTransform(stringBuilder, transformAttribute);
                 RenderQueryIfAny(mapperType, stringBuilder, transformAttribute.Value);
             }
+        }
+
+        if (attributes.Any())
+        {
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20{omopTable}%20table%20{omopField}%20field%20mapping)");
         }
     }
 
