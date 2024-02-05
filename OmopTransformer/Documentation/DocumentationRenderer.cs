@@ -110,19 +110,9 @@ internal class DocumentationRenderer
 
     private Document RenderDiagram(Type type)
     {
-        var targetMembers = 
-            type
-                .BaseType!
-                .GetProperties()
-                .Where(property => !IgnoreProperty(property))
-                .Select(property => new Box(property.Name, $"{OmopDescription(type)}_{property.Name}.md"))
-                .ToList();
-
-        var sourceMembers = GetOmopSourceType(type).GetProperties().Select(property => new Box(property.Name, null)).ToList();
-
         var relationships = GetRelationships(type);
 
-        var svgRenderer = new SvgRenderer(sourceMembers, targetMembers, relationships);
+        var svgRenderer = new SvgRenderer(relationships);
 
         return new Document($"{type.Name}.svg", svgRenderer.Render());
     }

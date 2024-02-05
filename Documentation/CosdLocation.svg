@@ -1,99 +1,124 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="760">
-  <rect width="100%" height="100%" fill="white" />
-  <a>
-    <rect x="10" y="10" width="250" height="50" fill="#fab10c" stroke="black" rx="10" />
-    <text x="20" y="40" fill="black" font-family="Helvetica" text-anchor="start">StreetAddressLine1</text>
-  </a>
-  <a>
-    <rect x="10" y="110" width="250" height="50" fill="#fab10c" stroke="black" rx="10" />
-    <text x="20" y="140" fill="black" font-family="Helvetica" text-anchor="start">StreetAddressLine2</text>
-  </a>
-  <a>
-    <rect x="10" y="210" width="250" height="50" fill="#fab10c" stroke="black" rx="10" />
-    <text x="20" y="240" fill="black" font-family="Helvetica" text-anchor="start">StreetAddressLine3</text>
-  </a>
-  <a>
-    <rect x="10" y="310" width="250" height="50" fill="#fab10c" stroke="black" rx="10" />
-    <text x="20" y="340" fill="black" font-family="Helvetica" text-anchor="start">StreetAddressLine4</text>
-  </a>
-  <a>
-    <rect x="10" y="410" width="250" height="50" fill="#fab10c" stroke="black" rx="10" />
-    <text x="20" y="440" fill="black" font-family="Helvetica" text-anchor="start">Postcode</text>
-  </a>
-  <a>
-    <rect x="10" y="510" width="250" height="50" fill="#fab10c" stroke="black" rx="10" />
-    <text x="20" y="540" fill="black" font-family="Helvetica" text-anchor="start">NhsNumber</text>
-  </a>
-  <a href="Location_address_1.md">
-    <rect x="400" y="10" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
-    <text x="410" y="40" fill="white" font-family="Helvetica" text-anchor="start">address_1</text>
-  </a>
-  <a href="Location_address_2.md">
-    <rect x="400" y="110" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
-    <text x="410" y="140" fill="white" font-family="Helvetica" text-anchor="start">address_2</text>
-  </a>
-  <a href="Location_city.md">
-    <rect x="400" y="210" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
-    <text x="410" y="240" fill="white" font-family="Helvetica" text-anchor="start">city</text>
-  </a>
-  <a href="Location_zip.md">
-    <rect x="400" y="310" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
-    <text x="410" y="340" fill="white" font-family="Helvetica" text-anchor="start">zip</text>
-  </a>
-  <a href="Location_county.md">
-    <rect x="400" y="410" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
-    <text x="410" y="440" fill="white" font-family="Helvetica" text-anchor="start">county</text>
-  </a>
-  <a href="Location_location_source_value.md">
-    <rect x="400" y="510" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
-    <text x="410" y="540" fill="white" font-family="Helvetica" text-anchor="start">location_source_value</text>
-  </a>
-  <a href="Location_nhs_number.md">
-    <rect x="400" y="610" width="250" height="50" fill="#3c4459" stroke="black" rx="10" />
-    <text x="410" y="640" fill="white" font-family="Helvetica" text-anchor="start">nhs_number</text>
-  </a>
+<svg xmlns="http://www.w3.org/2000/svg" width="2020" height="800">
+  <rect width="100%" height="100%" fill="#3E5EB2" />
   <g>
-    <line x1="260" y1="35" x2="400" y2="35" stroke="#000000" stroke-width="2" />
-    <text x="660" y="40" fill="black" font-family="Helvetica" text-anchor="start">Convert text to uppercase. Trim whitespace.</text>
+    <rect x="25" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="35" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">StreetAddressLine1</text>
   </g>
   <g>
-    <line x1="260" y1="135" x2="400" y2="135" stroke="#b0a9af" stroke-width="2" />
-    <text x="660" y="140" fill="black" font-family="Helvetica" text-anchor="start">Convert text to uppercase. Trim whitespace.</text>
+    <line x1="150" y1="420" x2="150" y2="615" stroke="white" stroke-width="2" />
+    <line x1="140" y1="605" x2="150" y2="615" stroke="white" stroke-width="2" />
+    <line x1="160" y1="605" x2="150" y2="615" stroke="white" stroke-width="2" />
+    <text x="25" y="728" fill="white" font-size="1em" font-family="Helvetica">Convert text to uppercase. Trim</text>
+    <text x="25" y="746" fill="white" font-size="1em" font-family="Helvetica">whitespace.</text>
   </g>
   <g>
-    <line x1="260" y1="235" x2="400" y2="235" stroke="#3c445a" stroke-width="2" />
-    <text x="660" y="240" fill="black" font-family="Helvetica" text-anchor="start">Convert text to uppercase. Trim whitespace.</text>
+    <rect x="25" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="35" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">address_1</text>
   </g>
   <g>
-    <line x1="260" y1="335" x2="400" y2="435" stroke="#000000" stroke-width="2" />
-    <text x="660" y="440" fill="black" font-family="Helvetica" text-anchor="start">Convert text to uppercase. Trim whitespace.</text>
+    <rect x="295" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="305" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">StreetAddressLine2</text>
   </g>
   <g>
-    <line x1="260" y1="435" x2="400" y2="335" stroke="#b0a9af" stroke-width="2" />
-    <text x="660" y="340" fill="black" font-family="Helvetica" text-anchor="start">Uppercase the postcode then insert the space in the correct location, if needed.</text>
+    <line x1="420" y1="420" x2="420" y2="615" stroke="white" stroke-width="2" />
+    <line x1="410" y1="605" x2="420" y2="615" stroke="white" stroke-width="2" />
+    <line x1="430" y1="605" x2="420" y2="615" stroke="white" stroke-width="2" />
+    <text x="295" y="728" fill="white" font-size="1em" font-family="Helvetica">Convert text to uppercase. Trim</text>
+    <text x="295" y="746" fill="white" font-size="1em" font-family="Helvetica">whitespace.</text>
   </g>
   <g>
-    <line x1="260" y1="35" x2="400" y2="535" stroke="#3c445a" stroke-width="2" />
-    <text x="660" y="540" fill="black" font-family="Helvetica" text-anchor="start">Separates text with newlines. Trim whitespace.</text>
+    <rect x="295" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="305" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">address_2</text>
   </g>
   <g>
-    <line x1="260" y1="135" x2="400" y2="535" stroke="#000000" stroke-width="2" />
-    <text x="660" y="540" fill="black" font-family="Helvetica" text-anchor="start">Separates text with newlines. Trim whitespace.</text>
+    <rect x="565" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="575" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">StreetAddressLine3</text>
   </g>
   <g>
-    <line x1="260" y1="235" x2="400" y2="535" stroke="#b0a9af" stroke-width="2" />
-    <text x="660" y="540" fill="black" font-family="Helvetica" text-anchor="start">Separates text with newlines. Trim whitespace.</text>
+    <line x1="690" y1="420" x2="690" y2="615" stroke="white" stroke-width="2" />
+    <line x1="680" y1="605" x2="690" y2="615" stroke="white" stroke-width="2" />
+    <line x1="700" y1="605" x2="690" y2="615" stroke="white" stroke-width="2" />
+    <text x="565" y="728" fill="white" font-size="1em" font-family="Helvetica">Convert text to uppercase. Trim</text>
+    <text x="565" y="746" fill="white" font-size="1em" font-family="Helvetica">whitespace.</text>
   </g>
   <g>
-    <line x1="260" y1="335" x2="400" y2="535" stroke="#3c445a" stroke-width="2" />
-    <text x="660" y="540" fill="black" font-family="Helvetica" text-anchor="start">Separates text with newlines. Trim whitespace.</text>
+    <rect x="565" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="575" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">city</text>
   </g>
   <g>
-    <line x1="260" y1="435" x2="400" y2="535" stroke="#000000" stroke-width="2" />
-    <text x="660" y="540" fill="black" font-family="Helvetica" text-anchor="start">Separates text with newlines. Trim whitespace.</text>
+    <rect x="835" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="845" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">StreetAddressLine4</text>
   </g>
   <g>
-    <line x1="260" y1="535" x2="400" y2="635" stroke="#b0a9af" stroke-width="2" />
-    <text x="660" y="640" fill="black" font-family="Helvetica" text-anchor="start">Copy value.</text>
+    <line x1="960" y1="420" x2="960" y2="615" stroke="white" stroke-width="2" />
+    <line x1="950" y1="605" x2="960" y2="615" stroke="white" stroke-width="2" />
+    <line x1="970" y1="605" x2="960" y2="615" stroke="white" stroke-width="2" />
+    <text x="835" y="728" fill="white" font-size="1em" font-family="Helvetica">Convert text to uppercase. Trim</text>
+    <text x="835" y="746" fill="white" font-size="1em" font-family="Helvetica">whitespace.</text>
+  </g>
+  <g>
+    <rect x="835" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="845" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">county</text>
+  </g>
+  <g>
+    <rect x="1105" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="1115" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">Postcode</text>
+  </g>
+  <g>
+    <line x1="1230" y1="420" x2="1230" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1220" y1="605" x2="1230" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1240" y1="605" x2="1230" y2="615" stroke="white" stroke-width="2" />
+    <text x="1105" y="728" fill="white" font-size="1em" font-family="Helvetica">Uppercase the postcode then insert</text>
+    <text x="1105" y="746" fill="white" font-size="1em" font-family="Helvetica">the space in the correct</text>
+    <text x="1105" y="764" fill="white" font-size="1em" font-family="Helvetica">location, if needed.</text>
+  </g>
+  <g>
+    <rect x="1105" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="1115" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">zip</text>
+  </g>
+  <g>
+    <rect x="1375" y="20" width="250" height="64" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="1385" y="57" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">StreetAddressLine1</text>
+  </g>
+  <g>
+    <rect x="1375" y="104" width="250" height="64" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="1385" y="141" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">StreetAddressLine2</text>
+  </g>
+  <g>
+    <rect x="1375" y="188" width="250" height="64" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="1385" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">StreetAddressLine3</text>
+  </g>
+  <g>
+    <rect x="1375" y="272" width="250" height="64" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="1385" y="309" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">StreetAddressLine4</text>
+  </g>
+  <g>
+    <rect x="1375" y="356" width="250" height="64" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="1385" y="393" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">Postcode</text>
+  </g>
+  <g>
+    <line x1="1500" y1="420" x2="1500" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1490" y1="605" x2="1500" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1510" y1="605" x2="1500" y2="615" stroke="white" stroke-width="2" />
+    <text x="1375" y="728" fill="white" font-size="1em" font-family="Helvetica">Separates text with newlines. Trim</text>
+    <text x="1375" y="746" fill="white" font-size="1em" font-family="Helvetica">whitespace.</text>
+  </g>
+  <g>
+    <rect x="1375" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="1385" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">location_source_value</text>
+  </g>
+  <g>
+    <rect x="1645" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="1655" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">NhsNumber</text>
+  </g>
+  <g>
+    <line x1="1770" y1="420" x2="1770" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1760" y1="605" x2="1770" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1780" y1="605" x2="1770" y2="615" stroke="white" stroke-width="2" />
+    <text x="1645" y="728" fill="white" font-size="1em" font-family="Helvetica">Copy value.</text>
+  </g>
+  <g>
+    <rect x="1645" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="1655" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">nhs_number</text>
   </g>
 </svg>

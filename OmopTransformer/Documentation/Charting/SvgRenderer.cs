@@ -1,96 +1,109 @@
-﻿using System.Xml.Linq;
+﻿using System.Drawing;
+using System.Reflection.Emit;
+using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace OmopTransformer.Documentation.Charting;
 
 public class SvgRenderer
 {
-    private readonly IReadOnlyCollection<Box> _sourceBoxes;
-    private readonly IReadOnlyCollection<Box> _targetBoxes;
     private readonly IReadOnlyCollection<Relationship> _relationships;
 
     private static readonly XNamespace SvgNamespace = "http://www.w3.org/2000/svg";
     private const int BoxWidth = 250;
     private const int BoxHeight = 50;
 
-    public SvgRenderer(IReadOnlyCollection<Box> sourceBoxes, IReadOnlyCollection<Box> targetBoxes, IReadOnlyCollection<Relationship> relationships)
+    public SvgRenderer(IReadOnlyCollection<Relationship> relationships)
     {
-        _sourceBoxes = sourceBoxes;
-        _targetBoxes = targetBoxes;
         _relationships = relationships;
     }
 
-    private IReadOnlyCollection<Box> FilteredSourceBoxes => FilerBoxes(_sourceBoxes, relationship => relationship.Source);
-    private IReadOnlyCollection<Box> FilteredTargetBoxes => FilerBoxes(_targetBoxes, relationship => relationship.Target);
-
-    private IReadOnlyCollection<Box> FilerBoxes(IEnumerable<Box> boxes, Func<Relationship, string> filter) =>
-        boxes
-            .Where(
-                box => 
-                    _relationships
-                        .Any(relationship => filter(relationship) == box.Name))
-            .ToList();
-
     public string Render()
     {
-        var height = GetBoxY(Math.Max(FilteredSourceBoxes.Count, FilteredTargetBoxes.Count)) + BoxHeight;
+        var sourceBoxesByTargetBoxes = _relationships.GroupBy(r => r.Target);
+        var width = GetBoxX(sourceBoxesByTargetBoxes.Count()) + BoxWidth / 2;
 
         XElement svg =
+        new XElement(
+            SvgNamespace + "svg",
+            new XAttribute("xmlns", SvgNamespace),
+            new XAttribute("width", width),
+            new XAttribute("height", "800"),
             new XElement(
-                SvgNamespace + "svg",
-                new XAttribute("xmlns", SvgNamespace),
-                new XAttribute("width", "1500"),
-                new XAttribute("height", height),
-                new XElement(
-                    SvgNamespace + "rect",
-                    new XAttribute("width", "100%"),
-                    new XAttribute("height", "100%"),
-                    new XAttribute("fill", "white")),
-                DrawBoxes(FilteredSourceBoxes, 10, "#fab10c", "black"),
-                DrawBoxes(FilteredTargetBoxes, 400, "#3c4459", "white"),
-                DrawLines());   
+                SvgNamespace + "rect",
+                new XAttribute("width", "100%"),
+                new XAttribute("height", "100%"),
+                new XAttribute("fill", "#3E5EB2")),
+            DrawRelationships (sourceBoxesByTargetBoxes)
+        );   
 
         return svg.ToString();
     }
 
-    private static string GetLineColour(int index)
+    private static IEnumerable<XElement> DrawRelationships (IEnumerable<IGrouping<string, Relationship>> relationships)
     {
-        int range = index % 3;
+        var boxes = new List<XElement>();
 
-        return range switch
+        int index = 0;
+
+        foreach (var relationshipGroup in relationships)
         {
-            0 => "#000000",
-            1 => "#b0a9af",
-            2 => "#3c445a",
-            _ => throw new InvalidOperationException()
-        };
+            boxes.AddRange(DrawRelationshipSource(index, relationshipGroup));
+            boxes.Add(DrawLine(relationshipGroup.First(), index));
+            boxes.Add(CreateBoxElement(
+                x: GetBoxX(index),
+                y: 620,
+                width: BoxWidth,
+                height: 80,
+                label: relationshipGroup.Key,
+                fillColor: "white",
+                textColour: "#3E5EB2",
+                roundCorners: true)
+            );
+
+            index++;
+        }
+
+        return boxes;
     }
 
-    private IEnumerable<XElement> DrawLines() => 
-        _relationships
-            .Select(DrawLine);
-
-    private static int GetBoxIndex(IEnumerable<Box> boxes, string name) =>
-        boxes
-            .Select((source, index) => new { source, index })
-            .Single(box => box.source.Name == name)
-            .index;
-
-    private XElement DrawLine(Relationship relationship, int index)
+    private static IEnumerable<XElement> DrawRelationshipSource(int index, IEnumerable<Relationship> relationships)
     {
-        int sourceIndex = GetBoxIndex(FilteredSourceBoxes, relationship.Source);
-        int targetIndex = GetBoxIndex(FilteredTargetBoxes, relationship.Target);
-            
-        int box1Y = GetBoxY(sourceIndex);
+        int sourceIndex = 0;
 
-        int box2X = 400;
+        foreach (var relationship in relationships)
+        {
+            var height = 400;
+            var count = relationships.Count();
+            var margin = 20;
 
-        int arrowStartX = BoxWidth + 10;
-        int arrowStartY = box1Y + BoxHeight / 2;
+            yield return
+                CreateBoxElement(
+                    x: GetBoxX(index),
+                    y: GetSourceTopY(height, count, margin, sourceIndex) + 20,
+                    width: BoxWidth,
+                    height: GetSourceBoxHeight(height, count, margin),
+                    label: relationship.Source,
+                    fillColor: "#3E5EB2",
+                    textColour: "white",
+                    roundCorners: false
+               );
 
-        int arrowEndX = box2X;
-        int arrowEndY = GetBoxY(targetIndex) + BoxHeight / 2;
+            sourceIndex++;
+        }
+    }
 
-        return 
+    private static XElement DrawLine(Relationship relationship, int index)
+    {
+        int box1X = GetBoxX(index);
+
+        int arrowStartX = box1X + BoxWidth / 2 + 20;
+        int arrowStartY = 420;
+
+        int arrowEndX = box1X + BoxWidth / 2 + 20;
+        int arrowEndY = arrowStartY + 195;
+
+        return
             new XElement(
                 SvgNamespace + "g",
                 new XElement(
@@ -99,52 +112,84 @@ public class SvgRenderer
                     new XAttribute("y1", arrowStartY),
                     new XAttribute("x2", arrowEndX),
                     new XAttribute("y2", arrowEndY),
-                    new XAttribute("stroke", GetLineColour(index)),
+                    new XAttribute("stroke", "white"),
                     new XAttribute("stroke-width", "2")),
                 new XElement(
-                    SvgNamespace + "text",
-                    new XAttribute("x", BoxWidth + 410),
-                    new XAttribute("y", arrowEndY + 5),
-                    new XAttribute("fill", "black"),
-                    new XAttribute("font-family", "Helvetica"),
-                    new XAttribute("text-anchor", "start"),
-                    relationship.Label));
+                    SvgNamespace + "line",
+                    new XAttribute("x1", arrowStartX-10),
+                    new XAttribute("y1", arrowEndY-10),
+                    new XAttribute("x2", arrowEndX),
+                    new XAttribute("y2", arrowEndY),
+                    new XAttribute("stroke", "white"),
+                    new XAttribute("stroke-width", "2")),
+                new XElement(
+                    SvgNamespace + "line",
+                    new XAttribute("x1", arrowStartX+10),
+                    new XAttribute("y1", arrowEndY-10),
+                    new XAttribute("x2", arrowEndX),
+                    new XAttribute("y2", arrowEndY),
+                    new XAttribute("stroke", "white"),
+                    new XAttribute("stroke-width", "2")),
+                WrapLabelText(arrowEndX - 130, BoxHeight + 660, 18, relationship.Label)
+            );
     }
 
-    private static int GetBoxY(int index) => index * 100 + 10;
+    private static int GetBoxX(int index) => index * 270 + 5;
 
-    private static IEnumerable<XElement> DrawBoxes(IEnumerable<Box> boxes, int x, string colour, string textColour) =>
-        boxes
-            .Select(
-                (box, index) =>
-                    CreateBoxElement(
-                        x: x,
-                        y: GetBoxY(index),
-                        width: BoxWidth,
-                        height: BoxHeight,
-                        label: box.Name,
-                        fillColor: colour,
-                        textColour: textColour,
-                        hyperlink: box.Hyperlink));
+    private static int GetSourceBoxHeight(int height, int count, int margin)
+    {
+        return (height - (margin * (count - 1))) / count;
+    }
 
-    private static XElement CreateBoxElement(int x, int y, int width, int height, string fillColor, string label, string textColour, string? hyperlink) =>
+    private static int GetSourceTopY(int height, int count, int margin, int index)
+    {
+        return (GetSourceBoxHeight(height, count, margin) + margin) * index;
+    }
+
+    private static XElement CreateBoxElement(int x, int y, int width, int height, string fillColor, string label, string textColour, bool roundCorners) =>
         new(
-            SvgNamespace + "a",
-            hyperlink == null ? null : new XAttribute("href", hyperlink),
+            SvgNamespace + "g",
             new XElement(SvgNamespace + "rect",
-                new XAttribute("x", x),
+                new XAttribute("x", x + 20),
                 new XAttribute("y", y),
                 new XAttribute("width", width),
                 new XAttribute("height", height),
                 new XAttribute("fill", fillColor),
-                new XAttribute("stroke", "black"),
-                new XAttribute("rx", 10)
+                new XAttribute("stroke", "white"),
+                new XAttribute("stroke-width", "2"),
+                roundCorners ? new XAttribute("rx", "10") : null
             ),
             new XElement(SvgNamespace + "text",
-                new XAttribute("x", x + 10),
+                new XAttribute("x", x + 30),
                 new XAttribute("y", y + height / 2 + 5),
                 new XAttribute("fill", textColour),
                 new XAttribute("font-family", "Helvetica"),
+                new XAttribute("font-size", "1.2em"),
                 new XAttribute("text-anchor", "start"),
                 label));
+
+    private static IEnumerable<XElement> WrapLabelText(int x, int y, int lineHeight, string label)
+    {
+
+        string[] words = label.Split(' ');
+
+        // Calculate the number of segments
+        int numSegments = (int)Math.Ceiling((double)words.Length / 5);
+
+        // Initialize the result array
+        string[] result = new string[numSegments];
+
+        // Add each line as a separate text element
+        for (int i = 0; i < numSegments; i++)
+        {
+            result[i] = string.Join(" ", words.Skip(i * 5).Take(5));
+            yield return new XElement(SvgNamespace + "text",
+                new XAttribute("x", x + 5),
+                new XAttribute("y", y + (i + 1) * lineHeight),
+                new XAttribute("fill", "white"),
+                new XAttribute("font-size", "1em"),
+                new XAttribute("font-family", "Helvetica"),
+                result[i]);
+        }
+    }
 }
