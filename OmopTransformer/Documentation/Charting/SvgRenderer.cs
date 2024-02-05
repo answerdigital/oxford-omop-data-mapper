@@ -1,7 +1,4 @@
-﻿using System.Drawing;
-using System.Reflection.Emit;
-using System.Xml.Linq;
-using static System.Net.Mime.MediaTypeNames;
+﻿using System.Xml.Linq;
 
 namespace OmopTransformer.Documentation.Charting;
 
@@ -12,6 +9,7 @@ public class SvgRenderer
     private static readonly XNamespace SvgNamespace = "http://www.w3.org/2000/svg";
     private const int BoxWidth = 250;
     private const int BoxHeight = 50;
+    private const int Padding = 20;
 
     public SvgRenderer(IReadOnlyCollection<Relationship> relationships)
     {
@@ -21,7 +19,7 @@ public class SvgRenderer
     public string Render()
     {
         var sourceBoxesByTargetBoxes = _relationships.GroupBy(r => r.Target);
-        var width = GetBoxX(sourceBoxesByTargetBoxes.Count()) + BoxWidth / 2;
+        var width = GetBoxX(sourceBoxesByTargetBoxes.Count()) + 50;
 
         XElement svg =
         new XElement(
@@ -43,7 +41,6 @@ public class SvgRenderer
     private static IEnumerable<XElement> DrawRelationships (IEnumerable<IGrouping<string, Relationship>> relationships)
     {
         var boxes = new List<XElement>();
-
         int index = 0;
 
         foreach (var relationshipGroup in relationships)
@@ -80,7 +77,7 @@ public class SvgRenderer
             yield return
                 CreateBoxElement(
                     x: GetBoxX(index),
-                    y: GetSourceTopY(height, count, margin, sourceIndex) + 20,
+                    y: GetSourceTopY(height, count, margin, sourceIndex) + Padding,
                     width: BoxWidth,
                     height: GetSourceBoxHeight(height, count, margin),
                     label: relationship.Source,
@@ -97,10 +94,9 @@ public class SvgRenderer
     {
         int box1X = GetBoxX(index);
 
-        int arrowStartX = box1X + BoxWidth / 2 + 20;
-        int arrowStartY = 420;
+        int arrowX = box1X + BoxWidth / 2 + Padding;
 
-        int arrowEndX = box1X + BoxWidth / 2 + 20;
+        int arrowStartY = 420;
         int arrowEndY = arrowStartY + 195;
 
         return
@@ -108,29 +104,29 @@ public class SvgRenderer
                 SvgNamespace + "g",
                 new XElement(
                     SvgNamespace + "line",
-                    new XAttribute("x1", arrowStartX),
+                    new XAttribute("x1", arrowX),
                     new XAttribute("y1", arrowStartY),
-                    new XAttribute("x2", arrowEndX),
+                    new XAttribute("x2", arrowX),
                     new XAttribute("y2", arrowEndY),
                     new XAttribute("stroke", "white"),
                     new XAttribute("stroke-width", "2")),
                 new XElement(
                     SvgNamespace + "line",
-                    new XAttribute("x1", arrowStartX-10),
-                    new XAttribute("y1", arrowEndY-10),
-                    new XAttribute("x2", arrowEndX),
+                    new XAttribute("x1", arrowX - 10),
+                    new XAttribute("y1", arrowEndY - 10),
+                    new XAttribute("x2", arrowX),
                     new XAttribute("y2", arrowEndY),
                     new XAttribute("stroke", "white"),
                     new XAttribute("stroke-width", "2")),
                 new XElement(
                     SvgNamespace + "line",
-                    new XAttribute("x1", arrowStartX+10),
-                    new XAttribute("y1", arrowEndY-10),
-                    new XAttribute("x2", arrowEndX),
+                    new XAttribute("x1", arrowX + 10),
+                    new XAttribute("y1", arrowEndY - 10),
+                    new XAttribute("x2", arrowX),
                     new XAttribute("y2", arrowEndY),
                     new XAttribute("stroke", "white"),
                     new XAttribute("stroke-width", "2")),
-                WrapLabelText(arrowEndX - 130, BoxHeight + 660, 18, relationship.Label)
+                WrapLabelText(arrowX - 130, BoxHeight + 660, 18, relationship.Label)
             );
     }
 
@@ -150,7 +146,7 @@ public class SvgRenderer
         new(
             SvgNamespace + "g",
             new XElement(SvgNamespace + "rect",
-                new XAttribute("x", x + 20),
+                new XAttribute("x", x + Padding),
                 new XAttribute("y", y),
                 new XAttribute("width", width),
                 new XAttribute("height", height),
@@ -170,19 +166,17 @@ public class SvgRenderer
 
     private static IEnumerable<XElement> WrapLabelText(int x, int y, int lineHeight, string label)
     {
-
         string[] words = label.Split(' ');
 
         // Calculate the number of segments
         int numSegments = (int)Math.Ceiling((double)words.Length / 5);
 
-        // Initialize the result array
         string[] result = new string[numSegments];
 
-        // Add each line as a separate text element
         for (int i = 0; i < numSegments; i++)
         {
             result[i] = string.Join(" ", words.Skip(i * 5).Take(5));
+
             yield return new XElement(SvgNamespace + "text",
                 new XAttribute("x", x + 5),
                 new XAttribute("y", y + (i + 1) * lineHeight),
