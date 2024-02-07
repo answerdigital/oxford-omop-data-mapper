@@ -230,7 +230,7 @@ internal class DocumentationRenderer
         if (attributes.Any())
         {
             stringBuilder.AppendLine();
-            stringBuilder.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20{omopTable}%20table%20{omopField}%20field%20{title.Replace(" ", "%20")}%20mapping)");
+            stringBuilder.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20{omopTable}%20table%20{omopField}%20field%20{(title ?? "").Replace(" ", "%20")}%20mapping)");
         }
     }
 
