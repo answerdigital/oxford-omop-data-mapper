@@ -26,9 +26,11 @@ internal abstract class StagingSchema
 
         _logger.LogInformation("Clearing staging tables.");
 
+        const int TenMinutesInSeconds = 10 * 60;
+
         foreach (string sql in ClearStagingSql)
         {
-            await connection.ExecuteAsync(sql);
+            await connection.ExecuteAsync(sql, commandTimeout: TenMinutesInSeconds);
         }
     }
 }
