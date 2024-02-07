@@ -67,7 +67,7 @@ internal class Program
                         builder.Services.AddHostedService<CosdLoadStagingHostedService>();
                         break;
                     case "clear":
-                        builder.Services.AddHostedService<SactClearStagingHostedService>();
+                        builder.Services.AddHostedService<CosdClearStagingHostedService>();
                         break;
                     default:
                         await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
