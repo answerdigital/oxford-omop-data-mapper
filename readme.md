@@ -198,6 +198,12 @@ If all data is transformed and incomplete records still exist, use the [`prune c
 | ethnicity_source_value | If new value is not null, set it |
 | ethnicity_source_concept_id | If new value is not null, set it |
 
+### Remarks
+
+* If two records are related to the same person, the fields related to that person such as gender are populated based on last record wins. For example if one record says gender is Male and the next record says gender is Female, we overwrite the gender to be Female.
+* However if the second value says gender is null, we would not overwrite the gender.
+* The order in which data is loaded will define what the 'final' value of fields like gender.
+
 ## Location
 
 Merging logic is not needed as we only record unique locations. If the location already exists in the `location` table, do not record it. We never update records in this table.
