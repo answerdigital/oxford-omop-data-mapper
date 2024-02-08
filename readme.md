@@ -25,14 +25,14 @@ Copyright (C) 2024 omop
 
 |          | **Location** | **Person** | **Condition Occurrence** | **Visit Occurrence** | **Measurement**
 |----------|--------------|------------|--------------------------|----------------------|----------------------
-| **CDS**  |      ✔️       |     ✔️      |✔️                      |         ✔           |         ✔️ *           |
+| **CDS**  |      ✔️       |     ✔️      |✔️                      |         ✔           |         ✔️ ❗           |
 | **COSD** |     ✔️      |       ✔️     |                         |                      |                      |
 | **RTDS**  |     ✔️      |       ✔️     |                        |                      |                      |
 | **SACT** |      ✔️       |      ✔️      |                       |                      |                      |
 
 [Transformation documentation](Documentation/transformation-documentation.md)
 
-* denotes that no suitable data was found in the source file
+❗ denotes that no suitable data was found in the source file
 
 ## Docs command
 
