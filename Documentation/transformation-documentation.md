@@ -75,6 +75,20 @@
 ![](CdsVisitOccurrenceWithoutSpell.svg)
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsVisitOccurrenceWithoutSpell%20mapping)
+# VisitDetail
+* [HospitalProviderSpellNumber](VisitDetail_HospitalProviderSpellNumber.md)
+* [nhs_number](VisitDetail_nhs_number.md)
+* [RecordConnectionIdentifier](VisitDetail_RecordConnectionIdentifier.md)
+* [visit_detail_concept_id](VisitDetail_visit_detail_concept_id.md)
+* [visit_detail_end_date](VisitDetail_visit_detail_end_date.md)
+* [visit_detail_end_datetime](VisitDetail_visit_detail_end_datetime.md)
+* [visit_detail_start_date](VisitDetail_visit_detail_start_date.md)
+* [visit_detail_start_datetime](VisitDetail_visit_detail_start_datetime.md)
+* [visit_detail_type_concept_id](VisitDetail_visit_detail_type_concept_id.md)
+## CdsVisitDetail
+![](CdsVisitDetail.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsVisitDetail%20mapping)
 # ConditionOccurrence
 * [cds_diagnosis_id](ConditionOccurrence_cds_diagnosis_id.md)
 * [condition_concept_id](ConditionOccurrence_condition_concept_id.md)

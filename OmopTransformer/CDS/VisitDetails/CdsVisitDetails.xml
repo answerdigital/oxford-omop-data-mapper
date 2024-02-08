@@ -1,0 +1,60 @@
+﻿<Query>
+    <Sql>
+select  
+	distinct
+    
+		l1.NHSNumber,
+		l5.HospitalProviderSpellNumber,
+
+		case 
+			when l5.AdmissionMethodCode in ('21','24') and l5.PatientClassification = 1 then 262 
+			when l5.AdmissionMethodCode in ('21','24') then 9203
+			when l5.PatientClassification in (1) then 9201
+			when l4.LocationClass in ('02') then 581476
+			else 9202
+		end as VisitOccurenceConceptId,    -- ""visit_concept_id""
+
+		l1.RecordConnectionIdentifier,
+
+		coalesce(l5.EpisodeStartDate, l5.StartDateHospitalProviderSpell, l1.CDSActivityDate) as VisitStartDate,  -- visit_start_date
+		coalesce(l5.EpisodeStartTime, l5.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time
+
+		coalesce(l5.EpisodeEndDate, l5.DischargeDateHospitalProviderSpell, l1.CDSActivityDate) as VisitEndDate,
+
+		coalesce(l5.EpisodeEndTime, l5.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,
+
+		case 
+			when l5.EpisodeEndDate is null and l5.DischargeDateHospitalProviderSpell is null then 32220
+			else 32818 
+		end as VisitTypeConceptId
+from [omop_staging].[cds_line01] l1
+	left join [omop_staging].[cds_line04] l4 
+		on l1.MessageId = l4.MessageId -- Location Details
+	left join [omop_staging].[cds_line05] l5 
+		on l1.MessageId = l5.MessageId -- Hospital Provider Spell
+	inner join dbo.Code c 
+		on l1.ActivityTreatmentFunctionCode = c.Code
+where l1.CDSUpdateType = 9   -- New/Modification     (1 = Delete)
+	and l1.NHSNumber is not null
+	and c.CodeTypeId = 2 -- activity_treatment_function_code
+	</Sql>
+    <Explanation>
+		<OmopColumnExplanation columnName="NHSNumber">The patient's NHS Number.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="HospitalProviderSpellNumber">CDS specific hospital spell number that binds many episodes together.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="RecordConnectionIdentifier">CDS specific identifier that binds multiple CDS messages together.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="VisitOccurenceConceptId">
+
+			| Visit Occurrence Type (Info only)  | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |
+			|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|
+			| Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
+			| Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
+			| Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
+			| Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |
+			| Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
+		</OmopColumnExplanation>
+	    <OmopColumnExplanation columnName="VisitStartDate">Start date of the episode, if exists, else the start date of the spell.</OmopColumnExplanation>
+	    <OmopColumnExplanation columnName="VisitStartTime">Start time of the episode, if exists, else midnight.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="VisitEndDate">End date of the episode, if exists, else the spell discharge date, if exists, else the message date. </OmopColumnExplanation>
+	    <OmopColumnExplanation columnName="VisitEndTime">End time of the episode, if exists, else the spell discharge time, if exists, else the message date.</OmopColumnExplanation>
+	</Explanation>
+</Query>

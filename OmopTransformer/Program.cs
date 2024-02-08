@@ -20,6 +20,7 @@ using OmopTransformer.RTDS.Parser;
 using OmopTransformer.Rtds.Staging;
 using OmopTransformer.RTDS.Staging;
 using OmopTransformer.Omop.Prune;
+using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.Omop.VisitOccurrence;
 
 [assembly: InternalsVisibleTo("OmopTransformerTests")]
@@ -160,6 +161,7 @@ internal class Program
             builder.Services.AddTransient<IPersonRecorder, PersonRecorder>();
             builder.Services.AddTransient<IConditionOccurrenceRecorder, ConditionOccurrenceRecorder>();
             builder.Services.AddTransient<IVisitOccurrenceRecorder, VisitOccurrenceRecorder>();
+            builder.Services.AddTransient<IVisitDetailRecorder, VisitDetailRecorder>();
 
             if (string.Equals(transformOptions.Type, "cosd", StringComparison.OrdinalIgnoreCase))
             {

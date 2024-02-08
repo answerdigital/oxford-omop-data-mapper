@@ -23,12 +23,12 @@ Copyright (C) 2024 omop
 
 # Supported Transformations
 
-|          | **Location** | **Person** | **Condition Occurrence** | **Visit Occurrence** |
-|----------|--------------|------------|--------------------------|----------------------|
-| **CDS**  |      ✔️       |     ✔️      |✔️                      |         ✔           |
-| **COSD** |     ✔️      |       ✔️     |                         |                      |
-| **RTDS**  |     ✔️      |       ✔️     |                        |                      |
-| **SACT** |      ✔️       |      ✔️      |                       |                      |
+|          | **Location** | **Person** | **Condition Occurrence** | **Visit Occurrence** | **Visit Details** | 
+|----------|--------------|------------|--------------------------|----------------------|-------------------|
+| **CDS**  |      ✔️       |     ✔️      |✔️                      |         ✔️           |      ✔️         |
+| **COSD** |     ✔️      |       ✔️     |                         |                      |                  |
+| **RTDS**  |     ✔️      |       ✔️     |                        |                      |                  |
+| **SACT** |      ✔️       |      ✔️      |                       |                      |                  |
 
 [Transformation documentation](Documentation/transformation-documentation.md)
 
