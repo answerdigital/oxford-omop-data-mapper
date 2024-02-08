@@ -23,14 +23,16 @@ Copyright (C) 2024 omop
 
 # Supported Transformations
 
-|          | **Location** | **Person** | **Condition Occurrence** | **Visit Occurrence** | **Visit Details** | 
-|----------|--------------|------------|--------------------------|----------------------|-------------------|
-| **CDS**  |      ✔️       |     ✔️      |✔️                      |         ✔️           |      ✔️         |
-| **COSD** |     ✔️      |       ✔️     |                         |                      |                  |
-| **RTDS**  |     ✔️      |       ✔️     |                        |                      |                  |
-| **SACT** |      ✔️       |      ✔️      |                       |                      |                  |
+|          | **Location** | **Person** | **Condition Occurrence** | **Visit Occurrence** | **Visit Details** | **Measurement**      |
+|----------|--------------|------------|--------------------------|----------------------|-------------------|----------------------|
+| **CDS**  |      ✔️       |     ✔️      |✔️                      |         ✔️           |      ✔️             |	           ✔️ ❗     |
+| **COSD** |     ✔️      |       ✔️     |                         |                      |                    |	                    |
+| **RTDS**  |     ✔️      |       ✔️     |                        |                      |                    |	                    |
+| **SACT** |      ✔️       |      ✔️      |                       |                      |                    |	                    |
 
 [Transformation documentation](Documentation/transformation-documentation.md)
+
+❗ denotes that no suitable data was found in the source file
 
 ## Docs command
 
