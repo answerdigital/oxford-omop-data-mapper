@@ -1,6 +1,6 @@
 {
   "omopTable": "Person",
-  "origin": "Rtds",
+  "origin": "RTDS",
   "omopColumns": [
     {
       "name": "person_source_value",

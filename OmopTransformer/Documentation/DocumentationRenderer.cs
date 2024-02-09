@@ -3,6 +3,7 @@ using OmopTransformer.Omop;
 using OmopTransformer.Transformation;
 using System.Reflection;
 using System.Text;
+using Microsoft.Extensions.Logging;
 using OmopTransformer.Documentation.Charting;
 using OmopTransformer.Documentation.JSONRendering;
 
@@ -12,11 +13,13 @@ internal class DocumentationRenderer
 {
     private readonly IReadOnlyCollection<Type> _types;
     private readonly IQueryLocator _queryLocator;
+    private readonly ILogger<DocumentationWriter> _logger;
 
-    public DocumentationRenderer(IReadOnlyCollection<Type> types, IQueryLocator queryLocator)
+    public DocumentationRenderer(IReadOnlyCollection<Type> types, IQueryLocator queryLocator, ILogger<DocumentationWriter> logger)
     {
         _types = types;
         _queryLocator = queryLocator;
+        _logger = logger;
     }
 
     public IEnumerable<Document> Render()
@@ -112,7 +115,9 @@ internal class DocumentationRenderer
 
     private IEnumerable<Document> RenderJSONFiles(IEnumerable<Type> omopTargets) =>
         omopTargets
-            .Select(RenderJSONFile);
+            .Select(RenderJSONFile)
+            .Where(document => document != null)
+            .Cast<Document>();
 
     private static string OmopDescription(Type type) => ((IOmopTarget)Activator.CreateInstance(type)!).OmopTargetTypeDescription;
 
@@ -125,21 +130,24 @@ internal class DocumentationRenderer
         return new Document($"{type.Name}.svg", svgRenderer.Render());
     }
 
-    private Document RenderJSONFile(Type type)
+    private Document? RenderJSONFile(Type type)
     {
         var relationships = GetRelationships(type);
-
-        string origin = "";
+       
         var sourceType = GetOmopSourceType(type);
-        var description = sourceType.GetCustomAttributes(typeof(DescriptionAttribute)).FirstOrDefault();
+        var dataOrigin = sourceType.GetCustomAttributes(typeof(DataOriginAttribute)).FirstOrDefault();
 
-        if (description != null)
+        if (dataOrigin == null)
         {
-            origin = ((DescriptionAttribute)description).Value;
-            origin = origin.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
+            _logger.LogError($"{sourceType} has no origin attribute.");
+
+            return null;
         }
 
+        string origin = ((DataOriginAttribute)dataOrigin).Value;
+
         var jsonRenderer = new JSONRenderer(relationships, origin, OmopDescription(type));
+
         return new Document($"{type.Name}.json", jsonRenderer.Render());
     }
 

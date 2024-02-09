@@ -1,0 +1,62 @@
+{
+  "omopTable": "VisitDetail",
+  "origin": "CDS",
+  "omopColumns": [
+    {
+      "name": "nhs_number",
+      "sourceColumns": [
+        "NHSNumber"
+      ]
+    },
+    {
+      "name": "RecordConnectionIdentifier",
+      "sourceColumns": [
+        "RecordConnectionIdentifier"
+      ]
+    },
+    {
+      "name": "HospitalProviderSpellNumber",
+      "sourceColumns": [
+        "HospitalProviderSpellNumber"
+      ]
+    },
+    {
+      "name": "visit_detail_start_date",
+      "sourceColumns": [
+        "VisitStartDate"
+      ]
+    },
+    {
+      "name": "visit_detail_start_datetime",
+      "sourceColumns": [
+        "VisitStartDate",
+        "VisitStartTime"
+      ]
+    },
+    {
+      "name": "visit_detail_end_date",
+      "sourceColumns": [
+        "VisitEndDate"
+      ]
+    },
+    {
+      "name": "visit_detail_end_datetime",
+      "sourceColumns": [
+        "VisitEndDate",
+        "VisitEndTime"
+      ]
+    },
+    {
+      "name": "visit_detail_concept_id",
+      "sourceColumns": [
+        "VisitOccurenceConceptId"
+      ]
+    },
+    {
+      "name": "visit_detail_type_concept_id",
+      "sourceColumns": [
+        "VisitTypeConceptId"
+      ]
+    }
+  ]
+}

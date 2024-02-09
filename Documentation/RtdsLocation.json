@@ -1,6 +1,6 @@
 {
   "omopTable": "Location",
-  "origin": "Rtds",
+  "origin": "RTDS",
   "omopColumns": [
     {
       "name": "zip",

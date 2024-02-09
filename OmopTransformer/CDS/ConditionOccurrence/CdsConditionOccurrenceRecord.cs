@@ -2,6 +2,7 @@
 
 namespace OmopTransformer.CDS.ConditionOccurrence;
 
+[DataOrigin("CDS")]
 [Description("CDS Condition Occurrence")]
 [SourceQuery("CdsConditionOccurrence.xml")]
 internal class CdsConditionOccurrenceRecord

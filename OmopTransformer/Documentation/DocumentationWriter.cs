@@ -28,7 +28,7 @@ internal class DocumentationWriter : IDocumentationWriter
 
         Assembly currentAssembly = Assembly.GetExecutingAssembly();
 
-        var documentation = new DocumentationRenderer(currentAssembly.GetTypes(), _queryLocator).Render();
+        var documentation = new DocumentationRenderer(currentAssembly.GetTypes(), _queryLocator, _logger).Render();
 
         foreach (Document document in documentation)
         {
