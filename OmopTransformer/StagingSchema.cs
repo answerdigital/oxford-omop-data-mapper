@@ -1,5 +1,4 @@
 ﻿using System.Data.SqlClient;
-using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -25,12 +24,10 @@ internal abstract class StagingSchema
         await connection.OpenAsync(cancellationToken);
 
         _logger.LogInformation("Clearing staging tables.");
-
-        const int TenMinutesInSeconds = 10 * 60;
-
+        
         foreach (string sql in ClearStagingSql)
         {
-            await connection.ExecuteAsync(sql, commandTimeout: TenMinutesInSeconds);
+            await connection.ExecuteLongTimeoutAsync(sql);
         }
     }
 }

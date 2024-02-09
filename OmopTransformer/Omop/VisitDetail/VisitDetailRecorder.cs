@@ -81,7 +81,7 @@ internal class VisitDetailRecorder : IVisitDetailRecorder
                 DataSource = dataSource
             };
 
-            await connection.ExecuteAsync("cdm.insert_update_visit_detail", parameter, commandType: CommandType.StoredProcedure);
+            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_visit_detail", parameter, commandType: CommandType.StoredProcedure);
         }
 
         stopwatch.Stop();

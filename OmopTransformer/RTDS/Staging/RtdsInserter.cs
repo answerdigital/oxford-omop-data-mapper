@@ -106,7 +106,7 @@ internal class RtdsInserter : IRtdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_RTDS_1_Demographics",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -160,7 +160,7 @@ internal class RtdsInserter : IRtdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_RTDS_2a_Attendances",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -214,7 +214,7 @@ internal class RtdsInserter : IRtdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_RTDS_2b_Plan",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -270,7 +270,7 @@ internal class RtdsInserter : IRtdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_RTDS_3_Prescription",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -326,7 +326,7 @@ internal class RtdsInserter : IRtdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_RTDS_4_Exposures",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -372,7 +372,7 @@ internal class RtdsInserter : IRtdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_RTDS_5_Diagnosis_Course",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -446,7 +446,7 @@ internal class RtdsInserter : IRtdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_RTDS_PASDATA",
                     parameter,
                     commandType: CommandType.StoredProcedure);

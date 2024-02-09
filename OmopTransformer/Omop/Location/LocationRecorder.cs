@@ -71,7 +71,7 @@ internal class LocationRecorder : ILocationRecorder
                 DataSource = dataSource
             };
 
-            await connection.ExecuteAsync("cdm.InsertUpdateLocation", parameter, commandType: CommandType.StoredProcedure);
+            await connection.ExecuteLongTimeoutAsync("cdm.InsertUpdateLocation", parameter, commandType: CommandType.StoredProcedure);
         }
 
         stopwatch.Stop();

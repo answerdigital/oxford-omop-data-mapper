@@ -79,7 +79,7 @@ internal class PersonRecorder : IPersonRecorder
                 DataSource = dataSource
             };
 
-            await connection.ExecuteAsync("cdm.insert_update_person", parameter, commandType: CommandType.StoredProcedure);
+            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_person", parameter, commandType: CommandType.StoredProcedure);
         }
 
         stopwatch.Stop();

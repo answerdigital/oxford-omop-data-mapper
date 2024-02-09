@@ -81,7 +81,7 @@ internal class VisitOccurrenceRecorder : IVisitOccurrenceRecorder
                 DataSource = dataSource
             };
 
-            await connection.ExecuteAsync("cdm.insert_update_visit_occurrence", parameter, commandType: CommandType.StoredProcedure);
+            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_visit_occurrence", parameter, commandType: CommandType.StoredProcedure);
         }
 
         stopwatch.Stop();

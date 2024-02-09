@@ -136,7 +136,7 @@ internal class SactInserter : ISactInserter
                 SactRows = dataTable.AsTableValuedParameter("[omop_staging].[sact_staging_row]")
             };
 
-            await connection.ExecuteAsync("[omop_staging].[insert_sact_rows]", parameter, commandType: CommandType.StoredProcedure);
+            await connection.ExecuteLongTimeoutAsync("[omop_staging].[insert_sact_rows]", parameter, commandType: CommandType.StoredProcedure);
         }
 
         stopwatch.Stop();

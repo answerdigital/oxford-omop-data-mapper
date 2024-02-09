@@ -24,6 +24,6 @@ internal class OmopPruner
 
         await connection.OpenAsync(cancellationToken);
 
-        await connection.ExecuteAsync("cdm.prune_omop");
+        await connection.ExecuteLongTimeoutAsync("cdm.prune_omop");
     }
 }

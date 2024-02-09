@@ -136,7 +136,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_diagnosis",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -184,7 +184,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_high_cost_drugs",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -228,7 +228,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_secondary_investigations",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -272,7 +272,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_high_cost_drugs",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -316,7 +316,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_critial_care_activity_codes",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -396,7 +396,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_birth_details",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -468,7 +468,7 @@ internal class CdsInserter : ICdsInserter
                 };
 
                 await connection
-                    .ExecuteAsync(
+                    .ExecuteLongTimeoutAsync(
                         "omop_staging.insert_cds_procedure",
                         parameter,
                         commandType: CommandType.StoredProcedure);
@@ -656,7 +656,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "[omop_staging].[insert_cds_line01]",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -702,7 +702,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_line02",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -748,7 +748,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_line03",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -824,7 +824,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_line04",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -952,7 +952,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_line05",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -1054,7 +1054,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_line06",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -1104,7 +1104,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_line07",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -1208,7 +1208,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_line08",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -1294,7 +1294,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_line09",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -1378,7 +1378,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_line10",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -1466,7 +1466,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_line11",
                     parameter,
                     commandType: CommandType.StoredProcedure);
@@ -1514,7 +1514,7 @@ internal class CdsInserter : ICdsInserter
             };
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "omop_staging.insert_cds_line12",
                     parameter,
                     commandType: CommandType.StoredProcedure);

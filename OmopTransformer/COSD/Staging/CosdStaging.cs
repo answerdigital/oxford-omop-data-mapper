@@ -1,6 +1,5 @@
 ﻿using System.Data.SqlClient;
 using System.IO.Compression;
-using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -48,7 +47,7 @@ internal class CosdStaging : ICosdStaging
             _logger.LogInformation("Staging {0}.", entry.Name);
 
             await connection
-                .ExecuteAsync(
+                .ExecuteLongTimeoutAsync(
                     "insert into [omop_staging].[cosd_staging] values (@SubmissionName, @FileName, @Content)",
                     param:
                     new
