@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using OmopTransformer.CDS.ConditionOccurrence;
+using OmopTransformer.CDS.Death;
 using OmopTransformer.CDS.Person;
 using OmopTransformer.CDS.StructuredAddress;
 using OmopTransformer.CDS.UnstructuredAddress;
@@ -7,6 +8,7 @@ using OmopTransformer.CDS.VisitDetails;
 using OmopTransformer.CDS.VisitOccurrenceWithoutSpell;
 using OmopTransformer.CDS.VisitOccurrenceWithSpell;
 using OmopTransformer.Omop.ConditionOccurrence;
+using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.VisitDetail;
@@ -22,14 +24,16 @@ internal class CdsTransformer : Transformer
     private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
     private readonly IVisitOccurrenceRecorder _visitOccurrenceRecorder;
     private readonly IVisitDetailRecorder _visitDetailRecorder;
+    private readonly IDeathRecorder _deathRecorder;
 
-    public CdsTransformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, ILocationRecorder locationRecorder, IPersonRecorder personRecorder, IConditionOccurrenceRecorder conditionOccurrenceRecorder, IVisitOccurrenceRecorder visitOccurrenceRecorder, IVisitDetailRecorder visitDetailRecorder) : base(recordTransformer, logger, transformOptions, recordProvider, "CDS")
+    public CdsTransformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, ILocationRecorder locationRecorder, IPersonRecorder personRecorder, IConditionOccurrenceRecorder conditionOccurrenceRecorder, IVisitOccurrenceRecorder visitOccurrenceRecorder, IVisitDetailRecorder visitDetailRecorder, IDeathRecorder deathRecorder) : base(recordTransformer, logger, transformOptions, recordProvider, "CDS")
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
         _conditionOccurrenceRecorder = conditionOccurrenceRecorder;
         _visitOccurrenceRecorder = visitOccurrenceRecorder;
         _visitDetailRecorder = visitDetailRecorder;
+        _deathRecorder = deathRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -67,6 +71,11 @@ internal class CdsTransformer : Transformer
         await Transform<CdsVisitDetailsRecord, CdsVisitDetail>(
             _visitDetailRecorder.InsertUpdateVisitDetail,
             "CDS VisitDetail",
+            cancellationToken);
+
+        await Transform<CdsDeathRecord, CdsDeath>(
+            _deathRecorder.InsertUpdateDeaths,
+            "CDS Death",
             cancellationToken);
     }
 }

@@ -26,6 +26,9 @@
     <None Update="CDS\ConditionOccurrence\CdsConditionOccurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="CDS\Death\CdsDeath.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="CDS\InpatientDemographics\v_CDS_Inpatient_Demographics.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -89,6 +89,16 @@
 ![](CdsVisitDetail.svg)
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsVisitDetail%20mapping)
+# Death
+* [cause_source_concept_id](Death_cause_source_concept_id.md)
+* [death_date](Death_death_date.md)
+* [death_datetime](Death_death_datetime.md)
+* [death_type_concept_id](Death_death_type_concept_id.md)
+* [NhsNumber](Death_NhsNumber.md)
+## CdsDeath
+![](CdsDeath.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsDeath%20mapping)
 # ConditionOccurrence
 * [cds_diagnosis_id](ConditionOccurrence_cds_diagnosis_id.md)
 * [condition_concept_id](ConditionOccurrence_condition_concept_id.md)

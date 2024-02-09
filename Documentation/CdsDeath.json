@@ -1,0 +1,24 @@
+{
+  "omopTable": "Death",
+  "origin": "CDS",
+  "omopColumns": [
+    {
+      "name": "NhsNumber",
+      "sourceColumns": [
+        "nhs_number"
+      ]
+    },
+    {
+      "name": "death_date",
+      "sourceColumns": [
+        "death_date"
+      ]
+    },
+    {
+      "name": "death_datetime",
+      "sourceColumns": [
+        "death_date"
+      ]
+    }
+  ]
+}
