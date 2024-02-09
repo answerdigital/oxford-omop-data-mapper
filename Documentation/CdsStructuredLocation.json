@@ -1,0 +1,54 @@
+{
+  "omopTable": "Location",
+  "origin": "CDS",
+  "omopColumns": [
+    {
+      "name": "address_1",
+      "sourceColumns": [
+        "PatientAddressStructured1",
+        "PatientAddressStructured2"
+      ]
+    },
+    {
+      "name": "address_2",
+      "sourceColumns": [
+        "PatientAddressStructured3"
+      ]
+    },
+    {
+      "name": "city",
+      "sourceColumns": [
+        "PatientAddressStructured4"
+      ]
+    },
+    {
+      "name": "county",
+      "sourceColumns": [
+        "PatientAddressStructured5"
+      ]
+    },
+    {
+      "name": "zip",
+      "sourceColumns": [
+        "Postcode"
+      ]
+    },
+    {
+      "name": "location_source_value",
+      "sourceColumns": [
+        "PatientAddressStructured1",
+        "PatientAddressStructured2",
+        "PatientAddressStructured3",
+        "PatientAddressStructured4",
+        "PatientAddressStructured5",
+        "Postcode"
+      ]
+    },
+    {
+      "name": "nhs_number",
+      "sourceColumns": [
+        "NhsNumber"
+      ]
+    }
+  ]
+}

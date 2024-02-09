@@ -2,6 +2,7 @@
 
 namespace OmopTransformer.CDS.StructuredAddress;
 
+[DataOrigin("CDS")]
 [Description("CDS Structured Address")]
 [SourceQuery("CdsStructuredAddress.xml")]
 internal class CdsStructuredAddress

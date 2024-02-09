@@ -1,0 +1,42 @@
+{
+  "omopTable": "Person",
+  "origin": "RTDS",
+  "omopColumns": [
+    {
+      "name": "person_source_value",
+      "sourceColumns": [
+        "PatientId"
+      ]
+    },
+    {
+      "name": "year_of_birth",
+      "sourceColumns": [
+        "DateOfBirth"
+      ]
+    },
+    {
+      "name": "month_of_birth",
+      "sourceColumns": [
+        "DateOfBirth"
+      ]
+    },
+    {
+      "name": "day_of_birth",
+      "sourceColumns": [
+        "DateOfBirth"
+      ]
+    },
+    {
+      "name": "birth_datetime",
+      "sourceColumns": [
+        "DateOfBirth"
+      ]
+    },
+    {
+      "name": "gender_concept_id",
+      "sourceColumns": [
+        "Sex"
+      ]
+    }
+  ]
+}

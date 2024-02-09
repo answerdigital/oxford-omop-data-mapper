@@ -1,0 +1,52 @@
+{
+  "omopTable": "Location",
+  "origin": "COSD",
+  "omopColumns": [
+    {
+      "name": "address_1",
+      "sourceColumns": [
+        "StreetAddressLine1"
+      ]
+    },
+    {
+      "name": "address_2",
+      "sourceColumns": [
+        "StreetAddressLine2"
+      ]
+    },
+    {
+      "name": "city",
+      "sourceColumns": [
+        "StreetAddressLine3"
+      ]
+    },
+    {
+      "name": "county",
+      "sourceColumns": [
+        "StreetAddressLine4"
+      ]
+    },
+    {
+      "name": "zip",
+      "sourceColumns": [
+        "Postcode"
+      ]
+    },
+    {
+      "name": "location_source_value",
+      "sourceColumns": [
+        "StreetAddressLine1",
+        "StreetAddressLine2",
+        "StreetAddressLine3",
+        "StreetAddressLine4",
+        "Postcode"
+      ]
+    },
+    {
+      "name": "nhs_number",
+      "sourceColumns": [
+        "NhsNumber"
+      ]
+    }
+  ]
+}

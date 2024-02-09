@@ -2,6 +2,7 @@
 
 namespace OmopTransformer.CDS.VisitOccurrenceWithSpell;
 
+[DataOrigin("CDS")]
 [Description("CDS VisitOccurrenceWithSpell")]
 [SourceQuery("CdsVisitOccurrenceWithSpell.xml")]
 internal class CdsVisitOccurrenceWithSpellRecord

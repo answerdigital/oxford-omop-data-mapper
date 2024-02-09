@@ -1,0 +1,48 @@
+{
+  "omopTable": "Person",
+  "origin": "SACT",
+  "omopColumns": [
+    {
+      "name": "person_source_value",
+      "sourceColumns": [
+        "NHS_Number"
+      ]
+    },
+    {
+      "name": "year_of_birth",
+      "sourceColumns": [
+        "Date_Of_Birth"
+      ]
+    },
+    {
+      "name": "month_of_birth",
+      "sourceColumns": [
+        "Date_Of_Birth"
+      ]
+    },
+    {
+      "name": "day_of_birth",
+      "sourceColumns": [
+        "Date_Of_Birth"
+      ]
+    },
+    {
+      "name": "birth_datetime",
+      "sourceColumns": [
+        "Date_Of_Birth"
+      ]
+    },
+    {
+      "name": "gender_source_concept_id",
+      "sourceColumns": [
+        "Person_Stated_Gender_Code"
+      ]
+    },
+    {
+      "name": "gender_source_value",
+      "sourceColumns": [
+        "Person_Stated_Gender_Code"
+      ]
+    }
+  ]
+}

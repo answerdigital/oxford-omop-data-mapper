@@ -2,6 +2,7 @@
 
 namespace OmopTransformer.CDS.Person;
 
+[DataOrigin("CDS")]
 [Description("CDS Person")]
 [SourceQuery("CdsPerson.xml")]
 internal class CdsPersonRecord

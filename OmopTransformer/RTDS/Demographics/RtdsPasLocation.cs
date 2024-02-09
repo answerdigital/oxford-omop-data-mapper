@@ -2,6 +2,7 @@
 
 namespace OmopTransformer.RTDS.Demographics;
 
+[DataOrigin("RTDS")]
 [Description("Rtds PAS Location")]
 [SourceQuery("RtdsLocation.xml")]
 internal class RtdsPasLocation

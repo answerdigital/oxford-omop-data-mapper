@@ -2,6 +2,7 @@
 
 namespace OmopTransformer.RTDS.Demographics;
 
+[DataOrigin("RTDS")]
 [Description("Rtds Demographics")]
 [SourceQuery("RtdsDemographics.xml")]
 internal class RtdsDemographics

@@ -2,6 +2,7 @@
 
 namespace OmopTransformer.CDS.VisitDetails;
 
+[DataOrigin("CDS")]
 [Description("CDS VisitDetails")]
 [SourceQuery("CdsVisitDetails.xml")]
 internal class CdsVisitDetailsRecord

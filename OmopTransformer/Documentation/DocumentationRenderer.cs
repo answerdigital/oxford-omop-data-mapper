@@ -3,7 +3,9 @@ using OmopTransformer.Omop;
 using OmopTransformer.Transformation;
 using System.Reflection;
 using System.Text;
+using Microsoft.Extensions.Logging;
 using OmopTransformer.Documentation.Charting;
+using OmopTransformer.Documentation.JSONRendering;
 
 namespace OmopTransformer.Documentation;
 
@@ -11,11 +13,13 @@ internal class DocumentationRenderer
 {
     private readonly IReadOnlyCollection<Type> _types;
     private readonly IQueryLocator _queryLocator;
+    private readonly ILogger<DocumentationWriter> _logger;
 
-    public DocumentationRenderer(IReadOnlyCollection<Type> types, IQueryLocator queryLocator)
+    public DocumentationRenderer(IReadOnlyCollection<Type> types, IQueryLocator queryLocator, ILogger<DocumentationWriter> logger)
     {
         _types = types;
         _queryLocator = queryLocator;
+        _logger = logger;
     }
 
     public IEnumerable<Document> Render()
@@ -27,6 +31,9 @@ internal class DocumentationRenderer
 
         foreach (var diagram in RenderDiagrams(typesImplementingIOmopRecord))
             yield return diagram;
+
+        foreach (var JSONFile in RenderJSONFiles(typesImplementingIOmopRecord))
+            yield return JSONFile;
 
         var mapperByOmopTarget =
             typesImplementingIOmopRecord
@@ -106,6 +113,12 @@ internal class DocumentationRenderer
         omopTargets
             .Select(RenderDiagram);
 
+    private IEnumerable<Document> RenderJSONFiles(IEnumerable<Type> omopTargets) =>
+        omopTargets
+            .Select(RenderJSONFile)
+            .Where(document => document != null)
+            .Cast<Document>();
+
     private static string OmopDescription(Type type) => ((IOmopTarget)Activator.CreateInstance(type)!).OmopTargetTypeDescription;
 
     private Document RenderDiagram(Type type)
@@ -115,6 +128,27 @@ internal class DocumentationRenderer
         var svgRenderer = new SvgRenderer(relationships);
 
         return new Document($"{type.Name}.svg", svgRenderer.Render());
+    }
+
+    private Document? RenderJSONFile(Type type)
+    {
+        var relationships = GetRelationships(type);
+       
+        var sourceType = GetOmopSourceType(type);
+        var dataOrigin = sourceType.GetCustomAttributes(typeof(DataOriginAttribute)).FirstOrDefault();
+
+        if (dataOrigin == null)
+        {
+            _logger.LogError($"{sourceType} has no origin attribute.");
+
+            return null;
+        }
+
+        string origin = ((DataOriginAttribute)dataOrigin).Value;
+
+        var jsonRenderer = new JSONRenderer(relationships, origin, OmopDescription(type));
+
+        return new Document($"{type.Name}.json", jsonRenderer.Render());
     }
 
     private static List<Relationship> GetRelationships(Type type) =>

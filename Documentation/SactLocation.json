@@ -1,0 +1,24 @@
+{
+  "omopTable": "Location",
+  "origin": "SACT",
+  "omopColumns": [
+    {
+      "name": "zip",
+      "sourceColumns": [
+        "Patient_Postcode"
+      ]
+    },
+    {
+      "name": "location_source_value",
+      "sourceColumns": [
+        "Patient_Postcode"
+      ]
+    },
+    {
+      "name": "nhs_number",
+      "sourceColumns": [
+        "NHS_Number"
+      ]
+    }
+  ]
+}

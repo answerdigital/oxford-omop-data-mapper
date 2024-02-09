@@ -2,6 +2,7 @@
 
 namespace OmopTransformer.SACT;
 
+[DataOrigin("SACT")]
 [Description("SACT")]
 internal class Sact
 {
