@@ -1,0 +1,18 @@
+{
+  "omopTable": "Location",
+  "origin": "Rtds",
+  "omopColumns": [
+    {
+      "name": "zip",
+      "sourceColumns": [
+        "Postcode"
+      ]
+    },
+    {
+      "name": "nhs_number",
+      "sourceColumns": [
+        "NhsNumber"
+      ]
+    }
+  ]
+}

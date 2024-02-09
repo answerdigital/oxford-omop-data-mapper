@@ -1,0 +1,44 @@
+{
+  "omopTable": "VisitOccurrence",
+  "origin": "CDS",
+  "omopColumns": [
+    {
+      "name": "NhsNumber",
+      "sourceColumns": [
+        "NHSNumber"
+      ]
+    },
+    {
+      "name": "RecordConnectionIdentifier",
+      "sourceColumns": [
+        "RecordConnectionIdentifier"
+      ]
+    },
+    {
+      "name": "visit_start_date",
+      "sourceColumns": [
+        "EpisodeStartDate"
+      ]
+    },
+    {
+      "name": "visit_start_datetime",
+      "sourceColumns": [
+        "EpisodeStartDate",
+        "EpisodeStartTime"
+      ]
+    },
+    {
+      "name": "visit_end_date",
+      "sourceColumns": [
+        "EpisodeEndDate"
+      ]
+    },
+    {
+      "name": "visit_end_datetime",
+      "sourceColumns": [
+        "EpisodeEndDate",
+        "EpisodeEndTime"
+      ]
+    }
+  ]
+}

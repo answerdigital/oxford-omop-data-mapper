@@ -1,0 +1,18 @@
+{
+  "omopTable": "Location",
+  "origin": "CDS",
+  "omopColumns": [
+    {
+      "name": "zip",
+      "sourceColumns": [
+        "Postcode"
+      ]
+    },
+    {
+      "name": "location_source_value",
+      "sourceColumns": [
+        "Postcode"
+      ]
+    }
+  ]
+}

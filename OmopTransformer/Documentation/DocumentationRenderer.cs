@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 using System.Reflection;
 using System.Text;
 using OmopTransformer.Documentation.Charting;
+using OmopTransformer.Documentation.JSONRendering;
 
 namespace OmopTransformer.Documentation;
 
@@ -27,6 +28,9 @@ internal class DocumentationRenderer
 
         foreach (var diagram in RenderDiagrams(typesImplementingIOmopRecord))
             yield return diagram;
+
+        foreach (var JSONFile in RenderJSONFiles(typesImplementingIOmopRecord))
+            yield return JSONFile;
 
         var mapperByOmopTarget =
             typesImplementingIOmopRecord
@@ -106,6 +110,10 @@ internal class DocumentationRenderer
         omopTargets
             .Select(RenderDiagram);
 
+    private IEnumerable<Document> RenderJSONFiles(IEnumerable<Type> omopTargets) =>
+        omopTargets
+            .Select(RenderJSONFile);
+
     private static string OmopDescription(Type type) => ((IOmopTarget)Activator.CreateInstance(type)!).OmopTargetTypeDescription;
 
     private Document RenderDiagram(Type type)
@@ -115,6 +123,24 @@ internal class DocumentationRenderer
         var svgRenderer = new SvgRenderer(relationships);
 
         return new Document($"{type.Name}.svg", svgRenderer.Render());
+    }
+
+    private Document RenderJSONFile(Type type)
+    {
+        var relationships = GetRelationships(type);
+
+        string origin = "";
+        var sourceType = GetOmopSourceType(type);
+        var description = sourceType.GetCustomAttributes(typeof(DescriptionAttribute)).FirstOrDefault();
+
+        if (description != null)
+        {
+            origin = ((DescriptionAttribute)description).Value;
+            origin = origin.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
+        }
+
+        var jsonRenderer = new JSONRenderer(relationships, origin, OmopDescription(type));
+        return new Document($"{type.Name}.json", jsonRenderer.Render());
     }
 
     private static List<Relationship> GetRelationships(Type type) =>

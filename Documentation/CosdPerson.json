@@ -1,0 +1,54 @@
+{
+  "omopTable": "Person",
+  "origin": "COSD",
+  "omopColumns": [
+    {
+      "name": "person_source_value",
+      "sourceColumns": [
+        "NhsNumber"
+      ]
+    },
+    {
+      "name": "year_of_birth",
+      "sourceColumns": [
+        "DateOfBirth"
+      ]
+    },
+    {
+      "name": "month_of_birth",
+      "sourceColumns": [
+        "DateOfBirth"
+      ]
+    },
+    {
+      "name": "day_of_birth",
+      "sourceColumns": [
+        "DateOfBirth"
+      ]
+    },
+    {
+      "name": "birth_datetime",
+      "sourceColumns": [
+        "DateOfBirth"
+      ]
+    },
+    {
+      "name": "race_concept_id",
+      "sourceColumns": [
+        "EthnicCategory"
+      ]
+    },
+    {
+      "name": "race_source_value",
+      "sourceColumns": [
+        "EthnicCategory"
+      ]
+    },
+    {
+      "name": "race_source_concept_id",
+      "sourceColumns": [
+        "EthnicCategory"
+      ]
+    }
+  ]
+}

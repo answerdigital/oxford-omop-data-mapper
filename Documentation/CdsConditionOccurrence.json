@@ -1,0 +1,36 @@
+{
+  "omopTable": "ConditionOccurrence",
+  "origin": "CDS",
+  "omopColumns": [
+    {
+      "name": "nhs_number",
+      "sourceColumns": [
+        "NHSNumber"
+      ]
+    },
+    {
+      "name": "condition_concept_id",
+      "sourceColumns": [
+        "DiagnosisCode"
+      ]
+    },
+    {
+      "name": "condition_start_date",
+      "sourceColumns": [
+        "CDSActivityDate"
+      ]
+    },
+    {
+      "name": "cds_diagnosis_id",
+      "sourceColumns": [
+        "DiagnosisId"
+      ]
+    },
+    {
+      "name": "condition_source_value",
+      "sourceColumns": [
+        "DiagnosisCode"
+      ]
+    }
+  ]
+}
