@@ -2,7 +2,7 @@
 
 public class JSONStructure
 {
-    public string OmopTable { get; set; }
-    public string Origin { get; set; }
-    public List<OMOPColumns> OmopColumns { get; set; }
+    public string OmopTable { get; set; } = string.Empty;
+    public string Origin { get; set; } = string.Empty;
+    public List<OMOPColumns> OmopColumns { get; set; } = [];
 }
