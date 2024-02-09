@@ -23,12 +23,12 @@ Copyright (C) 2024 omop
 
 # Supported Transformations
 
-|          | **Location** | **Person** | **Condition Occurrence** | **Visit Occurrence** | **Visit Details** | **Measurement**      |
-|----------|--------------|------------|--------------------------|----------------------|-------------------|----------------------|
-| **CDS**  |      ✔️       |     ✔️      |✔️                      |         ✔️           |      ✔️             |	           ✔️ ❗     |
-| **COSD** |     ✔️      |       ✔️     |                         |                      |                    |	                    |
-| **RTDS**  |     ✔️      |       ✔️     |                        |                      |                    |	                    |
-| **SACT** |      ✔️       |      ✔️      |                       |                      |                    |	                    |
+|          | **Location** | **Person** | **Condition Occurrence** | **Visit Occurrence** | **Visit Details** | **Measurement**      | **Death** |
+|----------|--------------|------------|--------------------------|----------------------|-------------------|----------------------|-----------|
+| **CDS**  |      ✔️       |     ✔️      |✔️                      |         ✔️           |      ✔️             |	           ✔️ ❗ |    ✔️     |
+| **COSD** |     ✔️      |       ✔️     |                         |                      |                    |	                    |            |
+| **RTDS**  |     ✔️      |       ✔️     |                        |                      |                    |	                    |            |
+| **SACT** |      ✔️       |      ✔️      |                       |                      |                    |	                    |            |
 
 [Transformation documentation](Documentation/transformation-documentation.md)
 
@@ -213,3 +213,7 @@ Merging logic is not needed as we only record unique locations. If the location 
 ## Condition Occurrence
 
 Cds condition occurrences have a unique key `DiagnosisId`. Records are added if they do not exist already. No merging logic is required.
+
+## Death
+
+Merging logic is not needed. If a patient deaths are recorded when no such record already exists.
