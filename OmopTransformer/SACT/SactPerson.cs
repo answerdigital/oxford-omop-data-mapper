@@ -26,7 +26,7 @@ internal class SactPerson : OmopPerson<Sact>
     public override int? ethnicity_concept_id { get; set; }
 
     [Transform(typeof(NhsGenderLookup), nameof(Source.Person_Stated_Gender_Code))]
-    public override int? gender_source_concept_id { get; set; }
+    public override int? gender_concept_id { get; set; }
 
     [CopyValue(nameof(Source.Person_Stated_Gender_Code))]
     public override string? gender_source_value { get; set; }

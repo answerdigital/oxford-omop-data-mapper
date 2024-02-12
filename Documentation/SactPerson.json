@@ -33,7 +33,7 @@
       ]
     },
     {
-      "name": "gender_source_concept_id",
+      "name": "gender_concept_id",
       "sourceColumns": [
         "Person_Stated_Gender_Code"
       ]
