@@ -24,7 +24,7 @@ internal class CdsVisitOccurrenceWithoutSpell : OmopVisitOccurrence<CdsVisitOccu
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.EpisodeEndDate), nameof(Source.EpisodeEndTime))]
     public override DateTime? visit_end_datetime { get; set; }
 
-    [ConstantValue(9202, "`Inpatient Visit`")]
+    [ConstantValue(9202, "`Outpatient Visit`")]
     public override int? visit_concept_id { get; set; }
 
     [ConstantValue(32220, "`Still Patient`")]
