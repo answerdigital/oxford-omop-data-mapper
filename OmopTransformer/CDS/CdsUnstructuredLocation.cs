@@ -5,7 +5,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.CDS;
 
-internal class CdsLocation : OmopLocation<CdsUnstructuredAddress>
+internal class CdsUnstructuredLocation : OmopLocation<CdsUnstructuredAddress>
 {
     [Transform(typeof(PostcodeFormatter), nameof(Source.Postcode))]
     public override string? zip { get; set; }
