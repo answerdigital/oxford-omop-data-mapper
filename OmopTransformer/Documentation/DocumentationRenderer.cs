@@ -71,7 +71,6 @@ internal class DocumentationRenderer
                                             Mapper = mapper
                                         }))
                     .GroupBy(property => property.Property.Name)
-                    .OrderBy(name => name.Key)
                     .ToList();
 
             foreach (var propertyGroup in mapperByProperty)
@@ -256,7 +255,7 @@ internal class DocumentationRenderer
 
             if (attribute is TransformAttribute transformAttribute)
             {
-                RenderTransform(stringBuilder, transformAttribute);
+                RenderTransform(stringBuilder, transformAttribute, property.Name);
                 RenderQueryIfAny(mapperType, stringBuilder, transformAttribute.Value);
             }
         }
@@ -312,7 +311,7 @@ internal class DocumentationRenderer
         }
     }
 
-    private static void RenderTransform(StringBuilder stringBuilder, TransformAttribute transformAttribute)
+    private static void RenderTransform(StringBuilder stringBuilder, TransformAttribute transformAttribute, string targetField)
     {
         foreach (var transformDescription in transformAttribute.Type.GetCustomAttributes(typeof(DescriptionAttribute)))
         {
@@ -322,15 +321,15 @@ internal class DocumentationRenderer
 
         if (typeof(ILookup).IsAssignableFrom(transformAttribute.Type))
         {
-            RenderLookupTransform(stringBuilder, transformAttribute);
+            RenderLookupTransform(stringBuilder, transformAttribute, targetField);
         }
     }
 
-    private static void RenderLookupTransform(StringBuilder stringBuilder, TransformAttribute transformAttribute)
+    private static void RenderLookupTransform(StringBuilder stringBuilder, TransformAttribute transformAttribute, string targetField)
     {
         stringBuilder.AppendLine();
         stringBuilder.AppendLine();
-        stringBuilder.AppendLine("|before|after|notes|");
+        stringBuilder.AppendLine($"|{transformAttribute.Value.FirstOrDefault()}|{targetField}|notes|");
         stringBuilder.AppendLine("|------|-----|-----|");
 
         var lookup = (ILookup)Activator.CreateInstance(transformAttribute.Type)!;
