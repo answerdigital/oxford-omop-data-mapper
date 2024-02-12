@@ -27,6 +27,6 @@ internal class CdsVisitOccurrenceWithoutSpell : OmopVisitOccurrence<CdsVisitOccu
     [ConstantValue(9202, "`Outpatient Visit`")]
     public override int? visit_concept_id { get; set; }
 
-    [ConstantValue(32220, "`Still Patient`")]
+    [ConstantValue(32818, "`EHR Administration Record`")]
     public override int? visit_type_concept_id { get; set; }
 }
