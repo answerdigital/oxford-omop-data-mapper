@@ -7,6 +7,6 @@ namespace OmopTransformer.RTDS.Demographics;
 [SourceQuery("RtdsLocation.xml")]
 internal class RtdsPasLocation
 {
-    public string? NhsNumber { get; set; }
-    public string? Postcode { get; set; }
+    public string? FirstOfNHSNUMBER { get; set; }
+    public string? FirstOfPOSTCODE { get; set; }
 }

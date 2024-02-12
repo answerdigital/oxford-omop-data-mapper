@@ -2,14 +2,14 @@
     <Sql>
 select
 	distinct
-		p.FirstOfNHSNUMBER as NhsNumber,
-		p.FirstOfPOSTCODE as Postcode
+		p.FirstOfNHSNUMBER,
+		p.FirstOfPOSTCODE
 from omop_staging.RTDS_PASDATA p
 where p.FirstOfPOSTCODE is not null
 	and p.FirstOfNHSNUMBER is not null;
 	</Sql>
     <Explanation>
-		<OmopColumnExplanation columnName="NhsNumber">The patient's NHSNumber.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="Postcode">The patient's Postcode.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="FirstOfNHSNUMBER">The patient's NHSNumber.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="FirstOfPOSTCODE">The patient's Postcode.</OmopColumnExplanation>
     </Explanation>
 </Query>
