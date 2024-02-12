@@ -21,6 +21,7 @@ internal class SactPerson : OmopPerson<Sact>
     [Transform(typeof(DateConverter), nameof(Source.Date_Of_Birth))]
     public override DateTime? birth_datetime { get; set; }
 
+    [Description("Note: This is specific to US-based data mappings and is in regards to being “Hispanic “ and “Not Hispanic”. All our data is UK-based.")]
     [ConstantValue(0, "Unknown concept")]
     public override int? ethnicity_concept_id { get; set; }
 

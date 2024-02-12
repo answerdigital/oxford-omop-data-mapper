@@ -22,9 +22,10 @@ internal class RtdsPerson : OmopPerson<RtdsDemographics>
     [Transform(typeof(DateConverter), nameof(Source.DateOfBirth))]
     public override DateTime? birth_datetime { get; set; }
 
+    [Description("Note: This is specific to US-based data mappings and is in regards to being “Hispanic “ and “Not Hispanic”. All our data is UK-based.")]
     [ConstantValue(0, "Unknown concept")]
     public override int? ethnicity_concept_id { get; set; }
 
-    [Transform(typeof(GenderLookup), nameof(Source.Sex))]
+    [Transform(typeof(RTDSGenderLookup), nameof(Source.Sex))]
     public override int? gender_concept_id { get; set; }
 }

@@ -31,6 +31,7 @@ internal class CosdPerson : OmopPerson<CosdDemographics>
     [Transform(typeof(RaceSourceConceptLookup), nameof(Source.EthnicCategory))]
     public override int? race_source_concept_id { get; set; }
 
+    [Description("Note: This is specific to US-based data mappings and is in regards to being “Hispanic “ and “Not Hispanic”. All our data is UK-based.")]
     [ConstantValue(0, "Unknown concept")]
     public override int? ethnicity_concept_id { get; set; }
 }
