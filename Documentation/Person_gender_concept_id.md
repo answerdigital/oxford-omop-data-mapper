@@ -4,19 +4,14 @@ Source column  `Sex`.
 Lookup gender concept.
 
 
-|before|after|notes|
+|Sex|gender_concept_id|notes|
 |------|-----|-----|
 |Male|8507||
-|1|8507||
 |Female|8532||
-|2|8532||
-|9|8551||
-|X|8551||
 |Unknown|8551||
 |Not Stated|8551||
 
 Notes
-* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
 * [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
 * `Sex` The patient's Sex.
 <details>
@@ -42,16 +37,12 @@ Source column  `PersonCurrentGenderCode`.
 Lookup gender concept.
 
 
-|before|after|notes|
+|PersonCurrentGenderCode|gender_concept_id|notes|
 |------|-----|-----|
-|Male|8507||
-|1|8507||
-|Female|8532||
-|2|8532||
-|9|8551||
-|X|8551||
-|Unknown|8551||
-|Not Stated|8551||
+|1|8507|Male|
+|2|8532|Female|
+|9|8551|Indeterminate (unable to be classified as either male or female)|
+|X|8551|Not known|
 
 Notes
 * [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)

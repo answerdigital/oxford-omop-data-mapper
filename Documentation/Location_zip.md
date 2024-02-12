@@ -5,17 +5,17 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20SACT%20mapping)
 ### Rtds PAS Location
-Source column  `Postcode`.
+Source column  `FirstOfPOSTCODE`.
 Uppercase the postcode then insert the space in the correct location, if needed.
-* `Postcode` The patient's Postcode.
+* `FirstOfPOSTCODE` The patient's Postcode.
 <details>
 <summary>SQL</summary>
 
 ```sql
 select
 	distinct
-		p.FirstOfNHSNUMBER as NhsNumber,
-		p.FirstOfPOSTCODE as Postcode
+		p.FirstOfNHSNUMBER,
+		p.FirstOfPOSTCODE
 from omop_staging.RTDS_PASDATA p
 where p.FirstOfPOSTCODE is not null
 	and p.FirstOfNHSNUMBER is not null;

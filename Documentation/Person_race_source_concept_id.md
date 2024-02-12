@@ -4,7 +4,7 @@ Source column  `EthnicCategory`.
 Lookup race source concept.
 
 
-|before|after|notes|
+|EthnicCategory|race_source_concept_id|notes|
 |------|-----|-----|
 |A|700385|White - British|
 |B|700386|White - Irish|
@@ -105,7 +105,7 @@ Source column  `EthnicCategory`.
 Lookup race source concept.
 
 
-|before|after|notes|
+|EthnicCategory|race_source_concept_id|notes|
 |------|-----|-----|
 |A|700385|White - British|
 |B|700386|White - Irish|

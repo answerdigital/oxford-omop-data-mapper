@@ -9,7 +9,7 @@ internal class CdsPerson : OmopPerson<CdsPersonRecord>
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? person_source_value { get; set; }
 
-    [Transform(typeof(GenderLookup), nameof(Source.PersonCurrentGenderCode))]
+    [Transform(typeof(NhsGenderLookup), nameof(Source.PersonCurrentGenderCode))]
     public override int? gender_concept_id { get; set; }
 
     [Transform(typeof(YearSelector), nameof(Source.DateOfBirth))]

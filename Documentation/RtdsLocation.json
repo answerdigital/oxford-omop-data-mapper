@@ -5,13 +5,19 @@
     {
       "name": "zip",
       "sourceColumns": [
-        "Postcode"
+        "FirstOfPOSTCODE"
       ]
     },
     {
       "name": "nhs_number",
       "sourceColumns": [
-        "NhsNumber"
+        "FirstOfNHSNUMBER"
+      ]
+    },
+    {
+      "name": "location_source_value",
+      "sourceColumns": [
+        "FirstOfNHSNUMBER"
       ]
     }
   ]

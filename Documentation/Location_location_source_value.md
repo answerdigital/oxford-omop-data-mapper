@@ -3,6 +3,26 @@
 * Value copied from `Patient_Postcode`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20location_source_value%20field%20SACT%20mapping)
+### Rtds PAS Location
+* Value copied from `FirstOfNHSNUMBER`
+* `FirstOfNHSNUMBER` The patient's NHSNumber.
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		p.FirstOfNHSNUMBER,
+		p.FirstOfPOSTCODE
+from omop_staging.RTDS_PASDATA p
+where p.FirstOfPOSTCODE is not null
+	and p.FirstOfNHSNUMBER is not null;
+	
+```
+</details>
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20location_source_value%20field%20Rtds%20PAS%20Location%20mapping)
 ### COSD Demographics
 Source columns  `StreetAddressLine1`, `StreetAddressLine2`, `StreetAddressLine3`, `StreetAddressLine4`, `Postcode`.
 Separates text with newlines. Trim whitespace.

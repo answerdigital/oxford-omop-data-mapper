@@ -3,35 +3,23 @@
 namespace OmopTransformer.Transformation;
 
 [Description("Lookup gender concept.")]
-internal class GenderLookup : ILookup
+internal class NhsGenderLookup : ILookup
 {
     public Dictionary<string, ValueWithNote> Mappings { get; } =
         new()
         {
             {
-                "Male", new ValueWithNote("8507", "")
+                "1", new ValueWithNote("8507", "Male")
             },
             {
-                "1", new ValueWithNote("8507", "")
+                "2", new ValueWithNote("8532", "Female")
             },
             {
-                "Female", new ValueWithNote("8532", "")
+                "9", new ValueWithNote("8551", "Indeterminate (unable to be classified as either male or female)")
             },
             {
-                "2", new ValueWithNote("8532", "")
+                "X", new ValueWithNote("8551", "Not known")
             },
-            {
-                "9", new ValueWithNote("8551", "")
-            },
-            {
-                "X", new ValueWithNote("8551", "")
-            },
-            {
-                "Unknown", new ValueWithNote("8551", "")
-            },
-            {
-                "Not Stated", new ValueWithNote("8551", "")
-            }
         };
 
     public string[] ColumnNotes =>

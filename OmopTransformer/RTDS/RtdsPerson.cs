@@ -26,6 +26,6 @@ internal class RtdsPerson : OmopPerson<RtdsDemographics>
     [ConstantValue(0, "Unknown concept")]
     public override int? ethnicity_concept_id { get; set; }
 
-    [Transform(typeof(RTDSGenderLookup), nameof(Source.Sex))]
+    [Transform(typeof(RtdsGenderLookup), nameof(Source.Sex))]
     public override int? gender_concept_id { get; set; }
 }

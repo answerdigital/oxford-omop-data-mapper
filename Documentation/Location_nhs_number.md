@@ -4,16 +4,16 @@
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20SACT%20mapping)
 ### Rtds PAS Location
-* Value copied from `NhsNumber`
-* `NhsNumber` The patient's NHSNumber.
+* Value copied from `FirstOfNHSNUMBER`
+* `FirstOfNHSNUMBER` The patient's NHSNumber.
 <details>
 <summary>SQL</summary>
 
 ```sql
 select
 	distinct
-		p.FirstOfNHSNUMBER as NhsNumber,
-		p.FirstOfPOSTCODE as Postcode
+		p.FirstOfNHSNUMBER,
+		p.FirstOfPOSTCODE
 from omop_staging.RTDS_PASDATA p
 where p.FirstOfPOSTCODE is not null
 	and p.FirstOfNHSNUMBER is not null;

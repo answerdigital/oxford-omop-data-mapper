@@ -3,7 +3,7 @@
 * Value copied from `VisitOccurenceConceptId`
 * `VisitOccurenceConceptId` 
 			
-| Visit Occurrence Type (Info only)  | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |
+| Visit Occurrence Type             | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |
 |------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|
 | Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
 | Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
@@ -66,6 +66,6 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_concept_id%20field%20CDS%20VisitOccurrenceWithSpell%20mapping)
 ### CDS VisitOccurrenceWithoutSpell
-* Constant value set to `9202`. `Inpatient Visit`
+* Constant value set to `9202`. `Outpatient Visit`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_concept_id%20field%20CDS%20VisitOccurrenceWithoutSpell%20mapping)

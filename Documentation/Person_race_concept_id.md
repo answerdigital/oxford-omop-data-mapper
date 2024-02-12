@@ -4,15 +4,15 @@ Source column  `EthnicCategory`.
 Lookup race concept.
 
 
-|before|after|notes|
+|EthnicCategory|race_concept_id|notes|
 |------|-----|-----|
 |A|8527|White - British|
 |B|8527|White - Irish|
 |C|8527|White - Any other White background|
-|D|700388|Mixed - White and Black Caribbean [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700388)|
-|E|700389|Mixed - White and Black African [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700389)|
-|F|700390|Mixed - White and Asian [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700390)|
-|G|700391|Mixed - Any other mixed background [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700391)|
+|D|8527|Mixed - White and Black Caribbean [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700388)|
+|E|8527|Mixed - White and Black African [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700389)|
+|F|8527|Mixed - White and Asian [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700390)|
+|G|8527|Mixed - Any other mixed background [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700391)|
 |H|38003574|Asian or Asian British - Indian|
 |J|38003589|Asian or Asian British - Pakistani|
 |K|38003575|Asian or Asian British - Bangladeshi|
@@ -106,15 +106,15 @@ Source column  `EthnicCategory`.
 Lookup race concept.
 
 
-|before|after|notes|
+|EthnicCategory|race_concept_id|notes|
 |------|-----|-----|
 |A|8527|White - British|
 |B|8527|White - Irish|
 |C|8527|White - Any other White background|
-|D|700388|Mixed - White and Black Caribbean [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700388)|
-|E|700389|Mixed - White and Black African [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700389)|
-|F|700390|Mixed - White and Asian [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700390)|
-|G|700391|Mixed - Any other mixed background [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700391)|
+|D|8527|Mixed - White and Black Caribbean [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700388)|
+|E|8527|Mixed - White and Black African [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700389)|
+|F|8527|Mixed - White and Asian [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700390)|
+|G|8527|Mixed - Any other mixed background [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700391)|
 |H|38003574|Asian or Asian British - Indian|
 |J|38003589|Asian or Asian British - Pakistani|
 |K|38003575|Asian or Asian British - Bangladeshi|
