@@ -19,7 +19,7 @@ select
 			when l5.PatientClassification in (1) then 9201
 			when l4.LocationClass in ('02') then 581476
 			else 9202
-		end as VisitOccurenceConceptId,    -- ""visit_concept_id""
+		end as VisitOccurrenceConceptId,    -- ""visit_concept_id""
 
 		l1.RecordConnectionIdentifier,
 

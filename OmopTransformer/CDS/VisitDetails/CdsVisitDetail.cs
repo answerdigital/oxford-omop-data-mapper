@@ -27,7 +27,7 @@ internal class CdsVisitDetail : OmopVisitDetail<CdsVisitDetailsRecord>
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.VisitEndDate), nameof(Source.VisitEndTime))]
     public override DateTime? visit_detail_end_datetime { get; set; }
 
-    [CopyValue(nameof(Source.VisitOccurenceConceptId))]
+    [CopyValue(nameof(Source.VisitOccurrenceConceptId))]
     public override int? visit_detail_concept_id { get; set; }
 
     [CopyValue(nameof(Source.VisitTypeConceptId))]
