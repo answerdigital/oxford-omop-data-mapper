@@ -12,4 +12,7 @@ internal class RtdsLocation : OmopLocation<RtdsPasLocation>
 
     [CopyValue(nameof(Source.NhsNumber))]
     public override string? nhs_number { get; set; }
+
+    [CopyValue(nameof(Source.NhsNumber))]
+    public override string? location_source_value { get; set; }
 }
