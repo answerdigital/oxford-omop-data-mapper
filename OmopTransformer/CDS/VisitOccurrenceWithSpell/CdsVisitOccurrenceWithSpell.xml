@@ -29,7 +29,9 @@ select
 	case 
 		when max(l5.EpisodeEndDate) is null and max(l5.DischargeDateHospitalProviderSpell) is null then 32220
         else 32818
-	end as VisitTypeConceptId
+	end as VisitTypeConceptId,
+	max (l5.SourceofAdmissionCode) as SourceofAdmissionCode,
+	max (l5.DischargeDestinationCode) as DischargeDestinationCode
 from omop_staging.cds_line01 l1
 	left join omop_staging.cds_line04 l4 
 		on l1.MessageId = l4.MessageId -- Location Details 
@@ -62,6 +64,7 @@ group by
 | Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |
 | Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
 		</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="VisitTypeConceptId">`32818 (EHR Administration record)` if the patient has an episode end date defined, otherwise `32220 (Still patient)`.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="SourceofAdmissionCode">[Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="DischargeDestinationCode">[Discharge Destination Code](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)</OmopColumnExplanation>
 	</Explanation>
 </Query>

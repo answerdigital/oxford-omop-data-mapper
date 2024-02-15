@@ -32,7 +32,10 @@ select
 		case 
 			when l5.EpisodeEndDate is null and l5.DischargeDateHospitalProviderSpell is null then 32220
 			else 32818 
-		end as VisitTypeConceptId
+		end as VisitTypeConceptId,
+		,
+		l5.SourceofAdmissionCode,
+		l5.DischargeDestinationCode
 from [omop_staging].[cds_line01] l1
 	left join [omop_staging].[cds_line04] l4 
 		on l1.MessageId = l4.MessageId -- Location Details

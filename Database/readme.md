@@ -19,7 +19,7 @@ Setup/V03__OMOPCDM_sql_server_5.4_indices.sql
 Setup/V04__OMOPCDM_sql_server_5.4_constraints.sql
 ```
 
-2) Create an https://athena.ohdsi.org/ account and download at least the following vocabularies. [You may be alternatively be able to use this link](https://athena.ohdsi.org/api/v1/vocabularies/zip/a02908aa-757d-4f38-aea3-e4a70f6c5f00).
+2) Create an https://athena.ohdsi.org/ account and download at least the following vocabularies. [You may be alternatively be able to use this link](https://athena.ohdsi.org/api/v1/vocabularies/zip/227a186c-893b-41af-8afd-be4a83bc2ffa).
 
 | Id |  CDM | Code | Name |
 |-------|-----------|-------------------|-----------------------|
@@ -28,8 +28,10 @@ Setup/V04__OMOPCDM_sql_server_5.4_constraints.sql
 |142	|	CDM 5	| OPS	| Operations and Procedures Classification (OPS)|
 |75		|	CDM 5	| dm+d	| Dictionary of Medicines and Devices (NHS)|
 |55		|	CDM 5	| OPCS4| 	OPCS Classification of Interventions and Procedures version 4 (NHS)|
+|47     |   CDM 5   | NUCC  | 	National Uniform Claim Committee Health Care Provider Taxonomy Code Set (NUCC) |
 |44		|	CDM 5	| Ethnicity |	OMOP Ethnicity|
 |34		|	CDM 5	| ICD10	| International Classification of Diseases, Tenth Revision (WHO)|
+|14     |   CDM 5   | CMS Place of Service | CMS Place of Service |
 |13		|	CDM 5	| Race	| Race and Ethnicity Code Set (USBC)|
 |12		|	CDM 5	| Gender|	OMOP Gender|
 |1		|	CDM 5	| SNOMED	|Systematic Nomenclature of Medicine - Clinical Terms (IHTSDO)|

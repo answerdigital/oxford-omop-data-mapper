@@ -16,4 +16,6 @@ internal class CdsVisitDetailsRecord
     public string? VisitEndTime { get; set; }
     public int? VisitOccurrenceConceptId { get; set; }
     public int? VisitTypeConceptId { get; set; }
+    public int? SourceofAdmissionCode { get; set; }
+    public int? DischargeDestinationCode { get; set; }
 }

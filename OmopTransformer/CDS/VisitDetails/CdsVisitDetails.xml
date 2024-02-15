@@ -26,7 +26,10 @@ select
 		case 
 			when l5.EpisodeEndDate is null and l5.DischargeDateHospitalProviderSpell is null then 32220
 			else 32818 
-		end as VisitTypeConceptId
+		end as VisitTypeConceptId,
+		,
+		l5.SourceofAdmissionCode,
+		l5.DischargeDestinationCode
 from [omop_staging].[cds_line01] l1
 	left join [omop_staging].[cds_line04] l4 
 		on l1.MessageId = l4.MessageId -- Location Details
@@ -56,5 +59,7 @@ where l1.CDSUpdateType = 9   -- New/Modification     (1 = Delete)
 	    <OmopColumnExplanation columnName="VisitStartTime">Start time of the episode, if exists, else midnight.</OmopColumnExplanation>
 		<OmopColumnExplanation columnName="VisitEndDate">End date of the episode, if exists, else the spell discharge date, if exists, else the message date. </OmopColumnExplanation>
 	    <OmopColumnExplanation columnName="VisitEndTime">End time of the episode, if exists, else the spell discharge time, if exists, else the message date.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="SourceofAdmissionCode">[Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="DischargeDestinationCode">[Discharge Destination Code](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)</OmopColumnExplanation>
 	</Explanation>
 </Query>

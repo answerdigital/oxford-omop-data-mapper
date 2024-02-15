@@ -31,8 +31,14 @@ internal class PersonRecorder : IPersonRecorder
         await connection.OpenAsync(cancellationToken);
 
         var batches = persons.Batch(1000);
+
+        int batchNumber = 1;
+
         foreach (var batch in batches)
         {
+            Stopwatch batchStopwatch = Stopwatch.StartNew();
+            _logger.LogInformation($"Batch {batchNumber} of {persons.Count / 1000}", persons.Count);
+
             var dataTable = new DataTable();
 
             dataTable.Columns.Add("gender_concept_id");
@@ -80,6 +86,10 @@ internal class PersonRecorder : IPersonRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_person", parameter, commandType: CommandType.StoredProcedure);
+
+            batchNumber++;
+            _logger.LogInformation($"Batch took {batchStopwatch.ElapsedMilliseconds}ms", persons.Count);
+
         }
 
         stopwatch.Stop();

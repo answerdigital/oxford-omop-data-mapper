@@ -65,6 +65,10 @@
 * [visit_end_datetime](VisitOccurrence_visit_end_datetime.md)
 * [visit_concept_id](VisitOccurrence_visit_concept_id.md)
 * [visit_type_concept_id](VisitOccurrence_visit_type_concept_id.md)
+* [admitted_from_concept_id](VisitOccurrence_admitted_from_concept_id.md)
+* [admitted_from_source_value](VisitOccurrence_admitted_from_source_value.md)
+* [discharged_to_concept_id](VisitOccurrence_discharged_to_concept_id.md)
+* [discharged_to_source_value](VisitOccurrence_discharged_to_source_value.md)
 * [RecordConnectionIdentifier](VisitOccurrence_RecordConnectionIdentifier.md)
 ## CdsVisitOccurrenceWithSpell
 ![](CdsVisitOccurrenceWithSpell.svg)
@@ -84,6 +88,10 @@
 * [visit_detail_end_datetime](VisitDetail_visit_detail_end_datetime.md)
 * [visit_detail_concept_id](VisitDetail_visit_detail_concept_id.md)
 * [visit_detail_type_concept_id](VisitDetail_visit_detail_type_concept_id.md)
+* [admitted_from_concept_id](VisitDetail_admitted_from_concept_id.md)
+* [admitted_from_source_value](VisitDetail_admitted_from_source_value.md)
+* [discharged_to_concept_id](VisitDetail_discharged_to_concept_id.md)
+* [discharged_to_source_value](VisitDetail_discharged_to_source_value.md)
 ## CdsVisitDetail
 ![](CdsVisitDetail.svg)
 

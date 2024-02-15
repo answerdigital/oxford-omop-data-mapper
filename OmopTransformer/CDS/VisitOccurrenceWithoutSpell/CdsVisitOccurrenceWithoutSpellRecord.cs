@@ -15,4 +15,6 @@ internal class CdsVisitOccurrenceWithoutSpellRecord
     public string? EpisodeEndTime { get; set; }
     public int? VisitOccurenceConceptId { get; set; }
     public int? VisitTypeConceptId { get; set; }
+    public int? SourceofAdmissionCode { get; set; }
+    public int? DischargeDestinationCode { get; set; }
 }

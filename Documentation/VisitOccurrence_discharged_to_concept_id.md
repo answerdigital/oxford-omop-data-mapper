@@ -1,8 +1,36 @@
-# `VisitOccurrence` `visit_end_date`
+# `VisitOccurrence` `discharged_to_concept_id`
 ### CDS VisitOccurrenceWithSpell
-Source column  `EpisodeEndDate`.
-Converts text to dates.
-* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified.
+Source column  `DischargeDestinationCode`.
+Lookup discharge destination concept.
+
+
+|DischargeDestinationCode|discharged_to_concept_id|notes|
+|------|-----|-----|
+|19|0|Home|
+|29|8602|Temporary Lodging|
+|30|38004284|Psychiatric Hospital|
+|37|4050489|County court bailiff|
+|38|38003619|Prison / Correctional Facility|
+|48|38004284|Psychiatric Hospital|
+|49|38004284|Psychiatric Hospital|
+|50|8971|Inpatient Psychiatric Facility|
+|51|8717|Inpatient Hospital|
+|52|8650|Birthing Center|
+|53|8976|Psychiatric Residential Treatment Center|
+|54|8676|Nursing Facility|
+|65|8676|Nursing Facility|
+|66|38004205|Foster Care Agency|
+|79|||
+|84|8971|Inpatient Psychiatric Facility|
+|85|8676|Nursing Facility|
+|87|8717|Inpatient Hospital|
+|88|8546|Hospice|
+|98|||
+|99|||
+
+Notes
+* [Discharge Destination](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
+* `DischargeDestinationCode` [Discharge Destination Code](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
 <details>
 <summary>SQL</summary>
 
@@ -58,11 +86,39 @@ group by
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_end_date%20field%20CDS%20VisitOccurrenceWithSpell%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20discharged_to_concept_id%20field%20CDS%20VisitOccurrenceWithSpell%20mapping)
 ### CDS VisitOccurrenceWithoutSpell
-Source column  `EpisodeEndDate`.
-Converts text to dates.
-* `EpisodeEndDate` The latest dte in the message group.
+Source column  `DischargeDestinationCode`.
+Lookup discharge destination concept.
+
+
+|DischargeDestinationCode|discharged_to_concept_id|notes|
+|------|-----|-----|
+|19|0|Home|
+|29|8602|Temporary Lodging|
+|30|38004284|Psychiatric Hospital|
+|37|4050489|County court bailiff|
+|38|38003619|Prison / Correctional Facility|
+|48|38004284|Psychiatric Hospital|
+|49|38004284|Psychiatric Hospital|
+|50|8971|Inpatient Psychiatric Facility|
+|51|8717|Inpatient Hospital|
+|52|8650|Birthing Center|
+|53|8976|Psychiatric Residential Treatment Center|
+|54|8676|Nursing Facility|
+|65|8676|Nursing Facility|
+|66|38004205|Foster Care Agency|
+|79|||
+|84|8971|Inpatient Psychiatric Facility|
+|85|8676|Nursing Facility|
+|87|8717|Inpatient Hospital|
+|88|8546|Hospice|
+|98|||
+|99|||
+
+Notes
+* [Discharge Destination](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
+* `DischargeDestinationCode` [Discharge Destination Code](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
 <details>
 <summary>SQL</summary>
 
@@ -110,4 +166,4 @@ group by
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_end_date%20field%20CDS%20VisitOccurrenceWithoutSpell%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20discharged_to_concept_id%20field%20CDS%20VisitOccurrenceWithoutSpell%20mapping)

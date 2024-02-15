@@ -35,7 +35,9 @@ select
 	case 
 		when max(l5.EpisodeEndDate) is null and max(l5.DischargeDateHospitalProviderSpell) is null then 32220
         else 32818
-	end as VisitTypeConceptId
+	end as VisitTypeConceptId,
+	max (l5.SourceofAdmissionCode) as SourceofAdmissionCode,
+	max (l5.DischargeDestinationCode) as DischargeDestinationCode
 from omop_staging.cds_line01 l1
 	left join omop_staging.cds_line04 l4 
 		on l1.MessageId = l4.MessageId -- Location Details 
@@ -83,7 +85,9 @@ select
 	min (l1.CDSActivityDate) as EpisodeStartDate,
 	'000000' as EpisodeStartTime,
 	max (l1.CDSActivityDate) as EpisodeEndDate,
-	'000000' as EpisodeEndTime
+	'000000' as EpisodeEndTime,
+	max (l5.SourceofAdmissionCode) as SourceofAdmissionCode,
+	max (l5.DischargeDestinationCode) as DischargeDestinationCode
 from omop_staging.cds_line01 l1
 	left join omop_staging.cds_line04 l4 
 		on l1.MessageId = l4.MessageId -- Location Details 
