@@ -205,6 +205,7 @@ internal class Program
         builder.Services.AddTransient<ICdsStagingSchema, CdsStagingSchema>();
         builder.Services.AddTransient<IRtdsStagingSchema, RtdsStagingSchema>();
         builder.Services.AddSingleton<Icd10Resolver>();
+        builder.Services.AddSingleton<ConceptSnomedResolver>();
 
         var queryLocator = await QueryLocator.Create();
         builder.Services.AddSingleton<IQueryLocator, QueryLocator>(_ => queryLocator);

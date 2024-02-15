@@ -108,6 +108,7 @@
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsDeath%20mapping)
 # ConditionOccurrence
 * [nhs_number](ConditionOccurrence_nhs_number.md)
+* [condition_source_concept_id](ConditionOccurrence_condition_source_concept_id.md)
 * [condition_concept_id](ConditionOccurrence_condition_concept_id.md)
 * [condition_start_date](ConditionOccurrence_condition_start_date.md)
 * [cds_diagnosis_id](ConditionOccurrence_cds_diagnosis_id.md)
