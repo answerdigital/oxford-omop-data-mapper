@@ -1,7 +1,32 @@
-# `VisitDetail` `nhs_number`
+# `VisitDetail` `admitted_from_concept_id`
 ### CDS VisitDetails
-* Value copied from `NHSNumber`
-* `NHSNumber` The patient's NHS Number.
+Source column  `SourceofAdmissionCode`.
+Lookup admission source concept.
+
+
+|SourceofAdmissionCode|admitted_from_concept_id|notes|
+|------|-----|-----|
+|19|0|Home|
+|29|8602|Temporary Lodging|
+|37|4050489|County court bailiff|
+|40|38003619|Prison / Correctional Facility|
+|42|4107305|Police station|
+|49|38004284|Psychiatric Hospital|
+|51|8717|Inpatient Hospital|
+|52|8650|Birthing Center|
+|53|8976|Psychiatric Residential Treatment Center|
+|55|8863|Skilled Nursing Facility|
+|56|38004306|Custodial Care Facility|
+|66|38004205|Foster Care Agency|
+|79|40482051|Born before arrival to hospital|
+|87|4113007|Inpatient Hospital|
+|88|8546|Hospice|
+|98|||
+|99|||
+
+Notes
+* [Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)
+* `SourceofAdmissionCode` [Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)
 <details>
 <summary>SQL</summary>
 
@@ -68,4 +93,4 @@ where l1.CDSUpdateType = 9   -- New/Modification     (1 = Delete)
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20nhs_number%20field%20CDS%20VisitDetails%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20admitted_from_concept_id%20field%20CDS%20VisitDetails%20mapping)

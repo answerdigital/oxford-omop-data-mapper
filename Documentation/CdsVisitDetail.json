@@ -57,6 +57,30 @@
       "sourceColumns": [
         "VisitTypeConceptId"
       ]
+    },
+    {
+      "name": "admitted_from_concept_id",
+      "sourceColumns": [
+        "SourceofAdmissionCode"
+      ]
+    },
+    {
+      "name": "admitted_from_source_value",
+      "sourceColumns": [
+        "SourceofAdmissionCode"
+      ]
+    },
+    {
+      "name": "discharged_to_concept_id",
+      "sourceColumns": [
+        "DischargeDestinationCode"
+      ]
+    },
+    {
+      "name": "discharged_to_source_value",
+      "sourceColumns": [
+        "DischargeDestinationCode"
+      ]
     }
   ]
 }

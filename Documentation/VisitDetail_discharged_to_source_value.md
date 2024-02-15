@@ -1,7 +1,7 @@
-# `VisitDetail` `nhs_number`
+# `VisitDetail` `discharged_to_source_value`
 ### CDS VisitDetails
-* Value copied from `NHSNumber`
-* `NHSNumber` The patient's NHS Number.
+* Value copied from `DischargeDestinationCode`
+* `DischargeDestinationCode` [Discharge Destination Code](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
 <details>
 <summary>SQL</summary>
 
@@ -68,4 +68,4 @@ where l1.CDSUpdateType = 9   -- New/Modification     (1 = Delete)
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20nhs_number%20field%20CDS%20VisitDetails%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20discharged_to_source_value%20field%20CDS%20VisitDetails%20mapping)

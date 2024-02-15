@@ -8,6 +8,20 @@ Combines a date with a time of day.
 <summary>SQL</summary>
 
 ```sql
+;with RecordConnectionIdentifierNHSNumberCombination as (
+	select
+		distinct 
+			l1.NHSNumber,
+			l1.RecordConnectionIdentifier
+	from omop_staging.cds_line01 l1
+), RecordsWithVariableNhsNumber as (
+select
+	m1.RecordConnectionIdentifier
+from RecordConnectionIdentifierNHSNumberCombination m1
+	inner join RecordConnectionIdentifierNHSNumberCombination m2
+		on m1.NHSNumber != m2.NHSNumber
+where m1.RecordConnectionIdentifier = m2.RecordConnectionIdentifier
+)
 select  
 	distinct
     
@@ -34,7 +48,10 @@ select
 		case 
 			when l5.EpisodeEndDate is null and l5.DischargeDateHospitalProviderSpell is null then 32220
 			else 32818 
-		end as VisitTypeConceptId
+		end as VisitTypeConceptId,
+
+		l5.SourceofAdmissionCode,
+		l5.DischargeDestinationCode
 from [omop_staging].[cds_line01] l1
 	left join [omop_staging].[cds_line04] l4 
 		on l1.MessageId = l4.MessageId -- Location Details
@@ -45,6 +62,9 @@ from [omop_staging].[cds_line01] l1
 where l1.CDSUpdateType = 9   -- New/Modification     (1 = Delete)
 	and l1.NHSNumber is not null
 	and c.CodeTypeId = 2 -- activity_treatment_function_code
+	and not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.RecordConnectionIdentifier = l1.RecordConnectionIdentifier)
+
+		
 	
 ```
 </details>

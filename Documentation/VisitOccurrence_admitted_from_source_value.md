@@ -1,8 +1,7 @@
-# `VisitOccurrence` `visit_end_date`
+# `VisitOccurrence` `admitted_from_source_value`
 ### CDS VisitOccurrenceWithSpell
-Source column  `EpisodeEndDate`.
-Converts text to dates.
-* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified.
+* Value copied from `SourceofAdmissionCode`
+* `SourceofAdmissionCode` [Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)
 <details>
 <summary>SQL</summary>
 
@@ -58,11 +57,10 @@ group by
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_end_date%20field%20CDS%20VisitOccurrenceWithSpell%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20admitted_from_source_value%20field%20CDS%20VisitOccurrenceWithSpell%20mapping)
 ### CDS VisitOccurrenceWithoutSpell
-Source column  `EpisodeEndDate`.
-Converts text to dates.
-* `EpisodeEndDate` The latest dte in the message group.
+* Value copied from `SourceofAdmissionCode`
+* `SourceofAdmissionCode` [Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)
 <details>
 <summary>SQL</summary>
 
@@ -110,4 +108,4 @@ group by
 </details>
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_end_date%20field%20CDS%20VisitOccurrenceWithoutSpell%20mapping)
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20admitted_from_source_value%20field%20CDS%20VisitOccurrenceWithoutSpell%20mapping)

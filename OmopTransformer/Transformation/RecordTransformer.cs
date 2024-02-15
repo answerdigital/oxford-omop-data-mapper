@@ -64,6 +64,22 @@ internal class RecordTransformer : IRecordTransformer
         }
     }
     
+    private static string? GetLookupKey(object?[] arguments)
+    {
+        var firstArgument = arguments[0];
+
+        if (firstArgument == null)
+            return null;
+
+        if (firstArgument is string argument)
+            return argument;
+
+        if (firstArgument is int nullableInt)
+            return nullableInt.ToString();
+
+        throw new NotSupportedException("Argument type not supported.");
+    }
+
     private void TransformLookup<T>(IOmopRecord<T> record, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType)
     {
         _logger.LogTrace("Lookup transform found on property {0}", property.Name);
@@ -80,7 +96,7 @@ internal class RecordTransformer : IRecordTransformer
             throw new InvalidOperationException("Lookup transform must have one argument specified.");
         }
 
-        string? argument = (string?)arguments[0];
+        string? argument = GetLookupKey(arguments);
 
         if (argument == null)
             return;
@@ -150,9 +166,36 @@ internal class RecordTransformer : IRecordTransformer
     {
         _logger.LogTrace("{0} found on property {1}", nameof(CopyValueAttribute), property.Name);
 
-        object value = sourceType.GetProperty(copyValueAttribute.Value)!.GetValue(record.Source)!;
+        object? value = sourceType.GetProperty(copyValueAttribute.Value)!.GetValue(record.Source);
 
-        property.SetValue(record, value);
+        if (value == null)
+            return;
+
+        if (property.PropertyType == typeof(string))
+        {
+            if (value is string)
+            {
+                property.SetValue(record, value);
+                return;
+            }
+
+            if (value is int)
+            {
+                property.SetValue(record, value.ToString());
+                return;
+            }
+        }
+
+        if (property.PropertyType == typeof(int) || property.PropertyType == typeof(int?))
+        {
+            if (value is int)
+            {
+                property.SetValue(record, value);
+                return;
+            }
+        }
+
+        throw new NotSupportedException($"Cannot set value of type {value.GetType()} to property of type {property.PropertyType}");
     }
 
     private void TransformConstantValue<T>(IOmopRecord<T> record, PropertyInfo property, ConstantValueAttribute constantValueAttribute)
