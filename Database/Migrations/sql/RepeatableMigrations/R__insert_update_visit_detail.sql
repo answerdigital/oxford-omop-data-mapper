@@ -74,10 +74,7 @@ begin
 		not exists (
 			select	*
 			from cdm.visit_detail vo
-			where 
-				(vo.HospitalProviderSpellNumber is not null and vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber)
-				or
-				(vo.RecordConnectionIdentifier is not null and vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier)
+			where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
 		);
 
 	declare @columns table (Name varchar(max));
