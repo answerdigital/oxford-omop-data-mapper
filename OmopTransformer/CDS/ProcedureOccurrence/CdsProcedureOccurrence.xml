@@ -1,0 +1,20 @@
+﻿<Query>
+    <Sql>
+select
+	distinct
+		l1.RecordConnectionIdentifier,
+		l1.NHSNumber,
+		p.PrimaryProcedureDate,
+		p.PrimaryProcedure
+from omop_staging.cds_line01 l1
+	inner join omop_staging.cds_procedure p
+		on l1.MessageId = p.MessageId
+where l1.NHSNumber is not null;
+	</Sql>
+    <Explanation>
+		<OmopColumnExplanation columnName="RecordConnectionIdentifier">CDS specific identifier that binds multiple CDS messages together.</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="PrimaryProcedureDate">Procedure Date</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="NHSNumber">Patient NHS Number</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="PrimaryProcedure">OPC4 Procedure code</OmopColumnExplanation>
+	</Explanation>
+</Query>
