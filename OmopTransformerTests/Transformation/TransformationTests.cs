@@ -27,7 +27,7 @@ public class TransformationTests
 
         var logger = Substitute.For<ILogger<RecordTransformer>>();
 
-        new RecordTransformer(logger, null!).Transform(testConcept);
+        new RecordTransformer(logger, null!, null!, null!).Transform(testConcept);
 
         Assert.AreEqual(testConcept.Text, "hello world");
         Assert.AreEqual(testConcept.JoinedText, "line 1\r\nline 2");

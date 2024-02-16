@@ -1,0 +1,49 @@
+{
+  "omopTable": "ProcedureOccurrence",
+  "origin": "CDS",
+  "omopColumns": [
+    {
+      "name": "nhs_number",
+      "sourceColumns": [
+        "NHSNumber"
+      ]
+    },
+    {
+      "name": "procedure_concept_id",
+      "sourceColumns": [
+        "procedure_source_concept_id"
+      ]
+    },
+    {
+      "name": "procedure_date",
+      "sourceColumns": [
+        "PrimaryProcedureDate"
+      ]
+    },
+    {
+      "name": "procedure_datetime",
+      "sourceColumns": [
+        "PrimaryProcedureDate",
+        "ProcedureTime"
+      ]
+    },
+    {
+      "name": "procedure_source_value",
+      "sourceColumns": [
+        "PrimaryProcedure"
+      ]
+    },
+    {
+      "name": "procedure_source_concept_id",
+      "sourceColumns": [
+        "PrimaryProcedure"
+      ]
+    },
+    {
+      "name": "RecordConnectionIdentifier",
+      "sourceColumns": [
+        "RecordConnectionIdentifier"
+      ]
+    }
+  ]
+}

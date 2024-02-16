@@ -96,6 +96,19 @@
 ![](CdsVisitDetail.svg)
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsVisitDetail%20mapping)
+# ProcedureOccurrence
+* [nhs_number](ProcedureOccurrence_nhs_number.md)
+* [procedure_concept_id](ProcedureOccurrence_procedure_concept_id.md)
+* [procedure_date](ProcedureOccurrence_procedure_date.md)
+* [procedure_datetime](ProcedureOccurrence_procedure_datetime.md)
+* [procedure_type_concept_id](ProcedureOccurrence_procedure_type_concept_id.md)
+* [procedure_source_value](ProcedureOccurrence_procedure_source_value.md)
+* [procedure_source_concept_id](ProcedureOccurrence_procedure_source_concept_id.md)
+* [RecordConnectionIdentifier](ProcedureOccurrence_RecordConnectionIdentifier.md)
+## CdsProcedureOccurrence
+![](CdsProcedureOccurrence.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsProcedureOccurrence%20mapping)
 # Death
 * [NhsNumber](Death_NhsNumber.md)
 * [death_date](Death_death_date.md)

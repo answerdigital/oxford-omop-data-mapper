@@ -10,5 +10,6 @@ internal class CdsProcedureOccurrenceRecord
     public string? RecordConnectionIdentifier { get; set; }
     public string? NHSNumber { get; set; }
     public string? PrimaryProcedureDate { get; set; }
+    public string? ProcedureTime { get; set; }
     public string? PrimaryProcedure { get; set; }
 }
