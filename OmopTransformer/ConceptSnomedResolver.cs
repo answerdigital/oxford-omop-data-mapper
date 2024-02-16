@@ -37,7 +37,8 @@ internal class ConceptSnomedResolver
             "	inner join cdm.concept c2 " +
             "		on cr.concept_id_2 = c2.concept_id " +
             "where cr.invalid_reason is null " +
-            "	and c1.vocabulary_id in ('ICD10', 'OPCS4'); ";
+            "	and c1.vocabulary_id in ('ICD10', 'OPCS4') " +
+            "   and cr.relationship_id = 'Maps to';";
 
         return
             connection

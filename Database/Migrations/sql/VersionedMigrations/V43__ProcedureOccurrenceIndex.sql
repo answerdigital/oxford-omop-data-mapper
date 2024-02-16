@@ -1,0 +1,1 @@
+create index idx_cdm_procedure_occurrence_RecordConnectionIdentifier on cdm.procedure_occurrence (RecordConnectionIdentifier);
