@@ -6,11 +6,11 @@ Lookup discharge destination concept.
 
 |DischargeDestinationCode|discharged_to_concept_id|notes|
 |------|-----|-----|
-|19|0|Home|
+|19|0|Home - Used 0 as `Home` as per the OHDSI documentation|
 |29|8602|Temporary Lodging|
 |30|38004284|Psychiatric Hospital|
-|37|4050489|County court bailiff|
-|38|38003619|Prison / Correctional Facility|
+|37|4050489|County court bailiff - Had to use the Social Context Domain and SNOMED Vocab|
+|38|38003619|Prison / Correctional Facility - Went with `Prison / Correctional Facility` over Police Station (4107305)|
 |48|38004284|Psychiatric Hospital|
 |49|38004284|Psychiatric Hospital|
 |50|8971|Inpatient Psychiatric Facility|
@@ -20,13 +20,13 @@ Lookup discharge destination concept.
 |54|8676|Nursing Facility|
 |65|8676|Nursing Facility|
 |66|38004205|Foster Care Agency|
-|79|||
+|79||No mapping possible|
 |84|8971|Inpatient Psychiatric Facility|
 |85|8676|Nursing Facility|
 |87|8717|Inpatient Hospital|
 |88|8546|Hospice|
-|98|||
-|99|||
+|98||No mapping possible|
+|99||No mapping possible|
 
 Notes
 * [Discharge Destination](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)

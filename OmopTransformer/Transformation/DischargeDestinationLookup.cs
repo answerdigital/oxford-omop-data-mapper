@@ -8,11 +8,11 @@ internal class DischargeDestinationLookup : ILookup
     public Dictionary<string, ValueWithNote> Mappings { get; } =
         new()
         {
-            { "19", new ValueWithNote("0",  "Home") },
+            { "19", new ValueWithNote("0",  "Home - Used 0 as `Home` as per the OHDSI documentation") },
             { "29", new ValueWithNote("8602",   "Temporary Lodging") },
             { "30", new ValueWithNote("38004284",   "Psychiatric Hospital") },
-            { "37", new ValueWithNote("4050489",    "County court bailiff") },
-            { "38", new ValueWithNote("38003619",   "Prison / Correctional Facility") },
+            { "37", new ValueWithNote("4050489",    "County court bailiff - Had to use the Social Context Domain and SNOMED Vocab") },
+            { "38", new ValueWithNote("38003619",   "Prison / Correctional Facility - Went with `Prison / Correctional Facility` over Police Station (4107305)") },
             { "48", new ValueWithNote("38004284",   "Psychiatric Hospital") },
             { "49", new ValueWithNote("38004284",   "Psychiatric Hospital") },
             { "50", new ValueWithNote("8971",   "Inpatient Psychiatric Facility") },
@@ -22,13 +22,13 @@ internal class DischargeDestinationLookup : ILookup
             { "54", new ValueWithNote("8676",   "Nursing Facility") },
             { "65", new ValueWithNote("8676",   "Nursing Facility") },
             { "66", new ValueWithNote("38004205",   "Foster Care Agency") },
-            { "79", new ValueWithNote("", 	"") },
+            { "79", new ValueWithNote("",   "No mapping possible") },
             { "84", new ValueWithNote("8971",   "Inpatient Psychiatric Facility") },
             { "85", new ValueWithNote("8676",   "Nursing Facility") },
             { "87", new ValueWithNote("8717",   "Inpatient Hospital") },
             { "88", new ValueWithNote("8546",   "Hospice") },
-            { "98", new ValueWithNote("", 	"") },
-            { "99", new ValueWithNote("", 	"") },
+            { "98", new ValueWithNote("",   "No mapping possible") },
+            { "99", new ValueWithNote("",   "No mapping possible") },
         };
 
     public string[] ColumnNotes =>

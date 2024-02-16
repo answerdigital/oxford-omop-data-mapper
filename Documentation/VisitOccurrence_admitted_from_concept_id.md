@@ -6,11 +6,11 @@ Lookup admission source concept.
 
 |SourceofAdmissionCode|admitted_from_concept_id|notes|
 |------|-----|-----|
-|19|0|Home|
+|19|0|Home - Used 0 as `Home` as per the OHDSI documentation|
 |29|8602|Temporary Lodging|
-|37|4050489|County court bailiff|
+|37|4050489|County court bailiff - Had to use the Social Context Domain and SNOMED Vocab|
 |40|38003619|Prison / Correctional Facility|
-|42|4107305|Police station|
+|42|4107305|Police station - Had to use the Observation Domain and SNOMED Vocab|
 |49|38004284|Psychiatric Hospital|
 |51|8717|Inpatient Hospital|
 |52|8650|Birthing Center|
@@ -21,8 +21,8 @@ Lookup admission source concept.
 |79|40482051|Born before arrival to hospital|
 |87|4113007|Inpatient Hospital|
 |88|8546|Hospice|
-|98|||
-|99|||
+|98||No mapping possible|
+|99||No mapping possible|
 
 Notes
 * [Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)
@@ -90,11 +90,11 @@ Lookup admission source concept.
 
 |SourceofAdmissionCode|admitted_from_concept_id|notes|
 |------|-----|-----|
-|19|0|Home|
+|19|0|Home - Used 0 as `Home` as per the OHDSI documentation|
 |29|8602|Temporary Lodging|
-|37|4050489|County court bailiff|
+|37|4050489|County court bailiff - Had to use the Social Context Domain and SNOMED Vocab|
 |40|38003619|Prison / Correctional Facility|
-|42|4107305|Police station|
+|42|4107305|Police station - Had to use the Observation Domain and SNOMED Vocab|
 |49|38004284|Psychiatric Hospital|
 |51|8717|Inpatient Hospital|
 |52|8650|Birthing Center|
@@ -105,8 +105,8 @@ Lookup admission source concept.
 |79|40482051|Born before arrival to hospital|
 |87|4113007|Inpatient Hospital|
 |88|8546|Hospice|
-|98|||
-|99|||
+|98||No mapping possible|
+|99||No mapping possible|
 
 Notes
 * [Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)
