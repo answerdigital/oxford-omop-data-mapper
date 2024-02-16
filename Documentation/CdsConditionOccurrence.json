@@ -9,9 +9,15 @@
       ]
     },
     {
-      "name": "condition_concept_id",
+      "name": "condition_source_concept_id",
       "sourceColumns": [
         "DiagnosisCode"
+      ]
+    },
+    {
+      "name": "condition_concept_id",
+      "sourceColumns": [
+        "condition_source_concept_id"
       ]
     },
     {
