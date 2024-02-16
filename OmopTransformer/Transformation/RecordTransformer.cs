@@ -9,11 +9,13 @@ internal class RecordTransformer : IRecordTransformer
 {
     private readonly ILogger<RecordTransformer> _logger;
     private readonly Icd10Resolver _cd10Resolver;
+    private readonly ConceptSnomedResolver _snomedResolver;
 
-    public RecordTransformer(ILogger<RecordTransformer> logger, Icd10Resolver cd10Resolver)
+    public RecordTransformer(ILogger<RecordTransformer> logger, Icd10Resolver cd10Resolver, ConceptSnomedResolver snomedResolver)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _cd10Resolver = cd10Resolver;
+        _snomedResolver = snomedResolver;
     }
 
     public void Transform<T>(IOmopRecord<T> record)
@@ -26,6 +28,12 @@ internal class RecordTransformer : IRecordTransformer
 
         _logger.LogTrace("Transforming {0}.", record.GetType());
 
+        TransformProperties(record, properties, sourceType, sourceTypeAsOrigin: false); // First run the transformations that refer to the source data from the database.
+        TransformProperties(record, properties, sourceType, sourceTypeAsOrigin: true); // Then run transforms that use the results of the previous transformations, by referring to the content of the partially transformed record rather than the incoming database record.
+    }
+
+    private void TransformProperties<T>(IOmopRecord<T> record, PropertyInfo[] properties, Type sourceType, bool sourceTypeAsOrigin)
+    {
         foreach (var property in properties)
         {
             var attributes = property.GetCustomAttributes(inherit: false);
@@ -38,7 +46,7 @@ internal class RecordTransformer : IRecordTransformer
                 } 
                 else if (attribute is TransformAttribute transformAttribute)
                 {
-                    Transform(record, transformAttribute, property, sourceType);
+                    Transform(record, transformAttribute, property, sourceType, sourceTypeAsOrigin);
                 }
                 else if (attribute is ConstantValueAttribute constantValueAttribute)
                 {
@@ -48,11 +56,14 @@ internal class RecordTransformer : IRecordTransformer
         }
     }
 
-    private void Transform<T>(IOmopRecord<T> record, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType)
+    private void Transform<T>(IOmopRecord<T> record, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType, bool sourceTypeAsOrigin)
     {
+        if (transformAttribute.UseOmopTypeAsSource != sourceTypeAsOrigin)
+            return;
+
         if (typeof(ISelector).IsAssignableFrom(transformAttribute.Type))
         {
-            TransformSelector(record, transformAttribute, property, sourceType);
+            TransformSelector(record, transformAttribute, property, sourceType, sourceTypeAsOrigin);
         }
         else if (typeof(ILookup).IsAssignableFrom(transformAttribute.Type))
         {
@@ -137,7 +148,7 @@ internal class RecordTransformer : IRecordTransformer
         }
     }
     
-    private void TransformSelector<T>(IOmopRecord<T> record, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType)
+    private void TransformSelector<T>(IOmopRecord<T> record, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType, bool sourceTypeAsOrigin)
     {
         _logger.LogTrace("Selector transform found on property {0}", property.Name);
 
@@ -150,11 +161,15 @@ internal class RecordTransformer : IRecordTransformer
                 .Select(parameters => parameters.ParameterType)
                 .ToList();
 
+        Type originType = sourceTypeAsOrigin ? record.GetType() : sourceType;
+        object originData = sourceTypeAsOrigin ? record : record.Source!;
+
         var arguments =
             transformAttribute
                 .Value
-                .Select(argumentName => sourceType.GetProperty(argumentName)!.GetValue(record.Source))
+                .Select(argumentName => originType.GetProperty(argumentName)!.GetValue(originData))
                 .Concat(firstConstructorTypes.Any(type => type == typeof(Icd10Resolver)) ? new[] { _cd10Resolver } : new List<object>())
+                .Concat(firstConstructorTypes.Any(type => type == typeof(ConceptSnomedResolver)) ? new[] { _snomedResolver } : new List<object>())
                 .ToArray();
 
         var selector = (ISelector)Activator.CreateInstance(transformAttribute.Type, arguments)!;
