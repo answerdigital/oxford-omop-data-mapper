@@ -336,7 +336,7 @@ internal class DocumentationRenderer
 
         foreach (var mapping in lookup.Mappings)
         {
-            stringBuilder.AppendLine($"|{mapping.Key}|{mapping.Value.Value}|{mapping.Value.Notes}|");
+            stringBuilder.AppendLine($"|{mapping.Key.Key}{(string.IsNullOrWhiteSpace(mapping.Key.Name) ? null : $" `{mapping.Key.Name}`")}|{mapping.Value.Value}|{mapping.Value.Notes}|");
         }
 
         stringBuilder.AppendLine();

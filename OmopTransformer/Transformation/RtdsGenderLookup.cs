@@ -5,20 +5,20 @@ namespace OmopTransformer.Transformation;
 [Description("Lookup gender concept.")]
 internal class RtdsGenderLookup : ILookup
 {
-    public Dictionary<string, ValueWithNote> Mappings { get; } =
+    public Dictionary<KeyWithName, ValueWithNote> Mappings { get; } =
         new()
         {
             {
-                "Male", new ValueWithNote("8507", "")
+                new KeyWithName("Male", ""), new ValueWithNote("8507", "")
             },
             {
-                "Female", new ValueWithNote("8532", "")
+                new KeyWithName("Female", ""), new ValueWithNote("8532", "")
             },
             {
-                "Unknown", new ValueWithNote("8551", "")
+                new KeyWithName("Unknown", ""), new ValueWithNote("8551", "")
             },
             {
-                "Not Stated", new ValueWithNote("8551", "")
+                new KeyWithName("Not Stated", ""), new ValueWithNote("8551", "")
             }
         };
 

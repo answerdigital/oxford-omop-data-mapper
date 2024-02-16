@@ -100,8 +100,10 @@ internal class RecordTransformer : IRecordTransformer
 
         if (argument == null)
             return;
+
+        var key = new KeyWithName(argument);
         
-        if (lookup.Mappings.TryGetValue(argument, out ValueWithNote? value))
+        if (lookup.Mappings.TryGetValue(key, out ValueWithNote? value))
         {
             if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
             {

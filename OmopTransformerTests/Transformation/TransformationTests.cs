@@ -71,11 +71,11 @@ internal class TestConcept : OmopTestConcept<SourceClass>
 
 internal class ColourIdTransformer : ILookup
 {
-    public Dictionary<string, ValueWithNote> Mappings { get; } =
+    public Dictionary<KeyWithName, ValueWithNote> Mappings { get; } =
         new()
         {
-            { "blue", new ValueWithNote("1", "") },
-            { "red", new ValueWithNote("2", "") },
+            { new KeyWithName("blue", ""), new ValueWithNote("1", "") },
+            { new KeyWithName("red", ""), new ValueWithNote("2", "") },
         };
 
     public string[] ColumnNotes { get; } = ["colours"];

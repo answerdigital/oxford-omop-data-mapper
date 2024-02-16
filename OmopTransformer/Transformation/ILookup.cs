@@ -2,7 +2,7 @@
 
 internal interface ILookup
 {
-    Dictionary<string, ValueWithNote> Mappings { get; }
+    Dictionary<KeyWithName, ValueWithNote> Mappings { get; }
 
     string[] ColumnNotes { get; }
 }

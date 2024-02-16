@@ -6,7 +6,7 @@ Lookup gender concept.
 
 |Person_Stated_Gender_Code|gender_concept_id|notes|
 |------|-----|-----|
-|1|8507|Male|
+|1 `test value goes here`|8507|Male|
 |2|8532|Female|
 |9|8551|Indeterminate (unable to be classified as either male or female)|
 |X|8551|Not known|
@@ -56,7 +56,7 @@ Lookup gender concept.
 
 |PersonCurrentGenderCode|gender_concept_id|notes|
 |------|-----|-----|
-|1|8507|Male|
+|1 `test value goes here`|8507|Male|
 |2|8532|Female|
 |9|8551|Indeterminate (unable to be classified as either male or female)|
 |X|8551|Not known|
