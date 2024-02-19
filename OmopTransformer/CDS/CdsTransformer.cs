@@ -28,6 +28,7 @@ internal class CdsTransformer : Transformer
     private readonly IVisitDetailRecorder _visitDetailRecorder;
     private readonly IDeathRecorder _deathRecorder;
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
+    private readonly ConceptSnomedResolver _conceptSnomedResolver;
 
     public CdsTransformer(IRecordTransformer recordTransformer,
         ILogger<IRecordTransformer> logger,
@@ -39,7 +40,8 @@ internal class CdsTransformer : Transformer
         IVisitOccurrenceRecorder visitOccurrenceRecorder,
         IVisitDetailRecorder visitDetailRecorder,
         IDeathRecorder deathRecorder,
-        IProcedureOccurrenceRecorder procedureOccurrenceRecorder) : base(recordTransformer,
+        IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
+        ConceptSnomedResolver conceptSnomedResolver) : base(recordTransformer,
         logger,
         transformOptions,
         recordProvider,
@@ -52,6 +54,7 @@ internal class CdsTransformer : Transformer
         _visitDetailRecorder = visitDetailRecorder;
         _deathRecorder = deathRecorder;
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
+        _conceptSnomedResolver = conceptSnomedResolver;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -100,5 +103,7 @@ internal class CdsTransformer : Transformer
             _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
             "CDS Procedure Occurrence",
             cancellationToken);
+
+        _conceptSnomedResolver.PrintErrors();
     }
 }
