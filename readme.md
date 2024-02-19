@@ -23,7 +23,7 @@ Copyright (C) 2024 omop
 
 # Supported Transformations
 
-|          | **Location** | **Person** | **Condition Occurrence** | **Visit Occurrence** | **Visit Details** | **Measurement**      | **Death** | ** Procedure Occurrence** |
+|          | **Location** | **Person** | **Condition Occurrence** | **Visit Occurrence** | **Visit Details** | **Measurement**      | **Death** | **Procedure Occurrence** |
 |----------|--------------|------------|--------------------------|----------------------|-------------------|----------------------|-----------|---------------------------|
 | **CDS**  |      ✔️       |     ✔️      |✔️                      |         ✔️           |      ✔️             |	           ✔️ ❗     |    ✔️      |✔                         |
 | **COSD** |     ✔️      |       ✔️     |                         |                      |                    |	                    |            |                          |
