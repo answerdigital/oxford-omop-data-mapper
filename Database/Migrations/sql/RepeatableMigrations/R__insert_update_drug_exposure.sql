@@ -87,6 +87,7 @@ begin
 			select	*
 			from cdm.drug_exposure vo
 			where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+				and vo.drug_concept_id = r.drug_concept_id
 		);
 
 	declare @columns table (Name varchar(max));
