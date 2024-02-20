@@ -62,7 +62,7 @@
   </g>
   <g>
     <rect x="1105" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="1115" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">DiagnosisId</text>
+    <text x="1115" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">RecordConnectionIdentifier</text>
   </g>
   <g>
     <line x1="1230" y1="420" x2="1230" y2="615" stroke="white" stroke-width="2" />
@@ -72,7 +72,7 @@
   </g>
   <g>
     <rect x="1105" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="1115" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">cds_diagnosis_id</text>
+    <text x="1115" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">RecordConnectionIdentifier</text>
   </g>
   <g>
     <rect x="1375" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />

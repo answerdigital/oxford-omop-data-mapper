@@ -137,7 +137,7 @@
 * [condition_source_concept_id](ConditionOccurrence_condition_source_concept_id.md)
 * [condition_concept_id](ConditionOccurrence_condition_concept_id.md)
 * [condition_start_date](ConditionOccurrence_condition_start_date.md)
-* [cds_diagnosis_id](ConditionOccurrence_cds_diagnosis_id.md)
+* [RecordConnectionIdentifier](ConditionOccurrence_RecordConnectionIdentifier.md)
 * [condition_source_value](ConditionOccurrence_condition_source_value.md)
 * [condition_type_concept_id](ConditionOccurrence_condition_type_concept_id.md)
 ## CdsConditionOccurrence

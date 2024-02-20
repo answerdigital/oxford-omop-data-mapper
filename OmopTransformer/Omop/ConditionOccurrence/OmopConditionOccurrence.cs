@@ -3,7 +3,7 @@
 internal abstract class OmopConditionOccurrence<T> : IOmopRecord<T>
 {
     public virtual string? nhs_number { get; set; }
-    public virtual int? cds_diagnosis_id { get; set; }
+    public virtual string? RecordConnectionIdentifier { get; set; }
     public virtual int[]? condition_concept_id { get; set; }
     public virtual DateTime? condition_start_date { get; set; }
     public virtual DateTime? condition_start_datetime { get; set; }

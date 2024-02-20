@@ -8,7 +8,7 @@ namespace OmopTransformer.CDS.ConditionOccurrence;
 internal class CdsConditionOccurrenceRecord
 {
     public string? DiagnosisCode { get; set; }
-    public int? DiagnosisId { get; set; }
+    public string? RecordConnectionIdentifier { get; set; }
     public string? NHSNumber { get; set; }
     public string? CDSActivityDate { get; set; }
 }

@@ -10,7 +10,7 @@ Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the pa
 select
 	distinct
 		d.DiagnosisCode,
-		d.DiagnosisId,
+		line01.RecordConnectionIdentifier,
 		line01.NHSNumber,
 		line01.CDSActivityDate
 from omop_staging.cds_diagnosis d

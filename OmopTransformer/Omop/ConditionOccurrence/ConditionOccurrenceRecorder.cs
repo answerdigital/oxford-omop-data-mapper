@@ -36,7 +36,7 @@ internal class ConditionOccurrenceRecorder : IConditionOccurrenceRecorder
             var dataTable = new DataTable();
 
             dataTable.Columns.Add("nhs_number");
-            dataTable.Columns.Add("cds_diagnosis_id");
+            dataTable.Columns.Add("RecordConnectionIdentifier");
             dataTable.Columns.Add("condition_concept_id");
             dataTable.Columns.Add("condition_start_date", typeof(DateTime));
             dataTable.Columns.Add("condition_start_datetime", typeof(DateTime));
@@ -61,7 +61,7 @@ internal class ConditionOccurrenceRecorder : IConditionOccurrenceRecorder
                 {
                     dataTable.Rows.Add(
             record.nhs_number,
-                        record.cds_diagnosis_id,
+                        record.RecordConnectionIdentifier,
                         concept,
                         record.condition_start_date,
                         record.condition_start_datetime,

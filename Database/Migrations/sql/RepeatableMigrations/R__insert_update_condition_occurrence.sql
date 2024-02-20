@@ -20,7 +20,6 @@ begin
 	insert into cdm.condition_occurrence
 	(
 		person_id,
-		cds_diagnosis_id,
 		condition_concept_id,
 		condition_start_date,
 		condition_start_datetime,
@@ -34,13 +33,13 @@ begin
 		visit_detail_id,
 		condition_source_value,
 		condition_source_concept_id,
-		condition_status_source_value
+		condition_status_source_value,
+		RecordConnectionIdentifier
 	)
 	output inserted.condition_occurrence_id
 	into @NewConditions
 	select
 		p.person_id,
-		r.cds_diagnosis_id,
 		r.condition_concept_id,
 		r.condition_start_date,
 		r.condition_start_datetime,
@@ -54,11 +53,18 @@ begin
 		r.visit_detail_id,
 		r.condition_source_value,
 		r.condition_source_concept_id,
-		r.condition_status_source_value
+		r.condition_status_source_value,
+		r.RecordConnectionIdentifier
 	from @rows r
 		inner join cdm.person p
 			on r.nhs_number = p.person_source_value
-	where not exists (select * from cdm.condition_occurrence co where co.person_id = p.person_id and co.cds_diagnosis_id = r.cds_diagnosis_id);
+	where not exists (
+		select * 
+		from cdm.condition_occurrence co 
+		where co.person_id = p.person_id 
+			and co.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+			and co.condition_concept_id = r.condition_concept_id
+		);
 
 	declare @columns table (Name varchar(max));
 

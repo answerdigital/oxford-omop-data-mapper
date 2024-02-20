@@ -27,9 +27,9 @@
       ]
     },
     {
-      "name": "cds_diagnosis_id",
+      "name": "RecordConnectionIdentifier",
       "sourceColumns": [
-        "DiagnosisId"
+        "RecordConnectionIdentifier"
       ]
     },
     {

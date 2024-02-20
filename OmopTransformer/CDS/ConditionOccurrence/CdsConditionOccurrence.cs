@@ -18,8 +18,8 @@ internal class CdsConditionOccurrence : OmopConditionOccurrence<CdsConditionOccu
     [Transform(typeof(DateConverter), nameof(Source.CDSActivityDate))]
     public override DateTime? condition_start_date { get; set; }
 
-    [CopyValue(nameof(Source.DiagnosisId))]
-    public override int? cds_diagnosis_id { get; set; }
+    [CopyValue(nameof(Source.RecordConnectionIdentifier))]
+    public override string? RecordConnectionIdentifier { get; set; }
 
     [CopyValue(nameof(Source.DiagnosisCode))]
     public override string? condition_source_value { get; set; }
