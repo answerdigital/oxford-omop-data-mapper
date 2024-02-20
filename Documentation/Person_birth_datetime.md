@@ -110,13 +110,13 @@ Converts text to dates.
 
 ```sql
 select
-	distinct
-		NHSNumber,
-		DateofBirth as DateOfBirth,
-		EthnicCategory,
-		PersonCurrentGenderCode
+	NHSNumber,
+	max(DateofBirth) as DateOfBirth,
+	max(EthnicCategory) as EthnicCategory,
+	max(PersonCurrentGenderCode) as PersonCurrentGenderCode
 from omop_staging.cds_line01
-where NHSNumber is not null;
+where NHSNumber is not null
+group by NHSNumber
 	
 ```
 </details>
