@@ -24,8 +24,6 @@ from [omop_staging].[cds_line01] l1
 		on l4.MessageId = l1.MessageId
 	left join [omop_staging].[cds_line05] l5 
 		on l5.MessageId = l1.MessageId
-where l5.EpisodeStartTime is null 
-	and l5.StartTimeHospitalProviderSpell is null
 	
 ```
 </details>
