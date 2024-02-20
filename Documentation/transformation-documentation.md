@@ -109,6 +109,19 @@
 ![](CdsProcedureOccurrence.svg)
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsProcedureOccurrence%20mapping)
+# DrugExposure
+* [nhs_number](DrugExposure_nhs_number.md)
+* [drug_concept_id](DrugExposure_drug_concept_id.md)
+* [drug_exposure_start_date](DrugExposure_drug_exposure_start_date.md)
+* [drug_exposure_end_date](DrugExposure_drug_exposure_end_date.md)
+* [drug_type_concept_id](DrugExposure_drug_type_concept_id.md)
+* [drug_source_value](DrugExposure_drug_source_value.md)
+* [drug_source_concept_id](DrugExposure_drug_source_concept_id.md)
+* [RecordConnectionIdentifier](DrugExposure_RecordConnectionIdentifier.md)
+## CdsDrugExposure
+![](CdsDrugExposure.svg)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsDrugExposure%20mapping)
 # Death
 * [NhsNumber](Death_NhsNumber.md)
 * [death_date](Death_death_date.md)

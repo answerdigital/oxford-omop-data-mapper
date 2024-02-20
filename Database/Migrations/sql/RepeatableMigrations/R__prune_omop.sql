@@ -41,6 +41,26 @@ from cdm.visit_occurrence vo
 	inner join @personsToDelete p
 		on vo.person_id = p.person_id;
 
+delete m
+from cdm.measurement m
+	inner join @personsToDelete p
+		on m.person_id = p.person_id; 
+
+delete d
+from cdm.death d
+	inner join @personsToDelete p
+		on d.person_id = p.person_id;
+
+delete po
+from cdm.procedure_occurrence po
+	inner join @personsToDelete p
+		on po.person_id = p.person_id;
+
+delete de
+from cdm.drug_exposure de
+	inner join @personsToDelete p
+		on de.person_id = p.person_id;
+
 delete p
 from cdm.person p
 	inner join @personsToDelete ptd

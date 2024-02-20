@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using OmopTransformer.CDS.ConditionOccurrence;
 using OmopTransformer.CDS.Death;
+using OmopTransformer.CDS.DrugExposure;
 using OmopTransformer.CDS.Person;
 using OmopTransformer.CDS.ProcedureOccurrence;
 using OmopTransformer.CDS.StructuredAddress;
@@ -10,6 +11,7 @@ using OmopTransformer.CDS.VisitOccurrenceWithoutSpell;
 using OmopTransformer.CDS.VisitOccurrenceWithSpell;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
+using OmopTransformer.Omop.DrugExposure;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.ProcedureOccurrence;
@@ -28,6 +30,7 @@ internal class CdsTransformer : Transformer
     private readonly IVisitDetailRecorder _visitDetailRecorder;
     private readonly IDeathRecorder _deathRecorder;
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
+    private readonly IDrugExposureRecorder _drugExposureRecorder;
     private readonly ConceptSnomedResolver _conceptSnomedResolver;
 
     public CdsTransformer(IRecordTransformer recordTransformer,
@@ -41,7 +44,8 @@ internal class CdsTransformer : Transformer
         IVisitDetailRecorder visitDetailRecorder,
         IDeathRecorder deathRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
-        ConceptSnomedResolver conceptSnomedResolver) : base(recordTransformer,
+        ConceptSnomedResolver conceptSnomedResolver, 
+        IDrugExposureRecorder drugExposureRecorder) : base(recordTransformer,
         logger,
         transformOptions,
         recordProvider,
@@ -55,6 +59,7 @@ internal class CdsTransformer : Transformer
         _deathRecorder = deathRecorder;
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
         _conceptSnomedResolver = conceptSnomedResolver;
+        _drugExposureRecorder = drugExposureRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -102,6 +107,11 @@ internal class CdsTransformer : Transformer
         await Transform<CdsProcedureOccurrenceRecord, CdsProcedureOccurrence>(
             _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
             "CDS Procedure Occurrence",
+            cancellationToken);
+
+        await Transform<CdsDrugExposureRecord, CdsDrugExposure>(
+            _drugExposureRecorder.InsertUpdateDrugExposure,
+            "CDS Drug Exposure",
             cancellationToken);
 
         _conceptSnomedResolver.PrintErrors();

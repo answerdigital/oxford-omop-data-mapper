@@ -1,0 +1,54 @@
+{
+  "omopTable": "DrugExposure",
+  "origin": "CDS",
+  "omopColumns": [
+    {
+      "name": "nhs_number",
+      "sourceColumns": [
+        "nhs_number"
+      ]
+    },
+    {
+      "name": "drug_concept_id",
+      "sourceColumns": [
+        "drug_source_concept_id"
+      ]
+    },
+    {
+      "name": "drug_exposure_start_date",
+      "sourceColumns": [
+        "ExposureStartDate"
+      ]
+    },
+    {
+      "name": "drug_exposure_end_date",
+      "sourceColumns": [
+        "ExposureEndDate"
+      ]
+    },
+    {
+      "name": "drug_type_concept_id",
+      "sourceColumns": [
+        "DrugTypeConceptId"
+      ]
+    },
+    {
+      "name": "drug_source_value",
+      "sourceColumns": [
+        "DrugSourceValue"
+      ]
+    },
+    {
+      "name": "drug_source_concept_id",
+      "sourceColumns": [
+        "DrugSourceValue"
+      ]
+    },
+    {
+      "name": "RecordConnectionIdentifier",
+      "sourceColumns": [
+        "RecordConnectionIdentifier"
+      ]
+    }
+  ]
+}
