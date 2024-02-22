@@ -1,6 +1,13 @@
-drop procedure cdm.insert_update_condition_occurrence;
+if object_id ('cdm.insert_update_condition_occurrence') is not null
+begin
+	drop procedure cdm.insert_update_condition_occurrence;
+end
+
+go
 
 drop type cdm.condition_occurrence_row;
+
+go
 
 create type cdm.condition_occurrence_row as table
 (
