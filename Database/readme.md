@@ -19,13 +19,14 @@ Setup/V03__OMOPCDM_sql_server_5.4_indices.sql
 Setup/V04__OMOPCDM_sql_server_5.4_constraints.sql
 ```
 
-2) Create an https://athena.ohdsi.org/ account and download at least the following vocabularies. [You may be alternatively be able to use this link](https://athena.ohdsi.org/api/v1/vocabularies/zip/227a186c-893b-41af-8afd-be4a83bc2ffa).
+2) Create an https://athena.ohdsi.org/ account and download at least the following vocabularies. [You may be alternatively be able to use this link](https://athena.ohdsi.org/api/v1/vocabularies/zip/e9b7c119-2e16-413d-a8d3-64e17c5e77d2).
 
 | Id |  CDM | Code | Name |
 |-------|-----------|-------------------|-----------------------|
 |154	|	CDM 5	| NHS Ethnic Category	|NHS Ethnic Category |
 |148	|	CDM 5	| OMOP Invest Drug	| OMOP Investigational Drugs|
 |142	|	CDM 5	| OPS	| Operations and Procedures Classification (OPS)|
+|90	    |   CDM 5   |ICDO3 |	International Classification of Diseases for Oncology, Third Edition (WHO) |
 |75		|	CDM 5	| dm+d	| Dictionary of Medicines and Devices (NHS)|
 |55		|	CDM 5	| OPCS4| 	OPCS Classification of Interventions and Procedures version 4 (NHS)|
 |47     |   CDM 5   | NUCC  | 	National Uniform Claim Committee Health Care Provider Taxonomy Code Set (NUCC) |
@@ -34,6 +35,8 @@ Setup/V04__OMOPCDM_sql_server_5.4_constraints.sql
 |14     |   CDM 5   | CMS Place of Service | CMS Place of Service |
 |13		|	CDM 5	| Race	| Race and Ethnicity Code Set (USBC)|
 |12		|	CDM 5	| Gender|	OMOP Gender|
+|3	    |	CDM 5	| ICD9Proc |	International Classification of Diseases, Ninth Revision, Clinical Modification, Volume 3 (NCHS) |
+|2      |	CDM 5	| ICD9CM	| International Classification of Diseases, Ninth Revision, Clinical Modification, Volume 1 and 2 (NCHS) |
 |1		|	CDM 5	| SNOMED	|Systematic Nomenclature of Medicine - Clinical Terms (IHTSDO)|
 
 3) Unpack the archive and import the files using the `import-athena.sql` script.
