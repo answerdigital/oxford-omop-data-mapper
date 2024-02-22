@@ -1,17 +1,4 @@
 alter table cdm.condition_occurrence
-	drop constraint xpk_condition_occurrence;
-
-alter table cdm.condition_occurrence
-	drop column condition_occurrence_id
-
-alter table cdm.condition_occurrence
-	add condition_occurrence_id int not null identity(1, 1);
-
-alter table cdm.condition_occurrence
-	add constraint PK_cdm_condition_occurrence_condition_occurrence_id
-		primary key (condition_occurrence_id);
-
-alter table cdm.condition_occurrence
 	add cds_diagnosis_id int null;
 
 go

@@ -1,3 +1,5 @@
+drop index FI_cdm_condition_occurrence on cdm.condition_occurrence;
+
 alter table cdm.condition_occurrence
 	drop column cds_diagnosis_id
 
