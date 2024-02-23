@@ -4,14 +4,14 @@ namespace OmopTransformer;
 
 internal class QueryLocator : IQueryLocator
 {
-    private readonly Dictionary<string, Query> _queries;
-
     public QueryLocator(Dictionary<string, Query> queries)
     {
-        _queries = queries ?? throw new ArgumentNullException(nameof(queries));
+        Queries = queries ?? throw new ArgumentNullException(nameof(queries));
     }
 
-    public Query GetQuery(string queryName) => _queries[queryName];
+    public Dictionary<string, Query> Queries { get; }
+
+    public Query GetQuery(string queryName) => Queries[queryName];
 
     public static async Task<QueryLocator> Create()
     {
@@ -39,7 +39,7 @@ internal class QueryLocator : IQueryLocator
                 .Select(files => files.First())
                 .ToDictionary(
                     keySelector: file => file.Result.fileName,
-                    elementSelector: file => AggregateQueryParser.ParseAggregateQuery(file.Result.content));
+                    elementSelector: file => AggregateQueryParser.ParseAggregateQuery(file.Result.content, file.Result.fileName));
 
         return new QueryLocator(fileDictionary);
     }

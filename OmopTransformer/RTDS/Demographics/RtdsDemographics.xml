@@ -9,9 +9,19 @@ from omop_staging.RTDS_1_Demographics d
 where d.PatientId not like '%[^0-9]%'
 	and len(d.PatientId) = 10
 	</Sql>
-    <Explanation>
-		<OmopColumnExplanation columnName="PatientId">The patient's NHSNumber.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="DateOfBirth">The patient's DateOfBirth.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="Sex">The patient's Sex.</OmopColumnExplanation>
-    </Explanation>
+	<Explanations>
+		<Explanation columnName="PatientId">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+
+		<Explanation columnName="DateOfBirth">
+			<Description>Patient's date of birth.</Description>
+			<Origin>PERSON BIRTH DATE</Origin>
+		</Explanation>
+		<Explanation columnName="Sex">
+			<Description>The patient's Sex</Description>
+			<Origin>PERSON GENDER CODE CURRENT</Origin> <!--This origin isn't quite right but is the closest that I could find.-->
+		</Explanation>
+	</Explanations>
 </Query>

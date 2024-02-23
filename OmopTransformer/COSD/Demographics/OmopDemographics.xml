@@ -19,17 +19,6 @@ with
 	from omop_staging.cosd_staging
 	cross apply content.nodes('COSD901:COSD/*') as T(staging)
 	where T.staging.exist('Id/@root') = 1
-), UniqueCOSD as ( -- When nodes are detected more than once, pick one and discarded the others.
-	select *
-	from (
-		select
-			Id,
-			Node,
-			Is81,
-			row_number() over (partition by Id order by (select null)) as RowNumber
-		from CosdRecords
-	) t
-	where t.RowNumber = 1
 ), COSDElements as (
 	select
 		Id,
@@ -62,16 +51,45 @@ select
 from Patients 
 where NhsNumber != '';
 	</Sql>
-    <Explanation>
-		<OmopColumnExplanation columnName="NhsNumber">The patient's NHSNumber as specified in the `LinkagePatientId` or similar element.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="DateOfBirth">The patient's DateOfBirth as specified in the `LinkagePatientId` or similar element.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="EthnicCategory">The patient's ethnic category as specified in the `Demographics` element.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="StreetAddressLine1">The first element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="StreetAddressLine2">The second element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="StreetAddressLine3">The third element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="StreetAddressLine4">The fourth and final element of the StructuredAddress element, within the Demographics element.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="PostcodeOfUsualAddressAtDiagnosis">The value of the PostcodeOfUsualAddressAtDiagnosis element within the Demographics element.</OmopColumnExplanation>
-	    <OmopColumnExplanation columnName="NhsNumber">The value of the NhsNumber within the sibling LinkagePatientId element.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="PersonBirthDate">The value of the PersonBirthDate within the sibling LinkagePatientId element.</OmopColumnExplanation>
-    </Explanation>
+	<Explanations>
+		<Explanation columnName="NhsNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		
+		<Explanation columnName="DateOfBirth">
+			<Description>Patient's date of birth.</Description>
+			<Origin>PERSON BIRTH DATE</Origin>
+		</Explanation>
+
+		<Explanation columnName="EthnicCategory">
+			<Description>Patient EthnicCategory</Description>
+			<Origin>ETHNIC CATEGORY</Origin>
+		</Explanation>
+
+		<Explanation columnName="StreetAddressLine1">
+			<Description>The first line of the address.</Description>
+			<Origin>PATIENT USUAL ADDRESS (AT DIAGNOSIS)</Origin>
+		</Explanation>
+		
+		<Explanation columnName="StreetAddressLine2">
+			<Description>The second line of the address.</Description>
+			<Origin>PATIENT USUAL ADDRESS (AT DIAGNOSIS)</Origin>
+		</Explanation>
+		
+		<Explanation columnName="StreetAddressLine3">
+			<Description>The third line of the address.</Description>
+			<Origin>PATIENT USUAL ADDRESS (AT DIAGNOSIS)</Origin>
+		</Explanation>
+		
+		<Explanation columnName="StreetAddressLine4">
+			<Description>The fourth line of the address.</Description>
+			<Origin>PATIENT USUAL ADDRESS (AT DIAGNOSIS)</Origin>
+		</Explanation>
+
+		<Explanation columnName="Postcode">
+			<Description>Patient Postcode</Description>
+			<Origin>POSTCODE OF USUAL ADDRESS (AT DIAGNOSIS)</Origin>
+		</Explanation>
+	</Explanations>
 </Query>

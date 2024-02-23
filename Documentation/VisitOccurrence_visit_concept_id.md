@@ -1,16 +1,17 @@
 # `VisitOccurrence` `visit_concept_id`
 ### CDS VisitOccurrenceWithSpell
-* Value copied from `VisitOccurenceConceptId`
-* `VisitOccurenceConceptId` 
-			
-| Visit Occurrence Type             | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |
+* Value copied from `VisitOccurrenceConceptId`
+
+* `VisitOccurrenceConceptId` 
+
+| Visit Occurrence Type              | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |
 |------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|
 | Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
 | Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
 | Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
 | Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |
 | Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
-		
+			 [ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/admission_method_code__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html), [LOCATION CLASS](https://www.datadictionary.nhs.uk/data_elements/location_class.html)
 <details>
 <summary>SQL</summary>
 
@@ -40,7 +41,7 @@ select
         when max(l5.PatientClassification) in (1) then 9201
         when max(l4.LocationClass) in ('02') then 581476
 		else 9202
-	end as VisitOccurenceConceptId,    -- "visit_concept_id"
+	end as VisitOccurrenceConceptId,    -- "visit_concept_id"
 	case 
 		when max(l5.EpisodeEndDate) is null and max(l5.DischargeDateHospitalProviderSpell) is null then 32220
         else 32818

@@ -1,7 +1,8 @@
 # `DrugExposure` `RecordConnectionIdentifier`
 ### CDS Drug Exposure
 * Value copied from `RecordConnectionIdentifier`
-* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together.
+
+* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 <details>
 <summary>SQL</summary>
 

@@ -2,7 +2,8 @@
 ### COSD Demographics
 Source column  `StreetAddressLine4`.
 Convert text to uppercase. Trim whitespace.
-* `StreetAddressLine4` The fourth and final element of the StructuredAddress element, within the Demographics element.
+
+* `StreetAddressLine4` The fourth line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html)
 <details>
 <summary>SQL</summary>
 
@@ -26,17 +27,6 @@ with
 	from omop_staging.cosd_staging
 	cross apply content.nodes('COSD901:COSD/*') as T(staging)
 	where T.staging.exist('Id/@root') = 1
-), UniqueCOSD as ( -- When nodes are detected more than once, pick one and discarded the others.
-	select *
-	from (
-		select
-			Id,
-			Node,
-			Is81,
-			row_number() over (partition by Id order by (select null)) as RowNumber
-		from CosdRecords
-	) t
-	where t.RowNumber = 1
 ), COSDElements as (
 	select
 		Id,
@@ -76,5 +66,35 @@ where NhsNumber != '';
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20county%20field%20COSD%20Demographics%20mapping)
 ### CDS Structured Address
 * Value copied from `PatientAddressStructured5`
+
+* `PatientAddressStructured5` The fifth line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html)
+<details>
+<summary>SQL</summary>
+
+```sql
+		select
+		distinct
+		PatientAddressStructured1,
+		PatientAddressStructured2,
+		PatientAddressStructured3,
+		PatientAddressStructured4,
+		PatientAddressStructured5,
+		Postcode,
+		NHSNumber
+		from omop_staging.cds_line01
+		where PatientAddressType = '02'
+		and
+		(
+		PatientAddressStructured1 is not null or
+		PatientAddressStructured2 is not null or
+		PatientAddressStructured3 is not null or
+		PatientAddressStructured4 is not null or
+		PatientAddressStructured5 is not null or
+		Postcode is not null
+		);
+	
+```
+</details>
+
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20county%20field%20CDS%20Structured%20Address%20mapping)

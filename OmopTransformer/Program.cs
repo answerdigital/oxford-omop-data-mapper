@@ -215,6 +215,9 @@ internal class Program
         var queryLocator = await QueryLocator.Create();
         builder.Services.AddSingleton<IQueryLocator, QueryLocator>(_ => queryLocator);
 
+        var dataDictionaryUrlResolver = await DataDictionaryUrlResolver.CreateAsync(queryLocator);
+        builder.Services.AddSingleton<DataDictionaryUrlResolver>(_ => dataDictionaryUrlResolver);
+
         IHostEnvironment env = builder.Environment;
 
         builder.Configuration

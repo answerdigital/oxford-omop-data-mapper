@@ -14,12 +14,14 @@ internal class DocumentationRenderer
     private readonly IReadOnlyCollection<Type> _types;
     private readonly IQueryLocator _queryLocator;
     private readonly ILogger<DocumentationWriter> _logger;
+    private readonly DataDictionaryUrlResolver _dataDictionaryUrlResolver;
 
-    public DocumentationRenderer(IReadOnlyCollection<Type> types, IQueryLocator queryLocator, ILogger<DocumentationWriter> logger)
+    public DocumentationRenderer(IReadOnlyCollection<Type> types, IQueryLocator queryLocator, ILogger<DocumentationWriter> logger, DataDictionaryUrlResolver dataDictionaryUrlResolver)
     {
         _types = types;
         _queryLocator = queryLocator;
         _logger = logger;
+        _dataDictionaryUrlResolver = dataDictionaryUrlResolver;
     }
 
     public IEnumerable<Document> Render()
@@ -256,7 +258,11 @@ internal class DocumentationRenderer
             if (attribute is TransformAttribute transformAttribute)
             {
                 RenderTransform(stringBuilder, transformAttribute, property.Name);
-                RenderQueryIfAny(mapperType, stringBuilder, transformAttribute.Value);
+
+                if (transformAttribute.UseOmopTypeAsSource == false) // Don't try and render any query documentation if we are not using a query as a datasource.
+                {
+                    RenderQueryIfAny(mapperType, stringBuilder, transformAttribute.Value);
+                }
             }
         }
 
@@ -284,31 +290,57 @@ internal class DocumentationRenderer
         {
             var query = _queryLocator.GetQuery(((SourceQueryAttribute)queryTransform).QueryFileName);
 
-            bool anyMatches = false;
-
-            foreach (var explanation in query.Explanation!.Explanations!)
-            {
-                if (!sourceColumns.Contains(explanation.ColumnName))
-                    continue;
-
-                anyMatches = true;
-
-                stringBuilder.AppendLine($"* `{explanation.ColumnName}` {explanation.Text}");
-            }
-
-            if (anyMatches)
-            {
-                stringBuilder.AppendLine("<details>");
-                stringBuilder.AppendLine("<summary>SQL</summary>");
-                stringBuilder.AppendLine();
-                stringBuilder.AppendLine("```sql");
-                var whitespace = new[] { ' ', '\r', '\n' };
-                stringBuilder.AppendLine(query.Sql?.TrimStart(whitespace).TrimEnd(whitespace));
-                stringBuilder.AppendLine("```");
-                stringBuilder.AppendLine("</details>");
-                stringBuilder.AppendLine();
-            }
+            PrintColumnCollectionExplanations(query, sourceColumns, stringBuilder, sourceType.Name);
+            
+            stringBuilder.AppendLine("<details>");
+            stringBuilder.AppendLine("<summary>SQL</summary>");
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine("```sql");
+            var whitespace = new[] { ' ', '\r', '\n' };
+            stringBuilder.AppendLine(query.Sql?.TrimStart(whitespace).TrimEnd(whitespace));
+            stringBuilder.AppendLine("```");
+            stringBuilder.AppendLine("</details>");
+            stringBuilder.AppendLine();
         }
+    }
+
+    private void PrintColumnCollectionExplanations(Query query, IEnumerable<string> columns, StringBuilder stringBuilder, string sourceType)
+    {
+        foreach (var column in columns)
+        {
+            PrintColumnExplanations(query, column, stringBuilder, sourceType);
+        }
+    }
+
+    private void PrintColumnExplanations(Query query, string columnName, StringBuilder stringBuilder, string sourceType)
+    {
+        var explanation = query.Explanation!.Explanations!.FirstOrDefault(explanation => explanation.ColumnName!.Equals(columnName, StringComparison.OrdinalIgnoreCase));
+
+        if (explanation == null)
+        {
+            _logger.LogError($"Explanation for column {columnName} on {sourceType} was not found.");
+            return;
+        }
+
+        stringBuilder.AppendLine("");
+        stringBuilder.Append($"* `{explanation.ColumnName}` {explanation.Description} ");
+
+        if (explanation!.Origin != null)
+        {
+            var dataDictionaryOrigins =
+                   explanation!
+                       .Origin
+                       .Select(origin => $"[{origin}]({_dataDictionaryUrlResolver.GetUrl(origin)})");
+
+            if (explanation!.Description!.Contains("\r\n")) // If the description is multi line, add the links on a new line.
+            {
+                stringBuilder.AppendLine();
+            }
+
+            stringBuilder.Append($"{string.Join(", ", dataDictionaryOrigins)}");
+        }
+
+        stringBuilder.AppendLine();
     }
 
     private static void RenderTransform(StringBuilder stringBuilder, TransformAttribute transformAttribute, string targetField)

@@ -2,8 +2,10 @@
 ### CDS VisitDetails
 Source columns  `VisitStartDate`, `VisitStartTime`.
 Combines a date with a time of day.
-* `VisitStartDate` Start date of the episode, if exists, else the start date of the spell.
-* `VisitStartTime` Start time of the episode, if exists, else midnight.
+
+* `VisitStartDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [START DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html), [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
+
+* `VisitStartTime` Start time of the episode, if exists, else midnight. [START TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_time__hospital_provider_spell_.html), [START TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html)
 <details>
 <summary>SQL</summary>
 

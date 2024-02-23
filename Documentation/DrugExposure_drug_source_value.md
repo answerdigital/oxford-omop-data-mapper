@@ -1,7 +1,8 @@
 # `DrugExposure` `drug_source_value`
 ### CDS Drug Exposure
 * Value copied from `DrugSourceValue`
-* `DrugSourceValue` The drug's OPCS4 code.
+
+* `DrugSourceValue` High cost drugs. [HIGH COST DRUGS (OPCS)](https://www.datadictionary.nhs.uk/data_elements/high_cost_drugs__opcs_.html)
 <details>
 <summary>SQL</summary>
 

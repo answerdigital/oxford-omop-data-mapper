@@ -1,7 +1,8 @@
 # `VisitDetail` `discharged_to_source_value`
 ### CDS VisitDetails
 * Value copied from `DischargeDestinationCode`
-* `DischargeDestinationCode` [Discharge Destination Code](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
+
+* `DischargeDestinationCode` Discharge Destination Code [DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
 <details>
 <summary>SQL</summary>
 

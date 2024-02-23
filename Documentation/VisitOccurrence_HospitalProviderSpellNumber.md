@@ -2,7 +2,8 @@
 ### CDS VisitOccurrenceWithSpell
 Source column  `HospitalProviderSpellNumber`.
 Converts text to integers.
-* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together.
+
+* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 <details>
 <summary>SQL</summary>
 
@@ -32,7 +33,7 @@ select
         when max(l5.PatientClassification) in (1) then 9201
         when max(l4.LocationClass) in ('02') then 581476
 		else 9202
-	end as VisitOccurenceConceptId,    -- "visit_concept_id"
+	end as VisitOccurrenceConceptId,    -- "visit_concept_id"
 	case 
 		when max(l5.EpisodeEndDate) is null and max(l5.DischargeDateHospitalProviderSpell) is null then 32220
         else 32818

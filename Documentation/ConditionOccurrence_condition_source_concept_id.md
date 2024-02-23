@@ -2,7 +2,8 @@
 ### CDS Condition Occurrence
 Source column  `DiagnosisCode`.
 Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
-* `DiagnosisCode` ICD10 diagnosis code
+
+* `DiagnosisCode` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html), [SECONDARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/secondary_diagnosis__icd_.html)
 <details>
 <summary>SQL</summary>
 

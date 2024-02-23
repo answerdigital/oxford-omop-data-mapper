@@ -43,7 +43,7 @@
     {
       "name": "visit_concept_id",
       "sourceColumns": [
-        "VisitOccurenceConceptId"
+        "VisitOccurrenceConceptId"
       ]
     },
     {

@@ -1,30 +1,27 @@
 ﻿<Query>
-    <Sql>
-select
-	PatientAddressStructured1,
-	PatientAddressStructured2,
-	PatientAddressStructured3,
-	PatientAddressStructured4,
-	PatientAddressStructured5,
-	Postcode
-from omop_staging.cds_line01
-where PatientAddressType = '02'
-	and 
-	(
-		PatientAddressStructured1 is not null or 
-		PatientAddressStructured2 is not null or 
-		PatientAddressStructured3 is not null or 
-		PatientAddressStructured4 is not null or 
-		PatientAddressStructured5 is not null or 
-		Postcode is not null
-	);
+	<Sql>
+		select
+		distinct
+		PatientUnstructuredAddress,
+		Postcode,
+		NHSNumber
+		from omop_staging.cds_line01
+		where PatientAddressType = '01'
+		and Postcode is not null;
 	</Sql>
-    <Explanation>
-		<OmopColumnExplanation columnName="PatientAddressStructured1">The first line of the address.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="PatientAddressStructured2">The second line of the address.</OmopColumnExplanation>
-	    <OmopColumnExplanation columnName="PatientAddressStructured3">The third line of the address.</OmopColumnExplanation>
-	    <OmopColumnExplanation columnName="PatientAddressStructured4">The fourth line of the address.</OmopColumnExplanation>
-	    <OmopColumnExplanation columnName="PatientAddressStructured5">The fifth line of the address.</OmopColumnExplanation>
-	    <OmopColumnExplanation columnName="Postcode">Postcode</OmopColumnExplanation>
-    </Explanation>
+
+	<Explanations>
+		<Explanation columnName="PatientUnstructuredAddress">
+			<Description>A recognizable postal address comprised of up to five lines of 35 alphanumeric characters.</Description>
+			<Origin>PATIENT USUAL ADDRESS (UNSTRUCTURED)</Origin>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="Postcode">
+			<Description>Patient's Postcode.</Description>
+			<Origin>POSTCODE</Origin>
+		</Explanation>
+	</Explanations>
 </Query>

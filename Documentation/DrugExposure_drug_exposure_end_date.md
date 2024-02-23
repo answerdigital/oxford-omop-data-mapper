@@ -2,7 +2,8 @@
 ### CDS Drug Exposure
 Source column  `ExposureEndDate`.
 Converts text to dates.
-* `ExposureEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. 
+
+* `ExposureEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
 <details>
 <summary>SQL</summary>
 

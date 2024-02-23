@@ -1,7 +1,8 @@
 # `VisitDetail` `nhs_number`
 ### CDS VisitDetails
 * Value copied from `NHSNumber`
-* `NHSNumber` The patient's NHS Number.
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 

@@ -7,7 +7,8 @@ Converts text to dates.
 ### Rtds Demographics
 Source column  `DateOfBirth`.
 Converts text to dates.
-* `DateOfBirth` The patient's DateOfBirth.
+
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 <details>
 <summary>SQL</summary>
 
@@ -29,7 +30,8 @@ where d.PatientId not like '%[^0-9]%'
 ### COSD Demographics
 Source column  `DateOfBirth`.
 Converts text to dates.
-* `DateOfBirth` The patient's DateOfBirth as specified in the `LinkagePatientId` or similar element.
+
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 <details>
 <summary>SQL</summary>
 
@@ -53,17 +55,6 @@ with
 	from omop_staging.cosd_staging
 	cross apply content.nodes('COSD901:COSD/*') as T(staging)
 	where T.staging.exist('Id/@root') = 1
-), UniqueCOSD as ( -- When nodes are detected more than once, pick one and discarded the others.
-	select *
-	from (
-		select
-			Id,
-			Node,
-			Is81,
-			row_number() over (partition by Id order by (select null)) as RowNumber
-		from CosdRecords
-	) t
-	where t.RowNumber = 1
 ), COSDElements as (
 	select
 		Id,
@@ -104,7 +95,8 @@ where NhsNumber != '';
 ### CDS Person
 Source column  `DateOfBirth`.
 Converts text to dates.
-* `DateOfBirth` Patient DateOfBirth
+
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 <details>
 <summary>SQL</summary>
 
