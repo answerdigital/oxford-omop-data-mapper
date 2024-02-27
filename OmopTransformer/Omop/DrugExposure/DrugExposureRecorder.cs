@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -24,13 +23,13 @@ internal class DrugExposureRecorder : IDrugExposureRecorder
 
         _logger.LogInformation("Recording {0} Drug Exposure.", records.Count);
 
-        var stopwatch = Stopwatch.StartNew();
+        var batchLogger = new BatchTimingLogger<DrugExposureRecorder>(_configuration.BatchSize!.Value, records.Count, "drug exposure", _logger);
 
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(1000);
+        var batches = records.Batch(_configuration.BatchSize.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -96,11 +95,11 @@ internal class DrugExposureRecorder : IDrugExposureRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_drug_exposure", parameter, commandType: CommandType.StoredProcedure);
+
+            batchLogger.LogNext();
         }
 
-        stopwatch.Stop();
-
-        _logger.LogTrace("Inserting DrugExposure took {0}ms.", stopwatch.ElapsedMilliseconds);
+        batchLogger.LogSummary();
 
     }
 }

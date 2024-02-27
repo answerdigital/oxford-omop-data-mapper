@@ -59,15 +59,25 @@ begin
 		inner join cdm.person p
 			on r.nhs_number = p.person_source_value
 	where 
-		not exists (
-			select	*
-			from cdm.visit_occurrence vo
-			where 
-				(vo.HospitalProviderSpellNumber is not null and vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber)
-				or
-				(vo.RecordConnectionIdentifier is not null and vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier)
+		(
+			r.RecordConnectionIdentifier is not null 
+			and not exists (
+				select	*
+				from cdm.visit_occurrence vo
+				where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+					and vo.person_id = p.person_id
+				)
+		)
+		or
+		(
+			r.HospitalProviderSpellNumber is not null 
+			and not exists (
+				select	*
+				from cdm.visit_occurrence vo
+				where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+					and vo.person_id = p.person_id
+			)
 		);
-
 
 	declare @columns table (Name varchar(max));
 

@@ -46,8 +46,14 @@ internal class Program
             return;
         }
 
+        var queryLocator = await QueryLocator.Create();
+        builder.Services.AddSingleton<IQueryLocator, QueryLocator>(_ => queryLocator);
+
         if (result.Value is DocumentationOptions generateDocumentation)
         {
+            var dataDictionaryUrlResolver = await DataDictionaryUrlResolver.CreateAsync(queryLocator);
+            builder.Services.AddSingleton<DataDictionaryUrlResolver>(_ => dataDictionaryUrlResolver);
+
             builder.Services.AddTransient(_ => generateDocumentation);
             builder.Services.AddHostedService<DocumentationGenerationHostedService>();
         }
@@ -211,12 +217,6 @@ internal class Program
         builder.Services.AddSingleton<Icd10Resolver>();
         builder.Services.AddSingleton<Opcs4Resolver>();
         builder.Services.AddSingleton<ConceptSnomedResolver>();
-
-        var queryLocator = await QueryLocator.Create();
-        builder.Services.AddSingleton<IQueryLocator, QueryLocator>(_ => queryLocator);
-
-        var dataDictionaryUrlResolver = await DataDictionaryUrlResolver.CreateAsync(queryLocator);
-        builder.Services.AddSingleton<DataDictionaryUrlResolver>(_ => dataDictionaryUrlResolver);
 
         IHostEnvironment env = builder.Environment;
 

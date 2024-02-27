@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -24,13 +23,13 @@ internal class VisitOccurrenceRecorder : IVisitOccurrenceRecorder
 
         _logger.LogInformation("Recording {0} visit occurrences.", records.Count);
 
-        var stopwatch = Stopwatch.StartNew();
+        var batchLogger = new BatchTimingLogger<VisitOccurrenceRecorder>(_configuration.BatchSize!.Value, records.Count, "visit occurrences", _logger);
 
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(1000);
+        var batches = records.Batch(_configuration.BatchSize.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -82,11 +81,10 @@ internal class VisitOccurrenceRecorder : IVisitOccurrenceRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_visit_occurrence", parameter, commandType: CommandType.StoredProcedure);
+
+            batchLogger.LogNext();
         }
 
-        stopwatch.Stop();
-
-        _logger.LogTrace("Inserting visit occurrences took {0}ms.", stopwatch.ElapsedMilliseconds);
-
+        batchLogger.LogSummary();
     }
 }

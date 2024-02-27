@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -24,19 +23,18 @@ internal class VisitDetailRecorder : IVisitDetailRecorder
 
         _logger.LogInformation("Recording {0} visit details.", records.Count);
 
-        var stopwatch = Stopwatch.StartNew();
+        var batchLogger = new BatchTimingLogger<VisitDetailRecorder>(_configuration.BatchSize!.Value, records.Count, "visit details", _logger);
 
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(1000);
-        foreach (var batch in batches)
+        foreach (var batch in records.Batch(_configuration.BatchSize.Value))
         {
             var dataTable = new DataTable();
 
             dataTable.Columns.Add("nhs_number");
-            dataTable.Columns.Add("HospitalProviderSpellNumber");
+            dataTable.Columns.Add("HospitalProviderSpellNumber", typeof(int));
             dataTable.Columns.Add("RecordConnectionIdentifier");
             dataTable.Columns.Add("visit_detail_concept_id");
             dataTable.Columns.Add("visit_detail_start_date", typeof(DateTime));
@@ -82,11 +80,11 @@ internal class VisitDetailRecorder : IVisitDetailRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_visit_detail", parameter, commandType: CommandType.StoredProcedure);
+
+            batchLogger.LogNext();
         }
 
-        stopwatch.Stop();
-
-        _logger.LogTrace("Inserting visit details took {0}ms.", stopwatch.ElapsedMilliseconds);
+        batchLogger.LogSummary();
 
     }
 }
