@@ -6,7 +6,7 @@
 ### CDS Person
 * Value copied from `PersonCurrentGenderCode`
 
-* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
+* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT]()
 <details>
 <summary>SQL</summary>
 

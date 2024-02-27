@@ -8,7 +8,7 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 Source column  `FirstOfPOSTCODE`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `FirstOfPOSTCODE` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+* `FirstOfPOSTCODE` Patient's Postcode. [POSTCODE]()
 <details>
 <summary>SQL</summary>
 
@@ -30,7 +30,7 @@ where p.FirstOfPOSTCODE is not null
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `Postcode` Patient Postcode [POSTCODE OF USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/postcode_of_usual_address__at_diagnosis_.html)
+* `Postcode` Patient Postcode [POSTCODE OF USUAL ADDRESS (AT DIAGNOSIS)]()
 <details>
 <summary>SQL</summary>
 
@@ -74,17 +74,17 @@ with
 	from COSDElements
 )
 select
-	distinct
-		NhsNumber,
-		DateOfBirth,
-		EthnicCategory,
-		StreetAddressLine1,
-		StreetAddressLine2,
-		StreetAddressLine3,
-		StreetAddressLine4,
-		Postcode
+	NhsNumber,
+	max (DateOfBirth) as DateOfBirth,
+	max (EthnicCategory) as EthnicCategory,
+	max (StreetAddressLine1) as StreetAddressLine1,
+	max (StreetAddressLine2) as StreetAddressLine2,
+	max (StreetAddressLine3) as StreetAddressLine3,
+	max (StreetAddressLine4) as StreetAddressLine4,
+	max (Postcode) as Postcode
 from Patients 
-where NhsNumber != '';
+where NhsNumber != ''
+group by NhsNumber
 	
 ```
 </details>
@@ -95,7 +95,7 @@ where NhsNumber != '';
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `Postcode` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+* `Postcode` Patient's Postcode. [POSTCODE]()
 <details>
 <summary>SQL</summary>
 
@@ -130,7 +130,7 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `Postcode` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+* `Postcode` Patient's Postcode. [POSTCODE]()
 <details>
 <summary>SQL</summary>
 

@@ -2,7 +2,7 @@
 ### CDS VisitDetails
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 <details>
 <summary>SQL</summary>
 

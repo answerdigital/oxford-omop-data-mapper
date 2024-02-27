@@ -3,7 +3,7 @@
 Source column  `EpisodeStartDate`.
 Converts text to dates.
 
-* `EpisodeStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
+* `EpisodeStartDate` Start date of the episode. [START DATE (EPISODE)]()
 <details>
 <summary>SQL</summary>
 
@@ -64,7 +64,7 @@ group by
 Source column  `EpisodeStartDate`.
 Converts text to dates.
 
-* `EpisodeStartDate` The earliest date in the message group. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+* `EpisodeStartDate` The earliest date in the message group. [CDS ACTIVITY DATE]()
 <details>
 <summary>SQL</summary>
 

@@ -6,7 +6,7 @@
 ### Rtds Demographics
 * Value copied from `PatientId`
 
-* `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `PatientId` Patient NHS Number [NHS NUMBER]()
 <details>
 <summary>SQL</summary>
 
@@ -28,7 +28,7 @@ where d.PatientId not like '%[^0-9]%'
 ### COSD Demographics
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 <details>
 <summary>SQL</summary>
 
@@ -72,17 +72,17 @@ with
 	from COSDElements
 )
 select
-	distinct
-		NhsNumber,
-		DateOfBirth,
-		EthnicCategory,
-		StreetAddressLine1,
-		StreetAddressLine2,
-		StreetAddressLine3,
-		StreetAddressLine4,
-		Postcode
+	NhsNumber,
+	max (DateOfBirth) as DateOfBirth,
+	max (EthnicCategory) as EthnicCategory,
+	max (StreetAddressLine1) as StreetAddressLine1,
+	max (StreetAddressLine2) as StreetAddressLine2,
+	max (StreetAddressLine3) as StreetAddressLine3,
+	max (StreetAddressLine4) as StreetAddressLine4,
+	max (Postcode) as Postcode
 from Patients 
-where NhsNumber != '';
+where NhsNumber != ''
+group by NhsNumber
 	
 ```
 </details>
@@ -92,7 +92,7 @@ where NhsNumber != '';
 ### CDS Person
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 <details>
 <summary>SQL</summary>
 

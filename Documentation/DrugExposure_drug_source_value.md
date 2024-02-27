@@ -2,7 +2,7 @@
 ### CDS Drug Exposure
 * Value copied from `DrugSourceValue`
 
-* `DrugSourceValue` High cost drugs. [HIGH COST DRUGS (OPCS)](https://www.datadictionary.nhs.uk/data_elements/high_cost_drugs__opcs_.html)
+* `DrugSourceValue` High cost drugs. [HIGH COST DRUGS (OPCS)]()
 <details>
 <summary>SQL</summary>
 

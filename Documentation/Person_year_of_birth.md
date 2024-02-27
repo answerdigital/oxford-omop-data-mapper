@@ -8,7 +8,7 @@ Selects the year from a date or null of the date is null.
 Source column  `DateOfBirth`.
 Selects the year from a date or null of the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 <details>
 <summary>SQL</summary>
 
@@ -31,7 +31,7 @@ where d.PatientId not like '%[^0-9]%'
 Source column  `DateOfBirth`.
 Selects the year from a date or null of the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 <details>
 <summary>SQL</summary>
 
@@ -75,17 +75,17 @@ with
 	from COSDElements
 )
 select
-	distinct
-		NhsNumber,
-		DateOfBirth,
-		EthnicCategory,
-		StreetAddressLine1,
-		StreetAddressLine2,
-		StreetAddressLine3,
-		StreetAddressLine4,
-		Postcode
+	NhsNumber,
+	max (DateOfBirth) as DateOfBirth,
+	max (EthnicCategory) as EthnicCategory,
+	max (StreetAddressLine1) as StreetAddressLine1,
+	max (StreetAddressLine2) as StreetAddressLine2,
+	max (StreetAddressLine3) as StreetAddressLine3,
+	max (StreetAddressLine4) as StreetAddressLine4,
+	max (Postcode) as Postcode
 from Patients 
-where NhsNumber != '';
+where NhsNumber != ''
+group by NhsNumber
 	
 ```
 </details>
@@ -96,7 +96,7 @@ where NhsNumber != '';
 Source column  `DateOfBirth`.
 Selects the year from a date or null of the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 <details>
 <summary>SQL</summary>
 

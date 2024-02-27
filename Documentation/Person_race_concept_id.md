@@ -30,7 +30,7 @@ Notes
 * [OMOP Race](https://athena.ohdsi.org/search-terms/terms?conceptClass=Race&invalidReason=Valid&vocabulary=Race&page=1&pageSize=50&query=)
 * [D, E, F, G Race mapping](https://forums.ohdsi.org/t/mapping-nhs-ethnic-category-to-omop-race/20883/2)
 
-* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY]()
 <details>
 <summary>SQL</summary>
 
@@ -74,17 +74,17 @@ with
 	from COSDElements
 )
 select
-	distinct
-		NhsNumber,
-		DateOfBirth,
-		EthnicCategory,
-		StreetAddressLine1,
-		StreetAddressLine2,
-		StreetAddressLine3,
-		StreetAddressLine4,
-		Postcode
+	NhsNumber,
+	max (DateOfBirth) as DateOfBirth,
+	max (EthnicCategory) as EthnicCategory,
+	max (StreetAddressLine1) as StreetAddressLine1,
+	max (StreetAddressLine2) as StreetAddressLine2,
+	max (StreetAddressLine3) as StreetAddressLine3,
+	max (StreetAddressLine4) as StreetAddressLine4,
+	max (Postcode) as Postcode
 from Patients 
-where NhsNumber != '';
+where NhsNumber != ''
+group by NhsNumber
 	
 ```
 </details>
@@ -122,7 +122,7 @@ Notes
 * [OMOP Race](https://athena.ohdsi.org/search-terms/terms?conceptClass=Race&invalidReason=Valid&vocabulary=Race&page=1&pageSize=50&query=)
 * [D, E, F, G Race mapping](https://forums.ohdsi.org/t/mapping-nhs-ethnic-category-to-omop-race/20883/2)
 
-* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY]()
 <details>
 <summary>SQL</summary>
 

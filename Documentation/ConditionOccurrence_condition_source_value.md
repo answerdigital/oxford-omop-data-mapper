@@ -2,7 +2,7 @@
 ### CDS Condition Occurrence
 * Value copied from `DiagnosisCode`
 
-* `DiagnosisCode` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html), [SECONDARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/secondary_diagnosis__icd_.html)
+* `DiagnosisCode` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](), [SECONDARY DIAGNOSIS (ICD)]()
 <details>
 <summary>SQL</summary>
 

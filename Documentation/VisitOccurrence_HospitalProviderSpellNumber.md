@@ -3,7 +3,7 @@
 Source column  `HospitalProviderSpellNumber`.
 Converts text to integers.
 
-* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
+* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER]()
 <details>
 <summary>SQL</summary>
 
