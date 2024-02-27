@@ -28,7 +28,8 @@ Lookup race source concept.
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 * [OMOP Race](https://athena.ohdsi.org/search-terms/terms?conceptClass=Race&invalidReason=Valid&vocabulary=Race&page=1&pageSize=50&query=)
-* `EthnicCategory` The patient's ethnic category as specified in the `Demographics` element.
+
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 <details>
 <summary>SQL</summary>
 
@@ -52,17 +53,6 @@ with
 	from omop_staging.cosd_staging
 	cross apply content.nodes('COSD901:COSD/*') as T(staging)
 	where T.staging.exist('Id/@root') = 1
-), UniqueCOSD as ( -- When nodes are detected more than once, pick one and discarded the others.
-	select *
-	from (
-		select
-			Id,
-			Node,
-			Is81,
-			row_number() over (partition by Id order by (select null)) as RowNumber
-		from CosdRecords
-	) t
-	where t.RowNumber = 1
 ), COSDElements as (
 	select
 		Id,
@@ -129,7 +119,8 @@ Lookup race source concept.
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 * [OMOP Race](https://athena.ohdsi.org/search-terms/terms?conceptClass=Race&invalidReason=Valid&vocabulary=Race&page=1&pageSize=50&query=)
-* `EthnicCategory` Patient EthnicCategory [Data Dictionary](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 <details>
 <summary>SQL</summary>
 

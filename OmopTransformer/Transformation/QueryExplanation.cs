@@ -4,6 +4,6 @@ namespace OmopTransformer.Transformation;
 
 public class QueryExplanation
 {
-    [XmlElement("OmopColumnExplanation")]
+    [XmlElement("Explanation")]
     public QueryColumnExplanation[]? Explanations { get; set; }
 }

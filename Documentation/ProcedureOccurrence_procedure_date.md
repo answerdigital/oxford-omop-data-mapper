@@ -2,7 +2,8 @@
 ### CDS Procedure Occurrence
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
-* `PrimaryProcedureDate` Procedure Date
+
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 <details>
 <summary>SQL</summary>
 
@@ -12,7 +13,6 @@ select
 		l1.RecordConnectionIdentifier,
 		l1.NHSNumber,
 		p.PrimaryProcedureDate,
-		'000000' as ProcedureTime,
 		p.PrimaryProcedure
 from omop_staging.cds_line01 l1
 	inner join omop_staging.cds_procedure p

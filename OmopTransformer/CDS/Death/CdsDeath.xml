@@ -18,8 +18,15 @@ where l1.NHSNumber is not null
 		)
 	);
 	</Sql>
-    <Explanation>
-		<OmopColumnExplanation columnName="nhs_number">The patient's NHS Number.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="death_date">Discharge date of the patient's spell.</OmopColumnExplanation>
-	</Explanation>
+
+	<Explanations>
+		<Explanation columnName="death_date">
+			<Description>Discharge date of the patient's spell.</Description>
+			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+		<Explanation columnName="nhs_number">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+	</Explanations>
 </Query>

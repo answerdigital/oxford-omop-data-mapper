@@ -1,7 +1,8 @@
 # `Person` `race_source_value`
 ### COSD Demographics
 * Value copied from `EthnicCategory`
-* `EthnicCategory` The patient's ethnic category as specified in the `Demographics` element.
+
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 <details>
 <summary>SQL</summary>
 
@@ -25,17 +26,6 @@ with
 	from omop_staging.cosd_staging
 	cross apply content.nodes('COSD901:COSD/*') as T(staging)
 	where T.staging.exist('Id/@root') = 1
-), UniqueCOSD as ( -- When nodes are detected more than once, pick one and discarded the others.
-	select *
-	from (
-		select
-			Id,
-			Node,
-			Is81,
-			row_number() over (partition by Id order by (select null)) as RowNumber
-		from CosdRecords
-	) t
-	where t.RowNumber = 1
 ), COSDElements as (
 	select
 		Id,
@@ -75,7 +65,8 @@ where NhsNumber != '';
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_value%20field%20COSD%20Demographics%20mapping)
 ### CDS Person
 * Value copied from `EthnicCategory`
-* `EthnicCategory` Patient EthnicCategory [Data Dictionary](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 <details>
 <summary>SQL</summary>
 

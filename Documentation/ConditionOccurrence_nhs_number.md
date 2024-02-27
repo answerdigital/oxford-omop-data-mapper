@@ -1,7 +1,8 @@
 # `ConditionOccurrence` `nhs_number`
 ### CDS Condition Occurrence
 * Value copied from `NHSNumber`
-* `NHSNumber` Patient NHS Number
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 

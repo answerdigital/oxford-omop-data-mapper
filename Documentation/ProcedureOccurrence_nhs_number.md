@@ -1,7 +1,8 @@
 # `ProcedureOccurrence` `nhs_number`
 ### CDS Procedure Occurrence
 * Value copied from `NHSNumber`
-* `NHSNumber` Patient NHS Number
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 
@@ -11,7 +12,6 @@ select
 		l1.RecordConnectionIdentifier,
 		l1.NHSNumber,
 		p.PrimaryProcedureDate,
-		'000000' as ProcedureTime,
 		p.PrimaryProcedure
 from omop_staging.cds_line01 l1
 	inner join omop_staging.cds_procedure p

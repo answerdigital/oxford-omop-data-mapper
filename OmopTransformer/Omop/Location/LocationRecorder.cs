@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -18,19 +17,19 @@ internal class LocationRecorder : ILocationRecorder
         _configuration = configuration.Value;
     }
 
-    public async Task InsertUpdateLocations<T>(IReadOnlyCollection<OmopLocation<T>> locations, string dataSource, CancellationToken cancellationToken)
+    public async Task InsertUpdateLocations<T>(IReadOnlyCollection<OmopLocation<T>> records, string dataSource, CancellationToken cancellationToken)
     {
-        if (locations == null) throw new ArgumentNullException(nameof(locations));
+        if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} locations.", locations.Count);
+        _logger.LogInformation("Recording {0} locations.", records.Count);
 
-        var stopwatch = Stopwatch.StartNew();
+        var batchLogger = new BatchTimingLogger<LocationRecorder>(_configuration.BatchSize!.Value, records.Count, "locations", _logger);
 
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = locations.Batch(1000);
+        var batches = records.Batch(_configuration.BatchSize.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -72,11 +71,10 @@ internal class LocationRecorder : ILocationRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.InsertUpdateLocation", parameter, commandType: CommandType.StoredProcedure);
+
+            batchLogger.LogNext();
         }
 
-        stopwatch.Stop();
-
-        _logger.LogTrace("Inserting locations took {0}ms.", stopwatch.ElapsedMilliseconds);
-
+        batchLogger.LogSummary();
     }
 }

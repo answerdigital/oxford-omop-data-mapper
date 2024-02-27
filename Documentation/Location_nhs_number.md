@@ -5,7 +5,8 @@
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20SACT%20mapping)
 ### Rtds PAS Location
 * Value copied from `FirstOfNHSNUMBER`
-* `FirstOfNHSNUMBER` The patient's NHSNumber.
+
+* `FirstOfNHSNUMBER` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 
@@ -25,8 +26,8 @@ where p.FirstOfPOSTCODE is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20Rtds%20PAS%20Location%20mapping)
 ### COSD Demographics
 * Value copied from `NhsNumber`
-* `NhsNumber` The patient's NHSNumber as specified in the `LinkagePatientId` or similar element.
-* `NhsNumber` The value of the NhsNumber within the sibling LinkagePatientId element.
+
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 
@@ -50,17 +51,6 @@ with
 	from omop_staging.cosd_staging
 	cross apply content.nodes('COSD901:COSD/*') as T(staging)
 	where T.staging.exist('Id/@root') = 1
-), UniqueCOSD as ( -- When nodes are detected more than once, pick one and discarded the others.
-	select *
-	from (
-		select
-			Id,
-			Node,
-			Is81,
-			row_number() over (partition by Id order by (select null)) as RowNumber
-		from CosdRecords
-	) t
-	where t.RowNumber = 1
 ), COSDElements as (
 	select
 		Id,
@@ -100,5 +90,35 @@ where NhsNumber != '';
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20COSD%20Demographics%20mapping)
 ### CDS Structured Address
 * Value copied from `NhsNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+<details>
+<summary>SQL</summary>
+
+```sql
+		select
+		distinct
+		PatientAddressStructured1,
+		PatientAddressStructured2,
+		PatientAddressStructured3,
+		PatientAddressStructured4,
+		PatientAddressStructured5,
+		Postcode,
+		NHSNumber
+		from omop_staging.cds_line01
+		where PatientAddressType = '02'
+		and
+		(
+		PatientAddressStructured1 is not null or
+		PatientAddressStructured2 is not null or
+		PatientAddressStructured3 is not null or
+		PatientAddressStructured4 is not null or
+		PatientAddressStructured5 is not null or
+		Postcode is not null
+		);
+	
+```
+</details>
+
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20CDS%20Structured%20Address%20mapping)

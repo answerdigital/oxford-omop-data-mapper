@@ -2,8 +2,10 @@
 ### CDS VisitOccurrenceWithSpell
 Source columns  `EpisodeEndDate`, `EpisodeEndTime`.
 Combines a date with a time of day.
-* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified.
-* `EpisodeEndTime` The latest episode end time for the spell, or midnight if none are specified.
+
+* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
+
+* `EpisodeEndTime` The latest episode end time for the spell, or midnight if none are specified. [END TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html)
 <details>
 <summary>SQL</summary>
 
@@ -33,7 +35,7 @@ select
         when max(l5.PatientClassification) in (1) then 9201
         when max(l4.LocationClass) in ('02') then 581476
 		else 9202
-	end as VisitOccurenceConceptId,    -- "visit_concept_id"
+	end as VisitOccurrenceConceptId,    -- "visit_concept_id"
 	case 
 		when max(l5.EpisodeEndDate) is null and max(l5.DischargeDateHospitalProviderSpell) is null then 32220
         else 32818
@@ -63,8 +65,10 @@ group by
 ### CDS VisitOccurrenceWithoutSpell
 Source columns  `EpisodeEndDate`, `EpisodeEndTime`.
 Combines a date with a time of day.
-* `EpisodeEndDate` The latest dte in the message group.
-* `EpisodeEndTime` No data available, defaulted to midnight.
+
+* `EpisodeEndDate` The latest dte in the message group. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+
+* `EpisodeEndTime` No data available, defaulted to midnight. 
 <details>
 <summary>SQL</summary>
 

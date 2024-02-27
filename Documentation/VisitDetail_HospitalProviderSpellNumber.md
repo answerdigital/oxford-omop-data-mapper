@@ -1,7 +1,8 @@
 # `VisitDetail` `HospitalProviderSpellNumber`
 ### CDS VisitDetails
 * Value copied from `HospitalProviderSpellNumber`
-* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together.
+
+* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 <details>
 <summary>SQL</summary>
 

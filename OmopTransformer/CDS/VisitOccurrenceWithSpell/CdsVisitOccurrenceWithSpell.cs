@@ -24,7 +24,7 @@ internal class CdsVisitOccurrenceWithSpell : OmopVisitOccurrence<CdsVisitOccurre
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.EpisodeEndDate), nameof(Source.EpisodeEndTime))]
     public override DateTime? visit_end_datetime { get; set; }
 
-    [CopyValue(nameof(Source.VisitOccurenceConceptId))]
+    [CopyValue(nameof(Source.VisitOccurrenceConceptId))]
     public override int? visit_concept_id { get; set; }
 
     [CopyValue(nameof(Source.VisitTypeConceptId))]

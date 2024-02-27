@@ -8,8 +8,16 @@ from omop_staging.RTDS_PASDATA p
 where p.FirstOfPOSTCODE is not null
 	and p.FirstOfNHSNUMBER is not null;
 	</Sql>
-    <Explanation>
-		<OmopColumnExplanation columnName="FirstOfNHSNUMBER">The patient's NHSNumber.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="FirstOfPOSTCODE">The patient's Postcode.</OmopColumnExplanation>
-    </Explanation>
+
+	<Explanations>
+		<Explanation columnName="FirstOfNHSNUMBER">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+
+		<Explanation columnName="FirstOfPOSTCODE">
+			<Description>Patient's Postcode.</Description>
+			<Origin>POSTCODE</Origin>
+		</Explanation>
+	</Explanations>
 </Query>

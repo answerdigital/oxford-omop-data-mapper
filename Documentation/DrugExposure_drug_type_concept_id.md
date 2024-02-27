@@ -1,7 +1,8 @@
 # `DrugExposure` `drug_type_concept_id`
 ### CDS Drug Exposure
 * Value copied from `DrugTypeConceptId`
-* `DrugTypeConceptId` If the patient was discharged `32818` otherwise `32220`.
+
+* `DrugTypeConceptId` If the patient was discharged `32818` otherwise `32220`. [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
 <details>
 <summary>SQL</summary>
 

@@ -19,12 +19,36 @@ from [omop_staging].[cds_line01] l1
 	left join [omop_staging].[cds_line05] l5 
 		on l5.MessageId = l1.MessageId
 	</Sql>
-    <Explanation>
-		<OmopColumnExplanation columnName="nhs_number">The patient's NHS Number.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="RecordConnectionIdentifier">CDS specific identifier that binds multiple CDS messages together.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="DrugSourceValue">The drug's OPCS4 code.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="ExposureStartDate">Start date of the episode, if exists, else the start date of the spell, if exists, else the message date.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="ExposureEndDate">End date of the episode, if exists, else the spell discharge date, if exists, else the message date. </OmopColumnExplanation>
-		<OmopColumnExplanation columnName="DrugTypeConceptId">If the patient was discharged `32818` otherwise `32220`.</OmopColumnExplanation>
-	</Explanation>
+
+	<Explanations>
+		<Explanation columnName="RecordConnectionIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="nhs_number">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="ExposureStartDate">
+			<Description>Start date of the episode, if exists, else the start date of the spell, if exists, else the message date.</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+			<Origin>START DATE (HOSPITAL PROVIDER SPELL)</Origin>
+			<Origin>START DATE (EPISODE)</Origin>
+		</Explanation>
+		<Explanation columnName="ExposureEndDate">
+			<Description>End date of the episode, if exists, else the spell discharge date, if exists, else the message date.</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+			<Origin>END DATE (EPISODE)</Origin>
+			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+		<Explanation columnName="DrugTypeConceptId">
+			<Description>If the patient was discharged `32818` otherwise `32220`.</Description>
+			<Origin>END DATE (EPISODE)</Origin>
+			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+		<Explanation columnName="DrugSourceValue">
+			<Description>High cost drugs.</Description>
+			<Origin>HIGH COST DRUGS (OPCS)</Origin>
+		</Explanation>
+	</Explanations>
 </Query>

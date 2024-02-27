@@ -5,7 +5,6 @@ select
 		l1.RecordConnectionIdentifier,
 		l1.NHSNumber,
 		p.PrimaryProcedureDate,
-		'000000' as ProcedureTime,
 		p.PrimaryProcedure
 from omop_staging.cds_line01 l1
 	inner join omop_staging.cds_procedure p
@@ -13,9 +12,28 @@ from omop_staging.cds_line01 l1
 where l1.NHSNumber is not null;
 	</Sql>
     <Explanation>
-		<OmopColumnExplanation columnName="RecordConnectionIdentifier">CDS specific identifier that binds multiple CDS messages together.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="PrimaryProcedureDate">Procedure Date</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="NHSNumber">Patient NHS Number</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="PrimaryProcedure">OPC4 Procedure code</OmopColumnExplanation>
+		<OmopColumnExplanation columnName="PrimaryProcedure"></OmopColumnExplanation>
 	</Explanation>
+
+
+	<Explanations>
+		<Explanation columnName="RecordConnectionIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+
+		<Explanation columnName="PrimaryProcedureDate">
+			<Description>Procedure Date.</Description>
+			<Origin>PROCEDURE DATE</Origin>
+		</Explanation>
+		
+		<Explanation columnName="PrimaryProcedure">
+			<Description>OPC4 Procedure code.</Description>
+			<Origin>PROCEDURE (OPCS)</Origin>
+		</Explanation>
+	</Explanations>
 </Query>

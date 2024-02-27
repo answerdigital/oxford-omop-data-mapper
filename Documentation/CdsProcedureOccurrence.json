@@ -23,8 +23,7 @@
     {
       "name": "procedure_datetime",
       "sourceColumns": [
-        "PrimaryProcedureDate",
-        "ProcedureTime"
+        "PrimaryProcedureDate"
       ]
     },
     {

@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -18,27 +17,22 @@ internal class PersonRecorder : IPersonRecorder
         _configuration = configuration.Value;
     }
 
-    public async Task InsertUpdatePersons<T>(IReadOnlyCollection<OmopPerson<T>> persons, string dataSource, CancellationToken cancellationToken)
+    public async Task InsertUpdatePersons<T>(IReadOnlyCollection<OmopPerson<T>> records, string dataSource, CancellationToken cancellationToken)
     {
-        if (persons == null) throw new ArgumentNullException(nameof(persons));
+        if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} persons.", persons.Count);
+        _logger.LogInformation("Recording {0} persons.", records.Count);
 
-        var stopwatch = Stopwatch.StartNew();
+        var batchLogger = new BatchTimingLogger<PersonRecorder>(_configuration.BatchSize!.Value, records.Count, "procedure occurrences", _logger);
 
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = persons.Batch(1000);
-
-        int batchNumber = 1;
+        var batches = records.Batch(_configuration.BatchSize.Value);
 
         foreach (var batch in batches)
         {
-            Stopwatch batchStopwatch = Stopwatch.StartNew();
-            _logger.LogInformation($"Batch {batchNumber} of {persons.Count / 1000}", persons.Count);
-
             var dataTable = new DataTable();
 
             dataTable.Columns.Add("gender_concept_id");
@@ -87,14 +81,10 @@ internal class PersonRecorder : IPersonRecorder
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_person", parameter, commandType: CommandType.StoredProcedure);
 
-            batchNumber++;
-            _logger.LogInformation($"Batch took {batchStopwatch.ElapsedMilliseconds}ms", persons.Count);
+            batchLogger.LogNext();
 
         }
 
-        stopwatch.Stop();
-
-        _logger.LogTrace("Inserting persons took {0}ms.", stopwatch.ElapsedMilliseconds);
-
+        batchLogger.LogSummary();
     }
 }

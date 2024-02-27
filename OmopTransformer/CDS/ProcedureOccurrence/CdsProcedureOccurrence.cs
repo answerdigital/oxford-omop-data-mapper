@@ -15,7 +15,7 @@ internal class CdsProcedureOccurrence : OmopProcedureOccurrence<CdsProcedureOccu
     [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
     public override DateTime? procedure_date { get; set; }
 
-    [Transform(typeof(DateAndTimeCombiner), nameof(Source.PrimaryProcedureDate), nameof(Source.ProcedureTime))]
+    [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
     public override DateTime? procedure_datetime { get; set; }
 
     [ConstantValue(32818, "`EHR Administration record`")]

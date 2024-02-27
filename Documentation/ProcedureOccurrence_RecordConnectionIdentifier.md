@@ -1,7 +1,8 @@
 # `ProcedureOccurrence` `RecordConnectionIdentifier`
 ### CDS Procedure Occurrence
 * Value copied from `RecordConnectionIdentifier`
-* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together.
+
+* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 <details>
 <summary>SQL</summary>
 
@@ -11,7 +12,6 @@ select
 		l1.RecordConnectionIdentifier,
 		l1.NHSNumber,
 		p.PrimaryProcedureDate,
-		'000000' as ProcedureTime,
 		p.PrimaryProcedure
 from omop_staging.cds_line01 l1
 	inner join omop_staging.cds_procedure p

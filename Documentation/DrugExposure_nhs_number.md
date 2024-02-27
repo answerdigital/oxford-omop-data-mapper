@@ -1,7 +1,8 @@
 # `DrugExposure` `nhs_number`
 ### CDS Drug Exposure
 * Value copied from `nhs_number`
-* `nhs_number` The patient's NHS Number.
+
+* `nhs_number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 

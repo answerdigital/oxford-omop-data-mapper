@@ -5,7 +5,8 @@
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20SACT%20mapping)
 ### Rtds Demographics
 * Value copied from `PatientId`
-* `PatientId` The patient's NHSNumber.
+
+* `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 
@@ -26,8 +27,8 @@ where d.PatientId not like '%[^0-9]%'
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20Rtds%20Demographics%20mapping)
 ### COSD Demographics
 * Value copied from `NhsNumber`
-* `NhsNumber` The patient's NHSNumber as specified in the `LinkagePatientId` or similar element.
-* `NhsNumber` The value of the NhsNumber within the sibling LinkagePatientId element.
+
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 
@@ -51,17 +52,6 @@ with
 	from omop_staging.cosd_staging
 	cross apply content.nodes('COSD901:COSD/*') as T(staging)
 	where T.staging.exist('Id/@root') = 1
-), UniqueCOSD as ( -- When nodes are detected more than once, pick one and discarded the others.
-	select *
-	from (
-		select
-			Id,
-			Node,
-			Is81,
-			row_number() over (partition by Id order by (select null)) as RowNumber
-		from CosdRecords
-	) t
-	where t.RowNumber = 1
 ), COSDElements as (
 	select
 		Id,
@@ -101,7 +91,8 @@ where NhsNumber != '';
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20COSD%20Demographics%20mapping)
 ### CDS Person
 * Value copied from `NHSNumber`
-* `NHSNumber` Patient NHS Number
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 

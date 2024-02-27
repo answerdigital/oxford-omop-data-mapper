@@ -39,14 +39,43 @@ group by
 	l1.NHSNumber, 
 	l1.RecordConnectionIdentifier;
 	</Sql>
-    <Explanation>
-		<OmopColumnExplanation columnName="NHSNumber">The patient's NHS Number.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="RecordConnectionIdentifier">CDS specific identifier that binds multiple CDS messages together.</OmopColumnExplanation>
-	    <OmopColumnExplanation columnName="EpisodeStartDate">The earliest date in the message group.</OmopColumnExplanation>
-	    <OmopColumnExplanation columnName="EpisodeStartTime">No data available, defaulted to midnight.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="EpisodeEndDate">The latest dte in the message group.</OmopColumnExplanation>
-	    <OmopColumnExplanation columnName="EpisodeEndTime">No data available, defaulted to midnight.</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="SourceofAdmissionCode">[Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="DischargeDestinationCode">[Discharge Destination Code](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)</OmopColumnExplanation>
-	</Explanation>
+
+	<Explanations>
+		<Explanation columnName="RecordConnectionIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		
+		<Explanation columnName="EpisodeStartDate">
+			<Description>The earliest date in the message group.</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+		</Explanation>
+
+		<Explanation columnName="EpisodeStartTime">
+			<Description>No data available, defaulted to midnight.</Description>
+		</Explanation>
+
+		<Explanation columnName="EpisodeEndDate">
+			<Description>The latest dte in the message group.</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+		</Explanation>
+
+		<Explanation columnName="EpisodeEndTime">
+			<Description>No data available, defaulted to midnight.</Description>
+		</Explanation>
+
+		<Explanation columnName="SourceofAdmissionCode">
+			<Description>Admission Source.</Description>
+			<Origin>ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+
+		<Explanation columnName="DischargeDestinationCode">
+			<Description>Discharge Destination Code</Description>
+			<Origin>DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+	</Explanations>
 </Query>

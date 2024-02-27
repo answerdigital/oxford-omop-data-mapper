@@ -1,7 +1,8 @@
 # `VisitOccurrence` `NhsNumber`
 ### CDS VisitOccurrenceWithSpell
 * Value copied from `NHSNumber`
-* `NHSNumber` The patient's NHS Number.
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 
@@ -31,7 +32,7 @@ select
         when max(l5.PatientClassification) in (1) then 9201
         when max(l4.LocationClass) in ('02') then 581476
 		else 9202
-	end as VisitOccurenceConceptId,    -- "visit_concept_id"
+	end as VisitOccurrenceConceptId,    -- "visit_concept_id"
 	case 
 		when max(l5.EpisodeEndDate) is null and max(l5.DischargeDateHospitalProviderSpell) is null then 32220
         else 32818
@@ -60,7 +61,8 @@ group by
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20NhsNumber%20field%20CDS%20VisitOccurrenceWithSpell%20mapping)
 ### CDS VisitOccurrenceWithoutSpell
 * Value copied from `NHSNumber`
-* `NHSNumber` The patient's NHS Number.
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 

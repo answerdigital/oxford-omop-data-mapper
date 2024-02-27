@@ -8,12 +8,14 @@ internal class DocumentationWriter : IDocumentationWriter
     private readonly DocumentationOptions _documentationOption;
     private readonly ILogger<DocumentationWriter> _logger;
     private readonly IQueryLocator _queryLocator;
+    private readonly DataDictionaryUrlResolver _dataDictionaryUrlResolver;
 
-    public DocumentationWriter(DocumentationOptions documentationOption, ILogger<DocumentationWriter> logger, IQueryLocator queryLocator)
+    public DocumentationWriter(DocumentationOptions documentationOption, ILogger<DocumentationWriter> logger, IQueryLocator queryLocator, DataDictionaryUrlResolver dataDictionaryUrlResolver)
     {
         _documentationOption = documentationOption;
         _logger = logger;
         _queryLocator = queryLocator;
+        _dataDictionaryUrlResolver = dataDictionaryUrlResolver;
     }
 
     public async Task WriteToPath(CancellationToken cancellationToken)
@@ -28,7 +30,7 @@ internal class DocumentationWriter : IDocumentationWriter
 
         Assembly currentAssembly = Assembly.GetExecutingAssembly();
 
-        var documentation = new DocumentationRenderer(currentAssembly.GetTypes(), _queryLocator, _logger).Render();
+        var documentation = new DocumentationRenderer(currentAssembly.GetTypes(), _queryLocator, _logger, _dataDictionaryUrlResolver).Render();
 
         foreach (Document document in documentation)
         {

@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -18,19 +17,19 @@ internal class DeathRecorder : IDeathRecorder
         _configuration = configuration.Value;
     }
 
-    public async Task InsertUpdateDeaths<T>(IReadOnlyCollection<OmopDeath<T>> deaths, string dataSource, CancellationToken cancellationToken)
+    public async Task InsertUpdateDeaths<T>(IReadOnlyCollection<OmopDeath<T>> records, string dataSource, CancellationToken cancellationToken)
     {
-        if (deaths == null) throw new ArgumentNullException(nameof(deaths));
+        if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} Deaths.", deaths.Count);
+        _logger.LogInformation("Recording {0} Deaths.", records.Count);
 
-        var stopwatch = Stopwatch.StartNew();
+        var batchLogger = new BatchTimingLogger<DeathRecorder>(_configuration.BatchSize!.Value, records.Count, "deaths", _logger);
 
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = deaths.Batch(1000);
+        var batches = records.Batch(_configuration.BatchSize.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -62,11 +61,11 @@ internal class DeathRecorder : IDeathRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_death", parameter, commandType: CommandType.StoredProcedure);
+
+            batchLogger.LogNext();
         }
 
-        stopwatch.Stop();
-
-        _logger.LogTrace("Inserting Deaths took {0}ms.", stopwatch.ElapsedMilliseconds);
+        batchLogger.LogSummary();
 
     }
 }

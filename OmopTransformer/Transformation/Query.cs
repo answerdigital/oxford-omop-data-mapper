@@ -7,6 +7,6 @@ public class Query
 {
     public string? Sql { get; set; }
 
-    [XmlElement("Explanation")]
+    [XmlElement("Explanations")]
     public QueryExplanation? Explanation { get; set; }
 }

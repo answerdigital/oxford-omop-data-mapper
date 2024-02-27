@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -24,13 +23,13 @@ internal class ProcedureOccurrenceRecorder : IProcedureOccurrenceRecorder
 
         _logger.LogInformation("Recording {0} procedure occurrences.", records.Count);
 
-        var stopwatch = Stopwatch.StartNew();
+        var batchLogger = new BatchTimingLogger<ProcedureOccurrenceRecorder>(_configuration.BatchSize!.Value, records.Count, "procedure occurrences", _logger);
 
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(1000);
+        var batches = records.Batch(_configuration.BatchSize.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -86,10 +85,10 @@ internal class ProcedureOccurrenceRecorder : IProcedureOccurrenceRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_procedure_occurrence", parameter, commandType: CommandType.StoredProcedure);
+
+            batchLogger.LogNext();
         }
 
-        stopwatch.Stop();
-
-        _logger.LogTrace("Inserting procedure occurrences took {0}ms.", stopwatch.ElapsedMilliseconds);
+        batchLogger.LogSummary();
     }
 }

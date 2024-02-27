@@ -2,5 +2,5 @@
 
 internal interface IDeathRecorder
 {
-    Task InsertUpdateDeaths<T>(IReadOnlyCollection<OmopDeath<T>> deaths, string dataSource, CancellationToken cancellationToken);
+    Task InsertUpdateDeaths<T>(IReadOnlyCollection<OmopDeath<T>> records, string dataSource, CancellationToken cancellationToken);
 }

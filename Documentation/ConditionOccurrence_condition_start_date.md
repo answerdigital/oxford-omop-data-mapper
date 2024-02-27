@@ -2,7 +2,8 @@
 ### CDS Condition Occurrence
 Source column  `CDSActivityDate`.
 Converts text to dates.
-* `CDSActivityDate` Event date
+
+* `CDSActivityDate` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
 <details>
 <summary>SQL</summary>
 

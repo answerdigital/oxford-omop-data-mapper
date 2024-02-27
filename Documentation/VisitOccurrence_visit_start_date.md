@@ -2,7 +2,8 @@
 ### CDS VisitOccurrenceWithSpell
 Source column  `EpisodeStartDate`.
 Converts text to dates.
-* `EpisodeStartDate` The earliest episode start date for the spell, or the earliest activity date if none are specified.
+
+* `EpisodeStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 <details>
 <summary>SQL</summary>
 
@@ -32,7 +33,7 @@ select
         when max(l5.PatientClassification) in (1) then 9201
         when max(l4.LocationClass) in ('02') then 581476
 		else 9202
-	end as VisitOccurenceConceptId,    -- "visit_concept_id"
+	end as VisitOccurrenceConceptId,    -- "visit_concept_id"
 	case 
 		when max(l5.EpisodeEndDate) is null and max(l5.DischargeDateHospitalProviderSpell) is null then 32220
         else 32818
@@ -62,7 +63,8 @@ group by
 ### CDS VisitOccurrenceWithoutSpell
 Source column  `EpisodeStartDate`.
 Converts text to dates.
-* `EpisodeStartDate` The earliest date in the message group.
+
+* `EpisodeStartDate` The earliest date in the message group. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
 <details>
 <summary>SQL</summary>
 

@@ -1,0 +1,9 @@
+drop index FI_cdm_visit_occurrence_RecordConnectionIdentifier on cdm.visit_occurrence
+
+create index IDX_cdm_visit_occurrence_RecordConnectionIdentifier_person_id on cdm.visit_occurrence (RecordConnectionIdentifier, person_id)
+
+drop index IDX_cdm_visit_details_HospitalProviderSpellNumber on cdm.visit_detail
+drop index IDX_cdm_visit_details_RecordConnectionIdentifier on cdm.visit_detail
+
+create index IDX_cdm_visit_details_HospitalProviderSpellNumber_person_id on cdm.visit_detail (person_id, HospitalProviderSpellNumber) include (visit_occurrence_id);
+create index IDX_cdm_visit_details_RecordConnectionIdentifier_person_id on cdm.visit_detail (person_id, RecordConnectionIdentifier) include (visit_occurrence_id);
