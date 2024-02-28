@@ -3,6 +3,23 @@
 Source column  `Patient_Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
+* `Patient_Postcode` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		Patient_Postcode,
+		NHS_Number,
+		Date_Of_Birth,
+		Person_Stated_Gender_Code
+from omop_staging.sact_staging
+	
+```
+</details>
+
+
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20SACT%20mapping)
 ### Rtds PAS Location
 Source column  `FirstOfPOSTCODE`.

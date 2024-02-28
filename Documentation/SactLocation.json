@@ -5,22 +5,55 @@
     {
       "name": "zip",
       "operation_description": "Uppercase the postcode then insert the space in the correct location, if needed.",
-      "dataSource": null,
-      "query": null,
+      "dataSource": [
+        {
+          "name": "Patient_Postcode",
+          "description": "Patient's Postcode.",
+          "origins": [
+            {
+              "origin": "POSTCODE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "location_source_value",
       "operation_description": "Value copied from `Patient_Postcode`",
-      "dataSource": null,
-      "query": null,
+      "dataSource": [
+        {
+          "name": "Patient_Postcode",
+          "description": "Patient's Postcode.",
+          "origins": [
+            {
+              "origin": "POSTCODE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "nhs_number",
       "operation_description": "Value copied from `NHS_Number`",
-      "dataSource": null,
-      "query": null,
+      "dataSource": [
+        {
+          "name": "NHS_Number",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     }
   ]

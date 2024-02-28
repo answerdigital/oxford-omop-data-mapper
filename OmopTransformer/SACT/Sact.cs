@@ -4,6 +4,7 @@ namespace OmopTransformer.SACT;
 
 [DataOrigin("SACT")]
 [Description("SACT")]
+[SourceQuery("Sact.xml")]
 internal class Sact
 {
     public string? NHS_Number { get; init; }

@@ -3,6 +3,23 @@
 Source column  `Date_Of_Birth`.
 Selects the month of the year or null if the date is null.
 
+* `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		Patient_Postcode,
+		NHS_Number,
+		Date_Of_Birth,
+		Person_Stated_Gender_Code
+from omop_staging.sact_staging
+	
+```
+</details>
+
+
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20month_of_birth%20field%20SACT%20mapping)
 ### Rtds Demographics
 Source column  `DateOfBirth`.

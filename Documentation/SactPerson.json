@@ -5,36 +5,91 @@
     {
       "name": "person_source_value",
       "operation_description": "Value copied from `NHS_Number`",
-      "dataSource": null,
-      "query": null,
+      "dataSource": [
+        {
+          "name": "NHS_Number",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "year_of_birth",
       "operation_description": "Selects the year from a date or null of the date is null.",
-      "dataSource": null,
-      "query": null,
+      "dataSource": [
+        {
+          "name": "Date_Of_Birth",
+          "description": "Patient's date of birth.",
+          "origins": [
+            {
+              "origin": "PERSON BIRTH DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "month_of_birth",
       "operation_description": "Selects the month of the year or null if the date is null.",
-      "dataSource": null,
-      "query": null,
+      "dataSource": [
+        {
+          "name": "Date_Of_Birth",
+          "description": "Patient's date of birth.",
+          "origins": [
+            {
+              "origin": "PERSON BIRTH DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "day_of_birth",
       "operation_description": "Selects the day of the month or null if the date is null.",
-      "dataSource": null,
-      "query": null,
+      "dataSource": [
+        {
+          "name": "Date_Of_Birth",
+          "description": "Patient's date of birth.",
+          "origins": [
+            {
+              "origin": "PERSON BIRTH DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "birth_datetime",
       "operation_description": "Converts text to dates.",
-      "dataSource": null,
-      "query": null,
+      "dataSource": [
+        {
+          "name": "Date_Of_Birth",
+          "description": "Patient's date of birth.",
+          "origins": [
+            {
+              "origin": "PERSON BIRTH DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -47,15 +102,37 @@
     {
       "name": "gender_concept_id",
       "operation_description": "Lookup gender concept.",
-      "dataSource": null,
-      "query": null,
+      "dataSource": [
+        {
+          "name": "Person_Stated_Gender_Code",
+          "description": "The patient's Sex",
+          "origins": [
+            {
+              "origin": "PERSON GENDER CODE CURRENT",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": "\r\n\r\n|Person_Stated_Gender_Code|gender_concept_id|notes|\r\n|------|-----|-----|\r\n|1|8507|Male|\r\n|2|8532|Female|\r\n|9|8551|Indeterminate (unable to be classified as either male or female)|\r\n|X|8551|Not known|\r\n\r\nNotes\r\n* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)\r\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\r\n"
     },
     {
       "name": "gender_source_value",
       "operation_description": "Value copied from `Person_Stated_Gender_Code`",
-      "dataSource": null,
-      "query": null,
+      "dataSource": [
+        {
+          "name": "Person_Stated_Gender_Code",
+          "description": "The patient's Sex",
+          "origins": [
+            {
+              "origin": "PERSON GENDER CODE CURRENT",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     }
   ]

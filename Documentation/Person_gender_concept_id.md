@@ -15,6 +15,23 @@ Notes
 * [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
 * [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
 
+* `Person_Stated_Gender_Code` The patient's Sex [PERSON GENDER CODE CURRENT](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
+<details>
+<summary>SQL</summary>
+
+```sql
+select
+	distinct
+		Patient_Postcode,
+		NHS_Number,
+		Date_Of_Birth,
+		Person_Stated_Gender_Code
+from omop_staging.sact_staging
+	
+```
+</details>
+
+
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20gender_concept_id%20field%20SACT%20mapping)
 ### Rtds Demographics
 Source column  `Sex`.

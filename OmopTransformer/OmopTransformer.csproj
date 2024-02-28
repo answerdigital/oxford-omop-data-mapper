@@ -68,6 +68,9 @@
     <None Update="RTDS\Demographics\RtdsDemographics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SACT\Sact.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

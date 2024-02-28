@@ -528,7 +528,7 @@ internal class DocumentationRenderer
     private class DataDictionaryOrigin(string origin, string? url)
     {
         public string Origin => origin;
-        public string Url => url;
+        public string? Url => url;
         public string GetMarkdown() => $"[{origin}]({url})";
     }
 
