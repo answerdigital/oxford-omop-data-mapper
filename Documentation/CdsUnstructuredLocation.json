@@ -4,15 +4,39 @@
   "omopColumns": [
     {
       "name": "zip",
-      "sourceColumns": [
-        "Postcode"
-      ]
+      "operation_description": "Uppercase the postcode then insert the space in the correct location, if needed.",
+      "dataSource": [
+        {
+          "name": "Postcode",
+          "description": "Patient's Postcode.",
+          "origins": [
+            {
+              "origin": "POSTCODE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatientUnstructuredAddress,\n\t\tPostcode,\n\t\tNHSNumber\nfrom omop_staging.cds_line01\nwhere PatientAddressType = '01'\n\tand Postcode is not null;\n\t",
+      "lookup_table_markdown": null
     },
     {
       "name": "location_source_value",
-      "sourceColumns": [
-        "Postcode"
-      ]
+      "operation_description": "Value copied from `Postcode`",
+      "dataSource": [
+        {
+          "name": "Postcode",
+          "description": "Patient's Postcode.",
+          "origins": [
+            {
+              "origin": "POSTCODE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatientUnstructuredAddress,\n\t\tPostcode,\n\t\tNHSNumber\nfrom omop_staging.cds_line01\nwhere PatientAddressType = '01'\n\tand Postcode is not null;\n\t",
+      "lookup_table_markdown": null
     }
   ]
 }

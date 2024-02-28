@@ -47,11 +47,6 @@ group by
 	l1.NHSNumber, 
 	l5.HospitalProviderSpellNumber;
 	</Sql>
-    <Explanation>
-
-		<OmopColumnExplanation columnName="SourceofAdmissionCode">[Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)</OmopColumnExplanation>
-		<OmopColumnExplanation columnName="DischargeDestinationCode">[Discharge Destination Code](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)</OmopColumnExplanation>
-	</Explanation>
 
 	<Explanations>
 		<Explanation columnName="NHSNumber">

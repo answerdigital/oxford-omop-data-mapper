@@ -1,105 +1,90 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1945" height="800">
+<svg xmlns="http://www.w3.org/2000/svg" width="2575" height="800">
   <rect width="100%" height="100%" fill="#3E5EB2" />
   <g>
-    <rect x="25" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="35" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">NHSNumber</text>
+    <rect x="25" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="35" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">NHS NUMBER</text>
   </g>
   <g>
-    <line x1="150" y1="420" x2="150" y2="615" stroke="white" stroke-width="2" />
-    <line x1="140" y1="605" x2="150" y2="615" stroke="white" stroke-width="2" />
-    <line x1="160" y1="605" x2="150" y2="615" stroke="white" stroke-width="2" />
-    <text x="25" y="728" fill="white" font-size="1em" font-family="Helvetica">Copy value.</text>
+    <line x1="225" y1="420" x2="225" y2="615" stroke="white" stroke-width="2" />
+    <line x1="215" y1="605" x2="225" y2="615" stroke="white" stroke-width="2" />
+    <line x1="235" y1="605" x2="225" y2="615" stroke="white" stroke-width="2" />
+    <text x="100" y="728" fill="white" font-size="1em" font-family="Helvetica">Copy value</text>
   </g>
   <g>
-    <rect x="25" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <rect x="25" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
     <text x="35" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">nhs_number</text>
   </g>
   <g>
-    <rect x="295" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="305" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">procedure_source_concept_id</text>
+    <rect x="445" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="455" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PROCEDURE DATE</text>
   </g>
   <g>
-    <line x1="420" y1="420" x2="420" y2="615" stroke="white" stroke-width="2" />
-    <line x1="410" y1="605" x2="420" y2="615" stroke="white" stroke-width="2" />
-    <line x1="430" y1="605" x2="420" y2="615" stroke="white" stroke-width="2" />
-    <text x="295" y="728" fill="white" font-size="1em" font-family="Helvetica">Converts ICD10/OPCS4 concepts to SNOMED</text>
-    <text x="295" y="746" fill="white" font-size="1em" font-family="Helvetica">concepts.</text>
+    <line x1="645" y1="420" x2="645" y2="615" stroke="white" stroke-width="2" />
+    <line x1="635" y1="605" x2="645" y2="615" stroke="white" stroke-width="2" />
+    <line x1="655" y1="605" x2="645" y2="615" stroke="white" stroke-width="2" />
+    <text x="520" y="728" fill="white" font-size="1em" font-family="Helvetica">Converts text to dates.</text>
   </g>
   <g>
-    <rect x="295" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="305" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">procedure_concept_id</text>
+    <rect x="445" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="455" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">procedure_date</text>
   </g>
   <g>
-    <rect x="565" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="575" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PrimaryProcedureDate</text>
+    <rect x="865" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="875" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PROCEDURE DATE</text>
   </g>
   <g>
-    <line x1="690" y1="420" x2="690" y2="615" stroke="white" stroke-width="2" />
-    <line x1="680" y1="605" x2="690" y2="615" stroke="white" stroke-width="2" />
-    <line x1="700" y1="605" x2="690" y2="615" stroke="white" stroke-width="2" />
-    <text x="565" y="728" fill="white" font-size="1em" font-family="Helvetica">Converts text to dates.</text>
+    <line x1="1065" y1="420" x2="1065" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1055" y1="605" x2="1065" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1075" y1="605" x2="1065" y2="615" stroke="white" stroke-width="2" />
+    <text x="940" y="728" fill="white" font-size="1em" font-family="Helvetica">Converts text to dates.</text>
   </g>
   <g>
-    <rect x="565" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="575" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">procedure_date</text>
+    <rect x="865" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="875" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">procedure_datetime</text>
   </g>
   <g>
-    <rect x="835" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="845" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PrimaryProcedureDate</text>
+    <rect x="1285" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="1295" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PROCEDURE (OPCS)</text>
   </g>
   <g>
-    <line x1="960" y1="420" x2="960" y2="615" stroke="white" stroke-width="2" />
-    <line x1="950" y1="605" x2="960" y2="615" stroke="white" stroke-width="2" />
-    <line x1="970" y1="605" x2="960" y2="615" stroke="white" stroke-width="2" />
-    <text x="835" y="728" fill="white" font-size="1em" font-family="Helvetica">Converts text to dates.</text>
+    <line x1="1485" y1="420" x2="1485" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1475" y1="605" x2="1485" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1495" y1="605" x2="1485" y2="615" stroke="white" stroke-width="2" />
+    <text x="1360" y="728" fill="white" font-size="1em" font-family="Helvetica">Copy value</text>
   </g>
   <g>
-    <rect x="835" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="845" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">procedure_datetime</text>
+    <rect x="1285" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="1295" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">procedure_source_value</text>
   </g>
   <g>
-    <rect x="1105" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="1115" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PrimaryProcedure</text>
+    <rect x="1705" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="1715" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PROCEDURE (OPCS)</text>
   </g>
   <g>
-    <line x1="1230" y1="420" x2="1230" y2="615" stroke="white" stroke-width="2" />
-    <line x1="1220" y1="605" x2="1230" y2="615" stroke="white" stroke-width="2" />
-    <line x1="1240" y1="605" x2="1230" y2="615" stroke="white" stroke-width="2" />
-    <text x="1105" y="728" fill="white" font-size="1em" font-family="Helvetica">Copy value.</text>
+    <line x1="1905" y1="420" x2="1905" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1895" y1="605" x2="1905" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1915" y1="605" x2="1905" y2="615" stroke="white" stroke-width="2" />
+    <text x="1780" y="728" fill="white" font-size="1em" font-family="Helvetica">Resolve OPCS4 codes to OMOP</text>
+    <text x="1780" y="746" fill="white" font-size="1em" font-family="Helvetica">concepts. If code cannot be</text>
+    <text x="1780" y="764" fill="white" font-size="1em" font-family="Helvetica">mapped, map using the parent</text>
+    <text x="1780" y="782" fill="white" font-size="1em" font-family="Helvetica">code.</text>
   </g>
   <g>
-    <rect x="1105" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="1115" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">procedure_source_value</text>
+    <rect x="1705" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="1715" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">procedure_source_concept_id</text>
   </g>
   <g>
-    <rect x="1375" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="1385" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PrimaryProcedure</text>
+    <rect x="2125" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="2135" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">CDS RECORD IDENTIFIER</text>
   </g>
   <g>
-    <line x1="1500" y1="420" x2="1500" y2="615" stroke="white" stroke-width="2" />
-    <line x1="1490" y1="605" x2="1500" y2="615" stroke="white" stroke-width="2" />
-    <line x1="1510" y1="605" x2="1500" y2="615" stroke="white" stroke-width="2" />
-    <text x="1375" y="728" fill="white" font-size="1em" font-family="Helvetica">Resolve OPCS4 codes to OMOP</text>
-    <text x="1375" y="746" fill="white" font-size="1em" font-family="Helvetica">concepts. If code cannot be</text>
-    <text x="1375" y="764" fill="white" font-size="1em" font-family="Helvetica">mapped, map using the parent</text>
-    <text x="1375" y="782" fill="white" font-size="1em" font-family="Helvetica">code.</text>
+    <line x1="2325" y1="420" x2="2325" y2="615" stroke="white" stroke-width="2" />
+    <line x1="2315" y1="605" x2="2325" y2="615" stroke="white" stroke-width="2" />
+    <line x1="2335" y1="605" x2="2325" y2="615" stroke="white" stroke-width="2" />
+    <text x="2200" y="728" fill="white" font-size="1em" font-family="Helvetica">Copy value</text>
   </g>
   <g>
-    <rect x="1375" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="1385" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">procedure_source_concept_id</text>
-  </g>
-  <g>
-    <rect x="1645" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="1655" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">RecordConnectionIdentifier</text>
-  </g>
-  <g>
-    <line x1="1770" y1="420" x2="1770" y2="615" stroke="white" stroke-width="2" />
-    <line x1="1760" y1="605" x2="1770" y2="615" stroke="white" stroke-width="2" />
-    <line x1="1780" y1="605" x2="1770" y2="615" stroke="white" stroke-width="2" />
-    <text x="1645" y="728" fill="white" font-size="1em" font-family="Helvetica">Copy value.</text>
-  </g>
-  <g>
-    <rect x="1645" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="1655" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">RecordConnectionIdentifier</text>
+    <rect x="2125" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="2135" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">RecordConnectionIdentifier</text>
   </g>
 </svg>

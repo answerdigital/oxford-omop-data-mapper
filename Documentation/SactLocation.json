@@ -4,21 +4,24 @@
   "omopColumns": [
     {
       "name": "zip",
-      "sourceColumns": [
-        "Patient_Postcode"
-      ]
+      "operation_description": "Uppercase the postcode then insert the space in the correct location, if needed.",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
     },
     {
       "name": "location_source_value",
-      "sourceColumns": [
-        "Patient_Postcode"
-      ]
+      "operation_description": "Value copied from `Patient_Postcode`",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
     },
     {
       "name": "nhs_number",
-      "sourceColumns": [
-        "NHS_Number"
-      ]
+      "operation_description": "Value copied from `NHS_Number`",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
     }
   ]
 }

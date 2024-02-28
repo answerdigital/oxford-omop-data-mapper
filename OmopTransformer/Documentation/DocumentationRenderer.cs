@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using Microsoft.Extensions.Logging;
 using OmopTransformer.Documentation.Charting;
-using OmopTransformer.Documentation.JSONRendering;
+using Newtonsoft.Json;
 
 namespace OmopTransformer.Documentation;
 
@@ -31,12 +31,6 @@ internal class DocumentationRenderer
             .Where(type => GetAllInterfaces(type).Any(i => i == typeof(IOmopTarget)) && type is { IsInterface: false, IsAbstract: false })
             .ToList();
 
-        foreach (var diagram in RenderDiagrams(typesImplementingIOmopRecord))
-            yield return diagram;
-
-        foreach (var JSONFile in RenderJSONFiles(typesImplementingIOmopRecord))
-            yield return JSONFile;
-
         var mapperByOmopTarget =
             typesImplementingIOmopRecord
                 .Select(
@@ -53,6 +47,8 @@ internal class DocumentationRenderer
 
         indexStringBuilder.AppendLine("`Automatically generated documentation`");
         indexStringBuilder.AppendLine();
+
+        var properties = new List<Property>();
 
         foreach (var omopTarget in mapperByOmopTarget)
         {
@@ -83,16 +79,21 @@ internal class DocumentationRenderer
                 var name = propertyGroup.First().Property.Name;
 
                 var fileName = $"{omopTarget.Key}_{name}.md";
-                
+
                 indexStringBuilder.AppendLine($"* [{name}]({fileName})");
 
                 var stringBuilder = new StringBuilder();
 
                 stringBuilder.AppendLine($"# `{omopTarget.Key}` `{name}`");
-                
+
                 foreach (var property in propertyGroup)
                 {
-                    RenderProperty(property.Mapper.MapperType, property.Property, stringBuilder, omopTarget.Key, name);
+                    var p = GetProperty(property.Mapper.MapperType, property.Property, omopTarget.Key, name);
+
+                    if (p != null)
+                        properties.Add(p);
+
+                    p?.WriteMarkdown(stringBuilder);
                 }
 
                 yield return new Document(fileName, stringBuilder.ToString());
@@ -108,91 +109,123 @@ internal class DocumentationRenderer
         }
 
         yield return new Document("transformation-documentation.md", indexStringBuilder.ToString());
+
+        foreach (var document in GetSvgDocuments(properties))
+        {
+            yield return document;
+        }
+
+        foreach (var document in GetJsonDocuments(properties))
+        {
+            yield return document;
+        }
     }
 
-    private IEnumerable<Document> RenderDiagrams(IEnumerable<Type> omopTargets) =>
-        omopTargets
-            .Select(RenderDiagram);
+    private static IEnumerable<Document> GetSvgDocuments(IEnumerable<Property> properties)
+    {
+        var mapperProperties =
+            properties
+                .GroupBy(p => p.MapperType.Name)
+                .Select(
+                    dataSourceMappingGroup =>
+                        new
+                        {
+                            Key = dataSourceMappingGroup.Key,
+                            MapperType = dataSourceMappingGroup.First().MapperType,
+                            DataOrigin = dataSourceMappingGroup.First().DataSourceName,
+                            Relationships =
+                                dataSourceMappingGroup
+                                .Where(mapping => mapping.Query != null)
+                                .SelectMany(
+                                    mapping =>
+                                        mapping
+                                            .Query!
+                                            .ColumnExplanations
+                                            .SelectMany(
+                                                columnExplanation =>
+                                                    columnExplanation
+                                                        .Origins
+                                                        .Select(
+                                                            mappingSource =>
+                                                                new Relationship(
+                                                                    mappingSource.Origin,
+                                                                    mapping.FieldName,
+                                                                    mapping.IsCopyOperation ? "Copy value" : mapping.Transform?.TransformDescription ?? mapping.OperationDescription ?? ""))))
+                        })
+                .ToList();
 
-    private IEnumerable<Document> RenderJSONFiles(IEnumerable<Type> omopTargets) =>
-        omopTargets
-            .Select(RenderJSONFile)
-            .Where(document => document != null)
-            .Cast<Document>();
+        foreach (var mapper in mapperProperties)
+        {
+            var svgRenderer = new SvgRenderer(mapper.Relationships.ToList());
+
+            yield return new Document($"{mapper.MapperType.Name}.svg", svgRenderer.Render());
+        }
+    }
+
+    private IEnumerable<Document> GetJsonDocuments(IEnumerable<Property> properties)
+    {
+        var mapperProperties =
+            properties
+                .GroupBy(p => p.MapperType.Name)
+                .Select(
+                    dataSourceMappingGroup =>
+                        new
+                        {
+                            Key = dataSourceMappingGroup.Key,
+                            MapperType = dataSourceMappingGroup.First().MapperType,
+                            DataOrigin = dataSourceMappingGroup.First().DataSourceName,
+                            Relationships = dataSourceMappingGroup
+                        })
+                .ToList();
+
+        foreach (var mapper in mapperProperties)
+        {
+            if (mapper.DataOrigin == null)
+            {
+                _logger.LogError($"{mapper.MapperType.Name} has no origin attribute.");
+
+                yield break;
+            }
+
+            var report =
+                new
+                {
+                    omopTable = mapper.Relationships.First().TableName,
+                    origin = mapper.DataOrigin,
+                    omopColumns =
+                        mapper
+                            .Relationships
+                            .Select(
+                                relationship =>
+                                    new
+                                    {
+                                        name = relationship.FieldName,
+                                        operation_description = relationship.Transform?.TransformDescription ?? relationship.OperationDescription,
+                                        dataSource =
+                                            relationship
+                                                .Query?
+                                                .ColumnExplanations
+                                                .Select(
+                                                    explanation =>
+                                                        new
+                                                        {
+                                                            name = explanation.ColumnName,
+                                                            description = explanation.Description,
+                                                            origins = explanation.Origins.Select(origin => new { origin = origin.Origin, url = origin.Url })
+                                                        }),
+                                        query = relationship.Query?.Query,
+                                        lookup_table_markdown = relationship.Transform?.LookupTable?.GetMarkdown()
+                                    })
+                };
+
+            var json = JsonConvert.SerializeObject(report, Formatting.Indented);
+
+            yield return new Document($"{mapper.MapperType.Name}.json", json);
+        }
+    }
 
     private static string OmopDescription(Type type) => ((IOmopTarget)Activator.CreateInstance(type)!).OmopTargetTypeDescription;
-
-    private Document RenderDiagram(Type type)
-    {
-        var relationships = GetRelationships(type);
-
-        var svgRenderer = new SvgRenderer(relationships);
-
-        return new Document($"{type.Name}.svg", svgRenderer.Render());
-    }
-
-    private Document? RenderJSONFile(Type type)
-    {
-        var relationships = GetRelationships(type);
-       
-        var sourceType = GetOmopSourceType(type);
-        var dataOrigin = sourceType.GetCustomAttributes(typeof(DataOriginAttribute)).FirstOrDefault();
-
-        if (dataOrigin == null)
-        {
-            _logger.LogError($"{sourceType} has no origin attribute.");
-
-            return null;
-        }
-
-        string origin = ((DataOriginAttribute)dataOrigin).Value;
-
-        var jsonRenderer = new JSONRenderer(relationships, origin, OmopDescription(type));
-
-        return new Document($"{type.Name}.json", jsonRenderer.Render());
-    }
-
-    private static List<Relationship> GetRelationships(Type type) =>
-        type
-            .GetProperties()
-            .Where(PropertyHasDocumentationAttributes)
-            .SelectMany(
-                sourceMember => 
-                    GetDocumentableAttributes(sourceMember)
-                    .SelectMany(attribute => GetRelationship(attribute, sourceMember)))
-            .ToList();
-
-    private static IEnumerable<Relationship> GetRelationship(object attribute, PropertyInfo sourceMember)
-    {
-        if (attribute is CopyValueAttribute copyValueAttribute)
-        {
-            return new[] { new Relationship(source: copyValueAttribute.Value, target: sourceMember.Name, "Copy value.") }.ToList();
-        }
-
-        if (attribute is TransformAttribute transformAttribute)
-        {
-            var relationships = new List<Relationship>();
-
-            var descriptionAttribute = transformAttribute.Type.GetCustomAttributes(typeof(DescriptionAttribute)).FirstOrDefault();
-
-            string description = "";
-
-            if (descriptionAttribute != null)
-            {
-                description = ((DescriptionAttribute)descriptionAttribute).Value;
-            }
-
-            foreach (var source in transformAttribute.Value)
-            {
-                relationships.Add(new Relationship(source: source, target: sourceMember.Name, description));
-            }
-
-            return relationships;
-        }
-
-        return new List<Relationship>();
-    }
-
+    
     private static IReadOnlyCollection<object> GetDocumentableAttributes(PropertyInfo property)
     {
         return
@@ -215,61 +248,129 @@ internal class DocumentationRenderer
 
     private static bool IgnoreProperty(PropertyInfo property) => property.Name is "OmopTargetTypeDescription" or "Source";
 
-    private void RenderProperty(Type mapperType, PropertyInfo property, StringBuilder stringBuilder, string omopTable, string omopField)
+    private Property? GetProperty(Type mapperType, PropertyInfo property, string omopTable, string omopField)
     {
         if (IgnoreProperty(property))
-            return;
+            return null;
 
         var attributes = GetDocumentableAttributes(property);
 
-        string? title = null;
+        if (attributes.Count == 0)
+            return null;
 
-        if (attributes.Any())
+        var sourceType = GetOmopSourceType(mapperType);
+
+        var sourceDescription = sourceType.GetCustomAttributes(typeof(DescriptionAttribute)).FirstOrDefault();
+
+        if (sourceDescription == null)
         {
-            var sourceType = GetOmopSourceType(mapperType);
+            _logger.LogError($"{sourceType.Name} has no DescriptionAttribute");
+        }
 
-            var description = sourceType.GetCustomAttributes(typeof(DescriptionAttribute)).FirstOrDefault();
+        var dataOrigin = sourceType.GetCustomAttributes(typeof(DataOriginAttribute)).FirstOrDefault();
+
+        if (dataOrigin == null)
+        {
+            _logger.LogError($"{sourceType} has no origin attribute.");
+        }
+
+        SqlQuery? query = null;
+        string? operationDescription = null;
+        bool isCopyOperation = false;
+
+        var copyValueAttribute = attributes.OfType<CopyValueAttribute>().FirstOrDefault();
+
+        if (copyValueAttribute != null)
+        {
+            operationDescription = $"Value copied from `{copyValueAttribute.Value}`";
+            isCopyOperation = true;
+
+            query = GetQuery(mapperType,  copyValueAttribute.Value);
+        }
+
+        var propertyDescription = attributes.OfType<DescriptionAttribute>().FirstOrDefault();
+
+        var constantValueAttribute = attributes.OfType<ConstantValueAttribute>().FirstOrDefault();
+
+        if (constantValueAttribute != null)
+        {
+            operationDescription = $"Constant value set to `{constantValueAttribute.Value}`. {constantValueAttribute.Description}";
+        }
+
+        Transform? transform = null;
+
+        var transformAttribute = attributes.OfType<TransformAttribute>().FirstOrDefault();
+
+        if (transformAttribute != null)
+        {
+            transform = GetTransform(transformAttribute, property.Name);
+
+            if (transformAttribute.UseOmopTypeAsSource == false) // Don't try and render any query documentation if we are not using a query as a datasource.
+            {
+                query = GetQuery(mapperType,  transformAttribute.Value);
+            }
+        }
+
+        return
+            new Property(
+                tableName: omopTable,
+                fieldName: omopField,
+                description: propertyDescription?.Value,
+                dataSourceName: dataOrigin == null ? null : ((DataOriginAttribute)dataOrigin).Value,
+                dataSourceDescription: sourceDescription == null ? null : ((DescriptionAttribute)sourceDescription).Value,
+                operationDescription: operationDescription,
+                transform: transform,
+                query: query,
+                mapperType: mapperType,
+                isCopyOperation: isCopyOperation);
+    }
+
+    private class Property (
+        string tableName,
+        string fieldName,
+        string? description, 
+        string? dataSourceDescription, 
+        string? dataSourceName, 
+        string? operationDescription,
+        Transform? transform, 
+        SqlQuery? query,
+        Type mapperType,
+        bool isCopyOperation)
+    {
+        public string TableName => tableName;
+        public string FieldName => fieldName;
+        public string? Description => description;
+        public string? DataSourceDescription => dataSourceDescription;
+        public string? DataSourceName => dataSourceName;
+        public string? OperationDescription => operationDescription;
+        public Transform? Transform => transform;
+        public SqlQuery? Query => query;
+        public Type MapperType => mapperType;
+        public bool IsCopyOperation => isCopyOperation;
+
+        public void WriteMarkdown(StringBuilder stringBuilder)
+        {
+            if (dataSourceDescription != null)
+            {
+                stringBuilder.AppendLine($"### {dataSourceDescription}");
+            }
+
+            if (operationDescription != null)
+            {
+                stringBuilder.AppendLine($"* {operationDescription}");
+            }
+
+            transform?.WriteMarkdown(stringBuilder);
 
             if (description != null)
             {
-                title = ((DescriptionAttribute)description).Value;
-                stringBuilder.AppendLine($"### {title}");
-            }
-        }
-
-        foreach (var attribute in attributes)
-        {
-            if (attribute is CopyValueAttribute copyValueAttribute)
-            {
-                stringBuilder.AppendLine($"* Value copied from `{copyValueAttribute.Value}`");
-                RenderQueryIfAny(mapperType, stringBuilder, copyValueAttribute.Value);
+                stringBuilder.AppendLine($"* {description}");
             }
 
-            if (attribute is DescriptionAttribute description)
-            {
-                stringBuilder.AppendLine(description.Value);
-            }
+            query?.WriteMarkdown(stringBuilder);
 
-            if (attribute is ConstantValueAttribute constantValueAttribute)
-            {
-                stringBuilder.AppendLine($"* Constant value set to `{constantValueAttribute.Value}`. {constantValueAttribute.Description}");
-            }
-
-            if (attribute is TransformAttribute transformAttribute)
-            {
-                RenderTransform(stringBuilder, transformAttribute, property.Name);
-
-                if (transformAttribute.UseOmopTypeAsSource == false) // Don't try and render any query documentation if we are not using a query as a datasource.
-                {
-                    RenderQueryIfAny(mapperType, stringBuilder, transformAttribute.Value);
-                }
-            }
-        }
-
-        if (attributes.Any())
-        {
             stringBuilder.AppendLine();
-            stringBuilder.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20{omopTable}%20table%20{omopField}%20field%20{(title ?? "").Replace(" ", "%20")}%20mapping)");
+            stringBuilder.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20{TableName}%20table%20{FieldName}%20field%20{(dataSourceDescription ?? "").Replace(" ", "%20")}%20mapping)");
         }
     }
 
@@ -280,107 +381,181 @@ internal class DocumentationRenderer
         return sourceTypeInterface.GetGenericArguments().Single();
     }
 
-    private void RenderQueryIfAny(Type mapperType, StringBuilder stringBuilder, params string[] sourceColumns)
+    private SqlQuery? GetQuery(Type mapperType, params string[] sourceColumns)
     {
         var sourceType = GetOmopSourceType(mapperType);
 
         var queryTransform = sourceType.GetCustomAttributes(typeof(SourceQueryAttribute), inherit: false).FirstOrDefault();
 
-        if (queryTransform != null)
+        if (queryTransform == null)
         {
-            var query = _queryLocator.GetQuery(((SourceQueryAttribute)queryTransform).QueryFileName);
+            _logger.LogError($"{mapperType.Name} has no SourceQueryAttribute.");
+            return null;
+        }
 
-            PrintColumnCollectionExplanations(query, sourceColumns, stringBuilder, sourceType.Name);
-            
+        var query = _queryLocator.GetQuery(((SourceQueryAttribute)queryTransform).QueryFileName);
+
+        var explanations = GetColumnCollectionExplanations(query, sourceColumns, sourceType.Name);
+
+        return new SqlQuery(explanations.ToList(), query.Sql ?? "");
+    }
+
+    private class SqlQuery(IReadOnlyCollection<ColumnDataDictionaryExplanation> columnExplanations, string sqlQuery)
+    {
+        public IReadOnlyCollection<ColumnDataDictionaryExplanation> ColumnExplanations => columnExplanations;
+        public string Query => sqlQuery;
+        public void WriteMarkdown(StringBuilder stringBuilder)
+        {
+            foreach (var explanation in ColumnExplanations)
+            {
+                explanation.WriteMarkdown(stringBuilder);
+            }
+
             stringBuilder.AppendLine("<details>");
             stringBuilder.AppendLine("<summary>SQL</summary>");
             stringBuilder.AppendLine();
             stringBuilder.AppendLine("```sql");
             var whitespace = new[] { ' ', '\r', '\n' };
-            stringBuilder.AppendLine(query.Sql?.TrimStart(whitespace).TrimEnd(whitespace));
+            stringBuilder.AppendLine(sqlQuery.TrimStart(whitespace).TrimEnd(whitespace));
             stringBuilder.AppendLine("```");
             stringBuilder.AppendLine("</details>");
             stringBuilder.AppendLine();
         }
     }
 
-    private void PrintColumnCollectionExplanations(Query query, IEnumerable<string> columns, StringBuilder stringBuilder, string sourceType)
+    private IEnumerable<ColumnDataDictionaryExplanation> GetColumnCollectionExplanations(Query query, IEnumerable<string> columns, string sourceType)
     {
         foreach (var column in columns)
         {
-            PrintColumnExplanations(query, column, stringBuilder, sourceType);
+            var explanation = GetColumnExplanations(query, column, sourceType);
+
+            if (explanation != null)
+                yield return explanation;
         }
     }
 
-    private void PrintColumnExplanations(Query query, string columnName, StringBuilder stringBuilder, string sourceType)
+    private ColumnDataDictionaryExplanation? GetColumnExplanations(Query query, string columnName, string sourceType)
     {
         var explanation = query.Explanation!.Explanations!.FirstOrDefault(explanation => explanation.ColumnName!.Equals(columnName, StringComparison.OrdinalIgnoreCase));
 
         if (explanation == null)
         {
             _logger.LogError($"Explanation for column {columnName} on {sourceType} was not found.");
-            return;
+            return null;
         }
 
-        stringBuilder.AppendLine("");
-        stringBuilder.Append($"* `{explanation.ColumnName}` {explanation.Description} ");
+        return
+            new ColumnDataDictionaryExplanation(
+                columnName,
+                explanation!.Description ?? "",
+                explanation!.Origin == null ? [] : explanation!.Origin.Select(origin => new DataDictionaryOrigin(origin, _dataDictionaryUrlResolver.GetUrl(origin))));
+    }
 
-        if (explanation!.Origin != null)
+    private static Transform GetTransform(TransformAttribute transformAttribute, string targetField)
+    { 
+        var transformDescription = transformAttribute.Type.GetCustomAttributes(typeof(DescriptionAttribute)).FirstOrDefault();
+
+        return
+            new Transform(
+                transformAttribute.Value,
+                transformDescription == null ? null : ((DescriptionAttribute)transformDescription).Value,
+                typeof(ILookup).IsAssignableFrom(transformAttribute.Type) ? GetLookupTransform(transformAttribute, targetField) : null);
+    }
+
+    private class Transform(
+        IReadOnlyCollection<string> sourceColumns,
+        string? transformDescription,
+        LookupTable? lookupTable)
+    {
+        public IReadOnlyCollection<string> SourceColumns => sourceColumns;
+        public string? TransformDescription => transformDescription;
+        public LookupTable? LookupTable => lookupTable;
+
+        public void WriteMarkdown(StringBuilder stringBuilder)
         {
-            var dataDictionaryOrigins =
-                   explanation!
-                       .Origin
-                       .Select(origin => $"[{origin}]({_dataDictionaryUrlResolver.GetUrl(origin)})");
+            stringBuilder.AppendLine(FormatColumns(sourceColumns));
 
-            if (explanation!.Description!.Contains("\r\n")) // If the description is multi line, add the links on a new line.
+            if (transformDescription != null)
+            {
+                stringBuilder.AppendLine(transformDescription);
+            }
+
+            if (lookupTable != null)
+            {
+                stringBuilder.Append(lookupTable.GetMarkdown());
+            }
+        }
+    }
+
+    private static LookupTable GetLookupTransform(TransformAttribute transformAttribute, string targetField) =>
+        new (
+            sourceProperty: transformAttribute.Value.First(),
+            targetField: targetField,
+            lookup: (ILookup)Activator.CreateInstance(transformAttribute.Type)!);
+
+    private class LookupTable(string sourceProperty, string targetField, ILookup lookup)
+    {
+        public string GetMarkdown()
+        {
+            var stringBuilder = new StringBuilder();
+
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine($"|{sourceProperty}|{targetField}|notes|");
+            stringBuilder.AppendLine("|------|-----|-----|");
+
+            foreach (var mapping in lookup.Mappings)
+            {
+                stringBuilder.AppendLine($"|{mapping.Key}|{mapping.Value.Value}|{mapping.Value.Notes}|");
+            }
+
+            stringBuilder.AppendLine();
+
+            if (lookup.ColumnNotes.Length > 0)
+            {
+                stringBuilder.AppendLine("Notes");
+
+                foreach (string note in lookup.ColumnNotes)
+                {
+                    stringBuilder.AppendLine($"* {note}");
+                }
+            }
+
+            return stringBuilder.ToString();
+        }
+    }
+
+    private class DataDictionaryOrigin(string origin, string? url)
+    {
+        public string Origin => origin;
+        public string Url => url;
+        public string GetMarkdown() => $"[{origin}]({url})";
+    }
+
+    private class ColumnDataDictionaryExplanation(
+        string columnName,
+        string description,
+        IEnumerable<DataDictionaryOrigin> origins)
+    {
+        public string ColumnName => columnName;
+        public string Description => description;
+        public IEnumerable<DataDictionaryOrigin> Origins => origins;
+
+        public void WriteMarkdown (StringBuilder stringBuilder)
+        {
+            stringBuilder.AppendLine("");
+            stringBuilder.Append($"* `{columnName}` {description} ");
+
+            var dataDictionaryOrigins = origins.Select(origin => origin.GetMarkdown());
+
+            if (description!.Contains("\r\n")) // If the description is multi line, add the links on a new line.
             {
                 stringBuilder.AppendLine();
             }
 
             stringBuilder.Append($"{string.Join(", ", dataDictionaryOrigins)}");
-        }
-
-        stringBuilder.AppendLine();
-    }
-
-    private static void RenderTransform(StringBuilder stringBuilder, TransformAttribute transformAttribute, string targetField)
-    {
-        foreach (var transformDescription in transformAttribute.Type.GetCustomAttributes(typeof(DescriptionAttribute)))
-        {
-            stringBuilder.AppendLine(FormatColumns(transformAttribute.Value));
-            stringBuilder.AppendLine(((DescriptionAttribute)transformDescription).Value);
-        }
-
-        if (typeof(ILookup).IsAssignableFrom(transformAttribute.Type))
-        {
-            RenderLookupTransform(stringBuilder, transformAttribute, targetField);
-        }
-    }
-
-    private static void RenderLookupTransform(StringBuilder stringBuilder, TransformAttribute transformAttribute, string targetField)
-    {
-        stringBuilder.AppendLine();
-        stringBuilder.AppendLine();
-        stringBuilder.AppendLine($"|{transformAttribute.Value.FirstOrDefault()}|{targetField}|notes|");
-        stringBuilder.AppendLine("|------|-----|-----|");
-
-        var lookup = (ILookup)Activator.CreateInstance(transformAttribute.Type)!;
-
-        foreach (var mapping in lookup.Mappings)
-        {
-            stringBuilder.AppendLine($"|{mapping.Key}|{mapping.Value.Value}|{mapping.Value.Notes}|");
-        }
-
-        stringBuilder.AppendLine();
-
-        if (lookup.ColumnNotes.Length > 0)
-        {
-            stringBuilder.AppendLine("Notes");
-
-            foreach (string note in lookup.ColumnNotes)
-            {
-                stringBuilder.AppendLine($"* {note}");
-            }
+            
+            stringBuilder.AppendLine();
         }
     }
 

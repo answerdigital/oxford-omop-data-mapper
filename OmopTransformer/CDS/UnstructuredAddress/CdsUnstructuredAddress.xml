@@ -1,13 +1,13 @@
 ﻿<Query>
 	<Sql>
-		select
-		distinct
+select
+	distinct
 		PatientUnstructuredAddress,
 		Postcode,
 		NHSNumber
-		from omop_staging.cds_line01
-		where PatientAddressType = '01'
-		and Postcode is not null;
+from omop_staging.cds_line01
+where PatientAddressType = '01'
+	and Postcode is not null;
 	</Sql>
 
 	<Explanations>

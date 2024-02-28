@@ -1,121 +1,121 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2215" height="800">
+<svg xmlns="http://www.w3.org/2000/svg" width="3415" height="800">
   <rect width="100%" height="100%" fill="#3E5EB2" />
   <g>
-    <rect x="25" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="35" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">NhsNumber</text>
+    <rect x="25" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="35" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">NHS NUMBER</text>
   </g>
   <g>
-    <line x1="150" y1="420" x2="150" y2="615" stroke="white" stroke-width="2" />
-    <line x1="140" y1="605" x2="150" y2="615" stroke="white" stroke-width="2" />
-    <line x1="160" y1="605" x2="150" y2="615" stroke="white" stroke-width="2" />
-    <text x="25" y="728" fill="white" font-size="1em" font-family="Helvetica">Copy value.</text>
+    <line x1="225" y1="420" x2="225" y2="615" stroke="white" stroke-width="2" />
+    <line x1="215" y1="605" x2="225" y2="615" stroke="white" stroke-width="2" />
+    <line x1="235" y1="605" x2="225" y2="615" stroke="white" stroke-width="2" />
+    <text x="100" y="728" fill="white" font-size="1em" font-family="Helvetica">Copy value</text>
   </g>
   <g>
-    <rect x="25" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <rect x="25" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
     <text x="35" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">person_source_value</text>
   </g>
   <g>
-    <rect x="295" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="305" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">DateOfBirth</text>
+    <rect x="445" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="455" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PERSON BIRTH DATE</text>
   </g>
   <g>
-    <line x1="420" y1="420" x2="420" y2="615" stroke="white" stroke-width="2" />
-    <line x1="410" y1="605" x2="420" y2="615" stroke="white" stroke-width="2" />
-    <line x1="430" y1="605" x2="420" y2="615" stroke="white" stroke-width="2" />
-    <text x="295" y="728" fill="white" font-size="1em" font-family="Helvetica">Selects the year from a</text>
-    <text x="295" y="746" fill="white" font-size="1em" font-family="Helvetica">date or null of the</text>
-    <text x="295" y="764" fill="white" font-size="1em" font-family="Helvetica">date is null.</text>
+    <line x1="645" y1="420" x2="645" y2="615" stroke="white" stroke-width="2" />
+    <line x1="635" y1="605" x2="645" y2="615" stroke="white" stroke-width="2" />
+    <line x1="655" y1="605" x2="645" y2="615" stroke="white" stroke-width="2" />
+    <text x="520" y="728" fill="white" font-size="1em" font-family="Helvetica">Selects the year from a</text>
+    <text x="520" y="746" fill="white" font-size="1em" font-family="Helvetica">date or null of the</text>
+    <text x="520" y="764" fill="white" font-size="1em" font-family="Helvetica">date is null.</text>
   </g>
   <g>
-    <rect x="295" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="305" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">year_of_birth</text>
+    <rect x="445" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="455" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">year_of_birth</text>
   </g>
   <g>
-    <rect x="565" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="575" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">DateOfBirth</text>
+    <rect x="865" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="875" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PERSON BIRTH DATE</text>
   </g>
   <g>
-    <line x1="690" y1="420" x2="690" y2="615" stroke="white" stroke-width="2" />
-    <line x1="680" y1="605" x2="690" y2="615" stroke="white" stroke-width="2" />
-    <line x1="700" y1="605" x2="690" y2="615" stroke="white" stroke-width="2" />
-    <text x="565" y="728" fill="white" font-size="1em" font-family="Helvetica">Selects the month of the</text>
-    <text x="565" y="746" fill="white" font-size="1em" font-family="Helvetica">year or null if the</text>
-    <text x="565" y="764" fill="white" font-size="1em" font-family="Helvetica">date is null.</text>
+    <line x1="1065" y1="420" x2="1065" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1055" y1="605" x2="1065" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1075" y1="605" x2="1065" y2="615" stroke="white" stroke-width="2" />
+    <text x="940" y="728" fill="white" font-size="1em" font-family="Helvetica">Selects the month of the</text>
+    <text x="940" y="746" fill="white" font-size="1em" font-family="Helvetica">year or null if the</text>
+    <text x="940" y="764" fill="white" font-size="1em" font-family="Helvetica">date is null.</text>
   </g>
   <g>
-    <rect x="565" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="575" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">month_of_birth</text>
+    <rect x="865" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="875" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">month_of_birth</text>
   </g>
   <g>
-    <rect x="835" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="845" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">DateOfBirth</text>
+    <rect x="1285" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="1295" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PERSON BIRTH DATE</text>
   </g>
   <g>
-    <line x1="960" y1="420" x2="960" y2="615" stroke="white" stroke-width="2" />
-    <line x1="950" y1="605" x2="960" y2="615" stroke="white" stroke-width="2" />
-    <line x1="970" y1="605" x2="960" y2="615" stroke="white" stroke-width="2" />
-    <text x="835" y="728" fill="white" font-size="1em" font-family="Helvetica">Selects the day of the</text>
-    <text x="835" y="746" fill="white" font-size="1em" font-family="Helvetica">month or null if the</text>
-    <text x="835" y="764" fill="white" font-size="1em" font-family="Helvetica">date is null.</text>
+    <line x1="1485" y1="420" x2="1485" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1475" y1="605" x2="1485" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1495" y1="605" x2="1485" y2="615" stroke="white" stroke-width="2" />
+    <text x="1360" y="728" fill="white" font-size="1em" font-family="Helvetica">Selects the day of the</text>
+    <text x="1360" y="746" fill="white" font-size="1em" font-family="Helvetica">month or null if the</text>
+    <text x="1360" y="764" fill="white" font-size="1em" font-family="Helvetica">date is null.</text>
   </g>
   <g>
-    <rect x="835" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="845" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">day_of_birth</text>
+    <rect x="1285" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="1295" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">day_of_birth</text>
   </g>
   <g>
-    <rect x="1105" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="1115" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">DateOfBirth</text>
+    <rect x="1705" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="1715" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PERSON BIRTH DATE</text>
   </g>
   <g>
-    <line x1="1230" y1="420" x2="1230" y2="615" stroke="white" stroke-width="2" />
-    <line x1="1220" y1="605" x2="1230" y2="615" stroke="white" stroke-width="2" />
-    <line x1="1240" y1="605" x2="1230" y2="615" stroke="white" stroke-width="2" />
-    <text x="1105" y="728" fill="white" font-size="1em" font-family="Helvetica">Converts text to dates.</text>
+    <line x1="1905" y1="420" x2="1905" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1895" y1="605" x2="1905" y2="615" stroke="white" stroke-width="2" />
+    <line x1="1915" y1="605" x2="1905" y2="615" stroke="white" stroke-width="2" />
+    <text x="1780" y="728" fill="white" font-size="1em" font-family="Helvetica">Converts text to dates.</text>
   </g>
   <g>
-    <rect x="1105" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="1115" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">birth_datetime</text>
+    <rect x="1705" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="1715" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">birth_datetime</text>
   </g>
   <g>
-    <rect x="1375" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="1385" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">EthnicCategory</text>
+    <rect x="2125" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="2135" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">ETHNIC CATEGORY</text>
   </g>
   <g>
-    <line x1="1500" y1="420" x2="1500" y2="615" stroke="white" stroke-width="2" />
-    <line x1="1490" y1="605" x2="1500" y2="615" stroke="white" stroke-width="2" />
-    <line x1="1510" y1="605" x2="1500" y2="615" stroke="white" stroke-width="2" />
-    <text x="1375" y="728" fill="white" font-size="1em" font-family="Helvetica">Lookup race concept.</text>
+    <line x1="2325" y1="420" x2="2325" y2="615" stroke="white" stroke-width="2" />
+    <line x1="2315" y1="605" x2="2325" y2="615" stroke="white" stroke-width="2" />
+    <line x1="2335" y1="605" x2="2325" y2="615" stroke="white" stroke-width="2" />
+    <text x="2200" y="728" fill="white" font-size="1em" font-family="Helvetica">Lookup race concept.</text>
   </g>
   <g>
-    <rect x="1375" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="1385" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">race_concept_id</text>
+    <rect x="2125" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="2135" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">race_concept_id</text>
   </g>
   <g>
-    <rect x="1645" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="1655" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">EthnicCategory</text>
+    <rect x="2545" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="2555" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">ETHNIC CATEGORY</text>
   </g>
   <g>
-    <line x1="1770" y1="420" x2="1770" y2="615" stroke="white" stroke-width="2" />
-    <line x1="1760" y1="605" x2="1770" y2="615" stroke="white" stroke-width="2" />
-    <line x1="1780" y1="605" x2="1770" y2="615" stroke="white" stroke-width="2" />
-    <text x="1645" y="728" fill="white" font-size="1em" font-family="Helvetica">Copy value.</text>
+    <line x1="2745" y1="420" x2="2745" y2="615" stroke="white" stroke-width="2" />
+    <line x1="2735" y1="605" x2="2745" y2="615" stroke="white" stroke-width="2" />
+    <line x1="2755" y1="605" x2="2745" y2="615" stroke="white" stroke-width="2" />
+    <text x="2620" y="728" fill="white" font-size="1em" font-family="Helvetica">Copy value</text>
   </g>
   <g>
-    <rect x="1645" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="1655" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">race_source_value</text>
+    <rect x="2545" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="2555" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">race_source_value</text>
   </g>
   <g>
-    <rect x="1915" y="20" width="250" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="1925" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">EthnicCategory</text>
+    <rect x="2965" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
+    <text x="2975" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">ETHNIC CATEGORY</text>
   </g>
   <g>
-    <line x1="2040" y1="420" x2="2040" y2="615" stroke="white" stroke-width="2" />
-    <line x1="2030" y1="605" x2="2040" y2="615" stroke="white" stroke-width="2" />
-    <line x1="2050" y1="605" x2="2040" y2="615" stroke="white" stroke-width="2" />
-    <text x="1915" y="728" fill="white" font-size="1em" font-family="Helvetica">Lookup race source concept.</text>
+    <line x1="3165" y1="420" x2="3165" y2="615" stroke="white" stroke-width="2" />
+    <line x1="3155" y1="605" x2="3165" y2="615" stroke="white" stroke-width="2" />
+    <line x1="3175" y1="605" x2="3165" y2="615" stroke="white" stroke-width="2" />
+    <text x="3040" y="728" fill="white" font-size="1em" font-family="Helvetica">Lookup race source concept.</text>
   </g>
   <g>
-    <rect x="1915" y="620" width="250" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="1925" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">race_source_concept_id</text>
+    <rect x="2965" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
+    <text x="2975" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">race_source_concept_id</text>
   </g>
 </svg>

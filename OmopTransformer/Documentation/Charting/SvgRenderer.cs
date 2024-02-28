@@ -7,7 +7,7 @@ public class SvgRenderer
     private readonly IReadOnlyCollection<Relationship> _relationships;
 
     private static readonly XNamespace SvgNamespace = "http://www.w3.org/2000/svg";
-    private const int BoxWidth = 250;
+    private const int BoxWidth = 400;
     private const int BoxHeight = 50;
     private const int Padding = 20;
 
@@ -130,7 +130,7 @@ public class SvgRenderer
             );
     }
 
-    private static int GetBoxX(int index) => index * 270 + 5;
+    private static int GetBoxX(int index) => index * (BoxWidth + 20) + 5;
 
     private static int GetSourceBoxHeight(int height, int count, int margin)
     {

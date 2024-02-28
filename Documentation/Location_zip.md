@@ -100,8 +100,8 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 <summary>SQL</summary>
 
 ```sql
-		select
-		distinct
+select
+	distinct
 		PatientAddressStructured1,
 		PatientAddressStructured2,
 		PatientAddressStructured3,
@@ -109,17 +109,17 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 		PatientAddressStructured5,
 		Postcode,
 		NHSNumber
-		from omop_staging.cds_line01
-		where PatientAddressType = '02'
-		and
-		(
+from omop_staging.cds_line01
+where PatientAddressType = '02'
+	and
+	(
 		PatientAddressStructured1 is not null or
 		PatientAddressStructured2 is not null or
 		PatientAddressStructured3 is not null or
 		PatientAddressStructured4 is not null or
 		PatientAddressStructured5 is not null or
 		Postcode is not null
-		);
+	);
 	
 ```
 </details>
@@ -135,14 +135,14 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 <summary>SQL</summary>
 
 ```sql
-		select
-		distinct
+select
+	distinct
 		PatientUnstructuredAddress,
 		Postcode,
 		NHSNumber
-		from omop_staging.cds_line01
-		where PatientAddressType = '01'
-		and Postcode is not null;
+from omop_staging.cds_line01
+where PatientAddressType = '01'
+	and Postcode is not null;
 	
 ```
 </details>

@@ -75,8 +75,8 @@ Separates text with newlines. Trim whitespace.
 <summary>SQL</summary>
 
 ```sql
-		select
-		distinct
+select
+	distinct
 		PatientAddressStructured1,
 		PatientAddressStructured2,
 		PatientAddressStructured3,
@@ -84,17 +84,17 @@ Separates text with newlines. Trim whitespace.
 		PatientAddressStructured5,
 		Postcode,
 		NHSNumber
-		from omop_staging.cds_line01
-		where PatientAddressType = '02'
-		and
-		(
+from omop_staging.cds_line01
+where PatientAddressType = '02'
+	and
+	(
 		PatientAddressStructured1 is not null or
 		PatientAddressStructured2 is not null or
 		PatientAddressStructured3 is not null or
 		PatientAddressStructured4 is not null or
 		PatientAddressStructured5 is not null or
 		Postcode is not null
-		);
+	);
 	
 ```
 </details>
