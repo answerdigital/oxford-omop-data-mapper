@@ -3,7 +3,7 @@
 Source column  `PrimaryProcedure`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 <details>
 <summary>SQL</summary>
 

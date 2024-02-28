@@ -6,7 +6,7 @@
 ### Rtds Demographics
 * Value copied from `PatientId`
 
-* `PatientId` Patient NHS Number [NHS NUMBER]()
+* `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 
@@ -28,7 +28,7 @@ where d.PatientId not like '%[^0-9]%'
 ### COSD Demographics
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 
@@ -92,7 +92,7 @@ group by NhsNumber
 ### CDS Person
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 

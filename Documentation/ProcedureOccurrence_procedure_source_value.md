@@ -2,7 +2,7 @@
 ### CDS Procedure Occurrence
 * Value copied from `PrimaryProcedure`
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 <details>
 <summary>SQL</summary>
 

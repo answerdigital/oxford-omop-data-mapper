@@ -3,7 +3,7 @@
 Source column  `death_date`.
 Converts text to dates.
 
-* `death_date` Discharge date of the patient's spell. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)]()
+* `death_date` Discharge date of the patient's spell. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
 <details>
 <summary>SQL</summary>
 

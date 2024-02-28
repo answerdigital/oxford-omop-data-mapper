@@ -8,7 +8,7 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 Source column  `FirstOfPOSTCODE`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `FirstOfPOSTCODE` Patient's Postcode. [POSTCODE]()
+* `FirstOfPOSTCODE` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
 <details>
 <summary>SQL</summary>
 
@@ -30,7 +30,7 @@ where p.FirstOfPOSTCODE is not null
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `Postcode` Patient Postcode [POSTCODE OF USUAL ADDRESS (AT DIAGNOSIS)]()
+* `Postcode` Patient Postcode [POSTCODE OF USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/postcode_of_usual_address__at_diagnosis_.html)
 <details>
 <summary>SQL</summary>
 
@@ -95,7 +95,7 @@ group by NhsNumber
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `Postcode` Patient's Postcode. [POSTCODE]()
+* `Postcode` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
 <details>
 <summary>SQL</summary>
 
@@ -130,7 +130,7 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `Postcode` Patient's Postcode. [POSTCODE]()
+* `Postcode` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
 <details>
 <summary>SQL</summary>
 

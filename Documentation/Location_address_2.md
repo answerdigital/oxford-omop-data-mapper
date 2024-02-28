@@ -3,7 +3,7 @@
 Source column  `StreetAddressLine2`.
 Convert text to uppercase. Trim whitespace.
 
-* `StreetAddressLine2` The second line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)]()
+* `StreetAddressLine2` The second line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html)
 <details>
 <summary>SQL</summary>
 
@@ -67,7 +67,7 @@ group by NhsNumber
 ### CDS Structured Address
 * Value copied from `PatientAddressStructured3`
 
-* `PatientAddressStructured3` The third line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)]()
+* `PatientAddressStructured3` The third line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html)
 <details>
 <summary>SQL</summary>
 

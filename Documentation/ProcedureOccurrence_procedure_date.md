@@ -3,7 +3,7 @@
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 <details>
 <summary>SQL</summary>
 

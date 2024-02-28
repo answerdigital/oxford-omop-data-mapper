@@ -8,7 +8,7 @@ Selects the month of the year or null if the date is null.
 Source column  `DateOfBirth`.
 Selects the month of the year or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 <details>
 <summary>SQL</summary>
 
@@ -31,7 +31,7 @@ where d.PatientId not like '%[^0-9]%'
 Source column  `DateOfBirth`.
 Selects the month of the year or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 <details>
 <summary>SQL</summary>
 
@@ -96,7 +96,7 @@ group by NhsNumber
 Source column  `DateOfBirth`.
 Selects the month of the year or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 <details>
 <summary>SQL</summary>
 

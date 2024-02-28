@@ -6,7 +6,7 @@
 ### Rtds PAS Location
 * Value copied from `FirstOfNHSNUMBER`
 
-* `FirstOfNHSNUMBER` Patient NHS Number [NHS NUMBER]()
+* `FirstOfNHSNUMBER` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 
@@ -27,7 +27,7 @@ where p.FirstOfPOSTCODE is not null
 ### COSD Demographics
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 
@@ -91,7 +91,7 @@ group by NhsNumber
 ### CDS Structured Address
 * Value copied from `NhsNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 <details>
 <summary>SQL</summary>
 
