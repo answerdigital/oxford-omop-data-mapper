@@ -18,7 +18,8 @@ public class SvgRenderer
 
     public string Render()
     {
-        var sourceBoxesByTargetBoxes = _relationships.GroupBy(r => r.Target);
+        var sourceBoxesByTargetBoxes = _relationships.GroupBy(r => r.Target).ToList();
+
         var width = GetBoxX(sourceBoxesByTargetBoxes.Count()) + 50;
 
         XElement svg =
@@ -126,7 +127,15 @@ public class SvgRenderer
                     new XAttribute("y2", arrowEndY),
                     new XAttribute("stroke", "white"),
                     new XAttribute("stroke-width", "2")),
-                WrapLabelText(arrowX - 130, BoxHeight + 660, 18, relationship.Label)
+                WrapLabelText(
+                    arrowX - 130, 
+                    BoxHeight + 660, 
+                    18, 
+                    relationship.Label, 
+                    wrapAtWordCount: 5,
+                    new XAttribute("fill", "white"),
+                    new XAttribute("font-size", "1em"),
+                    new XAttribute("font-family", "Helvetica"))
             );
     }
 
@@ -155,34 +164,34 @@ public class SvgRenderer
                 new XAttribute("stroke-width", "2"),
                 roundCorners ? new XAttribute("rx", "10") : null
             ),
-            new XElement(SvgNamespace + "text",
-                new XAttribute("x", x + 30),
-                new XAttribute("y", y + height / 2 + 5),
+            WrapLabelText(
+                x + 30,
+                y + height / 2 - 10, 
+                18, 
+                label,
+                wrapAtWordCount: 3,
                 new XAttribute("fill", textColour),
                 new XAttribute("font-family", "Helvetica"),
                 new XAttribute("font-size", "1.2em"),
-                new XAttribute("text-anchor", "start"),
-                label));
-
-    private static IEnumerable<XElement> WrapLabelText(int x, int y, int lineHeight, string label)
+                new XAttribute("text-anchor", "start")));
+    
+    private static IEnumerable<XElement> WrapLabelText(int x, int y, int lineHeight, string label, int wrapAtWordCount, params XAttribute[] attributes)
     {
         string[] words = label.Split(' ');
 
         // Calculate the number of segments
-        int numSegments = (int)Math.Ceiling((double)words.Length / 5);
+        int numSegments = (int)Math.Ceiling((double)words.Length / wrapAtWordCount);
 
         string[] result = new string[numSegments];
 
         for (int i = 0; i < numSegments; i++)
         {
-            result[i] = string.Join(" ", words.Skip(i * 5).Take(5));
+            result[i] = string.Join(" ", words.Skip(i * wrapAtWordCount).Take(wrapAtWordCount));
 
             yield return new XElement(SvgNamespace + "text",
-                new XAttribute("x", x + 5),
+                new XAttribute("x", x + wrapAtWordCount),
                 new XAttribute("y", y + (i + 1) * lineHeight),
-                new XAttribute("fill", "white"),
-                new XAttribute("font-size", "1em"),
-                new XAttribute("font-family", "Helvetica"),
+                attributes,
                 result[i]);
         }
     }

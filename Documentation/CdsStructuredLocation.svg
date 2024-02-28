@@ -2,7 +2,7 @@
   <rect width="100%" height="100%" fill="#3E5EB2" />
   <g>
     <rect x="25" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="35" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">POSTCODE</text>
+    <text x="38" y="228" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">POSTCODE</text>
   </g>
   <g>
     <line x1="225" y1="420" x2="225" y2="615" stroke="white" stroke-width="2" />
@@ -14,31 +14,36 @@
   </g>
   <g>
     <rect x="25" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="35" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">zip</text>
+    <text x="38" y="668" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">zip</text>
   </g>
   <g>
     <rect x="445" y="20" width="400" height="50" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="455" y="50" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS (STRUCTURED)</text>
+    <text x="458" y="53" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS</text>
+    <text x="458" y="71" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">(STRUCTURED)</text>
   </g>
   <g>
     <rect x="445" y="90" width="400" height="50" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="455" y="120" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS (STRUCTURED)</text>
+    <text x="458" y="123" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS</text>
+    <text x="458" y="141" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">(STRUCTURED)</text>
   </g>
   <g>
     <rect x="445" y="160" width="400" height="50" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="455" y="190" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS (STRUCTURED)</text>
+    <text x="458" y="193" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS</text>
+    <text x="458" y="211" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">(STRUCTURED)</text>
   </g>
   <g>
     <rect x="445" y="230" width="400" height="50" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="455" y="260" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS (STRUCTURED)</text>
+    <text x="458" y="263" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS</text>
+    <text x="458" y="281" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">(STRUCTURED)</text>
   </g>
   <g>
     <rect x="445" y="300" width="400" height="50" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="455" y="330" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS (STRUCTURED)</text>
+    <text x="458" y="333" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS</text>
+    <text x="458" y="351" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">(STRUCTURED)</text>
   </g>
   <g>
     <rect x="445" y="370" width="400" height="50" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="455" y="400" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">POSTCODE</text>
+    <text x="458" y="403" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">POSTCODE</text>
   </g>
   <g>
     <line x1="645" y1="420" x2="645" y2="615" stroke="white" stroke-width="2" />
@@ -49,11 +54,11 @@
   </g>
   <g>
     <rect x="445" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="455" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">location_source_value</text>
+    <text x="458" y="668" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">location_source_value</text>
   </g>
   <g>
     <rect x="865" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="875" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">NHS NUMBER</text>
+    <text x="878" y="228" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">NHS NUMBER</text>
   </g>
   <g>
     <line x1="1065" y1="420" x2="1065" y2="615" stroke="white" stroke-width="2" />
@@ -63,15 +68,17 @@
   </g>
   <g>
     <rect x="865" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="875" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">nhs_number</text>
+    <text x="878" y="668" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">nhs_number</text>
   </g>
   <g>
     <rect x="1285" y="20" width="400" height="190" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="1295" y="120" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS (STRUCTURED)</text>
+    <text x="1298" y="123" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS</text>
+    <text x="1298" y="141" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">(STRUCTURED)</text>
   </g>
   <g>
     <rect x="1285" y="230" width="400" height="190" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="1295" y="330" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS (STRUCTURED)</text>
+    <text x="1298" y="333" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS</text>
+    <text x="1298" y="351" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">(STRUCTURED)</text>
   </g>
   <g>
     <line x1="1485" y1="420" x2="1485" y2="615" stroke="white" stroke-width="2" />
@@ -82,11 +89,12 @@
   </g>
   <g>
     <rect x="1285" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="1295" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">address_1</text>
+    <text x="1298" y="668" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">address_1</text>
   </g>
   <g>
     <rect x="1705" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="1715" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS (STRUCTURED)</text>
+    <text x="1718" y="228" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS</text>
+    <text x="1718" y="246" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">(STRUCTURED)</text>
   </g>
   <g>
     <line x1="1905" y1="420" x2="1905" y2="615" stroke="white" stroke-width="2" />
@@ -96,11 +104,12 @@
   </g>
   <g>
     <rect x="1705" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="1715" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">address_2</text>
+    <text x="1718" y="668" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">address_2</text>
   </g>
   <g>
     <rect x="2125" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="2135" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS (STRUCTURED)</text>
+    <text x="2138" y="228" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS</text>
+    <text x="2138" y="246" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">(STRUCTURED)</text>
   </g>
   <g>
     <line x1="2325" y1="420" x2="2325" y2="615" stroke="white" stroke-width="2" />
@@ -110,11 +119,12 @@
   </g>
   <g>
     <rect x="2125" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="2135" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">city</text>
+    <text x="2138" y="668" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">city</text>
   </g>
   <g>
     <rect x="2545" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="2555" y="225" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS (STRUCTURED)</text>
+    <text x="2558" y="228" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">PATIENT USUAL ADDRESS</text>
+    <text x="2558" y="246" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">(STRUCTURED)</text>
   </g>
   <g>
     <line x1="2745" y1="420" x2="2745" y2="615" stroke="white" stroke-width="2" />
@@ -124,6 +134,6 @@
   </g>
   <g>
     <rect x="2545" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="2555" y="665" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">county</text>
+    <text x="2558" y="668" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">county</text>
   </g>
 </svg>
