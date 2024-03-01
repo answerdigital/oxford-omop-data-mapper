@@ -26,6 +26,33 @@
     <None Update="CDS\DrugExposure\CdsDrugExposure.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="CDS\Observation\SourceOfReferralForOutpatients\CdsSourceOfReferralForOutpatients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CDS\Observation\PersonWeight\CdsPersonWeight.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CDS\Observation\BirthWeight\CdsBirthWeight.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CDS\Observation\GestationLengthLabourOnset\CdsGestationLengthLabourOnset.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CDS\Observation\TotalPreviousPregnancies\CdsTotalPreviousPregnancies.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CDS\Observation\NumberOfBabies\CdsNumberOfBabies.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CDS\Observation\AnaestheticGivenPostLabourDelivery\CdsAnaestheticGivenPostLabourDelivery.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CDS\Observation\AnaestheticDuringLabourDelivery\CdsAnaestheticDuringLabourDelivery.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CDS\Observation\CarerSupportIndicator\CdsCarerSupportIndicator.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="CDS\ProcedureOccurrence\CdsProcedureOccurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

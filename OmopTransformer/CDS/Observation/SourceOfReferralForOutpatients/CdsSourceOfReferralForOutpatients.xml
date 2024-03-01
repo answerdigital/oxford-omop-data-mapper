@@ -1,0 +1,47 @@
+﻿<Query>
+    <Sql>
+select 
+	l1.NHSNumber,
+	l1.RecordConnectionIdentifier,
+	l5.HospitalProviderSpellNumber,
+	coalesce(max(l9.ReferralRequestReceivedDate), max(l1.CDSActivityDate)) as observation_date, 
+	l9.SourceofReferralforOutpatients as SourceOfReferralForOutpatients
+from [omop_staging].[cds_line01] l1
+	inner join [omop_staging].[cds_line09] l9
+		on l1.MessageId = l9.MessageId
+	left outer join omop_staging.cds_line05 l5
+		on l1.MessageId = l5.MessageId
+where l9.SourceofReferralforOutpatients is not null 
+	and l1.NHSNumber is not null 
+group by 
+	l1.NHSNumber, 
+	l9.ReferralRequestReceivedDate, 
+	l9.SourceofReferralforOutpatients,
+	l1.RecordConnectionIdentifier,
+	l5.HospitalProviderSpellNumber
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="observation_date">
+			<Description>Event date</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+			<Origin>ACTIVITY DATE (CRITICAL CARE)</Origin>
+		</Explanation>
+		<Explanation columnName="SourceOfReferralForOutpatients">
+			<Description>The ORIGINAL REFERRAL REQUEST RECEIVED DATE must be recorded on any subsequent REFERRAL REQUESTS for the same health care service and should never be altered or removed, even if the Health Care Provider changes, until the specific health care service is provided for the PATIENT, or is no longer required.</Description>
+			<Origin>ORIGINAL REFERRAL REQUEST RECEIVED DATE</Origin>
+		</Explanation>
+		<Explanation columnName="RecordConnectionIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="HospitalProviderSpellNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

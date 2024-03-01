@@ -2,6 +2,15 @@
 using OmopTransformer.CDS.ConditionOccurrence;
 using OmopTransformer.CDS.Death;
 using OmopTransformer.CDS.DrugExposure;
+using OmopTransformer.CDS.Observation.AnaestheticDuringLabourDelivery;
+using OmopTransformer.CDS.Observation.AnaestheticGivenPostLabourDelivery;
+using OmopTransformer.CDS.Observation.BirthWeight;
+using OmopTransformer.CDS.Observation.CarerSupportIndicator;
+using OmopTransformer.CDS.Observation.GestationLengthLabourOnset;
+using OmopTransformer.CDS.Observation.NumberOfBabies;
+using OmopTransformer.CDS.Observation.PersonWeight;
+using OmopTransformer.CDS.Observation.SourceOfReferralForOutpatients;
+using OmopTransformer.CDS.Observation.TotalPreviousPregnancies;
 using OmopTransformer.CDS.Person;
 using OmopTransformer.CDS.ProcedureOccurrence;
 using OmopTransformer.CDS.StructuredAddress;
@@ -13,6 +22,7 @@ using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.DrugExposure;
 using OmopTransformer.Omop.Location;
+using OmopTransformer.Omop.Observation;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.VisitDetail;
@@ -31,6 +41,7 @@ internal class CdsTransformer : Transformer
     private readonly IDeathRecorder _deathRecorder;
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
     private readonly IDrugExposureRecorder _drugExposureRecorder;
+    private readonly IObservationRecorder _observationRecorder;
     private readonly ConceptSnomedResolver _conceptSnomedResolver;
 
     public CdsTransformer(IRecordTransformer recordTransformer,
@@ -45,7 +56,8 @@ internal class CdsTransformer : Transformer
         IDeathRecorder deathRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
         ConceptSnomedResolver conceptSnomedResolver, 
-        IDrugExposureRecorder drugExposureRecorder) : base(recordTransformer,
+        IDrugExposureRecorder drugExposureRecorder, 
+        IObservationRecorder observationRecorder) : base(recordTransformer,
         logger,
         transformOptions,
         recordProvider,
@@ -60,6 +72,7 @@ internal class CdsTransformer : Transformer
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
         _conceptSnomedResolver = conceptSnomedResolver;
         _drugExposureRecorder = drugExposureRecorder;
+        _observationRecorder = observationRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -112,6 +125,51 @@ internal class CdsTransformer : Transformer
         await Transform<CdsDrugExposureRecord, CdsDrugExposure>(
             _drugExposureRecorder.InsertUpdateDrugExposure,
             "CDS Drug Exposure",
+            cancellationToken);
+
+        await Transform<CdsAnaestheticDuringLabourDeliveryRecord, CdsAnaestheticDuringLabourDelivery>(
+            _observationRecorder.InsertUpdateObservations,
+        "CdsAnaestheticDuringLabourDelivery",
+            cancellationToken);
+
+        await Transform<CdsAnaestheticGivenPostLabourDeliveryRecord, CdsAnaestheticGivenPostLabourDelivery>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cds AnaestheticGivenPostLabourDelivery",
+            cancellationToken);
+
+        await Transform<CdsBirthWeightRecord, CdsBirthWeight>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cds BirthWeight",
+            cancellationToken);
+
+        await Transform<CdsCarerSupportIndicatorRecord, CdsCarerSupportIndicator>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cds CarerSupportIndicator",
+            cancellationToken);
+
+        await Transform<CdsGestationLengthLabourOnsetRecord, CdsGestationLengthLabourOnset>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cds GestationLengthLabourOnset",
+            cancellationToken);
+
+        await Transform<CdsNumberOfBabiesRecord, CdsNumberOfBabies>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cds NumberOfBabies",
+            cancellationToken);
+
+        await Transform<CdsPersonWeightRecord, CdsPersonWeight>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cds PersonWeight",
+            cancellationToken);
+
+        await Transform<CdsSourceOfReferralForOutpatientsRecord, CdsSourceOfReferralForOutpatients>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cds SourceOfReferralForOutpatients",
+            cancellationToken);
+
+        await Transform<CdsTotalPreviousPregnanciesRecord, CdsTotalPreviousPregnancies>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cds TotalPreviousPregnancies",
             cancellationToken);
 
         _conceptSnomedResolver.PrintErrors();

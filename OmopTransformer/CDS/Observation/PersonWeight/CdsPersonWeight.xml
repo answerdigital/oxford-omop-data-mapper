@@ -1,0 +1,48 @@
+﻿<Query>
+    <Sql>
+select 
+	l1.NHSNumber, 
+	l1.RecordConnectionIdentifier,
+	l5.HospitalProviderSpellNumber,
+	coalesce(max(l7.ActivityDateCriticalCare), MAX(l1.CDSActivityDate)) as observation_date, 
+	l7.PersonWeight
+from [omop_staging].[cds_line01] l1																			
+	inner join [omop_staging].[cds_line07] l7													
+		on l1.MessageId = l7.MessageId
+	left outer join omop_staging.cds_line05 l5
+		on l1.MessageId = l5.MessageId
+where l7.PersonWeight is not null 
+	and l1.NHSNumber is not null 				
+	and (l1.CdsRecordType = '140' or l1.CdsRecordType = '120')
+group by 
+	l1.NHSNumber, 
+	l1.RecordConnectionIdentifier,
+	l5.HospitalProviderSpellNumber,
+	l7.ActivityDateCriticalCare, 
+	l7.PersonWeight;		
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="RecordConnectionIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="HospitalProviderSpellNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="observation_date">
+			<Description>Event date</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+			<Origin>ACTIVITY DATE (CRITICAL CARE)</Origin>
+		</Explanation>
+		<Explanation columnName="PersonWeight">
+			<Description>PERSON WEIGHT is the result of the Clinical Investigation which measures the PATIENT's Weight, where the UNIT OF MEASUREMENT is 'Kilograms (kg)'.</Description>
+			<Origin>PERSON WEIGHT</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

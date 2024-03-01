@@ -3,11 +3,11 @@
 namespace OmopTransformer.Transformation;
 
 [Description("Converts text to integers.")]
-internal class NumberParser(string? date) : ISelector
+internal class NumberParser(string? text) : ISelector
 {
     public object? GetValue()
     {
-        if (int.TryParse(date, out var number))
+        if (int.TryParse(text, out var number))
         {
             return number;
         }
