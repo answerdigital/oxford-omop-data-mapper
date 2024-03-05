@@ -4,13 +4,25 @@ namespace OmopTransformer.Transformation;
 
 internal class AggregateQueryParser
 {
-    public static Query ParseAggregateQuery(string xml, string fileName)
+    public static Query? ParseAggregateQuery(string xml, string fileName)
     {
         XmlSerializer serializer = new(typeof(Query));
 
         using TextReader reader = new StringReader(xml);
 
-        var query = (Query)serializer.Deserialize(reader)!;
+        Query? query = null;
+
+        try
+        {
+            query = (Query)serializer.Deserialize(reader)!;
+
+        }
+        catch
+        {
+            Console.Error.WriteLine($"Cannot read xml file {fileName}.");
+
+            return null;
+        }
 
         if (query.Explanation == null)
             throw new InvalidDataException($"{fileName} {nameof(query.Explanation)} is null");
