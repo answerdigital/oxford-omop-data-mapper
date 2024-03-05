@@ -1,8 +1,41 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: Oxford Omop Transformer
+description: 
 theme: just-the-docs
 
-url: https://just-the-docs.github.io
+url: https://answerdigital.github.io/oxford-omop-data-mapper/
 
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+    GitHub: https://github.com/answerdigital/oxford-omop-data-mapper
+
+exclude:
+ # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
+   - .sass-cache/
+   - .jekyll-cache/
+   - gemfiles/
+   - Gemfile
+   - Gemfile.lock
+   - node_modules/
+   - vendor/bundle/
+   - vendor/cache/
+   - vendor/gems/
+   - vendor/ruby/
+ # specific to the theme website:
+   - bin/
+   - lib/
+   - "*.gemspec"
+   - "*.gem"
+   - LICENSE.txt
+   - package.json
+   - package-lock.json
+   - Rakefile
+   - README.md
+   - CODE_OF_CONDUCT.md
+   - docker-compose.yml
+   - Dockerfile
+ # theme test code
+   - fixtures/
+   - Database
+   - OmopTransformer
+   - OmopTransformerTests
+   - TestResults
+   - .

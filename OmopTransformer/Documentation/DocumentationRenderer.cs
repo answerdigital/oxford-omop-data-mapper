@@ -2,10 +2,12 @@
 using OmopTransformer.Omop;
 using OmopTransformer.Transformation;
 using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using Microsoft.Extensions.Logging;
 using OmopTransformer.Documentation.Charting;
 using Newtonsoft.Json;
+using System.Xml.Linq;
 
 namespace OmopTransformer.Documentation;
 
@@ -45,6 +47,15 @@ internal class DocumentationRenderer
 
         var indexStringBuilder = new StringBuilder();
 
+        indexStringBuilder.AppendLine("---");
+        indexStringBuilder.AppendLine("layout: default");
+        indexStringBuilder.AppendLine("title: Transformation Documentation");
+        indexStringBuilder.AppendLine("nav_order: 5");
+        indexStringBuilder.AppendLine("has_children: true");
+        indexStringBuilder.AppendLine("---");
+        indexStringBuilder.AppendLine("{: .no_toc }");
+        indexStringBuilder.AppendLine("");
+        
         indexStringBuilder.AppendLine("`Automatically generated documentation`");
         indexStringBuilder.AppendLine();
 
@@ -52,7 +63,18 @@ internal class DocumentationRenderer
 
         foreach (var omopTarget in mapperByOmopTarget)
         {
-            indexStringBuilder.AppendLine($"# {omopTarget.Key}");
+            StringBuilder omopTable = new StringBuilder();
+
+            omopTable.AppendLine("---");
+            omopTable.AppendLine("layout: default");
+            omopTable.AppendLine($"title: {omopTarget.Key}");
+            omopTable.AppendLine("has_children: true");
+            omopTable.AppendLine("parent: Transformation Documentation");
+            omopTable.AppendLine("has_toc: false");
+            omopTable.AppendLine("---");
+
+            omopTable.AppendLine("");
+            omopTable.AppendLine($"# {omopTarget.Key}");
 
             var mapperByProperty =
                 omopTarget
@@ -80,11 +102,19 @@ internal class DocumentationRenderer
 
                 var fileName = $"{omopTarget.Key}_{name}.md";
 
-                indexStringBuilder.AppendLine($"* [{name}]({fileName})");
+                omopTable.AppendLine($"* [{name}]({{% link docs/transformation-documentation/{fileName} %}})");
 
                 var stringBuilder = new StringBuilder();
 
-                stringBuilder.AppendLine($"# `{omopTarget.Key}` `{name}`");
+                stringBuilder.AppendLine("---");
+                stringBuilder.AppendLine("layout: default");
+                stringBuilder.AppendLine($"title: {name}");
+                stringBuilder.AppendLine($"parent: {omopTarget.Key}");
+                stringBuilder.AppendLine("grand_parent: Transformation Documentation");
+                stringBuilder.AppendLine("has_toc: false");
+                stringBuilder.AppendLine("---");
+
+                stringBuilder.AppendLine($"# {name}");
 
                 foreach (var property in propertyGroup)
                 {
@@ -99,13 +129,17 @@ internal class DocumentationRenderer
                 yield return new Document(fileName, stringBuilder.ToString());
             }
 
+            omopTable.AppendLine();
+
             foreach (var target in omopTarget)
             {
-                indexStringBuilder.AppendLine($"## {target.MapperType.Name}");
-                indexStringBuilder.AppendLine($"![]({target.MapperType.Name}.svg)");
-                indexStringBuilder.AppendLine();
-                indexStringBuilder.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title={target.MapperType.Name}%20mapping)");
+                omopTable.AppendLine($"## {target.MapperType.Name}");
+                omopTable.AppendLine($"![]({target.MapperType.Name}.svg)");
+                omopTable.AppendLine();
+                omopTable.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title={target.MapperType.Name}%20mapping){{: .btn }}");
             }
+
+            yield return new Document($"{omopTarget.Key}.md", omopTable.ToString());
         }
 
         yield return new Document("transformation-documentation.md", indexStringBuilder.ToString());
@@ -370,7 +404,7 @@ internal class DocumentationRenderer
             query?.WriteMarkdown(stringBuilder);
 
             stringBuilder.AppendLine();
-            stringBuilder.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20{TableName}%20table%20{FieldName}%20field%20{(dataSourceDescription ?? "").Replace(" ", "%20")}%20mapping)");
+            stringBuilder.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20{TableName}%20table%20{FieldName}%20field%20{(dataSourceDescription ?? "").Replace(" ", "%20")}%20mapping){{: .btn }}");
         }
     }
 
@@ -411,14 +445,11 @@ internal class DocumentationRenderer
                 explanation.WriteMarkdown(stringBuilder);
             }
 
-            stringBuilder.AppendLine("<details>");
-            stringBuilder.AppendLine("<summary>SQL</summary>");
-            stringBuilder.AppendLine();
+            stringBuilder.AppendLine("");
             stringBuilder.AppendLine("```sql");
             var whitespace = new[] { ' ', '\r', '\n' };
             stringBuilder.AppendLine(sqlQuery.TrimStart(whitespace).TrimEnd(whitespace));
             stringBuilder.AppendLine("```");
-            stringBuilder.AppendLine("</details>");
             stringBuilder.AppendLine();
         }
     }

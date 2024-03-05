@@ -102,7 +102,7 @@
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<ItemGroup>
-			<DocumentationDirectory Include="$(MSBuildProjectDirectory)\..\Documentation" />
+			<DocumentationDirectory Include="$(MSBuildProjectDirectory)\..\docs\transformation-documentation" />
 		</ItemGroup>
 
 		<Message Importance="high" Text="Generating documentation." />
