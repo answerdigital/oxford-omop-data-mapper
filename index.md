@@ -1,6 +1,7 @@
 ---
 title: Home
 layout: home
+nav_order: 1
 ---
 
 [![.NET](https://github.com/answerdigital/oxford-omop-data-mapper/actions/workflows/dotnet.yml/badge.svg)](https://github.com/answerdigital/oxford-omop-data-mapper/actions/workflows/dotnet.yml)
@@ -28,11 +29,17 @@ Copyright (C) 2024 omop
 
 # Supported Transformations
 
-|          | **Location** | **Person** | **Condition Occurrence** | **Visit Occurrence** | **Visit Details** | **Measurement**      | **Death** | **Procedure Occurrence** | **Drug Exposure** | **Observation** |
-|----------|--------------|------------|--------------------------|----------------------|-------------------|----------------------|-----------|---------------------------|------------------|-----------------|
-| **CDS**  |      ✔️       |     ✔️      |✔️                      |         ✔️           |      ✔️             |	           ✔️ ❗     |    ✔️      |✔                         |✔           |        ✔       |
-| **COSD** |     ✔️      |       ✔️     |                         |                      |                    |	                    |            |                          |                  |                 |
-| **RTDS**  |     ✔️      |       ✔️     |                        |                      |                    |	                    |            |                          |                  |                 |
-| **SACT** |      ✔️       |      ✔️      |                       |                      |                    |	                    |            |                          |                  |                 |
+| OMOP Table           | CDS | COSD | RTDS | SACT |
+|----------------------|-----|------|------|------|
+| *Location*            |  ✔ | ✔   | ✔   | ✔   |
+| *Person*              | ✔️  | ✔️   | ✔️   | ✔️   |
+| *Condition*Occurrence | ✔️  | ✔️   | ✔️   | ✔️   |
+| *Visit*Occurrence     | ✔️  |      |      |      |
+| *Visit*Details        | ✔️  |      |      |      |
+| *Measurement*         | ✔️ ❗ |      |      |      |
+| *Death*               | ✔️ |      |      |      |
+| *Procedure*Occurrence | ✔️  |      |      |      |
+| *Drug*Exposure        | ✔  |      |      |      |
+| *Observation*         | ✔  |      |      |      |
 
 [Automatically Generated OMOP Data Transformation Documentation]({% link docs/transformation-documentation/transformation-documentation.md %}#prune-command){: .btn .btn-blue }
