@@ -37,9 +37,17 @@ internal class QueryLocator : IQueryLocator
             fileLoadTasks
                 .GroupBy(file => file.Result.fileName)
                 .Select(files => files.First())
+                .Select(
+                    file =>
+                        new
+                        {
+                            key = file.Result.fileName,
+                            query = AggregateQueryParser.ParseAggregateQuery(file.Result.content, file.Result.fileName)
+                        })
+                .Where(query => query.query != null)
                 .ToDictionary(
-                    keySelector: file => file.Result.fileName,
-                    elementSelector: file => AggregateQueryParser.ParseAggregateQuery(file.Result.content, file.Result.fileName));
+                    keySelector: file => file.key,
+                    elementSelector: file => file.query!);
 
         return new QueryLocator(fileDictionary);
     }
