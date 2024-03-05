@@ -30,7 +30,7 @@ Copyright (C) 2024 omop
 | **RTDS**  |     ✔️      |       ✔️     |                        |                      |                    |	                    |            |                          |                  |                 |
 | **SACT** |      ✔️       |      ✔️      |                       |                      |                    |	                    |            |                          |                  |                 |
 
-[Transformation documentation](Documentation/transformation-documentation.md)
+[Transformation documentation](https://answerdigital.github.io/oxford-omop-data-mapper/docs/transformation-documentation/transformation-documentation.html)
 
 ❗ denotes that no suitable data was found in the source file
 
