@@ -9,7 +9,7 @@ has_toc: false
 ### SACT
 * Value copied from `NHS_Number`
 
-* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHS_Number` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select
@@ -27,7 +27,7 @@ from omop_staging.sact_staging
 ### Rtds Demographics
 * Value copied from `PatientId`
 
-* `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `PatientId` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select
@@ -46,7 +46,7 @@ where d.PatientId not like '%[^0-9]%'
 ### COSD Demographics
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 with 
@@ -107,7 +107,7 @@ group by NhsNumber
 ### CDS Person
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select

@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -30,7 +30,7 @@
           "origins": [
             {
               "origin": "PERSON BIRTH DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html"
+              "url": null
             }
           ]
         }
@@ -48,7 +48,7 @@
           "origins": [
             {
               "origin": "PERSON BIRTH DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html"
+              "url": null
             }
           ]
         }
@@ -66,7 +66,7 @@
           "origins": [
             {
               "origin": "PERSON BIRTH DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html"
+              "url": null
             }
           ]
         }
@@ -84,7 +84,7 @@
           "origins": [
             {
               "origin": "PERSON BIRTH DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html"
+              "url": null
             }
           ]
         }
@@ -109,7 +109,7 @@
           "origins": [
             {
               "origin": "PERSON GENDER CODE CURRENT",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html"
+              "url": null
             }
           ]
         }
@@ -127,7 +127,7 @@
           "origins": [
             {
               "origin": "PERSON GENDER CODE CURRENT",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html"
+              "url": null
             }
           ]
         }
@@ -145,7 +145,7 @@
           "origins": [
             {
               "origin": "ETHNIC CATEGORY",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html"
+              "url": null
             }
           ]
         }
@@ -163,7 +163,7 @@
           "origins": [
             {
               "origin": "ETHNIC CATEGORY",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html"
+              "url": null
             }
           ]
         }
@@ -181,7 +181,7 @@
           "origins": [
             {
               "origin": "ETHNIC CATEGORY",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html"
+              "url": null
             }
           ]
         }

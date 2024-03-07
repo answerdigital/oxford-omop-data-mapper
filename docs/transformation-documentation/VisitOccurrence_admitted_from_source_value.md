@@ -9,7 +9,7 @@ has_toc: false
 ### CDS VisitOccurrenceWithSpell
 * Value copied from `SourceofAdmissionCode`
 
-* `SourceofAdmissionCode` Admission Source. [ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)
+* `SourceofAdmissionCode` Admission Source. [ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)]()
 
 ```sql
 select
@@ -66,7 +66,7 @@ group by
 ### CDS VisitOccurrenceWithoutSpell
 * Value copied from `SourceofAdmissionCode`
 
-* `SourceofAdmissionCode` Admission Source. [ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)
+* `SourceofAdmissionCode` Admission Source. [ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)]()
 
 ```sql
 ;with RecordConnectionIdentifierNHSNumberCombination as (

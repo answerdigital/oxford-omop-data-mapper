@@ -218,7 +218,7 @@ The current scope for the transformation at table and field level is as follows:
 | *Visit*Occurrence     | ✔️  |      |      |      |
 | *Visit*Details        | ✔️  |      |      |      |
 | *Measurement*         | ✔️ ❗ |      |      |      |
-| *Death*               | ✔️ |      |      |      |
+| *Death*               | ✔️ |  ✔    |      |      |
 | *Procedure*Occurrence | ✔️  |      |      |      |
 | *Drug*Exposure        | ✔  |      |      |      |
 | *Observation*         | ✔  |      |      |      |

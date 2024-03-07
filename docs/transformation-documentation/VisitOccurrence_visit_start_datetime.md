@@ -10,9 +10,9 @@ has_toc: false
 Source columns  `EpisodeStartDate`, `EpisodeStartTime`.
 Combines a date with a time of day.
 
-* `EpisodeStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
+* `EpisodeStartDate` Start date of the episode. [START DATE (EPISODE)]()
 
-* `EpisodeStartTime` The earliest episode start time for the spell, or midnight if none are specified. [START TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html)
+* `EpisodeStartTime` The earliest episode start time for the spell, or midnight if none are specified. [START TIME (EPISODE)]()
 
 ```sql
 select
@@ -70,7 +70,7 @@ group by
 Source columns  `EpisodeStartDate`, `EpisodeStartTime`.
 Combines a date with a time of day.
 
-* `EpisodeStartDate` The earliest date in the message group. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+* `EpisodeStartDate` The earliest date in the message group. [CDS ACTIVITY DATE]()
 
 * `EpisodeStartTime` No data available, defaulted to midnight. 
 

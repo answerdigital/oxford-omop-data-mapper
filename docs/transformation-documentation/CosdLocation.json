@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "POSTCODE OF USUAL ADDRESS (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode_of_usual_address__at_diagnosis_.html"
+              "url": null
             }
           ]
         }
@@ -30,7 +30,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html"
+              "url": null
             }
           ]
         },
@@ -40,7 +40,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html"
+              "url": null
             }
           ]
         },
@@ -50,7 +50,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html"
+              "url": null
             }
           ]
         },
@@ -60,7 +60,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html"
+              "url": null
             }
           ]
         },
@@ -70,7 +70,7 @@
           "origins": [
             {
               "origin": "POSTCODE OF USUAL ADDRESS (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode_of_usual_address__at_diagnosis_.html"
+              "url": null
             }
           ]
         }
@@ -88,7 +88,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -106,7 +106,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html"
+              "url": null
             }
           ]
         }
@@ -124,7 +124,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html"
+              "url": null
             }
           ]
         }
@@ -142,7 +142,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html"
+              "url": null
             }
           ]
         }
@@ -160,7 +160,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html"
+              "url": null
             }
           ]
         }

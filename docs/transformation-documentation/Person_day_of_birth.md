@@ -10,7 +10,7 @@ has_toc: false
 Source column  `Date_Of_Birth`.
 Selects the day of the month or null if the date is null.
 
-* `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 select
@@ -29,7 +29,7 @@ from omop_staging.sact_staging
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 select
@@ -49,7 +49,7 @@ where d.PatientId not like '%[^0-9]%'
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 with 
@@ -111,7 +111,7 @@ group by NhsNumber
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 select

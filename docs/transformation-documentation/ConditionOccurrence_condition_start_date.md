@@ -10,7 +10,7 @@ has_toc: false
 Source column  `CDSActivityDate`.
 Converts text to dates.
 
-* `CDSActivityDate` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+* `CDSActivityDate` Event date [CDS ACTIVITY DATE]()
 
 ```sql
 select

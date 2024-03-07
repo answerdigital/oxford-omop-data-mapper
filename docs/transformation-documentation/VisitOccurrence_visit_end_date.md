@@ -10,7 +10,7 @@ has_toc: false
 Source column  `EpisodeEndDate`.
 Converts text to dates.
 
-* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
+* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](), [END DATE (EPISODE)]()
 
 ```sql
 select
@@ -68,7 +68,7 @@ group by
 Source column  `EpisodeEndDate`.
 Converts text to dates.
 
-* `EpisodeEndDate` The latest dte in the message group. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+* `EpisodeEndDate` The latest dte in the message group. [CDS ACTIVITY DATE]()
 
 ```sql
 ;with RecordConnectionIdentifierNHSNumberCombination as (

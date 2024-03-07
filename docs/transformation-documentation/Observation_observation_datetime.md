@@ -10,7 +10,7 @@ has_toc: false
 Source column  `CDSActivityDate`.
 Converts text to dates.
 
-* `CDSActivityDate` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+* `CDSActivityDate` Event date [CDS ACTIVITY DATE]()
 
 ```sql
 select 
@@ -40,7 +40,7 @@ group by
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [ACTIVITY DATE (CRITICAL CARE)](https://www.datadictionary.nhs.uk/data_elements/activity_date__critical_care_.html)
+* `observation_date` Event date [CDS ACTIVITY DATE](), [ACTIVITY DATE (CRITICAL CARE)]()
 
 ```sql
 select 
@@ -71,7 +71,7 @@ group by
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [ACTIVITY DATE (CRITICAL CARE)](https://www.datadictionary.nhs.uk/data_elements/activity_date__critical_care_.html)
+* `observation_date` Event date [CDS ACTIVITY DATE](), [ACTIVITY DATE (CRITICAL CARE)]()
 
 ```sql
 select 
@@ -103,7 +103,7 @@ group by
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [DELIVERY DATE](https://www.datadictionary.nhs.uk/data_elements/delivery_date.html)
+* `observation_date` Event date [CDS ACTIVITY DATE](), [DELIVERY DATE]()
 
 ```sql
 select 
@@ -136,7 +136,7 @@ group by
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [DELIVERY DATE](https://www.datadictionary.nhs.uk/data_elements/delivery_date.html)
+* `observation_date` Event date [CDS ACTIVITY DATE](), [DELIVERY DATE]()
 
 ```sql
 select 
@@ -168,7 +168,7 @@ group by
 Source column  `CDSActivityDate`.
 Converts text to dates.
 
-* `CDSActivityDate` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+* `CDSActivityDate` Event date [CDS ACTIVITY DATE]()
 
 ```sql
 select 
@@ -196,7 +196,7 @@ group by
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [DELIVERY DATE](https://www.datadictionary.nhs.uk/data_elements/delivery_date.html)
+* `observation_date` Event date [CDS ACTIVITY DATE](), [DELIVERY DATE]()
 
 ```sql
 select 
@@ -228,7 +228,7 @@ group by
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+* `observation_date` Event date [CDS ACTIVITY DATE]()
 
 ```sql
 select 
@@ -259,7 +259,7 @@ group by
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [DELIVERY DATE](https://www.datadictionary.nhs.uk/data_elements/delivery_date.html)
+* `observation_date` Event date [CDS ACTIVITY DATE](), [DELIVERY DATE]()
 
 ```sql
 select 

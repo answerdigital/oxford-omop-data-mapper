@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -37,7 +37,7 @@
           "origins": [
             {
               "origin": "PROCEDURE DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+              "url": null
             }
           ]
         }
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "PROCEDURE DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+              "url": null
             }
           ]
         }
@@ -80,7 +80,7 @@
           "origins": [
             {
               "origin": "PROCEDURE (OPCS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html"
+              "url": null
             }
           ]
         }
@@ -98,7 +98,7 @@
           "origins": [
             {
               "origin": "PROCEDURE (OPCS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html"
+              "url": null
             }
           ]
         }
@@ -116,7 +116,7 @@
           "origins": [
             {
               "origin": "CDS RECORD IDENTIFIER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
+              "url": null
             }
           ]
         }

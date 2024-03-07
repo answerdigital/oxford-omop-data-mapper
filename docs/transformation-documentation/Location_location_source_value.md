@@ -9,7 +9,7 @@ has_toc: false
 ### SACT
 * Value copied from `Patient_Postcode`
 
-* `Patient_Postcode` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+* `Patient_Postcode` Patient's Postcode. [POSTCODE]()
 
 ```sql
 select
@@ -27,7 +27,7 @@ from omop_staging.sact_staging
 ### Rtds PAS Location
 * Value copied from `FirstOfNHSNUMBER`
 
-* `FirstOfNHSNUMBER` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `FirstOfNHSNUMBER` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select
@@ -46,15 +46,15 @@ where p.FirstOfPOSTCODE is not null
 Source columns  `StreetAddressLine1`, `StreetAddressLine2`, `StreetAddressLine3`, `StreetAddressLine4`, `Postcode`.
 Separates text with newlines. Trim whitespace.
 
-* `StreetAddressLine1` The first line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html)
+* `StreetAddressLine1` The first line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)]()
 
-* `StreetAddressLine2` The second line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html)
+* `StreetAddressLine2` The second line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)]()
 
-* `StreetAddressLine3` The third line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html)
+* `StreetAddressLine3` The third line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)]()
 
-* `StreetAddressLine4` The fourth line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html)
+* `StreetAddressLine4` The fourth line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)]()
 
-* `Postcode` Patient Postcode [POSTCODE OF USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/postcode_of_usual_address__at_diagnosis_.html)
+* `Postcode` Patient Postcode [POSTCODE OF USUAL ADDRESS (AT DIAGNOSIS)]()
 
 ```sql
 with 
@@ -116,17 +116,17 @@ group by NhsNumber
 Source columns  `PatientAddressStructured1`, `PatientAddressStructured2`, `PatientAddressStructured3`, `PatientAddressStructured4`, `PatientAddressStructured5`, `Postcode`.
 Separates text with newlines. Trim whitespace.
 
-* `PatientAddressStructured1` The first line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html)
+* `PatientAddressStructured1` The first line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)]()
 
-* `PatientAddressStructured2` The second line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html)
+* `PatientAddressStructured2` The second line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)]()
 
-* `PatientAddressStructured3` The third line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html)
+* `PatientAddressStructured3` The third line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)]()
 
-* `PatientAddressStructured4` The fourth line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html)
+* `PatientAddressStructured4` The fourth line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)]()
 
-* `PatientAddressStructured5` The fifth line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html)
+* `PatientAddressStructured5` The fifth line of the address. [PATIENT USUAL ADDRESS (STRUCTURED)]()
 
-* `Postcode` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+* `Postcode` Patient's Postcode. [POSTCODE]()
 
 ```sql
 select
@@ -157,7 +157,7 @@ where PatientAddressType = '02'
 ### CDS UnstructuredAddress
 * Value copied from `Postcode`
 
-* `Postcode` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+* `Postcode` Patient's Postcode. [POSTCODE]()
 
 ```sql
 select

@@ -10,7 +10,7 @@ has_toc: false
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
 
 ```sql
 select
