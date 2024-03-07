@@ -59,7 +59,7 @@ The current scope for the transformation at source data level is as follows:
 | CDS - Commissioning Data Sets                | EMIS Infoflex 6.2 fixed width multiline text format |
 | COSD - Cancer Outcomes and Services Dataset  | v8-1 and v9-0-1 xml formats                         |
 | SACT - Systemic Anti-Cancer Therapy Data Set | v3.0                                                |
-| RTDS - Radiotherapy Data Set                 | James please add                                    |
+| RTDS - Radiotherapy Data Set                 | Varian ARIA Oncology Information System format      |
 
 The current scope for the transformation at table and field level is as follows:
 
