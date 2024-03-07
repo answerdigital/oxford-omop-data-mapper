@@ -214,7 +214,7 @@ The current scope for the transformation at table and field level is as follows:
 |----------------------|-----|------|------|------|
 | *Location*            |  ✔ | ✔   | ✔   | ✔   |
 | *Person*              | ✔️  | ✔️   | ✔️   | ✔️   |
-| *Condition*Occurrence | ✔️  | ✔️   | ✔️   | ✔️   |
+| *Condition*Occurrence | ✔️  |      |      |      |
 | *Visit*Occurrence     | ✔️  |      |      |      |
 | *Visit*Details        | ✔️  |      |      |      |
 | *Measurement*         | ✔️ ❗ |      |      |      |
