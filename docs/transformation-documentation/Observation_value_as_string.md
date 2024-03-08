@@ -9,7 +9,7 @@ has_toc: false
 ### Cds Total Previous Pregnancies Observation
 * Value copied from `TotalPreviousPregnancies`
 
-* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES]()
+* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES](https://www.datadictionary.nhs.uk/data_elements/pregnancy_total_previous_pregnancies.html)
 
 ```sql
 select 
@@ -38,7 +38,7 @@ group by
 ### Cds Source Of Referral For Outpatients Observation
 * Value copied from `SourceOfReferralForOutpatients`
 
-* `SourceOfReferralForOutpatients` The ORIGINAL REFERRAL REQUEST RECEIVED DATE must be recorded on any subsequent REFERRAL REQUESTS for the same health care service and should never be altered or removed, even if the Health Care Provider changes, until the specific health care service is provided for the PATIENT, or is no longer required. [ORIGINAL REFERRAL REQUEST RECEIVED DATE]()
+* `SourceOfReferralForOutpatients` The ORIGINAL REFERRAL REQUEST RECEIVED DATE must be recorded on any subsequent REFERRAL REQUESTS for the same health care service and should never be altered or removed, even if the Health Care Provider changes, until the specific health care service is provided for the PATIENT, or is no longer required. [ORIGINAL REFERRAL REQUEST RECEIVED DATE](https://www.datadictionary.nhs.uk/data_elements/original_referral_request_received_date.html)
 
 ```sql
 select 
@@ -68,7 +68,7 @@ group by
 ### Cds Carer Support Indicator Observation
 * Value copied from `CarerSupportIndicator`
 
-* `CarerSupportIndicator` An indication of whether Carer support is available to the PATIENT at their normal residence. [CARER SUPPORT INDICATOR]()
+* `CarerSupportIndicator` An indication of whether Carer support is available to the PATIENT at their normal residence. [CARER SUPPORT INDICATOR](https://www.datadictionary.nhs.uk/data_elements/carer_support_indicator.html)
 
 ```sql
 select 
@@ -95,7 +95,7 @@ group by
 ### Cds Birth Weight Observation
 * Value copied from `BirthWeight`
 
-* `BirthWeight` BIRTH WEIGHT is the result of the Clinical Investigation which measures the Birth Weight, where the UNIT OF MEASUREMENT is Grams (g). [BIRTH WEIGHT]()
+* `BirthWeight` BIRTH WEIGHT is the result of the Clinical Investigation which measures the Birth Weight, where the UNIT OF MEASUREMENT is Grams (g). [BIRTH WEIGHT](https://www.datadictionary.nhs.uk/data_elements/birth_weight.html)
 
 ```sql
 select 
@@ -126,7 +126,7 @@ group by
 ### Cds Anaesthetic Given Post Labour Delivery Observation
 * Value copied from `AnaestheticGivenPostLabourDelivery`
 
-* `AnaestheticGivenPostLabourDelivery` Records whether anaesthetic was given after Delivery, and the type used. [ANAESTHETIC GIVEN POST LABOUR OR DELIVERY CODE]()
+* `AnaestheticGivenPostLabourDelivery` Records whether anaesthetic was given after Delivery, and the type used. [ANAESTHETIC GIVEN POST LABOUR OR DELIVERY CODE](https://www.datadictionary.nhs.uk/data_elements/anaesthetic_given_post_labour_or_delivery_code.html)
 
 ```sql
 select 
@@ -156,7 +156,7 @@ group by
 ### Cds Anaesthetic During Labour Delivery Observation
 * Value copied from `AnaestheticDuringLabourDelivery`
 
-* `AnaestheticDuringLabourDelivery` Records whether anaesthetic was given during Labour/ Delivery, and the type used. [ANAESTHETIC GIVEN DURING LABOUR OR DELIVERY CODE]()
+* `AnaestheticDuringLabourDelivery` Records whether anaesthetic was given during Labour/ Delivery, and the type used. [ANAESTHETIC GIVEN DURING LABOUR OR DELIVERY CODE](https://www.datadictionary.nhs.uk/data_elements/anaesthetic_given_during_labour_or_delivery_code.html)
 
 ```sql
 select 

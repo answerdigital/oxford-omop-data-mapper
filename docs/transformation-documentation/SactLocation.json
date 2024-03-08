@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "POSTCODE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode.html"
             }
           ]
         }
@@ -30,7 +30,7 @@
           "origins": [
             {
               "origin": "POSTCODE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode.html"
             }
           ]
         }
@@ -48,7 +48,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }

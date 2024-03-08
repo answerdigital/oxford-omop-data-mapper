@@ -9,7 +9,7 @@ has_toc: false
 ### COSD v9 DeathDischargeDestination
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -47,7 +47,7 @@ where Node.value('(/*/Treatment/DischargeDestinationHospitalProviderSpell/@code)
 ### COSD v9 BasisOfDiagnosisCancer
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -110,7 +110,7 @@ group by NhsNumber
 ### COSD v8 Death
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -138,7 +138,7 @@ where Node.value('(//PersonDeathDate)[1]', 'varchar(max)') is not null;
 ### CDS Death
 * Value copied from `nhs_number`
 
-* `nhs_number` Patient NHS Number [NHS NUMBER]()
+* `nhs_number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select

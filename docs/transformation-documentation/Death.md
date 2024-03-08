@@ -14,18 +14,18 @@ has_toc: false
 * [cause_source_concept_id]({% link docs/transformation-documentation/Death_cause_source_concept_id.md %})
 
 ## CosdDeathV9DeathDischargeDestination
-![](CosdDeathV9DeathDischargeDestination.svg)
+<a href="CosdDeathV9DeathDischargeDestination.svg" target="_blank"><img src="CosdDeathV9DeathDischargeDestination.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdDeathV9DeathDischargeDestination%20mapping){: .btn }
 ## CosdV9DeathBasisOfDiagnosisCancer
-![](CosdV9DeathBasisOfDiagnosisCancer.svg)
+<a href="CosdV9DeathBasisOfDiagnosisCancer.svg" target="_blank"><img src="CosdV9DeathBasisOfDiagnosisCancer.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9DeathBasisOfDiagnosisCancer%20mapping){: .btn }
 ## CosdV8Death
-![](CosdV8Death.svg)
+<a href="CosdV8Death.svg" target="_blank"><img src="CosdV8Death.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8Death%20mapping){: .btn }
 ## CdsDeath
-![](CdsDeath.svg)
+<a href="CdsDeath.svg" target="_blank"><img src="CdsDeath.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsDeath%20mapping){: .btn }

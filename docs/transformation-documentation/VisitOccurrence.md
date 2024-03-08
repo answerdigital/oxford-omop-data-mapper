@@ -22,10 +22,10 @@ has_toc: false
 * [RecordConnectionIdentifier]({% link docs/transformation-documentation/VisitOccurrence_RecordConnectionIdentifier.md %})
 
 ## CdsVisitOccurrenceWithSpell
-![](CdsVisitOccurrenceWithSpell.svg)
+<a href="CdsVisitOccurrenceWithSpell.svg" target="_blank"><img src="CdsVisitOccurrenceWithSpell.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsVisitOccurrenceWithSpell%20mapping){: .btn }
 ## CdsVisitOccurrenceWithoutSpell
-![](CdsVisitOccurrenceWithoutSpell.svg)
+<a href="CdsVisitOccurrenceWithoutSpell.svg" target="_blank"><img src="CdsVisitOccurrenceWithoutSpell.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsVisitOccurrenceWithoutSpell%20mapping){: .btn }

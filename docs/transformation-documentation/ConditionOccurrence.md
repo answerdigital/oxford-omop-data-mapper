@@ -16,6 +16,6 @@ has_toc: false
 * [condition_type_concept_id]({% link docs/transformation-documentation/ConditionOccurrence_condition_type_concept_id.md %})
 
 ## CdsConditionOccurrence
-![](CdsConditionOccurrence.svg)
+<a href="CdsConditionOccurrence.svg" target="_blank"><img src="CdsConditionOccurrence.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsConditionOccurrence%20mapping){: .btn }

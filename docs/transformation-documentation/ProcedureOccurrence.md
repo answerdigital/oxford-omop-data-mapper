@@ -17,6 +17,6 @@ has_toc: false
 * [RecordConnectionIdentifier]({% link docs/transformation-documentation/ProcedureOccurrence_RecordConnectionIdentifier.md %})
 
 ## CdsProcedureOccurrence
-![](CdsProcedureOccurrence.svg)
+<a href="CdsProcedureOccurrence.svg" target="_blank"><img src="CdsProcedureOccurrence.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsProcedureOccurrence%20mapping){: .btn }

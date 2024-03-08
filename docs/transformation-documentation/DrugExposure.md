@@ -17,6 +17,6 @@ has_toc: false
 * [RecordConnectionIdentifier]({% link docs/transformation-documentation/DrugExposure_RecordConnectionIdentifier.md %})
 
 ## CdsDrugExposure
-![](CdsDrugExposure.svg)
+<a href="CdsDrugExposure.svg" target="_blank"><img src="CdsDrugExposure.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsDrugExposure%20mapping){: .btn }

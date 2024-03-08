@@ -22,6 +22,6 @@ has_toc: false
 * [discharged_to_source_value]({% link docs/transformation-documentation/VisitDetail_discharged_to_source_value.md %})
 
 ## CdsVisitDetail
-![](CdsVisitDetail.svg)
+<a href="CdsVisitDetail.svg" target="_blank"><img src="CdsVisitDetail.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsVisitDetail%20mapping){: .btn }

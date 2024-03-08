@@ -20,38 +20,38 @@ has_toc: false
 * [observation_source_concept_id]({% link docs/transformation-documentation/Observation_observation_source_concept_id.md %})
 
 ## CdsTotalPreviousPregnancies
-![](CdsTotalPreviousPregnancies.svg)
+<a href="CdsTotalPreviousPregnancies.svg" target="_blank"><img src="CdsTotalPreviousPregnancies.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsTotalPreviousPregnancies%20mapping){: .btn }
 ## CdsSourceOfReferralForOutpatients
-![](CdsSourceOfReferralForOutpatients.svg)
+<a href="CdsSourceOfReferralForOutpatients.svg" target="_blank"><img src="CdsSourceOfReferralForOutpatients.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsSourceOfReferralForOutpatients%20mapping){: .btn }
 ## CdsPersonWeight
-![](CdsPersonWeight.svg)
+<a href="CdsPersonWeight.svg" target="_blank"><img src="CdsPersonWeight.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsPersonWeight%20mapping){: .btn }
 ## CdsNumberOfBabies
-![](CdsNumberOfBabies.svg)
+<a href="CdsNumberOfBabies.svg" target="_blank"><img src="CdsNumberOfBabies.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsNumberOfBabies%20mapping){: .btn }
 ## CdsGestationLengthLabourOnset
-![](CdsGestationLengthLabourOnset.svg)
+<a href="CdsGestationLengthLabourOnset.svg" target="_blank"><img src="CdsGestationLengthLabourOnset.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsGestationLengthLabourOnset%20mapping){: .btn }
 ## CdsCarerSupportIndicator
-![](CdsCarerSupportIndicator.svg)
+<a href="CdsCarerSupportIndicator.svg" target="_blank"><img src="CdsCarerSupportIndicator.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsCarerSupportIndicator%20mapping){: .btn }
 ## CdsBirthWeight
-![](CdsBirthWeight.svg)
+<a href="CdsBirthWeight.svg" target="_blank"><img src="CdsBirthWeight.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsBirthWeight%20mapping){: .btn }
 ## CdsAnaestheticGivenPostLabourDelivery
-![](CdsAnaestheticGivenPostLabourDelivery.svg)
+<a href="CdsAnaestheticGivenPostLabourDelivery.svg" target="_blank"><img src="CdsAnaestheticGivenPostLabourDelivery.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsAnaestheticGivenPostLabourDelivery%20mapping){: .btn }
 ## CdsAnaestheticDuringLabourDelivery
-![](CdsAnaestheticDuringLabourDelivery.svg)
+<a href="CdsAnaestheticDuringLabourDelivery.svg" target="_blank"><img src="CdsAnaestheticDuringLabourDelivery.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsAnaestheticDuringLabourDelivery%20mapping){: .btn }

@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "POSTCODE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode.html"
             }
           ]
         }
@@ -30,7 +30,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
             }
           ]
         },
@@ -40,7 +40,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
             }
           ]
         },
@@ -50,7 +50,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
             }
           ]
         },
@@ -60,7 +60,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
             }
           ]
         },
@@ -70,7 +70,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
             }
           ]
         },
@@ -80,7 +80,7 @@
           "origins": [
             {
               "origin": "POSTCODE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode.html"
             }
           ]
         }
@@ -98,7 +98,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -116,7 +116,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
             }
           ]
         },
@@ -126,7 +126,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
             }
           ]
         }
@@ -144,7 +144,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
             }
           ]
         }
@@ -162,7 +162,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
             }
           ]
         }
@@ -180,7 +180,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
             }
           ]
         }

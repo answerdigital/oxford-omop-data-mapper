@@ -134,7 +134,7 @@ internal class DocumentationRenderer
             foreach (var target in omopTarget)
             {
                 omopTable.AppendLine($"## {target.MapperType.Name}");
-                omopTable.AppendLine($"![]({target.MapperType.Name}.svg)");
+                omopTable.AppendLine($"<a href=\"{target.MapperType.Name}.svg\" target=\"_blank\"><img src=\"{target.MapperType.Name}.svg\" /></a>");
                 omopTable.AppendLine();
                 omopTable.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title={target.MapperType.Name}%20mapping){{: .btn }}");
             }

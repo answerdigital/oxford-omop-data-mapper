@@ -20,18 +20,18 @@ has_toc: false
 * [race_source_concept_id]({% link docs/transformation-documentation/Person_race_source_concept_id.md %})
 
 ## SactPerson
-![](SactPerson.svg)
+<a href="SactPerson.svg" target="_blank"><img src="SactPerson.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactPerson%20mapping){: .btn }
 ## RtdsPerson
-![](RtdsPerson.svg)
+<a href="RtdsPerson.svg" target="_blank"><img src="RtdsPerson.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsPerson%20mapping){: .btn }
 ## CosdPerson
-![](CosdPerson.svg)
+<a href="CosdPerson.svg" target="_blank"><img src="CosdPerson.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdPerson%20mapping){: .btn }
 ## CdsPerson
-![](CdsPerson.svg)
+<a href="CdsPerson.svg" target="_blank"><img src="CdsPerson.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsPerson%20mapping){: .btn }

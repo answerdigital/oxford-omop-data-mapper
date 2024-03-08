@@ -16,22 +16,22 @@ has_toc: false
 * [county]({% link docs/transformation-documentation/Location_county.md %})
 
 ## SactLocation
-![](SactLocation.svg)
+<a href="SactLocation.svg" target="_blank"><img src="SactLocation.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactLocation%20mapping){: .btn }
 ## RtdsLocation
-![](RtdsLocation.svg)
+<a href="RtdsLocation.svg" target="_blank"><img src="RtdsLocation.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsLocation%20mapping){: .btn }
 ## CosdLocation
-![](CosdLocation.svg)
+<a href="CosdLocation.svg" target="_blank"><img src="CosdLocation.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdLocation%20mapping){: .btn }
 ## CdsStructuredLocation
-![](CdsStructuredLocation.svg)
+<a href="CdsStructuredLocation.svg" target="_blank"><img src="CdsStructuredLocation.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsStructuredLocation%20mapping){: .btn }
 ## CdsUnstructuredLocation
-![](CdsUnstructuredLocation.svg)
+<a href="CdsUnstructuredLocation.svg" target="_blank"><img src="CdsUnstructuredLocation.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsUnstructuredLocation%20mapping){: .btn }
