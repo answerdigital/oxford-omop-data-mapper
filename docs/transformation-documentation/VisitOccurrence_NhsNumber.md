@@ -9,7 +9,7 @@ has_toc: false
 ### CDS VisitOccurrenceWithSpell
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -66,7 +66,7 @@ group by
 ### CDS VisitOccurrenceWithoutSpell
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with RecordConnectionIdentifierNHSNumberCombination as (

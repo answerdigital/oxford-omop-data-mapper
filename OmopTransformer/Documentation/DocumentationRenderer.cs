@@ -2,12 +2,10 @@
 using OmopTransformer.Omop;
 using OmopTransformer.Transformation;
 using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using Microsoft.Extensions.Logging;
 using OmopTransformer.Documentation.Charting;
 using Newtonsoft.Json;
-using System.Xml.Linq;
 
 namespace OmopTransformer.Documentation;
 
@@ -131,10 +129,16 @@ internal class DocumentationRenderer
 
             omopTable.AppendLine();
 
+            var relationships = GetRelationshipGroups(properties).ToList();
+
             foreach (var target in omopTarget)
             {
                 omopTable.AppendLine($"## {target.MapperType.Name}");
-                omopTable.AppendLine($"![]({target.MapperType.Name}.svg)");
+
+                var relationshipGroup = relationships.Single(g => g.MapperTypeName == target.MapperType.Name);
+
+                omopTable.AppendLine(new MermaidRenderer(relationshipGroup.Relationships).GetMarkdown());
+
                 omopTable.AppendLine();
                 omopTable.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title={target.MapperType.Name}%20mapping){{: .btn }}");
             }
@@ -157,44 +161,50 @@ internal class DocumentationRenderer
 
     private static IEnumerable<Document> GetSvgDocuments(IEnumerable<Property> properties)
     {
-        var mapperProperties =
-            properties
-                .GroupBy(p => p.MapperType.Name)
-                .Select(
-                    dataSourceMappingGroup =>
-                        new
-                        {
-                            Key = dataSourceMappingGroup.Key,
-                            MapperType = dataSourceMappingGroup.First().MapperType,
-                            DataOrigin = dataSourceMappingGroup.First().DataSourceName,
-                            Relationships =
-                                dataSourceMappingGroup
-                                .Where(mapping => mapping.Query != null)
-                                .SelectMany(
-                                    mapping =>
-                                        mapping
-                                            .Query!
-                                            .ColumnExplanations
-                                            .SelectMany(
-                                                columnExplanation =>
-                                                    columnExplanation
-                                                        .Origins
-                                                        .Select(
-                                                            mappingSource =>
-                                                                new Relationship(
-                                                                    mappingSource.Origin,
-                                                                    mapping.FieldName,
-                                                                    mapping.IsCopyOperation ? "Copy value" : mapping.Transform?.TransformDescription ?? mapping.OperationDescription ?? ""))))
-                        })
-                .ToList();
+        var mapperProperties = GetRelationshipGroups(properties);
 
         foreach (var mapper in mapperProperties)
         {
             var svgRenderer = new SvgRenderer(mapper.Relationships.ToList());
 
-            yield return new Document($"{mapper.MapperType.Name}.svg", svgRenderer.Render());
+            yield return new Document($"{mapper.MapperTypeName}.svg", svgRenderer.Render());
         }
     }
+
+    private static IEnumerable<RelationshipGroup> GetRelationshipGroups(IEnumerable<Property> properties) =>
+        properties
+            .GroupBy(p => p.MapperType.Name)
+            .Select(
+                dataSourceMappingGroup =>
+                    new RelationshipGroup(
+                        mapperTypeName: dataSourceMappingGroup.First().MapperType.Name,
+                        relationships:
+                            dataSourceMappingGroup
+                            .Where(mapping => mapping.Query != null)
+                            .SelectMany(
+                                mapping =>
+                                    mapping
+                                        .Query!
+                                        .ColumnExplanations
+                                        .SelectMany(
+                                            columnExplanation =>
+                                                columnExplanation
+                                                    .Origins
+                                                    .Select(
+                                                        mappingSource =>
+                                                            new Relationship(
+                                                                mappingSource.Origin,
+                                                                mapping.FieldName,
+                                                                mapping.IsCopyOperation ? "Copy value" : mapping.Transform?.TransformDescription ?? mapping.OperationDescription ?? ""))))
+                            .ToList()));
+    
+    private class RelationshipGroup(IReadOnlyCollection<Relationship> relationships, string mapperTypeName)
+    {
+        public IReadOnlyCollection<Relationship> Relationships => relationships;
+        public string MapperTypeName => mapperTypeName;
+    }
+
+    
 
     private IEnumerable<Document> GetJsonDocuments(IEnumerable<Property> properties)
     {

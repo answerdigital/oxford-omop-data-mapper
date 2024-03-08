@@ -10,7 +10,7 @@ has_toc: false
 Source column  `TotalPreviousPregnancies`.
 Converts text to integers.
 
-* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES]()
+* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES](https://www.datadictionary.nhs.uk/data_elements/pregnancy_total_previous_pregnancies.html)
 
 ```sql
 select 
@@ -40,7 +40,7 @@ group by
 Source column  `PersonWeight`.
 Converts text to integers.
 
-* `PersonWeight` PERSON WEIGHT is the result of the Clinical Investigation which measures the PATIENT's Weight, where the UNIT OF MEASUREMENT is 'Kilograms (kg)'. [PERSON WEIGHT]()
+* `PersonWeight` PERSON WEIGHT is the result of the Clinical Investigation which measures the PATIENT's Weight, where the UNIT OF MEASUREMENT is 'Kilograms (kg)'. [PERSON WEIGHT](https://www.datadictionary.nhs.uk/data_elements/person_weight.html)
 
 ```sql
 select 
@@ -72,7 +72,7 @@ group by
 Source column  `NumberofBabies`.
 Converts text to integers.
 
-* `NumberofBabies` The number of REGISTRABLE BIRTHS (live or still born at a particular delivery). [NUMBER OF BABIES INDICATION CODE]()
+* `NumberofBabies` The number of REGISTRABLE BIRTHS (live or still born at a particular delivery). [NUMBER OF BABIES INDICATION CODE](https://www.datadictionary.nhs.uk/data_elements/number_of_babies_indication_code.html)
 
 ```sql
 select 
@@ -105,7 +105,7 @@ group by
 Source column  `GestationLengthLabourOnset`.
 Converts text to integers.
 
-* `GestationLengthLabourOnset` GESTATION LENGTH (LABOUR ONSET) records a period of between 10 to 49 weeks in completed weeks at the onset of Labour. [GESTATION LENGTH (LABOUR ONSET)]()
+* `GestationLengthLabourOnset` GESTATION LENGTH (LABOUR ONSET) records a period of between 10 to 49 weeks in completed weeks at the onset of Labour. [GESTATION LENGTH (LABOUR ONSET)](https://www.datadictionary.nhs.uk/data_elements/gestation_length__labour_onset_.html)
 
 ```sql
 select 

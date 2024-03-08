@@ -10,9 +10,9 @@ has_toc: false
 Source columns  `EpisodeEndDate`, `EpisodeEndTime`.
 Combines a date with a time of day.
 
-* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](), [END DATE (EPISODE)]()
+* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
 
-* `EpisodeEndTime` The latest episode end time for the spell, or midnight if none are specified. [END TIME (EPISODE)]()
+* `EpisodeEndTime` The latest episode end time for the spell, or midnight if none are specified. [END TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html)
 
 ```sql
 select
@@ -70,7 +70,7 @@ group by
 Source columns  `EpisodeEndDate`, `EpisodeEndTime`.
 Combines a date with a time of day.
 
-* `EpisodeEndDate` The latest dte in the message group. [CDS ACTIVITY DATE]()
+* `EpisodeEndDate` The latest dte in the message group. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
 
 * `EpisodeEndTime` No data available, defaulted to midnight. 
 
