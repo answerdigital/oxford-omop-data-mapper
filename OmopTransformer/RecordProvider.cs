@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using OmopTransformer.Annotations;
 using Dapper;
 using Microsoft.Extensions.Options;
-using OmopTransformer.SACT;
 
 namespace OmopTransformer;
 
@@ -42,11 +41,6 @@ internal class RecordProvider : IRecordProvider
 
     private string GetQuery<T>()
     {
-        if (typeof(T) == typeof(Sact))
-        {
-            return "select * from omop_staging.sact_staging;";
-        }
-
         var sourceQuery = (SourceQueryAttribute)typeof(T).GetCustomAttributes(typeof(SourceQueryAttribute), inherit: false).Single();
 
         var query = _queryLocator.GetQuery(sourceQuery.QueryFileName);
