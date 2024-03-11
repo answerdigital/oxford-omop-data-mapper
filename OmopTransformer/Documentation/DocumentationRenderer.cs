@@ -2,12 +2,10 @@
 using OmopTransformer.Omop;
 using OmopTransformer.Transformation;
 using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using Microsoft.Extensions.Logging;
 using OmopTransformer.Documentation.Charting;
 using Newtonsoft.Json;
-using System.Xml.Linq;
 
 namespace OmopTransformer.Documentation;
 
@@ -58,6 +56,22 @@ internal class DocumentationRenderer
         
         indexStringBuilder.AppendLine("`Automatically generated documentation`");
         indexStringBuilder.AppendLine();
+        indexStringBuilder.AppendLine("# Transformation Documentation");
+        indexStringBuilder.AppendLine("");
+        indexStringBuilder.AppendLine("This section of the site covers the documentation for the mappings completed so far from various sources to OMOP v5.4.");
+        indexStringBuilder.AppendLine("");
+        indexStringBuilder.AppendLine("The page is structured based on the OMOP tables mapped. Underneath each table page you will find:");
+        indexStringBuilder.AppendLine("");
+        indexStringBuilder.AppendLine("* A contents list for the fields mapped");
+        indexStringBuilder.AppendLine("* A summary diagram showing the high level field mappings at table level from the various sources, with one graph for each data source");
+        indexStringBuilder.AppendLine("* A button to submit a comment or raise an issue for the table level mapping");
+        indexStringBuilder.AppendLine("* When clicking through to the field level mappings you will find:");
+        indexStringBuilder.AppendLine("    * Detail of the source column");
+        indexStringBuilder.AppendLine("    * Any appropriate documentation notes");
+        indexStringBuilder.AppendLine("    * Any appropriate SQL code");
+        indexStringBuilder.AppendLine("    * A button to submit a comment or raise an issue for the field level mapping");
+        indexStringBuilder.AppendLine("");
+        indexStringBuilder.AppendLine("We encourage you to use the buttons to comment on or raise an issue with the mappings, to help us to continue to improve them.");
 
         var properties = new List<Property>();
 

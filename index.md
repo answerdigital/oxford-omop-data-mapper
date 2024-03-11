@@ -6,6 +6,17 @@ nav_order: 1
 
 [![.NET](https://github.com/answerdigital/oxford-omop-data-mapper/actions/workflows/dotnet.yml/badge.svg)](https://github.com/answerdigital/oxford-omop-data-mapper/actions/workflows/dotnet.yml)
 
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
+
+[Automatically Generated OMOP Data Transformation Documentation]({% link docs/transformation-documentation/transformation-documentation.md %}#prune-command){: .btn .btn-blue }
+
 # About the Project
 
 Oxford University Hospitals NHS FT (OUH) is building the Thames Valley and Surrey Secure Data Environment (SDE),  and needs to ensure that the data are available in a structure that is readily consumable by researchers with standard clinical research tooling. Alongside the national initiative for SDEs, OUH will be implementing the Observational Medical Outcomes Partnership (OMOP) data model, to support the ultimate goal of ensuring researchers have seamless access to essential information, at a low cost. 
@@ -61,152 +72,7 @@ The current scope for the transformation at source data level is as follows:
 | SACT - Systemic Anti-Cancer Therapy Data Set | v3.0                                                |
 | RTDS - Radiotherapy Data Set                 | Varian ARIA Oncology Information System format      |
 
-The current scope for the transformation at table and field level is as follows:
-
-<table>
-<tbody>
-<tr>
-<td>
-<p><strong>OMOP Table</strong></p>
-</td>
-<td>
-<p><strong>In Scope Fields</strong></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><span style="font-weight: 400;">Condition Occurrence</span></p>
-</td>
-<td>
-<ul>
-<li style="font-weight: 400;"><span style="font-weight: 400;">condition_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">condition_occurrence_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">condition_start_date</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">condition_type_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">person_id</span></li>
-</ul>
-</td>
-</tr>
-<tr>
-<td>
-<p><span style="font-weight: 400;">Death</span></p>
-</td>
-<td>
-<ul>
-<li style="font-weight: 400;"><span style="font-weight: 400;">death_date</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">person_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">death_type_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">cause_concept_id</span></li>
-</ul>
-</td>
-</tr>
-<tr>
-<td>
-<p><span style="font-weight: 400;">Drug Exposure</span></p>
-</td>
-<td>
-<ul>
-<li style="font-weight: 400;"><span style="font-weight: 400;">drug_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">drug_exposure_end_date</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">drug_exposure_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">drug_exposure_start_date</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">drug_type_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">person_id</span></li>
-</ul>
-</td>
-</tr>
-<tr>
-<td>
-<p><span style="font-weight: 400;">Measurement</span></p>
-</td>
-<td>
-<ul>
-<li style="font-weight: 400;"><span style="font-weight: 400;">measurement_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">measurement_date</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">measurement_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">measurement_type_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">person_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">value_as_number</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">value_as_concept_id</span></li>
-</ul>
-</td>
-</tr>
-<tr>
-<td>
-<p><span style="font-weight: 400;">Observation</span></p>
-</td>
-<td>
-<ul>
-<li style="font-weight: 400;"><span style="font-weight: 400;">observation_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">observation_date</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">observation_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">observation_type_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">person_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">value_as_number</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">value_as_concept_id</span></li>
-</ul>
-</td>
-</tr>
-<tr>
-<td>
-<p><span style="font-weight: 400;">Person</span></p>
-</td>
-<td>
-<ul>
-<li style="font-weight: 400;"><span style="font-weight: 400;">ethnicity_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">gender_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">person_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">race_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">year_of_birth</span></li>
-</ul>
-</td>
-</tr>
-<tr>
-<td>
-<p><span style="font-weight: 400;">Procedure Occurrence</span></p>
-</td>
-<td>
-<ul>
-<li style="font-weight: 400;"><span style="font-weight: 400;">person_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">procedure_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">procedure_date</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">procedure_occurrence_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">procedure_type_concept_id</span></li>
-</ul>
-</td>
-</tr>
-<tr>
-<td>
-<p><span style="font-weight: 400;">Visit Occurrence</span></p>
-</td>
-<td>
-<ul>
-<li style="font-weight: 400;"><span style="font-weight: 400;">person_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">visit_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">visit_end_date</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">visit_occurrence_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">visit_start_date</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">visit_type_concept_id</span></li>
-</ul>
-</td>
-</tr>
-<tr>
-<td>
-<p><span style="font-weight: 400;">Visit Detail</span></p>
-</td>
-<td>
-<ul>
-<li style="font-weight: 400;"><span style="font-weight: 400;">visit_occurrence_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">person_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">visit_concept_id</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">visit_start_date</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">visit_end_date</span></li>
-<li style="font-weight: 400;"><span style="font-weight: 400;">visit_type_concept_id</span></li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
+The current scope for the transformation at table and field level has been selected based on the HDR UK minimum field set for cohorting queries. In addition to this, any other mandatory OMOP fields for the respective tables have been considered. Some additional tables and fields have been included as these were picked up as part of the analysis process. To see which fields and tables have been considered, please see the transformation documentation section of the site.
 
 # Supported Transformations
 

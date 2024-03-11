@@ -76,17 +76,25 @@ Loads staging data from a filesystem.
 
 ### Example
 
+#### Stage a COSD file
+
 ```
 omop stage load --type cosd "Cancer_Reporting\COSD\April 2022 Submission.zip"
 ```
+
+#### Stage a SACT file
 
 ```
 omop stage load --type sact "SACT_v3-20200101-20200131.csv"
 ```
 
+#### Stage a RTDS file
+
 ```
 omop stage load --type rtds "Rtds.zip"
 ```
+
+#### Stage a CDS file
 
 ```
 omop stage load --type cds BNC62_1_20231020232835673
