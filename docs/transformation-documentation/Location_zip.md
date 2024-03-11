@@ -14,12 +14,12 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 
 ```sql
 select
-	distinct
-		Patient_Postcode,
-		NHS_Number,
-		Date_Of_Birth,
-		Person_Stated_Gender_Code
+	NHS_Number,
+	max (Patient_Postcode) as Patient_Postcode,
+	max (Date_Of_Birth) as Date_Of_Birth,
+	max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
 from omop_staging.sact_staging
+group by NHS_Number
 	
 ```
 

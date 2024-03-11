@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
+      "query": "\nselect\n\tNHS_Number,\n\tmax (Patient_Postcode) as Patient_Postcode,\n\tmax (Date_Of_Birth) as Date_Of_Birth,\n\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\nfrom omop_staging.sact_staging\ngroup by NHS_Number\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
+      "query": "\nselect\n\tNHS_Number,\n\tmax (Patient_Postcode) as Patient_Postcode,\n\tmax (Date_Of_Birth) as Date_Of_Birth,\n\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\nfrom omop_staging.sact_staging\ngroup by NHS_Number\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -53,7 +53,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
+      "query": "\nselect\n\tNHS_Number,\n\tmax (Patient_Postcode) as Patient_Postcode,\n\tmax (Date_Of_Birth) as Date_Of_Birth,\n\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\nfrom omop_staging.sact_staging\ngroup by NHS_Number\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -71,7 +71,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
+      "query": "\nselect\n\tNHS_Number,\n\tmax (Patient_Postcode) as Patient_Postcode,\n\tmax (Date_Of_Birth) as Date_Of_Birth,\n\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\nfrom omop_staging.sact_staging\ngroup by NHS_Number\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -89,7 +89,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
+      "query": "\nselect\n\tNHS_Number,\n\tmax (Patient_Postcode) as Patient_Postcode,\n\tmax (Date_Of_Birth) as Date_Of_Birth,\n\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\nfrom omop_staging.sact_staging\ngroup by NHS_Number\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -114,7 +114,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
+      "query": "\nselect\n\tNHS_Number,\n\tmax (Patient_Postcode) as Patient_Postcode,\n\tmax (Date_Of_Birth) as Date_Of_Birth,\n\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\nfrom omop_staging.sact_staging\ngroup by NHS_Number\n\t",
       "lookup_table_markdown": "\r\n\r\n|Person_Stated_Gender_Code|gender_concept_id|notes|\r\n|------|-----|-----|\r\n|1|8507|Male|\r\n|2|8532|Female|\r\n|9|8551|Indeterminate (unable to be classified as either male or female)|\r\n|X|8551|Not known|\r\n\r\nNotes\r\n* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)\r\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\r\n"
     },
     {
@@ -132,7 +132,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tPatient_Postcode,\n\t\tNHS_Number,\n\t\tDate_Of_Birth,\n\t\tPerson_Stated_Gender_Code\nfrom omop_staging.sact_staging\n\t",
+      "query": "\nselect\n\tNHS_Number,\n\tmax (Patient_Postcode) as Patient_Postcode,\n\tmax (Date_Of_Birth) as Date_Of_Birth,\n\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\nfrom omop_staging.sact_staging\ngroup by NHS_Number\n\t",
       "lookup_table_markdown": null
     }
   ]

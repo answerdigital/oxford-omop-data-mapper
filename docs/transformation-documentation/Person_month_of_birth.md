@@ -14,12 +14,12 @@ Selects the month of the year or null if the date is null.
 
 ```sql
 select
-	distinct
-		Patient_Postcode,
-		NHS_Number,
-		Date_Of_Birth,
-		Person_Stated_Gender_Code
+	NHS_Number,
+	max (Patient_Postcode) as Patient_Postcode,
+	max (Date_Of_Birth) as Date_Of_Birth,
+	max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
 from omop_staging.sact_staging
+group by NHS_Number
 	
 ```
 
@@ -33,13 +33,12 @@ Selects the month of the year or null if the date is null.
 
 ```sql
 select
-	distinct 
-		d.PatientId,
-		d.DateOfBirth,
-		d.Sex
+	PatientId,
+	max (DateOfBirth) as DateOfBirth,
+	max (Sex) as Sex
 from omop_staging.RTDS_1_Demographics d
-where d.PatientId not like '%[^0-9]%'
-	and len(d.PatientId) = 10
+where PatientId is not null
+group by PatientId
 	
 ```
 
