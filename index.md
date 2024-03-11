@@ -17,6 +17,8 @@ nav_order: 1
 
 [Automatically Generated OMOP Data Transformation Documentation]({% link docs/transformation-documentation/transformation-documentation.md %}#prune-command){: .btn .btn-blue }
 
+<img src="docs/StageAndTransformCDS.gif" />
+
 # About the Project
 
 Oxford University Hospitals NHS FT (OUH) is building the Thames Valley and Surrey Secure Data Environment (SDE),  and needs to ensure that the data are available in a structure that is readily consumable by researchers with standard clinical research tooling. Alongside the national initiative for SDEs, OUH will be implementing the Observational Medical Outcomes Partnership (OMOP) data model, to support the ultimate goal of ensuring researchers have seamless access to essential information, at a low cost. 
