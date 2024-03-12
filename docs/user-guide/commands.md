@@ -142,7 +142,7 @@ omop transform --type cds
 
 Supported type flags are `cds`, `rtds`, `cosd` and `sact`.
 
-The OMOP data provenance is recorded as each data set is transformed. [See data provenance.](#data-provenance)
+The OMOP data provenance is recorded as each data set is transformed. [See data provenance.]({% link docs/data-provenance.md %}#data-provenance)
 
 ---
 

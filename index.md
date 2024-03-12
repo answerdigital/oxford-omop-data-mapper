@@ -6,7 +6,9 @@ nav_order: 1
 
 # Oxford Omop Mapper
 
-<img src="docs/StageAndTransformCDS.gif" />
+<a href="{% link docs/quick-start.md%}">
+  <img src="docs/StageAndTransformCDS.gif" />
+</a>
 
 [![.NET](https://github.com/answerdigital/oxford-omop-data-mapper/actions/workflows/dotnet.yml/badge.svg)](https://github.com/answerdigital/oxford-omop-data-mapper/actions/workflows/dotnet.yml)
 
