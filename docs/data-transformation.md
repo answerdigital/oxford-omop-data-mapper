@@ -87,14 +87,91 @@ from omop_staging.sact_staging
 
 ## Transformation
 
+Results from the first stage aggregation are transformed to the OMOP format using C# annotations.
 
+Transformations are strongly typed between the incoming query record and the target OMOP record. This is achieved through polymorphism and attributes.
 
+A transformation can be declared by inherting a class that derrives from one of the base OMOP classes. Each class represents a table in the OMOP database.
+
+Supported OMOP classes
+* OmopConditionOccurrence
+* OmopDeath
+* OmopDrugExposure
+* OmopLocation
+* OmopObservation
+* OmopPerson
+* OmopProcedureOccurrence
+* OmopVisitDetail
+* OmopVisitOccurrence
+
+When inherting from the base class, the source type must be specified as type `T`. The source type should represent a row of data from the incoming query.
+
+### Example
+
+Declare a class to represent a row of incoming Data that uses the `OmopDemographics.xml` query.
+
+```csharp
+[DataOrigin("COSD")]
+[Description("COSD Demographics")]
+[SourceQuery("OmopDemographics.xml")]
+internal class CosdDemographics
+{
+    public string? StreetAddressLine1 { get; set; }
+    public string? StreetAddressLine2 { get; set; }
+    public string? StreetAddressLine3 { get; set; }
+    public string? StreetAddressLine4 { get; set; }
+    public string? Postcode { get; set; }
+    public string? NhsNumber { get; set; }
+    public string? PersonBirthDate { get; set; }
+    public string? DateOfBirth { get; set; }
+    public string? EthnicCategory { get; set; }
+}
+``` 
+
+Declare a class to form a relationship between the `OmopLocation` type and the incoming `CosdDemographics` type.
+`
 -- two stage lift
 -- transform annottaions
 -- merge
 
+```csharp
+using OmopTransformer.Annotations;
+using OmopTransformer.COSD.Demographics;
+using OmopTransformer.Omop.Location;
+using OmopTransformer.Transformation;
 
+namespace OmopTransformer.COSD;
 
+internal class CosdLocation : OmopLocation<CosdDemographics>
+{
+    [Transform(typeof(UppercaseAndTrimWhitespace), nameof(Source.StreetAddressLine1))]
+    public override string? address_1 { get; set; }
+
+    [Transform(typeof(UppercaseAndTrimWhitespace), nameof(Source.StreetAddressLine2))]
+    public override string? address_2 { get; set; }
+
+    [Transform(typeof(UppercaseAndTrimWhitespace), nameof(Source.StreetAddressLine3))]
+    public override string? city { get; set; }
+
+    [Transform(typeof(UppercaseAndTrimWhitespace), nameof(Source.StreetAddressLine4))]
+    public override string? county { get; set; }
+
+    [Transform(typeof(PostcodeFormatter), nameof(Source.Postcode))]
+    public override string? zip { get; set; }
+
+    [Transform(
+        typeof(TextDeliminator),
+        nameof(Source.StreetAddressLine1),
+        nameof(Source.StreetAddressLine2),
+        nameof(Source.StreetAddressLine3),
+        nameof(Source.StreetAddressLine4),
+        nameof(Source.Postcode))]
+    public override string? location_source_value { get; set; }
+
+    [CopyValue(nameof(Source.NhsNumber))]
+    public override string? nhs_number { get; set; }
+}
+```
 
 ## Notes
 
