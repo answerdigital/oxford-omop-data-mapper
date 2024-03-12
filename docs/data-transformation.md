@@ -95,15 +95,15 @@ Transformations are strongly typed between the incoming query record and the tar
 A transformation can be declared by inherting a class that derrives from one of the base OMOP classes. Each class represents a table in the OMOP database.
 
 Supported OMOP classes
-* OmopConditionOccurrence
-* OmopDeath
-* OmopDrugExposure
-* OmopLocation
-* OmopObservation
-* OmopPerson
-* OmopProcedureOccurrence
-* OmopVisitDetail
-* OmopVisitOccurrence
+* `OmopConditionOccurrence`
+* `OmopDeath`
+* `OmopDrugExposure`
+* `OmopLocation`
+* `OmopObservation`
+* `OmopPerson`
+* `OmopProcedureOccurrence`
+* `OmopVisitDetail`
+* `OmopVisitOccurrence`
 
 When inherting from the base class, the source type must be specified as type `T`. The source type should represent a row of data from the incoming query.
 
@@ -130,10 +130,6 @@ internal class CosdDemographics
 ``` 
 
 Declare a class to form a relationship between the `OmopLocation` type and the incoming `CosdDemographics` type.
-`
--- two stage lift
--- transform annottaions
--- merge
 
 ```csharp
 using OmopTransformer.Annotations;
@@ -172,6 +168,130 @@ internal class CosdLocation : OmopLocation<CosdDemographics>
     [CopyValue(nameof(Source.NhsNumber))]
     public override string? nhs_number { get; set; }
 }
+```
+
+A relationship is formed between a number of source fields and a OMOP target field by overriding the OMOP base classes field and adding the `Transform` attribute. 
+
+```csharp
+[Transform(typeof(PostcodeFormatter), nameof(Source.Postcode))]
+public override string? zip { get; set; }
+```
+
+## Transform Attribute
+
+The `Transform` attribute is used to specify a transform operation and the source fields that should be used as an input.
+
+### Example
+
+Use the `Postcode` postcode field as a parameter for the `PostcodeFormatter` selector. 
+
+```
+[Transform(typeof(PostcodeFormatter), nameof(Source.Postcode))]
+```
+
+### Supported Transformations
+
+#### General Purpose Operations
+
+##### `DateAndTimeCombiner`
+
+```
+Combines a date with a time of day.
+
+* Argument 1 - a date, eg `20240101`
+* Argument 2 - a time, eg `100500`
+```
+
+##### `DateConverter`
+
+```
+Converts text to dates.
+
+* Argument 1 - a date, eg `20240101`
+```
+
+##### `DayOfMonthSelector`
+
+```
+Selects the day of the month or null if the date is null.
+
+* Argument 1 - a date, eg `20240101`
+```
+
+##### `MonthOfYearSelector`
+
+```
+Selects the month of the year or null if the date is null.
+
+* Argument 1 - a date, eg `20240101`
+```
+
+##### `YearSelector`
+
+```
+Selects the year from a date or null of the date is null.
+
+* Argument 1 - a date, eg `20240101`
+```
+
+##### `NumberParser`
+
+```
+Converts text to integers.
+
+* Argument 1 - a number as text, eg `123`
+```
+
+##### `UppercaseAndTrimWhitespace`
+
+```
+Converts text to uppercase.
+
+* Argument 1 - text, eg `hello world`
+```
+
+##### `TextDeliminator`
+
+```
+Separates text with newlines. Trim whitespace.
+
+* Argument 1 - text, eg `hello`
+* Argument 2 - text, eg `world`
+* etc - unlimited arguments are supported.
+```
+
+##### `PostcodeFormatter`
+
+```
+Uppercase the postcode then insert the space in the correct location, if needed.
+
+* Argument 1 - text, eg `LS11 5DD`
+```
+
+#### Lookups
+
+##### `NhsGenderLookup`
+
+```
+Finds the concept code for a NHS Data Dictionary gender code.
+
+* Argument 1 - text, eg `1`
+```
+
+##### `RaceConceptLookup`
+
+```
+Finds the concept code for a NHS Data Dictionary ethnicity code.
+
+* Argument 1 - text, eg `A`
+```
+
+##### `RaceSourceConceptLookup`
+
+```
+Finds the source concept code for a NHS Data Dictionary ethnicity code.
+
+* Argument 1 - text, eg `A`
 ```
 
 ## Notes
