@@ -10,6 +10,18 @@ nav_order: 1
   <img src="docs/StageAndTransformCDS.gif" />
 </a>
 
+## Documentation First ETL
+
+<a href="{% link docs/quick-start.md%}">
+  <img src="docs/UpdateLookupConcept.gif" />
+</a>
+
+## Automatic Relationship Diagrams
+
+<a href="{% link docs/quick-start.md%}">
+  <img src="docs/RegenerateSVG.gif" />
+</a>
+
 [![.NET](https://github.com/answerdigital/oxford-omop-data-mapper/actions/workflows/dotnet.yml/badge.svg)](https://github.com/answerdigital/oxford-omop-data-mapper/actions/workflows/dotnet.yml)
 
 [Automatically Generated OMOP Data Transformation Documentation]({% link docs/transformation-documentation/transformation-documentation.md %}#prune-command){: .btn .btn-blue }
