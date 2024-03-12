@@ -4,7 +4,13 @@ layout: home
 nav_order: 1
 ---
 
+# Oxford Omop Mapper
+
+<img src="docs/StageAndTransformCDS.gif" />
+
 [![.NET](https://github.com/answerdigital/oxford-omop-data-mapper/actions/workflows/dotnet.yml/badge.svg)](https://github.com/answerdigital/oxford-omop-data-mapper/actions/workflows/dotnet.yml)
+
+[Automatically Generated OMOP Data Transformation Documentation]({% link docs/transformation-documentation/transformation-documentation.md %}#prune-command){: .btn .btn-blue }
 
 <details open markdown="block">
   <summary>
@@ -14,10 +20,6 @@ nav_order: 1
 - TOC
 {:toc}
 </details>
-
-[Automatically Generated OMOP Data Transformation Documentation]({% link docs/transformation-documentation/transformation-documentation.md %}#prune-command){: .btn .btn-blue }
-
-<img src="docs/StageAndTransformCDS.gif" />
 
 # About the Project
 
