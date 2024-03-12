@@ -7,6 +7,8 @@ url: https://answerdigital.github.io/oxford-omop-data-mapper/
 aux_links:
     GitHub: https://github.com/answerdigital/oxford-omop-data-mapper
 
+color_scheme: omop
+
 exclude:
  # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
    - .sass-cache/
