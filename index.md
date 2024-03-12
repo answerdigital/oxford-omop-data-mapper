@@ -4,7 +4,7 @@ layout: home
 nav_order: 1
 ---
 
-# Oxford Omop Mapper
+# Oxford Omop Data Mapper
 
 <a href="{% link docs/quick-start.md%}">
   <img src="docs/StageAndTransformCDS.gif" />
