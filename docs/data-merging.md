@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Data Merging
+nav_order: 8
 ---
 
 # Data merging logic
