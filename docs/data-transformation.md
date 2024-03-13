@@ -268,6 +268,42 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 * Argument 1 - text, eg `LS11 5DD`
 ```
 
+#### Code resolvers
+
+##### `Icd10Selector`
+
+```
+Resolves ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* Argument 1 - text, eg `T76`
+```
+
+##### `Opcs4Selector`
+
+```
+Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* Argument 1 - text, eg `E66.8`
+```
+
+##### `SnomedSelector`
+
+```
+Converts ICD10/OPCS4 concepts to SNOMED concepts.
+
+* Argument 1 - a concept id , eg `911784`
+```
+
+This selector usually uses the result of either the `Icd10Selector` or `Opcs4Selector` selectors.
+
+```csharp
+[Transform(typeof(Icd10Selector), nameof(Source.DiagnosisCode))]
+public override int? condition_source_concept_id { get; set; }
+
+[Transform(typeof(SnomedSelector), useOmopTypeAsSource: true, nameof(condition_source_concept_id))]
+public override int[]? condition_concept_id { get; set; }
+```
+
 #### Lookups
 
 ##### `NhsGenderLookup`
