@@ -61,9 +61,20 @@ begin
 	where not exists (
 		select * 
 		from cdm.condition_occurrence co 
-		where co.person_id = p.person_id 
-			and co.RecordConnectionIdentifier = r.RecordConnectionIdentifier
-			and co.condition_concept_id = r.condition_concept_id
+		where 
+			(
+				r.RecordConnectionIdentifier is not null and
+				co.person_id = p.person_id and
+				co.RecordConnectionIdentifier = r.RecordConnectionIdentifier and
+				co.condition_concept_id = r.condition_concept_id
+			)
+			or
+			(
+				r.RecordConnectionIdentifier is null and
+				co.person_id = p.person_id and
+				co.condition_concept_id = r.condition_concept_id and
+				co.condition_start_date = r.condition_start_date
+			)
 		);
 
 	declare @columns table (Name varchar(max));

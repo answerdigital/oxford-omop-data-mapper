@@ -98,7 +98,7 @@ The current scope for the transformation at table and field level has been selec
 |----------------------|-----|------|------|------|
 | *Location*            |  ✔ | ✔   | ✔   | ✔   |
 | *Person*              | ✔️  | ✔️   | ✔️   | ✔️   |
-| *Condition*Occurrence | ✔️  |      |      |      |
+| *Condition*Occurrence | ✔️  |   ✔️  |      |      |
 | *Visit*Occurrence     | ✔️  |      |      |      |
 | *Visit*Details        | ✔️  |      |      |      |
 | *Measurement*         | ✔️ ❗ |      |      |      |

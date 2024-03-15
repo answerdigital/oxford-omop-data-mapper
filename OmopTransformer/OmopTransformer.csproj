@@ -86,6 +86,27 @@
     <None Update="CDS\VisitOccurrenceWithSpell\CdsVisitOccurrenceWithSpell.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\ConditionOccurrence\CosdConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdV9ConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\ConditionOccurrence\CosdConditionOccurrencePrimaryDiagnosis\CosdV9ConditionOccurrencePrimaryDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\ConditionOccurrence\CosdConditionOccurrenceProgression\CosdV9ConditionOccurrenceProgression.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\ConditionOccurrence\CosdConditionOccurrenceSecondaryDiagnosis\CosdV9ConditionOccurrenceSecondaryDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\ConditionOccurrence\CosdConditionOccurrenceRecurrence\CosdV9ConditionOccurrenceRecurrence.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\ConditionOccurrence\CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\ConditionOccurrence\CosdV8ConditionOccurrencePrimaryDiagnosis\CosdV8ConditionOccurrencePrimaryDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Death\v8Death\CosdV8Death.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

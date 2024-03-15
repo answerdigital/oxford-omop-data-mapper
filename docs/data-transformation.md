@@ -304,6 +304,15 @@ public override int? condition_source_concept_id { get; set; }
 public override int[]? condition_concept_id { get; set; }
 ```
 
+##### `Icdo3Selector`
+
+```
+Resolve ICD-o-3 codes to OMOP concepts.
+
+* Argument 1 - histology, eg `M81403`
+* Argument 2- topography, eg `C18.9`
+```
+
 #### Lookups
 
 ##### `NhsGenderLookup`

@@ -11,13 +11,15 @@ internal class RecordTransformer : IRecordTransformer
     private readonly Icd10Resolver _cd10Resolver;
     private readonly Opcs4Resolver _opcs4Resolver;
     private readonly ConceptSnomedResolver _snomedResolver;
+    private readonly Icdo3Resolver _icdo3Resolver;
 
-    public RecordTransformer(ILogger<RecordTransformer> logger, Icd10Resolver cd10Resolver, ConceptSnomedResolver snomedResolver, Opcs4Resolver opcs4Resolver)
+    public RecordTransformer(ILogger<RecordTransformer> logger, Icd10Resolver cd10Resolver, ConceptSnomedResolver snomedResolver, Opcs4Resolver opcs4Resolver, Icdo3Resolver icdo3Resolver)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _cd10Resolver = cd10Resolver;
         _snomedResolver = snomedResolver;
         _opcs4Resolver = opcs4Resolver;
+        _icdo3Resolver = icdo3Resolver;
     }
 
     public void Transform<T>(IOmopRecord<T> record)
@@ -172,6 +174,7 @@ internal class RecordTransformer : IRecordTransformer
                 .Select(argumentName => originType.GetProperty(argumentName)!.GetValue(originData))
                 .Concat(firstConstructorTypes.Any(type => type == typeof(Icd10Resolver)) ? new[] { _cd10Resolver } : new List<object>())
                 .Concat(firstConstructorTypes.Any(type => type == typeof(Opcs4Resolver)) ? new[] { _opcs4Resolver } : new List<object>())
+                .Concat(firstConstructorTypes.Any(type => type == typeof(Icdo3Resolver)) ? new[] { _icdo3Resolver } : new List<object>())
                 .Concat(firstConstructorTypes.Any(type => type == typeof(ConceptSnomedResolver)) ? new[] { _snomedResolver } : new List<object>())
                 .ToArray();
 

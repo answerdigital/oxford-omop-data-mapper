@@ -218,6 +218,7 @@ internal class Program
         builder.Services.AddTransient<IRtdsStagingSchema, RtdsStagingSchema>();
         builder.Services.AddSingleton<Icd10Resolver>();
         builder.Services.AddSingleton<Opcs4Resolver>();
+        builder.Services.AddSingleton<Icdo3Resolver>();
         builder.Services.AddSingleton<ConceptSnomedResolver>();
 
         IHostEnvironment env = builder.Environment;

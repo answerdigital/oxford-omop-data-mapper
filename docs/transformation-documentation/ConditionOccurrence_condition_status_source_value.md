@@ -1,15 +1,15 @@
 ---
 layout: default
-title: nhs_number
+title: condition_status_source_value
 parent: ConditionOccurrence
 grand_parent: Transformation Documentation
 has_toc: false
 ---
-# nhs_number
+# condition_status_source_value
 ### Cosd V8 Condition Occurrence Primary Diagnosis
-* Value copied from `NhsNumber`
+* Value copied from `BasisOfDiagnosisCancer`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `BasisOfDiagnosisCancer` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -51,11 +51,11 @@ where NhsNumber is not null and
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20nhs_number%20field%20Cosd%20V8%20Condition%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_status_source_value%20field%20Cosd%20V8%20Condition%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis Histology Topography
-* Value copied from `NhsNumber`
+* Value copied from `BasisOfDiagnosisCancer`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `BasisOfDiagnosisCancer` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -99,130 +99,11 @@ where NhsNumber is not null and
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20nhs_number%20field%20Cosd%20V8%20Condition%20Occurrence%20Primary%20Diagnosis%20Histology%20Topography%20mapping){: .btn }
-### COSD V9 Condition Occurrence Recurrence
-* Value copied from `NhsNumber`
-
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
-
-```sql
-;with 
-    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-    CosdRecords as ( 
-
-    select
-            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-            T.staging.query('.') as Node
-    from omop_staging.cosd_staging
-    cross apply content.nodes('COSD901:COSD/*') as T(staging)
-    where T.staging.exist('Id/@root') = 1
-            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-            and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
-		Node.value('(ColorectalRecord/PrimaryPathway/Diagnosis/DiagnosisAdditionalItems/SecondaryDiagnosisIcd/@code)[1]', 'varchar(max)') as SecondaryDiagnosis
-	from CosdRecords
-)
-select
-	NhsNumber,
-	DateOfPrimaryDiagnosisClinicallyAgreed,
-	max (SecondaryDiagnosis) as SecondaryDiagnosis
-from CO
-where DateOfPrimaryDiagnosisClinicallyAgreed is not null
-	and SecondaryDiagnosis is not null
-group by NhsNumber, DateOfPrimaryDiagnosisClinicallyAgreed;
-
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20nhs_number%20field%20COSD%20V9%20Condition%20Occurrence%20Recurrence%20mapping){: .btn }
-### COSD V9 Condition Occurrence Recurrence
-* Value copied from `NhsNumber`
-
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
-
-```sql
-;with 
-    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-    CosdRecords as ( 
-
-    select
-            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-            T.staging.query('.') as Node
-    from omop_staging.cosd_staging
-    cross apply content.nodes('COSD901:COSD/*') as T(staging)
-    where T.staging.exist('Id/@root') = 1
-            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-            and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-		Node.value('(ColorectalRecord/NonPrimaryPathway/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
-		Node.value('(ColorectalRecord/NonPrimaryPathway/Recurrence/OriginalPrimaryDiagnosisIcd/@code)[1]', 'varchar(max)') as NonPrimaryRecurrenceOriginalDiagnosis
-	from CosdRecords
-)
-select 
-	distinct 
-        NhsNumber,
-        DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
-		NonPrimaryRecurrenceOriginalDiagnosis
-from CO
-where NonPrimaryRecurrenceOriginalDiagnosis is not null;
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20nhs_number%20field%20COSD%20V9%20Condition%20Occurrence%20Recurrence%20mapping){: .btn }
-### COSD V9 Condition Occurrence Progression
-* Value copied from `NhsNumber`
-
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
-
-```sql
-;with 
-    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-    CosdRecords as ( 
-
-    select
-            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-            T.staging.query('.') as Node
-    from omop_staging.cosd_staging
-    cross apply content.nodes('COSD901:COSD/*') as T(staging)
-    where T.staging.exist('Id/@root') = 1
-            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-            and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-		Node.value('(ColorectalRecord/NonPrimaryPathway/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as NonPrimaryDiagnosisDate,
-		Node.value('(ColorectalRecord/NonPrimaryPathway/Progression/ProgressionIcd/@code)[1]', 'varchar(max)') as NonPrimaryProgressionOriginalDiagnosis
-	from CosdRecords
-)
-select 
-	distinct 
-        NhsNumber,
-        NonPrimaryDiagnosisDate,
-		NonPrimaryProgressionOriginalDiagnosis
-from CO
-where NonPrimaryProgressionOriginalDiagnosis is not null;
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20nhs_number%20field%20COSD%20V9%20Condition%20Occurrence%20Progression%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_status_source_value%20field%20Cosd%20V8%20Condition%20Occurrence%20Primary%20Diagnosis%20Histology%20Topography%20mapping){: .btn }
 ### COSD V9 Condition Occurrence Primary Diagnosis
-* Value copied from `NhsNumber`
+* Value copied from `BasisOfDiagnosisCancer`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `BasisOfDiagnosisCancer` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html)
 
 ```sql
 ;with 
@@ -261,11 +142,11 @@ group by NhsNumber, DateOfPrimaryDiagnosisClinicallyAgreed, CancerDiagnosis;
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20nhs_number%20field%20COSD%20V9%20Condition%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_status_source_value%20field%20COSD%20V9%20Condition%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
 ### COSD V9 Condition Occurrence Primary Diagnosis Histology Topography
-* Value copied from `NhsNumber`
+* Value copied from `BasisOfDiagnosisCancer`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `BasisOfDiagnosisCancer` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html)
 
 ```sql
 ;with 
@@ -307,25 +188,4 @@ where DateOfPrimaryDiagnosisClinicallyAgreed is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20nhs_number%20field%20COSD%20V9%20Condition%20Occurrence%20Primary%20Diagnosis%20Histology%20Topography%20mapping){: .btn }
-### CDS Condition Occurrence
-* Value copied from `NHSNumber`
-
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
-
-```sql
-select
-	distinct
-		d.DiagnosisCode,
-		line01.RecordConnectionIdentifier,
-		line01.NHSNumber,
-		line01.CDSActivityDate
-from omop_staging.cds_diagnosis d
-	inner join omop_staging.cds_line01 line01
-		on d.MessageId = line01.MessageId
-where line01.NHSNumber is not null;
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20nhs_number%20field%20CDS%20Condition%20Occurrence%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_status_source_value%20field%20COSD%20V9%20Condition%20Occurrence%20Primary%20Diagnosis%20Histology%20Topography%20mapping){: .btn }

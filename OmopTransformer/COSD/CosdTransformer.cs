@@ -1,8 +1,16 @@
 ﻿using Microsoft.Extensions.Logging;
+using OmopTransformer.COSD.ConditionOccurrence.CosdConditionOccurrencePrimaryDiagnosis;
+using OmopTransformer.COSD.ConditionOccurrence.CosdConditionOccurrencePrimaryDiagnosisHistologyTopography;
+using OmopTransformer.COSD.ConditionOccurrence.CosdConditionOccurrenceProgression;
+using OmopTransformer.COSD.ConditionOccurrence.CosdConditionOccurrenceRecurrence;
+using OmopTransformer.COSD.ConditionOccurrence.CosdConditionOccurrenceSecondaryDiagnosis;
+using OmopTransformer.COSD.ConditionOccurrence.CosdV8ConditionOccurrencePrimaryDiagnosis;
+using OmopTransformer.COSD.ConditionOccurrence.CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography;
 using OmopTransformer.COSD.Death.v8Death;
 using OmopTransformer.COSD.Death.v9DeathBasisOfDiagnosisCancer;
 using OmopTransformer.COSD.Death.v9DeathDischargeDestination;
 using OmopTransformer.COSD.Demographics;
+using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Person;
@@ -15,12 +23,29 @@ internal class CosdTransformer : Transformer
     private readonly ILocationRecorder _locationRecorder;
     private readonly IPersonRecorder _personRecorder;
     private readonly IDeathRecorder _deathRecorder;
+    private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
 
-    public CosdTransformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, ILocationRecorder locationRecorder, IPersonRecorder personRecorder, IDeathRecorder deathRecorder) : base(recordTransformer, logger, transformOptions, recordProvider, "COSD")
+    public CosdTransformer(
+        IRecordTransformer recordTransformer, 
+        ILogger<IRecordTransformer> logger, 
+        TransformOptions transformOptions, 
+        IRecordProvider recordProvider, 
+        ILocationRecorder locationRecorder, 
+        IPersonRecorder personRecorder, 
+        IDeathRecorder deathRecorder, 
+        IConditionOccurrenceRecorder conditionOccurrenceRecorder) 
+        : 
+        base(
+            recordTransformer, 
+            logger, 
+            transformOptions, 
+            recordProvider, 
+            "COSD")
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
         _deathRecorder = deathRecorder;
+        _conditionOccurrenceRecorder = conditionOccurrenceRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -53,6 +78,41 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV9BasisOfDiagnosisCancerRecord, CosdV9DeathBasisOfDiagnosisCancer>(
             _deathRecorder.InsertUpdateDeaths,
             "COSD V9 BasisOfDiagnosisCancer Death",
+            cancellationToken);
+
+        await Transform<CosdV9ConditionOccurrencePrimaryDiagnosisRecord, CosdConditionOccurrencePrimaryDiagnosis>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Condition Occurrence Primary Diagnosis",
+            cancellationToken);
+
+        await Transform<CosdV9ConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord, CosdConditionOccurrencePrimaryDiagnosisHistologyTopography>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd Condition Occurrence Primary Diagnosis Histology Topography",
+            cancellationToken);
+
+        await Transform<CosdV9ConditionOccurrenceProgressionRecord, CosdV9ConditionOccurrenceProgression>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Condition Occurrence Progression",
+            cancellationToken);
+
+        await Transform<CosdV9ConditionOccurrenceRecurrenceRecord, CosdV9ConditionOccurrenceRecurrence>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Condition Occurrence Recurrence",
+            cancellationToken);
+
+        await Transform<CosdV9ConditionOccurrenceSecondaryDiagnosisRecord, CosdV9ConditionOccurrenceSecondaryDiagnosis>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Condition Occurrence Secondary Diagnosis",
+            cancellationToken);
+
+        await Transform<CosdV8ConditionOccurrencePrimaryDiagnosisRecord, CosdV8ConditionOccurrencePrimaryDiagnosis>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V8 Condition Occurrence Primary Diagnosis",
+            cancellationToken);
+
+        await Transform<CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord, CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V8 Condition Occurrence Primary Diagnosis Histology Topography",
             cancellationToken);
     }
 }

@@ -21,6 +21,31 @@
       "lookup_table_markdown": null
     },
     {
+      "name": "condition_start_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "CDSActivityDate",
+          "description": "Event date",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\td.DiagnosisCode,\n\t\tline01.RecordConnectionIdentifier,\n\t\tline01.NHSNumber,\n\t\tline01.CDSActivityDate\nfrom omop_staging.cds_diagnosis d\n\tinner join omop_staging.cds_line01 line01\n\t\ton d.MessageId = line01.MessageId\nwhere line01.NHSNumber is not null;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "condition_type_concept_id",
+      "operation_description": "Constant value set to `32020`. EHR encounter diagnosis",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
       "name": "condition_source_concept_id",
       "operation_description": "Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.",
       "dataSource": [
@@ -50,16 +75,20 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "condition_start_date",
-      "operation_description": "Converts text to dates.",
+      "name": "condition_source_value",
+      "operation_description": "Value copied from `DiagnosisCode`",
       "dataSource": [
         {
-          "name": "CDSActivityDate",
-          "description": "Event date",
+          "name": "DiagnosisCode",
+          "description": "ICD10 diagnosis code",
           "origins": [
             {
-              "origin": "CDS ACTIVITY DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+              "origin": "PRIMARY DIAGNOSIS (ICD)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html"
+            },
+            {
+              "origin": "SECONDARY DIAGNOSIS (ICD)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/secondary_diagnosis__icd_.html"
             }
           ]
         }
@@ -83,35 +112,6 @@
         }
       ],
       "query": "\nselect\n\tdistinct\n\t\td.DiagnosisCode,\n\t\tline01.RecordConnectionIdentifier,\n\t\tline01.NHSNumber,\n\t\tline01.CDSActivityDate\nfrom omop_staging.cds_diagnosis d\n\tinner join omop_staging.cds_line01 line01\n\t\ton d.MessageId = line01.MessageId\nwhere line01.NHSNumber is not null;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "condition_source_value",
-      "operation_description": "Value copied from `DiagnosisCode`",
-      "dataSource": [
-        {
-          "name": "DiagnosisCode",
-          "description": "ICD10 diagnosis code",
-          "origins": [
-            {
-              "origin": "PRIMARY DIAGNOSIS (ICD)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html"
-            },
-            {
-              "origin": "SECONDARY DIAGNOSIS (ICD)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/secondary_diagnosis__icd_.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect\n\tdistinct\n\t\td.DiagnosisCode,\n\t\tline01.RecordConnectionIdentifier,\n\t\tline01.NHSNumber,\n\t\tline01.CDSActivityDate\nfrom omop_staging.cds_diagnosis d\n\tinner join omop_staging.cds_line01 line01\n\t\ton d.MessageId = line01.MessageId\nwhere line01.NHSNumber is not null;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "condition_type_concept_id",
-      "operation_description": "Constant value set to `32020`. EHR encounter diagnosis",
-      "dataSource": null,
-      "query": null,
       "lookup_table_markdown": null
     }
   ]
