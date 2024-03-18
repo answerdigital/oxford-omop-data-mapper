@@ -66,6 +66,11 @@ from cdm.person p
 	inner join @personsToDelete ptd
 		on p.person_id = ptd.person_id;
 
+delete o
+from cdm.observation o
+	inner join @personsToDelete ptd
+		on o.person_id = ptd.person_id;
+
 delete l
 from cdm.location l
 where not exists (
