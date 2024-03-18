@@ -1,0 +1,16 @@
+# .github/dependabot.yml
+version: 2
+updates:
+  # Enable version updates for NuGet
+  - package-ecosystem: "nuget"
+    # Look for `*.csproj`, `packages.config`, and `*.config` files in the root directory
+    directory: "/"
+    # Check the NuGet registry for updates every day (can be "live", "daily", "weekly", or "monthly")
+    schedule:
+      interval: "daily"
+    # Set pull request labels
+    labels:
+      - "dependencies"
+      - ".NET"
+    # Limit the number of open pull requests for NuGet updates
+    open-pull-requests-limit: 10
