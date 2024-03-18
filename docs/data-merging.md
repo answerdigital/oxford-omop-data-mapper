@@ -46,8 +46,53 @@ Merging logic is not needed as we only record unique locations. If the location 
 
 ## Condition Occurrence
 
-Cds condition occurrences have a unique key `DiagnosisId`. Records are added if they do not exist already. No merging logic is required.
+Merging logic depends upon the data source.
+
+|Data source|Logic|
+|-----------|-----|
+| CDS | Record the record if it does not already exist using the following columns as keys `person_id`, `RecordConnectionIdentifier` and `condition_concept_id`. |
+| COSD | Record the record if it does not already exist using the following columns as keys `person_id`, `condition_concept_id` and `condition_start_date`. |
 
 ## Death
 
 Merging logic is not needed. If a patient deaths are recorded when no such record already exists.
+
+## Drug Exposure
+
+Merging logic depends upon the data source.
+
+|Data source|Logic|
+|-----------|-----|
+| CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier` and `drug_concept_id`. |
+
+## Observation
+
+Merging logic depends upon the data source.
+
+|Data source|Logic|
+|-----------|-----|
+| CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `HospitalProviderSpellNumber`, `observation_date` and `observation_concept_id`. |
+
+## Procedure Occurrence
+
+Merging logic depends upon the data source.
+
+|Data source|Logic|
+|-----------|-----|
+| CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `procedure_date` and `procedure_concept_id`. |
+
+## Visit Occurrrence
+
+Merging logic depends upon the data source.
+
+|Data source|Logic|
+|-----------|-----|
+| CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `HospitalProviderSpellNumber` and `person_id`. |
+
+## Visit Detail
+
+Merging logic depends upon the data source.
+
+|Data source|Logic|
+|-----------|-----|
+| CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `HospitalProviderSpellNumber` and `person_id`. |
