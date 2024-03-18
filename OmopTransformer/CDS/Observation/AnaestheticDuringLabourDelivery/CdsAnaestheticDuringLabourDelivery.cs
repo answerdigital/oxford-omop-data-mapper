@@ -30,6 +30,6 @@ internal class CdsAnaestheticDuringLabourDelivery : OmopObservation<CdsAnaesthet
     [CopyValue(nameof(Source.AnaestheticDuringLabourDelivery))]
     public override string? value_as_string { get; set; }
 
-    [ConstantValue(4163264, "Type of anesthetic")]
+    [ConstantValue(2000500001, "ANAESTHETIC GIVEN DURING LABOUR OR DELIVERY CODE")]
     public override int? observation_source_concept_id { get; set; }
 }
