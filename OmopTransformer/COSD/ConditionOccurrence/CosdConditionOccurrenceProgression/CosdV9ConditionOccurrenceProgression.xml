@@ -34,7 +34,7 @@ where NonPrimaryProgressionOriginalDiagnosis is not null;
 			<Description>Patient NHS Number</Description>
 			<Origin>NHS NUMBER</Origin>
 		</Explanation>
-		<Explanation columnName="DateOfNonPrimaryCancerDiagnosisClinicallyAgreed">
+		<Explanation columnName="NonPrimaryDiagnosisDate">
 			<Description>DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED) is the date where the Non Primary Cancer PATIENT DIAGNOSIS was confirmed or agreed.</Description>
 			<Origin>DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
 		</Explanation>
