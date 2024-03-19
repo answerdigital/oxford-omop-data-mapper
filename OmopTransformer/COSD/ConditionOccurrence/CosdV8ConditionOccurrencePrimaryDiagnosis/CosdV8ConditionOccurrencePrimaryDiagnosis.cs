@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.ConditionOccurrence.CosdV8ConditionOccurrencePrimaryDiagnosis;
 
+[Notes(CosdMappingNotes.ConditionOccurrence, CalloutType.note)]
 internal class CosdV8ConditionOccurrencePrimaryDiagnosis : OmopConditionOccurrence<CosdV8ConditionOccurrencePrimaryDiagnosisRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

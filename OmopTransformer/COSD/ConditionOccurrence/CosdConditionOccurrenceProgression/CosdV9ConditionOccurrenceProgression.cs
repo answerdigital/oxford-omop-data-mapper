@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.ConditionOccurrence.CosdConditionOccurrenceProgression;
 
+[Notes(CosdMappingNotes.ConditionOccurrence, CalloutType.note)]
 internal class CosdV9ConditionOccurrenceProgression : OmopConditionOccurrence<CosdV9ConditionOccurrenceProgressionRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

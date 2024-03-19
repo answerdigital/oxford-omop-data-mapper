@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.ConditionOccurrence.CosdConditionOccurrencePrimaryDiagnosisHistologyTopography;
 
+[Notes(CosdMappingNotes.ConditionOccurrence, CalloutType.note)]
 internal class CosdConditionOccurrencePrimaryDiagnosisHistologyTopography : OmopConditionOccurrence<CosdV9ConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

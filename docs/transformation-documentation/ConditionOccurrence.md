@@ -20,29 +20,71 @@ has_toc: false
 ## CosdV8ConditionOccurrencePrimaryDiagnosis
 <a href="CosdV8ConditionOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdV8ConditionOccurrencePrimaryDiagnosis.svg" /></a>
 
+{: .note }
+### Assumptions
+* For a given Diagnosis date, all valid combinations of Histology and Topography are added (thereby giving us an ICD-O-3 condition) as well as the ICD10 Diagnosis.
+* Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+* If the same Diagnosis occurs but we have 2 separate `basis of diagnosis` values, then the first one will be taken only.				
+
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8ConditionOccurrencePrimaryDiagnosis%20mapping){: .btn }
 ## CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography
 <a href="CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography.svg" target="_blank"><img src="CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography.svg" /></a>
+
+{: .note }
+### Assumptions
+* For a given Diagnosis date, all valid combinations of Histology and Topography are added (thereby giving us an ICD-O-3 condition) as well as the ICD10 Diagnosis.
+* Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+* If the same Diagnosis occurs but we have 2 separate `basis of diagnosis` values, then the first one will be taken only.				
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography%20mapping){: .btn }
 ## CosdV9ConditionOccurrenceSecondaryDiagnosis
 <a href="CosdV9ConditionOccurrenceSecondaryDiagnosis.svg" target="_blank"><img src="CosdV9ConditionOccurrenceSecondaryDiagnosis.svg" /></a>
 
+{: .note }
+### Assumptions
+* For a given Diagnosis date, all valid combinations of Histology and Topography are added (thereby giving us an ICD-O-3 condition) as well as the ICD10 Diagnosis.
+* Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+* If the same Diagnosis occurs but we have 2 separate `basis of diagnosis` values, then the first one will be taken only.				
+
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9ConditionOccurrenceSecondaryDiagnosis%20mapping){: .btn }
 ## CosdV9ConditionOccurrenceRecurrence
 <a href="CosdV9ConditionOccurrenceRecurrence.svg" target="_blank"><img src="CosdV9ConditionOccurrenceRecurrence.svg" /></a>
+
+{: .note }
+### Assumptions
+* For a given Diagnosis date, all valid combinations of Histology and Topography are added (thereby giving us an ICD-O-3 condition) as well as the ICD10 Diagnosis.
+* Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+* If the same Diagnosis occurs but we have 2 separate `basis of diagnosis` values, then the first one will be taken only.				
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9ConditionOccurrenceRecurrence%20mapping){: .btn }
 ## CosdV9ConditionOccurrenceProgression
 <a href="CosdV9ConditionOccurrenceProgression.svg" target="_blank"><img src="CosdV9ConditionOccurrenceProgression.svg" /></a>
 
+{: .note }
+### Assumptions
+* For a given Diagnosis date, all valid combinations of Histology and Topography are added (thereby giving us an ICD-O-3 condition) as well as the ICD10 Diagnosis.
+* Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+* If the same Diagnosis occurs but we have 2 separate `basis of diagnosis` values, then the first one will be taken only.				
+
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9ConditionOccurrenceProgression%20mapping){: .btn }
 ## CosdConditionOccurrencePrimaryDiagnosis
 <a href="CosdConditionOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdConditionOccurrencePrimaryDiagnosis.svg" /></a>
 
+{: .note }
+### Assumptions
+* For a given Diagnosis date, all valid combinations of Histology and Topography are added (thereby giving us an ICD-O-3 condition) as well as the ICD10 Diagnosis.
+* Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+* If the same Diagnosis occurs but we have 2 separate `basis of diagnosis` values, then the first one will be taken only.				
+
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdConditionOccurrencePrimaryDiagnosis%20mapping){: .btn }
 ## CosdConditionOccurrencePrimaryDiagnosisHistologyTopography
 <a href="CosdConditionOccurrencePrimaryDiagnosisHistologyTopography.svg" target="_blank"><img src="CosdConditionOccurrencePrimaryDiagnosisHistologyTopography.svg" /></a>
+
+{: .note }
+### Assumptions
+* For a given Diagnosis date, all valid combinations of Histology and Topography are added (thereby giving us an ICD-O-3 condition) as well as the ICD10 Diagnosis.
+* Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+* If the same Diagnosis occurs but we have 2 separate `basis of diagnosis` values, then the first one will be taken only.				
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdConditionOccurrencePrimaryDiagnosisHistologyTopography%20mapping){: .btn }
 ## CdsConditionOccurrence
