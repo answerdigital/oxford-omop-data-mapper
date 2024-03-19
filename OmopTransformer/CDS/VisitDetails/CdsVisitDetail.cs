@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.CDS.VisitDetails;
 
+[Notes(CdsMappingNotes.VisitOccurrenceVisitDetailsNotes, CalloutType.note)]
 internal class CdsVisitDetail : OmopVisitDetail<CdsVisitDetailsRecord>
 {
     [CopyValue(nameof(Source.NHSNumber))]

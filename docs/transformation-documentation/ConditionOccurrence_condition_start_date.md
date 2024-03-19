@@ -188,6 +188,8 @@ where NonPrimaryRecurrenceOriginalDiagnosis is not null;
 Source column  `NonPrimaryDiagnosisDate`.
 Converts text to dates.
 
+* `NonPrimaryDiagnosisDate` DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED) is the date where the Non Primary Cancer PATIENT DIAGNOSIS was confirmed or agreed. [DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_non_primary_cancer_diagnosis__clinically_agreed_.html)
+
 ```sql
 ;with 
     XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),

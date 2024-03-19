@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.CDS.VisitOccurrenceWithSpell;
 
+[Notes(CdsMappingNotes.VisitOccurrenceVisitDetailsNotes, CalloutType.note)]
 internal class CdsVisitOccurrenceWithSpell : OmopVisitOccurrence<CdsVisitOccurrenceWithSpellRecord>
 {
     [CopyValue(nameof(Source.NHSNumber))]

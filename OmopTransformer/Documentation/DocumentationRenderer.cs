@@ -150,6 +150,15 @@ internal class DocumentationRenderer
                 omopTable.AppendLine($"## {target.MapperType.Name}");
                 omopTable.AppendLine($"<a href=\"{target.MapperType.Name}.svg\" target=\"_blank\"><img src=\"{target.MapperType.Name}.svg\" /></a>");
                 omopTable.AppendLine();
+
+                var notes = target.MapperType.GetCustomAttributes(typeof(NotesAttribute)).Cast<NotesAttribute>();
+
+                foreach (var note in notes)
+                {
+                    omopTable.AppendLine($"{{: .{(note.CalloutType == CalloutType.none ? "highlight" : note.CalloutType.ToString())} }}");
+                    omopTable.AppendLine(note.Value);
+                }
+
                 omopTable.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title={target.MapperType.Name}%20mapping){{: .btn }}");
             }
 
