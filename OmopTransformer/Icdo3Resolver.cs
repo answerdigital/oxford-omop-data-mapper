@@ -29,7 +29,7 @@ internal class Icdo3Resolver
 
         return
             connection
-                .Query<Row>(sql: "select concept_id, replace(concept_code, '.', '') as Code from cdm.concept where vocabulary_id = 'ICDO3'")
+                .Query<Row>(sql: "select concept_id, concept_code as Code from cdm.concept where vocabulary_id = 'ICDO3'")
                 .ToDictionary(
                     row => row.Code!, 
                     row => row.concept_id);
@@ -48,7 +48,12 @@ internal class Icdo3Resolver
         {
             return null;
         }
-        
+
+        if (_mappings.TryGetValue(code, out var value))
+        {
+            return value;
+        }
+
         return null;
     }
 

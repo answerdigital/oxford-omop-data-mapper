@@ -69,6 +69,8 @@ internal class Icd10Resolver
         if (code.Length <= 2)
             throw new ArgumentException($"Code is too short. Code is {code}.", nameof(code));
 
+        code = code.Replace(".", "");
+
         char firstCharOfCode = code[0];
 
         var remainder = code[1..];

@@ -31,7 +31,7 @@ public class HistologyTopographyConverterTests
     [Test]
     [TestCase("M84803", "C18.7", ExpectedResult = "8480/3-C18.7")]
     [TestCase("M80103", "C18.7", ExpectedResult = "8010/3-C18.7")]
-    public string ConvertHistologyTopographyToICDO3_ValidInputs_ReturnsFormattedString(string histology, string topography)
+    public string? ConvertHistologyTopographyToICDO3_ValidInputs_ReturnsFormattedString(string histology, string topography)
     {
         return Icdo3Resolver.CovertHistologyTopographyToICDO3(histology, topography);
     }

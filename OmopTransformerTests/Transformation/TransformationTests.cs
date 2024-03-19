@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Logging;
 using NSubstitute;
+using OmopTransformer;
 using OmopTransformer.Annotations;
 using OmopTransformer.Omop;
 using OmopTransformer.Transformation;
@@ -33,6 +34,8 @@ public class TransformationTests
         Assert.AreEqual(testConcept.JoinedText, "line 1\r\nline 2");
         Assert.AreEqual(1, testConcept.ColourId);
         Assert.AreEqual(123, testConcept.ConstantNumber);
+        
+        CollectionAssert.AreEqual(new[] { 123 }, testConcept.NumberArray);
     }
 }
 
@@ -65,8 +68,9 @@ internal class TestConcept : OmopTestConcept<SourceClass>
 
     [ConstantValue(123, "")]
     public override int? ConstantNumber { get; set; }
-    
-    
+
+    [Transform(typeof(OneTwoThreeSelector), nameof(SourceClass.ColourName))]
+    public override int[]? NumberArray { get; set; }
 }
 
 internal class ColourIdTransformer : ILookup
@@ -79,6 +83,11 @@ internal class ColourIdTransformer : ILookup
         };
 
     public string[] ColumnNotes { get; } = ["colours"];
+}
+
+internal class OneTwoThreeSelector(string input) : ISelector
+{
+    public object? GetValue() => (int?)123;
 }
 
 internal abstract class OmopTestConcept<T> : IOmopRecord<T>
@@ -96,6 +105,8 @@ internal abstract class OmopTestConcept<T> : IOmopRecord<T>
 
     public virtual int? ConstantNumber { get; set; }
 
+    public virtual int[]? NumberArray { get; set; }
     public string OmopTargetTypeDescription => "";
+
     public T? Source { get; set; }
 }

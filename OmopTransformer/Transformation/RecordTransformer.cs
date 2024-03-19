@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using OmopTransformer.Annotations;
 using OmopTransformer.Omop;
 
@@ -180,7 +181,29 @@ internal class RecordTransformer : IRecordTransformer
 
         var selector = (ISelector)Activator.CreateInstance(transformAttribute.Type, arguments)!;
 
-        property.SetValue(record, selector.GetValue());
+        object? value = selector.GetValue();
+
+        if (value != null)
+        {
+            if (property.PropertyType == value.GetType() || Nullable.GetUnderlyingType(property.PropertyType) == value.GetType())
+            {
+                property.SetValue(record, value);
+            }
+            else
+            {
+                if (property.PropertyType.IsArray)
+                {
+                    if (property.PropertyType.GetElementType() == typeof(int))
+                    {
+                        property.SetValue(record, new int[] { (int)value });
+                    }
+                }
+                else
+                {
+                    throw new NotSupportedException($"Cannot set value of type {value.GetType()} to property of type {property.PropertyType}");
+                }
+            }
+        }
     }
 
     private void TransformCopyValue<T>(IOmopRecord<T> record, PropertyInfo property, Type sourceType, CopyValueAttribute copyValueAttribute)
