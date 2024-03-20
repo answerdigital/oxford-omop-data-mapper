@@ -10,10 +10,15 @@ using OmopTransformer.COSD.Death.v8Death;
 using OmopTransformer.COSD.Death.v9DeathBasisOfDiagnosisCancer;
 using OmopTransformer.COSD.Death.v9DeathDischargeDestination;
 using OmopTransformer.COSD.Demographics;
+using OmopTransformer.COSD.ProcedureOccurrence.CosdV8ProcedureOccurrencePrimaryProcedureOpcs;
+using OmopTransformer.COSD.ProcedureOccurrence.CosdV8ProcedureOccurrenceProcedureOpcs;
+using OmopTransformer.COSD.ProcedureOccurrence.CosdV9ProcedureOccurrencePrimaryProcedureOpcs;
+using OmopTransformer.COSD.ProcedureOccurrence.CosdV9ProcedureOccurrenceProcedureOpcs;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Person;
+using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD;
@@ -24,6 +29,7 @@ internal class CosdTransformer : Transformer
     private readonly IPersonRecorder _personRecorder;
     private readonly IDeathRecorder _deathRecorder;
     private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
+    private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
 
     public CosdTransformer(
         IRecordTransformer recordTransformer, 
@@ -33,7 +39,8 @@ internal class CosdTransformer : Transformer
         ILocationRecorder locationRecorder, 
         IPersonRecorder personRecorder, 
         IDeathRecorder deathRecorder, 
-        IConditionOccurrenceRecorder conditionOccurrenceRecorder) 
+        IConditionOccurrenceRecorder conditionOccurrenceRecorder, 
+        IProcedureOccurrenceRecorder procedureOccurrenceRecorder) 
         : 
         base(
             recordTransformer, 
@@ -46,6 +53,7 @@ internal class CosdTransformer : Transformer
         _personRecorder = personRecorder;
         _deathRecorder = deathRecorder;
         _conditionOccurrenceRecorder = conditionOccurrenceRecorder;
+        _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -113,6 +121,26 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord, CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography>(
             _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
             "Cosd V8 Condition Occurrence Primary Diagnosis Histology Topography",
+            cancellationToken);
+
+        await Transform<CosdV8ProcedureOccurrencePrimaryProcedureOpcsRecord, CosdV8ProcedureOccurrencePrimaryProcedureOpcs>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "Cosd V8 Procedure Occurrence Primary Procedure Opcs",
+            cancellationToken);
+
+        await Transform<CosdV8ProcedureOccurrenceProcedureOpcsRecord, CosdV8ProcedureOccurrenceProcedureOpcs>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "Cosd V8 Procedure Occurrence Procedure Opcs",
+            cancellationToken);
+
+        await Transform<CosdV9ProcedureOccurrencePrimaryProcedureOpcsRecord, CosdV9ProcedureOccurrencePrimaryProcedureOpcs>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "Cosd V9 Procedure Occurrence Primary Procedure Opcs",
+            cancellationToken);
+
+        await Transform<CosdV9ProcedureOccurrenceProcedureOpcsRecord, CosdV9ProcedureOccurrenceProcedureOpcs>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "Cosd V9 Procedure Occurrence Procedure Opcs",
             cancellationToken);
     }
 }

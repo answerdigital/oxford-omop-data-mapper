@@ -1,0 +1,51 @@
+﻿<Query>
+    <Sql>
+;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
+    CosdRecords as ( 
+    select
+        T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+        T.staging.query('*[local-name() != "Id"][1]/*[1]') as Node -- Select the first inner element of the element that is not called Id.
+    from omop_staging.cosd_staging
+    cross apply content.nodes('COSD:COSD/*') as T(staging)
+    where T.staging.exist('Id/@root') = 1
+            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
+            and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select 
+        Id,
+        Node,
+        Node.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
+		Node.value('(ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
+		Node.value('(ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/PrimaryProcedureOPCS/@code)[1]', 'varchar(max)') as PrimaryProcedureOpcs
+	from CosdRecords        
+), ProcedureOpcs as (				
+	select								
+		Id,								
+		T.p.value('.', 'varchar(max)') as ProcedureOpcsCode															
+	from CosdRecords								
+	cross apply Node.nodes('ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureOPCS/@code') as T(p)
+)
+select
+	distinct
+		c.NhsNumber,
+		c.ProcedureDate,
+		p.ProcedureOpcsCode
+from CO c
+	inner join ProcedureOpcs p
+		on c.Id = p.Id;
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NhsNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="ProcedureDate">
+			<Description>The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY.</Description>
+			<Origin>PROCEDURE DATE</Origin>
+		</Explanation>
+		<Explanation columnName="ProcedureOpcsCode">
+			<Description>PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS).</Description>
+			<Origin>PROCEDURE (OPCS)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

@@ -60,9 +60,19 @@ begin
 		not exists (
 			select	*
 			from cdm.procedure_occurrence vo
-			where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
-				and vo.procedure_date = r.procedure_date
-				and vo.procedure_concept_id = r.procedure_concept_id
+			where 
+				(
+					r.RecordConnectionIdentifier is not null and
+					vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier and
+					vo.procedure_date = r.procedure_date and
+					vo.procedure_concept_id = r.procedure_concept_id
+				)
+				or
+				(
+					r.RecordConnectionIdentifier is null and
+					vo.procedure_date = r.procedure_date and
+					vo.procedure_concept_id = r.procedure_concept_id
+				)
 		);
 
 

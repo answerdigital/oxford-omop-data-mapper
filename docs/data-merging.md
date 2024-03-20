@@ -80,6 +80,7 @@ Merging logic depends upon the data source.
 |Data source|Logic|
 |-----------|-----|
 | CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `procedure_date` and `procedure_concept_id`. |
+| COSD | Record the record if it does not already exist using the following columns as keys `procedure_date` and `procedure_concept_id`. |
 
 ## Visit Occurrrence
 

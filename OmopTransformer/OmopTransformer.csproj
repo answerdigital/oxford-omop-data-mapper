@@ -119,6 +119,18 @@
     <None Update="COSD\Demographics\OmopDemographics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\ProcedureOccurrence\CosdV8ProcedureOccurrenceProcedureOpcs\CosdV8ProcedureOccurrenceProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\ProcedureOccurrence\CosdV8ProcedureOccurrencePrimaryProcedureOpcs\CosdV8ProcedureOccurrencePrimaryProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\ProcedureOccurrence\CosdV9ProcedureOccurrencePrimaryProcedureOpcs\CosdV9ProcedureOccurrencePrimaryProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\ProcedureOccurrence\CosdV9ProcedureOccurrenceProcedureOpcs\CosdV9ProcedureOccurrenceProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="RTDS\Demographics\RtdsLocation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
