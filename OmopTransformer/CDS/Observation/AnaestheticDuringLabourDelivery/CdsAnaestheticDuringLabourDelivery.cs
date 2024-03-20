@@ -4,6 +4,11 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.CDS.Observation.AnaestheticDuringLabourDelivery;
 
+[Notes(
+    "Notes",
+    "Observations do not require a standardized test or other activity to generate clinical fact. Typical observations are medical history, family history, lifestyle choices, healthcare utilization patterns, social circumstances etc",
+    "Valid Observation Concepts are not enforced to be from any domain.  They should still be standard concepts and typically belong to the Observation or Measurement domain.",
+    "Observations can be stored as attribute value pairs, with the attribute as the Observation Concept and the value representing the clinical fact. This fact can be stored as a Concept (value_as_concept), a numerical value (value_as_number) or a verbatim string (value_as_string)")]
 internal class CdsAnaestheticDuringLabourDelivery : OmopObservation<CdsAnaestheticDuringLabourDeliveryRecord>
 {
     [CopyValue(nameof(Source.NHSNumber))]
