@@ -4,7 +4,10 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.ConditionOccurrence.CosdConditionOccurrenceProgression;
 
-[Notes(CosdMappingNotes.ConditionOccurrence, CalloutType.note)]
+[Notes(
+    "Assumptions",
+    "* Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)",
+    "* If the same Diagnosis occurs but we have 2 separate \"basis of diagnosis\" values, then the first one will be taken only")]
 internal class CosdV9ConditionOccurrenceProgression : OmopConditionOccurrence<CosdV9ConditionOccurrenceProgressionRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

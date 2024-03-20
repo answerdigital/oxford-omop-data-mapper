@@ -2,12 +2,12 @@
 
 internal class NotesAttribute : Attribute
 {
-    public NotesAttribute(string value, CalloutType calloutType = CalloutType.none)
+    public NotesAttribute(string title, params string[] textLine)
     {
-        Value = value;
-        CalloutType = calloutType;
+        TextLine = textLine;
+        Title = title;
     }
 
-    public string Value { get; }
-    public CalloutType CalloutType { get; }
+    public string[] TextLine { get; }
+    public string Title { get; }
 }

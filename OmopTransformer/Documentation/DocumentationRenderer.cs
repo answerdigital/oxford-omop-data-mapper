@@ -155,8 +155,18 @@ internal class DocumentationRenderer
 
                 foreach (var note in notes)
                 {
-                    omopTable.AppendLine($"{{: .{(note.CalloutType == CalloutType.none ? "highlight" : note.CalloutType.ToString())} }}");
-                    omopTable.AppendLine(note.Value);
+                    omopTable.AppendLine("{: .important-title }");
+                    omopTable.AppendLine($"> {note.Title}");
+                    omopTable.AppendLine(">");
+                    foreach (var line in note.TextLine)
+                    {
+                        omopTable.AppendLine($"> {line}");
+
+                        if (line.StartsWith("*") == false)
+                            omopTable.AppendLine(">");
+                    }
+
+                    omopTable.AppendLine("");
                 }
 
                 omopTable.AppendLine($"[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title={target.MapperType.Name}%20mapping){{: .btn }}");

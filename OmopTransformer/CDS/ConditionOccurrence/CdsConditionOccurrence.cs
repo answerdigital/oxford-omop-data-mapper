@@ -4,6 +4,10 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.CDS.ConditionOccurrence;
 
+[Notes(
+    "Duplicates",
+    "CDS data contains numerous duplicated records for cds_diagnosis.DiagnosisCode (condition_concept_id), cds_line01.cdsActivityDate (condition_start_date) and cds_line01.NHSNumber (person_id).",
+    "In order to avoid true duplicates occurring in the data, we have included distinct records for  cds_diagnosis.DiagnosisCode (condition_concept_id), cds_line01.cdsActivityDate (condition_start_date) , cds_line01.NHSNumber (person_id) and cds_line01.RecordConnectionIdentifier and excluded all duplicates.")]
 internal class CdsConditionOccurrence : OmopConditionOccurrence<CdsConditionOccurrenceRecord>
 {
     [CopyValue(nameof(Source.NHSNumber))]
