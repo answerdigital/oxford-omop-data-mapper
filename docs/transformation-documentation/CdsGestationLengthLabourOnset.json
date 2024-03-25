@@ -21,42 +21,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "RecordConnectionIdentifier",
-      "operation_description": "Value copied from `RecordConnectionIdentifier`",
-      "dataSource": [
-        {
-          "name": "RecordConnectionIdentifier",
-          "description": "CDS specific identifier that binds multiple CDS messages together.",
-          "origins": [
-            {
-              "origin": "CDS RECORD IDENTIFIER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tcoalesce(max(l8.DeliveryDate), MAX(l1.CDSActivityDate)) as observation_date, \n\tl8.GestationLengthLabourOnset \nfrom omop_staging.cds_line01 l1\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\tinner join omop_staging.cds_line08 l8\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\ton l1.MessageId = l8.MessageId\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere l8.GestationLengthLabourOnset is not null \n\tand l1.NHSNumber is not null \n\tand (l1.CdsRecordType = '140' or l1.CdsRecordType = '120')\t\t\ngroup by \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier, \n\tl5.HospitalProviderSpellNumber,\n\tl8.DeliveryDate, \n\tl8.GestationLengthLabourOnset;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "HospitalProviderSpellNumber",
-      "operation_description": "Converts text to integers.",
-      "dataSource": [
-        {
-          "name": "HospitalProviderSpellNumber",
-          "description": "CDS specific hospital spell number that binds many episodes together.",
-          "origins": [
-            {
-              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tcoalesce(max(l8.DeliveryDate), MAX(l1.CDSActivityDate)) as observation_date, \n\tl8.GestationLengthLabourOnset \nfrom omop_staging.cds_line01 l1\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\tinner join omop_staging.cds_line08 l8\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\ton l1.MessageId = l8.MessageId\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere l8.GestationLengthLabourOnset is not null \n\tand l1.NHSNumber is not null \n\tand (l1.CdsRecordType = '140' or l1.CdsRecordType = '120')\t\t\ngroup by \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier, \n\tl5.HospitalProviderSpellNumber,\n\tl8.DeliveryDate, \n\tl8.GestationLengthLabourOnset;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "observation_concept_id",
       "operation_description": "Constant value set to `40493181`. Length of gestation at time of procedure",
       "dataSource": null,
@@ -125,6 +89,42 @@
             {
               "origin": "GESTATION LENGTH (LABOUR ONSET)",
               "url": "https://www.datadictionary.nhs.uk/data_elements/gestation_length__labour_onset_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tcoalesce(max(l8.DeliveryDate), MAX(l1.CDSActivityDate)) as observation_date, \n\tl8.GestationLengthLabourOnset \nfrom omop_staging.cds_line01 l1\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\tinner join omop_staging.cds_line08 l8\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\ton l1.MessageId = l8.MessageId\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere l8.GestationLengthLabourOnset is not null \n\tand l1.NHSNumber is not null \n\tand (l1.CdsRecordType = '140' or l1.CdsRecordType = '120')\t\t\ngroup by \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier, \n\tl5.HospitalProviderSpellNumber,\n\tl8.DeliveryDate, \n\tl8.GestationLengthLabourOnset;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "RecordConnectionIdentifier",
+      "operation_description": "Value copied from `RecordConnectionIdentifier`",
+      "dataSource": [
+        {
+          "name": "RecordConnectionIdentifier",
+          "description": "CDS specific identifier that binds multiple CDS messages together.",
+          "origins": [
+            {
+              "origin": "CDS RECORD IDENTIFIER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tcoalesce(max(l8.DeliveryDate), MAX(l1.CDSActivityDate)) as observation_date, \n\tl8.GestationLengthLabourOnset \nfrom omop_staging.cds_line01 l1\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\tinner join omop_staging.cds_line08 l8\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\ton l1.MessageId = l8.MessageId\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere l8.GestationLengthLabourOnset is not null \n\tand l1.NHSNumber is not null \n\tand (l1.CdsRecordType = '140' or l1.CdsRecordType = '120')\t\t\ngroup by \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier, \n\tl5.HospitalProviderSpellNumber,\n\tl8.DeliveryDate, \n\tl8.GestationLengthLabourOnset;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "HospitalProviderSpellNumber",
+      "operation_description": "Converts text to integers.",
+      "dataSource": [
+        {
+          "name": "HospitalProviderSpellNumber",
+          "description": "CDS specific hospital spell number that binds many episodes together.",
+          "origins": [
+            {
+              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
             }
           ]
         }

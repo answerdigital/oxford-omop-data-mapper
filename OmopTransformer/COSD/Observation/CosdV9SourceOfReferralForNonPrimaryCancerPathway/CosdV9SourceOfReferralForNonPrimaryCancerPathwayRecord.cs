@@ -1,0 +1,13 @@
+using OmopTransformer.Annotations;
+
+namespace OmopTransformer.COSD.Observation.CosdV9SourceOfReferralForNonPrimaryCancerPathway;
+
+[DataOrigin("COSD")]
+[Description("CosdV9SourceOfReferralForNonPrimaryCancerPathway")]
+[SourceQuery("CosdV9SourceOfReferralForNonPrimaryCancerPathway.xml")]
+internal class CosdV9SourceOfReferralForNonPrimaryCancerPathwayRecord
+{
+    public string? NhsNumber { get; set; }
+    public string? Date { get; set; }
+    public string? SourceOfReferralForNonPrimaryCancerPathway { get; set; }
+}

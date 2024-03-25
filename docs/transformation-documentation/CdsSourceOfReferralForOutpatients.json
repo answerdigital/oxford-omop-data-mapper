@@ -21,42 +21,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "RecordConnectionIdentifier",
-      "operation_description": "Value copied from `RecordConnectionIdentifier`",
-      "dataSource": [
-        {
-          "name": "RecordConnectionIdentifier",
-          "description": "CDS specific identifier that binds multiple CDS messages together.",
-          "origins": [
-            {
-              "origin": "CDS RECORD IDENTIFIER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect \n\tl1.NHSNumber,\n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tcoalesce(max(l9.ReferralRequestReceivedDate), max(l1.CDSActivityDate)) as observation_date, \n\tl9.SourceofReferralforOutpatients as SourceOfReferralForOutpatients\nfrom [omop_staging].[cds_line01] l1\n\tinner join [omop_staging].[cds_line09] l9\n\t\ton l1.MessageId = l9.MessageId\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere l9.SourceofReferralforOutpatients is not null \n\tand l1.NHSNumber is not null \ngroup by \n\tl1.NHSNumber, \n\tl9.ReferralRequestReceivedDate, \n\tl9.SourceofReferralforOutpatients,\n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber\n\t",
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "HospitalProviderSpellNumber",
-      "operation_description": "Converts text to integers.",
-      "dataSource": [
-        {
-          "name": "HospitalProviderSpellNumber",
-          "description": "CDS specific hospital spell number that binds many episodes together.",
-          "origins": [
-            {
-              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect \n\tl1.NHSNumber,\n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tcoalesce(max(l9.ReferralRequestReceivedDate), max(l1.CDSActivityDate)) as observation_date, \n\tl9.SourceofReferralforOutpatients as SourceOfReferralForOutpatients\nfrom [omop_staging].[cds_line01] l1\n\tinner join [omop_staging].[cds_line09] l9\n\t\ton l1.MessageId = l9.MessageId\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere l9.SourceofReferralforOutpatients is not null \n\tand l1.NHSNumber is not null \ngroup by \n\tl1.NHSNumber, \n\tl9.ReferralRequestReceivedDate, \n\tl9.SourceofReferralforOutpatients,\n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "observation_concept_id",
       "operation_description": "Constant value set to `4258129`. Referral by",
       "dataSource": null,
@@ -112,6 +76,42 @@
       "operation_description": "Constant value set to `38000281`. Observation recorded from EHR with text result",
       "dataSource": null,
       "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "RecordConnectionIdentifier",
+      "operation_description": "Value copied from `RecordConnectionIdentifier`",
+      "dataSource": [
+        {
+          "name": "RecordConnectionIdentifier",
+          "description": "CDS specific identifier that binds multiple CDS messages together.",
+          "origins": [
+            {
+              "origin": "CDS RECORD IDENTIFIER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect \n\tl1.NHSNumber,\n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tcoalesce(max(l9.ReferralRequestReceivedDate), max(l1.CDSActivityDate)) as observation_date, \n\tl9.SourceofReferralforOutpatients as SourceOfReferralForOutpatients\nfrom [omop_staging].[cds_line01] l1\n\tinner join [omop_staging].[cds_line09] l9\n\t\ton l1.MessageId = l9.MessageId\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere l9.SourceofReferralforOutpatients is not null \n\tand l1.NHSNumber is not null \ngroup by \n\tl1.NHSNumber, \n\tl9.ReferralRequestReceivedDate, \n\tl9.SourceofReferralforOutpatients,\n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "HospitalProviderSpellNumber",
+      "operation_description": "Converts text to integers.",
+      "dataSource": [
+        {
+          "name": "HospitalProviderSpellNumber",
+          "description": "CDS specific hospital spell number that binds many episodes together.",
+          "origins": [
+            {
+              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect \n\tl1.NHSNumber,\n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tcoalesce(max(l9.ReferralRequestReceivedDate), max(l1.CDSActivityDate)) as observation_date, \n\tl9.SourceofReferralforOutpatients as SourceOfReferralForOutpatients\nfrom [omop_staging].[cds_line01] l1\n\tinner join [omop_staging].[cds_line09] l9\n\t\ton l1.MessageId = l9.MessageId\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere l9.SourceofReferralforOutpatients is not null \n\tand l1.NHSNumber is not null \ngroup by \n\tl1.NHSNumber, \n\tl9.ReferralRequestReceivedDate, \n\tl9.SourceofReferralforOutpatients,\n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber\n\t",
       "lookup_table_markdown": null
     },
     {

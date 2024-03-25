@@ -1,0 +1,64 @@
+<Query>
+    <Sql>
+;with 
+	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),
+	CosdRecords as ( 
+
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('.') as Node
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD81:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
+		and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+		Id,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreDemographics/PersonStatedSexualOrientationCodeAtDiagnosis/@code)[1]', 'varchar(max)') as PersonStatedSexualOrientationCodeAtDiagnosis,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber
+  from CosdRecords
+)
+select
+      distinct
+          PersonStatedSexualOrientationCodeAtDiagnosis,
+          NhsNumber,
+          (
+              select
+                  min (i) as [Date]
+              from
+              (
+                values
+                (ClinicalDateCancerDiagnosis),
+                (CancerTreatmentStartDate),
+                (ProcedureDate)
+              ) as T(i)
+          ) as [Date]
+from CO o
+where o.PersonStatedSexualOrientationCodeAtDiagnosis is not null
+  and not (
+		ClinicalDateCancerDiagnosis is null and
+		CancerTreatmentStartDate is null and
+		ProcedureDate is null
+)
+    </Sql>
+    <Explanations>
+      <Explanation columnName="NHSNumber">
+    	  <Description>Patient NHS Number</Description>
+    	  <Origin>NHS NUMBER</Origin>
+      </Explanation>
+		 <Explanation columnName="PersonStatedSexualOrientationCodeAtDiagnosis">
+		   <Description></Description>
+		   <Origin></Origin>
+		</Explanation>
+      <Explanation columnName="Date" >
+    	  <Description>Observation date</Description>
+    	  <Origin>DIAGNOSIS DATE</Origin>
+    	  <Origin>TREATMENT START DATE (CANCER)</Origin>
+    	  <Origin>PROCEDURE DATE</Origin>
+      </Explanation>
+    </Explanations>
+</Query>

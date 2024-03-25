@@ -86,11 +86,22 @@ begin
 		not exists (
 			select *
 			from cdm.observation o
-			where o.person_id = p.person_id
-				and o.observation_date = r.observation_date
-				and o.observation_concept_id = r.observation_concept_id
-				and o.RecordConnectionIdentifier = r.RecordConnectionIdentifier
-				and (r.HospitalProviderSpellNumber is null or o.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber)
+			where 
+				(
+					r.RecordConnectionIdentifier is not null and
+					o.person_id = p.person_id and
+					o.observation_date = r.observation_date	and
+					o.observation_concept_id = r.observation_concept_id and
+					o.RecordConnectionIdentifier = r.RecordConnectionIdentifier and
+					(r.HospitalProviderSpellNumber is null or o.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber)
+				)
+				or
+				(
+					r.RecordConnectionIdentifier is null and
+					o.person_id = p.person_id and
+					o.observation_date = r.observation_date	and
+					o.observation_concept_id = r.observation_concept_id
+				)
 		);
 
 	declare @columns table (Name varchar(max));

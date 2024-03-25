@@ -6,6 +6,94 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # observation_concept_id
+### CosdV9TobaccoSmokingStatus
+* Constant value set to `4275495`. Tobacco smoking behavior - finding
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9TobaccoSmokingStatus%20mapping){: .btn }
+### CosdV9TobaccoSmokingCessation
+* Constant value set to `4206526`. Smoking cessation behavior
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9TobaccoSmokingCessation%20mapping){: .btn }
+### CosdV9SourceOfReferralForOutpatients
+* Constant value set to `4258129`. Referral by
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9SourceOfReferralForOutpatients%20mapping){: .btn }
+### CosdV9SourceOfReferralForNonPrimaryCancerPathway
+* Constant value set to `4258129`. Referral by
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9SourceOfReferralForNonPrimaryCancerPathway%20mapping){: .btn }
+### CosdV9PersonSexualOrientationCodeAtDiagnosis
+* Constant value set to `4036080`. Orientation of sexual relationship
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9PersonSexualOrientationCodeAtDiagnosis%20mapping){: .btn }
+### CosdV9PerformanceStatusAdult
+* Constant value set to `4309681`. General physical performance status
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9PerformanceStatusAdult%20mapping){: .btn }
+### CosdV9MenopausalStatus
+* Constant value set to `4059477`. Menopause
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9MenopausalStatus%20mapping){: .btn }
+### CosdV9HistoryOfAlcoholPast
+* Constant value set to `35609491`. Alcohol units consumed per week
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9HistoryOfAlcoholPast%20mapping){: .btn }
+### CosdV9HistoryOfAlcoholCurrent
+* Constant value set to `35609491`. Alcohol units consumed per week
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9HistoryOfAlcoholCurrent%20mapping){: .btn }
+### CosdV9FamilialCancerSyndrome
+* Constant value set to `4229852`. Knowledge level: procedure
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9FamilialCancerSyndrome%20mapping){: .btn }
+### CosdV9FamilialCancerSyndromeSubsidiaryComment
+* Constant value set to `4229852`. Knowledge level: procedure
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9FamilialCancerSyndromeSubsidiaryComment%20mapping){: .btn }
+### CosdV9AsaScore
+* Constant value set to `4185914`. Identification of physical status
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9AsaScore%20mapping){: .btn }
+### CosdV9AdultComorbidityEvaluation
+* Constant value set to `40487424`. Adult comorbidity evaluation-27 score
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9AdultComorbidityEvaluation%20mapping){: .btn }
+### CosdV8SourceOfReferralOutPatients
+* Constant value set to `4258129`. Referral by
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8SourceOfReferralOutPatients%20mapping){: .btn }
+### CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway
+* Constant value set to `4258129`. Referral by
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway%20mapping){: .btn }
+### CosdV8SmokingStatusCode
+* Constant value set to `4275495`. Tobacco smoking behavior - finding
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8SmokingStatusCode%20mapping){: .btn }
+### CosdV8PersonStatedSexualOrientationCodeAtDiagnosis
+* Constant value set to `4036080`. Orientation of sexual relationship
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8PersonStatedSexualOrientationCodeAtDiagnosis%20mapping){: .btn }
+### CosdV8FamilialCancerSyndromeIndicator
+* Constant value set to `4229852`. Knowledge level: procedure
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8FamilialCancerSyndromeIndicator%20mapping){: .btn }
+### CosdV8AlcoholHistoryCancerInLastThreeMonths
+* Constant value set to `35609491`. Alcohol units consumed per week
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8AlcoholHistoryCancerInLastThreeMonths%20mapping){: .btn }
+### CosdV8AlcoholHistoryCancerBeforeLastThreeMonths
+* Constant value set to `35609491`. Alcohol units consumed per week
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8AlcoholHistoryCancerBeforeLastThreeMonths%20mapping){: .btn }
+### CosdV8AdultPerformanceStatus
+* Constant value set to `4309681`. General physical performance status
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8AdultPerformanceStatus%20mapping){: .btn }
+### CosdV8AdultComorbidityEvaluation
+* Constant value set to `40487424`. Adult comorbidity evaluation-27 score
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8AdultComorbidityEvaluation%20mapping){: .btn }
 ### Cds Total Previous Pregnancies Observation
 * Constant value set to `4078008`. Number of previous pregnancies
 

@@ -10,6 +10,28 @@ using OmopTransformer.COSD.Death.v8Death;
 using OmopTransformer.COSD.Death.v9DeathBasisOfDiagnosisCancer;
 using OmopTransformer.COSD.Death.v9DeathDischargeDestination;
 using OmopTransformer.COSD.Demographics;
+using OmopTransformer.COSD.Observation.CosdV8AdultComorbidityEvaluation;
+using OmopTransformer.COSD.Observation.CosdV8AdultPerformanceStatus;
+using OmopTransformer.COSD.Observation.CosdV8AlcoholHistoryCancerBeforeLastThreeMonths;
+using OmopTransformer.COSD.Observation.CosdV8AlcoholHistoryCancerInLastThreeMonths;
+using OmopTransformer.COSD.Observation.CosdV8FamilialCancerSyndromeIndicator;
+using OmopTransformer.COSD.Observation.CosdV8PersonStatedSexualOrientationCodeAtDiagnosis;
+using OmopTransformer.COSD.Observation.CosdV8SmokingStatusCode;
+using OmopTransformer.COSD.Observation.CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway;
+using OmopTransformer.COSD.Observation.CosdV8SourceOfReferralOutPatients;
+using OmopTransformer.COSD.Observation.CosdV9AdultComorbidityEvaluation;
+using OmopTransformer.COSD.Observation.CosdV9AsaScore;
+using OmopTransformer.COSD.Observation.CosdV9FamilialCancerSyndrome;
+using OmopTransformer.COSD.Observation.CosdV9FamilialCancerSyndromeSubsidiaryComment;
+using OmopTransformer.COSD.Observation.CosdV9HistoryOfAlcoholCurrent;
+using OmopTransformer.COSD.Observation.CosdV9HistoryOfAlcoholPast;
+using OmopTransformer.COSD.Observation.CosdV9MenopausalStatus;
+using OmopTransformer.COSD.Observation.CosdV9PerformanceStatusAdult;
+using OmopTransformer.COSD.Observation.CosdV9PersonSexualOrientationCodeAtDiagnosis;
+using OmopTransformer.COSD.Observation.CosdV9SourceOfReferralForNonPrimaryCancerPathway;
+using OmopTransformer.COSD.Observation.CosdV9SourceOfReferralForOutpatients;
+using OmopTransformer.COSD.Observation.CosdV9TobaccoSmokingCessation;
+using OmopTransformer.COSD.Observation.CosdV9TobaccoSmokingStatus;
 using OmopTransformer.COSD.ProcedureOccurrence.CosdV8ProcedureOccurrencePrimaryProcedureOpcs;
 using OmopTransformer.COSD.ProcedureOccurrence.CosdV8ProcedureOccurrenceProcedureOpcs;
 using OmopTransformer.COSD.ProcedureOccurrence.CosdV9ProcedureOccurrencePrimaryProcedureOpcs;
@@ -17,6 +39,7 @@ using OmopTransformer.COSD.ProcedureOccurrence.CosdV9ProcedureOccurrenceProcedur
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.Location;
+using OmopTransformer.Omop.Observation;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Transformation;
@@ -30,6 +53,7 @@ internal class CosdTransformer : Transformer
     private readonly IDeathRecorder _deathRecorder;
     private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
+    private readonly IObservationRecorder _observationRecorder;
 
     public CosdTransformer(
         IRecordTransformer recordTransformer, 
@@ -40,7 +64,8 @@ internal class CosdTransformer : Transformer
         IPersonRecorder personRecorder, 
         IDeathRecorder deathRecorder, 
         IConditionOccurrenceRecorder conditionOccurrenceRecorder, 
-        IProcedureOccurrenceRecorder procedureOccurrenceRecorder) 
+        IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
+        IObservationRecorder observationRecorder) 
         : 
         base(
             recordTransformer, 
@@ -54,6 +79,7 @@ internal class CosdTransformer : Transformer
         _deathRecorder = deathRecorder;
         _conditionOccurrenceRecorder = conditionOccurrenceRecorder;
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
+        _observationRecorder = observationRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -141,6 +167,116 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV9ProcedureOccurrenceProcedureOpcsRecord, CosdV9ProcedureOccurrenceProcedureOpcs>(
             _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
             "Cosd V9 Procedure Occurrence Procedure Opcs",
+            cancellationToken);
+
+        await Transform<CosdV9TobaccoSmokingStatusRecord, CosdV9TobaccoSmokingStatus>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9TobaccoSmokingStatus",
+            cancellationToken);
+
+        await Transform<CosdV8SmokingStatusCodeRecord, CosdV8SmokingStatusCode>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8SmokingStatusCode",
+            cancellationToken);
+
+        await Transform<CosdV9TobaccoSmokingCessationRecord, CosdV9TobaccoSmokingCessation>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9TobaccoSmokingCessation",
+            cancellationToken);
+
+        await Transform<CosdV9HistoryOfAlcoholCurrentRecord, CosdV9HistoryOfAlcoholCurrent>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9HistoryOfAlcoholCurrent",
+            cancellationToken);
+
+        await Transform<CosdV8AlcoholHistoryCancerInLastThreeMonthsRecord, CosdV8AlcoholHistoryCancerInLastThreeMonths>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8AlcoholHistoryCancerInLastThreeMonths",
+            cancellationToken);
+
+        await Transform<CosdV9HistoryOfAlcoholPastRecord, CosdV9HistoryOfAlcoholPast>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9HistoryOfAlcoholPast",
+            cancellationToken);
+
+        await Transform<CosdV8AlcoholHistoryCancerBeforeLastThreeMonthsRecord, CosdV8AlcoholHistoryCancerBeforeLastThreeMonths>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8AlcoholHistoryCancerBeforeLastThreeMonths",
+            cancellationToken);
+
+        await Transform<CosdV9MenopausalStatusRecord, CosdV9MenopausalStatus>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9MenopausalStatus",
+            cancellationToken);
+
+        await Transform<CosdV9PersonSexualOrientationCodeAtDiagnosisRecord, CosdV9PersonSexualOrientationCodeAtDiagnosis>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9PersonSexualOrientationCodeAtDiagnosis",
+            cancellationToken);
+
+        await Transform<CosdV8PersonStatedSexualOrientationCodeAtDiagnosisRecord, CosdV8PersonStatedSexualOrientationCodeAtDiagnosis>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8PersonStatedSexualOrientationCodeAtDiagnosis",
+            cancellationToken);
+
+        await Transform<CosdV9SourceOfReferralForOutpatientsRecord, CosdV9SourceOfReferralForOutpatients>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9SourceOfReferralForOutpatients",
+            cancellationToken);
+
+        await Transform<CosdV8SourceOfReferralOutPatientsRecord, CosdV8SourceOfReferralOutPatients>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8SourceOfReferralOutPatients",
+            cancellationToken);
+
+        await Transform<CosdV9SourceOfReferralForNonPrimaryCancerPathwayRecord, CosdV9SourceOfReferralForNonPrimaryCancerPathway>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9SourceOfReferralForNonPrimaryCancerPathway",
+            cancellationToken);
+
+        await Transform<CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathwayRecord, CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway",
+            cancellationToken);
+
+        await Transform<CosdV9PerformanceStatusAdultRecord, CosdV9PerformanceStatusAdult>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9PerformanceStatusAdult",
+            cancellationToken);
+
+        await Transform<CosdV8AdultPerformanceStatusRecord, CosdV8AdultPerformanceStatus>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8AdultPerformanceStatus",
+            cancellationToken);
+
+        await Transform<CosdV9AdultComorbidityEvaluationRecord, CosdV9AdultComorbidityEvaluation>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9AdultComorbidityEvaluation",
+            cancellationToken);
+
+        await Transform<CosdV8AdultComorbidityEvaluationRecord, CosdV8AdultComorbidityEvaluation>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8AdultComorbidityEvaluation",
+            cancellationToken);
+
+        await Transform<CosdV9AsaScoreRecord, CosdV9AsaScore>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9AsaScore",
+            cancellationToken);
+
+        await Transform<CosdV9FamilialCancerSyndromeRecord, CosdV9FamilialCancerSyndrome>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9FamilialCancerSyndrome",
+            cancellationToken);
+
+        await Transform<CosdV8FamilialCancerSyndromeIndicatorRecord, CosdV8FamilialCancerSyndromeIndicator>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8FamilialCancerSyndromeIndicator",
+            cancellationToken);
+
+        await Transform<CosdV9FamilialCancerSyndromeSubsidiaryCommentRecord, CosdV9FamilialCancerSyndromeSubsidiaryComment>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9FamilialCancerSyndromeSubsidiaryComment",
             cancellationToken);
     }
 }

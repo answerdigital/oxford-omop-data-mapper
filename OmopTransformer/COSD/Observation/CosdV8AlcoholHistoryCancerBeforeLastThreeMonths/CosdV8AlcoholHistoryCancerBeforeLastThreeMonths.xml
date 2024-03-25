@@ -1,0 +1,80 @@
+<Query>
+    <Sql>
+;with 
+	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),
+	CosdRecords as ( 
+
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('.') as Node
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD81:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
+		and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+		Id,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/SpecialistDateFirstSeen)[1]', 'varchar(max)') as SpecialistDateFirstSeen,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/IntegratedStageTNMStageGroupingDate)[1]', 'varchar(max)') as IntegratedStageTNMStageGroupingDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/FinalPreTreatmentTNMStageGroupingDate)[1]', 'varchar(max)') as FinalPreTreatmentTNMStageGroupingDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreClinicalNurseSpecialistAndRiskFactorAssessments/AlcoholHistoryCancerBeforeLastThreeMonths/@code)[1]', 'varchar(max)') as AlcoholHistoryCancerBeforeLastThreeMonths,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber
+  from CosdRecords
+)
+select
+      distinct
+          AlcoholHistoryCancerBeforeLastThreeMonths,
+          NhsNumber,
+          (
+              select
+                  min (i) as [Date]
+              from
+              (
+                values
+                (DateFirstSeen),
+                (SpecialistDateFirstSeen),
+                (ClinicalDateCancerDiagnosis),
+                (IntegratedStageTNMStageGroupingDate),
+                (FinalPreTreatmentTNMStageGroupingDate),
+                (CancerTreatmentStartDate),
+                (ProcedureDate)
+              ) as T(i)
+          ) as [Date]
+from CO o
+where o.AlcoholHistoryCancerBeforeLastThreeMonths is not null
+  and not (
+		DateFirstSeen is null and
+		SpecialistDateFirstSeen is null and
+		ClinicalDateCancerDiagnosis is null and
+		IntegratedStageTNMStageGroupingDate is null and
+		FinalPreTreatmentTNMStageGroupingDate is null and
+		CancerTreatmentStartDate is null and
+		ProcedureDate is null
+)
+    </Sql>
+    <Explanations>
+      <Explanation columnName="NHSNumber">
+    	  <Description>Patient NHS Number</Description>
+    	  <Origin>NHS NUMBER</Origin>
+      </Explanation>
+		 <Explanation columnName="AlcoholHistoryCancerBeforeLastThreeMonths">
+		   <Description></Description>
+		   <Origin></Origin>
+		</Explanation>
+      <Explanation columnName="Date" >
+    	  <Description>Observation date</Description>
+    	  <Origin>DATE FIRST SEEN</Origin>
+    	  <Origin>DATE FIRST SEEN (CANCER SPECIALIST)</Origin>
+    	  <Origin>DIAGNOSIS DATE</Origin>
+    	  <Origin>TNM STAGE GROUPING DATE (INTEGRATED)</Origin>
+    	  <Origin>TNM STAGE GROUPING DATE (FINAL PRETREATMENT)</Origin>
+    	  <Origin>TREATMENT START DATE (CANCER)</Origin>
+    	  <Origin>PROCEDURE DATE</Origin>
+      </Explanation>
+    </Explanations>
+</Query>

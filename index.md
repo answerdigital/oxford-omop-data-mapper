@@ -98,14 +98,14 @@ The current scope for the transformation at table and field level has been selec
 |----------------------|-----|------|------|------|
 | *Location*            |  ✔ | ✔   | ✔   | ✔   |
 | *Person*              | ✔️  | ✔️   | ✔️   | ✔️   |
-| *Condition*Occurrence | ✔️  |   ✔️  |      |      |
-| *Visit*Occurrence     | ✔️  |      |      |      |
-| *Visit*Details        | ✔️  |      |      |      |
+| *Condition Occurrence* | ✔️  |   ✔️  |      |      |
+| *Visit Occurrence*     | ✔️  |      |      |      |
+| *Visit Details*       | ✔️  |      |      |      |
 | *Measurement*         | ✔️ ❗ |      |      |      |
 | *Death*               | ✔️ |  ✔    |      |      |
-| *Procedure*Occurrence | ✔️  |      |      |      |
-| *Drug*Exposure        | ✔  |      |      |      |
-| *Observation*         | ✔  |      |      |      |
+| *Procedure Occurrence* | ✔️  |  ✔️    |      |      |
+| *Drug Exposure*        | ✔  |      |      |      |
+| *Observation*         | ✔  |  ✔️    |      |      |
 
 
 # Future Aims

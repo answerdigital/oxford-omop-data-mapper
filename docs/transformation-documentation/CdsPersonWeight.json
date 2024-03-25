@@ -21,42 +21,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "RecordConnectionIdentifier",
-      "operation_description": "Value copied from `RecordConnectionIdentifier`",
-      "dataSource": [
-        {
-          "name": "RecordConnectionIdentifier",
-          "description": "CDS specific identifier that binds multiple CDS messages together.",
-          "origins": [
-            {
-              "origin": "CDS RECORD IDENTIFIER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tcoalesce(max(l7.ActivityDateCriticalCare), MAX(l1.CDSActivityDate)) as observation_date, \n\tl7.PersonWeight\nfrom [omop_staging].[cds_line01] l1\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\tinner join [omop_staging].[cds_line07] l7\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\ton l1.MessageId = l7.MessageId\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere l7.PersonWeight is not null \n\tand l1.NHSNumber is not null \t\t\t\t\n\tand (l1.CdsRecordType = '140' or l1.CdsRecordType = '120')\ngroup by \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tl7.ActivityDateCriticalCare, \n\tl7.PersonWeight;\t\t\n\t",
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "HospitalProviderSpellNumber",
-      "operation_description": "Converts text to integers.",
-      "dataSource": [
-        {
-          "name": "HospitalProviderSpellNumber",
-          "description": "CDS specific hospital spell number that binds many episodes together.",
-          "origins": [
-            {
-              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tcoalesce(max(l7.ActivityDateCriticalCare), MAX(l1.CDSActivityDate)) as observation_date, \n\tl7.PersonWeight\nfrom [omop_staging].[cds_line01] l1\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\tinner join [omop_staging].[cds_line07] l7\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\ton l1.MessageId = l7.MessageId\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere l7.PersonWeight is not null \n\tand l1.NHSNumber is not null \t\t\t\t\n\tand (l1.CdsRecordType = '140' or l1.CdsRecordType = '120')\ngroup by \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tl7.ActivityDateCriticalCare, \n\tl7.PersonWeight;\t\t\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "observation_concept_id",
       "operation_description": "Constant value set to `42536495`. Current body weight",
       "dataSource": null,
@@ -125,6 +89,42 @@
             {
               "origin": "PERSON WEIGHT",
               "url": "https://www.datadictionary.nhs.uk/data_elements/person_weight.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tcoalesce(max(l7.ActivityDateCriticalCare), MAX(l1.CDSActivityDate)) as observation_date, \n\tl7.PersonWeight\nfrom [omop_staging].[cds_line01] l1\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\tinner join [omop_staging].[cds_line07] l7\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\ton l1.MessageId = l7.MessageId\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere l7.PersonWeight is not null \n\tand l1.NHSNumber is not null \t\t\t\t\n\tand (l1.CdsRecordType = '140' or l1.CdsRecordType = '120')\ngroup by \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tl7.ActivityDateCriticalCare, \n\tl7.PersonWeight;\t\t\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "RecordConnectionIdentifier",
+      "operation_description": "Value copied from `RecordConnectionIdentifier`",
+      "dataSource": [
+        {
+          "name": "RecordConnectionIdentifier",
+          "description": "CDS specific identifier that binds multiple CDS messages together.",
+          "origins": [
+            {
+              "origin": "CDS RECORD IDENTIFIER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tcoalesce(max(l7.ActivityDateCriticalCare), MAX(l1.CDSActivityDate)) as observation_date, \n\tl7.PersonWeight\nfrom [omop_staging].[cds_line01] l1\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\tinner join [omop_staging].[cds_line07] l7\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\ton l1.MessageId = l7.MessageId\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere l7.PersonWeight is not null \n\tand l1.NHSNumber is not null \t\t\t\t\n\tand (l1.CdsRecordType = '140' or l1.CdsRecordType = '120')\ngroup by \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier,\n\tl5.HospitalProviderSpellNumber,\n\tl7.ActivityDateCriticalCare, \n\tl7.PersonWeight;\t\t\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "HospitalProviderSpellNumber",
+      "operation_description": "Converts text to integers.",
+      "dataSource": [
+        {
+          "name": "HospitalProviderSpellNumber",
+          "description": "CDS specific hospital spell number that binds many episodes together.",
+          "origins": [
+            {
+              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
             }
           ]
         }

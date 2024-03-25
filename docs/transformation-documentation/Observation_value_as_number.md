@@ -6,6 +6,597 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # value_as_number
+### CosdV9TobaccoSmokingStatus
+Source column  `TobaccoSmokingStatus`.
+Converts text to integers.
+
+* `TobaccoSmokingStatus`  []()
+
+```sql
+;with 
+	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
+	CosdRecords as ( 
+
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('.') as Node
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD901:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
+		and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+		Id,
+		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
+		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeenCancerSpecialist)[1]', 'varchar(max)') as DateFirstSeenCancerSpecialist,
+		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
+		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)') as StageDateFinalPretreatmentStage,
+		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateIntegratedStage)[1]', 'varchar(max)') as StageDateIntegratedStage,
+		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
+		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
+		Node.value('(ColorectalRecord/ClinicalNurseSpecialistAndRiskFactorAssessments/TobaccoSmokingStatus/@code)[1]', 'varchar(max)') as TobaccoSmokingStatus,
+		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
+  from CosdRecords
+)
+select
+      distinct
+          TobaccoSmokingStatus,
+          NhsNumber,
+          (
+              select
+                  min (i) as [Date]
+              from
+              (
+                values
+                (DateFirstSeen),
+                (DateFirstSeenCancerSpecialist),
+                (DateOfPrimaryDiagnosisClinicallyAgreed),
+                (StageDateFinalPretreatmentStage),
+                (StageDateIntegratedStage),
+                (TreatmentStartDateCancer),
+                (ProcedureDate)
+              ) as T(i)
+          ) as [Date]
+from CO o
+where o.TobaccoSmokingStatus is not null
+  and not (
+		DateFirstSeen is null and
+		DateFirstSeenCancerSpecialist is null and
+		DateOfPrimaryDiagnosisClinicallyAgreed is null and
+		StageDateFinalPretreatmentStage is null and
+		StageDateIntegratedStage is null and
+		TreatmentStartDateCancer is null and
+		ProcedureDate is null
+)
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9TobaccoSmokingStatus%20mapping){: .btn }
+### CosdV9TobaccoSmokingCessation
+Source column  `TobaccoSmokingCessation`.
+Converts text to integers.
+
+* `TobaccoSmokingCessation`  []()
+
+```sql
+;with 
+	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
+	CosdRecords as ( 
+
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('.') as Node
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD901:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
+		and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+		Id,
+		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
+		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeenCancerSpecialist)[1]', 'varchar(max)') as DateFirstSeenCancerSpecialist,
+		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
+		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)') as StageDateFinalPretreatmentStage,
+		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateIntegratedStage)[1]', 'varchar(max)') as StageDateIntegratedStage,
+		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
+		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
+		Node.value('(ColorectalRecord/ClinicalNurseSpecialistAndRiskFactorAssessments/TobaccoSmokingCessation/@code)[1]', 'varchar(max)') as TobaccoSmokingCessation,
+		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
+  from CosdRecords
+)
+select
+      distinct
+          TobaccoSmokingCessation,
+          NhsNumber,
+          (
+              select
+                  min (i) as [Date]
+              from
+              (
+                values
+                (DateFirstSeen),
+                (DateFirstSeenCancerSpecialist),
+                (DateOfPrimaryDiagnosisClinicallyAgreed),
+                (StageDateFinalPretreatmentStage),
+                (StageDateIntegratedStage),
+                (TreatmentStartDateCancer),
+                (ProcedureDate)
+              ) as T(i)
+          ) as [Date]
+from CO o
+where o.TobaccoSmokingCessation is not null
+  and not (
+		DateFirstSeen is null and
+		DateFirstSeenCancerSpecialist is null and
+		DateOfPrimaryDiagnosisClinicallyAgreed is null and
+		StageDateFinalPretreatmentStage is null and
+		StageDateIntegratedStage is null and
+		TreatmentStartDateCancer is null and
+		ProcedureDate is null
+)
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9TobaccoSmokingCessation%20mapping){: .btn }
+### CosdV9PerformanceStatusAdult
+Source column  `PerformanceStatusAdult`.
+Converts text to integers.
+
+* `PerformanceStatusAdult`  []()
+
+```sql
+;with 
+	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
+	CosdRecords as ( 
+
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('.') as Node
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD901:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
+		and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+		Id,
+		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
+		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeenCancerSpecialist)[1]', 'varchar(max)') as DateFirstSeenCancerSpecialist,
+		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
+		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)') as StageDateFinalPretreatmentStage,
+		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateIntegratedStage)[1]', 'varchar(max)') as StageDateIntegratedStage,
+		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
+		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
+		Node.value('(ColorectalRecord/PrimaryPathway/Diagnosis/PerformanceStatusAdult/@code)[1]', 'varchar(max)') as PerformanceStatusAdult,
+		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
+  from CosdRecords
+)
+select
+      distinct
+          PerformanceStatusAdult,
+          NhsNumber,
+          (
+              select
+                  min (i) as [Date]
+              from
+              (
+                values
+                (DateFirstSeen),
+                (DateFirstSeenCancerSpecialist),
+                (DateOfPrimaryDiagnosisClinicallyAgreed),
+                (StageDateFinalPretreatmentStage),
+                (StageDateIntegratedStage),
+                (TreatmentStartDateCancer),
+                (ProcedureDate)
+              ) as T(i)
+          ) as [Date]
+from CO o
+where o.PerformanceStatusAdult is not null
+  and not (
+		DateFirstSeen is null and
+		DateFirstSeenCancerSpecialist is null and
+		DateOfPrimaryDiagnosisClinicallyAgreed is null and
+		StageDateFinalPretreatmentStage is null and
+		StageDateIntegratedStage is null and
+		TreatmentStartDateCancer is null and
+		ProcedureDate is null
+)
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9PerformanceStatusAdult%20mapping){: .btn }
+### CosdV9MenopausalStatus
+Source column  `MenopausalStatus`.
+Converts text to integers.
+
+* `MenopausalStatus`  []()
+
+```sql
+;with 
+	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
+	CosdRecords as ( 
+
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('.') as Node
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD901:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
+		and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+		Id,
+		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
+		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
+		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
+		Node.value('(ColorectalRecord/ClinicalNurseSpecialistAndRiskFactorAssessments/MenopausalStatus/@code)[1]', 'varchar(max)') as MenopausalStatus,
+		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
+  from CosdRecords
+)
+select
+      distinct
+          MenopausalStatus,
+          NhsNumber,
+          (
+              select
+                  min (i) as [Date]
+              from
+              (
+                values
+                (DateOfPrimaryDiagnosisClinicallyAgreed),
+                (TreatmentStartDateCancer),
+                (ProcedureDate)
+              ) as T(i)
+          ) as [Date]
+from CO o
+where o.MenopausalStatus is not null
+  and not (
+		DateOfPrimaryDiagnosisClinicallyAgreed is null and
+		TreatmentStartDateCancer is null and
+		ProcedureDate is null
+)
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9MenopausalStatus%20mapping){: .btn }
+### CosdV9AsaScore
+Source column  `AsaScore`.
+Converts text to integers.
+
+* `AsaScore`  []()
+
+```sql
+;with 
+	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
+	CosdRecords as ( 
+
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('.') as Node
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD901:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
+		and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+		Id,
+		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
+		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeenCancerSpecialist)[1]', 'varchar(max)') as DateFirstSeenCancerSpecialist,
+		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
+		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)') as StageDateFinalPretreatmentStage,
+		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateIntegratedStage)[1]', 'varchar(max)') as StageDateIntegratedStage,
+		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
+		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
+		Node.value('(ColorectalRecord/Treatment/Surgery/AsaScore/@code)[1]', 'varchar(max)') as AsaScore,
+		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
+  from CosdRecords
+)
+select
+      distinct
+          AsaScore,
+          NhsNumber,
+          (
+              select
+                  min (i) as [Date]
+              from
+              (
+                values
+                (DateFirstSeen),
+                (DateFirstSeenCancerSpecialist),
+                (DateOfPrimaryDiagnosisClinicallyAgreed),
+                (StageDateFinalPretreatmentStage),
+                (StageDateIntegratedStage),
+                (TreatmentStartDateCancer),
+                (ProcedureDate)
+              ) as T(i)
+          ) as [Date]
+from CO o
+where o.AsaScore is not null
+  and not (
+		DateFirstSeen is null and
+		DateFirstSeenCancerSpecialist is null and
+		DateOfPrimaryDiagnosisClinicallyAgreed is null and
+		StageDateFinalPretreatmentStage is null and
+		StageDateIntegratedStage is null and
+		TreatmentStartDateCancer is null and
+		ProcedureDate is null
+)
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9AsaScore%20mapping){: .btn }
+### CosdV9AdultComorbidityEvaluation
+Source column  `AdultComorbidityEvaluation`.
+Converts text to integers.
+
+* `AdultComorbidityEvaluation`  []()
+
+```sql
+;with 
+	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
+	CosdRecords as ( 
+
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('.') as Node
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD901:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
+		and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+		Id,
+		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
+		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeenCancerSpecialist)[1]', 'varchar(max)') as DateFirstSeenCancerSpecialist,
+		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
+		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)') as StageDateFinalPretreatmentStage,
+		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateIntegratedStage)[1]', 'varchar(max)') as StageDateIntegratedStage,
+		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
+		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
+		Node.value('(ColorectalRecord/CancerCarePlan/AdultComorbidityEvaluation-27Score/@code)[1]', 'varchar(max)') as AdultComorbidityEvaluation,
+		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
+  from CosdRecords
+)
+select
+      distinct
+          AdultComorbidityEvaluation,
+          NhsNumber,
+          (
+              select
+                  min (i) as [Date]
+              from
+              (
+                values
+                (DateFirstSeen),
+                (DateFirstSeenCancerSpecialist),
+                (DateOfPrimaryDiagnosisClinicallyAgreed),
+                (StageDateFinalPretreatmentStage),
+                (StageDateIntegratedStage),
+                (TreatmentStartDateCancer),
+                (ProcedureDate)
+              ) as T(i)
+          ) as [Date]
+from CO o
+where o.AdultComorbidityEvaluation is not null
+  and not (
+		DateFirstSeen is null and
+		DateFirstSeenCancerSpecialist is null and
+		DateOfPrimaryDiagnosisClinicallyAgreed is null and
+		StageDateFinalPretreatmentStage is null and
+		StageDateIntegratedStage is null and
+		TreatmentStartDateCancer is null and
+		ProcedureDate is null
+)
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9AdultComorbidityEvaluation%20mapping){: .btn }
+### CosdV8SmokingStatusCode
+Source column  `SmokingStatusCode`.
+Converts text to integers.
+
+* `SmokingStatusCode`  []()
+
+```sql
+;with 
+	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),
+	CosdRecords as ( 
+
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('.') as Node
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD81:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
+		and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+		Id,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/SpecialistDateFirstSeen)[1]', 'varchar(max)') as SpecialistDateFirstSeen,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/IntegratedStageTNMStageGroupingDate)[1]', 'varchar(max)') as IntegratedStageTNMStageGroupingDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/FinalPreTreatmentTNMStageGroupingDate)[1]', 'varchar(max)') as FinalPreTreatmentTNMStageGroupingDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreClinicalNurseSpecialistAndRiskFactorAssessments/SmokingStatusCode/@code)[1]', 'varchar(max)') as SmokingStatusCode,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber
+  from CosdRecords
+)
+select
+      distinct
+          SmokingStatusCode,
+          NhsNumber,
+          (
+              select
+                  min (i) as [Date]
+              from
+              (
+                values
+                (DateFirstSeen),
+                (SpecialistDateFirstSeen),
+                (ClinicalDateCancerDiagnosis),
+                (IntegratedStageTNMStageGroupingDate),
+                (FinalPreTreatmentTNMStageGroupingDate),
+                (CancerTreatmentStartDate),
+                (ProcedureDate)
+              ) as T(i)
+          ) as [Date]
+from CO o
+where o.SmokingStatusCode is not null
+  and not (
+		DateFirstSeen is null and
+		SpecialistDateFirstSeen is null and
+		ClinicalDateCancerDiagnosis is null and
+		IntegratedStageTNMStageGroupingDate is null and
+		FinalPreTreatmentTNMStageGroupingDate is null and
+		CancerTreatmentStartDate is null and
+		ProcedureDate is null
+)
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV8SmokingStatusCode%20mapping){: .btn }
+### CosdV8AdultPerformanceStatus
+Source column  `AdultPerformanceStatus`.
+Converts text to integers.
+
+* `AdultPerformanceStatus`  []()
+
+```sql
+;with 
+	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),
+	CosdRecords as ( 
+
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('.') as Node
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD81:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
+		and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+		Id,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/SpecialistDateFirstSeen)[1]', 'varchar(max)') as SpecialistDateFirstSeen,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/IntegratedStageTNMStageGroupingDate)[1]', 'varchar(max)') as IntegratedStageTNMStageGroupingDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/FinalPreTreatmentTNMStageGroupingDate)[1]', 'varchar(max)') as FinalPreTreatmentTNMStageGroupingDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreDiagnosis/AdultPerformanceStatus/@code)[1]', 'varchar(max)') as AdultPerformanceStatus,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber
+  from CosdRecords
+)
+select
+      distinct
+          AdultPerformanceStatus,
+          NhsNumber,
+          (
+              select
+                  min (i) as [Date]
+              from
+              (
+                values
+                (DateFirstSeen),
+                (SpecialistDateFirstSeen),
+                (ClinicalDateCancerDiagnosis),
+                (IntegratedStageTNMStageGroupingDate),
+                (FinalPreTreatmentTNMStageGroupingDate),
+                (CancerTreatmentStartDate),
+                (ProcedureDate)
+              ) as T(i)
+          ) as [Date]
+from CO o
+where o.AdultPerformanceStatus is not null
+  and not (
+		DateFirstSeen is null and
+		SpecialistDateFirstSeen is null and
+		ClinicalDateCancerDiagnosis is null and
+		IntegratedStageTNMStageGroupingDate is null and
+		FinalPreTreatmentTNMStageGroupingDate is null and
+		CancerTreatmentStartDate is null and
+		ProcedureDate is null
+)
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV8AdultPerformanceStatus%20mapping){: .btn }
+### CosdV8AdultComorbidityEvaluation
+Source column  `AdultComorbidityEvaluation`.
+Converts text to integers.
+
+* `AdultComorbidityEvaluation`  []()
+
+```sql
+;with 
+	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),
+	CosdRecords as ( 
+
+	select
+		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+		T.staging.query('.') as Node
+	from omop_staging.cosd_staging
+	cross apply content.nodes('COSD81:COSD/*') as T(staging)
+	where T.staging.exist('Id/@root') = 1
+		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
+		and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+		Id,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/SpecialistDateFirstSeen)[1]', 'varchar(max)') as SpecialistDateFirstSeen,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/IntegratedStageTNMStageGroupingDate)[1]', 'varchar(max)') as IntegratedStageTNMStageGroupingDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/FinalPreTreatmentTNMStageGroupingDate)[1]', 'varchar(max)') as FinalPreTreatmentTNMStageGroupingDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreCancerCarePlan/AdultComorbidityEvaluation/@code)[1]', 'varchar(max)') as AdultComorbidityEvaluation,
+		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber
+  from CosdRecords
+)
+select
+      distinct
+          AdultComorbidityEvaluation,
+          NhsNumber,
+          (
+              select
+                  min (i) as [Date]
+              from
+              (
+                values
+                (DateFirstSeen),
+                (SpecialistDateFirstSeen),
+                (ClinicalDateCancerDiagnosis),
+                (IntegratedStageTNMStageGroupingDate),
+                (FinalPreTreatmentTNMStageGroupingDate),
+                (CancerTreatmentStartDate),
+                (ProcedureDate)
+              ) as T(i)
+          ) as [Date]
+from CO o
+where o.AdultComorbidityEvaluation is not null
+  and not (
+		DateFirstSeen is null and
+		SpecialistDateFirstSeen is null and
+		ClinicalDateCancerDiagnosis is null and
+		IntegratedStageTNMStageGroupingDate is null and
+		FinalPreTreatmentTNMStageGroupingDate is null and
+		CancerTreatmentStartDate is null and
+		ProcedureDate is null
+)
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV8AdultComorbidityEvaluation%20mapping){: .btn }
 ### Cds Total Previous Pregnancies Observation
 Source column  `TotalPreviousPregnancies`.
 Converts text to integers.
