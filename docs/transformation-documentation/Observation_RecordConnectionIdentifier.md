@@ -84,7 +84,6 @@ from [omop_staging].[cds_line01] l1
 		on l1.MessageId = l5.MessageId
 where l7.PersonWeight is not null 
 	and l1.NHSNumber is not null 				
-	and (l1.CdsRecordType = '140' or l1.CdsRecordType = '120')
 group by 
 	l1.NHSNumber, 
 	l1.RecordConnectionIdentifier,
@@ -197,7 +196,7 @@ select
 	l1.RecordConnectionIdentifier,
 	l5.HospitalProviderSpellNumber,
 	coalesce(max(l8.DeliveryDate), MAX(l1.CDSActivityDate)) as observation_date, 
-	max(l1.BirthWeight) as BirthWeight 
+	l1.BirthWeight
 from omop_staging.cds_line01 l1																			
 	inner join omop_staging.cds_line08 l8														
 		on l1.MessageId = l8.MessageId	
@@ -211,8 +210,7 @@ group by
 	l1.RecordConnectionIdentifier, 
     l5.HospitalProviderSpellNumber,
 	l8.DeliveryDate, 
-	l8.GestationLengthLabourOnset;
-	
+	l1.BirthWeight;	
 ```
 
 

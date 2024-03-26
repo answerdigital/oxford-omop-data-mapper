@@ -35,6 +35,6 @@ internal class CdsBirthWeight : OmopObservation<CdsBirthWeightRecord>
     [CopyValue(nameof(Source.BirthWeight))]
     public override string? value_as_string { get; set; }
 
-    [ConstantValue(9529, "kilogram")]
+    [ConstantValue(8504, "gram")]
     public override int? unit_concept_id { get; set; }
 }
