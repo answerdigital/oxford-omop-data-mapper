@@ -1,0 +1,44 @@
+﻿<Query>
+    <Sql>
+;with 
+    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
+    CosdRecords as ( 
+
+    select
+            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+            T.staging.query('.') as Node
+    from omop_staging.cosd_staging
+    cross apply content.nodes('COSD901:COSD/*') as T(staging)
+    where T.staging.exist('Id/@root') = 1
+            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
+            and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+			Id,
+			Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
+			Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
+			Node.value('(ColorectalRecord/PrimaryPathway/Diagnosis/DiagnosisColorectal/SynchronousTumourIndicator/@code)[1]', 'varchar(max)') as SynchronousTumourIndicator
+	from CosdRecords
+)
+select distinct
+	NhsNumber,
+	DateOfPrimaryDiagnosisClinicallyAgreed,
+	SynchronousTumourIndicator
+from CO
+where SynchronousTumourIndicator is not null;
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NHSNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="DateOfPrimaryDiagnosisClinicallyAgreed">
+			<Description>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED) is the date the Primary Cancer was confirmed or the Primary Cancer diagnosis was agreed.</Description>
+			<Origin>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+		</Explanation>
+		<Explanation columnName="SynchronousTumourIndicator">
+			<Description>An indication of whether there is a presence of synchronous tumours at a tumour site during a Cancer Care Spell.</Description>
+			<Origin>SYNCHRONOUS TUMOUR INDICATOR</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

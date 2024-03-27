@@ -25,6 +25,7 @@ using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.DrugExposure;
+using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.Observation;
 
 [assembly: InternalsVisibleTo("OmopTransformerTests")]
@@ -176,6 +177,7 @@ internal class Program
             builder.Services.AddTransient<IProcedureOccurrenceRecorder, ProcedureOccurrenceRecorder>();
             builder.Services.AddTransient<IDrugExposureRecorder, DrugExposureRecorder>();
             builder.Services.AddTransient<IObservationRecorder, ObservationRecorder>();
+            builder.Services.AddTransient<IMeasurementRecorder, MeasurementRecorder>();
 
             if (string.Equals(transformOptions.Type, "cosd", StringComparison.OrdinalIgnoreCase))
             {

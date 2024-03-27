@@ -1,0 +1,46 @@
+﻿<Query>
+    <Sql>
+;with 
+    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
+    CosdRecords as ( 
+
+    select
+            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+            T.staging.query('*[local-name() != "Id"][1]/*[1]') as Node
+    from omop_staging.cosd_staging
+    cross apply content.nodes('COSD:COSD/*') as T(staging)
+    where T.staging.exist('Id/@root') = 1
+            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
+            and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+			Id,
+			Node.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
+			Node.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
+			Node.value('(ColorectalCore/ColorectalCoreStaging/FinalPreTreatmentMCategory)[1]', 'varchar(max)') as McategoryFinalPreTreatment,
+			Node.value('(ColorectalCore/ColorectalCoreStaging/FinalPreTreatmentTNMStageGroupingDate)[1]', 'varchar(max)') as StageDateFinalPretreatmentStage
+	from CosdRecords
+)
+select distinct
+	NhsNumber,
+	coalesce(StageDateFinalPretreatmentStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
+	McategoryFinalPreTreatment
+from CO
+where McategoryFinalPreTreatment is not null;
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NHSNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="MeasurementDate">
+			<Description>Measurement Date is the date on which TNM Stage Grouping (Final pre-treatment) was recorded, but if this is not available, then it is the date the Primary Cancer was confirmed or the Primary Cancer diagnosis was agreed.</Description>
+			<Origin>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+			<Origin>TNM STAGE GROUPING DATE (FINAL PRETREATMENT)</Origin>
+		</Explanation>
+		<Explanation columnName="McategoryFinalPreTreatment">
+			<Description>Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases before treatment during a Cancer Care Spell.</Description>
+			<Origin>M CATEGORY (FINAL PRETREATMENT)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

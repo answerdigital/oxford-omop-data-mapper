@@ -119,6 +119,90 @@
     <None Update="COSD\Demographics\OmopDemographics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementGradeOfDifferentiation\CosdV8MeasurementGradeOfDifferentiation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementMcategoryFinalPreTreatmentStage\CosdV8MeasurementMcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementMcategoryIntegratedStage\CosdV8MeasurementMcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementNcategoryFinalPreTreatmentStage\CosdV8MeasurementNcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementNcategoryIntegratedStage\CosdV8MeasurementNcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementNonPrimaryPathwayMetastasis\CosdV8MeasurementNonPrimaryPathwayMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementPrimaryPathwayMetastasis\CosdV8MeasurementPrimaryPathwayMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementSynchronousTumourIndicator\CosdV8MeasurementSynchronousTumourIndicator.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementTcategoryFinalPreTreatmentStage\CosdV8MeasurementTcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementTcategoryIntegratedStage\CosdV8MeasurementTcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementTNMcategoryFinalPreTreatmentStage\CosdV8MeasurementTNMcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementTNMcategoryIntegratedStage\CosdV8MeasurementTNMcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementTumourHeightAboveAnalVerge\CosdV8MeasurementTumourHeightAboveAnalVerge.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV8MeasurementTumourLaterality\CosdV8MeasurementTumourLaterality.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementGradeOfDifferentiation\CosdV9MeasurementGradeOfDifferentiation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementMcategoryFinalPreTreatmentStage\CosdV9MeasurementMcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementMcategoryIntegratedStage\CosdV9MeasurementMcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementNcategoryFinalPreTreatmentStage\CosdV9MeasurementNcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementNcategoryIntegratedStage\CosdV9MeasurementNcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementNonPrimaryPathwayProgressionMetastasis\CosdV9MeasurementNonPrimaryPathwayProgressionMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementNonPrimaryPathwayRecurrenceMetastasis\CosdV9MeasurementNonPrimaryPathwayRecurrenceMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementPrimaryPathwayMetastasis\CosdV9MeasurementPrimaryPathwayMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementSynchronousTumourIndicator\CosdV9MeasurementSynchronousTumourIndicator.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementTcategoryFinalPreTreatmentStage\CosdV9MeasurementTcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementTcategoryIntegratedStage\CosdV9MeasurementTcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementTNMcategoryFinalPreTreatmentStage\CosdV9MeasurementTNMcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementTNMcategoryIntegratedStage\CosdV9MeasurementTNMcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Measurements\CosdV9MeasurementTumourLaterality\CosdV9MeasurementTumourLaterality.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Observation\CosdV8AdultComorbidityEvaluation\CosdV8AdultComorbidityEvaluation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

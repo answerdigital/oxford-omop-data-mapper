@@ -2,6 +2,7 @@
 layout: default
 title: Quick Start Guide
 nav_order: 2
+has_children: true
 ---
 
 # Quick Start Guide
@@ -11,6 +12,7 @@ In this guide we will clone and build the product, and then use it to transform 
 ## Prerequisites
 * Git [Install guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * .NET 8 [.NET download page](https://dotnet.microsoft.com/en-us/download)
+* The OMOP database [Database Setup Guide]({% link docs/database-setup.md %})
 
 ## Build
 

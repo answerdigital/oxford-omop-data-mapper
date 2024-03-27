@@ -1,0 +1,46 @@
+﻿<Query>
+    <Sql>
+;with 
+    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
+    CosdRecords as ( 
+
+    select
+            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
+            T.staging.query('.') as Node
+    from omop_staging.cosd_staging
+    cross apply content.nodes('COSD901:COSD/*') as T(staging)
+    where T.staging.exist('Id/@root') = 1
+            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
+            and substring (FileName, 15, 2) = 'CO'
+), CO as (
+	select
+			Id,
+			Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
+			Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
+			Node.value('(ColorectalRecord/PrimaryPathway/Staging/TnmStageGroupingIntegrated)[1]', 'varchar(max)') as TnmStageGroupingIntegrated,
+			Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateIntegratedStage)[1]', 'varchar(max)') as StageDateIntegratedStage
+	from CosdRecords
+)
+select distinct
+	NhsNumber,
+	coalesce(StageDateIntegratedStage, DateOfPrimaryDiagnosisClinicallyAgreed)  as MeasurementDate,
+	TnmStageGroupingIntegrated
+from CO
+where TnmStageGroupingIntegrated is not null;
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NHSNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="MeasurementDate">
+			<Description>Measurement Date is the date on which TNM Stage Grouping (Integrated) was recorded, but if this is not available, then it is the date the Primary Cancer was confirmed or the Primary Cancer diagnosis was agreed.</Description>
+			<Origin>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+			<Origin>TNM STAGE GROUPING DATE (INTEGRATED)</Origin>
+		</Explanation>
+		<Explanation columnName="TnmStageGroupingIntegrated">
+			<Description>Is the code, using a TNM CODING EDITION, which classifies the combination of Tumour, node and metastases into stage groupings after treatment and/or after all available evidence has been collected during a Cancer Care Spell.</Description>
+			<Origin>TNM STAGE GROUPING (INTEGRATED)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
