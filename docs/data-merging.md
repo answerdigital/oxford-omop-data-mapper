@@ -55,7 +55,7 @@ Merging logic depends upon the data source.
 
 ## Death
 
-Merging logic is not needed. If a patient deaths are recorded when no such record already exists.
+Merging logic is not needed. If a patient was recorded to have died then no futher records will be recorded.
 
 ## Drug Exposure
 
@@ -97,3 +97,11 @@ Merging logic depends upon the data source.
 |Data source|Logic|
 |-----------|-----|
 | CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `HospitalProviderSpellNumber` and `person_id`. |
+
+## Measurements
+
+Merging logic depends upon the data source.
+
+|Data source|Logic|
+|-----------|-----|
+| COSD | Record the record if it does not already exist using the following columns as keys `measurement_date`, `measurement_concept_id` and `person_id`. |
