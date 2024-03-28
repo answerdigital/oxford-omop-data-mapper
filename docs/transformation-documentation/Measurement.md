@@ -15,6 +15,8 @@ has_toc: false
 * [measurement_concept_id]({% link docs/transformation-documentation/Measurement_measurement_concept_id.md %})
 * [operator_concept_id]({% link docs/transformation-documentation/Measurement_operator_concept_id.md %})
 * [value_as_number]({% link docs/transformation-documentation/Measurement_value_as_number.md %})
+* [measurement_source_concept_id]({% link docs/transformation-documentation/Measurement_measurement_source_concept_id.md %})
+* [unit_source_value]({% link docs/transformation-documentation/Measurement_unit_source_value.md %})
 
 ## CosdV9MeasurementTumourLaterality
 <a href="CosdV9MeasurementTumourLaterality.svg" target="_blank"><img src="CosdV9MeasurementTumourLaterality.svg" /></a>

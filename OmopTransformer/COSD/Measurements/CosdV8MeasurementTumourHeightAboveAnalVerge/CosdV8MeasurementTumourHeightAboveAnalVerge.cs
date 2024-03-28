@@ -29,4 +29,7 @@ internal class CosdV8MeasurementTumourHeightAboveAnalVerge : OmopMeasurement<Cos
 
     [Transform(typeof(NumberParser), nameof(Source.TumourHeightAboveAnalVerge))]
     public override int? value_as_number { get; set; }
+
+    [ConstantValue("cm", "`centimetres`")]
+    public override string? unit_source_value { get; set; }
 }

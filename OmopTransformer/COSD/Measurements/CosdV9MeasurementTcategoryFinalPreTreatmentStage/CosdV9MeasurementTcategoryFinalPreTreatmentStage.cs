@@ -23,4 +23,7 @@ internal class CosdV9MeasurementTcategoryFinalPreTreatmentStage : OmopMeasuremen
 
     [Transform(typeof(TCategoryLookup), nameof(Source.TcategoryFinalPreTreatment))]
     public override int? measurement_concept_id { get; set; }
+
+    [ConstantValue(2000500016, "TCategoryFinalPreTreatmentStage")]
+    public override int? measurement_source_concept_id { get; set; }
 }

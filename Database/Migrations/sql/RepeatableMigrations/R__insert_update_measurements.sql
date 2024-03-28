@@ -71,6 +71,7 @@ begin
 			where m.person_id = p.person_id 
 				and m.measurement_date = r.measurement_date
 				and m.measurement_concept_id = r.measurement_concept_id
+				and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
 		);
 
 	declare @columns table (Name varchar(max));

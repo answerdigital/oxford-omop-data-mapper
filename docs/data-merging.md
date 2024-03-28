@@ -104,4 +104,4 @@ Merging logic depends upon the data source.
 
 |Data source|Logic|
 |-----------|-----|
-| COSD | Record the record if it does not already exist using the following columns as keys `measurement_date`, `measurement_concept_id` and `person_id`. |
+| COSD | Record the record if it does not already exist using the following columns as keys `measurement_date`, `measurement_concept_id`, `measurement_source_concept_id` and `person_id`. |

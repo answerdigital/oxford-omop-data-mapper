@@ -23,4 +23,7 @@ internal class CosdV8MeasurementMcategoryIntegratedStage : OmopMeasurement<CosdV
 
     [Transform(typeof(MCategoryLookup), nameof(Source.MCategoryIntegratedStage))]
     public override int? measurement_concept_id { get; set; }
+
+    [ConstantValue(2000500010, "MCategoryIntegratedStage")]
+    public override int? measurement_source_concept_id { get; set; }
 }
