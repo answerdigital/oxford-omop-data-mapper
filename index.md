@@ -101,7 +101,7 @@ The current scope for the transformation at table and field level has been selec
 | *Condition Occurrence* | ✔️  |   ✔️  |      |      |
 | *Visit Occurrence*     | ✔️  |      |      |      |
 | *Visit Details*       | ✔️  |      |      |      |
-| *Measurement*         | ✔️ ❗ |      |      |      |
+| *Measurement*         | ✔️ ❗ |  ✔️    |      |      |
 | *Death*               | ✔️ |  ✔    |      |      |
 | *Procedure Occurrence* | ✔️  |  ✔️    |      |      |
 | *Drug Exposure*        | ✔  |      |      |      |
