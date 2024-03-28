@@ -63,8 +63,8 @@ where o.SourceOfReferralForOutPatientsNonPrimaryCancerPathway is not null
     	  <Origin>NHS NUMBER</Origin>
       </Explanation>
 		 <Explanation columnName="SourceOfReferralForOutPatientsNonPrimaryCancerPathway">
-		   <Description></Description>
-		   <Origin></Origin>
+		   <Description>SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY) identifies the source of referral for a Non Primary Cancer Pathway.</Description>
+		   <Origin>SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY)</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
     	  <Description>Observation date</Description>

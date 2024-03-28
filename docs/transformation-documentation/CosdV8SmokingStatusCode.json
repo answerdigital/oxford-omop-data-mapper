@@ -124,11 +124,11 @@
       "dataSource": [
         {
           "name": "SmokingStatusCode",
-          "description": "",
+          "description": "SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only.",
           "origins": [
             {
-              "origin": "",
-              "url": null
+              "origin": "SMOKING STATUS (CANCER)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/smoking_status__cancer_.html"
             }
           ]
         }

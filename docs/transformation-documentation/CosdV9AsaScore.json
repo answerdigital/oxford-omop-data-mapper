@@ -124,11 +124,11 @@
       "dataSource": [
         {
           "name": "AsaScore",
-          "description": "",
+          "description": "The physical status of the PATIENT as recorded by an anaesthetist for the operative procedure.",
           "origins": [
             {
-              "origin": "",
-              "url": null
+              "origin": "ASA PHYSICAL STATUS CLASSIFICATION SYSTEM CODE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/asa_physical_status_classification_system_code.html"
             }
           ]
         }

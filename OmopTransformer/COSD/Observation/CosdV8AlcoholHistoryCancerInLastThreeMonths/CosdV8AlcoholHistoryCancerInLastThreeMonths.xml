@@ -63,8 +63,8 @@ where o.AlcoholHistoryCancerInLastThreeMonths is not null
     	  <Origin>NHS NUMBER</Origin>
       </Explanation>
 		 <Explanation columnName="AlcoholHistoryCancerInLastThreeMonths">
-		   <Description></Description>
-		   <Origin></Origin>
+		   <Description>The current history of alcohol consumption for the PATIENT during a Cancer Care Spell.</Description>
+		   <Origin>ALCOHOL HISTORY (CANCER IN LAST THREE MONTHS)</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
     	  <Description>Observation date</Description>

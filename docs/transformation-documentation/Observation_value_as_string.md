@@ -9,7 +9,7 @@ has_toc: false
 ### CosdV9SourceOfReferralForOutpatients
 * Value copied from `SourceOfReferralForOutpatients`
 
-* `SourceOfReferralForOutpatients`  []()
+* `SourceOfReferralForOutpatients` For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS. [SOURCE OF REFERRAL FOR OUT-PATIENTS](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients.html)
 
 ```sql
 ;with 
@@ -75,7 +75,7 @@ where o.SourceOfReferralForOutpatients is not null
 ### CosdV9SourceOfReferralForNonPrimaryCancerPathway
 * Value copied from `SourceOfReferralForNonPrimaryCancerPathway`
 
-* `SourceOfReferralForNonPrimaryCancerPathway`  []()
+* `SourceOfReferralForNonPrimaryCancerPathway` SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY) identifies the source of referral for a Non Primary Cancer Pathway. [SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY)](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients__non_primary_cancer_pathway_.html)
 
 ```sql
 ;with 
@@ -141,7 +141,7 @@ where o.SourceOfReferralForNonPrimaryCancerPathway is not null
 ### CosdV9PersonSexualOrientationCodeAtDiagnosis
 * Value copied from `PersonSexualOrientationCodeAtDiagnosis`
 
-* `PersonSexualOrientationCodeAtDiagnosis`  []()
+* `PersonSexualOrientationCodeAtDiagnosis` PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS) is the PERSON STATED SEXUAL ORIENTATION CODE at the time of the PATIENT DIAGNOSIS. [PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/person_stated_sexual_orientation_code__at_diagnosis_.html)
 
 ```sql
 ;with 
@@ -195,7 +195,7 @@ where o.PersonSexualOrientationCodeAtDiagnosis is not null
 ### CosdV9HistoryOfAlcoholPast
 * Value copied from `HistoryOfAlcoholPast`
 
-* `HistoryOfAlcoholPast`  []()
+* `HistoryOfAlcoholPast` The past history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER BEFORE LAST THREE MONTHS)](https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_before_last_three_months_.html)
 
 ```sql
 ;with 
@@ -261,7 +261,7 @@ where o.HistoryOfAlcoholPast is not null
 ### CosdV9HistoryOfAlcoholCurrent
 * Value copied from `HistoryOfAlcoholCurrent`
 
-* `HistoryOfAlcoholCurrent`  []()
+* `HistoryOfAlcoholCurrent` The current history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER IN LAST THREE MONTHS)](https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_in_last_three_months_.html)
 
 ```sql
 ;with 
@@ -327,7 +327,7 @@ where o.HistoryOfAlcoholCurrent is not null
 ### CosdV9FamilialCancerSyndrome
 * Value copied from `FamilialCancerSyndrome`
 
-* `FamilialCancerSyndrome`  []()
+* `FamilialCancerSyndrome` An indication of whether there is a possible or confirmed familial cancer syndrome during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME INDICATOR](https://www.datadictionary.nhs.uk/data_elements/familial_cancer_syndrome_indicator.html)
 
 ```sql
 ;with 
@@ -393,7 +393,7 @@ where o.FamilialCancerSyndrome is not null
 ### CosdV9FamilialCancerSyndromeSubsidiaryComment
 * Value copied from `FamilialCancerSyndromeSubsidiaryComment`
 
-* `FamilialCancerSyndromeSubsidiaryComment`  []()
+* `FamilialCancerSyndromeSubsidiaryComment` FAMILIAL CANCER SYNDROME COMMENT is free text further information recorded where the FAMILIAL CANCER SYNDROME INDICATOR is National Code 'Y - Yes' or 'P - Possible', to identify distinct syndromes which may have different treatment decisions or outcomes that cannot be coded separately during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME COMMENT](https://www.datadictionary.nhs.uk/data_elements/familial_cancer_syndrome_comment.html)
 
 ```sql
 ;with 
@@ -459,7 +459,7 @@ where o.FamilialCancerSyndromeSubsidiaryComment is not null
 ### CosdV8SourceOfReferralOutPatients
 * Value copied from `SourceOfReferralOutPatients`
 
-* `SourceOfReferralOutPatients`  []()
+* `SourceOfReferralOutPatients` For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS. [SOURCE OF REFERRAL FOR OUT-PATIENTS](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients.html)
 
 ```sql
 ;with 
@@ -525,7 +525,7 @@ where o.SourceOfReferralOutPatients is not null
 ### CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway
 * Value copied from `SourceOfReferralForOutPatientsNonPrimaryCancerPathway`
 
-* `SourceOfReferralForOutPatientsNonPrimaryCancerPathway`  []()
+* `SourceOfReferralForOutPatientsNonPrimaryCancerPathway` SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY) identifies the source of referral for a Non Primary Cancer Pathway. [SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY)](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients__non_primary_cancer_pathway_.html)
 
 ```sql
 ;with 
@@ -591,7 +591,7 @@ where o.SourceOfReferralForOutPatientsNonPrimaryCancerPathway is not null
 ### CosdV8PersonStatedSexualOrientationCodeAtDiagnosis
 * Value copied from `PersonStatedSexualOrientationCodeAtDiagnosis`
 
-* `PersonStatedSexualOrientationCodeAtDiagnosis`  []()
+* `PersonStatedSexualOrientationCodeAtDiagnosis` PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS) is the PERSON STATED SEXUAL ORIENTATION CODE at the time of the PATIENT DIAGNOSIS. [PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/person_stated_sexual_orientation_code__at_diagnosis_.html)
 
 ```sql
 ;with 
@@ -645,7 +645,7 @@ where o.PersonStatedSexualOrientationCodeAtDiagnosis is not null
 ### CosdV8FamilialCancerSyndromeIndicator
 * Value copied from `FamilialCancerSyndromeIndicator`
 
-* `FamilialCancerSyndromeIndicator`  []()
+* `FamilialCancerSyndromeIndicator` An indication of whether there is a possible or confirmed familial cancer syndrome during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME INDICATOR](https://www.datadictionary.nhs.uk/data_elements/familial_cancer_syndrome_indicator.html)
 
 ```sql
 ;with 
@@ -711,7 +711,7 @@ where o.FamilialCancerSyndromeIndicator is not null
 ### CosdV8AlcoholHistoryCancerInLastThreeMonths
 * Value copied from `AlcoholHistoryCancerInLastThreeMonths`
 
-* `AlcoholHistoryCancerInLastThreeMonths`  []()
+* `AlcoholHistoryCancerInLastThreeMonths` The current history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER IN LAST THREE MONTHS)](https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_in_last_three_months_.html)
 
 ```sql
 ;with 
@@ -777,7 +777,7 @@ where o.AlcoholHistoryCancerInLastThreeMonths is not null
 ### CosdV8AlcoholHistoryCancerBeforeLastThreeMonths
 * Value copied from `AlcoholHistoryCancerBeforeLastThreeMonths`
 
-* `AlcoholHistoryCancerBeforeLastThreeMonths`  []()
+* `AlcoholHistoryCancerBeforeLastThreeMonths` The past history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER BEFORE LAST THREE MONTHS)](https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_before_last_three_months_.html)
 
 ```sql
 ;with 

@@ -27,7 +27,7 @@ has_toc: false
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20CosdV8FamilialCancerSyndromeIndicator%20mapping){: .btn }
 ### CosdV8AlcoholHistoryCancerInLastThreeMonths
-* Constant value set to `2000500004`. History Of Alcohol (Past)
+* Constant value set to `2000500003`. History Of Alcohol (Current)
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20CosdV8AlcoholHistoryCancerInLastThreeMonths%20mapping){: .btn }
 ### CosdV8AlcoholHistoryCancerBeforeLastThreeMonths

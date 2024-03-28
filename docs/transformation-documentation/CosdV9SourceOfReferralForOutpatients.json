@@ -124,11 +124,11 @@
       "dataSource": [
         {
           "name": "SourceOfReferralForOutpatients",
-          "description": "",
+          "description": "For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS.",
           "origins": [
             {
-              "origin": "",
-              "url": null
+              "origin": "SOURCE OF REFERRAL FOR OUT-PATIENTS",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients.html"
             }
           ]
         }

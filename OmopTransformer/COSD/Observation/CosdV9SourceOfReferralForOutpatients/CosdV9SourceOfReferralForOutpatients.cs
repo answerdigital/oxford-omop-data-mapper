@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV9SourceOfReferralForOutpatients;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV9SourceOfReferralForOutpatients : OmopObservation<CosdV9SourceOfReferralForOutpatientsRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

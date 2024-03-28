@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV9PerformanceStatusAdult;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV9PerformanceStatusAdult : OmopObservation<CosdV9PerformanceStatusAdultRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

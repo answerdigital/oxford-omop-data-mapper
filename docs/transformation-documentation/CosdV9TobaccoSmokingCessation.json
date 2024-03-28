@@ -124,11 +124,11 @@
       "dataSource": [
         {
           "name": "TobaccoSmokingCessation",
-          "description": "",
+          "description": "An indication of whether treatment was given to the PATIENT for tobacco smoking cessation.",
           "origins": [
             {
-              "origin": "",
-              "url": null
+              "origin": "TOBACCO SMOKING CESSATION TREATMENT INDICATION CODE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/tobacco_smoking_cessation_treatment_indication_code.html"
             }
           ]
         }

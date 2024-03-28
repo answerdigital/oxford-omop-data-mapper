@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV8AlcoholHistoryCancerBeforeLastThreeMonths;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV8AlcoholHistoryCancerBeforeLastThreeMonths : OmopObservation<CosdV8AlcoholHistoryCancerBeforeLastThreeMonthsRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

@@ -63,8 +63,8 @@ where o.AsaScore is not null
     	  <Origin>NHS NUMBER</Origin>
       </Explanation>
 		 <Explanation columnName="AsaScore">
-		   <Description></Description>
-		   <Origin></Origin>
+		   <Description>The physical status of the PATIENT as recorded by an anaesthetist for the operative procedure.</Description>
+		   <Origin>ASA PHYSICAL STATUS CLASSIFICATION SYSTEM CODE</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
     	  <Description>Observation date</Description>

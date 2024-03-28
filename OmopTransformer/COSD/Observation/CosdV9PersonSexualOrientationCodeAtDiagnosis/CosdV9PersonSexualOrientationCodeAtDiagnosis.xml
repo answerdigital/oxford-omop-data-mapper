@@ -51,8 +51,8 @@ where o.PersonSexualOrientationCodeAtDiagnosis is not null
     	  <Origin>NHS NUMBER</Origin>
       </Explanation>
 		 <Explanation columnName="PersonSexualOrientationCodeAtDiagnosis">
-		   <Description></Description>
-		   <Origin></Origin>
+		   <Description>PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS) is the PERSON STATED SEXUAL ORIENTATION CODE at the time of the PATIENT DIAGNOSIS.</Description>
+		   <Origin>PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
     	  <Description>Observation date</Description>

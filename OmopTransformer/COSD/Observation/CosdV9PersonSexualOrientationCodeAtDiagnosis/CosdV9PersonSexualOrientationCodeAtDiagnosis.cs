@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV9PersonSexualOrientationCodeAtDiagnosis;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV9PersonSexualOrientationCodeAtDiagnosis : OmopObservation<CosdV9PersonSexualOrientationCodeAtDiagnosisRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

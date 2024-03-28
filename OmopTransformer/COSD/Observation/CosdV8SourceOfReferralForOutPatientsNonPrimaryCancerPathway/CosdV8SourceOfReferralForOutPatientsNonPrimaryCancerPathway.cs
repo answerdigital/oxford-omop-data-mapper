@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway : OmopObservation<CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathwayRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

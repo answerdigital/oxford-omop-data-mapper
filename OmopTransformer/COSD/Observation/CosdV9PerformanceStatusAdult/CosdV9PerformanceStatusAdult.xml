@@ -63,8 +63,8 @@ where o.PerformanceStatusAdult is not null
     	  <Origin>NHS NUMBER</Origin>
       </Explanation>
 		 <Explanation columnName="PerformanceStatusAdult">
-		   <Description></Description>
-		   <Origin></Origin>
+		   <Description>A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY.</Description>
+		   <Origin>PERFORMANCE STATUS (ADULT)</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
     	  <Description>Observation date</Description>

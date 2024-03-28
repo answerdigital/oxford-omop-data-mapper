@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV9AsaScore;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV9AsaScore : OmopObservation<CosdV9AsaScoreRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

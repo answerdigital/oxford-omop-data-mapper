@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV9TobaccoSmokingStatus;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV9TobaccoSmokingStatus : OmopObservation<CosdV9TobaccoSmokingStatusRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

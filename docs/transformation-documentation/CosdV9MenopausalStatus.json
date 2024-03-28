@@ -92,11 +92,11 @@
       "dataSource": [
         {
           "name": "MenopausalStatus",
-          "description": "",
+          "description": "MENOPAUSAL STATUS (AT DIAGNOSIS) is the MENOPAUSAL STATUS of a PATIENT at PATIENT DIAGNOSIS.",
           "origins": [
             {
-              "origin": "",
-              "url": null
+              "origin": "MENOPAUSAL STATUS (AT DIAGNOSIS)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/menopausal_status__at_diagnosis_.html"
             }
           ]
         }

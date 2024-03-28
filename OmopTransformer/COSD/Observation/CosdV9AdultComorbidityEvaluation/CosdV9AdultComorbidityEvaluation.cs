@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV9AdultComorbidityEvaluation;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV9AdultComorbidityEvaluation : OmopObservation<CosdV9AdultComorbidityEvaluationRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

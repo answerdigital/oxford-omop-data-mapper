@@ -63,8 +63,8 @@ where o.FamilialCancerSyndrome is not null
     	  <Origin>NHS NUMBER</Origin>
       </Explanation>
 		 <Explanation columnName="FamilialCancerSyndrome">
-		   <Description></Description>
-		   <Origin></Origin>
+		   <Description>An indication of whether there is a possible or confirmed familial cancer syndrome during a Cancer Care Spell.</Description>
+		   <Origin>FAMILIAL CANCER SYNDROME INDICATOR</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
     	  <Description>Observation date</Description>

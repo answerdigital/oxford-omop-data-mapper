@@ -124,11 +124,11 @@
       "dataSource": [
         {
           "name": "SourceOfReferralForOutPatientsNonPrimaryCancerPathway",
-          "description": "",
+          "description": "SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY) identifies the source of referral for a Non Primary Cancer Pathway.",
           "origins": [
             {
-              "origin": "",
-              "url": null
+              "origin": "SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients__non_primary_cancer_pathway_.html"
             }
           ]
         }

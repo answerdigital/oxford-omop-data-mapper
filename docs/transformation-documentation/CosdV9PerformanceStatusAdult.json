@@ -124,11 +124,11 @@
       "dataSource": [
         {
           "name": "PerformanceStatusAdult",
-          "description": "",
+          "description": "A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY.",
           "origins": [
             {
-              "origin": "",
-              "url": null
+              "origin": "PERFORMANCE STATUS (ADULT)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/performance_status__adult_.html"
             }
           ]
         }

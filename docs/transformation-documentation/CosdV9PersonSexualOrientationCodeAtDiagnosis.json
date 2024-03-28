@@ -92,11 +92,11 @@
       "dataSource": [
         {
           "name": "PersonSexualOrientationCodeAtDiagnosis",
-          "description": "",
+          "description": "PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS) is the PERSON STATED SEXUAL ORIENTATION CODE at the time of the PATIENT DIAGNOSIS.",
           "origins": [
             {
-              "origin": "",
-              "url": null
+              "origin": "PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/person_stated_sexual_orientation_code__at_diagnosis_.html"
             }
           ]
         }

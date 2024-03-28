@@ -63,8 +63,8 @@ where o.AdultComorbidityEvaluation is not null
     	  <Origin>NHS NUMBER</Origin>
       </Explanation>
 		 <Explanation columnName="AdultComorbidityEvaluation">
-		   <Description></Description>
-		   <Origin></Origin>
+		   <Description>The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'.</Description>
+		   <Origin>ADULT COMORBIDITY EVALUATION - 27 SCORE</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
     	  <Description>Observation date</Description>

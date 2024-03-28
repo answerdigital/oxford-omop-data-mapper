@@ -63,8 +63,8 @@ where o.FamilialCancerSyndromeSubsidiaryComment is not null
     	  <Origin>NHS NUMBER</Origin>
       </Explanation>
 		 <Explanation columnName="FamilialCancerSyndromeSubsidiaryComment">
-		   <Description></Description>
-		   <Origin></Origin>
+		   <Description>FAMILIAL CANCER SYNDROME COMMENT is free text further information recorded where the FAMILIAL CANCER SYNDROME INDICATOR is National Code 'Y - Yes' or 'P - Possible', to identify distinct syndromes which may have different treatment decisions or outcomes that cannot be coded separately during a Cancer Care Spell.</Description>
+		   <Origin>FAMILIAL CANCER SYNDROME COMMENT</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
     	  <Description>Observation date</Description>

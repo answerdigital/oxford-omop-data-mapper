@@ -63,8 +63,8 @@ where o.SmokingStatusCode is not null
     	  <Origin>NHS NUMBER</Origin>
       </Explanation>
 		 <Explanation columnName="SmokingStatusCode">
-		   <Description></Description>
-		   <Origin></Origin>
+		   <Description>SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only.</Description>
+		   <Origin>SMOKING STATUS (CANCER)</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
     	  <Description>Observation date</Description>

@@ -63,8 +63,8 @@ where o.SourceOfReferralForOutpatients is not null
     	  <Origin>NHS NUMBER</Origin>
       </Explanation>
 		 <Explanation columnName="SourceOfReferralForOutpatients">
-		   <Description></Description>
-		   <Origin></Origin>
+		   <Description>For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS.</Description>
+		   <Origin>SOURCE OF REFERRAL FOR OUT-PATIENTS</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
     	  <Description>Observation date</Description>

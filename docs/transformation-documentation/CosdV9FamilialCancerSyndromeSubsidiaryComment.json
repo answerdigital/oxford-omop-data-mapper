@@ -22,7 +22,7 @@
     },
     {
       "name": "observation_concept_id",
-      "operation_description": "Constant value set to `4229852`. Knowledge level: procedure",
+      "operation_description": "Constant value set to `44782478`. Hereditary cancer-predisposing syndrome",
       "dataSource": null,
       "query": null,
       "lookup_table_markdown": null
@@ -124,11 +124,11 @@
       "dataSource": [
         {
           "name": "FamilialCancerSyndromeSubsidiaryComment",
-          "description": "",
+          "description": "FAMILIAL CANCER SYNDROME COMMENT is free text further information recorded where the FAMILIAL CANCER SYNDROME INDICATOR is National Code 'Y - Yes' or 'P - Possible', to identify distinct syndromes which may have different treatment decisions or outcomes that cannot be coded separately during a Cancer Care Spell.",
           "origins": [
             {
-              "origin": "",
-              "url": null
+              "origin": "FAMILIAL CANCER SYNDROME COMMENT",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/familial_cancer_syndrome_comment.html"
             }
           ]
         }

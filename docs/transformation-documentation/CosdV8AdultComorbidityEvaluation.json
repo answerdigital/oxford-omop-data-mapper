@@ -124,11 +124,11 @@
       "dataSource": [
         {
           "name": "AdultComorbidityEvaluation",
-          "description": "",
+          "description": "The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'.",
           "origins": [
             {
-              "origin": "",
-              "url": null
+              "origin": "ADULT COMORBIDITY EVALUATION - 27 SCORE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/adult_comorbidity_evaluation_-_27_score.html"
             }
           ]
         }

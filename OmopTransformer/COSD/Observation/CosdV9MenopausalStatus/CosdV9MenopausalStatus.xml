@@ -51,8 +51,8 @@ where o.MenopausalStatus is not null
     	  <Origin>NHS NUMBER</Origin>
       </Explanation>
 		 <Explanation columnName="MenopausalStatus">
-		   <Description></Description>
-		   <Origin></Origin>
+		   <Description>MENOPAUSAL STATUS (AT DIAGNOSIS) is the MENOPAUSAL STATUS of a PATIENT at PATIENT DIAGNOSIS.</Description>
+		   <Origin>MENOPAUSAL STATUS (AT DIAGNOSIS)</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
     	  <Description>Observation date</Description>

@@ -63,8 +63,8 @@ where o.TobaccoSmokingCessation is not null
     	  <Origin>NHS NUMBER</Origin>
       </Explanation>
 		 <Explanation columnName="TobaccoSmokingCessation">
-		   <Description></Description>
-		   <Origin></Origin>
+		   <Description>An indication of whether treatment was given to the PATIENT for tobacco smoking cessation.</Description>
+		   <Origin>TOBACCO SMOKING CESSATION TREATMENT INDICATION CODE</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
     	  <Description>Observation date</Description>

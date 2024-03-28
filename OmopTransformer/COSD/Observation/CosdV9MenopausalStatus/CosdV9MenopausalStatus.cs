@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV9MenopausalStatus;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV9MenopausalStatus : OmopObservation<CosdV9MenopausalStatusRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

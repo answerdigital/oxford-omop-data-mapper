@@ -124,11 +124,11 @@
       "dataSource": [
         {
           "name": "HistoryOfAlcoholCurrent",
-          "description": "",
+          "description": "The current history of alcohol consumption for the PATIENT during a Cancer Care Spell.",
           "origins": [
             {
-              "origin": "",
-              "url": null
+              "origin": "ALCOHOL HISTORY (CANCER IN LAST THREE MONTHS)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_in_last_three_months_.html"
             }
           ]
         }

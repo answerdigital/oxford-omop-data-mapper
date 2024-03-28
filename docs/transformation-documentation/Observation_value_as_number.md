@@ -10,7 +10,7 @@ has_toc: false
 Source column  `TobaccoSmokingStatus`.
 Converts text to integers.
 
-* `TobaccoSmokingStatus`  []()
+* `TobaccoSmokingStatus` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/smoking_status__cancer_.html)
 
 ```sql
 ;with 
@@ -77,7 +77,7 @@ where o.TobaccoSmokingStatus is not null
 Source column  `TobaccoSmokingCessation`.
 Converts text to integers.
 
-* `TobaccoSmokingCessation`  []()
+* `TobaccoSmokingCessation` An indication of whether treatment was given to the PATIENT for tobacco smoking cessation. [TOBACCO SMOKING CESSATION TREATMENT INDICATION CODE](https://www.datadictionary.nhs.uk/data_elements/tobacco_smoking_cessation_treatment_indication_code.html)
 
 ```sql
 ;with 
@@ -144,7 +144,7 @@ where o.TobaccoSmokingCessation is not null
 Source column  `PerformanceStatusAdult`.
 Converts text to integers.
 
-* `PerformanceStatusAdult`  []()
+* `PerformanceStatusAdult` A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY. [PERFORMANCE STATUS (ADULT)](https://www.datadictionary.nhs.uk/data_elements/performance_status__adult_.html)
 
 ```sql
 ;with 
@@ -211,7 +211,7 @@ where o.PerformanceStatusAdult is not null
 Source column  `MenopausalStatus`.
 Converts text to integers.
 
-* `MenopausalStatus`  []()
+* `MenopausalStatus` MENOPAUSAL STATUS (AT DIAGNOSIS) is the MENOPAUSAL STATUS of a PATIENT at PATIENT DIAGNOSIS. [MENOPAUSAL STATUS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/menopausal_status__at_diagnosis_.html)
 
 ```sql
 ;with 
@@ -266,7 +266,7 @@ where o.MenopausalStatus is not null
 Source column  `AsaScore`.
 Converts text to integers.
 
-* `AsaScore`  []()
+* `AsaScore` The physical status of the PATIENT as recorded by an anaesthetist for the operative procedure. [ASA PHYSICAL STATUS CLASSIFICATION SYSTEM CODE](https://www.datadictionary.nhs.uk/data_elements/asa_physical_status_classification_system_code.html)
 
 ```sql
 ;with 
@@ -333,7 +333,7 @@ where o.AsaScore is not null
 Source column  `AdultComorbidityEvaluation`.
 Converts text to integers.
 
-* `AdultComorbidityEvaluation`  []()
+* `AdultComorbidityEvaluation` The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'. [ADULT COMORBIDITY EVALUATION - 27 SCORE](https://www.datadictionary.nhs.uk/data_elements/adult_comorbidity_evaluation_-_27_score.html)
 
 ```sql
 ;with 
@@ -400,7 +400,7 @@ where o.AdultComorbidityEvaluation is not null
 Source column  `SmokingStatusCode`.
 Converts text to integers.
 
-* `SmokingStatusCode`  []()
+* `SmokingStatusCode` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/smoking_status__cancer_.html)
 
 ```sql
 ;with 
@@ -467,7 +467,7 @@ where o.SmokingStatusCode is not null
 Source column  `AdultPerformanceStatus`.
 Converts text to integers.
 
-* `AdultPerformanceStatus`  []()
+* `AdultPerformanceStatus` A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY. [PERFORMANCE STATUS (ADULT)](https://www.datadictionary.nhs.uk/data_elements/performance_status__adult_.html)
 
 ```sql
 ;with 
@@ -534,7 +534,7 @@ where o.AdultPerformanceStatus is not null
 Source column  `AdultComorbidityEvaluation`.
 Converts text to integers.
 
-* `AdultComorbidityEvaluation`  []()
+* `AdultComorbidityEvaluation` The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'. [ADULT COMORBIDITY EVALUATION - 27 SCORE](https://www.datadictionary.nhs.uk/data_elements/adult_comorbidity_evaluation_-_27_score.html)
 
 ```sql
 ;with 

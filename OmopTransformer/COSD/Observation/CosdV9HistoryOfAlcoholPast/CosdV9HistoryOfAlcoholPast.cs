@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV9HistoryOfAlcoholPast;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV9HistoryOfAlcoholPast : OmopObservation<CosdV9HistoryOfAlcoholPastRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

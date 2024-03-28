@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV8AlcoholHistoryCancerInLastThreeMonths;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV8AlcoholHistoryCancerInLastThreeMonths : OmopObservation<CosdV8AlcoholHistoryCancerInLastThreeMonthsRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]
@@ -24,6 +25,6 @@ internal class CosdV8AlcoholHistoryCancerInLastThreeMonths : OmopObservation<Cos
     [CopyValue(nameof(Source.AlcoholHistoryCancerInLastThreeMonths))]
     public override string? value_as_string { get; set; }
 
-    [ConstantValue(2000500004, "History Of Alcohol (Past)")]
+    [ConstantValue(2000500003, "History Of Alcohol (Current)")]
     public override int? observation_source_concept_id { get; set; }
 }

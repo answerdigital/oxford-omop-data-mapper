@@ -4,12 +4,13 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV9FamilialCancerSyndromeSubsidiaryComment;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV9FamilialCancerSyndromeSubsidiaryComment : OmopObservation<CosdV9FamilialCancerSyndromeSubsidiaryCommentRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]
     public override string? nhs_number { get; set; }
 
-    [ConstantValue(4229852, "Knowledge level: procedure")]
+    [ConstantValue(44782478, "Hereditary cancer-predisposing syndrome")]
     public override int? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.Date))]

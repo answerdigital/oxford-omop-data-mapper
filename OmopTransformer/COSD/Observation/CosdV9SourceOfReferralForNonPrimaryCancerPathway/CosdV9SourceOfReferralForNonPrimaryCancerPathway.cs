@@ -4,6 +4,7 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.COSD.Observation.CosdV9SourceOfReferralForNonPrimaryCancerPathway;
 
+[Notes("Notes", DocumentationNotes.ApproximatedDatesWarning)]
 internal class CosdV9SourceOfReferralForNonPrimaryCancerPathway : OmopObservation<CosdV9SourceOfReferralForNonPrimaryCancerPathwayRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]
