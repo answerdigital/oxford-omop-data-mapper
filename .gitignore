@@ -2,6 +2,7 @@ TestResults/
 .vs/
 publish.zip
 publish/
+.env
 
 # Not sure what a .gitignore is?
 # See: https://git-scm.com/docs/gitignore
