@@ -31,6 +31,7 @@ Create a `.env` file in the Migrations folder with the following structure:
 dbname="omop"
 user="user"
 pass="password"
+host="host.docker.internal:1433"
 ```
 
 ⚠️ **Note:** The `.env` file is excluded from Git via `.gitignore` to protect sensitive credentials.
