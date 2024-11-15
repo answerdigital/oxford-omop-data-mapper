@@ -2,6 +2,19 @@
 
 internal class APCRecord
 {
+    public APCRecord(APC apc, List<OverseasVisitor> overseasVisitors, List<IcdDiagnosis> icdDiagnoses, List<ReadDiagnosis> readDiagnoses, List<OpcsProcedure> opcdProcedure, List<ReadProcedure> readProcedure, List<CareLocation> careLocations, List<Birth> births, List<CriticalCare> criticalCareItems)
+    {
+        APC = apc;
+        OverseasVisitors = overseasVisitors;
+        IcdDiagnoses = icdDiagnoses;
+        ReadDiagnoses = readDiagnoses;
+        OpcdProcedure = opcdProcedure;
+        ReadProcedure = readProcedure;
+        CareLocations = careLocations;
+        Births = births;
+        CriticalCareItems = criticalCareItems;
+    }
+
     public APC APC { get; init; }
     public List<OverseasVisitor> OverseasVisitors { get; init; }
     public List<IcdDiagnosis> IcdDiagnoses { get; init; }

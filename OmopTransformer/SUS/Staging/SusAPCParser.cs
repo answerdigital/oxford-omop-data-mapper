@@ -461,18 +461,16 @@ internal class SusAPCParser : ISusAPCParser
             }
 
             yield return
-                new APCRecord
-                {
-                    OverseasVisitors = visitors,
-                    IcdDiagnoses = icdDiagnoses,
-                    ReadDiagnoses = readDiagnoses,
-                    OpcdProcedure = opcdProcedure,
-                    ReadProcedure = readProcedure,
-                    CareLocations = careLocations,
-                    Births = births,
-                    CriticalCareItems = criticalCareItems,
-                    APC = record
-                };
+                new APCRecord(
+                    record,
+                    visitors,
+                    icdDiagnoses,
+                    readDiagnoses,
+                    opcdProcedure,
+                    readProcedure,
+                    careLocations,
+                    births,
+                    criticalCareItems);
         }
     }
 }
