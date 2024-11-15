@@ -85,7 +85,9 @@ internal class ColourIdTransformer : ILookup
     public string[] ColumnNotes { get; } = ["colours"];
 }
 
+#pragma warning disable CS9113 // Parameter is unread.
 internal class OneTwoThreeSelector(string input) : ISelector
+#pragma warning restore CS9113 // Parameter is unread.
 {
     public object? GetValue() => (int?)123;
 }

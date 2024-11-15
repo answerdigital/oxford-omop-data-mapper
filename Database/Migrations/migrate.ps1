@@ -40,7 +40,7 @@ docker run `
     -v ${pwd}/sql:/flyway/sql `
     -v ${pwd}/conf:/flyway/conf `
     flyway/flyway `
-    -url=jdbc:"sqlserver://host.docker.internal:1433;databaseName=$($env.dbname);encrypt=false" `
+    -url=jdbc:"sqlserver://$($env.host);databaseName=$($env.dbname);encrypt=false" `
     -user="$($env.user)" `
     -password="$($env.password)" `
     migrate migrate
