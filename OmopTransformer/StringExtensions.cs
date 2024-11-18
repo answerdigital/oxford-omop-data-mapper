@@ -30,4 +30,14 @@ public static class StringExtensions
     }
 
     public static string? TrimWhitespace(this string? text) => text?.TrimStart(' ').TrimEnd(' ');
+
+    public static string? GetTrimmedValueOrNull(this string? text)
+    {
+        text = text.TrimWhitespace();
+
+        if (string.IsNullOrEmpty(text))
+            return null;
+
+        return text;
+    }
 }
