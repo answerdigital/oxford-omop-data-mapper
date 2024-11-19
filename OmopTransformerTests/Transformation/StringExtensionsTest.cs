@@ -24,8 +24,11 @@ public class StringExtensionsTests
     [ExpectedException(typeof(ArgumentNullException))]
     public void SubstringOrNull_NullInput_ThrowsArgumentNullException()
     {
-        string text = null;
+        string? text = null;
+
+#pragma warning disable CS8604
         text.SubstringOrNull(0, 1);
+#pragma warning restore CS8604
     }
 
     [DataTestMethod]
