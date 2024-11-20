@@ -185,7 +185,7 @@ internal class Program
             }
             else
             {
-                await Console.Error.WriteLineAsync("Unknown staging type {stagingOptions.Type}.");
+                await Console.Error.WriteLineAsync($"Unknown staging type {stagingOptions.Type}.");
                 return;
             }
         }
@@ -227,7 +227,7 @@ internal class Program
             }
             else
             {
-                await Console.Error.WriteLineAsync("Unknown transform type {stagingOptions.Type}.");
+                await Console.Error.WriteLineAsync($"Unknown transform type {transformOptions.Type}.");
             }
         }
 

@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using OmopTransformer.RTDS.Parser;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
