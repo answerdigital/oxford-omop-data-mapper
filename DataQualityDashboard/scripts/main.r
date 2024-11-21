@@ -40,7 +40,16 @@ checkLevels <- c("TABLE", "FIELD", "CONCEPT")
 checkNames <- c()
 
 # Tables to exclude from checks
-tablesToExclude <- c("CONCEPT", "VOCABULARY", "CONCEPT_ANCESTOR", "CONCEPT_RELATIONSHIP", "CONCEPT_CLASS", "CONCEPT_SYNONYM", "RELATIONSHIP", "DOMAIN")
+tablesToExclude <- c(
+  "CONCEPT",
+  "VOCABULARY",
+  "CONCEPT_ANCESTOR",
+  "CONCEPT_RELATIONSHIP",
+  "CONCEPT_CLASS",
+  "CONCEPT_SYNONYM",
+  "RELATIONSHIP",
+  "DOMAIN"
+)
 
 # Execute the data quality checks
 DataQualityDashboard::executeDqChecks(

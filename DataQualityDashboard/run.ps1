@@ -5,7 +5,7 @@ param (
 # Build the Docker image
 docker build -t dqdash -f Dockerfile .
 
-# Generate a unique container name
+# Generate container name
 $containerName = "temp-container"
 
 # Generate host path locations

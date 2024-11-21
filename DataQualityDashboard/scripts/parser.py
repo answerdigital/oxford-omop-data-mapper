@@ -78,8 +78,9 @@ def filter_json(path: str) -> Dict:
     return filtered_data
 
 
-filtered_data = filter_json(path='output/results.json')
+if __name__ == "__main__":
+    filtered_data = filter_json(path='output/results.json')
 
-# Save the filtered results to a new file
-with open('failed_checks.json', 'w') as output_file:
-    json.dump(filtered_data, output_file, indent=4)
+    # Save the filtered results to a new file
+    with open('failed_checks.json', 'w') as output_file:
+        json.dump(filtered_data, output_file, indent=4)
