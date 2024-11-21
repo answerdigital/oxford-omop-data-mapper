@@ -4,6 +4,9 @@ publish.zip
 publish/
 .env
 
+# DQ dashboard driver
+DataQualityDashboard/drivers/*.jre8.jar
+
 # Not sure what a .gitignore is?
 # See: https://git-scm.com/docs/gitignore
 
