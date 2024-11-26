@@ -1,4 +1,6 @@
-﻿namespace OmopTransformer.SUS.Staging;
+﻿using OmopTransformer.SUS.Staging.APC;
+
+namespace OmopTransformer.SUS.Staging;
 
 internal interface ISusInserter
 {

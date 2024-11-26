@@ -1,7 +1,12 @@
-﻿using System.Globalization;
+﻿using System.Buffers;
+using System.Diagnostics.Metrics;
+using System.Globalization;
+using System.Reflection.Emit;
 using CsvHelper;
+using OmopTransformer.CDS.Parser;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
-namespace OmopTransformer.SUS.Staging;
+namespace OmopTransformer.SUS.Staging.APC;
 
 internal class SusAPCParser : ISusAPCParser
 {
@@ -11,23 +16,23 @@ internal class SusAPCParser : ISusAPCParser
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
         csv.Read();
         csv.ReadHeader();
-                
+
         while (csv.Read())
         {
             cancellationToken.ThrowIfCancellationRequested();
-                    
+
             var visitors = new List<OverseasVisitor>();
             var icdDiagnoses = new List<IcdDiagnosis>();
             var readDiagnoses = new List<ReadDiagnosis>();
             var opcdProcedure = new List<OpcsProcedure>();
-            var readProcedure = new List<ReadProcedure>();
-            var careLocations = new List<CareLocation>();
-            var births = new List<Birth>();
-            var criticalCareItems = new List<CriticalCare>();
+            var readProcedure = new List<APCReadProcedure>();
+            var careLocations = new List<APCCareLocation>();
+            var births = new List<APCBirth>();
+            var criticalCareItems = new List<APCCriticalCare>();
 
             Guid messageId = Guid.NewGuid();
 
-            var record = new APC
+            var record = new APCRow
             {
                 MessageId = messageId,
                 GeneratedRecordIdentifier = csv.GetField<string>("Generated Record Identifier").GetTrimmedValueOrNull(),
@@ -336,7 +341,7 @@ internal class SusAPCParser : ISusAPCParser
 
             for (int i = 0; i < 24; i++)
             {
-                var procedure = new ReadProcedure
+                var procedure = new APCReadProcedure
                 {
                     MessageId = messageId,
                     ProcedureRead = csv[++index].GetTrimmedValueOrNull(),
@@ -356,7 +361,7 @@ internal class SusAPCParser : ISusAPCParser
 
             for (int i = 0; i < 24; i++)
             {
-                var careLocation = new CareLocation
+                var careLocation = new APCCareLocation
                 {
                     MessageId = messageId,
                     WardCode = csv[++index].GetTrimmedValueOrNull(),
@@ -386,7 +391,7 @@ internal class SusAPCParser : ISusAPCParser
 
             for (int i = 0; i < 9; i++)
             {
-                var birth = new Birth
+                var birth = new APCBirth
                 {
                     MessageId = messageId,
                     BirthOrderBaby = csv[++index].GetTrimmedValueOrNull(),
@@ -419,7 +424,7 @@ internal class SusAPCParser : ISusAPCParser
 
             for (int i = 0; i < 9; i++)
             {
-                var criticalCare = new CriticalCare
+                var criticalCare = new APCCriticalCare
                 {
                     MessageId = messageId,
                     CriticalCareLocalIdentifier = csv[++index].GetTrimmedValueOrNull(),

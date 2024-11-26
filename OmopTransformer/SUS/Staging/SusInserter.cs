@@ -3,6 +3,7 @@ using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Data.SqlClient;
+using OmopTransformer.SUS.Staging.APC;
 
 namespace OmopTransformer.SUS.Staging;
 
@@ -46,53 +47,53 @@ internal class SusInserter : ISusInserter
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APC.");
-        await InsertAPC(rowsList.Select(row => row.APC).ToList(), connection);
+        _logger.LogInformation("Inserting APCRow.");
+        await InsertAPC(rowsList.Select(row => row.ApcRow).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APC CriticalCareItems.");
+        _logger.LogInformation("Inserting APCRow CriticalCareItems.");
         await InsertCriticalCare(rowsList.SelectMany(row => row.CriticalCareItems).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APC Births.");
+        _logger.LogInformation("Inserting APCRow Births.");
         await InsertBirth(rowsList.SelectMany(row => row.Births).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APC ReadProcedure.");
+        _logger.LogInformation("Inserting APCRow APCReadProcedure.");
         await InsertReadProcedure(rowsList.SelectMany(row => row.ReadProcedure).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APC CriticalCaOpcdProcedurereItems.");
+        _logger.LogInformation("Inserting APCRow CriticalCaOpcdProcedurereItems.");
         await InsertOpcsProcedure(rowsList.SelectMany(row => row.OpcdProcedure).ToList(), connection);
             
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APC CareLocations.");
+        _logger.LogInformation("Inserting APCRow CareLocations.");
         await InsertCareLocation(rowsList.SelectMany(row => row.CareLocations).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APC ReadDiagnoses.");
+        _logger.LogInformation("Inserting APCRow ReadDiagnoses.");
         await InsertReadDiagnosis(rowsList.SelectMany(row => row.ReadDiagnoses).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APC IcdDiagnoses.");
+        _logger.LogInformation("Inserting APCRow IcdDiagnoses.");
         await InsertIcdDiagnosis(rowsList.SelectMany(row => row.IcdDiagnoses).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APC OverseasVisitors.");
+        _logger.LogInformation("Inserting APCRow OverseasVisitors.");
         await InsertOverseasVisitor(rowsList.SelectMany(row => row.OverseasVisitors).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
     }
 
-    private async Task InsertAPC(IReadOnlyCollection<APC> rows, IDbConnection connection)
+    private async Task InsertAPC(IReadOnlyCollection<APCRow> rows, IDbConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -629,7 +630,7 @@ internal class SusInserter : ISusInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertCareLocation(IReadOnlyCollection<CareLocation> rows, IDbConnection connection)
+    private async Task InsertCareLocation(IReadOnlyCollection<APCCareLocation> rows, IDbConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -719,7 +720,7 @@ internal class SusInserter : ISusInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertReadProcedure(IReadOnlyCollection<ReadProcedure> rows, IDbConnection connection)
+    private async Task InsertReadProcedure(IReadOnlyCollection<APCReadProcedure> rows, IDbConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -749,7 +750,7 @@ internal class SusInserter : ISusInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertBirth(IReadOnlyCollection<Birth> rows, IDbConnection connection)
+    private async Task InsertBirth(IReadOnlyCollection<APCBirth> rows, IDbConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -807,7 +808,7 @@ internal class SusInserter : ISusInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertCriticalCare(IReadOnlyCollection<CriticalCare> rows, IDbConnection connection)
+    private async Task InsertCriticalCare(IReadOnlyCollection<APCCriticalCare> rows, IDbConnection connection)
     {
         var dataTable = new DataTable();
 
