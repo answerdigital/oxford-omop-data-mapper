@@ -31,7 +31,7 @@ outputFile <- "results.json"
 verboseMode <- TRUE
 
 # Write results to SQL table and/or CSV file
-writeToTable <- TRUE
+writeToTable <- FALSE
 writeToCsv <- FALSE
 csvFile <- ""
 
