@@ -2,9 +2,6 @@ param (
     [string]$outpath
 )
 
-# Build the Docker image
-docker build -t dqdash -f Dockerfile .
-
 # Generate container name
 $containerName = "temp-container"
 

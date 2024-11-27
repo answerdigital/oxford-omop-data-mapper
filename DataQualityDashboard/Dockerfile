@@ -24,8 +24,8 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-COPY DataQualityDashboard/drivers/ drivers/
-COPY DataQualityDashboard/scripts/ .
+COPY drivers/ drivers/
+COPY scripts/ .
 
 RUN [ "Rscript", "dependencies.r"]
 
