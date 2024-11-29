@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace OmopTransformer.SUS.Staging.Clearing;
+namespace OmopTransformer.SUS.Staging.APC.Clearing;
 
-internal class SusStagingSchema : StagingSchema, ISusStagingSchema
+internal class SusAPCStagingSchema : StagingSchema, ISusAPCStagingSchema
 {
-    public SusStagingSchema(IOptions<Configuration> configuration, ILogger<SusStagingSchema> logger) : base(configuration, logger)
+    public SusAPCStagingSchema(IOptions<Configuration> configuration, ILogger<SusAPCStagingSchema> logger) : base(configuration, logger)
     {
     }
 

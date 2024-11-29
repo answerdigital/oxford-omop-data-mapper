@@ -1,10 +1,5 @@
-﻿using System.Buffers;
-using System.Diagnostics.Metrics;
-using System.Globalization;
-using System.Reflection.Emit;
+﻿using System.Globalization;
 using CsvHelper;
-using OmopTransformer.CDS.Parser;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace OmopTransformer.SUS.Staging.APC;
 

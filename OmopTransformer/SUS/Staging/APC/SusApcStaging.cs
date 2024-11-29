@@ -1,16 +1,15 @@
 ﻿using Microsoft.Extensions.Logging;
-using OmopTransformer.SUS.Staging.APC;
 
-namespace OmopTransformer.SUS.Staging;
+namespace OmopTransformer.SUS.Staging.APC;
 
-internal class SusStaging : ISusStaging
+internal class SusApcStaging : ISusApcStaging
 {
-    private readonly ILogger<SusStaging> _logger;
+    private readonly ILogger<SusApcStaging> _logger;
     private readonly StagingOptions _options;
-    private readonly ISusInserter _susInserter;
+    private readonly ISusAPCInserter _susInserter;
     private readonly ISusAPCParser _parser;
 
-    public SusStaging(ILogger<SusStaging> logger, StagingOptions options, ISusInserter susInserter, ISusAPCParser parser)
+    public SusApcStaging(ILogger<SusApcStaging> logger, StagingOptions options, ISusAPCInserter susInserter, ISusAPCParser parser)
     {
         _logger = logger;
         _options = options;
@@ -20,7 +19,7 @@ internal class SusStaging : ISusStaging
 
     public async Task StageData(CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Staging sus data.");
+        _logger.LogInformation("Staging APC SUS data.");
 
         if (!File.Exists(_options.FileName))
         {
@@ -34,7 +33,7 @@ internal class SusStaging : ISusStaging
         IEnumerable<APCRecord> records = _parser.ReadFile(_options.FileName, cancellationToken);
 
         _logger.LogInformation("Streaming records...");
-        
+
         await _susInserter.Insert(records, cancellationToken);
 
         _logger.LogInformation("Staging complete.");

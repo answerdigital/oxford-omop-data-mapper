@@ -3,16 +3,15 @@ using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Data.SqlClient;
-using OmopTransformer.SUS.Staging.APC;
 
-namespace OmopTransformer.SUS.Staging;
+namespace OmopTransformer.SUS.Staging.APC;
 
-internal class SusInserter : ISusInserter
+internal class SusApcInserter : ISusAPCInserter
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<SusInserter> _logger;
+    private readonly ILogger<SusApcInserter> _logger;
 
-    public SusInserter(IOptions<Configuration> configuration, ILogger<SusInserter> logger)
+    public SusApcInserter(IOptions<Configuration> configuration, ILogger<SusApcInserter> logger)
     {
         _logger = logger;
         _configuration = configuration.Value;
@@ -33,7 +32,7 @@ internal class SusInserter : ISusInserter
 
         foreach (var batch in batches)
         {
-            _logger.LogInformation("Batch {0}.", ++batchNumber);
+            _logger.LogInformation("Batch {0}.", batchNumber++);
 
             await InsertBatch(batch, connection, cancellationToken);
         }
@@ -69,7 +68,7 @@ internal class SusInserter : ISusInserter
 
         _logger.LogInformation("Inserting APCRow CriticalCaOpcdProcedurereItems.");
         await InsertOpcsProcedure(rowsList.SelectMany(row => row.OpcdProcedure).ToList(), connection);
-            
+
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("Inserting APCRow CareLocations.");
