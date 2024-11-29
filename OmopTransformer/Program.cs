@@ -27,6 +27,7 @@ using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.DrugExposure;
 using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.Observation;
+using OmopTransformer.SUS.APC;
 using OmopTransformer.SUS.Staging.APC;
 using OmopTransformer.SUS.Staging.APC.Clearing;
 using OmopTransformer.SUS.Staging.OP;
@@ -250,6 +251,11 @@ internal class Program
             {
                 builder.Services.AddTransient<RtdsTransformer>();
                 builder.Services.AddHostedService<RtdsTransformHostedService>();
+            }
+            else if (string.Equals(transformOptions.Type, "sus-apc", StringComparison.OrdinalIgnoreCase))
+            {
+                builder.Services.AddTransient<SusAPCTransformer>();
+                builder.Services.AddHostedService<SusAPCTransformHostedService>();
             }
             else
             {

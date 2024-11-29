@@ -21,6 +21,24 @@
       "lookup_table_markdown": null
     },
     {
+      "name": "gender_concept_id",
+      "operation_description": "Lookup gender concept.",
+      "dataSource": [
+        {
+          "name": "PersonCurrentGenderCode",
+          "description": "Patient PersonCurrentGenderCode",
+          "origins": [
+            {
+              "origin": "PERSON GENDER CODE CURRENT",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tNHSNumber,\n\tmax(DateofBirth) as DateOfBirth,\n\tmax(EthnicCategory) as EthnicCategory,\n\tmax(PersonCurrentGenderCode) as PersonCurrentGenderCode\nfrom omop_staging.cds_line01\nwhere NHSNumber is not null\ngroup by NHSNumber\n\t",
+      "lookup_table_markdown": "\r\n\r\n|PersonCurrentGenderCode|gender_concept_id|notes|\r\n|------|-----|-----|\r\n|1|8507|Male|\r\n|2|8532|Female|\r\n|9|8551|Indeterminate (unable to be classified as either male or female)|\r\n|X|8551|Not known|\r\n\r\nNotes\r\n* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)\r\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\r\n"
+    },
+    {
       "name": "year_of_birth",
       "operation_description": "Selects the year from a date or null of the date is null.",
       "dataSource": [
@@ -93,29 +111,29 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "ethnicity_concept_id",
-      "operation_description": "Constant value set to `0`. Unknown concept",
-      "dataSource": null,
-      "query": null,
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "gender_concept_id",
-      "operation_description": "Lookup gender concept.",
+      "name": "race_concept_id",
+      "operation_description": "Lookup race concept.",
       "dataSource": [
         {
-          "name": "PersonCurrentGenderCode",
-          "description": "Patient PersonCurrentGenderCode",
+          "name": "EthnicCategory",
+          "description": "Patient EthnicCategory",
           "origins": [
             {
-              "origin": "PERSON GENDER CODE CURRENT",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html"
+              "origin": "ETHNIC CATEGORY",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html"
             }
           ]
         }
       ],
       "query": "\nselect\n\tNHSNumber,\n\tmax(DateofBirth) as DateOfBirth,\n\tmax(EthnicCategory) as EthnicCategory,\n\tmax(PersonCurrentGenderCode) as PersonCurrentGenderCode\nfrom omop_staging.cds_line01\nwhere NHSNumber is not null\ngroup by NHSNumber\n\t",
-      "lookup_table_markdown": "\r\n\r\n|PersonCurrentGenderCode|gender_concept_id|notes|\r\n|------|-----|-----|\r\n|1|8507|Male|\r\n|2|8532|Female|\r\n|9|8551|Indeterminate (unable to be classified as either male or female)|\r\n|X|8551|Not known|\r\n\r\nNotes\r\n* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)\r\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\r\n"
+      "lookup_table_markdown": "\r\n\r\n|EthnicCategory|race_concept_id|notes|\r\n|------|-----|-----|\r\n|A|8527|White - British|\r\n|B|8527|White - Irish|\r\n|C|8527|White - Any other White background|\r\n|D|8527|Mixed - White and Black Caribbean [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700388)|\r\n|E|8527|Mixed - White and Black African [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700389)|\r\n|F|8527|Mixed - White and Asian [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700390)|\r\n|G|8527|Mixed - Any other mixed background [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700391)|\r\n|H|38003574|Asian or Asian British - Indian|\r\n|J|38003589|Asian or Asian British - Pakistani|\r\n|K|38003575|Asian or Asian British - Bangladeshi|\r\n|L|8515|Asian or Asian British - Any other Asian background|\r\n|M|38003598|Black or Black British - Caribbean|\r\n|N|38003600|Black or Black British - African|\r\n|P|38003598|Black or Black British - Any other Black background|\r\n|R|38003579|Other Ethnic Groups - Chinese|\r\n|S|0|Other Ethnic Groups - Any other ethnic group|\r\n|Z|0|Not stated|\r\n|99|0|Not known|\r\n\r\nNotes\r\n* [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)\r\n* [OMOP Race](https://athena.ohdsi.org/search-terms/terms?conceptClass=Race&invalidReason=Valid&vocabulary=Race&page=1&pageSize=50&query=)\r\n* [D, E, F, G Race mapping](https://forums.ohdsi.org/t/mapping-nhs-ethnic-category-to-omop-race/20883/2)\r\n"
+    },
+    {
+      "name": "ethnicity_concept_id",
+      "operation_description": "Constant value set to `0`. Unknown concept",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
     },
     {
       "name": "gender_source_value",
@@ -134,24 +152,6 @@
       ],
       "query": "\nselect\n\tNHSNumber,\n\tmax(DateofBirth) as DateOfBirth,\n\tmax(EthnicCategory) as EthnicCategory,\n\tmax(PersonCurrentGenderCode) as PersonCurrentGenderCode\nfrom omop_staging.cds_line01\nwhere NHSNumber is not null\ngroup by NHSNumber\n\t",
       "lookup_table_markdown": null
-    },
-    {
-      "name": "race_concept_id",
-      "operation_description": "Lookup race concept.",
-      "dataSource": [
-        {
-          "name": "EthnicCategory",
-          "description": "Patient EthnicCategory",
-          "origins": [
-            {
-              "origin": "ETHNIC CATEGORY",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect\n\tNHSNumber,\n\tmax(DateofBirth) as DateOfBirth,\n\tmax(EthnicCategory) as EthnicCategory,\n\tmax(PersonCurrentGenderCode) as PersonCurrentGenderCode\nfrom omop_staging.cds_line01\nwhere NHSNumber is not null\ngroup by NHSNumber\n\t",
-      "lookup_table_markdown": "\r\n\r\n|EthnicCategory|race_concept_id|notes|\r\n|------|-----|-----|\r\n|A|8527|White - British|\r\n|B|8527|White - Irish|\r\n|C|8527|White - Any other White background|\r\n|D|8527|Mixed - White and Black Caribbean [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700388)|\r\n|E|8527|Mixed - White and Black African [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700389)|\r\n|F|8527|Mixed - White and Asian [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700390)|\r\n|G|8527|Mixed - Any other mixed background [Athena mapping](https://athena.ohdsi.org/search-terms/terms/700391)|\r\n|H|38003574|Asian or Asian British - Indian|\r\n|J|38003589|Asian or Asian British - Pakistani|\r\n|K|38003575|Asian or Asian British - Bangladeshi|\r\n|L|8515|Asian or Asian British - Any other Asian background|\r\n|M|38003598|Black or Black British - Caribbean|\r\n|N|38003600|Black or Black British - African|\r\n|P|38003598|Black or Black British - Any other Black background|\r\n|R|38003579|Other Ethnic Groups - Chinese|\r\n|S|0|Other Ethnic Groups - Any other ethnic group|\r\n|Z|0|Not stated|\r\n|99|0|Not known|\r\n\r\nNotes\r\n* [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)\r\n* [OMOP Race](https://athena.ohdsi.org/search-terms/terms?conceptClass=Race&invalidReason=Valid&vocabulary=Race&page=1&pageSize=50&query=)\r\n* [D, E, F, G Race mapping](https://forums.ohdsi.org/t/mapping-nhs-ethnic-category-to-omop-race/20883/2)\r\n"
     },
     {
       "name": "race_source_value",

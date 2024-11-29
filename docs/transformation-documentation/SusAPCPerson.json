@@ -1,0 +1,24 @@
+{
+  "omopTable": "Person",
+  "origin": "SUS",
+  "omopColumns": [
+    {
+      "name": "person_source_value",
+      "operation_description": "Value copied from `NHSNumber`",
+      "dataSource": [
+        {
+          "name": "NHSNumber",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tNHSNumber,\n\tmax(DateofBirth) as DateOfBirth,\n\tmax(EthnicCategory) as EthnicCategory,\n\tmax(PersonCurrentGenderCode) as PersonCurrentGenderCode\nfrom omop_staging.cds_line01\nwhere NHSNumber is not null\ngroup by NHSNumber\n\t",
+      "lookup_table_markdown": null
+    }
+  ]
+}

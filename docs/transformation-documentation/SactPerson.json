@@ -21,6 +21,24 @@
       "lookup_table_markdown": null
     },
     {
+      "name": "gender_concept_id",
+      "operation_description": "Lookup gender concept.",
+      "dataSource": [
+        {
+          "name": "Person_Stated_Gender_Code",
+          "description": "The patient's Sex",
+          "origins": [
+            {
+              "origin": "PERSON GENDER CODE CURRENT",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tNHS_Number,\n\tmax (Patient_Postcode) as Patient_Postcode,\n\tmax (Date_Of_Birth) as Date_Of_Birth,\n\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\nfrom omop_staging.sact_staging\ngroup by NHS_Number\n\t",
+      "lookup_table_markdown": "\r\n\r\n|Person_Stated_Gender_Code|gender_concept_id|notes|\r\n|------|-----|-----|\r\n|1|8507|Male|\r\n|2|8532|Female|\r\n|9|8551|Indeterminate (unable to be classified as either male or female)|\r\n|X|8551|Not known|\r\n\r\nNotes\r\n* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)\r\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\r\n"
+    },
+    {
       "name": "year_of_birth",
       "operation_description": "Selects the year from a date or null of the date is null.",
       "dataSource": [
@@ -98,24 +116,6 @@
       "dataSource": null,
       "query": null,
       "lookup_table_markdown": null
-    },
-    {
-      "name": "gender_concept_id",
-      "operation_description": "Lookup gender concept.",
-      "dataSource": [
-        {
-          "name": "Person_Stated_Gender_Code",
-          "description": "The patient's Sex",
-          "origins": [
-            {
-              "origin": "PERSON GENDER CODE CURRENT",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect\n\tNHS_Number,\n\tmax (Patient_Postcode) as Patient_Postcode,\n\tmax (Date_Of_Birth) as Date_Of_Birth,\n\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\nfrom omop_staging.sact_staging\ngroup by NHS_Number\n\t",
-      "lookup_table_markdown": "\r\n\r\n|Person_Stated_Gender_Code|gender_concept_id|notes|\r\n|------|-----|-----|\r\n|1|8507|Male|\r\n|2|8532|Female|\r\n|9|8551|Indeterminate (unable to be classified as either male or female)|\r\n|X|8551|Not known|\r\n\r\nNotes\r\n* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)\r\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\r\n"
     },
     {
       "name": "gender_source_value",
