@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using OmopTransformer.CDS.Person;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.DrugExposure;
@@ -60,9 +59,9 @@ internal class SusAPCTransformer : Transformer
 
     public async Task Transform(CancellationToken cancellationToken)
     {
-        await Transform<CdsPersonRecord, CdsPerson>(
+        await Transform<SusAPCPersonRecord, SusAPCPerson>(
             _personRecorder.InsertUpdatePersons,
-            "CDS Person",
+            "Sus Apc Person",
             cancellationToken);
 
         _conceptSnomedResolver.PrintErrors();
