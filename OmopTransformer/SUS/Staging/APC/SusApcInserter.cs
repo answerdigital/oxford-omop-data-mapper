@@ -46,47 +46,46 @@ internal class SusApcInserter : ISusAPCInserter
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APCRow.");
+        _logger.LogInformation("Inserting APC.");
         await InsertAPC(rowsList.Select(row => row.ApcRow).ToList(), connection);
-
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APCRow CriticalCareItems.");
+        _logger.LogInformation("Inserting APC CriticalCareItems.");
         await InsertCriticalCare(rowsList.SelectMany(row => row.CriticalCareItems).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APCRow Births.");
+        _logger.LogInformation("Inserting APC Births.");
         await InsertBirth(rowsList.SelectMany(row => row.Births).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APCRow APCReadProcedure.");
+        _logger.LogInformation("Inserting APC APCReadProcedure.");
         await InsertReadProcedure(rowsList.SelectMany(row => row.ReadProcedure).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APCRow CriticalCaOpcdProcedurereItems.");
+        _logger.LogInformation("Inserting APC CriticalCaOpcdProcedurereItems.");
         await InsertOpcsProcedure(rowsList.SelectMany(row => row.OpcdProcedure).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APCRow CareLocations.");
+        _logger.LogInformation("Inserting APC CareLocations.");
         await InsertCareLocation(rowsList.SelectMany(row => row.CareLocations).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APCRow ReadDiagnoses.");
+        _logger.LogInformation("Inserting APC ReadDiagnoses.");
         await InsertReadDiagnosis(rowsList.SelectMany(row => row.ReadDiagnoses).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APCRow IcdDiagnoses.");
+        _logger.LogInformation("Inserting APC IcdDiagnoses.");
         await InsertIcdDiagnosis(rowsList.SelectMany(row => row.IcdDiagnoses).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogInformation("Inserting APCRow OverseasVisitors.");
+        _logger.LogInformation("Inserting APC OverseasVisitors.");
         await InsertOverseasVisitor(rowsList.SelectMany(row => row.OverseasVisitors).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
