@@ -1,6 +1,6 @@
-﻿namespace OmopTransformer.SUS.Staging;
+﻿namespace OmopTransformer.SUS.Staging.APC;
 
-internal interface ISusInserter
+internal interface ISusAPCInserter
 {
     Task Insert(IEnumerable<APCRecord> rows, CancellationToken cancellationToken);
 }

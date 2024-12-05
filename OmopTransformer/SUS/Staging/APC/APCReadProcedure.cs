@@ -1,6 +1,6 @@
-﻿namespace OmopTransformer.SUS.Staging;
+﻿namespace OmopTransformer.SUS.Staging.APC;
 
-public class ReadProcedure
+public class APCReadProcedure
 {
     public Guid MessageId { get; init; }
 

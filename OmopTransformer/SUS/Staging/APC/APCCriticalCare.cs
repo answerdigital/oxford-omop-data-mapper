@@ -1,6 +1,6 @@
-﻿namespace OmopTransformer.SUS.Staging;
+﻿namespace OmopTransformer.SUS.Staging.APC;
 
-public class CriticalCare
+public class APCCriticalCare
 {
     public Guid MessageId { get; init; }
 

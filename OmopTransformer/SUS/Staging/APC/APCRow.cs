@@ -1,6 +1,6 @@
-﻿namespace OmopTransformer.SUS.Staging;
+﻿namespace OmopTransformer.SUS.Staging.APC;
 
-internal class APC
+internal class APCRow
 {
     public Guid MessageId { get; init; }
     public string? GeneratedRecordIdentifier { get; init; }

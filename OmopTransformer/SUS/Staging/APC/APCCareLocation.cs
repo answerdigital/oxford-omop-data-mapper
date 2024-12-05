@@ -1,6 +1,6 @@
-﻿namespace OmopTransformer.SUS.Staging;
+﻿namespace OmopTransformer.SUS.Staging.APC;
 
-public class CareLocation
+public class APCCareLocation
 {
     public Guid MessageId { get; init; }
 

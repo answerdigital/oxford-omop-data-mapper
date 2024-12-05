@@ -1,6 +1,6 @@
-﻿namespace OmopTransformer.SUS.Staging;
+﻿namespace OmopTransformer.SUS.Staging.APC;
 
-public class Birth
+public class APCBirth
 {
     public Guid MessageId { get; init; }
 

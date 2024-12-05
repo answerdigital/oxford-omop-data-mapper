@@ -27,8 +27,10 @@ using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.DrugExposure;
 using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.Observation;
-using OmopTransformer.SUS.Staging.Clearing;
-using OmopTransformer.SUS.Staging;
+using OmopTransformer.SUS.Staging.APC;
+using OmopTransformer.SUS.Staging.APC.Clearing;
+using OmopTransformer.SUS.Staging.OP;
+using OmopTransformer.SUS.Staging.OP.Clearing;
 
 [assembly: InternalsVisibleTo("OmopTransformerTests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2, PublicKey=0024000004800000940000000602000000240000525341310004000001000100c547cac37abd99c8db225ef2f6c8a3602f3b3606cc9891605d02baa56104f4cfc0734aa39b93bf7852f7d9266654753cc297e7d2edfe0bac1cdcf9f717241550e0a7b191195b7667bb4f64bcb8e2121380fd1d9d46ad2d92d2d15605093924cceaf74c4861eff62abf69b9291ed0a340e113be11e6a7d3113e92484cf7045cc7")]
@@ -159,7 +161,7 @@ internal class Program
                         return;
                 }
             }
-            else if (string.Equals(stagingOptions.Type, "sus", StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals(stagingOptions.Type, "sus-apc", StringComparison.OrdinalIgnoreCase))
             {
                 if (stagingOptions.Action == null)
                 {
@@ -170,13 +172,37 @@ internal class Program
                 switch (stagingOptions.Action.ToLower())
                 {
                     case "load":
-                        builder.Services.AddTransient<ISusInserter, SusInserter>();
+                        builder.Services.AddTransient<ISusAPCInserter, SusApcInserter>();
                         builder.Services.AddTransient<ISusAPCParser, SusAPCParser>();
-                        builder.Services.AddTransient<ISusStaging, SusStaging>();
-                        builder.Services.AddHostedService<SusLoadStagingHostedService>();
+                        builder.Services.AddTransient<ISusApcStaging, SusApcStaging>();
+                        builder.Services.AddHostedService<SusAPCLoadStagingHostedService>();
                         break;
                     case "clear":
-                        builder.Services.AddHostedService<SusClearStagingHostedService>();
+                        builder.Services.AddHostedService<SusAPCClearStagingHostedService>();
+                        break;
+                    default:
+                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
+                        return;
+                }
+            }
+            else if (string.Equals(stagingOptions.Type, "sus-op", StringComparison.OrdinalIgnoreCase))
+            {
+                if (stagingOptions.Action == null)
+                {
+                    await ActionMustBeSpecifiedError();
+                    return;
+                }
+
+                switch (stagingOptions.Action.ToLower())
+                {
+                    case "load":
+                        builder.Services.AddTransient<ISusOPInserter, SusOPInserter>();
+                        builder.Services.AddTransient<ISusOPParser, SusOPParser>();
+                        builder.Services.AddTransient<ISusOPStaging, SusOPStaging>();
+                        builder.Services.AddHostedService<SusOPLoadStagingHostedService>();
+                        break;
+                    case "clear":
+                        builder.Services.AddHostedService<SusOPClearStagingHostedService>();
                         break;
                     default:
                         await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
@@ -244,7 +270,8 @@ internal class Program
         builder.Services.AddTransient<ISactStagingSchema, SactStagingSchema>();
         builder.Services.AddTransient<ICdsStagingSchema, CdsStagingSchema>();
         builder.Services.AddTransient<IRtdsStagingSchema, RtdsStagingSchema>();
-        builder.Services.AddTransient<ISusStagingSchema, SusStagingSchema>();
+        builder.Services.AddTransient<ISusAPCStagingSchema, SusAPCStagingSchema>();
+        builder.Services.AddTransient<ISusOPStagingSchema, SusOPStagingSchema>();
         builder.Services.AddSingleton<Icd10Resolver>();
         builder.Services.AddSingleton<Opcs4Resolver>();
         builder.Services.AddSingleton<Icdo3Resolver>();
