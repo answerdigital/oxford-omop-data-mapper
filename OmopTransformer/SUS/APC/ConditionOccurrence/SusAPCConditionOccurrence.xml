@@ -3,13 +3,13 @@
 		select
 		distinct
 		d.DiagnosisICD,
-		line01.GeneratedRecordIdentifier,
-		line01.NHSNumber,
-		line01.CDSActivityDate
-		from omop_staging.cds_diagnosis d
-		inner join omop_staging.cds_line01 line01
-		on d.MessageId = line01.MessageId
-		where line01.NHSNumber is not null;
+		apc.GeneratedRecordIdentifier,
+		apc.NHSNumber,
+		apc.CDSActivityDate
+		from omop_staging.sus_ICDDiagnosis d
+		inner join omop_staging.sus_APC apc
+		on d.MessageId = apc.MessageId
+		where apc.NHSNumber is not null
 	</Sql>
     <Explanations>
 		<Explanation columnName="DiagnosisICD">

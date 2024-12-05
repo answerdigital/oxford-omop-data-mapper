@@ -1,0 +1,119 @@
+﻿<Query>
+    <Sql>
+select
+	apc.NHSNumber,
+	apc.HospitalProviderSpellNumber,
+	min (apc.CDSActivityDate) as EpisodeStartDate,
+	coalesce 
+	(
+		min (apc.StartTimeEpisode), 
+		'000000'
+	) as EpisodeStartTime,
+	coalesce 
+	(
+		max (apc.EndDateConsultantEpisode), 
+		max (apc.CDSActivityDate)
+	) as EpisodeEndDate,
+	coalesce 
+	(
+		max (apc.EndTimeEpisode), 
+		'000000'
+	) as EpisodeEndTime,
+--	apc.GeneratedRecordIdentifier,
+	case 
+		when max(apc.AdmissionMethodHospitalProviderSpell) in ('21','24') and max(apc.PatientClassification) = 1 then 262
+        when max(apc.AdmissionMethodHospitalProviderSpell) in ('21','24') then 9203
+        when max(apc.PatientClassification) in (1) then 9201
+        when max(apc.LocationClassAtEpisodeStartDate) in ('02') then 581476
+		else 9202
+	end as VisitOccurrenceConceptId,    -- "visit_concept_id"
+	case 
+		when max(apc.EndDateConsultantEpisode) is null and max(apc.DischargeDestinationHospitalProviderSpell) is null then 32220
+        else 32818
+	end as VisitTypeConceptId,
+	max (apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,
+	max (apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode
+from [omop_staging].[sus_APC] apc
+	inner join dbo.Code c 
+		on c.Code = apc.TreatmentFunctionCode
+where apc.UpdateType = 9   -- New/Modification     (1 = Delete)
+	and apc.NHSNumber is not null
+	and c.CodeTypeId = 2 -- activity_treatment_function_code
+	and apc.HospitalProviderSpellNumber is not null
+group by 
+	apc.NHSNumber,
+--	apc.GeneratedRecordIdentifier,
+	apc.HospitalProviderSpellNumber;
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+
+		<Explanation columnName="HospitalProviderSpellNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
+		</Explanation>
+
+		<Explanation columnName="EpisodeStartDate">
+			<Description>Start date of the episode.</Description>
+			<Origin>START DATE (EPISODE)</Origin>
+		</Explanation>
+
+		<Explanation columnName="EpisodeStartTime">
+			<Description>The earliest episode start time for the spell, or midnight if none are specified.</Description>
+			<Origin>START TIME (EPISODE)</Origin>
+		</Explanation>
+
+		<Explanation columnName="EpisodeEndDate">
+			<Description>The latest episode end date for the spell, or the latest activity date if none are specified.</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+			<Origin>END DATE (EPISODE)</Origin>
+		</Explanation>
+
+		<Explanation columnName="EpisodeEndTime">
+			<Description>The latest episode end time for the spell, or midnight if none are specified.</Description>
+			<Origin>END TIME (EPISODE)</Origin>
+		</Explanation>
+		
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+
+		<Explanation columnName="VisitOccurrenceConceptId">
+			<Description>
+
+| Visit Occurrence Type              | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |
+|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|
+| Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
+| Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
+| Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
+| Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |
+| Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
+			</Description>
+			<Origin>ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)</Origin>
+			<Origin>PATIENT CLASSIFICATION CODE</Origin>
+			<Origin>LOCATION CLASS</Origin>
+		</Explanation>
+
+		<Explanation columnName="VisitTypeConceptId">
+			<Description>For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record)</Description>
+			<Origin>END DATE (EPISODE)</Origin>
+			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
+			<Origin>PATIENT CLASSIFICATION CODE</Origin>
+		</Explanation>
+
+		<Explanation columnName="SourceofAdmissionCode">
+			<Description>Admission Source.</Description>
+			<Origin>ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+
+		<Explanation columnName="DischargeDestinationCode">
+			<Description>Discharge Destination Code</Description>
+			<Origin>DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

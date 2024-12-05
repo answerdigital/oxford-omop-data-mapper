@@ -17,6 +17,7 @@
 		on apc.MessageId = d.MessageId
 		where
 		apc.NHSNumber is not null and
+		apc.DischargeDateFromHospitalProviderSpell is not null and
 		(
 		apc.DischargeMethodHospitalProviderSpell = '4'
 		or (

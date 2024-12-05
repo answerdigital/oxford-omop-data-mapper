@@ -9,12 +9,16 @@ internal class SusAPCDeath : OmopDeath<SusAPCDeathRecord>
     [CopyValue(nameof(Source.nhs_number))]
     public override string? NhsNumber { get; set; }
 
+    [Transform(typeof(DateConverter), nameof(Source.death_date))]
+    public override DateTime? death_date { get; set; }
+
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.death_date), nameof(Source.death_time))]
     public override DateTime? death_datetime { get; set; }
 
-    [Transform(typeof(Icd10Selector), nameof(Source.cause_concept_id))]
-    public override int? cause_source_concept_id { get; set; }
+    [CopyValue(nameof(Source.DiagnosisICD))]
+    public override string? cause_source_value { get; set; }
 
-    [Transform(typeof(SnomedSelector), useOmopTypeAsSource: true, nameof(cause_source_concept_id))]
-    public override int[]? cause_concept_id { get; set; }
+    [Transform(typeof(Icd10Selector), nameof(Source.DiagnosisICD))]
+    public override int? cause_concept_id { get; set; }
+
 }

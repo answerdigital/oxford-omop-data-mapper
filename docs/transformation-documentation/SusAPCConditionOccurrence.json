@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\tdistinct\n\t\td.DiagnosisICD,\n\t\tline01.GeneratedRecordIdentifier,\n\t\tline01.NHSNumber,\n\t\tline01.CDSActivityDate\n\t\tfrom omop_staging.cds_diagnosis d\n\t\tinner join omop_staging.cds_line01 line01\n\t\ton d.MessageId = line01.MessageId\n\t\twhere line01.NHSNumber is not null;\n\t",
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\td.DiagnosisICD,\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tapc.CDSActivityDate\n\t\tfrom omop_staging.sus_ICDDiagnosis d\n\t\tinner join omop_staging.sus_APC apc\n\t\ton d.MessageId = apc.MessageId\n\t\twhere apc.NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\tdistinct\n\t\td.DiagnosisICD,\n\t\tline01.GeneratedRecordIdentifier,\n\t\tline01.NHSNumber,\n\t\tline01.CDSActivityDate\n\t\tfrom omop_staging.cds_diagnosis d\n\t\tinner join omop_staging.cds_line01 line01\n\t\ton d.MessageId = line01.MessageId\n\t\twhere line01.NHSNumber is not null;\n\t",
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\td.DiagnosisICD,\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tapc.CDSActivityDate\n\t\tfrom omop_staging.sus_ICDDiagnosis d\n\t\tinner join omop_staging.sus_APC apc\n\t\ton d.MessageId = apc.MessageId\n\t\twhere apc.NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\tdistinct\n\t\td.DiagnosisICD,\n\t\tline01.GeneratedRecordIdentifier,\n\t\tline01.NHSNumber,\n\t\tline01.CDSActivityDate\n\t\tfrom omop_staging.cds_diagnosis d\n\t\tinner join omop_staging.cds_line01 line01\n\t\ton d.MessageId = line01.MessageId\n\t\twhere line01.NHSNumber is not null;\n\t",
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\td.DiagnosisICD,\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tapc.CDSActivityDate\n\t\tfrom omop_staging.sus_ICDDiagnosis d\n\t\tinner join omop_staging.sus_APC apc\n\t\ton d.MessageId = apc.MessageId\n\t\twhere apc.NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,7 +78,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\tdistinct\n\t\td.DiagnosisICD,\n\t\tline01.GeneratedRecordIdentifier,\n\t\tline01.NHSNumber,\n\t\tline01.CDSActivityDate\n\t\tfrom omop_staging.cds_diagnosis d\n\t\tinner join omop_staging.cds_line01 line01\n\t\ton d.MessageId = line01.MessageId\n\t\twhere line01.NHSNumber is not null;\n\t",
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\td.DiagnosisICD,\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tapc.CDSActivityDate\n\t\tfrom omop_staging.sus_ICDDiagnosis d\n\t\tinner join omop_staging.sus_APC apc\n\t\ton d.MessageId = apc.MessageId\n\t\twhere apc.NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {

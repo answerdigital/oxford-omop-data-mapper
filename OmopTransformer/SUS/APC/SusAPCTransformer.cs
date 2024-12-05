@@ -1,4 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
+using OmopTransformer.SUS.APC.Death;
+using OmopTransformer.SUS.APC.Location;
+using OmopTransformer.SUS.APC.ConditionOccurrence;
+using OmopTransformer.SUS.APC.ProcedureOccurrence;
+using OmopTransformer.SUS.APC.VisitOccurrenceWithoutSpell;
+using OmopTransformer.SUS.APC.VisitOccurrenceWithSpell;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.DrugExposure;
@@ -9,6 +15,7 @@ using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.Transformation;
+using OmopTransformer.CDS.VisitOccurrenceWithSpell;
 
 namespace OmopTransformer.SUS.APC;
 
@@ -62,6 +69,36 @@ internal class SusAPCTransformer : Transformer
         await Transform<SusAPCPersonRecord, SusAPCPerson>(
             _personRecorder.InsertUpdatePersons,
             "Sus Apc Person",
+            cancellationToken);
+
+        await Transform<SusAPCDeathRecord, SusAPCDeath>(
+            _deathRecorder.InsertUpdateDeaths,
+            "SUS APC Death",
+            cancellationToken);
+
+        await Transform<SusAPCProcedureOccurrenceRecord, SusAPCProcedureOccurrence>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "SUS APC Procedure Occurrence",
+            cancellationToken);
+
+        await Transform<SusAPCConditionOccurrenceRecord, SusAPCConditionOccurrence>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "SUS APC Conditon Occurrence",
+            cancellationToken);
+
+        await Transform<SusAPCLocationRecord, SusAPCLocation>(
+            _locationRecorder.InsertUpdateLocations,
+            "SUS APC Location",
+            cancellationToken);
+
+        await Transform<SusAPCVisitOccurrenceWithSpellRecord, SusAPCVisitOccurrenceWithSpell>(
+            _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
+            "SUS APC VisitOccurrenceWithSpell",
+            cancellationToken);
+
+        await Transform<SusAPCVisitOccurrenceWithoutSpellRecord, SusAPCVisitOccurrenceWithoutSpell>(
+            _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
+            "SUS APC VisitOccurrenceWithoutSpell",
             cancellationToken);
 
         _conceptSnomedResolver.PrintErrors();
