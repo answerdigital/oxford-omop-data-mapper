@@ -1,6 +1,6 @@
 ﻿using OmopTransformer.Annotations;
 
-namespace OmopTransformer.SUS.APC;
+namespace OmopTransformer.SUS.APC.Location;
 
 [DataOrigin("SUS")]
 [Description("SUS Inpatient Location")]

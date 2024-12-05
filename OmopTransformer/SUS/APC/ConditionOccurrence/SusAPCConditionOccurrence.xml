@@ -1,0 +1,32 @@
+﻿<Query>
+    <Sql>
+		select
+		distinct
+		d.DiagnosisICD,
+		line01.GeneratedRecordIdentifier,
+		line01.NHSNumber,
+		line01.CDSActivityDate
+		from omop_staging.cds_diagnosis d
+		inner join omop_staging.cds_line01 line01
+		on d.MessageId = line01.MessageId
+		where line01.NHSNumber is not null;
+	</Sql>
+    <Explanations>
+		<Explanation columnName="DiagnosisICD">
+			<Description>ICD10 diagnosis code</Description>
+			<Origin>PRIMARY DIAGNOSIS (ICD)</Origin>
+		</Explanation>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="CDSActivityDate">
+			<Description>Event date</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

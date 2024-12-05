@@ -297,8 +297,13 @@
 	<None Update="SUS\APC\Location\SusAPCLocation.xml">
 		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	</None>
+	<None Update="SUS\APC\Death\SusAPCDeath.xml">
+		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</None>
+	  <None Update="SUS\APC\ConditionOccurrence\SusAPCConditionOccurrence.xml">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
   </ItemGroup>
-
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<ItemGroup>
 			<DocumentationDirectory Include="$(MSBuildProjectDirectory)\..\docs\transformation-documentation" />
