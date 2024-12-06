@@ -1,0 +1,151 @@
+﻿<Query>
+    <Sql>
+
+;with RecordConnectionIdentifierNHSNumberCombination as (
+	select
+		distinct 
+			apc.NHSNumber,
+			apc.GeneratedRecordIdentifier
+	from omop_staging.sus_APC apc
+),
+
+RecordsWithVariableNhsNumber as (
+select
+	m1.GeneratedRecordIdentifier
+from RecordConnectionIdentifierNHSNumberCombination m1
+	inner join RecordConnectionIdentifierNHSNumberCombination m2
+		on m1.NHSNumber != m2.NHSNumber
+where m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier
+),
+
+VisitDetail as (
+	select  
+		distinct
+    
+			apc.NHSNumber,
+			apc.HospitalProviderSpellNumber,
+
+			case 
+				when apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 
+				when apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203
+				when apc.PatientClassification in (1) then 9201
+				when apc.LocationClassAtEpisodeStartDate in ('02') then 581476
+				else 9202
+			end as VisitOccurrenceConceptId,    -- ""visit_concept_id""
+
+			apc.GeneratedRecordIdentifier,
+
+			coalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date
+			coalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time
+
+			coalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,
+
+			coalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,
+
+			case 
+				when apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220
+				else 32818
+			end as VisitTypeConceptId,
+
+			case 
+				when apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2
+				else 1
+			end as RowPriority,
+
+			apc.SourceOfAdmissionHospitalProviderSpell,
+			apc.DischargeDestinationHospitalProviderSpell
+	from omop_staging.sus_APC apc
+		inner join dbo.Code c 
+			on apc.TreatmentFunctionCode = c.Code
+	where apc.UpdateType = 9   -- New/Modification     (1 = Delete)
+		and apc.NHSNumber is not null
+		and c.CodeTypeId = 2 -- activity_treatment_function_code
+		and not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)
+), VisitDetailWithRank as (
+	select
+		*,
+		row_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank
+	from VisitDetail
+)
+select
+	*
+from VisitDetailWithRank
+where RowRank = 1
+
+		
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="HospitalProviderSpellNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
+		</Explanation>
+
+		<Explanation columnName="VisitOccurrenceConceptId">
+			<Description>
+
+| Visit Occurrence Type (Info only)  | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |
+|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|
+| Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
+| Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
+| Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
+| Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |
+| Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
+			</Description>
+			<Origin>ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)</Origin>
+			<Origin>PATIENT CLASSIFICATION CODE</Origin>
+			<Origin>LOCATION CLASS</Origin>
+		</Explanation>
+
+		<Explanation columnName="VisitStartDate">
+			<Description>Start date of the episode, if exists, else the start date of the spell.</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+			<Origin>START DATE (HOSPITAL PROVIDER SPELL)</Origin>
+			<Origin>START DATE (EPISODE)</Origin>
+		</Explanation>
+
+		<Explanation columnName="VisitStartTime">
+			<Description>Start time of the episode, if exists, else midnight.</Description>
+			<Origin>START TIME (HOSPITAL PROVIDER SPELL)</Origin>
+			<Origin>START TIME (EPISODE)</Origin>
+		</Explanation>
+
+		<Explanation columnName="VisitEndDate">
+			<Description>End date of the episode, if exists, else the spell discharge date, if exists, else the message date.</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+			<Origin>END DATE (EPISODE)</Origin>
+			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+
+		<Explanation columnName="VisitEndTime">
+			<Description>End time of the episode, if exists, else the spell discharge time, if exists, else the message date.</Description>
+			<Origin>DISCHARGE TIME (HOSPITAL PROVIDER SPELL)</Origin>
+			<Origin>END TIME (EPISODE)</Origin>
+		</Explanation>
+
+		<Explanation columnName="VisitTypeConceptId">
+			<Description>For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record)</Description>
+			<Origin>END DATE (EPISODE)</Origin>
+			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
+			<Origin>PATIENT CLASSIFICATION CODE</Origin>
+		</Explanation>
+
+		<Explanation columnName="SourceOfAdmissionHospitalProviderSpell">
+			<Description>Admission Source.</Description>
+			<Origin>ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+
+		<Explanation columnName="DischargeDestinationHospitalProviderSpell">
+			<Description>Discharge Destination Code</Description>
+			<Origin>DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

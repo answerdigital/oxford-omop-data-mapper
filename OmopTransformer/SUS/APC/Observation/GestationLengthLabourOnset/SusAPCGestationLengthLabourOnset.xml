@@ -1,0 +1,45 @@
+﻿<Query>
+    <Sql>
+select 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier,
+	apc.HospitalProviderSpellNumber,
+	coalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date, 
+	apc.GestationLengthLabourOnset
+from [omop_staging].[sus_APC] as apc																			
+where apc.NHSNumber is not null
+  and len(apc.NHSNumber) = 10
+  and apc.GestationLengthLabourOnset is not null
+  and apc.CDSType in ('120', '140')
+group by 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier, 
+    apc.HospitalProviderSpellNumber,
+	apc.DeliveryDate, 
+	apc.GestationLengthLabourOnset;
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="HospitalProviderSpellNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="observation_date">
+			<Description>Event date</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+			<Origin>DELIVERY DATE</Origin>
+		</Explanation>
+		<Explanation columnName="GestationLengthLabourOnset">
+			<Description>GESTATION LENGTH (LABOUR ONSET) records a period of between 10 to 49 weeks in completed weeks at the onset of Labour.</Description>
+			<Origin>GESTATION LENGTH (LABOUR ONSET)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

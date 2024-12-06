@@ -1,0 +1,43 @@
+﻿<Query>
+    <Sql>
+select
+    apc.NHSNumber, 
+    apc.GeneratedRecordIdentifier, 
+	apc.HospitalProviderSpellNumber,
+    coalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date, 
+    apc.AnaestheticGivenPostDelivery
+from omop_staging.sus_APC as apc
+where apc.AnaestheticGivenPostDelivery is not null
+  and apc.NHSNumber is not null
+  and apc.CdsType in ('140', '120')
+group by 
+    apc.NHSNumber, 
+    apc.GeneratedRecordIdentifier,
+	apc.HospitalProviderSpellNumber,
+    apc.DeliveryDate,
+    apc.AnaestheticGivenPostDelivery;
+</Sql>
+
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="RecordConnectionIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="HospitalProviderSpellNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="observation_date">
+			<Description>Event date</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+		</Explanation>
+		<Explanation columnName="AnaestheticGivenPostLabourDelivery">
+			<Description>Records whether anaesthetic was given after Delivery, and the type used.</Description>
+			<Origin>ANAESTHETIC GIVEN POST LABOUR OR DELIVERY CODE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
