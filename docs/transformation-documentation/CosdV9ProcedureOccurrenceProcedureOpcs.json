@@ -90,15 +90,15 @@
     },
     {
       "name": "procedure_source_value",
-      "operation_description": "Value copied from `ProcedureDate`",
+      "operation_description": "Value copied from `ProcedureOpcsCode`",
       "dataSource": [
         {
-          "name": "ProcedureDate",
-          "description": "The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY.",
+          "name": "ProcedureOpcsCode",
+          "description": "PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS).",
           "origins": [
             {
-              "origin": "PROCEDURE DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+              "origin": "PROCEDURE (OPCS)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html"
             }
           ]
         }
