@@ -6,10 +6,29 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # race_source_value
+### SUS Inpatient Person
+* Value copied from `EthnicCategory`
+
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY]()
+
+```sql
+	select
+		NHSNumber,
+		max(DateofBirth) as DateOfBirth,
+		max(EthnicGroup) as EthnicCategory,
+		max(Sex) as PersonCurrentGenderCode
+	from omop_staging.sus_APC
+	where NHSNumber is not null
+	group by NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_value%20field%20SUS%20Inpatient%20Person%20mapping){: .btn }
 ### COSD Demographics
 * Value copied from `EthnicCategory`
 
-* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY]()
 
 ```sql
 with 
@@ -70,7 +89,7 @@ group by NhsNumber
 ### CDS Person
 * Value copied from `EthnicCategory`
 
-* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY]()
 
 ```sql
 select

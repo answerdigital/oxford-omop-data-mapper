@@ -3,6 +3,24 @@
   "origin": "SACT",
   "omopColumns": [
     {
+      "name": "nhs_number",
+      "operation_description": "Value copied from `NHS_Number`",
+      "dataSource": [
+        {
+          "name": "NHS_Number",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tNHS_Number,\n\tmax (Patient_Postcode) as Patient_Postcode,\n\tmax (Date_Of_Birth) as Date_Of_Birth,\n\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\nfrom omop_staging.sact_staging\ngroup by NHS_Number\n\t",
+      "lookup_table_markdown": null
+    },
+    {
       "name": "zip",
       "operation_description": "Uppercase the postcode then insert the space in the correct location, if needed.",
       "dataSource": [
@@ -12,7 +30,7 @@
           "origins": [
             {
               "origin": "POSTCODE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode.html"
+              "url": null
             }
           ]
         }
@@ -30,25 +48,7 @@
           "origins": [
             {
               "origin": "POSTCODE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect\n\tNHS_Number,\n\tmax (Patient_Postcode) as Patient_Postcode,\n\tmax (Date_Of_Birth) as Date_Of_Birth,\n\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\nfrom omop_staging.sact_staging\ngroup by NHS_Number\n\t",
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "nhs_number",
-      "operation_description": "Value copied from `NHS_Number`",
-      "dataSource": [
-        {
-          "name": "NHS_Number",
-          "description": "Patient NHS Number",
-          "origins": [
-            {
-              "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }

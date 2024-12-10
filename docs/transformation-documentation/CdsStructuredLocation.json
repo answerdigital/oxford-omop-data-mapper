@@ -3,6 +3,24 @@
   "origin": "CDS",
   "omopColumns": [
     {
+      "name": "nhs_number",
+      "operation_description": "Value copied from `NhsNumber`",
+      "dataSource": [
+        {
+          "name": "NhsNumber",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tPatientAddressStructured1,\n\t\tPatientAddressStructured2,\n\t\tPatientAddressStructured3,\n\t\tPatientAddressStructured4,\n\t\tPatientAddressStructured5,\n\t\tPostcode,\n\t\tNHSNumber\nfrom omop_staging.cds_line01\nwhere PatientAddressType = '02'\n\tand\n\t(\n\t\tPatientAddressStructured1 is not null or\n\t\tPatientAddressStructured2 is not null or\n\t\tPatientAddressStructured3 is not null or\n\t\tPatientAddressStructured4 is not null or\n\t\tPatientAddressStructured5 is not null or\n\t\tPostcode is not null\n\t);\n\t",
+      "lookup_table_markdown": null
+    },
+    {
       "name": "zip",
       "operation_description": "Uppercase the postcode then insert the space in the correct location, if needed.",
       "dataSource": [
@@ -12,7 +30,7 @@
           "origins": [
             {
               "origin": "POSTCODE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode.html"
+              "url": null
             }
           ]
         }
@@ -30,7 +48,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
+              "url": null
             }
           ]
         },
@@ -40,7 +58,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
+              "url": null
             }
           ]
         },
@@ -50,7 +68,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
+              "url": null
             }
           ]
         },
@@ -60,7 +78,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
+              "url": null
             }
           ]
         },
@@ -70,7 +88,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
+              "url": null
             }
           ]
         },
@@ -80,25 +98,7 @@
           "origins": [
             {
               "origin": "POSTCODE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/postcode.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect\n\tdistinct\n\t\tPatientAddressStructured1,\n\t\tPatientAddressStructured2,\n\t\tPatientAddressStructured3,\n\t\tPatientAddressStructured4,\n\t\tPatientAddressStructured5,\n\t\tPostcode,\n\t\tNHSNumber\nfrom omop_staging.cds_line01\nwhere PatientAddressType = '02'\n\tand\n\t(\n\t\tPatientAddressStructured1 is not null or\n\t\tPatientAddressStructured2 is not null or\n\t\tPatientAddressStructured3 is not null or\n\t\tPatientAddressStructured4 is not null or\n\t\tPatientAddressStructured5 is not null or\n\t\tPostcode is not null\n\t);\n\t",
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "nhs_number",
-      "operation_description": "Value copied from `NhsNumber`",
-      "dataSource": [
-        {
-          "name": "NhsNumber",
-          "description": "Patient NHS Number",
-          "origins": [
-            {
-              "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -116,7 +116,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
+              "url": null
             }
           ]
         },
@@ -126,7 +126,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
+              "url": null
             }
           ]
         }
@@ -144,7 +144,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
+              "url": null
             }
           ]
         }
@@ -162,7 +162,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
+              "url": null
             }
           ]
         }
@@ -180,7 +180,7 @@
           "origins": [
             {
               "origin": "PATIENT USUAL ADDRESS (STRUCTURED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__structured_.html"
+              "url": null
             }
           ]
         }

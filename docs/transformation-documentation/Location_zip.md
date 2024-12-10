@@ -6,11 +6,33 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # zip
+### SUS Inpatient Location
+Source column  `Postcode`.
+Uppercase the postcode then insert the space in the correct location, if needed.
+
+* `Postcode` Patient Postcode [POSTCODE]()
+
+```sql
+select
+	distinct
+		Postcode,
+		NHSNumber
+from omop_staging.sus_APC
+where LocationClassAtEpisodeStartDate = '04'
+	and
+(
+	Postcode is not null
+);
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20SUS%20Inpatient%20Location%20mapping){: .btn }
 ### SACT
 Source column  `Patient_Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `Patient_Postcode` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+* `Patient_Postcode` Patient's Postcode. [POSTCODE]()
 
 ```sql
 select
@@ -29,7 +51,7 @@ group by NHS_Number
 Source column  `FirstOfPOSTCODE`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `FirstOfPOSTCODE` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+* `FirstOfPOSTCODE` Patient's Postcode. [POSTCODE]()
 
 ```sql
 select
@@ -48,7 +70,7 @@ where p.FirstOfPOSTCODE is not null
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `Postcode` Patient Postcode [POSTCODE OF USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/postcode_of_usual_address__at_diagnosis_.html)
+* `Postcode` Patient Postcode [POSTCODE OF USUAL ADDRESS (AT DIAGNOSIS)]()
 
 ```sql
 with 
@@ -110,7 +132,7 @@ group by NhsNumber
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `Postcode` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+* `Postcode` Patient's Postcode. [POSTCODE]()
 
 ```sql
 select
@@ -142,7 +164,7 @@ where PatientAddressType = '02'
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
-* `Postcode` Patient's Postcode. [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+* `Postcode` Patient's Postcode. [POSTCODE]()
 
 ```sql
 select

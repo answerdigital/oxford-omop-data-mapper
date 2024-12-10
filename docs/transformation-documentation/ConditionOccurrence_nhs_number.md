@@ -6,10 +6,31 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # nhs_number
+### SUS Inpatient Condition Occurrence
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+
+```sql
+		select
+		distinct
+		d.DiagnosisICD,
+		apc.GeneratedRecordIdentifier,
+		apc.NHSNumber,
+		apc.CDSActivityDate
+		from omop_staging.sus_ICDDiagnosis d
+		inner join omop_staging.sus_APC apc
+		on d.MessageId = apc.MessageId
+		where apc.NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20nhs_number%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -55,7 +76,7 @@ where NhsNumber is not null and
 ### Cosd V8 Condition Occurrence Primary Diagnosis Histology Topography
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -103,7 +124,7 @@ where NhsNumber is not null and
 ### COSD V9 Condition Occurrence Recurrence
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 ;with 
@@ -144,7 +165,7 @@ group by NhsNumber, DateOfPrimaryDiagnosisClinicallyAgreed;
 ### COSD V9 Condition Occurrence Recurrence
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 ;with 
@@ -183,7 +204,7 @@ where NonPrimaryRecurrenceOriginalDiagnosis is not null;
 ### COSD V9 Condition Occurrence Progression
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 ;with 
@@ -222,7 +243,7 @@ where NonPrimaryProgressionOriginalDiagnosis is not null;
 ### COSD V9 Condition Occurrence Primary Diagnosis
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 ;with 
@@ -265,7 +286,7 @@ group by NhsNumber, DateOfPrimaryDiagnosisClinicallyAgreed, CancerDiagnosis;
 ### COSD V9 Condition Occurrence Primary Diagnosis Histology Topography
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 ;with 
@@ -311,7 +332,7 @@ where DateOfPrimaryDiagnosisClinicallyAgreed is not null
 ### CDS Condition Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select

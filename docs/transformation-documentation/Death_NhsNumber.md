@@ -6,10 +6,48 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # NhsNumber
+### SUS Inpatient Death
+* Value copied from `nhs_number`
+
+* `nhs_number` Patient NHS Number [NHS NUMBER]()
+
+```sql
+		;with primarydiagnosis as (
+		select *
+		from omop_staging.sus_ICDDiagnosis
+		where IsPrimaryDiagnosis = 1
+		)
+
+		select
+		apc.NHSNumber as nhs_number,
+		max(apc.DischargeDateFromHospitalProviderSpell) as death_date,
+		max(apc.DischargeTimeHospitalProviderSpell) as death_time,
+		max(d.DiagnosisICD) as DiagnosisICD
+		from
+		omop_staging.sus_APC apc
+		left join primarydiagnosis d
+		on apc.MessageId = d.MessageId
+		where
+		apc.NHSNumber is not null and
+		apc.DischargeDateFromHospitalProviderSpell is not null and
+		(
+		apc.DischargeMethodHospitalProviderSpell = '4'
+		or (
+		apc.DischargeDestinationHospitalProviderSpell = '79'
+		and
+		apc.DischargeMethodHospitalProviderSpell != '5'
+		)
+		)
+		group by apc.NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Death%20table%20NhsNumber%20field%20SUS%20Inpatient%20Death%20mapping){: .btn }
 ### COSD v9 DeathDischargeDestination
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 ;with 
@@ -47,7 +85,7 @@ where Node.value('(/*/Treatment/DischargeDestinationHospitalProviderSpell/@code)
 ### COSD v9 BasisOfDiagnosisCancer
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 ;with 
@@ -110,7 +148,7 @@ group by NhsNumber
 ### COSD v8 Death
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -138,7 +176,7 @@ where Node.value('(//PersonDeathDate)[1]', 'varchar(max)') is not null;
 ### CDS Death
 * Value copied from `nhs_number`
 
-* `nhs_number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `nhs_number` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select

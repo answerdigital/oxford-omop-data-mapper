@@ -8,17 +8,115 @@ has_toc: false
 
 # Observation
 * [nhs_number]({% link docs/transformation-documentation/Observation_nhs_number.md %})
+* [RecordConnectionIdentifier]({% link docs/transformation-documentation/Observation_RecordConnectionIdentifier.md %})
+* [HospitalProviderSpellNumber]({% link docs/transformation-documentation/Observation_HospitalProviderSpellNumber.md %})
 * [observation_concept_id]({% link docs/transformation-documentation/Observation_observation_concept_id.md %})
 * [observation_date]({% link docs/transformation-documentation/Observation_observation_date.md %})
 * [observation_datetime]({% link docs/transformation-documentation/Observation_observation_datetime.md %})
 * [observation_type_concept_id]({% link docs/transformation-documentation/Observation_observation_type_concept_id.md %})
 * [value_as_number]({% link docs/transformation-documentation/Observation_value_as_number.md %})
-* [RecordConnectionIdentifier]({% link docs/transformation-documentation/Observation_RecordConnectionIdentifier.md %})
-* [HospitalProviderSpellNumber]({% link docs/transformation-documentation/Observation_HospitalProviderSpellNumber.md %})
 * [value_as_string]({% link docs/transformation-documentation/Observation_value_as_string.md %})
 * [unit_concept_id]({% link docs/transformation-documentation/Observation_unit_concept_id.md %})
 * [observation_source_concept_id]({% link docs/transformation-documentation/Observation_observation_source_concept_id.md %})
 
+## SusAPCTotalPreviousPregnancies
+<a href="SusAPCTotalPreviousPregnancies.svg" target="_blank"><img src="SusAPCTotalPreviousPregnancies.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observations do not require a standardized test or other activity to generate clinical fact. Typical observations are medical history, family history, lifestyle choices, healthcare utilization patterns, social circumstances etc
+>
+> Valid Observation Concepts are not enforced to be from any domain.  They should still be standard concepts and typically belong to the Observation or Measurement domain.
+>
+> Observations can be stored as attribute value pairs, with the attribute as the Observation Concept and the value representing the clinical fact. This fact can be stored as a Concept (value_as_concept), a numerical value (value_as_number) or a verbatim string (value_as_string)
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCTotalPreviousPregnancies%20mapping){: .btn }
+## SusAPCNumberOfBabies
+<a href="SusAPCNumberOfBabies.svg" target="_blank"><img src="SusAPCNumberOfBabies.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observations do not require a standardized test or other activity to generate clinical fact. Typical observations are medical history, family history, lifestyle choices, healthcare utilization patterns, social circumstances etc
+>
+> Valid Observation Concepts are not enforced to be from any domain.  They should still be standard concepts and typically belong to the Observation or Measurement domain.
+>
+> Observations can be stored as attribute value pairs, with the attribute as the Observation Concept and the value representing the clinical fact. This fact can be stored as a Concept (value_as_concept), a numerical value (value_as_number) or a verbatim string (value_as_string)
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCNumberOfBabies%20mapping){: .btn }
+## SusAPCGestationLengthLabourOnset
+<a href="SusAPCGestationLengthLabourOnset.svg" target="_blank"><img src="SusAPCGestationLengthLabourOnset.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observations do not require a standardized test or other activity to generate clinical fact. Typical observations are medical history, family history, lifestyle choices, healthcare utilization patterns, social circumstances etc
+>
+> Valid Observation Concepts are not enforced to be from any domain.  They should still be standard concepts and typically belong to the Observation or Measurement domain.
+>
+> Observations can be stored as attribute value pairs, with the attribute as the Observation Concept and the value representing the clinical fact. This fact can be stored as a Concept (value_as_concept), a numerical value (value_as_number) or a verbatim string (value_as_string)
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCGestationLengthLabourOnset%20mapping){: .btn }
+## SusAPCCarerSupportIndicator
+<a href="SusAPCCarerSupportIndicator.svg" target="_blank"><img src="SusAPCCarerSupportIndicator.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observations do not require a standardized test or other activity to generate clinical fact. Typical observations are medical history, family history, lifestyle choices, healthcare utilization patterns, social circumstances etc
+>
+> Valid Observation Concepts are not enforced to be from any domain.  They should still be standard concepts and typically belong to the Observation or Measurement domain.
+>
+> Observations can be stored as attribute value pairs, with the attribute as the Observation Concept and the value representing the clinical fact. This fact can be stored as a Concept (value_as_concept), a numerical value (value_as_number) or a verbatim string (value_as_string)
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCCarerSupportIndicator%20mapping){: .btn }
+## SusAPCBirthWeight
+<a href="SusAPCBirthWeight.svg" target="_blank"><img src="SusAPCBirthWeight.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observations do not require a standardized test or other activity to generate clinical fact. Typical observations are medical history, family history, lifestyle choices, healthcare utilization patterns, social circumstances etc
+>
+> Valid Observation Concepts are not enforced to be from any domain.  They should still be standard concepts and typically belong to the Observation or Measurement domain.
+>
+> Observations can be stored as attribute value pairs, with the attribute as the Observation Concept and the value representing the clinical fact. This fact can be stored as a Concept (value_as_concept), a numerical value (value_as_number) or a verbatim string (value_as_string)
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCBirthWeight%20mapping){: .btn }
+## SusAPCAnaestheticGivenPostLabourDelivery
+<a href="SusAPCAnaestheticGivenPostLabourDelivery.svg" target="_blank"><img src="SusAPCAnaestheticGivenPostLabourDelivery.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observations do not require a standardized test or other activity to generate clinical fact. Typical observations are medical history, family history, lifestyle choices, healthcare utilization patterns, social circumstances etc
+>
+> Valid Observation Concepts are not enforced to be from any domain.  They should still be standard concepts and typically belong to the Observation or Measurement domain.
+>
+> Observations can be stored as attribute value pairs, with the attribute as the Observation Concept and the value representing the clinical fact. This fact can be stored as a Concept (value_as_concept), a numerical value (value_as_number) or a verbatim string (value_as_string)
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCAnaestheticGivenPostLabourDelivery%20mapping){: .btn }
+## SusAPCAnaestheticDuringLabourDelivery
+<a href="SusAPCAnaestheticDuringLabourDelivery.svg" target="_blank"><img src="SusAPCAnaestheticDuringLabourDelivery.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observations do not require a standardized test or other activity to generate clinical fact. Typical observations are medical history, family history, lifestyle choices, healthcare utilization patterns, social circumstances etc
+>
+> Valid Observation Concepts are not enforced to be from any domain.  They should still be standard concepts and typically belong to the Observation or Measurement domain.
+>
+> Observations can be stored as attribute value pairs, with the attribute as the Observation Concept and the value representing the clinical fact. This fact can be stored as a Concept (value_as_concept), a numerical value (value_as_number) or a verbatim string (value_as_string)
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCAnaestheticDuringLabourDelivery%20mapping){: .btn }
 ## CosdV9TobaccoSmokingStatus
 <a href="CosdV9TobaccoSmokingStatus.svg" target="_blank"><img src="CosdV9TobaccoSmokingStatus.svg" /></a>
 

@@ -14,10 +14,10 @@ has_toc: false
 * [day_of_birth]({% link docs/transformation-documentation/Person_day_of_birth.md %})
 * [birth_datetime]({% link docs/transformation-documentation/Person_birth_datetime.md %})
 * [race_concept_id]({% link docs/transformation-documentation/Person_race_concept_id.md %})
-* [ethnicity_concept_id]({% link docs/transformation-documentation/Person_ethnicity_concept_id.md %})
 * [gender_source_value]({% link docs/transformation-documentation/Person_gender_source_value.md %})
 * [race_source_value]({% link docs/transformation-documentation/Person_race_source_value.md %})
 * [race_source_concept_id]({% link docs/transformation-documentation/Person_race_source_concept_id.md %})
+* [ethnicity_concept_id]({% link docs/transformation-documentation/Person_ethnicity_concept_id.md %})
 
 ## SusAPCPerson
 <a href="SusAPCPerson.svg" target="_blank"><img src="SusAPCPerson.svg" /></a>

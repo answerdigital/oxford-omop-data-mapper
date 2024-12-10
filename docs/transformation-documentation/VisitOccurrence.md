@@ -21,6 +21,30 @@ has_toc: false
 * [discharged_to_source_value]({% link docs/transformation-documentation/VisitOccurrence_discharged_to_source_value.md %})
 * [RecordConnectionIdentifier]({% link docs/transformation-documentation/VisitOccurrence_RecordConnectionIdentifier.md %})
 
+## SusAPCVisitOccurrenceWithSpell
+<a href="SusAPCVisitOccurrenceWithSpell.svg" target="_blank"><img src="SusAPCVisitOccurrenceWithSpell.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * `Emergency` covers a visit to A&E within the given Hospital Provider, and hence covers Admission Code 21 and 24 only
+> * `Location Class` ID 24 is a Consultant Clinic within the Health Care Provider.
+> * `Patient Classification` ID 1 is the only entry that covers 24 hours or more with the use of a bed, and whilst others may be a day/night only, they will be discounted because they are less than 24 hours. Also, maternity is also not taken as an `Inpatient` visit.
+> * No calculations to be made between Start and end visit date to try to calculate 24 hours, but instead the `Patient Classification` will be sufficient
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCVisitOccurrenceWithSpell%20mapping){: .btn }
+## SusAPCVisitOccurrenceWithoutSpell
+<a href="SusAPCVisitOccurrenceWithoutSpell.svg" target="_blank"><img src="SusAPCVisitOccurrenceWithoutSpell.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * `Emergency` covers a visit to A&E Within the given Hospital Provider, and hence covers Admission Code 21 and 24 only
+> * `Location Class` ID 24 is a Consultant Clinic Within the Health Care Provider.
+> * `Patient Classification` ID 1 is the only entry that covers 24 hours or more With the use of a bed, and whilst others may be a day/night only, they will be discounted because they are less than 24 hours. Also, maternity is also not taken as an `Inpatient` visit.
+> * No calculations to be made between Start and end visit date to try to calculate 24 hours, but instead the `Patient Classification` will be sufficient
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCVisitOccurrenceWithoutSpell%20mapping){: .btn }
 ## CdsVisitOccurrenceWithSpell
 <a href="CdsVisitOccurrenceWithSpell.svg" target="_blank"><img src="CdsVisitOccurrenceWithSpell.svg" /></a>
 

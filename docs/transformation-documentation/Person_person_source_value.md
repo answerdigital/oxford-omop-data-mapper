@@ -9,17 +9,17 @@ has_toc: false
 ### SUS Inpatient Person
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
-select
-	NHSNumber,
-	max(DateofBirth) as DateOfBirth,
-	max(EthnicCategory) as EthnicCategory,
-	max(PersonCurrentGenderCode) as PersonCurrentGenderCode
-from omop_staging.cds_line01
-where NHSNumber is not null
-group by NHSNumber
+	select
+		NHSNumber,
+		max(DateofBirth) as DateOfBirth,
+		max(EthnicGroup) as EthnicCategory,
+		max(Sex) as PersonCurrentGenderCode
+	from omop_staging.sus_APC
+	where NHSNumber is not null
+	group by NHSNumber
 	
 ```
 
@@ -28,7 +28,7 @@ group by NHSNumber
 ### SACT
 * Value copied from `NHS_Number`
 
-* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHS_Number` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select
@@ -46,7 +46,7 @@ group by NHS_Number
 ### Rtds Demographics
 * Value copied from `PatientId`
 
-* `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `PatientId` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select
@@ -64,7 +64,7 @@ group by PatientId
 ### COSD Demographics
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 with 
@@ -125,7 +125,7 @@ group by NhsNumber
 ### CDS Person
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select

@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -28,24 +28,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "procedure_source_concept_id",
-      "operation_description": "Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.",
-      "dataSource": [
-        {
-          "name": "PrimaryProcedure",
-          "description": "OPC4 Procedure code.",
-          "origins": [
-            {
-              "origin": "PROCEDURE (OPCS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect\n\tdistinct\n\t\tl1.RecordConnectionIdentifier,\n\t\tl1.NHSNumber,\n\t\tp.PrimaryProcedureDate,\n\t\tp.PrimaryProcedure\nfrom omop_staging.cds_line01 l1\n\tinner join omop_staging.cds_procedure p\n\t\ton l1.MessageId = p.MessageId\nwhere l1.NHSNumber is not null;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "procedure_date",
       "operation_description": "Converts text to dates.",
       "dataSource": [
@@ -55,7 +37,7 @@
           "origins": [
             {
               "origin": "PROCEDURE DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+              "url": null
             }
           ]
         }
@@ -73,7 +55,7 @@
           "origins": [
             {
               "origin": "PROCEDURE DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+              "url": null
             }
           ]
         }
@@ -98,7 +80,25 @@
           "origins": [
             {
               "origin": "PROCEDURE (OPCS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html"
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tl1.RecordConnectionIdentifier,\n\t\tl1.NHSNumber,\n\t\tp.PrimaryProcedureDate,\n\t\tp.PrimaryProcedure\nfrom omop_staging.cds_line01 l1\n\tinner join omop_staging.cds_procedure p\n\t\ton l1.MessageId = p.MessageId\nwhere l1.NHSNumber is not null;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "procedure_source_concept_id",
+      "operation_description": "Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.",
+      "dataSource": [
+        {
+          "name": "PrimaryProcedure",
+          "description": "OPC4 Procedure code.",
+          "origins": [
+            {
+              "origin": "PROCEDURE (OPCS)",
+              "url": null
             }
           ]
         }
@@ -116,7 +116,7 @@
           "origins": [
             {
               "origin": "CDS RECORD IDENTIFIER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
+              "url": null
             }
           ]
         }

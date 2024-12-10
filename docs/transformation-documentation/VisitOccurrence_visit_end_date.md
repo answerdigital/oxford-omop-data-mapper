@@ -6,11 +6,116 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # visit_end_date
+### SUS APC VisitOccurrenceWithSpell
+Source column  `EpisodeEndDate`.
+Converts text to dates.
+
+* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](), [END DATE (EPISODE)]()
+
+```sql
+select
+	apc.NHSNumber,
+	apc.HospitalProviderSpellNumber,
+	min (apc.CDSActivityDate) as EpisodeStartDate,
+	coalesce 
+	(
+		min (apc.StartTimeEpisode), 
+		'000000'
+	) as EpisodeStartTime,
+	coalesce 
+	(
+		max (apc.EndDateConsultantEpisode), 
+		max (apc.CDSActivityDate)
+	) as EpisodeEndDate,
+	coalesce 
+	(
+		max (apc.EndTimeEpisode), 
+		'000000'
+	) as EpisodeEndTime,
+--	apc.GeneratedRecordIdentifier,
+	case 
+		when max(apc.AdmissionMethodHospitalProviderSpell) in ('21','24') and max(apc.PatientClassification) = 1 then 262
+        when max(apc.AdmissionMethodHospitalProviderSpell) in ('21','24') then 9203
+        when max(apc.PatientClassification) in (1) then 9201
+        when max(apc.LocationClassAtEpisodeStartDate) in ('02') then 581476
+		else 9202
+	end as VisitOccurrenceConceptId,    -- "visit_concept_id"
+	case 
+		when max(apc.EndDateConsultantEpisode) is null and max(apc.DischargeDestinationHospitalProviderSpell) is null then 32220
+        else 32818
+	end as VisitTypeConceptId,
+	max (apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,
+	max (apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode
+from [omop_staging].[sus_APC] apc
+	inner join dbo.Code c 
+		on c.Code = apc.TreatmentFunctionCode
+where apc.UpdateType = 9   -- New/Modification     (1 = Delete)
+	and apc.NHSNumber is not null
+	and c.CodeTypeId = 2 -- activity_treatment_function_code
+	and apc.HospitalProviderSpellNumber is not null
+group by 
+	apc.NHSNumber,
+--	apc.GeneratedRecordIdentifier,
+	apc.HospitalProviderSpellNumber;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_end_date%20field%20SUS%20APC%20VisitOccurrenceWithSpell%20mapping){: .btn }
+### SUS APC VisitOccurrenceWithoutSpell
+Source column  `EpisodeEndDate`.
+Converts text to dates.
+
+* `EpisodeEndDate` The latest dte in the message group. [CDS ACTIVITY DATE]()
+
+```sql
+with RecordConnectionIdentifierNHSNumberCombination as (
+	select
+		distinct 
+			apc.NHSNumber,
+			apc.GeneratedRecordIdentifier
+	from omop_staging.sus_APC apc
+),
+
+RecordsWithVariableNhsNumber as (
+select
+	m1.GeneratedRecordIdentifier
+from RecordConnectionIdentifierNHSNumberCombination m1
+	inner join RecordConnectionIdentifierNHSNumberCombination m2
+		on m1.NHSNumber != m2.NHSNumber
+where m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier
+)
+
+select
+	apc.NHSNumber,
+	apc.GeneratedRecordIdentifier,
+	min (apc.CDSActivityDate) as EpisodeStartDate,
+	'000000' as EpisodeStartTime,
+	max (apc.CDSActivityDate) as EpisodeEndDate,
+	'000000' as EpisodeEndTime,
+	max (apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,
+	max (apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode
+from omop_staging.sus_APC apc
+	inner join dbo.Code c 
+		on c.Code = apc.TreatmentFunctionCode
+where apc.UpdateType = 9   -- New/Modification     (1 = Delete)
+	and apc.NHSNumber is not null
+	and c.CodeTypeId = 2 -- activity_treatment_function_code
+	and apc.HospitalProviderSpellNumber is null
+	and not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)
+group by 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_end_date%20field%20SUS%20APC%20VisitOccurrenceWithoutSpell%20mapping){: .btn }
 ### CDS VisitOccurrenceWithSpell
 Source column  `EpisodeEndDate`.
 Converts text to dates.
 
-* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
+* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](), [END DATE (EPISODE)]()
 
 ```sql
 select
@@ -68,7 +173,7 @@ group by
 Source column  `EpisodeEndDate`.
 Converts text to dates.
 
-* `EpisodeEndDate` The latest dte in the message group. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+* `EpisodeEndDate` The latest dte in the message group. [CDS ACTIVITY DATE]()
 
 ```sql
 ;with RecordConnectionIdentifierNHSNumberCombination as (

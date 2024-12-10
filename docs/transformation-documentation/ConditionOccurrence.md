@@ -8,15 +8,19 @@ has_toc: false
 
 # ConditionOccurrence
 * [nhs_number]({% link docs/transformation-documentation/ConditionOccurrence_nhs_number.md %})
-* [condition_start_date]({% link docs/transformation-documentation/ConditionOccurrence_condition_start_date.md %})
-* [condition_type_concept_id]({% link docs/transformation-documentation/ConditionOccurrence_condition_type_concept_id.md %})
-* [condition_status_concept_id]({% link docs/transformation-documentation/ConditionOccurrence_condition_status_concept_id.md %})
-* [condition_status_source_value]({% link docs/transformation-documentation/ConditionOccurrence_condition_status_source_value.md %})
 * [condition_source_concept_id]({% link docs/transformation-documentation/ConditionOccurrence_condition_source_concept_id.md %})
 * [condition_concept_id]({% link docs/transformation-documentation/ConditionOccurrence_condition_concept_id.md %})
+* [condition_start_date]({% link docs/transformation-documentation/ConditionOccurrence_condition_start_date.md %})
 * [condition_source_value]({% link docs/transformation-documentation/ConditionOccurrence_condition_source_value.md %})
+* [condition_type_concept_id]({% link docs/transformation-documentation/ConditionOccurrence_condition_type_concept_id.md %})
 * [RecordConnectionIdentifier]({% link docs/transformation-documentation/ConditionOccurrence_RecordConnectionIdentifier.md %})
+* [condition_status_concept_id]({% link docs/transformation-documentation/ConditionOccurrence_condition_status_concept_id.md %})
+* [condition_status_source_value]({% link docs/transformation-documentation/ConditionOccurrence_condition_status_source_value.md %})
 
+## SusAPCConditionOccurrence
+<a href="SusAPCConditionOccurrence.svg" target="_blank"><img src="SusAPCConditionOccurrence.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCConditionOccurrence%20mapping){: .btn }
 ## CosdV8ConditionOccurrencePrimaryDiagnosis
 <a href="CosdV8ConditionOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdV8ConditionOccurrencePrimaryDiagnosis.svg" /></a>
 

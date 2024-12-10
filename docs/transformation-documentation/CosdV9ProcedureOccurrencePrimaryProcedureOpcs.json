@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -28,24 +28,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "procedure_source_concept_id",
-      "operation_description": "Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.",
-      "dataSource": [
-        {
-          "name": "PrimaryProcedureOpcs",
-          "description": "PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out.",
-          "origins": [
-            {
-              "origin": "PRIMARY PROCEDURE (OPCS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/primary_procedure__opcs_.html"
-            }
-          ]
-        }
-      ],
-      "query": "\n;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\t\t\t\t\t\t\t\t\nCosdRecords as (\t\t\t\t\n\tselect\t\t\t\t\t\t\t\t\n\t\tT.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\t\t\t\t\t\t\t\t\n\t\tT.staging.query('.') as Node\t\t\t\t\t\t\t\t\n\t\tfrom omop_staging.cosd_staging\t\t\t\t\t\t\t\t\n\tcross apply content.nodes('COSD901:COSD/*') as T(staging)\t\t\t\t\t\t\t\t\n\twhere T.staging.exist('Id/@root') = 1\t\t\t\t\t\t\t\t\n\t\tand Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\t\t\t\t\t\t\t\t\n\t\tand substring (FileName, 15, 2) = 'CO'\t\t\t\t\t\t\t\t\n), COSD as (\n\tselect\n\t\tId,\n\t\tNode.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\tNode.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,\n\t\tNode.value('(ColorectalRecord/Treatment/Surgery/PrimaryProcedureOpcs/@code)[1]', 'varchar(max)') as PrimaryProcedureOpcs\n\tfrom CosdRecords\n)\nselect\n\tdistinct\n\t\tNhsNumber,\n\t\tProcedureDate,\n\t\tPrimaryProcedureOpcs\nfrom COSD c\nwhere ProcedureDate is not null and PrimaryProcedureOpcs is not null;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "procedure_date",
       "operation_description": "Converts text to dates.",
       "dataSource": [
@@ -55,7 +37,7 @@
           "origins": [
             {
               "origin": "PROCEDURE DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+              "url": null
             }
           ]
         }
@@ -73,7 +55,7 @@
           "origins": [
             {
               "origin": "PROCEDURE DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+              "url": null
             }
           ]
         }
@@ -98,7 +80,25 @@
           "origins": [
             {
               "origin": "PRIMARY PROCEDURE (OPCS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/primary_procedure__opcs_.html"
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\n;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\t\t\t\t\t\t\t\t\nCosdRecords as (\t\t\t\t\n\tselect\t\t\t\t\t\t\t\t\n\t\tT.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\t\t\t\t\t\t\t\t\n\t\tT.staging.query('.') as Node\t\t\t\t\t\t\t\t\n\t\tfrom omop_staging.cosd_staging\t\t\t\t\t\t\t\t\n\tcross apply content.nodes('COSD901:COSD/*') as T(staging)\t\t\t\t\t\t\t\t\n\twhere T.staging.exist('Id/@root') = 1\t\t\t\t\t\t\t\t\n\t\tand Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\t\t\t\t\t\t\t\t\n\t\tand substring (FileName, 15, 2) = 'CO'\t\t\t\t\t\t\t\t\n), COSD as (\n\tselect\n\t\tId,\n\t\tNode.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\tNode.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,\n\t\tNode.value('(ColorectalRecord/Treatment/Surgery/PrimaryProcedureOpcs/@code)[1]', 'varchar(max)') as PrimaryProcedureOpcs\n\tfrom CosdRecords\n)\nselect\n\tdistinct\n\t\tNhsNumber,\n\t\tProcedureDate,\n\t\tPrimaryProcedureOpcs\nfrom COSD c\nwhere ProcedureDate is not null and PrimaryProcedureOpcs is not null;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "procedure_source_concept_id",
+      "operation_description": "Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.",
+      "dataSource": [
+        {
+          "name": "PrimaryProcedureOpcs",
+          "description": "PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out.",
+          "origins": [
+            {
+              "origin": "PRIMARY PROCEDURE (OPCS)",
+              "url": null
             }
           ]
         }

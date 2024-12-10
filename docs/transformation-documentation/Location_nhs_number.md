@@ -6,10 +6,31 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # nhs_number
+### SUS Inpatient Location
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+
+```sql
+select
+	distinct
+		Postcode,
+		NHSNumber
+from omop_staging.sus_APC
+where LocationClassAtEpisodeStartDate = '04'
+	and
+(
+	Postcode is not null
+);
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20SUS%20Inpatient%20Location%20mapping){: .btn }
 ### SACT
 * Value copied from `NHS_Number`
 
-* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHS_Number` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select
@@ -27,7 +48,7 @@ group by NHS_Number
 ### Rtds PAS Location
 * Value copied from `FirstOfNHSNUMBER`
 
-* `FirstOfNHSNUMBER` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `FirstOfNHSNUMBER` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select
@@ -45,7 +66,7 @@ where p.FirstOfPOSTCODE is not null
 ### COSD Demographics
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 with 
@@ -106,7 +127,7 @@ group by NhsNumber
 ### CDS Structured Address
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select

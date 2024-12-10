@@ -6,11 +6,31 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # month_of_birth
+### SUS Inpatient Person
+Source column  `DateOfBirth`.
+Selects the month of the year or null if the date is null.
+
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+
+```sql
+	select
+		NHSNumber,
+		max(DateofBirth) as DateOfBirth,
+		max(EthnicGroup) as EthnicCategory,
+		max(Sex) as PersonCurrentGenderCode
+	from omop_staging.sus_APC
+	where NHSNumber is not null
+	group by NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20month_of_birth%20field%20SUS%20Inpatient%20Person%20mapping){: .btn }
 ### SACT
 Source column  `Date_Of_Birth`.
 Selects the month of the year or null if the date is null.
 
-* `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 select
@@ -29,7 +49,7 @@ group by NHS_Number
 Source column  `DateOfBirth`.
 Selects the month of the year or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 select
@@ -48,7 +68,7 @@ group by PatientId
 Source column  `DateOfBirth`.
 Selects the month of the year or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 with 
@@ -110,7 +130,7 @@ group by NhsNumber
 Source column  `DateOfBirth`.
 Selects the month of the year or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 select

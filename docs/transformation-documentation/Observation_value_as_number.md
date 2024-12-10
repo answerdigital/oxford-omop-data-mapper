@@ -6,11 +6,96 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # value_as_number
+### SUS Inpatient Total Previous Pregnancies Observation
+Source column  `TotalPreviousPregnancies`.
+Converts text to integers.
+
+* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES]()
+
+```sql
+select 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier,
+	apc.HospitalProviderSpellNumber,
+	max(apc.CDSActivityDate) as observation_date,
+	apc.PregnancyTotalPreviousPregnancies
+from [omop_staging].[sus_APC] apc
+where apc.NHSNumber is not null
+	and apc.PregnancyTotalPreviousPregnancies is not null
+	and apc.CDSActivityDate is not null
+	and apc.CdsType in ('140', '120')
+group by 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier, 
+    apc.HospitalProviderSpellNumber,
+	apc.PregnancyTotalPreviousPregnancies;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
+### SUS Inpatient NumberofBabies Observation
+Source column  `NumberofBabies`.
+Converts text to integers.
+
+* `NumberofBabies` The number of REGISTRABLE BIRTHS (live or still born at a particular delivery). [NUMBER OF BABIES INDICATION CODE]()
+
+```sql
+select
+	apc.NHSNumber,
+	apc.GeneratedRecordIdentifier,
+	apc.HospitalProviderSpellNumber,
+	coalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,
+	apc.NumberofBabies
+from [omop_staging].[sus_APC] apc													
+where apc.NHSNumber is not null
+	and apc.NumberofBabies is not null
+	and apc.CDSType in ('120','140')
+group by
+	apc.NHSNumber,
+	apc.GeneratedRecordIdentifier, 
+    apc.HospitalProviderSpellNumber,
+	apc.DeliveryDate,
+	apc.NumberofBabies;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20NumberofBabies%20Observation%20mapping){: .btn }
+### SUS Inpatient Gestation Length Labour Onset Observation
+Source column  `GestationLengthLabourOnset`.
+Converts text to integers.
+
+* `GestationLengthLabourOnset` GESTATION LENGTH (LABOUR ONSET) records a period of between 10 to 49 weeks in completed weeks at the onset of Labour. [GESTATION LENGTH (LABOUR ONSET)]()
+
+```sql
+select 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier,
+	apc.HospitalProviderSpellNumber,
+	coalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date, 
+	apc.GestationLengthLabourOnset
+from [omop_staging].[sus_APC] as apc																			
+where apc.NHSNumber is not null
+  and len(apc.NHSNumber) = 10
+  and apc.GestationLengthLabourOnset is not null
+  and apc.CDSType in ('120', '140')
+group by 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier, 
+    apc.HospitalProviderSpellNumber,
+	apc.DeliveryDate, 
+	apc.GestationLengthLabourOnset;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20Gestation%20Length%20Labour%20Onset%20Observation%20mapping){: .btn }
 ### CosdV9TobaccoSmokingStatus
 Source column  `TobaccoSmokingStatus`.
 Converts text to integers.
 
-* `TobaccoSmokingStatus` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/smoking_status__cancer_.html)
+* `TobaccoSmokingStatus` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)]()
 
 ```sql
 ;with 
@@ -77,7 +162,7 @@ where o.TobaccoSmokingStatus is not null
 Source column  `TobaccoSmokingCessation`.
 Converts text to integers.
 
-* `TobaccoSmokingCessation` An indication of whether treatment was given to the PATIENT for tobacco smoking cessation. [TOBACCO SMOKING CESSATION TREATMENT INDICATION CODE](https://www.datadictionary.nhs.uk/data_elements/tobacco_smoking_cessation_treatment_indication_code.html)
+* `TobaccoSmokingCessation` An indication of whether treatment was given to the PATIENT for tobacco smoking cessation. [TOBACCO SMOKING CESSATION TREATMENT INDICATION CODE]()
 
 ```sql
 ;with 
@@ -144,7 +229,7 @@ where o.TobaccoSmokingCessation is not null
 Source column  `PerformanceStatusAdult`.
 Converts text to integers.
 
-* `PerformanceStatusAdult` A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY. [PERFORMANCE STATUS (ADULT)](https://www.datadictionary.nhs.uk/data_elements/performance_status__adult_.html)
+* `PerformanceStatusAdult` A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY. [PERFORMANCE STATUS (ADULT)]()
 
 ```sql
 ;with 
@@ -211,7 +296,7 @@ where o.PerformanceStatusAdult is not null
 Source column  `MenopausalStatus`.
 Converts text to integers.
 
-* `MenopausalStatus` MENOPAUSAL STATUS (AT DIAGNOSIS) is the MENOPAUSAL STATUS of a PATIENT at PATIENT DIAGNOSIS. [MENOPAUSAL STATUS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/menopausal_status__at_diagnosis_.html)
+* `MenopausalStatus` MENOPAUSAL STATUS (AT DIAGNOSIS) is the MENOPAUSAL STATUS of a PATIENT at PATIENT DIAGNOSIS. [MENOPAUSAL STATUS (AT DIAGNOSIS)]()
 
 ```sql
 ;with 
@@ -266,7 +351,7 @@ where o.MenopausalStatus is not null
 Source column  `AsaScore`.
 Converts text to integers.
 
-* `AsaScore` The physical status of the PATIENT as recorded by an anaesthetist for the operative procedure. [ASA PHYSICAL STATUS CLASSIFICATION SYSTEM CODE](https://www.datadictionary.nhs.uk/data_elements/asa_physical_status_classification_system_code.html)
+* `AsaScore` The physical status of the PATIENT as recorded by an anaesthetist for the operative procedure. [ASA PHYSICAL STATUS CLASSIFICATION SYSTEM CODE]()
 
 ```sql
 ;with 
@@ -333,7 +418,7 @@ where o.AsaScore is not null
 Source column  `AdultComorbidityEvaluation`.
 Converts text to integers.
 
-* `AdultComorbidityEvaluation` The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'. [ADULT COMORBIDITY EVALUATION - 27 SCORE](https://www.datadictionary.nhs.uk/data_elements/adult_comorbidity_evaluation_-_27_score.html)
+* `AdultComorbidityEvaluation` The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'. [ADULT COMORBIDITY EVALUATION - 27 SCORE]()
 
 ```sql
 ;with 
@@ -400,7 +485,7 @@ where o.AdultComorbidityEvaluation is not null
 Source column  `SmokingStatusCode`.
 Converts text to integers.
 
-* `SmokingStatusCode` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/smoking_status__cancer_.html)
+* `SmokingStatusCode` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)]()
 
 ```sql
 ;with 
@@ -467,7 +552,7 @@ where o.SmokingStatusCode is not null
 Source column  `AdultPerformanceStatus`.
 Converts text to integers.
 
-* `AdultPerformanceStatus` A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY. [PERFORMANCE STATUS (ADULT)](https://www.datadictionary.nhs.uk/data_elements/performance_status__adult_.html)
+* `AdultPerformanceStatus` A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY. [PERFORMANCE STATUS (ADULT)]()
 
 ```sql
 ;with 
@@ -534,7 +619,7 @@ where o.AdultPerformanceStatus is not null
 Source column  `AdultComorbidityEvaluation`.
 Converts text to integers.
 
-* `AdultComorbidityEvaluation` The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'. [ADULT COMORBIDITY EVALUATION - 27 SCORE](https://www.datadictionary.nhs.uk/data_elements/adult_comorbidity_evaluation_-_27_score.html)
+* `AdultComorbidityEvaluation` The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'. [ADULT COMORBIDITY EVALUATION - 27 SCORE]()
 
 ```sql
 ;with 
@@ -601,7 +686,7 @@ where o.AdultComorbidityEvaluation is not null
 Source column  `TotalPreviousPregnancies`.
 Converts text to integers.
 
-* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES](https://www.datadictionary.nhs.uk/data_elements/pregnancy_total_previous_pregnancies.html)
+* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES]()
 
 ```sql
 select 
@@ -631,7 +716,7 @@ group by
 Source column  `PersonWeight`.
 Converts text to integers.
 
-* `PersonWeight` PERSON WEIGHT is the result of the Clinical Investigation which measures the PATIENT's Weight, where the UNIT OF MEASUREMENT is 'Kilograms (kg)'. [PERSON WEIGHT](https://www.datadictionary.nhs.uk/data_elements/person_weight.html)
+* `PersonWeight` PERSON WEIGHT is the result of the Clinical Investigation which measures the PATIENT's Weight, where the UNIT OF MEASUREMENT is 'Kilograms (kg)'. [PERSON WEIGHT]()
 
 ```sql
 select 
@@ -662,7 +747,7 @@ group by
 Source column  `NumberofBabies`.
 Converts text to integers.
 
-* `NumberofBabies` The number of REGISTRABLE BIRTHS (live or still born at a particular delivery). [NUMBER OF BABIES INDICATION CODE](https://www.datadictionary.nhs.uk/data_elements/number_of_babies_indication_code.html)
+* `NumberofBabies` The number of REGISTRABLE BIRTHS (live or still born at a particular delivery). [NUMBER OF BABIES INDICATION CODE]()
 
 ```sql
 select 
@@ -695,7 +780,7 @@ group by
 Source column  `GestationLengthLabourOnset`.
 Converts text to integers.
 
-* `GestationLengthLabourOnset` GESTATION LENGTH (LABOUR ONSET) records a period of between 10 to 49 weeks in completed weeks at the onset of Labour. [GESTATION LENGTH (LABOUR ONSET)](https://www.datadictionary.nhs.uk/data_elements/gestation_length__labour_onset_.html)
+* `GestationLengthLabourOnset` GESTATION LENGTH (LABOUR ONSET) records a period of between 10 to 49 weeks in completed weeks at the onset of Labour. [GESTATION LENGTH (LABOUR ONSET)]()
 
 ```sql
 select 

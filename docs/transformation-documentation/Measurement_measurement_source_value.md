@@ -9,7 +9,7 @@ has_toc: false
 ### COSD V9 Measurement Tumour Laterality
 * Value copied from `TumourLaterality`
 
-* `TumourLaterality` Identifies the side of the body for a Tumour relating to paired organs within a PATIENT. [TUMOUR LATERALITY](https://www.datadictionary.nhs.uk/data_elements/tumour_laterality.html)
+* `TumourLaterality` Identifies the side of the body for a Tumour relating to paired organs within a PATIENT. [TUMOUR LATERALITY]()
 
 ```sql
 ;with 
@@ -47,7 +47,7 @@ and TumourLaterality in ('L','R','M','B');
 ### COSD V9 Measurement TNM Category Integrated Stage
 * Value copied from `TnmStageGroupingIntegrated`
 
-* `TnmStageGroupingIntegrated` Is the code, using a TNM CODING EDITION, which classifies the combination of Tumour, node and metastases into stage groupings after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [TNM STAGE GROUPING (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping__integrated_.html)
+* `TnmStageGroupingIntegrated` Is the code, using a TNM CODING EDITION, which classifies the combination of Tumour, node and metastases into stage groupings after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [TNM STAGE GROUPING (INTEGRATED)]()
 
 ```sql
 ;with 
@@ -85,7 +85,7 @@ where TnmStageGroupingIntegrated is not null;
 ### COSD V9 Measurement TNM Category Final Pre Treatment Stage
 * Value copied from `TnmStageGroupingFinalPretreatment`
 
-* `TnmStageGroupingFinalPretreatment` Is the code, using a TNM CODING EDITION, which classifies the combination of Tumour, node and metastases into stage groupings before treatment during a Cancer Care Spell. [TNM STAGE GROUPING (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping__final_pretreatment_.html)
+* `TnmStageGroupingFinalPretreatment` Is the code, using a TNM CODING EDITION, which classifies the combination of Tumour, node and metastases into stage groupings before treatment during a Cancer Care Spell. [TNM STAGE GROUPING (FINAL PRETREATMENT)]()
 
 ```sql
 ;with 
@@ -123,7 +123,7 @@ where TnmStageGroupingFinalPretreatment is not null;
 ### COSD V9 Measurement T Category Integrated Stage
 * Value copied from `TCategoryIntegratedStage`
 
-* `TCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the size and extent of the primary Tumour after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [T CATEGORY (INTEGRATED STAGE)](https://www.datadictionary.nhs.uk/data_elements/t_category__integrated_stage_.html)
+* `TCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the size and extent of the primary Tumour after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [T CATEGORY (INTEGRATED STAGE)]()
 
 ```sql
 ;with 
@@ -161,7 +161,7 @@ where TCategoryIntegratedStage is not null;
 ### COSD V9 Measurement T Category Final Pre Treatment Stage
 * Value copied from `TcategoryFinalPreTreatment`
 
-* `TcategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the size and extent of the primary Tumour before treatment during a Cancer Care Spell. [T CATEGORY (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/t_category__final_pretreatment_.html)
+* `TcategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the size and extent of the primary Tumour before treatment during a Cancer Care Spell. [T CATEGORY (FINAL PRETREATMENT)]()
 
 ```sql
 ;with 
@@ -199,7 +199,7 @@ where TcategoryFinalPreTreatment is not null;
 ### COSD V9 Measurement Synchronous Tumour Indicator
 * Value copied from `SynchronousTumourIndicator`
 
-* `SynchronousTumourIndicator` An indication of whether there is a presence of synchronous tumours at a tumour site during a Cancer Care Spell. [SYNCHRONOUS TUMOUR INDICATOR](https://www.datadictionary.nhs.uk/data_elements/synchronous_tumour_indicator.html)
+* `SynchronousTumourIndicator` An indication of whether there is a presence of synchronous tumours at a tumour site during a Cancer Care Spell. [SYNCHRONOUS TUMOUR INDICATOR]()
 
 ```sql
 ;with 
@@ -236,7 +236,7 @@ where SynchronousTumourIndicator is not null;
 ### COSD V9 Measurement Primary Pathway Metastasis
 * Value copied from `MetastaticSite`
 
-* `MetastaticSite` Is the site of the metastatic disease at PATIENT DIAGNOSIS [METASTATIC SITE (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/metastatic_site__at_diagnosis_.html)
+* `MetastaticSite` Is the site of the metastatic disease at PATIENT DIAGNOSIS [METASTATIC SITE (AT DIAGNOSIS)]()
 
 ```sql
 ;with 
@@ -275,7 +275,7 @@ and MetastaticSite != 97
 ### COSD V9 Measurement Non Primary Pathway Recurrence Metastasis
 * Value copied from `MetastaticSite`
 
-* `MetastaticSite` Is the site of the metastatic disease at PATIENT DIAGNOSIS [METASTATIC SITE (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/metastatic_site__at_diagnosis_.html)
+* `MetastaticSite` Is the site of the metastatic disease at PATIENT DIAGNOSIS [METASTATIC SITE (AT DIAGNOSIS)]()
 
 ```sql
 ;with 
@@ -314,7 +314,7 @@ and MetastaticSite != 97
 ### COSD V9 Measurement Non Primary Pathway Progression Metastasis
 * Value copied from `MetastaticSite`
 
-* `MetastaticSite` Is the site of the metastatic disease at PATIENT DIAGNOSIS [METASTATIC SITE (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/metastatic_site__at_diagnosis_.html)
+* `MetastaticSite` Is the site of the metastatic disease at PATIENT DIAGNOSIS [METASTATIC SITE (AT DIAGNOSIS)]()
 
 ```sql
 ;with 
@@ -353,7 +353,7 @@ and MetastaticSite != 97
 ### COSD V9 Measurement N Category Integrated Stage
 * Value copied from `NCategoryIntegratedStage`
 
-* `NCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the absence or presence and extent of regional Lymph Node metastases after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [N CATEGORY (INTEGRATED STAGE)](https://www.datadictionary.nhs.uk/data_elements/n_category__integrated_stage_.html)
+* `NCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the absence or presence and extent of regional Lymph Node metastases after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [N CATEGORY (INTEGRATED STAGE)]()
 
 ```sql
 ;with 
@@ -391,7 +391,7 @@ where NCategoryIntegratedStage is not null;
 ### COSD V9 Measurement N Category Final Pre Treatment Stage
 * Value copied from `NcategoryFinalPreTreatment`
 
-* `NcategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the absence or presence and extent of regional Lymph Node metastases before treatment during a Cancer Care Spell. [N CATEGORY (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/n_category__final_pretreatment_.html)
+* `NcategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the absence or presence and extent of regional Lymph Node metastases before treatment during a Cancer Care Spell. [N CATEGORY (FINAL PRETREATMENT)]()
 
 ```sql
 ;with 
@@ -429,7 +429,7 @@ where NcategoryFinalPreTreatment is not null;
 ### COSD V9 Measurement M Category Integrated Stage
 * Value copied from `MCategoryIntegratedStage`
 
-* `MCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [M CATEGORY (INTEGRATED STAGE)](https://www.datadictionary.nhs.uk/data_elements/m_category__integrated_stage_.html)
+* `MCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [M CATEGORY (INTEGRATED STAGE)]()
 
 ```sql
 ;with 
@@ -467,7 +467,7 @@ where MCategoryIntegratedStage is not null;
 ### COSD V9 Measurement M Category Final Pre Treatment Stage
 * Value copied from `McategoryFinalPreTreatment`
 
-* `McategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases before treatment during a Cancer Care Spell. [M CATEGORY (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/m_category__final_pretreatment_.html)
+* `McategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases before treatment during a Cancer Care Spell. [M CATEGORY (FINAL PRETREATMENT)]()
 
 ```sql
 ;with 
@@ -505,7 +505,7 @@ where McategoryFinalPreTreatment is not null;
 ### COSD V9 Measurement Grade of Differentiation (At Diagnosis)
 * Value copied from `GradeOfDifferentiationAtDiagnosis`
 
-* `GradeOfDifferentiationAtDiagnosis` The definitive grade of the Tumour at the time of PATIENT DIAGNOSIS. [GRADE OF DIFFERENTIATION (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html)
+* `GradeOfDifferentiationAtDiagnosis` The definitive grade of the Tumour at the time of PATIENT DIAGNOSIS. [GRADE OF DIFFERENTIATION (AT DIAGNOSIS)]()
 
 ```sql
 ;with 
@@ -542,7 +542,7 @@ where GradeOfDifferentiationAtDiagnosis is not null;
 ### COSD V8 Measurement Tumour Laterality
 * Value copied from `TumourLaterality`
 
-* `TumourLaterality` Identifies the side of the body for a Tumour relating to paired organs within a PATIENT. [TUMOUR LATERALITY](https://www.datadictionary.nhs.uk/data_elements/tumour_laterality.html)
+* `TumourLaterality` Identifies the side of the body for a Tumour relating to paired organs within a PATIENT. [TUMOUR LATERALITY]()
 
 ```sql
 ;with 
@@ -581,7 +581,7 @@ and TumourLaterality in ('L','R','M','B');
 ### COSD V8 Measurement Tumour Height Above Anal Verge
 * Value copied from `TumourHeightAboveAnalVerge`
 
-* `TumourHeightAboveAnalVerge` Is the approximate height of the lower limit of the Tumour above the anal verge (as measured by a rigid sigmoidoscopy) during a Colorectal Cancer Care Spell, where the UNIT OF MEASUREMENT is 'Centimetres (cm)' [TUMOUR HEIGHT ABOVE ANAL VERGE](https://www.datadictionary.nhs.uk/data_elements/tumour_height_above_anal_verge.html)
+* `TumourHeightAboveAnalVerge` Is the approximate height of the lower limit of the Tumour above the anal verge (as measured by a rigid sigmoidoscopy) during a Colorectal Cancer Care Spell, where the UNIT OF MEASUREMENT is 'Centimetres (cm)' [TUMOUR HEIGHT ABOVE ANAL VERGE]()
 
 ```sql
 ;with 
@@ -618,7 +618,7 @@ where TumourHeightAboveAnalVerge is not null;
 ### COSD V8 Measurement TNM Category Integrated Stage
 * Value copied from `TnmStageGroupingIntegrated`
 
-* `TnmStageGroupingIntegrated` Is the code, using a TNM CODING EDITION, which classifies the combination of Tumour, node and metastases into stage groupings after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [TNM STAGE GROUPING (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping__integrated_.html)
+* `TnmStageGroupingIntegrated` Is the code, using a TNM CODING EDITION, which classifies the combination of Tumour, node and metastases into stage groupings after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [TNM STAGE GROUPING (INTEGRATED)]()
 
 ```sql
 ;with 
@@ -656,7 +656,7 @@ where TnmStageGroupingIntegrated is not null;
 ### COSD V8 Measurement TNM Category Final Pre Treatment Stage
 * Value copied from `TnmStageGroupingFinalPretreatment`
 
-* `TnmStageGroupingFinalPretreatment` Is the code, using a TNM CODING EDITION, which classifies the combination of Tumour, node and metastases into stage groupings before treatment during a Cancer Care Spell. [TNM STAGE GROUPING (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping__final_pretreatment_.html)
+* `TnmStageGroupingFinalPretreatment` Is the code, using a TNM CODING EDITION, which classifies the combination of Tumour, node and metastases into stage groupings before treatment during a Cancer Care Spell. [TNM STAGE GROUPING (FINAL PRETREATMENT)]()
 
 ```sql
 ;with 
@@ -694,7 +694,7 @@ where TnmStageGroupingFinalPretreatment is not null;
 ### COSD V8 Measurement T Category Integrated Stage
 * Value copied from `TCategoryIntegratedStage`
 
-* `TCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the size and extent of the primary Tumour after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [T CATEGORY (INTEGRATED STAGE)](https://www.datadictionary.nhs.uk/data_elements/t_category__integrated_stage_.html)
+* `TCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the size and extent of the primary Tumour after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [T CATEGORY (INTEGRATED STAGE)]()
 
 ```sql
 ;with 
@@ -732,7 +732,7 @@ where TCategoryIntegratedStage is not null;
 ### COSD V8 Measurement T Category Final Pre Treatment Stage
 * Value copied from `TcategoryFinalPreTreatment`
 
-* `TcategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the size and extent of the primary Tumour before treatment during a Cancer Care Spell. [T CATEGORY (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/t_category__final_pretreatment_.html)
+* `TcategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the size and extent of the primary Tumour before treatment during a Cancer Care Spell. [T CATEGORY (FINAL PRETREATMENT)]()
 
 ```sql
 ;with 
@@ -770,7 +770,7 @@ where TcategoryFinalPreTreatment is not null;
 ### COSD V8 Measurement Synchronous Tumour Indicator
 * Value copied from `SynchronousTumourIndicator`
 
-* `SynchronousTumourIndicator` An indication of whether there is a presence of synchronous tumours at a tumour site during a Cancer Care Spell. [SYNCHRONOUS TUMOUR INDICATOR](https://www.datadictionary.nhs.uk/data_elements/synchronous_tumour_indicator.html)
+* `SynchronousTumourIndicator` An indication of whether there is a presence of synchronous tumours at a tumour site during a Cancer Care Spell. [SYNCHRONOUS TUMOUR INDICATOR]()
 
 ```sql
 ;with 
@@ -807,7 +807,7 @@ where SynchronousTumourIndicator is not null;
 ### COSD V8 Measurement Primary Pathway Metastasis
 * Value copied from `MetastaticSite`
 
-* `MetastaticSite` Is the site of the metastatic disease at PATIENT DIAGNOSIS [METASTATIC SITE (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/metastatic_site__at_diagnosis_.html)
+* `MetastaticSite` Is the site of the metastatic disease at PATIENT DIAGNOSIS [METASTATIC SITE (AT DIAGNOSIS)]()
 
 ```sql
 ;with 
@@ -846,7 +846,7 @@ and MetastaticSite != 97
 ### COSD V8 Measurement Non Primary Pathway Metastasis
 * Value copied from `DateOfNonPrimaryCancerDiagnosisClinicallyAgreed`
 
-* `DateOfNonPrimaryCancerDiagnosisClinicallyAgreed` Is the date where the Non Primary Cancer PATIENT DIAGNOSIS was confirmed or agreed. [DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_non_primary_cancer_diagnosis__clinically_agreed_.html)
+* `DateOfNonPrimaryCancerDiagnosisClinicallyAgreed` Is the date where the Non Primary Cancer PATIENT DIAGNOSIS was confirmed or agreed. [DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)]()
 
 ```sql
 ;with 
@@ -885,7 +885,7 @@ and MetastaticSite != 97
 ### COSD V8 Measurement N Category Integrated Stage
 * Value copied from `NCategoryIntegratedStage`
 
-* `NCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the absence or presence and extent of regional Lymph Node metastases after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [N CATEGORY (INTEGRATED STAGE)](https://www.datadictionary.nhs.uk/data_elements/n_category__integrated_stage_.html)
+* `NCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the absence or presence and extent of regional Lymph Node metastases after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [N CATEGORY (INTEGRATED STAGE)]()
 
 ```sql
 ;with 
@@ -923,7 +923,7 @@ where NCategoryIntegratedStage is not null;
 ### COSD V8 Measurement N Category Final Pre Treatment Stage
 * Value copied from `NcategoryFinalPreTreatment`
 
-* `NcategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the absence or presence and extent of regional Lymph Node metastases before treatment during a Cancer Care Spell. [N CATEGORY (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/n_category__final_pretreatment_.html)
+* `NcategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the absence or presence and extent of regional Lymph Node metastases before treatment during a Cancer Care Spell. [N CATEGORY (FINAL PRETREATMENT)]()
 
 ```sql
 ;with 
@@ -961,7 +961,7 @@ where NcategoryFinalPreTreatment is not null;
 ### COSD V8 Measurement M Category Integrated Stage
 * Value copied from `MCategoryIntegratedStage`
 
-* `MCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [M CATEGORY (INTEGRATED STAGE)](https://www.datadictionary.nhs.uk/data_elements/m_category__integrated_stage_.html)
+* `MCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [M CATEGORY (INTEGRATED STAGE)]()
 
 ```sql
 ;with 
@@ -999,7 +999,7 @@ where MCategoryIntegratedStage is not null;
 ### COSD V8 Measurement M Category Final Pre Treatment Stage
 * Value copied from `McategoryFinalPreTreatment`
 
-* `McategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases before treatment during a Cancer Care Spell. [M CATEGORY (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/m_category__final_pretreatment_.html)
+* `McategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases before treatment during a Cancer Care Spell. [M CATEGORY (FINAL PRETREATMENT)]()
 
 ```sql
 ;with 
@@ -1037,7 +1037,7 @@ where McategoryFinalPreTreatment is not null;
 ### COSD V8 Measurement Grade of Differentiation (At Diagnosis)
 * Value copied from `GradeOfDifferentiationAtDiagnosis`
 
-* `GradeOfDifferentiationAtDiagnosis` The definitive grade of the Tumour at the time of PATIENT DIAGNOSIS. [GRADE OF DIFFERENTIATION (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html)
+* `GradeOfDifferentiationAtDiagnosis` The definitive grade of the Tumour at the time of PATIENT DIAGNOSIS. [GRADE OF DIFFERENTIATION (AT DIAGNOSIS)]()
 
 ```sql
 ;with 
