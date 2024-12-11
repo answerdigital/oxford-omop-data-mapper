@@ -44,10 +44,23 @@ SETTINGS=;Database=omoptest;Encrypt=False;TrustServerCertificate=False;
 
 ## Running the Pipeline
 
-### Powershell Execution
+#### Image Build (Offline/Non-VPN)
 
-Run the pipeline using `run.ps1` with an output path argument, this will be where you want the containers output files to be saved:
+Navigate to the project directory:
+```powershell
+cd DataQualityDashboard
+```
 
+Build the Docker image:
+```powershell
+powershell ./build.ps1
+```
+**Note:** Ensure you are NOT connected to the VPN when building the image.
+
+#### Pipeline Execution
+You may now connect to the VPN, depending on wether your data is stored on a secure server which requires the VPN, if it's local no VPN is required.
+
+Run the pipeline script:
 ```powershell
 powershell ./run.ps1 -outpath "C:\path\to\output\directory"
 ```
