@@ -1,5 +1,5 @@
 ﻿using OmopTransformer.Annotations;
-using OmopTransformer.Omop.ConditionOccurrence;
+using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Transformation;
 
 namespace OmopTransformer.SUS.APC.CareSite;

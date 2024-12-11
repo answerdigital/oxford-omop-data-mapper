@@ -35,7 +35,6 @@ internal class CareSiteRecorder : ICareSiteRecorder
         {
             var dataTable = new DataTable();
 
-            dataTable.Columns.Add("care_site_id");
             dataTable.Columns.Add("care_site_name");
             dataTable.Columns.Add("place_of_service_concept_id");
             dataTable.Columns.Add("location_id");
@@ -44,7 +43,6 @@ internal class CareSiteRecorder : ICareSiteRecorder
             foreach (var record in batch)
             {
                 dataTable.Rows.Add(
-                    record.care_site_id,
                     record.care_site_name,
                     record.place_of_service_concept_id,
                     record.location_id,
