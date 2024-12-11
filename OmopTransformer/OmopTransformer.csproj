@@ -291,8 +291,52 @@
     <None Update="SACT\Sact.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SUS\APC\Observation\AnaestheticDuringLabourDelivery\SusAPCAnaestheticDuringLabourDelivery.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\APC\Observation\AnaestheticGivenPostLabourDelivery\SusAPCAnaestheticGivenPostLabourDelivery.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\APC\Observation\BirthWeight\SusAPCBirthWeight.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\APC\Observation\CarerSupportIndicator\SusAPCCarerSupportIndicator.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\APC\Observation\GestationLengthLabourOnset\SusAPCGestationLengthLabourOnset.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\APC\Observation\NumberOfBabies\SusAPCNumberOfBabies.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\APC\Observation\TotalPreviousPregnancies\SusAPCTotalPreviousPregnancies.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\APC\Person\SusAPCPerson.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+	<None Update="SUS\APC\Location\SusAPCLocation.xml">
+		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</None>
+	<None Update="SUS\APC\Death\SusAPCDeath.xml">
+		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</None>
+	  <None Update="SUS\APC\ConditionOccurrence\SusAPCConditionOccurrence.xml">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="SUS\APC\ProcedureOccurrence\SusAPCProcedureOccurrence.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="SUS\APC\VisitDetails\SusAPCVisitDetails.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="SUS\APC\VisitOccurrenceWithoutSpell\SusAPCVisitOccurrenceWithoutSpell.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="SUS\APC\VisitOccurrenceWithSpell\SusAPCVisitOccurrenceWithSpell.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
   </ItemGroup>
-
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<ItemGroup>
 			<DocumentationDirectory Include="$(MSBuildProjectDirectory)\..\docs\transformation-documentation" />

@@ -6,6 +6,91 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # value_as_number
+### SUS Inpatient Total Previous Pregnancies Observation
+Source column  `TotalPreviousPregnancies`.
+Converts text to integers.
+
+* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES](https://www.datadictionary.nhs.uk/data_elements/pregnancy_total_previous_pregnancies.html)
+
+```sql
+select 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier,
+	apc.HospitalProviderSpellNumber,
+	max(apc.CDSActivityDate) as observation_date,
+	apc.PregnancyTotalPreviousPregnancies
+from [omop_staging].[sus_APC] apc
+where apc.NHSNumber is not null
+	and apc.PregnancyTotalPreviousPregnancies is not null
+	and apc.CDSActivityDate is not null
+	and apc.CdsType in ('140', '120')
+group by 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier, 
+    apc.HospitalProviderSpellNumber,
+	apc.PregnancyTotalPreviousPregnancies;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
+### SUS Inpatient NumberofBabies Observation
+Source column  `NumberofBabies`.
+Converts text to integers.
+
+* `NumberofBabies` The number of REGISTRABLE BIRTHS (live or still born at a particular delivery). [NUMBER OF BABIES INDICATION CODE](https://www.datadictionary.nhs.uk/data_elements/number_of_babies_indication_code.html)
+
+```sql
+select
+	apc.NHSNumber,
+	apc.GeneratedRecordIdentifier,
+	apc.HospitalProviderSpellNumber,
+	coalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,
+	apc.NumberofBabies
+from [omop_staging].[sus_APC] apc													
+where apc.NHSNumber is not null
+	and apc.NumberofBabies is not null
+	and apc.CDSType in ('120','140')
+group by
+	apc.NHSNumber,
+	apc.GeneratedRecordIdentifier, 
+    apc.HospitalProviderSpellNumber,
+	apc.DeliveryDate,
+	apc.NumberofBabies;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20NumberofBabies%20Observation%20mapping){: .btn }
+### SUS Inpatient Gestation Length Labour Onset Observation
+Source column  `GestationLengthLabourOnset`.
+Converts text to integers.
+
+* `GestationLengthLabourOnset` GESTATION LENGTH (LABOUR ONSET) records a period of between 10 to 49 weeks in completed weeks at the onset of Labour. [GESTATION LENGTH (LABOUR ONSET)](https://www.datadictionary.nhs.uk/data_elements/gestation_length__labour_onset_.html)
+
+```sql
+select 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier,
+	apc.HospitalProviderSpellNumber,
+	coalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date, 
+	apc.GestationLengthLabourOnset
+from [omop_staging].[sus_APC] as apc																			
+where apc.NHSNumber is not null
+  and len(apc.NHSNumber) = 10
+  and apc.GestationLengthLabourOnset is not null
+  and apc.CDSType in ('120', '140')
+group by 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier, 
+    apc.HospitalProviderSpellNumber,
+	apc.DeliveryDate, 
+	apc.GestationLengthLabourOnset;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20Gestation%20Length%20Labour%20Onset%20Observation%20mapping){: .btn }
 ### CosdV9TobaccoSmokingStatus
 Source column  `TobaccoSmokingStatus`.
 Converts text to integers.

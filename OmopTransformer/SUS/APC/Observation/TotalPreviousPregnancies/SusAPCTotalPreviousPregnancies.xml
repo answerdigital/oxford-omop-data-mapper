@@ -1,0 +1,43 @@
+﻿<Query>
+    <Sql>
+select 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier,
+	apc.HospitalProviderSpellNumber,
+	max(apc.CDSActivityDate) as observation_date,
+	apc.PregnancyTotalPreviousPregnancies
+from [omop_staging].[sus_APC] apc
+where apc.NHSNumber is not null
+	and apc.PregnancyTotalPreviousPregnancies is not null
+	and apc.CDSActivityDate is not null
+	and apc.CdsType in ('140', '120')
+group by 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier, 
+    apc.HospitalProviderSpellNumber,
+	apc.PregnancyTotalPreviousPregnancies;
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="HospitalProviderSpellNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="observation_date">
+			<Description>Event date</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+		</Explanation>
+		<Explanation columnName="TotalPreviousPregnancies">
+			<Description>PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS.</Description>
+			<Origin>PREGNANCY TOTAL PREVIOUS PREGNANCIES</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

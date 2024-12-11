@@ -1,0 +1,316 @@
+{
+  "omopTable": "VisitDetail",
+  "origin": "SUS",
+  "omopColumns": [
+    {
+      "name": "nhs_number",
+      "operation_description": "Value copied from `NHSNumber`",
+      "dataSource": [
+        {
+          "name": "NHSNumber",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "RecordConnectionIdentifier",
+      "operation_description": "Value copied from `GeneratedRecordIdentifier`",
+      "dataSource": [
+        {
+          "name": "GeneratedRecordIdentifier",
+          "description": "CDS specific identifier that binds multiple CDS messages together.",
+          "origins": [
+            {
+              "origin": "CDS RECORD IDENTIFIER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "HospitalProviderSpellNumber",
+      "operation_description": "Value copied from `HospitalProviderSpellNumber`",
+      "dataSource": [
+        {
+          "name": "HospitalProviderSpellNumber",
+          "description": "CDS specific hospital spell number that binds many episodes together.",
+          "origins": [
+            {
+              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_detail_start_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "VisitStartDate",
+          "description": "Start date of the episode, if exists, else the start date of the spell.",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            },
+            {
+              "origin": "START DATE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html"
+            },
+            {
+              "origin": "START DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_detail_start_datetime",
+      "operation_description": "Combines a date with a time of day.",
+      "dataSource": [
+        {
+          "name": "VisitStartDate",
+          "description": "Start date of the episode, if exists, else the start date of the spell.",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            },
+            {
+              "origin": "START DATE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html"
+            },
+            {
+              "origin": "START DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html"
+            }
+          ]
+        },
+        {
+          "name": "VisitStartTime",
+          "description": "Start time of the episode, if exists, else midnight.",
+          "origins": [
+            {
+              "origin": "START TIME (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_time__hospital_provider_spell_.html"
+            },
+            {
+              "origin": "START TIME (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_detail_end_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "VisitEndDate",
+          "description": "End date of the episode, if exists, else the spell discharge date, if exists, else the message date.",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            },
+            {
+              "origin": "END DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html"
+            },
+            {
+              "origin": "DISCHARGE DATE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_detail_end_datetime",
+      "operation_description": "Combines a date with a time of day.",
+      "dataSource": [
+        {
+          "name": "VisitEndDate",
+          "description": "End date of the episode, if exists, else the spell discharge date, if exists, else the message date.",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            },
+            {
+              "origin": "END DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html"
+            },
+            {
+              "origin": "DISCHARGE DATE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html"
+            }
+          ]
+        },
+        {
+          "name": "VisitEndTime",
+          "description": "End time of the episode, if exists, else the spell discharge time, if exists, else the message date.",
+          "origins": [
+            {
+              "origin": "DISCHARGE TIME (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_time__hospital_provider_spell_.html"
+            },
+            {
+              "origin": "END TIME (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_detail_concept_id",
+      "operation_description": "Value copied from `VisitOccurrenceConceptId`",
+      "dataSource": [
+        {
+          "name": "VisitOccurrenceConceptId",
+          "description": "\n\n| Visit Occurrence Type (Info only)  | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |\n|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|\n| Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |\n| Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |\n| Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |\n| Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |\n| Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |\n\t\t\t",
+          "origins": [
+            {
+              "origin": "ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/admission_method_code__hospital_provider_spell_.html"
+            },
+            {
+              "origin": "PATIENT CLASSIFICATION CODE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html"
+            },
+            {
+              "origin": "LOCATION CLASS",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/location_class.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_detail_type_concept_id",
+      "operation_description": "Value copied from `VisitTypeConceptId`",
+      "dataSource": [
+        {
+          "name": "VisitTypeConceptId",
+          "description": "For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record)",
+          "origins": [
+            {
+              "origin": "END DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html"
+            },
+            {
+              "origin": "DISCHARGE DATE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html"
+            },
+            {
+              "origin": "PATIENT CLASSIFICATION CODE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "admitted_from_concept_id",
+      "operation_description": "Lookup admission source concept.",
+      "dataSource": [
+        {
+          "name": "SourceOfAdmissionHospitalProviderSpell",
+          "description": "Admission Source.",
+          "origins": [
+            {
+              "origin": "ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": "\r\n\r\n|SourceOfAdmissionHospitalProviderSpell|admitted_from_concept_id|notes|\r\n|------|-----|-----|\r\n|19|0|Home - Used 0 as `Home` as per the OHDSI documentation|\r\n|29|8602|Temporary Lodging|\r\n|37|4050489|County court bailiff - Had to use the Social Context Domain and SNOMED Vocab|\r\n|40|38003619|Prison / Correctional Facility|\r\n|42|4107305|Police station - Had to use the Observation Domain and SNOMED Vocab|\r\n|49|38004284|Psychiatric Hospital|\r\n|51|8717|Inpatient Hospital|\r\n|52|8650|Birthing Center|\r\n|53|8976|Psychiatric Residential Treatment Center|\r\n|55|8863|Skilled Nursing Facility|\r\n|56|38004306|Custodial Care Facility|\r\n|66|38004205|Foster Care Agency|\r\n|79|40482051|Born before arrival to hospital|\r\n|87|4113007|Inpatient Hospital|\r\n|88|8546|Hospice|\r\n|98||No mapping possible|\r\n|99||No mapping possible|\r\n\r\nNotes\r\n* [Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)\r\n"
+    },
+    {
+      "name": "admitted_from_source_value",
+      "operation_description": "Value copied from `SourceOfAdmissionHospitalProviderSpell`",
+      "dataSource": [
+        {
+          "name": "SourceOfAdmissionHospitalProviderSpell",
+          "description": "Admission Source.",
+          "origins": [
+            {
+              "origin": "ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "discharged_to_concept_id",
+      "operation_description": "Lookup discharge destination concept.",
+      "dataSource": [
+        {
+          "name": "DischargeDestinationHospitalProviderSpell",
+          "description": "Discharge Destination Code",
+          "origins": [
+            {
+              "origin": "DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": "\r\n\r\n|DischargeDestinationHospitalProviderSpell|discharged_to_concept_id|notes|\r\n|------|-----|-----|\r\n|19|0|Home - Used 0 as `Home` as per the OHDSI documentation|\r\n|29|8602|Temporary Lodging|\r\n|30|38004284|Psychiatric Hospital|\r\n|37|4050489|County court bailiff - Had to use the Social Context Domain and SNOMED Vocab|\r\n|38|38003619|Prison / Correctional Facility - Went with `Prison / Correctional Facility` over Police Station (4107305)|\r\n|48|38004284|Psychiatric Hospital|\r\n|49|38004284|Psychiatric Hospital|\r\n|50|8971|Inpatient Psychiatric Facility|\r\n|51|8717|Inpatient Hospital|\r\n|52|8650|Birthing Center|\r\n|53|8976|Psychiatric Residential Treatment Center|\r\n|54|8676|Nursing Facility|\r\n|65|8676|Nursing Facility|\r\n|66|38004205|Foster Care Agency|\r\n|79||No mapping possible|\r\n|84|8971|Inpatient Psychiatric Facility|\r\n|85|8676|Nursing Facility|\r\n|87|8717|Inpatient Hospital|\r\n|88|8546|Hospice|\r\n|98||No mapping possible|\r\n|99||No mapping possible|\r\n\r\nNotes\r\n* [Discharge Destination](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)\r\n"
+    },
+    {
+      "name": "discharged_to_source_value",
+      "operation_description": "Value copied from `DischargeDestinationHospitalProviderSpell`",
+      "dataSource": [
+        {
+          "name": "DischargeDestinationHospitalProviderSpell",
+          "description": "Discharge Destination Code",
+          "origins": [
+            {
+              "origin": "DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tapc.NHSNumber,\n\t\t\tapc.GeneratedRecordIdentifier\n\tfrom omop_staging.sus_APC apc\n),\n\nRecordsWithVariableNhsNumber as (\nselect\n\tm1.GeneratedRecordIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier\n),\n\nVisitDetail as (\n\tselect  \n\t\tdistinct\n    \n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\n\t\t\tcase \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 \n\t\t\t\twhen apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203\n\t\t\t\twhen apc.PatientClassification in (1) then 9201\n\t\t\t\twhen apc.LocationClassAtEpisodeStartDate in ('02') then 581476\n\t\t\t\telse 9202\n\t\t\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t\t\tapc.GeneratedRecordIdentifier,\n\n\t\t\tcoalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date\n\t\t\tcoalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time\n\n\t\t\tcoalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,\n\n\t\t\tcoalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,\n\n\t\t\tcase \n\t\t\t\twhen apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220\n\t\t\t\telse 32818\n\t\t\tend as VisitTypeConceptId,\n\n\t\t\tcase \n\t\t\t\twhen apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2\n\t\t\t\telse 1\n\t\t\tend as RowPriority,\n\n\t\t\tapc.SourceOfAdmissionHospitalProviderSpell,\n\t\t\tapc.DischargeDestinationHospitalProviderSpell\n\tfrom omop_staging.sus_APC apc\n\t\tinner join dbo.Code c \n\t\t\ton apc.TreatmentFunctionCode = c.Code\n\twhere apc.UpdateType = 9   -- New/Modification     (1 = Delete)\n\t\tand apc.NHSNumber is not null\n\t\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\t\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)\n), VisitDetailWithRank as (\n\tselect\n\t\t*,\n\t\trow_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank\n\tfrom VisitDetail\n)\nselect\n\t*\nfrom VisitDetailWithRank\nwhere RowRank = 1\n\n\t\t\n\t",
+      "lookup_table_markdown": null
+    }
+  ]
+}

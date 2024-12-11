@@ -7,14 +7,18 @@ has_toc: false
 ---
 
 # Location
+* [nhs_number]({% link docs/transformation-documentation/Location_nhs_number.md %})
 * [zip]({% link docs/transformation-documentation/Location_zip.md %})
 * [location_source_value]({% link docs/transformation-documentation/Location_location_source_value.md %})
-* [nhs_number]({% link docs/transformation-documentation/Location_nhs_number.md %})
 * [address_1]({% link docs/transformation-documentation/Location_address_1.md %})
 * [address_2]({% link docs/transformation-documentation/Location_address_2.md %})
 * [city]({% link docs/transformation-documentation/Location_city.md %})
 * [county]({% link docs/transformation-documentation/Location_county.md %})
 
+## SusAPCLocation
+<a href="SusAPCLocation.svg" target="_blank"><img src="SusAPCLocation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCLocation%20mapping){: .btn }
 ## SactLocation
 <a href="SactLocation.svg" target="_blank"><img src="SactLocation.svg" /></a>
 

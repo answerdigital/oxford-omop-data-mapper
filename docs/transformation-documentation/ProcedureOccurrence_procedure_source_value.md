@@ -6,6 +6,27 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # procedure_source_value
+### SUS APC Procedure Occurrence
+* Value copied from `PrimaryProcedure`
+
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+
+```sql
+select
+	distinct
+		apc.GeneratedRecordIdentifier,
+		apc.NHSNumber,
+		p.ProcedureDateOPCS as PrimaryProcedureDate,
+		p.ProcedureOPCS as PrimaryProcedure
+from omop_staging.sus_APC apc
+	inner join omop_staging.sus_OPCSProcedure p
+		on apc.MessageId = p.MessageId
+where NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_value%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 * Value copied from `ProcedureDate`
 

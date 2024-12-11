@@ -6,6 +6,34 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # observation_type_concept_id
+### SUS Inpatient Total Previous Pregnancies Observation
+* Constant value set to `38000281`. Observation recorded from EHR with text result
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20Inpatient%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
+### SUS Inpatient NumberofBabies Observation
+* Constant value set to `38000280`. Observation recorded from EHR
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20Inpatient%20NumberofBabies%20Observation%20mapping){: .btn }
+### SUS Inpatient Gestation Length Labour Onset Observation
+* Constant value set to `38000280`. Observation recorded from EHR
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20Inpatient%20Gestation%20Length%20Labour%20Onset%20Observation%20mapping){: .btn }
+### SUS Inpatient Carer Support Indicator Observation
+* Constant value set to `38000281`. Observation recorded from EHR with text result
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20Inpatient%20Carer%20Support%20Indicator%20Observation%20mapping){: .btn }
+### Sus APC Birth Weight Observation
+* Constant value set to `38000280`. Observation recorded from EHR
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20Sus%20APC%20Birth%20Weight%20Observation%20mapping){: .btn }
+### SUS APC Anaesthetic Given Post Labour Delivery Observation
+* Constant value set to `38000281`. Observation recorded from EHR with text result
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20APC%20Anaesthetic%20Given%20Post%20Labour%20Delivery%20Observation%20mapping){: .btn }
+### SUS APC Anaesthetic During Labour Delivery Observation
+* Constant value set to `38000281`. Observation recorded from EHR with text result
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20APC%20Anaesthetic%20During%20Labour%20Delivery%20Observation%20mapping){: .btn }
 ### CosdV9TobaccoSmokingStatus
 * Constant value set to `32828`. `EHR episode record`
 

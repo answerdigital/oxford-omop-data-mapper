@@ -1,0 +1,45 @@
+﻿<Query>
+    <Sql>
+select 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier,
+	apc.HospitalProviderSpellNumber,
+	coalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date, 
+	b.BirthWeightBaby as BirthWeight
+from [omop_staging].[sus_APC] apc
+	inner join [omop_staging].[sus_Birth] as b
+		on apc.MessageId = b.MessageId
+where b.BirthWeightBaby is not null
+  and apc.NHSNumber is not null
+  and apc.CdsType in ('140', '120')
+group by 
+	apc.NHSNumber,
+	apc.GeneratedRecordIdentifier,
+    apc.HospitalProviderSpellNumber,
+	apc.DeliveryDate,
+	b.BirthWeightBaby;
+</Sql>
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="HospitalProviderSpellNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="observation_date">
+			<Description>Event date</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+			<Origin>DELIVERY DATE</Origin>
+		</Explanation>
+		<Explanation columnName="BirthWeight">
+			<Description>BIRTH WEIGHT is the result of the Clinical Investigation which measures the Birth Weight, where the UNIT OF MEASUREMENT is Grams (g).</Description>
+			<Origin>BIRTH WEIGHT</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

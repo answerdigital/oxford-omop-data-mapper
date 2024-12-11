@@ -6,6 +6,26 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # birth_datetime
+### SUS Inpatient Person
+Source column  `DateOfBirth`.
+Converts text to dates.
+
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+
+```sql
+	select
+		NHSNumber,
+		max(DateofBirth) as DateOfBirth,
+		max(EthnicGroup) as EthnicCategory,
+		max(Sex) as PersonCurrentGenderCode
+	from omop_staging.sus_APC
+	where NHSNumber is not null
+	group by NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20SUS%20Inpatient%20Person%20mapping){: .btn }
 ### SACT
 Source column  `Date_Of_Birth`.
 Converts text to dates.

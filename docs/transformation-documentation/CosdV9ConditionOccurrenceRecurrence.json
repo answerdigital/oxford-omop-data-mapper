@@ -21,31 +21,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "condition_start_date",
-      "operation_description": "Converts text to dates.",
-      "dataSource": [
-        {
-          "name": "DateOfNonPrimaryCancerDiagnosisClinicallyAgreed",
-          "description": "DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED) is the date where the Non Primary Cancer PATIENT DIAGNOSIS was confirmed or agreed.",
-          "origins": [
-            {
-              "origin": "DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_non_primary_cancer_diagnosis__clinically_agreed_.html"
-            }
-          ]
-        }
-      ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('.') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD901:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\tId,\n\t\tNode,\n\t\tNode.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\tNode.value('(ColorectalRecord/NonPrimaryPathway/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\tNode.value('(ColorectalRecord/NonPrimaryPathway/Recurrence/OriginalPrimaryDiagnosisIcd/@code)[1]', 'varchar(max)') as NonPrimaryRecurrenceOriginalDiagnosis\n\tfrom CosdRecords\n)\nselect \n\tdistinct \n        NhsNumber,\n        DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\tNonPrimaryRecurrenceOriginalDiagnosis\nfrom CO\nwhere NonPrimaryRecurrenceOriginalDiagnosis is not null;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "condition_type_concept_id",
-      "operation_description": "Constant value set to `32828`. `EHR episode record`",
-      "dataSource": null,
-      "query": null,
-      "lookup_table_markdown": null
-    },
-    {
       "name": "condition_source_concept_id",
       "operation_description": "Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.",
       "dataSource": [
@@ -71,6 +46,24 @@
       "lookup_table_markdown": null
     },
     {
+      "name": "condition_start_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "DateOfNonPrimaryCancerDiagnosisClinicallyAgreed",
+          "description": "DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED) is the date where the Non Primary Cancer PATIENT DIAGNOSIS was confirmed or agreed.",
+          "origins": [
+            {
+              "origin": "DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_non_primary_cancer_diagnosis__clinically_agreed_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('.') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD901:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\tId,\n\t\tNode,\n\t\tNode.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\tNode.value('(ColorectalRecord/NonPrimaryPathway/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\tNode.value('(ColorectalRecord/NonPrimaryPathway/Recurrence/OriginalPrimaryDiagnosisIcd/@code)[1]', 'varchar(max)') as NonPrimaryRecurrenceOriginalDiagnosis\n\tfrom CosdRecords\n)\nselect \n\tdistinct \n        NhsNumber,\n        DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\tNonPrimaryRecurrenceOriginalDiagnosis\nfrom CO\nwhere NonPrimaryRecurrenceOriginalDiagnosis is not null;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
       "name": "condition_source_value",
       "operation_description": "Value copied from `NonPrimaryRecurrenceOriginalDiagnosis`",
       "dataSource": [
@@ -86,6 +79,13 @@
         }
       ],
       "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('.') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD901:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\tId,\n\t\tNode,\n\t\tNode.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\tNode.value('(ColorectalRecord/NonPrimaryPathway/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\tNode.value('(ColorectalRecord/NonPrimaryPathway/Recurrence/OriginalPrimaryDiagnosisIcd/@code)[1]', 'varchar(max)') as NonPrimaryRecurrenceOriginalDiagnosis\n\tfrom CosdRecords\n)\nselect \n\tdistinct \n        NhsNumber,\n        DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\tNonPrimaryRecurrenceOriginalDiagnosis\nfrom CO\nwhere NonPrimaryRecurrenceOriginalDiagnosis is not null;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "condition_type_concept_id",
+      "operation_description": "Constant value set to `32828`. `EHR episode record`",
+      "dataSource": null,
+      "query": null,
       "lookup_table_markdown": null
     }
   ]

@@ -6,6 +6,47 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # death_datetime
+### SUS Inpatient Death
+Source columns  `death_date`, `death_time`.
+Combines a date with a time of day.
+
+* `death_date` Discharge date of the patient's spell. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
+
+* `death_time` Discharge time of the patient's spell. [DISCHARGE TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_time__hospital_provider_spell_.html)
+
+```sql
+		;with primarydiagnosis as (
+		select *
+		from omop_staging.sus_ICDDiagnosis
+		where IsPrimaryDiagnosis = 1
+		)
+
+		select
+		apc.NHSNumber as nhs_number,
+		max(apc.DischargeDateFromHospitalProviderSpell) as death_date,
+		max(apc.DischargeTimeHospitalProviderSpell) as death_time,
+		max(d.DiagnosisICD) as DiagnosisICD
+		from
+		omop_staging.sus_APC apc
+		left join primarydiagnosis d
+		on apc.MessageId = d.MessageId
+		where
+		apc.NHSNumber is not null and
+		apc.DischargeDateFromHospitalProviderSpell is not null and
+		(
+		apc.DischargeMethodHospitalProviderSpell = '4'
+		or (
+		apc.DischargeDestinationHospitalProviderSpell = '79'
+		and
+		apc.DischargeMethodHospitalProviderSpell != '5'
+		)
+		)
+		group by apc.NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Death%20table%20death_datetime%20field%20SUS%20Inpatient%20Death%20mapping){: .btn }
 ### COSD v9 DeathDischargeDestination
 * Value copied from `DeathDate`
 

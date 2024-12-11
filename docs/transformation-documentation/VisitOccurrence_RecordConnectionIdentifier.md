@@ -6,6 +6,54 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # RecordConnectionIdentifier
+### SUS APC VisitOccurrenceWithoutSpell
+* Value copied from `RecordConnectionIdentifier`
+
+* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
+
+```sql
+with RecordConnectionIdentifierNHSNumberCombination as (
+	select
+		distinct 
+			apc.NHSNumber,
+			apc.GeneratedRecordIdentifier
+	from omop_staging.sus_APC apc
+),
+
+RecordsWithVariableNhsNumber as (
+select
+	m1.GeneratedRecordIdentifier
+from RecordConnectionIdentifierNHSNumberCombination m1
+	inner join RecordConnectionIdentifierNHSNumberCombination m2
+		on m1.NHSNumber != m2.NHSNumber
+where m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier
+)
+
+select
+	apc.NHSNumber,
+	apc.GeneratedRecordIdentifier,
+	min (apc.CDSActivityDate) as EpisodeStartDate,
+	'000000' as EpisodeStartTime,
+	max (apc.CDSActivityDate) as EpisodeEndDate,
+	'000000' as EpisodeEndTime,
+	max (apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,
+	max (apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode
+from omop_staging.sus_APC apc
+	inner join dbo.Code c 
+		on c.Code = apc.TreatmentFunctionCode
+where apc.UpdateType = 9   -- New/Modification     (1 = Delete)
+	and apc.NHSNumber is not null
+	and c.CodeTypeId = 2 -- activity_treatment_function_code
+	and apc.HospitalProviderSpellNumber is null
+	and not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)
+group by 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20RecordConnectionIdentifier%20field%20SUS%20APC%20VisitOccurrenceWithoutSpell%20mapping){: .btn }
 ### CDS VisitOccurrenceWithoutSpell
 * Value copied from `RecordConnectionIdentifier`
 

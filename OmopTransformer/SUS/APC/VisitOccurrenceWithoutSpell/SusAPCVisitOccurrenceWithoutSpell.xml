@@ -1,0 +1,80 @@
+﻿<Query>
+    <Sql>
+with RecordConnectionIdentifierNHSNumberCombination as (
+	select
+		distinct 
+			apc.NHSNumber,
+			apc.GeneratedRecordIdentifier
+	from omop_staging.sus_APC apc
+),
+
+RecordsWithVariableNhsNumber as (
+select
+	m1.GeneratedRecordIdentifier
+from RecordConnectionIdentifierNHSNumberCombination m1
+	inner join RecordConnectionIdentifierNHSNumberCombination m2
+		on m1.NHSNumber != m2.NHSNumber
+where m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier
+)
+
+select
+	apc.NHSNumber,
+	apc.GeneratedRecordIdentifier,
+	min (apc.CDSActivityDate) as EpisodeStartDate,
+	'000000' as EpisodeStartTime,
+	max (apc.CDSActivityDate) as EpisodeEndDate,
+	'000000' as EpisodeEndTime,
+	max (apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,
+	max (apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode
+from omop_staging.sus_APC apc
+	inner join dbo.Code c 
+		on c.Code = apc.TreatmentFunctionCode
+where apc.UpdateType = 9   -- New/Modification     (1 = Delete)
+	and apc.NHSNumber is not null
+	and c.CodeTypeId = 2 -- activity_treatment_function_code
+	and apc.HospitalProviderSpellNumber is null
+	and not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)
+group by 
+	apc.NHSNumber, 
+	apc.GeneratedRecordIdentifier;
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="RecordConnectionIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+
+		<Explanation columnName="EpisodeStartDate">
+			<Description>The earliest date in the message group.</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+		</Explanation>
+
+		<Explanation columnName="EpisodeStartTime">
+			<Description>No data available, defaulted to midnight.</Description>
+		</Explanation>
+
+		<Explanation columnName="EpisodeEndDate">
+			<Description>The latest dte in the message group.</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+		</Explanation>
+
+		<Explanation columnName="EpisodeEndTime">
+			<Description>No data available, defaulted to midnight.</Description>
+		</Explanation>
+
+		<Explanation columnName="SourceofAdmissionCode">
+			<Description>Admission Source.</Description>
+			<Origin>ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+
+		<Explanation columnName="DischargeDestinationCode">
+			<Description>Discharge Destination Code</Description>
+			<Origin>DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

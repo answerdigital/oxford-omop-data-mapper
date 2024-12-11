@@ -6,6 +6,27 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # location_source_value
+### SUS Inpatient Location
+* Value copied from `Postcode`
+
+* `Postcode` Patient Postcode [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+
+```sql
+select
+	distinct
+		Postcode,
+		NHSNumber
+from omop_staging.sus_APC
+where LocationClassAtEpisodeStartDate = '04'
+	and
+(
+	Postcode is not null
+);
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20location_source_value%20field%20SUS%20Inpatient%20Location%20mapping){: .btn }
 ### SACT
 * Value copied from `Patient_Postcode`
 
