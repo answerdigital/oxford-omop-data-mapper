@@ -28,7 +28,7 @@ internal class CosdV9ProcedureOccurrenceProcedureOpcs : OmopProcedureOccurrence<
     [ConstantValue(32828, "`EHR episode record`")]
     public override int? procedure_type_concept_id { get; set; }
 
-    [CopyValue(nameof(Source.ProcedureDate))]
+    [CopyValue(nameof(Source.ProcedureOpcsCode))]
     public override string? procedure_source_value { get; set; }
 
     [ConstantValue(1, "One")]
