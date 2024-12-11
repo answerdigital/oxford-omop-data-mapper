@@ -53,11 +53,11 @@ internal class CareSiteRecorder : ICareSiteRecorder
 
             var parameter = new
             {
-                rows = dataTable.AsTableValuedParameter("cdm.person_row"),
+                rows = dataTable.AsTableValuedParameter("cdm.care_site_row"),
                 DataSource = dataSource
             };
 
-            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_person", parameter, commandType: CommandType.StoredProcedure);
+            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_care_site", parameter, commandType: CommandType.StoredProcedure);
 
             batchLogger.LogNext();
 
