@@ -13,6 +13,7 @@ using OmopTransformer.SUS.APC.Observation.GestationLengthLabourOnset;
 using OmopTransformer.SUS.APC.Observation.NumberOfBabies;
 using OmopTransformer.SUS.APC.Observation.TotalPreviousPregnancies;
 using OmopTransformer.SUS.APC.VisitDetails;
+using OmopTransformer.SUS.APC.CareSite;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.DrugExposure;
@@ -22,6 +23,7 @@ using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.Omop.VisitOccurrence;
+using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Transformation;
 
 
@@ -39,8 +41,10 @@ internal class SusAPCTransformer : Transformer
     private readonly IDrugExposureRecorder _drugExposureRecorder;
     private readonly IObservationRecorder _observationRecorder;
     private readonly ConceptSnomedResolver _conceptSnomedResolver;
+    private readonly ICareSiteRecorder _careSiteRecorder;
 
     public SusAPCTransformer(
+        ICareSiteRecorder careSiteRecorder,
         IRecordTransformer recordTransformer,
         ILogger<IRecordTransformer> logger,
         TransformOptions transformOptions,
@@ -70,6 +74,7 @@ internal class SusAPCTransformer : Transformer
         _conceptSnomedResolver = conceptSnomedResolver;
         _drugExposureRecorder = drugExposureRecorder;
         _observationRecorder = observationRecorder;
+        _careSiteRecorder = careSiteRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -146,6 +151,11 @@ internal class SusAPCTransformer : Transformer
 
         await Transform<SusAPCVisitDetailsRecord, SusAPCVisitDetail>(
             _visitDetailRecorder.InsertUpdateVisitDetail,
+            "SUS APC VisitDetail",
+            cancellationToken);
+
+        await Transform<SusAPCCareSite, SusAPCCareSite>(
+            _careSiteRecorder.InsertUpdateCareSite,
             "SUS APC VisitDetail",
             cancellationToken);
 
