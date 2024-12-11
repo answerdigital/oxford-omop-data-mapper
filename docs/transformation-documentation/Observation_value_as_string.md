@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Inpatient Total Previous Pregnancies Observation
 * Value copied from `TotalPreviousPregnancies`
 
-* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES]()
+* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES](https://www.datadictionary.nhs.uk/data_elements/pregnancy_total_previous_pregnancies.html)
 
 ```sql
 select 
@@ -36,7 +36,7 @@ group by
 ### SUS Inpatient Carer Support Indicator Observation
 * Value copied from `CarerSupportIndicator`
 
-* `CarerSupportIndicator` An indication of whether Carer support is available to the PATIENT at their normal residence. [CARER SUPPORT INDICATOR]()
+* `CarerSupportIndicator` An indication of whether Carer support is available to the PATIENT at their normal residence. [CARER SUPPORT INDICATOR](https://www.datadictionary.nhs.uk/data_elements/carer_support_indicator.html)
 
 ```sql
 select 
@@ -61,7 +61,7 @@ group by
 ### Sus APC Birth Weight Observation
 * Value copied from `BirthWeight`
 
-* `BirthWeight` BIRTH WEIGHT is the result of the Clinical Investigation which measures the Birth Weight, where the UNIT OF MEASUREMENT is Grams (g). [BIRTH WEIGHT]()
+* `BirthWeight` BIRTH WEIGHT is the result of the Clinical Investigation which measures the Birth Weight, where the UNIT OF MEASUREMENT is Grams (g). [BIRTH WEIGHT](https://www.datadictionary.nhs.uk/data_elements/birth_weight.html)
 
 ```sql
 select 
@@ -89,7 +89,7 @@ group by
 ### SUS APC Anaesthetic Given Post Labour Delivery Observation
 * Value copied from `AnaestheticGivenPostLabourDelivery`
 
-* `AnaestheticGivenPostLabourDelivery` Records whether anaesthetic was given after Delivery, and the type used. [ANAESTHETIC GIVEN POST LABOUR OR DELIVERY CODE]()
+* `AnaestheticGivenPostLabourDelivery` Records whether anaesthetic was given after Delivery, and the type used. [ANAESTHETIC GIVEN POST LABOUR OR DELIVERY CODE](https://www.datadictionary.nhs.uk/data_elements/anaesthetic_given_post_labour_or_delivery_code.html)
 
 ```sql
 select
@@ -115,7 +115,7 @@ group by
 ### SUS APC Anaesthetic During Labour Delivery Observation
 * Value copied from `AnaestheticDuringLabourDelivery`
 
-* `AnaestheticDuringLabourDelivery` Records whether anaesthetic was given during Labour/ Delivery, and the type used. [ANAESTHETIC GIVEN DURING LABOUR OR DELIVERY CODE]()
+* `AnaestheticDuringLabourDelivery` Records whether anaesthetic was given during Labour/ Delivery, and the type used. [ANAESTHETIC GIVEN DURING LABOUR OR DELIVERY CODE](https://www.datadictionary.nhs.uk/data_elements/anaesthetic_given_during_labour_or_delivery_code.html)
 
 ```sql
 select
@@ -142,7 +142,7 @@ group by
 ### CosdV9SourceOfReferralForOutpatients
 * Value copied from `SourceOfReferralForOutpatients`
 
-* `SourceOfReferralForOutpatients` For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS. [SOURCE OF REFERRAL FOR OUT-PATIENTS]()
+* `SourceOfReferralForOutpatients` For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS. [SOURCE OF REFERRAL FOR OUT-PATIENTS](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients.html)
 
 ```sql
 ;with 
@@ -208,7 +208,7 @@ where o.SourceOfReferralForOutpatients is not null
 ### CosdV9SourceOfReferralForNonPrimaryCancerPathway
 * Value copied from `SourceOfReferralForNonPrimaryCancerPathway`
 
-* `SourceOfReferralForNonPrimaryCancerPathway` SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY) identifies the source of referral for a Non Primary Cancer Pathway. [SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY)]()
+* `SourceOfReferralForNonPrimaryCancerPathway` SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY) identifies the source of referral for a Non Primary Cancer Pathway. [SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY)](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients__non_primary_cancer_pathway_.html)
 
 ```sql
 ;with 
@@ -274,7 +274,7 @@ where o.SourceOfReferralForNonPrimaryCancerPathway is not null
 ### CosdV9PersonSexualOrientationCodeAtDiagnosis
 * Value copied from `PersonSexualOrientationCodeAtDiagnosis`
 
-* `PersonSexualOrientationCodeAtDiagnosis` PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS) is the PERSON STATED SEXUAL ORIENTATION CODE at the time of the PATIENT DIAGNOSIS. [PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)]()
+* `PersonSexualOrientationCodeAtDiagnosis` PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS) is the PERSON STATED SEXUAL ORIENTATION CODE at the time of the PATIENT DIAGNOSIS. [PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/person_stated_sexual_orientation_code__at_diagnosis_.html)
 
 ```sql
 ;with 
@@ -328,7 +328,7 @@ where o.PersonSexualOrientationCodeAtDiagnosis is not null
 ### CosdV9HistoryOfAlcoholPast
 * Value copied from `HistoryOfAlcoholPast`
 
-* `HistoryOfAlcoholPast` The past history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER BEFORE LAST THREE MONTHS)]()
+* `HistoryOfAlcoholPast` The past history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER BEFORE LAST THREE MONTHS)](https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_before_last_three_months_.html)
 
 ```sql
 ;with 
@@ -394,7 +394,7 @@ where o.HistoryOfAlcoholPast is not null
 ### CosdV9HistoryOfAlcoholCurrent
 * Value copied from `HistoryOfAlcoholCurrent`
 
-* `HistoryOfAlcoholCurrent` The current history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER IN LAST THREE MONTHS)]()
+* `HistoryOfAlcoholCurrent` The current history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER IN LAST THREE MONTHS)](https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_in_last_three_months_.html)
 
 ```sql
 ;with 
@@ -460,7 +460,7 @@ where o.HistoryOfAlcoholCurrent is not null
 ### CosdV9FamilialCancerSyndrome
 * Value copied from `FamilialCancerSyndrome`
 
-* `FamilialCancerSyndrome` An indication of whether there is a possible or confirmed familial cancer syndrome during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME INDICATOR]()
+* `FamilialCancerSyndrome` An indication of whether there is a possible or confirmed familial cancer syndrome during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME INDICATOR](https://www.datadictionary.nhs.uk/data_elements/familial_cancer_syndrome_indicator.html)
 
 ```sql
 ;with 
@@ -526,7 +526,7 @@ where o.FamilialCancerSyndrome is not null
 ### CosdV9FamilialCancerSyndromeSubsidiaryComment
 * Value copied from `FamilialCancerSyndromeSubsidiaryComment`
 
-* `FamilialCancerSyndromeSubsidiaryComment` FAMILIAL CANCER SYNDROME COMMENT is free text further information recorded where the FAMILIAL CANCER SYNDROME INDICATOR is National Code 'Y - Yes' or 'P - Possible', to identify distinct syndromes which may have different treatment decisions or outcomes that cannot be coded separately during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME COMMENT]()
+* `FamilialCancerSyndromeSubsidiaryComment` FAMILIAL CANCER SYNDROME COMMENT is free text further information recorded where the FAMILIAL CANCER SYNDROME INDICATOR is National Code 'Y - Yes' or 'P - Possible', to identify distinct syndromes which may have different treatment decisions or outcomes that cannot be coded separately during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME COMMENT](https://www.datadictionary.nhs.uk/data_elements/familial_cancer_syndrome_comment.html)
 
 ```sql
 ;with 
@@ -592,7 +592,7 @@ where o.FamilialCancerSyndromeSubsidiaryComment is not null
 ### CosdV8SourceOfReferralOutPatients
 * Value copied from `SourceOfReferralOutPatients`
 
-* `SourceOfReferralOutPatients` For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS. [SOURCE OF REFERRAL FOR OUT-PATIENTS]()
+* `SourceOfReferralOutPatients` For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS. [SOURCE OF REFERRAL FOR OUT-PATIENTS](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients.html)
 
 ```sql
 ;with 
@@ -658,7 +658,7 @@ where o.SourceOfReferralOutPatients is not null
 ### CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway
 * Value copied from `SourceOfReferralForOutPatientsNonPrimaryCancerPathway`
 
-* `SourceOfReferralForOutPatientsNonPrimaryCancerPathway` SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY) identifies the source of referral for a Non Primary Cancer Pathway. [SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY)]()
+* `SourceOfReferralForOutPatientsNonPrimaryCancerPathway` SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY) identifies the source of referral for a Non Primary Cancer Pathway. [SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY)](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients__non_primary_cancer_pathway_.html)
 
 ```sql
 ;with 
@@ -724,7 +724,7 @@ where o.SourceOfReferralForOutPatientsNonPrimaryCancerPathway is not null
 ### CosdV8PersonStatedSexualOrientationCodeAtDiagnosis
 * Value copied from `PersonStatedSexualOrientationCodeAtDiagnosis`
 
-* `PersonStatedSexualOrientationCodeAtDiagnosis` PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS) is the PERSON STATED SEXUAL ORIENTATION CODE at the time of the PATIENT DIAGNOSIS. [PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)]()
+* `PersonStatedSexualOrientationCodeAtDiagnosis` PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS) is the PERSON STATED SEXUAL ORIENTATION CODE at the time of the PATIENT DIAGNOSIS. [PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/person_stated_sexual_orientation_code__at_diagnosis_.html)
 
 ```sql
 ;with 
@@ -778,7 +778,7 @@ where o.PersonStatedSexualOrientationCodeAtDiagnosis is not null
 ### CosdV8FamilialCancerSyndromeIndicator
 * Value copied from `FamilialCancerSyndromeIndicator`
 
-* `FamilialCancerSyndromeIndicator` An indication of whether there is a possible or confirmed familial cancer syndrome during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME INDICATOR]()
+* `FamilialCancerSyndromeIndicator` An indication of whether there is a possible or confirmed familial cancer syndrome during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME INDICATOR](https://www.datadictionary.nhs.uk/data_elements/familial_cancer_syndrome_indicator.html)
 
 ```sql
 ;with 
@@ -844,7 +844,7 @@ where o.FamilialCancerSyndromeIndicator is not null
 ### CosdV8AlcoholHistoryCancerInLastThreeMonths
 * Value copied from `AlcoholHistoryCancerInLastThreeMonths`
 
-* `AlcoholHistoryCancerInLastThreeMonths` The current history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER IN LAST THREE MONTHS)]()
+* `AlcoholHistoryCancerInLastThreeMonths` The current history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER IN LAST THREE MONTHS)](https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_in_last_three_months_.html)
 
 ```sql
 ;with 
@@ -910,7 +910,7 @@ where o.AlcoholHistoryCancerInLastThreeMonths is not null
 ### CosdV8AlcoholHistoryCancerBeforeLastThreeMonths
 * Value copied from `AlcoholHistoryCancerBeforeLastThreeMonths`
 
-* `AlcoholHistoryCancerBeforeLastThreeMonths` The past history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER BEFORE LAST THREE MONTHS)]()
+* `AlcoholHistoryCancerBeforeLastThreeMonths` The past history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER BEFORE LAST THREE MONTHS)](https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_before_last_three_months_.html)
 
 ```sql
 ;with 
@@ -976,7 +976,7 @@ where o.AlcoholHistoryCancerBeforeLastThreeMonths is not null
 ### Cds Total Previous Pregnancies Observation
 * Value copied from `TotalPreviousPregnancies`
 
-* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES]()
+* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES](https://www.datadictionary.nhs.uk/data_elements/pregnancy_total_previous_pregnancies.html)
 
 ```sql
 select 
@@ -1005,7 +1005,7 @@ group by
 ### Cds Source Of Referral For Outpatients Observation
 * Value copied from `SourceOfReferralForOutpatients`
 
-* `SourceOfReferralForOutpatients` The ORIGINAL REFERRAL REQUEST RECEIVED DATE must be recorded on any subsequent REFERRAL REQUESTS for the same health care service and should never be altered or removed, even if the Health Care Provider changes, until the specific health care service is provided for the PATIENT, or is no longer required. [ORIGINAL REFERRAL REQUEST RECEIVED DATE]()
+* `SourceOfReferralForOutpatients` The ORIGINAL REFERRAL REQUEST RECEIVED DATE must be recorded on any subsequent REFERRAL REQUESTS for the same health care service and should never be altered or removed, even if the Health Care Provider changes, until the specific health care service is provided for the PATIENT, or is no longer required. [ORIGINAL REFERRAL REQUEST RECEIVED DATE](https://www.datadictionary.nhs.uk/data_elements/original_referral_request_received_date.html)
 
 ```sql
 select 
@@ -1035,7 +1035,7 @@ group by
 ### Cds Carer Support Indicator Observation
 * Value copied from `CarerSupportIndicator`
 
-* `CarerSupportIndicator` An indication of whether Carer support is available to the PATIENT at their normal residence. [CARER SUPPORT INDICATOR]()
+* `CarerSupportIndicator` An indication of whether Carer support is available to the PATIENT at their normal residence. [CARER SUPPORT INDICATOR](https://www.datadictionary.nhs.uk/data_elements/carer_support_indicator.html)
 
 ```sql
 select 
@@ -1062,7 +1062,7 @@ group by
 ### Cds Birth Weight Observation
 * Value copied from `BirthWeight`
 
-* `BirthWeight` BIRTH WEIGHT is the result of the Clinical Investigation which measures the Birth Weight, where the UNIT OF MEASUREMENT is Grams (g). [BIRTH WEIGHT]()
+* `BirthWeight` BIRTH WEIGHT is the result of the Clinical Investigation which measures the Birth Weight, where the UNIT OF MEASUREMENT is Grams (g). [BIRTH WEIGHT](https://www.datadictionary.nhs.uk/data_elements/birth_weight.html)
 
 ```sql
 select 
@@ -1092,7 +1092,7 @@ group by
 ### Cds Anaesthetic Given Post Labour Delivery Observation
 * Value copied from `AnaestheticGivenPostLabourDelivery`
 
-* `AnaestheticGivenPostLabourDelivery` Records whether anaesthetic was given after Delivery, and the type used. [ANAESTHETIC GIVEN POST LABOUR OR DELIVERY CODE]()
+* `AnaestheticGivenPostLabourDelivery` Records whether anaesthetic was given after Delivery, and the type used. [ANAESTHETIC GIVEN POST LABOUR OR DELIVERY CODE](https://www.datadictionary.nhs.uk/data_elements/anaesthetic_given_post_labour_or_delivery_code.html)
 
 ```sql
 select 
@@ -1122,7 +1122,7 @@ group by
 ### Cds Anaesthetic During Labour Delivery Observation
 * Value copied from `AnaestheticDuringLabourDelivery`
 
-* `AnaestheticDuringLabourDelivery` Records whether anaesthetic was given during Labour/ Delivery, and the type used. [ANAESTHETIC GIVEN DURING LABOUR OR DELIVERY CODE]()
+* `AnaestheticDuringLabourDelivery` Records whether anaesthetic was given during Labour/ Delivery, and the type used. [ANAESTHETIC GIVEN DURING LABOUR OR DELIVERY CODE](https://www.datadictionary.nhs.uk/data_elements/anaesthetic_given_during_labour_or_delivery_code.html)
 
 ```sql
 select 

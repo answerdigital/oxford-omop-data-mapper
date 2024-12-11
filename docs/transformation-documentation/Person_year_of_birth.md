@@ -10,7 +10,7 @@ has_toc: false
 Source column  `DateOfBirth`.
 Selects the year from a date or null of the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 	select
@@ -30,7 +30,7 @@ Selects the year from a date or null of the date is null.
 Source column  `Date_Of_Birth`.
 Selects the year from a date or null of the date is null.
 
-* `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 select
@@ -49,7 +49,7 @@ group by NHS_Number
 Source column  `DateOfBirth`.
 Selects the year from a date or null of the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 select
@@ -68,7 +68,7 @@ group by PatientId
 Source column  `DateOfBirth`.
 Selects the year from a date or null of the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 with 
@@ -130,7 +130,7 @@ group by NhsNumber
 Source column  `DateOfBirth`.
 Selects the year from a date or null of the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 select

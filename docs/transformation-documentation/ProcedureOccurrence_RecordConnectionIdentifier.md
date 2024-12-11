@@ -9,7 +9,7 @@ has_toc: false
 ### SUS APC Procedure Occurrence
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select
@@ -30,7 +30,7 @@ where NHSNumber is not null
 ### CDS Procedure Occurrence
 * Value copied from `RecordConnectionIdentifier`
 
-* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select

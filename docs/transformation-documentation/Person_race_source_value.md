@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Inpatient Person
 * Value copied from `EthnicCategory`
 
-* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY]()
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 
 ```sql
 	select
@@ -28,7 +28,7 @@ has_toc: false
 ### COSD Demographics
 * Value copied from `EthnicCategory`
 
-* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY]()
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 
 ```sql
 with 
@@ -89,7 +89,7 @@ group by NhsNumber
 ### CDS Person
 * Value copied from `EthnicCategory`
 
-* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY]()
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
 
 ```sql
 select

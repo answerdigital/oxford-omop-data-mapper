@@ -9,7 +9,7 @@ has_toc: false
 ### SUS APC Procedure Occurrence
 * Value copied from `PrimaryProcedure`
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 select
@@ -30,7 +30,7 @@ where NHSNumber is not null
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 * Value copied from `ProcedureDate`
 
-* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE]()
+* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),								
@@ -72,7 +72,7 @@ from COSD c
 ### Cosd V9 Procedure Occurrence Primary Procedure Opcs
 * Value copied from `PrimaryProcedureOpcs`
 
-* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)]()
+* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/primary_procedure__opcs_.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),								
@@ -108,7 +108,7 @@ where ProcedureDate is not null and PrimaryProcedureOpcs is not null;
 ### Cosd V8 Procedure Occurrence Procedure Opcs
 * Value copied from `ProcedureDate`
 
-* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE]()
+* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -152,7 +152,7 @@ from CO c
 ### Cosd V8 Procedure Occurrence Primary Procedure Opcs
 * Value copied from `PrimaryProcedureOpcs`
 
-* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)]()
+* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/primary_procedure__opcs_.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -189,7 +189,7 @@ where ProcedureDate is not null and PrimaryProcedureOpcs is not null;
 ### CDS Procedure Occurrence
 * Value copied from `PrimaryProcedure`
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 select

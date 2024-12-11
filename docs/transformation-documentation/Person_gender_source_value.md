@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Inpatient Person
 * Value copied from `PersonCurrentGenderCode`
 
-* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT]()
+* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
 
 ```sql
 	select
@@ -28,7 +28,7 @@ has_toc: false
 ### SACT
 * Value copied from `Person_Stated_Gender_Code`
 
-* `Person_Stated_Gender_Code` The patient's Sex [PERSON GENDER CODE CURRENT]()
+* `Person_Stated_Gender_Code` The patient's Sex [PERSON GENDER CODE CURRENT](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
 
 ```sql
 select
@@ -46,7 +46,7 @@ group by NHS_Number
 ### CDS Person
 * Value copied from `PersonCurrentGenderCode`
 
-* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT]()
+* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
 
 ```sql
 select

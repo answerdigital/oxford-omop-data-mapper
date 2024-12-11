@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -30,19 +30,19 @@
           "origins": [
             {
               "origin": "MULTIDISCIPLINARY TEAM DISCUSSION DATE (CANCER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/multidisciplinary_team_discussion_date__cancer_.html"
             },
             {
               "origin": "TREATMENT START DATE (CANCER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html"
             },
             {
               "origin": "TNM STAGE GROUPING DATE (FINAL PRETREATMENT)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html"
             },
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
             }
           ]
         }
@@ -60,19 +60,19 @@
           "origins": [
             {
               "origin": "MULTIDISCIPLINARY TEAM DISCUSSION DATE (CANCER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/multidisciplinary_team_discussion_date__cancer_.html"
             },
             {
               "origin": "TREATMENT START DATE (CANCER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html"
             },
             {
               "origin": "TNM STAGE GROUPING DATE (FINAL PRETREATMENT)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html"
             },
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
             }
           ]
         }

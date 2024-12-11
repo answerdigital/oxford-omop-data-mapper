@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -30,11 +30,11 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
             },
             {
               "origin": "TNM STAGE GROUPING DATE (INTEGRATED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html"
             }
           ]
         }
@@ -52,11 +52,11 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
             },
             {
               "origin": "TNM STAGE GROUPING DATE (INTEGRATED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html"
             }
           ]
         }
@@ -81,7 +81,7 @@
           "origins": [
             {
               "origin": "N CATEGORY (INTEGRATED STAGE)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/n_category__integrated_stage_.html"
             }
           ]
         }
@@ -99,7 +99,7 @@
           "origins": [
             {
               "origin": "N CATEGORY (INTEGRATED STAGE)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/n_category__integrated_stage_.html"
             }
           ]
         }

@@ -9,7 +9,7 @@ has_toc: false
 ### SUS APC VisitOccurrenceWithSpell
 * Value copied from `VisitTypeConceptId`
 
-* `VisitTypeConceptId` For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record) [END DATE (EPISODE)](), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](), [PATIENT CLASSIFICATION CODE]()
+* `VisitTypeConceptId` For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record) [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html)
 
 ```sql
 select
@@ -68,7 +68,7 @@ group by
 ### CDS VisitOccurrenceWithSpell
 * Value copied from `VisitTypeConceptId`
 
-* `VisitTypeConceptId` For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record) [END DATE (EPISODE)](), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](), [PATIENT CLASSIFICATION CODE]()
+* `VisitTypeConceptId` For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record) [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html)
 
 ```sql
 select

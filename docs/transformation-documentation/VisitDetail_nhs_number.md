@@ -9,7 +9,7 @@ has_toc: false
 ### Sus Inptatient VisitDetails
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with RecordConnectionIdentifierNHSNumberCombination as (
@@ -92,7 +92,7 @@ where RowRank = 1
 ### CDS VisitDetails
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with RecordConnectionIdentifierNHSNumberCombination as (

@@ -9,7 +9,7 @@ has_toc: false
 ### Sus Inptatient VisitDetails
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 ;with RecordConnectionIdentifierNHSNumberCombination as (
@@ -92,7 +92,7 @@ where RowRank = 1
 ### CDS VisitDetails
 * Value copied from `RecordConnectionIdentifier`
 
-* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 ;with RecordConnectionIdentifierNHSNumberCombination as (

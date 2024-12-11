@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Inpatient Total Previous Pregnancies Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -36,7 +36,7 @@ group by
 ### SUS Inpatient NumberofBabies Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -63,7 +63,7 @@ group by
 ### SUS Inpatient Gestation Length Labour Onset Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -91,7 +91,7 @@ group by
 ### SUS Inpatient Carer Support Indicator Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -116,7 +116,7 @@ group by
 ### Sus APC Birth Weight Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -144,7 +144,7 @@ group by
 ### SUS APC Anaesthetic Given Post Labour Delivery Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -170,7 +170,7 @@ group by
 ### SUS APC Anaesthetic During Labour Delivery Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -197,7 +197,7 @@ group by
 ### CosdV9TobaccoSmokingStatus
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -263,7 +263,7 @@ where o.TobaccoSmokingStatus is not null
 ### CosdV9TobaccoSmokingCessation
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -329,7 +329,7 @@ where o.TobaccoSmokingCessation is not null
 ### CosdV9SourceOfReferralForOutpatients
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -395,7 +395,7 @@ where o.SourceOfReferralForOutpatients is not null
 ### CosdV9SourceOfReferralForNonPrimaryCancerPathway
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -461,7 +461,7 @@ where o.SourceOfReferralForNonPrimaryCancerPathway is not null
 ### CosdV9PersonSexualOrientationCodeAtDiagnosis
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -515,7 +515,7 @@ where o.PersonSexualOrientationCodeAtDiagnosis is not null
 ### CosdV9PerformanceStatusAdult
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -581,7 +581,7 @@ where o.PerformanceStatusAdult is not null
 ### CosdV9MenopausalStatus
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -635,7 +635,7 @@ where o.MenopausalStatus is not null
 ### CosdV9HistoryOfAlcoholPast
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -701,7 +701,7 @@ where o.HistoryOfAlcoholPast is not null
 ### CosdV9HistoryOfAlcoholCurrent
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -767,7 +767,7 @@ where o.HistoryOfAlcoholCurrent is not null
 ### CosdV9FamilialCancerSyndrome
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -833,7 +833,7 @@ where o.FamilialCancerSyndrome is not null
 ### CosdV9FamilialCancerSyndromeSubsidiaryComment
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -899,7 +899,7 @@ where o.FamilialCancerSyndromeSubsidiaryComment is not null
 ### CosdV9AsaScore
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -965,7 +965,7 @@ where o.AsaScore is not null
 ### CosdV9AdultComorbidityEvaluation
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1031,7 +1031,7 @@ where o.AdultComorbidityEvaluation is not null
 ### CosdV8SourceOfReferralOutPatients
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1097,7 +1097,7 @@ where o.SourceOfReferralOutPatients is not null
 ### CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1163,7 +1163,7 @@ where o.SourceOfReferralForOutPatientsNonPrimaryCancerPathway is not null
 ### CosdV8SmokingStatusCode
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1229,7 +1229,7 @@ where o.SmokingStatusCode is not null
 ### CosdV8PersonStatedSexualOrientationCodeAtDiagnosis
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1283,7 +1283,7 @@ where o.PersonStatedSexualOrientationCodeAtDiagnosis is not null
 ### CosdV8FamilialCancerSyndromeIndicator
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1349,7 +1349,7 @@ where o.FamilialCancerSyndromeIndicator is not null
 ### CosdV8AlcoholHistoryCancerInLastThreeMonths
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1415,7 +1415,7 @@ where o.AlcoholHistoryCancerInLastThreeMonths is not null
 ### CosdV8AlcoholHistoryCancerBeforeLastThreeMonths
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1481,7 +1481,7 @@ where o.AlcoholHistoryCancerBeforeLastThreeMonths is not null
 ### CosdV8AdultPerformanceStatus
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1547,7 +1547,7 @@ where o.AdultPerformanceStatus is not null
 ### CosdV8AdultComorbidityEvaluation
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1613,7 +1613,7 @@ where o.AdultComorbidityEvaluation is not null
 ### Cds Total Previous Pregnancies Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -1642,7 +1642,7 @@ group by
 ### Cds Source Of Referral For Outpatients Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -1672,7 +1672,7 @@ group by
 ### Cds Person Weight Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -1702,7 +1702,7 @@ group by
 ### Cds NumberofBabies Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -1734,7 +1734,7 @@ group by
 ### Cds Gestation Length Labour Onset Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -1765,7 +1765,7 @@ group by
 ### Cds Carer Support Indicator Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -1792,7 +1792,7 @@ group by
 ### Cds Birth Weight Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -1822,7 +1822,7 @@ group by
 ### Cds Anaesthetic Given Post Labour Delivery Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -1852,7 +1852,7 @@ group by
 ### Cds Anaesthetic During Labour Delivery Observation
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 

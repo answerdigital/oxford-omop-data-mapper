@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -30,7 +30,7 @@
           "origins": [
             {
               "origin": "BASIS OF DIAGNOSIS (CANCER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html"
             }
           ]
         }
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
             }
           ]
         }
@@ -73,7 +73,7 @@
           "origins": [
             {
               "origin": "BASIS OF DIAGNOSIS (CANCER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html"
             }
           ]
         }
@@ -98,7 +98,7 @@
           "origins": [
             {
               "origin": "BASIS OF DIAGNOSIS (CANCER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html"
             }
           ]
         }
@@ -116,7 +116,7 @@
           "origins": [
             {
               "origin": "BASIS OF DIAGNOSIS (CANCER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html"
             }
           ]
         }

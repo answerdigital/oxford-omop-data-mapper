@@ -9,7 +9,7 @@ has_toc: false
 ### SUS APC VisitOccurrenceWithoutSpell
 * Value copied from `RecordConnectionIdentifier`
 
-* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 with RecordConnectionIdentifierNHSNumberCombination as (
@@ -57,7 +57,7 @@ group by
 ### CDS VisitOccurrenceWithoutSpell
 * Value copied from `RecordConnectionIdentifier`
 
-* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 ;with RecordConnectionIdentifierNHSNumberCombination as (

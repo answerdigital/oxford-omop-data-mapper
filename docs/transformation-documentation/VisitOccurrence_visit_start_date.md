@@ -10,7 +10,7 @@ has_toc: false
 Source column  `EpisodeStartDate`.
 Converts text to dates.
 
-* `EpisodeStartDate` Start date of the episode. [START DATE (EPISODE)]()
+* `EpisodeStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
 ```sql
 select
@@ -66,7 +66,7 @@ group by
 Source column  `EpisodeStartDate`.
 Converts text to dates.
 
-* `EpisodeStartDate` The earliest date in the message group. [CDS ACTIVITY DATE]()
+* `EpisodeStartDate` The earliest date in the message group. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
 
 ```sql
 with RecordConnectionIdentifierNHSNumberCombination as (
@@ -115,7 +115,7 @@ group by
 Source column  `EpisodeStartDate`.
 Converts text to dates.
 
-* `EpisodeStartDate` Start date of the episode. [START DATE (EPISODE)]()
+* `EpisodeStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
 ```sql
 select
@@ -173,7 +173,7 @@ group by
 Source column  `EpisodeStartDate`.
 Converts text to dates.
 
-* `EpisodeStartDate` The earliest date in the message group. [CDS ACTIVITY DATE]()
+* `EpisodeStartDate` The earliest date in the message group. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
 
 ```sql
 ;with RecordConnectionIdentifierNHSNumberCombination as (

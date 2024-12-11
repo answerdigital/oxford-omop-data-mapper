@@ -9,7 +9,7 @@ has_toc: false
 ### Sus Inptatient VisitDetails
 * Value copied from `HospitalProviderSpellNumber`
 
-* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER]()
+* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
 ```sql
 ;with RecordConnectionIdentifierNHSNumberCombination as (
@@ -92,7 +92,7 @@ where RowRank = 1
 ### CDS VisitDetails
 * Value copied from `HospitalProviderSpellNumber`
 
-* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER]()
+* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
 ```sql
 ;with RecordConnectionIdentifierNHSNumberCombination as (

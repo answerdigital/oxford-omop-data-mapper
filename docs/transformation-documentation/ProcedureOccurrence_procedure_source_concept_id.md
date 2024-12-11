@@ -10,7 +10,7 @@ has_toc: false
 Source column  `PrimaryProcedure`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 select
@@ -32,7 +32,7 @@ where NHSNumber is not null
 Source column  `ProcedureOpcsCode`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)]()
+* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),								
@@ -75,7 +75,7 @@ from COSD c
 Source column  `PrimaryProcedureOpcs`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)]()
+* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/primary_procedure__opcs_.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),								
@@ -112,7 +112,7 @@ where ProcedureDate is not null and PrimaryProcedureOpcs is not null;
 Source column  `ProcedureOpcsCode`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)]()
+* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -157,7 +157,7 @@ from CO c
 Source column  `PrimaryProcedureOpcs`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)]()
+* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/primary_procedure__opcs_.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -195,7 +195,7 @@ where ProcedureDate is not null and PrimaryProcedureOpcs is not null;
 Source column  `PrimaryProcedure`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 select
