@@ -33,7 +33,10 @@ We use Flyway to patch our database. This script should be run if new database p
 > |141	|   CDM 5   | Cancer Modifier	| Diagnostic Modifiers of Cancer (OMOP) |
 > |90	    |   CDM 5   |ICDO3 |	International Classification of Diseases for Oncology, Third Edition (WHO) |
 > |75		|	CDM 5	| dm+d	| Dictionary of Medicines and Devices (NHS)|
+> |71	| CDM 5 | ABMS	 | Provider Specialty (American Board of Medical Specialties)	 |
+> |57	| CDM 5 | HES Specialty	| Hospital Episode Statistics Specialty (NHS) |
 > |55		|	CDM 5	| OPCS4| 	OPCS Classification of Interventions and Procedures version 4 (NHS)|
+> |48       |    CDM 5  | Medicare Specialty | Medicare provider/supplier specialty codes (CMS) |
 > |47     |   CDM 5   | NUCC  | 	National Uniform Claim Committee Health Care Provider Taxonomy Code Set (NUCC) |
 > |44		|	CDM 5	| Ethnicity |	OMOP Ethnicity|
 > |34		|	CDM 5	| ICD10	| International Classification of Diseases, Tenth Revision (WHO)|
