@@ -62,7 +62,7 @@ You may now connect to the VPN, depending on wether your data is stored on a sec
 
 Run the pipeline script:
 ```powershell
-powershell ./run.ps1 -outpath "C:\path\to\output\directory"
+powershell ./run.ps1
 ```
 
 ### Pipeline/Build Workflow:
