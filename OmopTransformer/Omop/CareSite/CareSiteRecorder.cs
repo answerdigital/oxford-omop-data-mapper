@@ -38,6 +38,7 @@ internal class CareSiteRecorder : ICareSiteRecorder
             dataTable.Columns.Add("care_site_name");
             dataTable.Columns.Add("place_of_service_concept_id");
             dataTable.Columns.Add("location_id");
+            dataTable.Columns.Add("care_site_source_value");
             dataTable.Columns.Add("place_of_service_source_value");
 
             foreach (var record in batch)
@@ -46,6 +47,7 @@ internal class CareSiteRecorder : ICareSiteRecorder
                     record.care_site_name,
                     record.place_of_service_concept_id,
                     record.location_id,
+                    record.care_site_source_value,
                     record.place_of_service_source_value);
             }
 

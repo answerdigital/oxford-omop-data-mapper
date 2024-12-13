@@ -12,6 +12,6 @@ internal class SusAPCCareSite : OmopCareSite<SusAPCCareSiteRecord>
     [CopyValue(nameof(Source.MainSpecialtyCode))]
     public override string? place_of_service_source_value { get; set; }
 
-    [Transform(typeof(NhsMainSpecialityCodeLookup), nameof(Source.MainSpecialtyCode))]
+    [ConstantValue(38004515, "`Inpatient Hospital`")]
     public override int? place_of_service_concept_id { get; set; }
 }

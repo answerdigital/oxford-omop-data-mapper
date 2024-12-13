@@ -12,7 +12,7 @@ begin
 
 declare @NewCareSite table
 (
-	care_site_id int not null
+	[care_site_id] [int] not null
 );
 
 -- Insert new care sites.
@@ -33,7 +33,7 @@ select
 	care_site_source_value,
 	place_of_service_source_value
 from @rows up
-where not exists (select * from cdm.care_site p where p.care_site_id = up.care_site_id);
+where not exists (select * from cdm.care_site p where p.care_site_name = up.care_site_name);
 
 declare @ColumnList table ([name] varchar(max));
 
@@ -55,14 +55,14 @@ insert into provenance
 select
 	1, -- Care Site,
 	np.care_site_id,
-	cl.care_site_name,
+	cl.name,
 	@DataSource
 from @NewCareSite np
 cross apply (select Name from @ColumnList) cl;
 
 -- Update existing patients.
 
-declare @UpdatedPatients table
+declare @UpdatedCareSites table
 (
 	[care_site_id] [int] NOT NULL,
 	[care_site_name] [varchar](50) NULL,
