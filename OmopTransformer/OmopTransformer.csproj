@@ -336,6 +336,9 @@
 	  <None Update="SUS\APC\VisitOccurrenceWithSpell\SusAPCVisitOccurrenceWithSpell.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	  <None Update="SUS\APC\CareSite\SusAPCCareSite.xml">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
   </ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<ItemGroup>
