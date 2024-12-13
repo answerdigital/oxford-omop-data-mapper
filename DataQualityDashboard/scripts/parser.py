@@ -40,7 +40,7 @@ def extract_metadata(data: Dict) -> Dict:
 
 def filter_failed_checks(check_results: List[Dict]) -> List[Dict]:
     """
-    Filter checks where 'passed' is 0 and 'notApplicable' is 0.
+    Filter checks where 'passed' is 0 and 'notApplicable' is 0 and isError is 0.
 
     Args:
         check_results (List[Dict]): A list of check result
@@ -52,7 +52,7 @@ def filter_failed_checks(check_results: List[Dict]) -> List[Dict]:
     """
     return [
         check for check in check_results
-        if check.get('passed') == 0 and check.get('notApplicable') == 0
+        if check.get('passed') == 0 and check.get('notApplicable') == 0 and check.get('isError') == 0
     ]
 
 
