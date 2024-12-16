@@ -20,8 +20,8 @@
 	group by ConsultantCode, MainSpecialtyCode
 	)
 	select 
-	ConsultantCode as provider_name,
-	MainSpecialtyCode as specialty_concept_id
+	ConsultantCode,
+	MainSpecialtyCode
 	from counts
 	where rnk = 1;
 	</Sql>

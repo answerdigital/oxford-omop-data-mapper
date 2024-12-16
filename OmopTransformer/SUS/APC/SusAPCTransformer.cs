@@ -14,6 +14,7 @@ using OmopTransformer.SUS.APC.Observation.NumberOfBabies;
 using OmopTransformer.SUS.APC.Observation.TotalPreviousPregnancies;
 using OmopTransformer.SUS.APC.VisitDetails;
 using OmopTransformer.SUS.APC.CareSite;
+using OmopTransformer.SUS.APC.Provider;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.DrugExposure;
@@ -24,7 +25,9 @@ using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.Omop.CareSite;
+using OmopTransformer.Omop.Provider;
 using OmopTransformer.Transformation;
+
 
 
 namespace OmopTransformer.SUS.APC;
@@ -42,9 +45,11 @@ internal class SusAPCTransformer : Transformer
     private readonly IObservationRecorder _observationRecorder;
     private readonly ConceptSnomedResolver _conceptSnomedResolver;
     private readonly ICareSiteRecorder _careSiteRecorder;
+    private readonly IProviderRecorder _providerRecorder;
 
     public SusAPCTransformer(
         ICareSiteRecorder careSiteRecorder,
+        IProviderRecorder providerRecorder,
         IRecordTransformer recordTransformer,
         ILogger<IRecordTransformer> logger,
         TransformOptions transformOptions,
@@ -75,6 +80,7 @@ internal class SusAPCTransformer : Transformer
         _drugExposureRecorder = drugExposureRecorder;
         _observationRecorder = observationRecorder;
         _careSiteRecorder = careSiteRecorder;
+        _providerRecorder = providerRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -157,6 +163,11 @@ internal class SusAPCTransformer : Transformer
         await Transform<SusAPCCareSiteRecord, SusAPCCareSite>(
             _careSiteRecorder.InsertUpdateCareSite,
             "SUS APC CareSite",
+            cancellationToken);
+
+        await Transform<SusAPCProviderRecord, SusAPCProvider>(
+            _providerRecorder.InsertUpdateProvider,
+            "SUS APC Provider",
             cancellationToken);
 
         _conceptSnomedResolver.PrintErrors();
