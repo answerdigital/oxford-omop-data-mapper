@@ -1,0 +1,23 @@
+﻿<Query>
+    <Sql>
+	select
+	  NHSNumber as nhs_number,
+	  max(ReferralToTreatmentPeriodEndDate) as death_date
+	from [OMOP_SUS].[omop_staging].[sus_OP]
+	where ReferralToTreatmentPeriodStatus = 36
+	  and ReferralToTreatmentPeriodEndDate is not null
+	  and NHSNumber is not null
+	group by NHSNumber
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="death_date">
+			<Description>Discharge date of the patient's spell.</Description>
+			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+		<Explanation columnName="nhs_number">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
