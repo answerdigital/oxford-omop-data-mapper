@@ -45,15 +45,14 @@ begin
 		specialty_source_concept_id,
 		gender_source_value,
 		gender_source_concept_id
-	from @rows
+	from @rows r
 	where 
 		not exists (
 			select *
 			from cdm.provider p
-			where p.provider_id = provider_id
-				and p.provider_name = provider_name
-				and p.specialty_concept_id = specialty_concept_id
-				and p.specialty_source_value = specialty_source_value
+				where p.provider_name = r.provider_name
+				and p.specialty_concept_id = r.specialty_concept_id
+				and p.specialty_source_value = r.specialty_source_value
 		);
 
 	declare @columns table (Name varchar(max));
