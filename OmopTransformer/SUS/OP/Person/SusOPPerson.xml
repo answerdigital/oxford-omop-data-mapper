@@ -1,7 +1,6 @@
 ﻿<Query>
     <Sql>
 	select
-	top(10)
 		NHSNumber,
 		max(DateofBirth) as DateOfBirth,
 		max(EthnicCategory) as EthnicCategory,
