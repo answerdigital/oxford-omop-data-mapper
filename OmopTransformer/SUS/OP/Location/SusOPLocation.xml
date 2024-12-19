@@ -1,0 +1,24 @@
+﻿<Query>
+    <Sql>
+	select
+		distinct
+		top(10)
+			Postcode,
+			Country,
+			NHSNumber
+	from [OMOP_SUS].[omop_staging].[sus_OP]
+	where NHSNumber is not null
+	and Postcode is not null
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="Postcode">
+			<Description>Patient Postcode</Description>
+			<Origin>POSTCODE</Origin>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
