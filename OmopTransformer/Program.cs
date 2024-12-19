@@ -27,6 +27,8 @@ using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.DrugExposure;
 using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.Observation;
+using OmopTransformer.Omop.CareSite;
+using OmopTransformer.Omop.Provider;
 using OmopTransformer.SUS.APC;
 using OmopTransformer.SUS.Staging.APC;
 using OmopTransformer.SUS.Staging.APC.Clearing;
@@ -231,6 +233,8 @@ internal class Program
             builder.Services.AddTransient<IDrugExposureRecorder, DrugExposureRecorder>();
             builder.Services.AddTransient<IObservationRecorder, ObservationRecorder>();
             builder.Services.AddTransient<IMeasurementRecorder, MeasurementRecorder>();
+            builder.Services.AddTransient<ICareSiteRecorder, CareSiteRecorder>();
+            builder.Services.AddTransient<IProviderRecorder, ProviderRecorder>();
 
             if (string.Equals(transformOptions.Type, "cosd", StringComparison.OrdinalIgnoreCase))
             {

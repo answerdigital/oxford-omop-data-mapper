@@ -13,6 +13,8 @@ using OmopTransformer.SUS.APC.Observation.GestationLengthLabourOnset;
 using OmopTransformer.SUS.APC.Observation.NumberOfBabies;
 using OmopTransformer.SUS.APC.Observation.TotalPreviousPregnancies;
 using OmopTransformer.SUS.APC.VisitDetails;
+using OmopTransformer.SUS.APC.CareSite;
+using OmopTransformer.SUS.APC.Provider;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.DrugExposure;
@@ -22,7 +24,10 @@ using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.Omop.VisitOccurrence;
+using OmopTransformer.Omop.CareSite;
+using OmopTransformer.Omop.Provider;
 using OmopTransformer.Transformation;
+
 
 
 namespace OmopTransformer.SUS.APC;
@@ -39,8 +44,12 @@ internal class SusAPCTransformer : Transformer
     private readonly IDrugExposureRecorder _drugExposureRecorder;
     private readonly IObservationRecorder _observationRecorder;
     private readonly ConceptSnomedResolver _conceptSnomedResolver;
+    private readonly ICareSiteRecorder _careSiteRecorder;
+    private readonly IProviderRecorder _providerRecorder;
 
     public SusAPCTransformer(
+        ICareSiteRecorder careSiteRecorder,
+        IProviderRecorder providerRecorder,
         IRecordTransformer recordTransformer,
         ILogger<IRecordTransformer> logger,
         TransformOptions transformOptions,
@@ -70,83 +79,95 @@ internal class SusAPCTransformer : Transformer
         _conceptSnomedResolver = conceptSnomedResolver;
         _drugExposureRecorder = drugExposureRecorder;
         _observationRecorder = observationRecorder;
+        _careSiteRecorder = careSiteRecorder;
+        _providerRecorder = providerRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
     {
         await Transform<SusAPCPersonRecord, SusAPCPerson>(
-            _personRecorder.InsertUpdatePersons,
-            "Sus Apc Person",
-            cancellationToken);
+           _personRecorder.InsertUpdatePersons,
+           "Sus Apc Person",
+           cancellationToken);
 
         await Transform<SusAPCDeathRecord, SusAPCDeath>(
-            _deathRecorder.InsertUpdateDeaths,
-            "SUS APC Death",
-            cancellationToken);
+           _deathRecorder.InsertUpdateDeaths,
+           "SUS APC Death",
+           cancellationToken);
 
         await Transform<SusAPCProcedureOccurrenceRecord, SusAPCProcedureOccurrence>(
-            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
-            "SUS APC Procedure Occurrence",
-            cancellationToken);
+           _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+           "SUS APC Procedure Occurrence",
+           cancellationToken);
 
         await Transform<SusAPCConditionOccurrenceRecord, SusAPCConditionOccurrence>(
-            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
-            "SUS APC Conditon Occurrence",
-            cancellationToken);
+           _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+           "SUS APC Conditon Occurrence",
+           cancellationToken);
 
         await Transform<SusAPCLocationRecord, SusAPCLocation>(
-            _locationRecorder.InsertUpdateLocations,
-            "SUS APC Location",
-            cancellationToken);
+           _locationRecorder.InsertUpdateLocations,
+           "SUS APC Location",
+           cancellationToken);
 
         await Transform<SusAPCVisitOccurrenceWithSpellRecord, SusAPCVisitOccurrenceWithSpell>(
-            _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
-            "SUS APC VisitOccurrenceWithSpell",
-            cancellationToken);
+           _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
+           "SUS APC VisitOccurrenceWithSpell",
+           cancellationToken);
 
         await Transform<SusAPCVisitOccurrenceWithoutSpellRecord, SusAPCVisitOccurrenceWithoutSpell>(
-            _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
-            "SUS APC VisitOccurrenceWithoutSpell",
-            cancellationToken);
+           _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
+           "SUS APC VisitOccurrenceWithoutSpell",
+           cancellationToken);
 
         await Transform<SusAPCAnaestheticDuringLabourDeliveryRecord, SusAPCAnaestheticDuringLabourDelivery>(
-            _observationRecorder.InsertUpdateObservations,
+           _observationRecorder.InsertUpdateObservations,
         "SUS APC AnaestheticDuringLabourDelivery",
-            cancellationToken);
+           cancellationToken);
 
         await Transform<SusAPCAnaestheticGivenPostLabourDeliveryRecord, SusAPCAnaestheticGivenPostLabourDelivery>(
-            _observationRecorder.InsertUpdateObservations,
-            "SUS APC AnaestheticGivenPostLabourDelivery",
-            cancellationToken);
+           _observationRecorder.InsertUpdateObservations,
+           "SUS APC AnaestheticGivenPostLabourDelivery",
+           cancellationToken);
 
         await Transform<SusAPCBirthWeightRecord, SusAPCBirthWeight>(
-            _observationRecorder.InsertUpdateObservations,
-            "SUS APC BirthWeight",
-            cancellationToken);
+           _observationRecorder.InsertUpdateObservations,
+           "SUS APC BirthWeight",
+           cancellationToken);
 
         await Transform<SusAPCCarerSupportIndicatorRecord, SusAPCCarerSupportIndicator>(
-            _observationRecorder.InsertUpdateObservations,
-            "SUS APC CarerSupportIndicator",
-            cancellationToken);
+           _observationRecorder.InsertUpdateObservations,
+           "SUS APC CarerSupportIndicator",
+           cancellationToken);
 
         await Transform<SusAPCGestationLengthLabourOnsetRecord, SusAPCGestationLengthLabourOnset>(
-            _observationRecorder.InsertUpdateObservations,
-            "SUS APC GestationLengthLabourOnset",
-            cancellationToken);
+           _observationRecorder.InsertUpdateObservations,
+           "SUS APC GestationLengthLabourOnset",
+           cancellationToken);
 
         await Transform<SusAPCNumberOfBabiesRecord, SusAPCNumberOfBabies>(
-            _observationRecorder.InsertUpdateObservations,
-            "SUS APC NumberOfBabies",
-            cancellationToken);
+           _observationRecorder.InsertUpdateObservations,
+           "SUS APC NumberOfBabies",
+           cancellationToken);
 
         await Transform<SusAPCTotalPreviousPregnanciesRecord, SusAPCTotalPreviousPregnancies>(
-            _observationRecorder.InsertUpdateObservations,
-            "SUS APC TotalPreviousPregnancies",
-            cancellationToken);
+           _observationRecorder.InsertUpdateObservations,
+           "SUS APC TotalPreviousPregnancies",
+           cancellationToken);
 
         await Transform<SusAPCVisitDetailsRecord, SusAPCVisitDetail>(
-            _visitDetailRecorder.InsertUpdateVisitDetail,
-            "SUS APC VisitDetail",
+           _visitDetailRecorder.InsertUpdateVisitDetail,
+           "SUS APC VisitDetail",
+           cancellationToken);
+
+        await Transform<SusAPCCareSiteRecord, SusAPCCareSite>(
+            _careSiteRecorder.InsertUpdateCareSite,
+            "SUS APC CareSite",
+            cancellationToken);
+
+        await Transform<SusAPCProviderRecord, SusAPCProvider>(
+            _providerRecorder.InsertUpdateProvider,
+            "SUS APC Provider",
             cancellationToken);
 
         _conceptSnomedResolver.PrintErrors();
