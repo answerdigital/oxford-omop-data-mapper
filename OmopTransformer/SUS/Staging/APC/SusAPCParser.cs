@@ -19,7 +19,7 @@ internal class SusAPCParser : ISusAPCParser
             var visitors = new List<OverseasVisitor>();
             var icdDiagnoses = new List<IcdDiagnosis>();
             var readDiagnoses = new List<ReadDiagnosis>();
-            var opcdProcedure = new List<OpcsProcedure>();
+            var opcdProcedure = new List<SusAPCOpcsProcedure>();
             var readProcedure = new List<APCReadProcedure>();
             var careLocations = new List<APCCareLocation>();
             var births = new List<APCBirth>();
@@ -311,7 +311,7 @@ internal class SusAPCParser : ISusAPCParser
 
             for (int i = 0; i < 24; i++)
             {
-                var procedure = new OpcsProcedure
+                var procedure = new SusAPCOpcsProcedure
                 {
                     MessageId = messageId,
                     ProcedureOPCS = csv[++index].GetTrimmedValueOrNull(),

@@ -18,7 +18,7 @@ internal class SusOPParser : ISusOPParser
 
             var icdDiagnoses = new List<IcdDiagnosis>();
             var readDiagnoses = new List<ReadDiagnosis>();
-            var opcdProcedure = new List<OpcsProcedure>();
+            var opcdProcedure = new List<SusOPOpcsProcedure>();
             var readProcedure = new List<OPReadProcedure>();
 
             Guid messageId = Guid.NewGuid();
@@ -225,11 +225,10 @@ internal class SusOPParser : ISusOPParser
 
             for (int i = 0; i < 24; i++)
             {
-                var procedure = new OpcsProcedure
+                var procedure = new SusOPOpcsProcedure
                 {
                     MessageId = messageId,
                     ProcedureOPCS = csv[++index].GetTrimmedValueOrNull(),
-                    ProcedureDateOPCS = csv[++index].GetTrimmedValueOrNull(),
                     MainOperatingHealthcareProfessionalCodeOpcs = csv[++index].GetTrimmedValueOrNull(),
                     ProfessionalRegistrationIssuerCodeOpcs = csv[++index].GetTrimmedValueOrNull(),
                     ResponsibleAnaesthetistCodeOpcs = csv[++index].GetTrimmedValueOrNull(),

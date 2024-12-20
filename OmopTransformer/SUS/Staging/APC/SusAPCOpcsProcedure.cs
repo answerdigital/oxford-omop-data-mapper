@@ -1,6 +1,6 @@
-﻿namespace OmopTransformer.SUS.Staging;
+﻿namespace OmopTransformer.SUS.Staging.APC;
 
-public class OpcsProcedure
+public class SusAPCOpcsProcedure
 {
     public Guid MessageId { get; init; }
     public string? ProcedureOPCS { get; init; }

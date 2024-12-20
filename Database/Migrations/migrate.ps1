@@ -27,7 +27,7 @@ function Get-EnvValues {
             $value = $value -replace '^[''"]|[''"]$'
             
             $envValues[$key] = $value
-        }
+        }cd 
     }
     
     return $envValues
@@ -43,5 +43,7 @@ docker run `
     -url=jdbc:"sqlserver://$($env.host);databaseName=$($env.dbname);encrypt=false" `
     -user="$($env.user)" `
     -password="$($env.password)" `
+    -outOfOrder="true" `
+    -ignoreMigrationPatterns="versioned:missing,repeatable:missing" `
     migrate migrate
 ""
