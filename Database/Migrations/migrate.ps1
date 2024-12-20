@@ -27,7 +27,7 @@ function Get-EnvValues {
             $value = $value -replace '^[''"]|[''"]$'
             
             $envValues[$key] = $value
-        }cd 
+        }
     }
     
     return $envValues
