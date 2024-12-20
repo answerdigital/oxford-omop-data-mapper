@@ -14,4 +14,5 @@ insert into omop_staging.sus_OP_OPCSProcedure
 select *
 from @rows;
 
+
 end

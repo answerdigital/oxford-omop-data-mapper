@@ -680,7 +680,7 @@ internal class SusApcInserter : ISusAPCInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertOpcsProcedure(IReadOnlyCollection<OpcsProcedure> rows, IDbConnection connection)
+    private async Task InsertOpcsProcedure(IReadOnlyCollection<SusAPCOpcsProcedure> rows, IDbConnection connection)
     {
         var dataTable = new DataTable();
 

@@ -449,13 +449,12 @@ internal class SusOPInserter : ISusOPInserter
                 commandType: CommandType.StoredProcedure);
     }
     
-    private async Task InsertOpcsProcedure(IReadOnlyCollection<OpcsProcedure> rows, IDbConnection connection)
+    private async Task InsertOpcsProcedure(IReadOnlyCollection<SusOPOpcsProcedure> rows, IDbConnection connection)
     {
         var dataTable = new DataTable();
 
         dataTable.Columns.Add("MessageId");
         dataTable.Columns.Add("ProcedureOPCS");
-        dataTable.Columns.Add("ProcedureDateOPCS");
         dataTable.Columns.Add("MainOperatingHealthcareProfessionalCodeOpcs");
         dataTable.Columns.Add("ProfessionalRegistrationIssuerCodeOpcs");
         dataTable.Columns.Add("ResponsibleAnaesthetistCodeOpcs");
@@ -467,7 +466,6 @@ internal class SusOPInserter : ISusOPInserter
             dataTable.Rows.Add(
                 row.MessageId,
                 row.ProcedureOPCS,
-                row.ProcedureDateOPCS,
                 row.MainOperatingHealthcareProfessionalCodeOpcs,
                 row.ProfessionalRegistrationIssuerCodeOpcs,
                 row.ResponsibleAnaesthetistCodeOpcs,
