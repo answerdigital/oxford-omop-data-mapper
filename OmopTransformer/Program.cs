@@ -28,7 +28,9 @@ using OmopTransformer.Omop.DrugExposure;
 using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.Observation;
 using OmopTransformer.Omop.CareSite;
+using OmopTransformer.Omop.Provider;
 using OmopTransformer.SUS.APC;
+using OmopTransformer.SUS.OP;
 using OmopTransformer.SUS.Staging.APC;
 using OmopTransformer.SUS.Staging.APC.Clearing;
 using OmopTransformer.SUS.Staging.OP;
@@ -233,6 +235,7 @@ internal class Program
             builder.Services.AddTransient<IObservationRecorder, ObservationRecorder>();
             builder.Services.AddTransient<IMeasurementRecorder, MeasurementRecorder>();
             builder.Services.AddTransient<ICareSiteRecorder, CareSiteRecorder>();
+            builder.Services.AddTransient<IProviderRecorder, ProviderRecorder>();
 
             if (string.Equals(transformOptions.Type, "cosd", StringComparison.OrdinalIgnoreCase))
             {
@@ -258,6 +261,11 @@ internal class Program
             {
                 builder.Services.AddTransient<SusAPCTransformer>();
                 builder.Services.AddHostedService<SusAPCTransformHostedService>();
+            }
+            else if (string.Equals(transformOptions.Type, "sus-op", StringComparison.OrdinalIgnoreCase))
+            {
+                builder.Services.AddTransient<SusOPTransformer>();
+                builder.Services.AddHostedService<SusOPTransformHostedService>();
             }
             else
             {
