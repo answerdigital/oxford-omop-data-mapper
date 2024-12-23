@@ -2,9 +2,9 @@
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.SUS.APC.ProcedureOccurrence;
+namespace OmopTransformer.SUS.OP.ProcedureOccurrence;
 
-internal class SusAPCProcedureOccurrence : OmopProcedureOccurrence<SusAPCProcedureOccurrenceRecord>
+internal class SusOPProcedureOccurrence : OmopProcedureOccurrence<SusOPProcedureOccurrenceRecord>
 {
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? nhs_number { get; set; }
@@ -12,10 +12,10 @@ internal class SusAPCProcedureOccurrence : OmopProcedureOccurrence<SusAPCProcedu
     [Transform(typeof(SnomedSelector), useOmopTypeAsSource: true, nameof(procedure_source_concept_id))]
     public override int[]? procedure_concept_id { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
+    [Transform(typeof(DateConverter), nameof(Source.AppointmentDate))]
     public override DateTime? procedure_date { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
+    [Transform(typeof(DateConverter), nameof(Source.AppointmentDate))]
     public override DateTime? procedure_datetime { get; set; }
 
     [ConstantValue(32818, "`EHR Administration record`")]

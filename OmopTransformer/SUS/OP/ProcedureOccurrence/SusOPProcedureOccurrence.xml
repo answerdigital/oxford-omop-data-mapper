@@ -1,15 +1,15 @@
 ﻿<Query>
     <Sql>
-	select
+		select
 		distinct
-			op.GeneratedRecordIdentifier,
-			op.NHSNumber,
-			op.AppointmentDate,
-			p.ProcedureOPCS
-	from omop_staging.sus_OP op
+		op.GeneratedRecordIdentifier,
+		op.NHSNumber,
+		op.AppointmentDate,
+		p.ProcedureOPCS as PrimaryProcedure
+		from omop_staging.sus_OP op
 		inner join omop_staging.sus_OP_OPCSProcedure p
-			on op.MessageId = p.MessageId
-	where NHSNumber is not null
+		on op.MessageId = p.MessageId
+		where NHSNumber is not null
 	</Sql>
     <Explanation>
 		<OmopColumnExplanation columnName="PrimaryProcedure"></OmopColumnExplanation>
