@@ -2,7 +2,7 @@
 
 internal class OPRecord
 {
-    public OPRecord(OPRow opRow, List<IcdDiagnosis> icdDiagnoses, List<ReadDiagnosis> readDiagnoses, List<OPReadProcedure> opReadProcedures, List<OpcsProcedure> opcdProcedure)
+    public OPRecord(OPRow opRow, List<IcdDiagnosis> icdDiagnoses, List<ReadDiagnosis> readDiagnoses, List<OPReadProcedure> opReadProcedures, List<SusOPOpcsProcedure> opcdProcedure)
     {
         OPRow = opRow;
         IcdDiagnoses = icdDiagnoses;
@@ -15,6 +15,6 @@ internal class OPRecord
     public List<IcdDiagnosis> IcdDiagnoses { get; init; }
     public List<ReadDiagnosis> ReadDiagnoses { get; init; }
     public List<OPReadProcedure> OPReadProcedures { get; init; }
-    public List<OpcsProcedure> OpcdProcedure { get; init; }
+    public List<SusOPOpcsProcedure> OpcdProcedure { get; init; }
       
 }

@@ -2,7 +2,7 @@
 
 internal class APCRecord
 {
-    public APCRecord(APCRow apcRow, List<OverseasVisitor> overseasVisitors, List<IcdDiagnosis> icdDiagnoses, List<ReadDiagnosis> readDiagnoses, List<OpcsProcedure> opcdProcedure, List<APCReadProcedure> readProcedure, List<APCCareLocation> careLocations, List<APCBirth> births, List<APCCriticalCare> criticalCareItems)
+    public APCRecord(APCRow apcRow, List<OverseasVisitor> overseasVisitors, List<IcdDiagnosis> icdDiagnoses, List<ReadDiagnosis> readDiagnoses, List<SusAPCOpcsProcedure> opcdProcedure, List<APCReadProcedure> readProcedure, List<APCCareLocation> careLocations, List<APCBirth> births, List<APCCriticalCare> criticalCareItems)
     {
         ApcRow = apcRow;
         OverseasVisitors = overseasVisitors;
@@ -19,7 +19,7 @@ internal class APCRecord
     public List<OverseasVisitor> OverseasVisitors { get; init; }
     public List<IcdDiagnosis> IcdDiagnoses { get; init; }
     public List<ReadDiagnosis> ReadDiagnoses { get; init; }
-    public List<OpcsProcedure> OpcdProcedure { get; init; }
+    public List<SusAPCOpcsProcedure> OpcdProcedure { get; init; }
     public List<APCReadProcedure> ReadProcedure { get; init; }
     public List<APCCareLocation> CareLocations { get; init; }
     public List<APCBirth> Births { get; init; }
