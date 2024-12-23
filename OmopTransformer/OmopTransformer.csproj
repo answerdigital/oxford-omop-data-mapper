@@ -342,6 +342,9 @@
 	  <None Update="SUS\APC\Provider\SusAPCProvider.xml">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	  <None Update="SUS\OP\ConditionOccurrence\SusOPConditionOccurrence.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	  <None Update="SUS\OP\Death\SusOPDeath.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
@@ -349,6 +352,9 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	  <None Update="SUS\OP\Person\SusOPPerson.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="SUS\OP\ProcedureOccurrence\SusOPProcedureOccurrence.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
   </ItemGroup>
