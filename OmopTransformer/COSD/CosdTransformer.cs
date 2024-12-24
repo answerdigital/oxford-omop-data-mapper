@@ -96,14 +96,16 @@ internal class CosdTransformer : Transformer
         IConditionOccurrenceRecorder conditionOccurrenceRecorder, 
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
         IObservationRecorder observationRecorder, 
-        IMeasurementRecorder measurementRecorder) 
+        IMeasurementRecorder measurementRecorder,
+        IConceptMapper conceptMapper) 
         : 
         base(
             recordTransformer, 
             logger, 
             transformOptions, 
             recordProvider, 
-            "COSD")
+            "COSD",
+            conceptMapper)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;

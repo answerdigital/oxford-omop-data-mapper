@@ -11,15 +11,19 @@ internal abstract class Transformer
     private readonly ILogger<IRecordTransformer> _logger;
     private readonly TransformOptions _transformOptions;
     private readonly IRecordProvider _recordProvider;
+    private readonly IConceptMapper _conceptMapper;
+    private bool _isConceptMapRendered = false;
+
     private readonly string _dataSource;
 
-    protected Transformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, string dataSource)
+    protected Transformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, string dataSource, IConceptMapper conceptMapper)
     {
         _recordTransformer = recordTransformer;
         _logger = logger;
         _transformOptions = transformOptions;
         _recordProvider = recordProvider;
         _dataSource = dataSource;
+        _conceptMapper = conceptMapper;
     }
 
     public async Task Transform<TSource, TTarget>(
@@ -28,6 +32,8 @@ internal abstract class Transformer
         CancellationToken cancellationToken)
         where TTarget : IOmopRecord<TSource>, new()
     {
+        await EnsureConceptMapIsRendered(cancellationToken);
+
         _logger.LogInformation("Transforming {0}.", name);
 
         var getRecordsStopwatch = Stopwatch.StartNew();
@@ -59,5 +65,15 @@ internal abstract class Transformer
         stopwatch.Stop();
 
         _logger.LogInformation("Transformation took {0}ms.", stopwatch.ElapsedMilliseconds);
+    }
+
+    private async Task EnsureConceptMapIsRendered(CancellationToken cancellationToken)
+    {
+        if (_isConceptMapRendered)
+            return;
+
+        await _conceptMapper.RenderConceptMap(cancellationToken);
+
+        _isConceptMapRendered = true;
     }
 }

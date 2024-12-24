@@ -13,8 +13,8 @@ internal class CosdV8ProcedureOccurrenceProcedureOpcs : OmopProcedureOccurrence<
     [CopyValue(nameof(Source.NhsNumber))]
     public override string? nhs_number { get; set; }
 
-    [Transform(typeof(SnomedSelector), useOmopTypeAsSource: true, nameof(procedure_source_concept_id))]
-    public override int[]? procedure_concept_id { get; set; }
+    [Transform(typeof(StandardProcedureConceptSelector), useOmopTypeAsSource: true, nameof(procedure_source_concept_id))]
+    public override int? procedure_concept_id { get; set; }
 
     [Transform(typeof(Opcs4Selector), nameof(Source.ProcedureOpcsCode))]
     public override int? procedure_source_concept_id { set; get; }

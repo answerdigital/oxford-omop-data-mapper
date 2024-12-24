@@ -6,6 +6,26 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # year_of_birth
+### SUS Outpatient Person
+Source column  `DateOfBirth`.
+Selects the year from a date or null of the date is null.
+
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+
+```sql
+	select
+		NHSNumber,
+		max(DateofBirth) as DateOfBirth,
+		max(EthnicCategory) as EthnicCategory,
+		max(Sex) as PersonCurrentGenderCode
+	from [OMOP_SUS].[omop_staging].[sus_OP]
+	where NHSNumber is not null
+	group by NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20year_of_birth%20field%20SUS%20Outpatient%20Person%20mapping){: .btn }
 ### SUS Inpatient Person
 Source column  `DateOfBirth`.
 Selects the year from a date or null of the date is null.

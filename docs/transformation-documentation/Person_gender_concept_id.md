@@ -6,6 +6,38 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # gender_concept_id
+### SUS Outpatient Person
+Source column  `PersonCurrentGenderCode`.
+Lookup gender concept.
+
+
+|PersonCurrentGenderCode|gender_concept_id|notes|
+|------|-----|-----|
+|1|8507|Male|
+|2|8532|Female|
+|9|8551|Indeterminate (unable to be classified as either male or female)|
+|X|8551|Not known|
+
+Notes
+* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
+* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
+
+* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
+
+```sql
+	select
+		NHSNumber,
+		max(DateofBirth) as DateOfBirth,
+		max(EthnicCategory) as EthnicCategory,
+		max(Sex) as PersonCurrentGenderCode
+	from [OMOP_SUS].[omop_staging].[sus_OP]
+	where NHSNumber is not null
+	group by NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20gender_concept_id%20field%20SUS%20Outpatient%20Person%20mapping){: .btn }
 ### SUS Inpatient Person
 Source column  `PersonCurrentGenderCode`.
 Lookup gender concept.

@@ -6,6 +6,25 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # gender_source_value
+### SUS Outpatient Person
+* Value copied from `PersonCurrentGenderCode`
+
+* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
+
+```sql
+	select
+		NHSNumber,
+		max(DateofBirth) as DateOfBirth,
+		max(EthnicCategory) as EthnicCategory,
+		max(Sex) as PersonCurrentGenderCode
+	from [OMOP_SUS].[omop_staging].[sus_OP]
+	where NHSNumber is not null
+	group by NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20gender_source_value%20field%20SUS%20Outpatient%20Person%20mapping){: .btn }
 ### SUS Inpatient Person
 * Value copied from `PersonCurrentGenderCode`
 

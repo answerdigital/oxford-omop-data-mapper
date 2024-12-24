@@ -19,6 +19,10 @@ has_toc: false
 * [race_source_concept_id]({% link docs/transformation-documentation/Person_race_source_concept_id.md %})
 * [ethnicity_concept_id]({% link docs/transformation-documentation/Person_ethnicity_concept_id.md %})
 
+## SusOPPerson
+<a href="SusOPPerson.svg" target="_blank"><img src="SusOPPerson.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPPerson%20mapping){: .btn }
 ## SusAPCPerson
 <a href="SusAPCPerson.svg" target="_blank"><img src="SusAPCPerson.svg" /></a>
 

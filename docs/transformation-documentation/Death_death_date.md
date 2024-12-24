@@ -6,6 +6,26 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # death_date
+### SUS Outpatient Death
+Source column  `death_date`.
+Converts text to dates.
+
+* `death_date` Discharge date of the patient's spell. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
+
+```sql
+	select
+	  NHSNumber as nhs_number,
+	  max(ReferralToTreatmentPeriodEndDate) as death_date
+	from [OMOP_SUS].[omop_staging].[sus_OP]
+	where ReferralToTreatmentPeriodStatus = 36
+	  and ReferralToTreatmentPeriodEndDate is not null
+	  and NHSNumber is not null
+	group by NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Death%20table%20death_date%20field%20SUS%20Outpatient%20Death%20mapping){: .btn }
 ### SUS Inpatient Death
 Source column  `death_date`.
 Converts text to dates.

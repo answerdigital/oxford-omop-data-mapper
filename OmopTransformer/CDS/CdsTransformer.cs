@@ -42,9 +42,10 @@ internal class CdsTransformer : Transformer
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
     private readonly IDrugExposureRecorder _drugExposureRecorder;
     private readonly IObservationRecorder _observationRecorder;
-    private readonly ConceptSnomedResolver _conceptSnomedResolver;
+    private readonly ConceptResolver _conceptResolver;
 
-    public CdsTransformer(IRecordTransformer recordTransformer,
+    public CdsTransformer(
+        IRecordTransformer recordTransformer,
         ILogger<IRecordTransformer> logger,
         TransformOptions transformOptions,
         IRecordProvider recordProvider,
@@ -55,13 +56,15 @@ internal class CdsTransformer : Transformer
         IVisitDetailRecorder visitDetailRecorder,
         IDeathRecorder deathRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
-        ConceptSnomedResolver conceptSnomedResolver, 
+        ConceptResolver conceptResolver, 
         IDrugExposureRecorder drugExposureRecorder, 
-        IObservationRecorder observationRecorder) : base(recordTransformer,
+        IObservationRecorder observationRecorder,
+        IConceptMapper conceptMapper) : base(recordTransformer,
         logger,
         transformOptions,
         recordProvider,
-        "CDS")
+        "CDS",
+        conceptMapper)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
@@ -70,7 +73,7 @@ internal class CdsTransformer : Transformer
         _visitDetailRecorder = visitDetailRecorder;
         _deathRecorder = deathRecorder;
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
-        _conceptSnomedResolver = conceptSnomedResolver;
+        _conceptResolver = conceptResolver;
         _drugExposureRecorder = drugExposureRecorder;
         _observationRecorder = observationRecorder;
     }
@@ -172,6 +175,6 @@ internal class CdsTransformer : Transformer
             "Cds TotalPreviousPregnancies",
             cancellationToken);
 
-        _conceptSnomedResolver.PrintErrors();
+        _conceptResolver.PrintErrors();
     }
 }

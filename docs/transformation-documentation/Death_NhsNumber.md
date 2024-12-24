@@ -6,6 +6,25 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # NhsNumber
+### SUS Outpatient Death
+* Value copied from `nhs_number`
+
+* `nhs_number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+	select
+	  NHSNumber as nhs_number,
+	  max(ReferralToTreatmentPeriodEndDate) as death_date
+	from [OMOP_SUS].[omop_staging].[sus_OP]
+	where ReferralToTreatmentPeriodStatus = 36
+	  and ReferralToTreatmentPeriodEndDate is not null
+	  and NHSNumber is not null
+	group by NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Death%20table%20NhsNumber%20field%20SUS%20Outpatient%20Death%20mapping){: .btn }
 ### SUS Inpatient Death
 * Value copied from `nhs_number`
 

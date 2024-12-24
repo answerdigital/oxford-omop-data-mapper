@@ -28,8 +28,6 @@ using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Omop.Provider;
 using OmopTransformer.Transformation;
 
-
-
 namespace OmopTransformer.SUS.APC;
 
 internal class SusAPCTransformer : Transformer
@@ -43,7 +41,7 @@ internal class SusAPCTransformer : Transformer
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
     private readonly IDrugExposureRecorder _drugExposureRecorder;
     private readonly IObservationRecorder _observationRecorder;
-    private readonly ConceptSnomedResolver _conceptSnomedResolver;
+    private readonly ConceptResolver _conceptResolver;
     private readonly ICareSiteRecorder _careSiteRecorder;
     private readonly IProviderRecorder _providerRecorder;
 
@@ -61,13 +59,15 @@ internal class SusAPCTransformer : Transformer
         IVisitDetailRecorder visitDetailRecorder,
         IDeathRecorder deathRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
-        ConceptSnomedResolver conceptSnomedResolver, 
+        ConceptResolver conceptResolver, 
         IDrugExposureRecorder drugExposureRecorder, 
-        IObservationRecorder observationRecorder) : base(recordTransformer,
+        IObservationRecorder observationRecorder,
+        IConceptMapper conceptMapper) : base(recordTransformer,
         logger,
         transformOptions,
         recordProvider,
-        "SUSAPC")
+        "SUSAPC",
+        conceptMapper)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
@@ -76,7 +76,7 @@ internal class SusAPCTransformer : Transformer
         _visitDetailRecorder = visitDetailRecorder;
         _deathRecorder = deathRecorder;
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
-        _conceptSnomedResolver = conceptSnomedResolver;
+        _conceptResolver = conceptResolver;
         _drugExposureRecorder = drugExposureRecorder;
         _observationRecorder = observationRecorder;
         _careSiteRecorder = careSiteRecorder;
@@ -170,6 +170,6 @@ internal class SusAPCTransformer : Transformer
             "SUS APC Provider",
             cancellationToken);
 
-        _conceptSnomedResolver.PrintErrors();
+        _conceptResolver.PrintErrors();
     }
 }
