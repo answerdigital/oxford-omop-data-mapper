@@ -9,8 +9,8 @@ internal class CdsDrugExposure : OmopDrugExposure<CdsDrugExposureRecord>
     [CopyValue(nameof(Source.nhs_number))]
     public override string? nhs_number { get; set; }
 
-    [Transform(typeof(SnomedSelector), useOmopTypeAsSource: true, nameof(drug_source_concept_id))]
-    public override int[]? drug_concept_id { get; set; }
+    [Transform(typeof(StandardDrugConceptSelector), useOmopTypeAsSource: true, nameof(drug_source_concept_id))]
+    public override int? drug_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.ExposureStartDate))]
     public override DateTime? drug_exposure_start_date { get; set; }

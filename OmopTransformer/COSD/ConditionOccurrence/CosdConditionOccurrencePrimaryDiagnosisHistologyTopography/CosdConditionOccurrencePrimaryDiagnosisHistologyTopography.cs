@@ -30,7 +30,7 @@ internal class CosdConditionOccurrencePrimaryDiagnosisHistologyTopography : Omop
     public override int? condition_source_concept_id { get; set; }
 
     [Transform(typeof(Icdo3Selector), nameof(Source.CancerHistology), nameof(Source.CancerTopography))]
-    public override int[]? condition_concept_id { get; set; }
+    public override int? condition_concept_id { get; set; }
 
     [Transform(typeof(TextDeliminator), nameof(Source.CancerHistology), nameof(Source.CancerTopography))]
     public override string? condition_source_value { get; set; }
