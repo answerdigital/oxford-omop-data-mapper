@@ -17,6 +17,10 @@ has_toc: false
 * [condition_status_concept_id]({% link docs/transformation-documentation/ConditionOccurrence_condition_status_concept_id.md %})
 * [condition_status_source_value]({% link docs/transformation-documentation/ConditionOccurrence_condition_status_source_value.md %})
 
+## SusOPConditionOccurrence
+<a href="SusOPConditionOccurrence.svg" target="_blank"><img src="SusOPConditionOccurrence.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPConditionOccurrence%20mapping){: .btn }
 ## SusAPCConditionOccurrence
 <a href="SusAPCConditionOccurrence.svg" target="_blank"><img src="SusAPCConditionOccurrence.svg" /></a>
 

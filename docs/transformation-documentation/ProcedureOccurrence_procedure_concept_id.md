@@ -6,6 +6,11 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # procedure_concept_id
+### SUS Outpatient Procedure Occurrence
+Source column  `procedure_source_concept_id`.
+Maps concepts to standard valid concepts in the `procedure` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20SUS%20Outpatient%20Procedure%20Occurrence%20mapping){: .btn }
 ### SUS APC Procedure Occurrence
 Source column  `procedure_source_concept_id`.
 Maps concepts to standard valid concepts in the `procedure` domain.

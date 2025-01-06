@@ -1,0 +1,39 @@
+﻿<Query>
+    <Sql>
+		select
+		distinct
+		op.GeneratedRecordIdentifier,
+		op.NHSNumber,
+		op.AppointmentDate,
+		p.ProcedureOPCS as PrimaryProcedure
+		from omop_staging.sus_OP op
+		inner join omop_staging.sus_OP_OPCSProcedure p
+		on op.MessageId = p.MessageId
+		where NHSNumber is not null
+	</Sql>
+    <Explanation>
+		<OmopColumnExplanation columnName="PrimaryProcedure"></OmopColumnExplanation>
+	</Explanation>
+
+
+	<Explanations>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+
+		<Explanation columnName="AppointmentDate">
+			<Description>Appointment Date.</Description>
+			<Origin>APPOINTMENT DATE</Origin>
+		</Explanation>
+		
+		<Explanation columnName="PrimaryProcedure">
+			<Description>OPC4 Procedure code.</Description>
+			<Origin>PROCEDURE (OPCS)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
