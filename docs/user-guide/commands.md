@@ -146,14 +146,16 @@ The OMOP data provenance is recorded as each data set is transformed. [See data 
 
 ---
 
-## Prune command
+## Finalise command
 
-Prunes incomplete OMOP records after all transformations are completed.
+Finalises the OMOP dataset by
+* Pruning incomplete OMOP records
+* Rebuilding era tables (`condition_era` and `drug_era`)
 
 ### Example
 
 ```
-omop prune
+omop finalise
 ```
 
 ### Remarks
