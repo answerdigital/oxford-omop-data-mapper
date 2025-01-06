@@ -1,9 +1,9 @@
 ﻿using OmopTransformer.Annotations;
 
-namespace OmopTransformer.SUS.OP.Observation.SourceOfReferralForOutpatients;
+namespace OmopTransformer.SUS.APC.Observation.SourceOfReferralForOutpatients;
 
 [DataOrigin("SUS")]
-[Description("SUS OP Source Of Referral For Outpatients")]
+[Description("SUS APC Source Of Referral For Outpatients")]
 [SourceQuery("SusAPCSourceOfReferralForOutpatients.xml")]
 internal class SusAPCSourceOfReferralForOutpatientsRecord
 {

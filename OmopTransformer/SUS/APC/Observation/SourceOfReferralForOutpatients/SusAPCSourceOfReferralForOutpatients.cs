@@ -2,7 +2,7 @@
 using OmopTransformer.Omop.Observation;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.SUS.OP.Observation.SourceOfReferralForOutpatients;
+namespace OmopTransformer.SUS.APC.Observation.SourceOfReferralForOutpatients;
 
 [Notes(
     "Notes",
