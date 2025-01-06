@@ -1,14 +1,14 @@
 ﻿<Query>
     <Sql>
 		select
-		distinct
-		d.DiagnosisICD,
-		apc.GeneratedRecordIdentifier,
-		apc.NHSNumber,
-		apc.CDSActivityDate
+			distinct
+				d.DiagnosisICD,
+				apc.GeneratedRecordIdentifier,
+				apc.NHSNumber,
+				apc.CDSActivityDate
 		from omop_staging.sus_ICDDiagnosis d
-		inner join omop_staging.sus_APC apc
-		on d.MessageId = apc.MessageId
+			inner join omop_staging.sus_APC apc
+				on d.MessageId = apc.MessageId
 		where apc.NHSNumber is not null
 	</Sql>
     <Explanations>
