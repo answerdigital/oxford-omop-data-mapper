@@ -6,6 +6,27 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # nhs_number
+### SUS Outpatient Condition Occurrence
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+	select
+		distinct
+			d.DiagnosisICD,
+			op.GeneratedRecordIdentifier,
+			op.NHSNumber,
+			op.CDSActivityDate
+	from omop_staging.sus_OP_ICDDiagnosis d
+		inner join [OMOP_SUS].[omop_staging].[sus_OP] op
+			on d.MessageId = op.MessageId
+	where op.NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20nhs_number%20field%20SUS%20Outpatient%20Condition%20Occurrence%20mapping){: .btn }
 ### SUS Inpatient Condition Occurrence
 * Value copied from `NHSNumber`
 
@@ -13,14 +34,14 @@ has_toc: false
 
 ```sql
 		select
-		distinct
-		d.DiagnosisICD,
-		apc.GeneratedRecordIdentifier,
-		apc.NHSNumber,
-		apc.CDSActivityDate
+			distinct
+				d.DiagnosisICD,
+				apc.GeneratedRecordIdentifier,
+				apc.NHSNumber,
+				apc.CDSActivityDate
 		from omop_staging.sus_ICDDiagnosis d
-		inner join omop_staging.sus_APC apc
-		on d.MessageId = apc.MessageId
+			inner join omop_staging.sus_APC apc
+				on d.MessageId = apc.MessageId
 		where apc.NHSNumber is not null
 	
 ```
