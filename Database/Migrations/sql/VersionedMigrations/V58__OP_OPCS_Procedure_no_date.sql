@@ -1,4 +1,7 @@
-drop procedure omop_staging.insert_sus_OP_OPCSProcedure_row;
+if object_id('procedure omop_staging.insert_sus_OP_OPCSProcedure_row') is not NULL
+begin
+    drop procedure omop_staging.insert_sus_OP_OPCSProcedure_row;
+end
 
 go
 

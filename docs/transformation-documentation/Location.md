@@ -15,6 +15,10 @@ has_toc: false
 * [city]({% link docs/transformation-documentation/Location_city.md %})
 * [county]({% link docs/transformation-documentation/Location_county.md %})
 
+## SusOPLocation
+<a href="SusOPLocation.svg" target="_blank"><img src="SusOPLocation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPLocation%20mapping){: .btn }
 ## SusAPCLocation
 <a href="SusAPCLocation.svg" target="_blank"><img src="SusAPCLocation.svg" /></a>
 

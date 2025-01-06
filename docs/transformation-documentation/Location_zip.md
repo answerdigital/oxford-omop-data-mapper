@@ -6,6 +6,26 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # zip
+### SUS Outpatient Location
+Source column  `Postcode`.
+Uppercase the postcode then insert the space in the correct location, if needed.
+
+* `Postcode` Patient Postcode [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+
+```sql
+	select
+		distinct
+			Postcode,
+			Country,
+			NHSNumber
+	from [OMOP_SUS].[omop_staging].[sus_OP]
+	where NHSNumber is not null
+	and Postcode is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20SUS%20Outpatient%20Location%20mapping){: .btn }
 ### SUS Inpatient Location
 Source column  `Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.

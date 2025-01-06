@@ -61,31 +61,28 @@ internal class DrugExposureRecorder : IDrugExposureRecorder
                 if (record.drug_concept_id == null) 
                     continue;
 
-                foreach (var conceptId in record.drug_concept_id)
-                {
-                    dataTable.Rows.Add(
-                        record.nhs_number,
-                        conceptId,
-                        record.drug_exposure_start_date,
-                        record.drug_exposure_start_datetime,
-                        record.drug_exposure_end_date,
-                        record.drug_exposure_end_datetime,
-                        record.verbatim_end_date,
-                        record.drug_type_concept_id,
-                        record.stop_reason,
-                        record.refills,
-                        record.quantity,
-                        record.days_supply,
-                        record.sig,
-                        record.route_concept_id,
-                        record.lot_number,
-                        record.provider_id,
-                        record.drug_source_value,
-                        record.drug_source_concept_id,
-                        record.route_source_value,
-                        record.dose_unit_source_value,
-                        record.RecordConnectionIdentifier);
-                }
+                dataTable.Rows.Add(
+                    record.nhs_number,
+                    record.drug_concept_id,
+                    record.drug_exposure_start_date,
+                    record.drug_exposure_start_datetime,
+                    record.drug_exposure_end_date,
+                    record.drug_exposure_end_datetime,
+                    record.verbatim_end_date,
+                    record.drug_type_concept_id,
+                    record.stop_reason,
+                    record.refills,
+                    record.quantity,
+                    record.days_supply,
+                    record.sig,
+                    record.route_concept_id,
+                    record.lot_number,
+                    record.provider_id,
+                    record.drug_source_value,
+                    record.drug_source_concept_id,
+                    record.route_source_value,
+                    record.dose_unit_source_value,
+                    record.RecordConnectionIdentifier);
             }
 
             var parameter = new

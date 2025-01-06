@@ -22,8 +22,8 @@ internal class CosdV9ConditionOccurrenceProgression : OmopConditionOccurrence<Co
     [Transform(typeof(Icd10Selector), nameof(Source.NonPrimaryProgressionOriginalDiagnosis))]
     public override int? condition_source_concept_id { get; set; }
 
-    [Transform(typeof(SnomedSelector), useOmopTypeAsSource: true, nameof(condition_source_concept_id))]
-    public override int[]? condition_concept_id { get; set; }
+    [Transform(typeof(StandardConditionConceptSelector), useOmopTypeAsSource: true, nameof(condition_source_concept_id))]
+    public override int? condition_concept_id { get; set; }
 
     [CopyValue(nameof(Source.NonPrimaryProgressionOriginalDiagnosis))]
     public override string? condition_source_value { get; set; }

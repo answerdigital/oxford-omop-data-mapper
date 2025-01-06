@@ -10,11 +10,15 @@ has_toc: false
 * [NhsNumber]({% link docs/transformation-documentation/Death_NhsNumber.md %})
 * [death_date]({% link docs/transformation-documentation/Death_death_date.md %})
 * [death_datetime]({% link docs/transformation-documentation/Death_death_datetime.md %})
-* [cause_source_value]({% link docs/transformation-documentation/Death_cause_source_value.md %})
-* [cause_concept_id]({% link docs/transformation-documentation/Death_cause_concept_id.md %})
 * [death_type_concept_id]({% link docs/transformation-documentation/Death_death_type_concept_id.md %})
+* [cause_concept_id]({% link docs/transformation-documentation/Death_cause_concept_id.md %})
+* [cause_source_value]({% link docs/transformation-documentation/Death_cause_source_value.md %})
 * [cause_source_concept_id]({% link docs/transformation-documentation/Death_cause_source_concept_id.md %})
 
+## SusOPDeath
+<a href="SusOPDeath.svg" target="_blank"><img src="SusOPDeath.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPDeath%20mapping){: .btn }
 ## SusAPCDeath
 <a href="SusAPCDeath.svg" target="_blank"><img src="SusAPCDeath.svg" /></a>
 
