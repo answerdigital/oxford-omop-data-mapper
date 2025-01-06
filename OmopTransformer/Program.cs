@@ -224,6 +224,7 @@ internal class Program
         {
             builder.Services.AddTransient(_ => transformOptions);
 
+            builder.Services.AddTransient<IConceptMapper, ConceptMapper>();
             builder.Services.AddTransient<ILocationRecorder, LocationRecorder>();
             builder.Services.AddTransient<IPersonRecorder, PersonRecorder>();
             builder.Services.AddTransient<IConditionOccurrenceRecorder, ConditionOccurrenceRecorder>();
@@ -291,7 +292,7 @@ internal class Program
         builder.Services.AddSingleton<Icd10Resolver>();
         builder.Services.AddSingleton<Opcs4Resolver>();
         builder.Services.AddSingleton<Icdo3Resolver>();
-        builder.Services.AddSingleton<ConceptSnomedResolver>();
+        builder.Services.AddSingleton<ConceptResolver>();
 
         IHostEnvironment env = builder.Environment;
 

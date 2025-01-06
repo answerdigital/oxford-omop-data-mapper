@@ -67,8 +67,8 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "cause_source_value",
-      "operation_description": "Value copied from `DiagnosisICD`",
+      "name": "cause_concept_id",
+      "operation_description": "Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.",
       "dataSource": [
         {
           "name": "DiagnosisICD",
@@ -85,8 +85,8 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "cause_concept_id",
-      "operation_description": "Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.",
+      "name": "cause_source_value",
+      "operation_description": "Value copied from `DiagnosisICD`",
       "dataSource": [
         {
           "name": "DiagnosisICD",

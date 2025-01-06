@@ -10,7 +10,7 @@ internal class SactTransformer : Transformer
     private readonly ILocationRecorder _locationRecorder;
     private readonly IPersonRecorder _personRecorder;
     
-    public SactTransformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, ILocationRecorder locationRecorder, IPersonRecorder personRecorder) : base(recordTransformer, logger, transformOptions, recordProvider, "SACT")
+    public SactTransformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, ILocationRecorder locationRecorder, IPersonRecorder personRecorder, IConceptMapper conceptMapper) : base(recordTransformer, logger, transformOptions, recordProvider, "SACT", conceptMapper)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;

@@ -56,26 +56,23 @@ internal class ProcedureOccurrenceRecorder : IProcedureOccurrenceRecorder
                 if (record.procedure_concept_id == null)
                     continue;
 
-                foreach (var concept in record.procedure_concept_id)
-                {
-                    dataTable.Rows.Add(
-                        record.nhs_number,
-                        concept,
-                        record.procedure_date,
-                        record.procedure_datetime,
-                        record.procedure_end_date,
-                        record.procedure_end_datetime,
-                        record.procedure_type_concept_id,
-                        record.modifier_concept_id,
-                        record.quantity,
-                        record.provider_id,
-                        record.visit_occurrence_id,
-                        record.visit_detail_id,
-                        record.procedure_source_value,
-                        record.procedure_source_concept_id,
-                        record.modifier_source_value,
-                        record.RecordConnectionIdentifier);
-                }
+                dataTable.Rows.Add(
+                    record.nhs_number,
+                    record.procedure_concept_id,
+                    record.procedure_date,
+                    record.procedure_datetime,
+                    record.procedure_end_date,
+                    record.procedure_end_datetime,
+                    record.procedure_type_concept_id,
+                    record.modifier_concept_id,
+                    record.quantity,
+                    record.provider_id,
+                    record.visit_occurrence_id,
+                    record.visit_detail_id,
+                    record.procedure_source_value,
+                    record.procedure_source_concept_id,
+                    record.modifier_source_value,
+                    record.RecordConnectionIdentifier);
             }
 
             var parameter = new
