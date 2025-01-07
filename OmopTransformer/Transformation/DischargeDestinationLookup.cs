@@ -8,11 +8,11 @@ internal class DischargeDestinationLookup : ILookup
     public Dictionary<string, ValueWithNote> Mappings { get; } =
         new()
         {
-            { "19", new ValueWithNote("0",  "Home - Used 0 as `Home` as per the OHDSI documentation") },
+            { "19", new ValueWithNote("581476", "Home Visit") },
             { "29", new ValueWithNote("8602",   "Temporary Lodging") },
             { "30", new ValueWithNote("38004284",   "Psychiatric Hospital") },
-            { "37", new ValueWithNote("4050489",    "County court bailiff - Had to use the Social Context Domain and SNOMED Vocab") },
-            { "38", new ValueWithNote("38003619",   "Prison / Correctional Facility - Went with `Prison / Correctional Facility` over Police Station (4107305)") },
+            { "37", new ValueWithNote("38003619", "Prison / Correctional Facility") },
+            { "38", new ValueWithNote("38003619", "Prison / Correctional Facility") },
             { "48", new ValueWithNote("38004284",   "Psychiatric Hospital") },
             { "49", new ValueWithNote("38004284",   "Psychiatric Hospital") },
             { "50", new ValueWithNote("8971",   "Inpatient Psychiatric Facility") },
