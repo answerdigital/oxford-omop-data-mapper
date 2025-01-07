@@ -13,11 +13,11 @@ Lookup discharge destination concept.
 
 |DischargeDestinationHospitalProviderSpell|discharged_to_concept_id|notes|
 |------|-----|-----|
-|19|0|Home - Used 0 as `Home` as per the OHDSI documentation|
+|19|581476|Home Visit|
 |29|8602|Temporary Lodging|
 |30|38004284|Psychiatric Hospital|
-|37|4050489|County court bailiff - Had to use the Social Context Domain and SNOMED Vocab|
-|38|38003619|Prison / Correctional Facility - Went with `Prison / Correctional Facility` over Police Station (4107305)|
+|37|38003619|Prison / Correctional Facility|
+|38|38003619|Prison / Correctional Facility|
 |48|38004284|Psychiatric Hospital|
 |49|38004284|Psychiatric Hospital|
 |50|8971|Inpatient Psychiatric Facility|
@@ -125,11 +125,11 @@ Lookup discharge destination concept.
 
 |DischargeDestinationCode|discharged_to_concept_id|notes|
 |------|-----|-----|
-|19|0|Home - Used 0 as `Home` as per the OHDSI documentation|
+|19|581476|Home Visit|
 |29|8602|Temporary Lodging|
 |30|38004284|Psychiatric Hospital|
-|37|4050489|County court bailiff - Had to use the Social Context Domain and SNOMED Vocab|
-|38|38003619|Prison / Correctional Facility - Went with `Prison / Correctional Facility` over Police Station (4107305)|
+|37|38003619|Prison / Correctional Facility|
+|38|38003619|Prison / Correctional Facility|
 |48|38004284|Psychiatric Hospital|
 |49|38004284|Psychiatric Hospital|
 |50|8971|Inpatient Psychiatric Facility|

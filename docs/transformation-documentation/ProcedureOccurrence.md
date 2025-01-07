@@ -17,6 +17,10 @@ has_toc: false
 * [RecordConnectionIdentifier]({% link docs/transformation-documentation/ProcedureOccurrence_RecordConnectionIdentifier.md %})
 * [quantity]({% link docs/transformation-documentation/ProcedureOccurrence_quantity.md %})
 
+## SusOPProcedureOccurrence
+<a href="SusOPProcedureOccurrence.svg" target="_blank"><img src="SusOPProcedureOccurrence.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPProcedureOccurrence%20mapping){: .btn }
 ## SusAPCProcedureOccurrence
 <a href="SusAPCProcedureOccurrence.svg" target="_blank"><img src="SusAPCProcedureOccurrence.svg" /></a>
 

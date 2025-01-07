@@ -13,11 +13,11 @@ Lookup admission source concept.
 
 |SourceOfAdmissionHospitalProviderSpell|admitted_from_concept_id|notes|
 |------|-----|-----|
-|19|0|Home - Used 0 as `Home` as per the OHDSI documentation|
+|19|581476|Home Visit|
 |29|8602|Temporary Lodging|
-|37|4050489|County court bailiff - Had to use the Social Context Domain and SNOMED Vocab|
+|37|38003619|Prison / Correctional Facility|
 |40|38003619|Prison / Correctional Facility|
-|42|4107305|Police station - Had to use the Observation Domain and SNOMED Vocab|
+|42|38003619|Prison / Correctional Facility|
 |49|38004284|Psychiatric Hospital|
 |51|8717|Inpatient Hospital|
 |52|8650|Birthing Center|
@@ -25,8 +25,8 @@ Lookup admission source concept.
 |55|8863|Skilled Nursing Facility|
 |56|38004306|Custodial Care Facility|
 |66|38004205|Foster Care Agency|
-|79|40482051|Born before arrival to hospital|
-|87|4113007|Inpatient Hospital|
+|79|8650|Birthing Center|
+|87|8717|Inpatient Hospital|
 |88|8546|Hospice|
 |98||No mapping possible|
 |99||No mapping possible|
@@ -121,11 +121,11 @@ Lookup admission source concept.
 
 |SourceofAdmissionCode|admitted_from_concept_id|notes|
 |------|-----|-----|
-|19|0|Home - Used 0 as `Home` as per the OHDSI documentation|
+|19|581476|Home Visit|
 |29|8602|Temporary Lodging|
-|37|4050489|County court bailiff - Had to use the Social Context Domain and SNOMED Vocab|
+|37|38003619|Prison / Correctional Facility|
 |40|38003619|Prison / Correctional Facility|
-|42|4107305|Police station - Had to use the Observation Domain and SNOMED Vocab|
+|42|38003619|Prison / Correctional Facility|
 |49|38004284|Psychiatric Hospital|
 |51|8717|Inpatient Hospital|
 |52|8650|Birthing Center|
@@ -133,8 +133,8 @@ Lookup admission source concept.
 |55|8863|Skilled Nursing Facility|
 |56|38004306|Custodial Care Facility|
 |66|38004205|Foster Care Agency|
-|79|40482051|Born before arrival to hospital|
-|87|4113007|Inpatient Hospital|
+|79|8650|Birthing Center|
+|87|8717|Inpatient Hospital|
 |88|8546|Hospice|
 |98||No mapping possible|
 |99||No mapping possible|
