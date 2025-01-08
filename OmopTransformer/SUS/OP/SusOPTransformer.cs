@@ -1,14 +1,14 @@
 ﻿using Microsoft.Extensions.Logging;
 using OmopTransformer.SUS.OP.Death;
 using OmopTransformer.SUS.OP.Location;
-//using OmopTransformer.SUS.OP.ConditionOccurrence;
-//using OmopTransformer.SUS.OP.ProcedureOccurrence;
+using OmopTransformer.SUS.OP.ConditionOccurrence;
+using OmopTransformer.SUS.OP.ProcedureOccurrence;
 //using OmopTransformer.SUS.OP.VisitOccurrenceWithoutSpell;
 //using OmopTransformer.SUS.OP.VisitOccurrenceWithSpell;
 //using OmopTransformer.SUS.OP.Observation.AnaestheticDuringLabourDelivery;
 //using OmopTransformer.SUS.OP.Observation.AnaestheticGivenPostLabourDelivery;
 //using OmopTransformer.SUS.OP.Observation.BirthWeight;
-//using OmopTransformer.SUS.OP.Observation.CarerSupportIndicator;
+using OmopTransformer.SUS.OP.Observation.CarerSupportIndicator;
 //using OmopTransformer.SUS.OP.Observation.GestationLengthLabourOnset;
 //using OmopTransformer.SUS.OP.Observation.NumberOfBabies;
 //using OmopTransformer.SUS.OP.Observation.TotalPreviousPregnancies;
@@ -100,15 +100,15 @@ internal class SusOPTransformer : Transformer
             "SUS OP Death",
             cancellationToken);
 
-        //await Transform<SusOPProcedureOccurrenceRecord, SusOPProcedureOccurrence>(
-        //    _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
-        //    "SUS OP Procedure Occurrence",
-        //    cancellationToken);
+        await Transform<SusOPProcedureOccurrenceRecord, SusOPProcedureOccurrence>(
+           _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+           "SUS OP Procedure Occurrence",
+           cancellationToken);
 
-        //await Transform<SusOPConditionOccurrenceRecord, SusOPConditionOccurrence>(
-        //    _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
-        //    "SUS OP Conditon Occurrence",
-        //    cancellationToken);
+        await Transform<SusOPConditionOccurrenceRecord, SusOPConditionOccurrence>(
+           _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+           "SUS OP Conditon Occurrence",
+           cancellationToken);
 
         //await Transform<SusOPVisitOccurrenceWithSpellRecord, SusOPVisitOccurrenceWithSpell>(
         //    _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
@@ -135,10 +135,10 @@ internal class SusOPTransformer : Transformer
         //    "SUS OP BirthWeight",
         //    cancellationToken);
 
-        //await Transform<SusOPCarerSupportIndicatorRecord, SusOPCarerSupportIndicator>(
-        //    _observationRecorder.InsertUpdateObservations,
-        //    "SUS OP CarerSupportIndicator",
-        //    cancellationToken);
+        await Transform<SusOPCarerSupportIndicatorRecord, SusOPCarerSupportIndicator>(
+           _observationRecorder.InsertUpdateObservations,
+           "SUS OP CarerSupportIndicator",
+           cancellationToken);
 
         //await Transform<SusOPGestationLengthLabourOnsetRecord, SusOPGestationLengthLabourOnset>(
         //    _observationRecorder.InsertUpdateObservations,
