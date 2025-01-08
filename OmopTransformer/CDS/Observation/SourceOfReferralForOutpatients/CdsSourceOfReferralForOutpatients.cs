@@ -29,7 +29,7 @@ internal class CdsSourceOfReferralForOutpatients : OmopObservation<CdsSourceOfRe
     [Transform(typeof(DateConverter), nameof(Source.observation_date))]
     public override DateTime? observation_datetime { get; set; }
 
-    [ConstantValue(38000281, "Observation recorded from EHR with text result")]
+    [ConstantValue(32818, "EHR administration record")]
     public override int? observation_type_concept_id { get; set; }
 
     [CopyValue(nameof(Source.SourceOfReferralForOutpatients))]

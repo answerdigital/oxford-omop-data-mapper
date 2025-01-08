@@ -1,0 +1,32 @@
+﻿<Query>
+    <Sql>
+select	NHSNumber,
+		GeneratedRecordIdentifier,
+		StartDateHospitalProviderSpell,
+		StartTimeHospitalProviderSpell,
+		ReferrerCode   -- Referrer code is the code of the person making the referral request
+FROM [OMOP_SUS].[omop_staging].[sus_APC]
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="StartDateHospitalProviderSpell">
+			<Description>Event date</Description>
+			<Origin>START DATE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+		<Explanation columnName="StartTimeHospitalProviderSpell">
+			<Description>Records whether anaesthetic was given during Labour/ Delivery, and the type used.</Description>
+			<Origin>START TIME (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+		<Explanation columnName="ReferrerCode">
+			<Description>Referrer code is the code of the person making the referral request.</Description>
+			<Origin>REFERRER CODE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
