@@ -27,9 +27,16 @@ internal class Icd10Resolver
             
         connection.Open();
 
+        string query = "select " +
+                       "	ccm.target_concept_id as concept_id, " +
+                       "	replace(ccm.source_concept_code, '.', '') as Code  " +
+                       "from omop_staging.concept_code_map ccm " +
+                       "	inner join cdm.concept c " +
+                       "		on ccm.source_concept_id = c.concept_id " +
+                       "where c.vocabulary_id = 'ICD10' ";
         return
             connection
-                .Query<Row>(sql: "select concept_id, replace(concept_code, '.', '') as Code from cdm.concept where vocabulary_id = 'ICD10'")
+                .Query<Row>(sql: query)
                 .ToDictionary(
                     row => row.Code!, 
                     row => row.concept_id);

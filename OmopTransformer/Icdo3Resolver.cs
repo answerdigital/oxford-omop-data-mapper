@@ -27,9 +27,18 @@ internal class Icdo3Resolver
             
         connection.Open();
 
+        string query =
+            "select " +
+            "	ccm.target_concept_id as concept_id, " +
+            "	ccm.source_concept_code as concept_code " +
+            "from omop_staging.concept_code_map ccm " +
+            "	inner join cdm.concept c " +
+            "		on ccm.source_concept_id = c.concept_id " +
+            "where c.vocabulary_id = 'ICDO3' ";
+
         return
             connection
-                .Query<Row>(sql: "select concept_id, concept_code as Code from cdm.concept where vocabulary_id = 'ICDO3'")
+                .Query<Row>(query)
                 .ToDictionary(
                     row => row.Code!, 
                     row => row.concept_id);
