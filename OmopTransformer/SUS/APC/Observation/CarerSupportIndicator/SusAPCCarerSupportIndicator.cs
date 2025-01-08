@@ -29,7 +29,7 @@ internal class SusAPCCarerSupportIndicator : OmopObservation<SusAPCCarerSupportI
     [Transform(typeof(DateConverter), nameof(Source.CDSActivityDate))]
     public override DateTime? observation_datetime { get; set; }
 
-    [ConstantValue(38000281, "Observation recorded from EHR with text result")]
+    [ConstantValue(32818, "EHR administration record")]
     public override int? observation_type_concept_id { get; set; }
 
     [CopyValue(nameof(Source.CarerSupportIndicator))]
