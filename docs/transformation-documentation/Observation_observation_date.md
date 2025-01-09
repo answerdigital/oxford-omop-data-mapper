@@ -34,6 +34,24 @@ group by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20SUS%20Inpatient%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
+### SUS APC Source Of Referral For Outpatients
+Source column  `StartDateHospitalProviderSpell`.
+Converts text to dates.
+
+* `StartDateHospitalProviderSpell` Event date [START DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html)
+
+```sql
+select	NHSNumber,
+		GeneratedRecordIdentifier,
+		StartDateHospitalProviderSpell,
+		StartTimeHospitalProviderSpell,
+		ReferrerCode   -- Referrer code is the code of the person making the referral request
+FROM [OMOP_SUS].[omop_staging].[sus_APC]
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20SUS%20APC%20Source%20Of%20Referral%20For%20Outpatients%20mapping){: .btn }
 ### SUS Inpatient NumberofBabies Observation
 Source column  `observation_date`.
 Converts text to dates.
