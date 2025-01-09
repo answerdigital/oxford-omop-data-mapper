@@ -1,16 +1,15 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Dapper;
 
 namespace OmopTransformer.Omop.Prune;
 
-internal class OmopPruner
+internal class OmopFinaliser
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<OmopPruner> _logger;
+    private readonly ILogger<OmopFinaliser> _logger;
 
-    public OmopPruner(IOptions<Configuration> configuration, ILogger<OmopPruner> logger)
+    public OmopFinaliser(IOptions<Configuration> configuration, ILogger<OmopFinaliser> logger)
     {
         _logger = logger;
         _configuration = configuration.Value;
@@ -25,5 +24,9 @@ internal class OmopPruner
         await connection.OpenAsync(cancellationToken);
 
         await connection.ExecuteLongTimeoutAsync("cdm.prune_omop");
+
+        _logger.LogInformation("Rebuilding era tables.");
+
+        await connection.ExecuteLongTimeoutAsync("cdm.build_era");
     }
 }
