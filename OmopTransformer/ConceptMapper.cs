@@ -24,6 +24,6 @@ internal class ConceptMapper : IConceptMapper
 
         await connection.OpenAsync(cancellationToken);
 
-        await connection.ExecuteAsync("omop_staging.generate_concept_code_map");
+        await connection.ExecuteLongTimeoutAsync("omop_staging.generate_concept_code_map");
     }
 }
