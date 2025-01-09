@@ -49,7 +49,7 @@ internal class Program
     {
         var builder = Host.CreateApplicationBuilder(args);
 
-        var result = Parser.Default.ParseArguments<StagingOptions, DocumentationOptions, TransformOptions, PruneOptions>(args);
+        var result = Parser.Default.ParseArguments<StagingOptions, DocumentationOptions, TransformOptions, FinaliseOptions>(args);
 
         if (result.Value == null)
         {
@@ -274,10 +274,10 @@ internal class Program
             }
         }
 
-        if (result.Value is PruneOptions)
+        if (result.Value is FinaliseOptions)
         {
-            builder.Services.AddTransient<OmopPruner>();
-            builder.Services.AddHostedService<PruneTransformHostedService>();
+            builder.Services.AddTransient<OmopFinaliser>();
+            builder.Services.AddHostedService<FinaliseTransformHostedService>();
         }
 
         builder.Services.AddTransient<IDocumentationWriter, DocumentationWriter>();
@@ -331,8 +331,8 @@ public class TransformOptions
     public bool DryRun { get; set; }
 }
 
-[Verb("prune", HelpText = "Prunes incomplete OMOP records.")]
-public class PruneOptions
+[Verb("finalise", HelpText = "Prunes incomplete OMOP records. Builds era tables.")]
+public class FinaliseOptions
 {
 }
 
