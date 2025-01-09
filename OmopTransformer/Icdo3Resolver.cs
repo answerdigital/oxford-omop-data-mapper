@@ -40,7 +40,7 @@ internal class Icdo3Resolver
             connection
                 .Query<Row>(query)
                 .ToDictionary(
-                    row => row.Code!, 
+                    row => row.concept_code!, 
                     row => row.concept_id);
     }
 
@@ -86,6 +86,6 @@ internal class Icdo3Resolver
     {
         public int concept_id { get; init; }
 
-        public string? Code { get; init; }
+        public string? concept_code { get; init; }
     }
 }
