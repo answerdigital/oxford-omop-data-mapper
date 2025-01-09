@@ -31,33 +31,33 @@ has_toc: false
 * `nhs_number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
-		;with primarydiagnosis as (
-		select *
-		from omop_staging.sus_ICDDiagnosis
-		where IsPrimaryDiagnosis = 1
-		)
+;with primarydiagnosis as (
+	select *
+	from omop_staging.sus_ICDDiagnosis
+	where IsPrimaryDiagnosis = 1
+)
 
-		select
-		apc.NHSNumber as nhs_number,
-		max(apc.DischargeDateFromHospitalProviderSpell) as death_date,
-		max(apc.DischargeTimeHospitalProviderSpell) as death_time,
-		max(d.DiagnosisICD) as DiagnosisICD
-		from
-		omop_staging.sus_APC apc
-		left join primarydiagnosis d
+select
+	apc.NHSNumber as nhs_number,
+	max(apc.DischargeDateFromHospitalProviderSpell) as death_date,
+	max(apc.DischargeTimeHospitalProviderSpell) as death_time,
+	max(d.DiagnosisICD) as DiagnosisICD
+from omop_staging.sus_APC apc
+	left join primarydiagnosis d
 		on apc.MessageId = d.MessageId
-		where
-		apc.NHSNumber is not null and
-		apc.DischargeDateFromHospitalProviderSpell is not null and
+where
+	apc.NHSNumber is not null and
+	apc.DischargeDateFromHospitalProviderSpell is not null and
+	(
+		apc.DischargeMethodHospitalProviderSpell = '4' -- "Patient died"
+		or
 		(
-		apc.DischargeMethodHospitalProviderSpell = '4'
-		or (
-		apc.DischargeDestinationHospitalProviderSpell = '79'
-		and
-		apc.DischargeMethodHospitalProviderSpell != '5'
+			apc.DischargeDestinationHospitalProviderSpell = '79' -- Not applicable - PATIENT died or stillbirth
+			and
+			apc.DischargeMethodHospitalProviderSpell != '5' -- not stillbirth
 		)
-		)
-		group by apc.NHSNumber
+)
+group by apc.NHSNumber
 	
 ```
 
