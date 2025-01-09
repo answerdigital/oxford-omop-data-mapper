@@ -33,6 +33,23 @@ group by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20SUS%20Inpatient%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
+### SUS APC Source Of Referral For Outpatients
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+select	NHSNumber,
+		GeneratedRecordIdentifier,
+		StartDateHospitalProviderSpell,
+		StartTimeHospitalProviderSpell,
+		ReferrerCode   -- Referrer code is the code of the person making the referral request
+FROM [OMOP_SUS].[omop_staging].[sus_APC]
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20SUS%20APC%20Source%20Of%20Referral%20For%20Outpatients%20mapping){: .btn }
 ### SUS Inpatient NumberofBabies Observation
 * Value copied from `NHSNumber`
 

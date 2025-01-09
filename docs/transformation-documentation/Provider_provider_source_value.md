@@ -12,7 +12,7 @@ has_toc: false
 * `ConsultantCode` A unique code identifying a care professional [CONSULTANT CODE](https://www.datadictionary.nhs.uk/data_elements/consultant_code.html)
 
 ```sql
-	with counts as (
+with counts as (
 	select 
 	ConsultantCode,
 	MainSpecialtyCode,
@@ -20,18 +20,18 @@ has_toc: false
 	row_number() over (
 	partition by ConsultantCode 
 	order by count(*) desc, MainSpecialtyCode
-	) rnk
-	from (
-	select distinct
+) rnk
+from (
+	select
 	ConsultantCode,
 	MainSpecialtyCode
 	from [OMOP_QA].[omop_staging].[sus_APC]
 	where MainSpecialtyCode is not null
 	and ConsultantCode is not null
-	) grouped
+) grouped
 	group by ConsultantCode, MainSpecialtyCode
-	)
-	select 
+)
+select 
 	ConsultantCode,
 	MainSpecialtyCode
 	from counts
