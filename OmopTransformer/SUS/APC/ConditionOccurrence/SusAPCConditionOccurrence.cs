@@ -23,4 +23,7 @@ internal class SusAPCConditionOccurrence : OmopConditionOccurrence<SusAPCConditi
     
     [ConstantValue(32020, "EHR encounter diagnosis")]
     public override int? condition_type_concept_id { get; set; }
+
+    [CopyValue(nameof(Source.GeneratedRecordIdentifier))]
+    public override string? RecordConnectionIdentifier { get; set; }
 }
