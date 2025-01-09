@@ -15,10 +15,10 @@ internal class NhsGenderLookup : ILookup
                 "2", new ValueWithNote("8532", "Female")
             },
             {
-                "9", new ValueWithNote("8551", "Indeterminate (unable to be classified as either male or female)")
+                "9", new ValueWithNote("0", "Indeterminate (unable to be classified as either male or female)")
             },
             {
-                "X", new ValueWithNote("8551", "Not known")
+                "X", new ValueWithNote("0", "Not known")
             },
         };
 
