@@ -12,6 +12,7 @@ using OmopTransformer.SUS.APC.Observation.CarerSupportIndicator;
 using OmopTransformer.SUS.APC.Observation.GestationLengthLabourOnset;
 using OmopTransformer.SUS.APC.Observation.NumberOfBabies;
 using OmopTransformer.SUS.APC.Observation.TotalPreviousPregnancies;
+using OmopTransformer.SUS.APC.Observation.SourceOfReferralForOutpatients;
 using OmopTransformer.SUS.APC.VisitDetails;
 using OmopTransformer.SUS.APC.CareSite;
 using OmopTransformer.SUS.APC.Provider;
@@ -153,6 +154,11 @@ internal class SusAPCTransformer : Transformer
         await Transform<SusAPCTotalPreviousPregnanciesRecord, SusAPCTotalPreviousPregnancies>(
            _observationRecorder.InsertUpdateObservations,
            "SUS APC TotalPreviousPregnancies",
+           cancellationToken);
+
+        await Transform<SusAPCSourceOfReferralForOutpatientsRecord, SusAPCSourceOfReferralForOutpatients>(
+           _observationRecorder.InsertUpdateObservations,
+           "SUS APC SourceOfReferralForOutpatients",
            cancellationToken);
 
         await Transform<SusAPCVisitDetailsRecord, SusAPCVisitDetail>(

@@ -312,6 +312,9 @@
     <None Update="SUS\APC\Observation\TotalPreviousPregnancies\SusAPCTotalPreviousPregnancies.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SUS\APC\Observation\SourceOfReferralForOutpatients\SusAPCSourceOfReferralForOutpatients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SUS\APC\Person\SusAPCPerson.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
