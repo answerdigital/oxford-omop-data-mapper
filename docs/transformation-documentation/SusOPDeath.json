@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t  NHSNumber as nhs_number,\n\t  max(ReferralToTreatmentPeriodEndDate) as death_date\n\tfrom [OMOP_SUS].[omop_staging].[sus_OP]\n\twhere ReferralToTreatmentPeriodStatus = 36\n\t  and ReferralToTreatmentPeriodEndDate is not null\n\t  and NHSNumber is not null\n\tgroup by NHSNumber\n\t",
+      "query": "\n\tselect\n\t  NHSNumber as nhs_number,\n\t  max(ReferralToTreatmentPeriodEndDate) as death_date\n\tfrom [omop_staging].[sus_OP]\n\twhere ReferralToTreatmentPeriodStatus = 36\n\t  and ReferralToTreatmentPeriodEndDate is not null\n\t  and NHSNumber is not null\n\tgroup by NHSNumber\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t  NHSNumber as nhs_number,\n\t  max(ReferralToTreatmentPeriodEndDate) as death_date\n\tfrom [OMOP_SUS].[omop_staging].[sus_OP]\n\twhere ReferralToTreatmentPeriodStatus = 36\n\t  and ReferralToTreatmentPeriodEndDate is not null\n\t  and NHSNumber is not null\n\tgroup by NHSNumber\n\t",
+      "query": "\n\tselect\n\t  NHSNumber as nhs_number,\n\t  max(ReferralToTreatmentPeriodEndDate) as death_date\n\tfrom [omop_staging].[sus_OP]\n\twhere ReferralToTreatmentPeriodStatus = 36\n\t  and ReferralToTreatmentPeriodEndDate is not null\n\t  and NHSNumber is not null\n\tgroup by NHSNumber\n\t",
       "lookup_table_markdown": null
     }
   ]

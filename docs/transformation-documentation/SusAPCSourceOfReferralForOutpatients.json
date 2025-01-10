@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nselect\tNHSNumber,\n\t\tGeneratedRecordIdentifier,\n\t\tStartDateHospitalProviderSpell,\n\t\tStartTimeHospitalProviderSpell,\n\t\tReferrerCode   -- Referrer code is the code of the person making the referral request\nFROM [OMOP_SUS].[omop_staging].[sus_APC]\n\t",
+      "query": "\nselect\t\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tStartDateHospitalProviderSpell,\n\tStartTimeHospitalProviderSpell,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nFROM [omop_staging].[sus_APC]\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\nselect\tNHSNumber,\n\t\tGeneratedRecordIdentifier,\n\t\tStartDateHospitalProviderSpell,\n\t\tStartTimeHospitalProviderSpell,\n\t\tReferrerCode   -- Referrer code is the code of the person making the referral request\nFROM [OMOP_SUS].[omop_staging].[sus_APC]\n\t",
+      "query": "\nselect\t\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tStartDateHospitalProviderSpell,\n\tStartTimeHospitalProviderSpell,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nFROM [omop_staging].[sus_APC]\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\nselect\tNHSNumber,\n\t\tGeneratedRecordIdentifier,\n\t\tStartDateHospitalProviderSpell,\n\t\tStartTimeHospitalProviderSpell,\n\t\tReferrerCode   -- Referrer code is the code of the person making the referral request\nFROM [OMOP_SUS].[omop_staging].[sus_APC]\n\t",
+      "query": "\nselect\t\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tStartDateHospitalProviderSpell,\n\tStartTimeHospitalProviderSpell,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nFROM [omop_staging].[sus_APC]\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,7 +78,7 @@
           ]
         }
       ],
-      "query": "\nselect\tNHSNumber,\n\t\tGeneratedRecordIdentifier,\n\t\tStartDateHospitalProviderSpell,\n\t\tStartTimeHospitalProviderSpell,\n\t\tReferrerCode   -- Referrer code is the code of the person making the referral request\nFROM [OMOP_SUS].[omop_staging].[sus_APC]\n\t",
+      "query": "\nselect\t\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tStartDateHospitalProviderSpell,\n\tStartTimeHospitalProviderSpell,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nFROM [omop_staging].[sus_APC]\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -103,7 +103,7 @@
           ]
         }
       ],
-      "query": "\nselect\tNHSNumber,\n\t\tGeneratedRecordIdentifier,\n\t\tStartDateHospitalProviderSpell,\n\t\tStartTimeHospitalProviderSpell,\n\t\tReferrerCode   -- Referrer code is the code of the person making the referral request\nFROM [OMOP_SUS].[omop_staging].[sus_APC]\n\t",
+      "query": "\nselect\t\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tStartDateHospitalProviderSpell,\n\tStartTimeHospitalProviderSpell,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nFROM [omop_staging].[sus_APC]\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     }
   ]

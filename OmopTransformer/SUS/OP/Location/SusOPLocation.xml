@@ -5,7 +5,7 @@
 			Postcode,
 			Country,
 			NHSNumber
-	from [OMOP_SUS].[omop_staging].[sus_OP]
+	from [omop_staging].[sus_OP]
 	where NHSNumber is not null
 	and Postcode is not null
 	</Sql>

@@ -16,7 +16,7 @@ Converts text to dates.
 	select
 	  NHSNumber as nhs_number,
 	  max(ReferralToTreatmentPeriodEndDate) as death_date
-	from [OMOP_SUS].[omop_staging].[sus_OP]
+	from [omop_staging].[sus_OP]
 	where ReferralToTreatmentPeriodStatus = 36
 	  and ReferralToTreatmentPeriodEndDate is not null
 	  and NHSNumber is not null

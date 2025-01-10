@@ -15,8 +15,8 @@ Lookup gender concept.
 |------|-----|-----|
 |1|8507|Male|
 |2|8532|Female|
-|9|8551|Indeterminate (unable to be classified as either male or female)|
-|X|8551|Not known|
+|9|0|Indeterminate (unable to be classified as either male or female)|
+|X|0|Not known|
 
 Notes
 * [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
@@ -30,7 +30,7 @@ Notes
 		max(DateofBirth) as DateOfBirth,
 		max(EthnicCategory) as EthnicCategory,
 		max(Sex) as PersonCurrentGenderCode
-	from [OMOP_SUS].[omop_staging].[sus_OP]
+	from [omop_staging].[sus_OP]
 	where NHSNumber is not null
 	group by NHSNumber
 	
@@ -47,8 +47,8 @@ Lookup gender concept.
 |------|-----|-----|
 |1|8507|Male|
 |2|8532|Female|
-|9|8551|Indeterminate (unable to be classified as either male or female)|
-|X|8551|Not known|
+|9|0|Indeterminate (unable to be classified as either male or female)|
+|X|0|Not known|
 
 Notes
 * [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
@@ -79,8 +79,8 @@ Lookup gender concept.
 |------|-----|-----|
 |1|8507|Male|
 |2|8532|Female|
-|9|8551|Indeterminate (unable to be classified as either male or female)|
-|X|8551|Not known|
+|9|0|Indeterminate (unable to be classified as either male or female)|
+|X|0|Not known|
 
 Notes
 * [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
@@ -140,8 +140,8 @@ Lookup gender concept.
 |------|-----|-----|
 |1|8507|Male|
 |2|8532|Female|
-|9|8551|Indeterminate (unable to be classified as either male or female)|
-|X|8551|Not known|
+|9|0|Indeterminate (unable to be classified as either male or female)|
+|X|0|Not known|
 
 Notes
 * [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)

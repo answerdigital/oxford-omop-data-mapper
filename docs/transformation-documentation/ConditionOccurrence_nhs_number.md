@@ -19,7 +19,7 @@ has_toc: false
 			op.NHSNumber,
 			op.CDSActivityDate
 	from omop_staging.sus_OP_ICDDiagnosis d
-		inner join [OMOP_SUS].[omop_staging].[sus_OP] op
+		inner join [omop_staging].[sus_OP] op
 			on d.MessageId = op.MessageId
 	where op.NHSNumber is not null
 	

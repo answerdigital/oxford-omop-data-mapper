@@ -36,7 +36,7 @@
         }
       ],
       "query": "\n\tselect\n\t\tNHSNumber,\n\t\tmax(DateofBirth) as DateOfBirth,\n\t\tmax(EthnicGroup) as EthnicCategory,\n\t\tmax(Sex) as PersonCurrentGenderCode\n\tfrom omop_staging.sus_APC\n\twhere NHSNumber is not null\n\tgroup by NHSNumber\n\t",
-      "lookup_table_markdown": "\r\n\r\n|PersonCurrentGenderCode|gender_concept_id|notes|\r\n|------|-----|-----|\r\n|1|8507|Male|\r\n|2|8532|Female|\r\n|9|8551|Indeterminate (unable to be classified as either male or female)|\r\n|X|8551|Not known|\r\n\r\nNotes\r\n* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)\r\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\r\n"
+      "lookup_table_markdown": "\r\n\r\n|PersonCurrentGenderCode|gender_concept_id|notes|\r\n|------|-----|-----|\r\n|1|8507|Male|\r\n|2|8532|Female|\r\n|9|0|Indeterminate (unable to be classified as either male or female)|\r\n|X|0|Not known|\r\n\r\nNotes\r\n* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)\r\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\r\n"
     },
     {
       "name": "year_of_birth",

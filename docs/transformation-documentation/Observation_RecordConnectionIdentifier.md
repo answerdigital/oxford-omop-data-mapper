@@ -39,12 +39,14 @@ group by
 * `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
-select	NHSNumber,
-		GeneratedRecordIdentifier,
-		StartDateHospitalProviderSpell,
-		StartTimeHospitalProviderSpell,
-		ReferrerCode   -- Referrer code is the code of the person making the referral request
-FROM [OMOP_SUS].[omop_staging].[sus_APC]
+select	
+	NHSNumber,
+	GeneratedRecordIdentifier,
+	StartDateHospitalProviderSpell,
+	StartTimeHospitalProviderSpell,
+	ReferrerCode   -- Referrer code is the code of the person making the referral request
+FROM [omop_staging].[sus_APC]
+where NHSNumber is not null
 	
 ```
 

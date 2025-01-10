@@ -41,12 +41,14 @@ Converts text to dates.
 * `StartTimeHospitalProviderSpell` Records whether anaesthetic was given during Labour/ Delivery, and the type used. [START TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_time__hospital_provider_spell_.html)
 
 ```sql
-select	NHSNumber,
-		GeneratedRecordIdentifier,
-		StartDateHospitalProviderSpell,
-		StartTimeHospitalProviderSpell,
-		ReferrerCode   -- Referrer code is the code of the person making the referral request
-FROM [OMOP_SUS].[omop_staging].[sus_APC]
+select	
+	NHSNumber,
+	GeneratedRecordIdentifier,
+	StartDateHospitalProviderSpell,
+	StartTimeHospitalProviderSpell,
+	ReferrerCode   -- Referrer code is the code of the person making the referral request
+FROM [omop_staging].[sus_APC]
+where NHSNumber is not null
 	
 ```
 
