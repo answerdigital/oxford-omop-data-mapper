@@ -26,6 +26,14 @@ where gender_concept_id is null
 	or race_concept_id is null
 	or ethnicity_concept_id is null;
 
+update o
+set 
+	visit_occurrence_id = null,
+	visit_detail_id = null
+from cdm.observation o
+	inner join @personsToDelete ptd
+		on o.person_id = ptd.person_id;
+
 delete co
 from cdm.condition_occurrence co
 	inner join @personsToDelete p
