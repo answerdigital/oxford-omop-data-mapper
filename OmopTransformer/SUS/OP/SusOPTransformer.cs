@@ -9,6 +9,7 @@ using OmopTransformer.SUS.OP.ProcedureOccurrence;
 //using OmopTransformer.SUS.OP.Observation.AnaestheticGivenPostLabourDelivery;
 //using OmopTransformer.SUS.OP.Observation.BirthWeight;
 using OmopTransformer.SUS.OP.Observation.CarerSupportIndicator;
+using OmopTransformer.SUS.OP.Observation.SourceOfReferralForOutpatients;
 //using OmopTransformer.SUS.OP.Observation.GestationLengthLabourOnset;
 //using OmopTransformer.SUS.OP.Observation.NumberOfBabies;
 //using OmopTransformer.SUS.OP.Observation.TotalPreviousPregnancies;
@@ -138,6 +139,11 @@ internal class SusOPTransformer : Transformer
         await Transform<SusOPCarerSupportIndicatorRecord, SusOPCarerSupportIndicator>(
            _observationRecorder.InsertUpdateObservations,
            "SUS OP CarerSupportIndicator",
+           cancellationToken);
+
+        await Transform<SusOPSourceOfReferralForOutpatientsRecord, SusOPSourceOfReferralForOutpatients>(
+           _observationRecorder.InsertUpdateObservations,
+           "SUS OP SourceOfReferralForOutpatients",
            cancellationToken);
 
         //await Transform<SusOPGestationLengthLabourOnsetRecord, SusOPGestationLengthLabourOnset>(
