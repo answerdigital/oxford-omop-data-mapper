@@ -1,11 +1,11 @@
 ﻿using OmopTransformer.Annotations;
 
-namespace OmopTransformer.SUS.APC.VisitDetails;
+namespace OmopTransformer.SUS.OP.VisitDetails;
 
 [DataOrigin("SUS")]
 [Description("Sus Inptatient VisitDetails")]
-[SourceQuery("SusAPCVisitDetails.xml")]
-internal class SusAPCVisitDetailsRecord
+[SourceQuery("SusOPVisitDetails.xml")]
+internal class SusOPVisitDetailsRecord
 {
     public string? NHSNumber { get; set; }
     public string? GeneratedRecordIdentifier { get; set; }
