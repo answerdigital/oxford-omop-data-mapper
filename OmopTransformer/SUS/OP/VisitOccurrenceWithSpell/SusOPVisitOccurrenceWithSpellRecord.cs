@@ -1,14 +1,13 @@
 ﻿using OmopTransformer.Annotations;
 
-namespace OmopTransformer.SUS.OP.VisitDetails;
+namespace OmopTransformer.SUS.OP.VisitOccurrenceWithSpell;
 
 [DataOrigin("SUS")]
-[Description("Sus Outpatient VisitDetails")]
-[SourceQuery("SusOPVisitDetails.xml")]
-internal class SusOPVisitDetailsRecord
+[Description("SUS OP VisitOccurrenceWithSpell")]
+[SourceQuery("SusOPVisitOccurrenceWithSpell.xml")]
+internal class SusOPVisitOccurrenceWithSpellRecord
 {
     public string? NHSNumber { get; set; }
-    public string? GeneratedRecordIdentifier { get; set; }
     public string? VisitStartDate { get; set; }
     public string? VisitStartTime { get; set; }
     public string? VisitEndDate { get; set; }

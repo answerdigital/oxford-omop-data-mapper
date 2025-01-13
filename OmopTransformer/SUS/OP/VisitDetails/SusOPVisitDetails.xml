@@ -119,15 +119,5 @@ from VisitDetail
 			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
 			<Origin>PATIENT CLASSIFICATION CODE</Origin>
 		</Explanation>
-
-		<Explanation columnName="SourceOfAdmissionHospitalProviderSpell">
-			<Description>Admission Source.</Description>
-			<Origin>ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)</Origin>
-		</Explanation>
-
-		<Explanation columnName="DischargeDestinationHospitalProviderSpell">
-			<Description>Discharge Destination Code</Description>
-			<Origin>DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)</Origin>
-		</Explanation>
 	</Explanations>
 </Query>
