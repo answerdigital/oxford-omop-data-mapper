@@ -363,6 +363,15 @@
     <None Update="SUS\OP\Observation\CarerSupportIndicator\SusOPCarerSupportIndicator.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SUS\OP\Observation\SourceOfReferralForOutpatients\SusOPSourceOfReferralForOutpatients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\OP\VisitDetails\SusOPVisitDetails.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\OP\VisitOccurrenceWithSpell\SusOPVisitOccurrenceWithSpell.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<ItemGroup>
