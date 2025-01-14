@@ -9,6 +9,9 @@ internal class SusAPCConditionOccurrence : OmopConditionOccurrence<SusAPCConditi
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? nhs_number { get; set; }
 
+    [Transform(typeof(Icd10Selector), nameof(Source.DiagnosisICD))]
+    public override int? condition_source_concept_id { get; set; }
+
     [Transform(typeof(StandardConditionConceptSelector), useOmopTypeAsSource: true, nameof(condition_source_concept_id))]
     public override int? condition_concept_id { get; set; }
 
@@ -23,9 +26,6 @@ internal class SusAPCConditionOccurrence : OmopConditionOccurrence<SusAPCConditi
 
     [Transform(typeof(DateConverter), nameof(Source.CDSActivityDate))]
     public override DateTime? condition_end_datetime { get; set; }
-
-    [Transform(typeof(Icd10Selector), nameof(Source.DiagnosisICD))]
-    public override int? condition_source_concept_id { get; set; }
 
     [CopyValue(nameof(Source.DiagnosisICD))]
     public override string? condition_source_value { get; set; }
