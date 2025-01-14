@@ -5,8 +5,7 @@ select
 		apc.GeneratedRecordIdentifier,
 		apc.NHSNumber,
 		p.ProcedureDateOPCS as PrimaryProcedureDate,
-		p.ProcedureOPCS as PrimaryProcedure,
-		'000000' as start_time
+		p.ProcedureOPCS as PrimaryProcedure
 from omop_staging.sus_APC apc
 	inner join omop_staging.sus_OPCSProcedure p
 		on apc.MessageId = p.MessageId

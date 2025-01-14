@@ -15,8 +15,14 @@ internal class SusAPCProcedureOccurrence : OmopProcedureOccurrence<SusAPCProcedu
     [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
     public override DateTime? procedure_date { get; set; }
 
-    [Transform(typeof(DateAndTimeCombiner), nameof(Source.PrimaryProcedureDate), nameof(Source.start_time))]
+    [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
     public override DateTime? procedure_datetime { get; set; }
+
+    [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
+    public override DateTime? procedure_end_date { get; set; }
+
+    [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
+    public override DateTime? procedure_end_datetime { get; set; }
 
     [ConstantValue(32818, "`EHR Administration record`")]
     public override int? procedure_type_concept_id { get; set; }
