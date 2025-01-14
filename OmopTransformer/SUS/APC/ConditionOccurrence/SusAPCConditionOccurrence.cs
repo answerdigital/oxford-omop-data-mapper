@@ -18,10 +18,13 @@ internal class SusAPCConditionOccurrence : OmopConditionOccurrence<SusAPCConditi
     [Transform(typeof(DateConverter), nameof(Source.CDSActivityDate))]
     public override DateTime? condition_start_date { get; set; }
 
+    [Transform(typeof(DateAndTimeCombiner), nameof(Source.CDSActivityDate), nameof(Source.start_time))]
+    public override DateTime? condition_start_datetime { get; set; }
+
     [CopyValue(nameof(Source.DiagnosisICD))]
     public override string? condition_source_value { get; set; }
     
-    [ConstantValue(32020, "EHR encounter diagnosis")]
+    [ConstantValue(32818, "EHR administration record")]
     public override int? condition_type_concept_id { get; set; }
 
     [CopyValue(nameof(Source.GeneratedRecordIdentifier))]

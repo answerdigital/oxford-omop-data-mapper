@@ -11,4 +11,5 @@ internal class SusAPCConditionOccurrenceRecord
     public string? GeneratedRecordIdentifier { get; set; }
     public string? NHSNumber { get; set; }
     public string? CDSActivityDate { get; set; }
+    public string? start_time { get; set; }
 }
