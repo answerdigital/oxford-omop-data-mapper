@@ -55,17 +55,13 @@ VisitDetail as (
 
 			apc.GeneratedRecordIdentifier,
 
-			coalesce(apc.StartDateHospitalProviderSpell, apc.CDSActivityDate, apc.StartDateConsultantEpisode) as VisitStartDate,  -- visit_start_date
+			coalesce(apc.StartDateConsultantEpisode, apc.StartDateHospitalProviderSpell, apc.CDSActivityDate) as VisitStartDate,
 			coalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time
 
-			coalesce(apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate, apc.EndDateConsultantEpisode) as VisitEndDate,
-
+coalesce(apc.EndDateConsultantEpisode, apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate) as VisitEndDate,
 			coalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,
 
-			case 
-				when apc.CDSActivityDate is null and apc.DischargeDateFromHospitalProviderSpell is null and apc.StartDateConsultantEpisode is null and apc.PatientClassification = 1 then 32220
-				else 32818
-			end as VisitTypeConceptId,
+			32818 as VisitTypeConceptId,
 
 			case 
 				when apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2

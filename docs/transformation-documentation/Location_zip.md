@@ -38,7 +38,6 @@ select
 		Postcode,
 		NHSNumber
 from omop_staging.sus_APC
-where LocationClassAtEpisodeStartDate = '04'
 	and
 (
 	Postcode is not null

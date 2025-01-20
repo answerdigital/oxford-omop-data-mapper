@@ -64,21 +64,10 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "measurement_source_value",
-      "operation_description": "Value copied from `MetastaticSite`",
-      "dataSource": [
-        {
-          "name": "MetastaticSite",
-          "description": "Is the site of the metastatic disease at PATIENT DIAGNOSIS",
-          "origins": [
-            {
-              "origin": "METASTATIC SITE (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/metastatic_site__at_diagnosis_.html"
-            }
-          ]
-        }
-      ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('.') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD901:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,\n\t\t\tT.p.value('.', 'varchar(max)') as MetastaticSite\n\tfrom CosdRecords\n\tcross apply Node.nodes('ColorectalRecord/PrimaryPathway/Diagnosis/MetastaticTypeAndSiteDiagnosis/MetastaticSite/@code') as T(p)\n)\nselect distinct\n\tNhsNumber,\n\tDateOfPrimaryDiagnosisClinicallyAgreed,\n\tMetastaticSite\nfrom CO\nwhere MetastaticSite is not null\nand MetastaticSite != 97\n\t",
+      "name": "measurement_source_concept_id",
+      "operation_description": "Constant value set to `2000500007`. PrimaryPathwayMetastasis",
+      "dataSource": null,
+      "query": null,
       "lookup_table_markdown": null
     },
     {
@@ -100,10 +89,21 @@
       "lookup_table_markdown": "\r\n\r\n|MetastaticSite|measurement_concept_id|notes|\r\n|------|-----|-----|\r\n|02|36768862|Metastasis to brain|\r\n|03|36770544|Metastasis to liver|\r\n|04|36770283|Metastasis to lung|\r\n|07|35226309|Metastasis to the Unknown Site|\r\n|08|35225673|Metastasis to skin|\r\n|09|36769243|Distant spread to lymph node|\r\n|10|36769301|Metastasis to bone|\r\n|11|35226074|Metastasis to bone marrow|\r\n|12|36769269|Regional spread to lymph node|\r\n|98|36769180|Metastasis|\r\n|99|36769180|Metastasis|\r\n\r\nNotes\r\n* [OMOP Metastasis](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=metastasis&boosts)\r\n* [NHS - Metastasis](https://www.datadictionary.nhs.uk/data_elements/metastatic_site__at_diagnosis_.html?hl=metastatic%2Csite%2Cdiagnosis)\r\n"
     },
     {
-      "name": "measurement_source_concept_id",
-      "operation_description": "Constant value set to `2000500007`. PrimaryPathwayMetastasis",
-      "dataSource": null,
-      "query": null,
+      "name": "measurement_source_value",
+      "operation_description": "Value copied from `MetastaticSite`",
+      "dataSource": [
+        {
+          "name": "MetastaticSite",
+          "description": "Is the site of the metastatic disease at PATIENT DIAGNOSIS",
+          "origins": [
+            {
+              "origin": "METASTATIC SITE (AT DIAGNOSIS)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/metastatic_site__at_diagnosis_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('.') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD901:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,\n\t\t\tT.p.value('.', 'varchar(max)') as MetastaticSite\n\tfrom CosdRecords\n\tcross apply Node.nodes('ColorectalRecord/PrimaryPathway/Diagnosis/MetastaticTypeAndSiteDiagnosis/MetastaticSite/@code') as T(p)\n)\nselect distinct\n\tNhsNumber,\n\tDateOfPrimaryDiagnosisClinicallyAgreed,\n\tMetastaticSite\nfrom CO\nwhere MetastaticSite is not null\nand MetastaticSite != 97\n\t",
       "lookup_table_markdown": null
     }
   ]

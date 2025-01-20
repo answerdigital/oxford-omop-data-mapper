@@ -64,6 +64,42 @@
       "lookup_table_markdown": null
     },
     {
+      "name": "procedure_end_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "AppointmentDate",
+          "description": "Appointment Date.",
+          "origins": [
+            {
+              "origin": "APPOINTMENT DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/appointment_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "procedure_end_datetime",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "AppointmentDate",
+          "description": "Appointment Date.",
+          "origins": [
+            {
+              "origin": "APPOINTMENT DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/appointment_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
       "name": "procedure_type_concept_id",
       "operation_description": "Constant value set to `32818`. `EHR Administration record`",
       "dataSource": null,
