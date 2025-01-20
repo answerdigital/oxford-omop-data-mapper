@@ -25,7 +25,7 @@ internal class CosdV8ConditionOccurrencePrimaryDiagnosis : OmopConditionOccurren
     [CopyValue(nameof(Source.BasisOfDiagnosisCancer))]
     public override string? condition_status_source_value { get; set; }
 
-    [Transform(typeof(Icd10Selector), nameof(Source.CancerDiagnosis))]
+    [Transform(typeof(Icd10StandardNonStandardSelector), nameof(Source.CancerDiagnosis))]
     public override int? condition_source_concept_id { get; set; }
 
     [Transform(typeof(StandardConditionConceptSelector), useOmopTypeAsSource: true, nameof(condition_source_concept_id))]

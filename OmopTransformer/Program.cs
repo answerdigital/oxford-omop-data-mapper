@@ -289,7 +289,8 @@ internal class Program
         builder.Services.AddTransient<IRtdsStagingSchema, RtdsStagingSchema>();
         builder.Services.AddTransient<ISusAPCStagingSchema, SusAPCStagingSchema>();
         builder.Services.AddTransient<ISusOPStagingSchema, SusOPStagingSchema>();
-        builder.Services.AddSingleton<Icd10Resolver>();
+        builder.Services.AddSingleton<Icd10NonStandardResolver>();
+        builder.Services.AddSingleton<Icd10StandardResolver>();
         builder.Services.AddSingleton<Opcs4Resolver>();
         builder.Services.AddSingleton<Icdo3Resolver>();
         builder.Services.AddSingleton<ConceptResolver>();

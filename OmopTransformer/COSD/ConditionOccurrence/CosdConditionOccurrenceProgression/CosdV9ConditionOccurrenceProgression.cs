@@ -19,7 +19,7 @@ internal class CosdV9ConditionOccurrenceProgression : OmopConditionOccurrence<Co
     [ConstantValue(32828, "`EHR episode record`")]
     public override int? condition_type_concept_id { get; set; }
 
-    [Transform(typeof(Icd10Selector), nameof(Source.NonPrimaryProgressionOriginalDiagnosis))]
+    [Transform(typeof(Icd10StandardNonStandardSelector), nameof(Source.NonPrimaryProgressionOriginalDiagnosis))]
     public override int? condition_source_concept_id { get; set; }
 
     [Transform(typeof(StandardConditionConceptSelector), useOmopTypeAsSource: true, nameof(condition_source_concept_id))]
