@@ -8,6 +8,8 @@ namespace OmopTransformer.SUS.OP.VisitOccurrenceWithSpell;
 internal class SusOPVisitOccurrenceWithSpellRecord
 {
     public string? NHSNumber { get; set; }
+    public string? SUSgeneratedspellID { get; set; }
+    public string? GeneratedRecordIdentifier { get; set; }
     public string? VisitStartDate { get; set; }
     public string? VisitStartTime { get; set; }
     public string? VisitEndDate { get; set; }

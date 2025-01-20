@@ -18,6 +18,9 @@ internal class SusOPVisitDetail : OmopVisitDetail<SusOPVisitDetailsRecord>
     [CopyValue(nameof(Source.GeneratedRecordIdentifier))]
     public override string? RecordConnectionIdentifier { get; set; }
 
+    [CopyValue(nameof(Source.SUSgeneratedspellID))]
+    public override string? HospitalProviderSpellNumber { get; set; }
+
     [Transform(typeof(DateConverter), nameof(Source.VisitStartDate))]
     public override DateTime? visit_detail_start_date { get; set; }
 
