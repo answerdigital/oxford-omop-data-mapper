@@ -335,9 +335,6 @@
 	  <None Update="SUS\APC\VisitDetails\SusAPCVisitDetails.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
-	  <None Update="SUS\APC\VisitOccurrenceWithoutSpell\SusAPCVisitOccurrenceWithoutSpell.xml">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
 	  <None Update="SUS\APC\VisitOccurrenceWithSpell\SusAPCVisitOccurrenceWithSpell.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
