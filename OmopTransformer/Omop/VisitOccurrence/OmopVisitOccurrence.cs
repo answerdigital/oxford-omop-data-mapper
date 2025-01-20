@@ -18,7 +18,7 @@ internal abstract class OmopVisitOccurrence<T> : IOmopRecord<T>
     public virtual int? discharged_to_concept_id { get; set; }
     public virtual string? discharged_to_source_value { get; set; }
     public virtual int? preceding_visit_occurrence_id { get; set; }
-    public virtual int? HospitalProviderSpellNumber { get; set; }
+    public virtual string? HospitalProviderSpellNumber { get; set; }
     public virtual string? RecordConnectionIdentifier { get; set; }
     public string OmopTargetTypeDescription => "VisitOccurrence";
     public T? Source { get; set; }

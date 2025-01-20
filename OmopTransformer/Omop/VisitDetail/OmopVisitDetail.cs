@@ -3,7 +3,7 @@
 internal abstract class OmopVisitDetail<T> : IOmopRecord<T>
 {
     public virtual string? nhs_number { get; set; }
-    public virtual int? HospitalProviderSpellNumber { get; set; }
+    public virtual string? HospitalProviderSpellNumber { get; set; }
     public virtual string? RecordConnectionIdentifier { get; set; }
     public virtual int? visit_detail_concept_id { get; set; }
     public virtual DateTime? visit_detail_start_date { get; set; }

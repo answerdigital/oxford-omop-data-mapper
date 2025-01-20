@@ -17,8 +17,8 @@ internal class CdsPersonWeight : OmopObservation<CdsPersonWeightRecord>
     [CopyValue(nameof(Source.RecordConnectionIdentifier))]
     public override string? RecordConnectionIdentifier { get; set; }
 
-    [Transform(typeof(NumberParser), nameof(Source.HospitalProviderSpellNumber))]
-    public override int? HospitalProviderSpellNumber { get; set; }
+    [CopyValue(nameof(Source.HospitalProviderSpellNumber))]
+    public override string? HospitalProviderSpellNumber { get; set; }
 
     [ConstantValue(42536495, "Current body weight")]
     public override int? observation_concept_id { get; set; }

@@ -9,7 +9,7 @@ internal class CdsVisitDetailsRecord
 {
     public string? NHSNumber { get; set; }
     public string? RecordConnectionIdentifier { get; set; }
-    public int? HospitalProviderSpellNumber { get; set; }
+    public string? HospitalProviderSpellNumber { get; set; }
     public string? VisitStartDate { get; set; }
     public string? VisitStartTime { get; set; }
     public string? VisitEndDate { get; set; }
