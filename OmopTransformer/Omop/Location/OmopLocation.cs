@@ -16,4 +16,5 @@ internal abstract class OmopLocation<T> : IOmopRecord<T>
     public virtual string? nhs_number { get; set; }
     public string OmopTargetTypeDescription => "Location";
     public T? Source { get; set; }
+    public virtual bool IsValid => true;
 }

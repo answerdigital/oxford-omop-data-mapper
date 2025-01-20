@@ -53,11 +53,11 @@ internal class ConditionOccurrenceRecorder : IConditionOccurrenceRecorder
 
             foreach (var record in batch)
             {
-                if (record.condition_concept_id == null)
+                if (record.IsValid == false)
                     continue;
 
                 dataTable.Rows.Add(
-        record.nhs_number,
+                    record.nhs_number,
                     record.RecordConnectionIdentifier,
                     record.condition_concept_id,
                     record.condition_start_date,

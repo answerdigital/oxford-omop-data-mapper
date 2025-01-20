@@ -57,7 +57,7 @@ internal class MeasurementRecorder : IMeasurementRecorder
 
             foreach (var record in batch)
             {
-                if (record.measurement_concept_id == null)
+                if (record.IsValid == false)
                     continue;
 
                 dataTable.Rows.Add(

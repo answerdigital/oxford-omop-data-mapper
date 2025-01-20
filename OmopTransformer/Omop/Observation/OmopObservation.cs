@@ -24,4 +24,10 @@ internal abstract class OmopObservation<T> : IOmopRecord<T>
     public virtual int? obs_event_field_concept_id { get; set; }
     public string OmopTargetTypeDescription => "Observation";
     public T? Source { get; set; }
+
+    public virtual bool IsValid =>
+        observation_concept_id != null &&
+        observation_date.HasValue &&
+        nhs_number != null &&
+        observation_type_concept_id != null;
 }

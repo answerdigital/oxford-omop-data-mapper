@@ -22,4 +22,10 @@ internal abstract class OmopVisitOccurrence<T> : IOmopRecord<T>
     public virtual string? RecordConnectionIdentifier { get; set; }
     public string OmopTargetTypeDescription => "VisitOccurrence";
     public T? Source { get; set; }
+
+    public virtual bool IsValid =>
+        NhsNumber != null &&
+        visit_start_date.HasValue &&
+        visit_end_date.HasValue &&
+        visit_type_concept_id != null;
 }

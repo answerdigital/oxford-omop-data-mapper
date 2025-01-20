@@ -21,4 +21,10 @@ internal abstract class OmopProcedureOccurrence<T> : IOmopRecord<T>
 
     public string OmopTargetTypeDescription => "ProcedureOccurrence";
     public T? Source { get; set; }
+
+    public virtual bool IsValid =>
+        nhs_number != null &&
+        procedure_concept_id != null &&
+        procedure_date.HasValue &&
+        procedure_type_concept_id != null;
 }
