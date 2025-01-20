@@ -363,6 +363,9 @@
 	  <None Update="SUS\OP\ProcedureOccurrence\SusOPProcedureOccurrence.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+    <None Update="SUS\OP\Measurements\SusOPMeasurement.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<ItemGroup>
