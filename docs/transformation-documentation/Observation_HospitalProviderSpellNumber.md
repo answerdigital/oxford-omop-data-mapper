@@ -7,8 +7,7 @@ has_toc: false
 ---
 # HospitalProviderSpellNumber
 ### SUS Inpatient Total Previous Pregnancies Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -35,8 +34,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20SUS%20Inpatient%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
 ### SUS Inpatient NumberofBabies Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -63,8 +61,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20SUS%20Inpatient%20NumberofBabies%20Observation%20mapping){: .btn }
 ### SUS Inpatient Gestation Length Labour Onset Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -92,8 +89,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20SUS%20Inpatient%20Gestation%20Length%20Labour%20Onset%20Observation%20mapping){: .btn }
 ### SUS Inpatient Carer Support Indicator Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -118,8 +114,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20SUS%20Inpatient%20Carer%20Support%20Indicator%20Observation%20mapping){: .btn }
 ### Sus APC Birth Weight Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -147,8 +142,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20Sus%20APC%20Birth%20Weight%20Observation%20mapping){: .btn }
 ### SUS APC Anaesthetic Given Post Labour Delivery Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -174,8 +168,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20SUS%20APC%20Anaesthetic%20Given%20Post%20Labour%20Delivery%20Observation%20mapping){: .btn }
 ### SUS APC Anaesthetic During Labour Delivery Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -202,8 +195,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20SUS%20APC%20Anaesthetic%20During%20Labour%20Delivery%20Observation%20mapping){: .btn }
 ### Cds Total Previous Pregnancies Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -232,8 +224,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20Cds%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
 ### Cds Source Of Referral For Outpatients Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -263,8 +254,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20Cds%20Source%20Of%20Referral%20For%20Outpatients%20Observation%20mapping){: .btn }
 ### Cds Person Weight Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -294,8 +284,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20Cds%20Person%20Weight%20Observation%20mapping){: .btn }
 ### Cds NumberofBabies Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -327,8 +316,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20Cds%20NumberofBabies%20Observation%20mapping){: .btn }
 ### Cds Gestation Length Labour Onset Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -359,8 +347,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20Cds%20Gestation%20Length%20Labour%20Onset%20Observation%20mapping){: .btn }
 ### Cds Carer Support Indicator Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -387,8 +374,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20Cds%20Carer%20Support%20Indicator%20Observation%20mapping){: .btn }
 ### Cds Birth Weight Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -418,8 +404,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20Cds%20Birth%20Weight%20Observation%20mapping){: .btn }
 ### Cds Anaesthetic Given Post Labour Delivery Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
@@ -449,8 +434,7 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20Cds%20Anaesthetic%20Given%20Post%20Labour%20Delivery%20Observation%20mapping){: .btn }
 ### Cds Anaesthetic During Labour Delivery Observation
-Source column  `HospitalProviderSpellNumber`.
-Converts text to integers.
+* Value copied from `HospitalProviderSpellNumber`
 
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 

@@ -64,6 +64,42 @@
       "lookup_table_markdown": null
     },
     {
+      "name": "procedure_end_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "PrimaryProcedureDate",
+          "description": "Procedure Date.",
+          "origins": [
+            {
+              "origin": "PROCEDURE DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "procedure_end_datetime",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "PrimaryProcedureDate",
+          "description": "Procedure Date.",
+          "origins": [
+            {
+              "origin": "PROCEDURE DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
       "name": "procedure_type_concept_id",
       "operation_description": "Constant value set to `32818`. `EHR Administration record`",
       "dataSource": null,

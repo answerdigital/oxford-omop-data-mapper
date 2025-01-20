@@ -15,8 +15,8 @@ internal class SusAPCVisitOccurrenceWithSpell : OmopVisitOccurrence<SusAPCVisitO
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? NhsNumber { get; set; }
 
-    [Transform(typeof(NumberParser), nameof(Source.HospitalProviderSpellNumber))]
-    public override int? HospitalProviderSpellNumber { get; set; }
+    [CopyValue(nameof(Source.HospitalProviderSpellNumber))]
+    public override string? HospitalProviderSpellNumber { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.EpisodeStartDate))]
     public override DateTime? visit_start_date { get; set; }

@@ -17,8 +17,8 @@ internal class CdsTotalPreviousPregnancies : OmopObservation<CdsTotalPreviousPre
     [CopyValue(nameof(Source.RecordConnectionIdentifier))]
     public override string? RecordConnectionIdentifier { get; set; }
 
-    [Transform(typeof(NumberParser), nameof(Source.HospitalProviderSpellNumber))]
-    public override int? HospitalProviderSpellNumber { get; set; }
+    [CopyValue(nameof(Source.HospitalProviderSpellNumber))]
+    public override string? HospitalProviderSpellNumber { get; set; }
 
     [ConstantValue(4078008, "Number of previous pregnancies")]
     public override int? observation_concept_id { get; set; }

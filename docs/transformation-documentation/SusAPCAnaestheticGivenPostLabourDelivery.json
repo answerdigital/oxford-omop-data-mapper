@@ -40,7 +40,7 @@
     },
     {
       "name": "HospitalProviderSpellNumber",
-      "operation_description": "Converts text to integers.",
+      "operation_description": "Value copied from `HospitalProviderSpellNumber`",
       "dataSource": [
         {
           "name": "HospitalProviderSpellNumber",

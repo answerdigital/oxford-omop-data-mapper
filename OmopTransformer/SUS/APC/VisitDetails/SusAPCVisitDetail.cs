@@ -19,7 +19,7 @@ internal class SusAPCVisitDetail : OmopVisitDetail<SusAPCVisitDetailsRecord>
     public override string? RecordConnectionIdentifier { get; set; }
 
     [CopyValue(nameof(Source.HospitalProviderSpellNumber))]
-    public override int? HospitalProviderSpellNumber { get; set; }
+    public override string? HospitalProviderSpellNumber { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.VisitStartDate))]
     public override DateTime? visit_detail_start_date { get; set; }
