@@ -4,7 +4,6 @@ using OmopTransformer.SUS.APC.Location;
 using OmopTransformer.SUS.APC.ConditionOccurrence;
 using OmopTransformer.SUS.APC.ProcedureOccurrence;
 using OmopTransformer.SUS.APC.Measurements.SusAPCMeasurement;
-using OmopTransformer.SUS.APC.VisitOccurrenceWithoutSpell;
 using OmopTransformer.SUS.APC.VisitOccurrenceWithSpell;
 using OmopTransformer.SUS.APC.Observation.AnaestheticDuringLabourDelivery;
 using OmopTransformer.SUS.APC.Observation.AnaestheticGivenPostLabourDelivery;
@@ -119,11 +118,6 @@ internal class SusAPCTransformer : Transformer
         await Transform<SusAPCVisitOccurrenceWithSpellRecord, SusAPCVisitOccurrenceWithSpell>(
           _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
           "SUS APC VisitOccurrenceWithSpell",
-          cancellationToken);
-
-        await Transform<SusAPCVisitOccurrenceWithoutSpellRecord, SusAPCVisitOccurrenceWithoutSpell>(
-          _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
-          "SUS APC VisitOccurrenceWithoutSpell",
           cancellationToken);
 
         await Transform<SusAPCAnaestheticDuringLabourDeliveryRecord, SusAPCAnaestheticDuringLabourDelivery>(
