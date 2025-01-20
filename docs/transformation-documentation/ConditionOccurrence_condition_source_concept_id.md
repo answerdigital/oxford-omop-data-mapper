@@ -8,7 +8,7 @@ has_toc: false
 # condition_source_concept_id
 ### SUS Outpatient Condition Occurrence
 Source column  `DiagnosisICD`.
-Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
 
 * `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
 
@@ -30,7 +30,7 @@ Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the pa
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20SUS%20Outpatient%20Condition%20Occurrence%20mapping){: .btn }
 ### SUS Inpatient Condition Occurrence
 Source column  `DiagnosisICD`.
-Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
 
 * `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
 
@@ -52,7 +52,7 @@ Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the pa
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 Source column  `CancerDiagnosis`.
-Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
 
 * `CancerDiagnosis` PRIMARY DIAGNOSIS (ICD) is the International Classification of Diseases (ICD) code used to identify the PRIMARY DIAGNOSIS. [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
 
@@ -150,7 +150,7 @@ where NhsNumber is not null and
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20Cosd%20V8%20Condition%20Occurrence%20Primary%20Diagnosis%20Histology%20Topography%20mapping){: .btn }
 ### COSD V9 Condition Occurrence Recurrence
 Source column  `SecondaryDiagnosis`.
-Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
 
 * `SecondaryDiagnosis` SECONDARY DIAGNOSIS (ICD) is the International Classification of Diseases (ICD) code used to identify the secondary PATIENT DIAGNOSIS. [SECONDARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/secondary_diagnosis__icd_.html)
 
@@ -192,7 +192,7 @@ group by NhsNumber, DateOfPrimaryDiagnosisClinicallyAgreed;
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20COSD%20V9%20Condition%20Occurrence%20Recurrence%20mapping){: .btn }
 ### COSD V9 Condition Occurrence Recurrence
 Source column  `NonPrimaryRecurrenceOriginalDiagnosis`.
-Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
 
 * `NonPrimaryRecurrenceOriginalDiagnosis` PRIMARY DIAGNOSIS (ICD ORIGINAL) is the International Classification of Diseases (ICD) code used to identify the original PRIMARY DIAGNOSIS. [PRIMARY DIAGNOSIS (ICD ORIGINAL)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_original_.html)
 
@@ -232,7 +232,7 @@ where NonPrimaryRecurrenceOriginalDiagnosis is not null;
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20COSD%20V9%20Condition%20Occurrence%20Recurrence%20mapping){: .btn }
 ### COSD V9 Condition Occurrence Progression
 Source column  `NonPrimaryProgressionOriginalDiagnosis`.
-Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
 
 * `NonPrimaryProgressionOriginalDiagnosis` CANCER PROGRESSION (ICD ORIGINAL) is the International Classification of Diseases (ICD) code of the original PATIENT DIAGNOSIS of the Cancer Progression. [CANCER PROGRESSION (ICD ORIGINAL)](https://www.datadictionary.nhs.uk/data_elements/cancer_progression__icd_original_.html)
 
@@ -272,7 +272,7 @@ where NonPrimaryProgressionOriginalDiagnosis is not null;
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20COSD%20V9%20Condition%20Occurrence%20Progression%20mapping){: .btn }
 ### COSD V9 Condition Occurrence Primary Diagnosis
 Source column  `CancerDiagnosis`.
-Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
 
 * `CancerDiagnosis` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html)
 
@@ -365,7 +365,7 @@ where DateOfPrimaryDiagnosisClinicallyAgreed is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20COSD%20V9%20Condition%20Occurrence%20Primary%20Diagnosis%20Histology%20Topography%20mapping){: .btn }
 ### CDS Condition Occurrence
 Source column  `DiagnosisCode`.
-Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
 
 * `DiagnosisCode` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html), [SECONDARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/secondary_diagnosis__icd_.html)
 

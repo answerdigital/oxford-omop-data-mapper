@@ -7,11 +7,11 @@ has_toc: false
 ---
 # condition_type_concept_id
 ### SUS Outpatient Condition Occurrence
-* Constant value set to `32020`. EHR encounter diagnosis
+* Constant value set to `32818`. EHR administration record
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_type_concept_id%20field%20SUS%20Outpatient%20Condition%20Occurrence%20mapping){: .btn }
 ### SUS Inpatient Condition Occurrence
-* Constant value set to `32020`. EHR encounter diagnosis
+* Constant value set to `32818`. EHR administration record
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_type_concept_id%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis
@@ -43,6 +43,6 @@ has_toc: false
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_type_concept_id%20field%20COSD%20V9%20Condition%20Occurrence%20Primary%20Diagnosis%20Histology%20Topography%20mapping){: .btn }
 ### CDS Condition Occurrence
-* Constant value set to `32020`. EHR encounter diagnosis
+* Constant value set to `32818`. EHR administration record
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_type_concept_id%20field%20CDS%20Condition%20Occurrence%20mapping){: .btn }

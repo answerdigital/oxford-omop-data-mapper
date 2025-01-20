@@ -35,8 +35,10 @@ group by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_datetime%20field%20SUS%20Inpatient%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
 ### SUS APC Source Of Referral For Outpatients
-Source column  `StartTimeHospitalProviderSpell`.
-Converts text to dates.
+Source columns  `StartDateHospitalProviderSpell`, `StartTimeHospitalProviderSpell`.
+Combines a date with a time of day.
+
+* `StartDateHospitalProviderSpell` Event date [START DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html)
 
 * `StartTimeHospitalProviderSpell` Records whether anaesthetic was given during Labour/ Delivery, and the type used. [START TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_time__hospital_provider_spell_.html)
 

@@ -65,8 +65,18 @@
     },
     {
       "name": "observation_datetime",
-      "operation_description": "Converts text to dates.",
+      "operation_description": "Combines a date with a time of day.",
       "dataSource": [
+        {
+          "name": "StartDateHospitalProviderSpell",
+          "description": "Event date",
+          "origins": [
+            {
+              "origin": "START DATE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html"
+            }
+          ]
+        },
         {
           "name": "StartTimeHospitalProviderSpell",
           "description": "Records whether anaesthetic was given during Labour/ Delivery, and the type used.",

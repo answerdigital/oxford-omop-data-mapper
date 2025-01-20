@@ -8,7 +8,7 @@ has_toc: false
 # cause_concept_id
 ### SUS Inpatient Death
 Source column  `DiagnosisICD`.
-Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+Resolve ICD10 codes to standard OMOP concepts. If code cannot be mapped, map using the parent code.
 
 * `DiagnosisICD` Primary Diagnosis [PRIMARY DIAGNOSIS]()
 
