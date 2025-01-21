@@ -18,7 +18,7 @@ internal class SusAPCDeath : OmopDeath<SusAPCDeathRecord>
     [CopyValue(nameof(Source.DiagnosisICD))]
     public override string? cause_source_value { get; set; }
 
-    [Transform(typeof(Icd10Selector), nameof(Source.DiagnosisICD))]
+    [Transform(typeof(Icd10StandardSelector), nameof(Source.DiagnosisICD))]
     public override int? cause_concept_id { get; set; }
 
 }

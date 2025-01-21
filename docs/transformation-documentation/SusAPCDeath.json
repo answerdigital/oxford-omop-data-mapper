@@ -68,7 +68,7 @@
     },
     {
       "name": "cause_concept_id",
-      "operation_description": "Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.",
+      "operation_description": "Resolve ICD10 codes to standard OMOP concepts. If code cannot be mapped, map using the parent code.",
       "dataSource": [
         {
           "name": "DiagnosisICD",

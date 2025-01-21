@@ -58,10 +58,10 @@
     <line x1="1485" y1="420" x2="1485" y2="615" stroke="white" stroke-width="2" />
     <line x1="1475" y1="605" x2="1485" y2="615" stroke="white" stroke-width="2" />
     <line x1="1495" y1="605" x2="1485" y2="615" stroke="white" stroke-width="2" />
-    <text x="1360" y="728" fill="white" font-size="1em" font-family="Helvetica">Resolve ICD10 codes to OMOP</text>
-    <text x="1360" y="746" fill="white" font-size="1em" font-family="Helvetica">concepts. If code cannot be</text>
-    <text x="1360" y="764" fill="white" font-size="1em" font-family="Helvetica">mapped, map using the parent</text>
-    <text x="1360" y="782" fill="white" font-size="1em" font-family="Helvetica">code.</text>
+    <text x="1360" y="728" fill="white" font-size="1em" font-family="Helvetica">Resolve ICD10 codes to standard</text>
+    <text x="1360" y="746" fill="white" font-size="1em" font-family="Helvetica">OMOP concepts. If code cannot</text>
+    <text x="1360" y="764" fill="white" font-size="1em" font-family="Helvetica">be mapped, map using the</text>
+    <text x="1360" y="782" fill="white" font-size="1em" font-family="Helvetica">parent code.</text>
   </g>
   <g>
     <rect x="1285" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />

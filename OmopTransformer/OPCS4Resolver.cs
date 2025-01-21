@@ -11,7 +11,7 @@ internal class Opcs4Resolver
     private readonly ILogger<Opcs4Resolver> _logger;
 
     private Dictionary<string, int>? _mappings;
-    private readonly object _loadingLock = new ();
+    private readonly object _loadingLock = new();
 
     public Opcs4Resolver(IOptions<Configuration> configuration, ILogger<Opcs4Resolver> logger)
     {
@@ -24,23 +24,14 @@ internal class Opcs4Resolver
         _logger.LogInformation("Loading OPCS4 codes.");
 
         var connection = new SqlConnection(_configuration.ConnectionString);
-            
-        connection.Open();
 
-        string query =
-            "select " +
-            "	ccm.target_concept_id as concept_id, " +
-            "	replace(ccm.source_concept_code, '.', '') as Code  " +
-            "from omop_staging.concept_code_map ccm " +
-            "	inner join cdm.concept c " +
-            "		on ccm.source_concept_id = c.concept_id " +
-            "where c.vocabulary_id = 'OPCS4' ";
+        connection.Open();
 
         return
             connection
-                .Query<Row>(sql: query)
+                .Query<Row>(sql: "select replace (concept_code, '.', '') as Code, concept_id from cdm.concept where vocabulary_id = 'OPCS4'")
                 .ToDictionary(
-                    row => row.Code!, 
+                    row => row.Code!,
                     row => row.concept_id);
     }
 
