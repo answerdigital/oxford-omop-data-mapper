@@ -5,9 +5,9 @@ using OmopTransformer.SUS.OP.ConditionOccurrence;
 using OmopTransformer.SUS.OP.ProcedureOccurrence;
 using OmopTransformer.SUS.OP.Measurements.SusOPMeasurement;
 using OmopTransformer.SUS.OP.VisitOccurrenceWithSpell;
-using OmopTransformer.SUS.OP.Observation.CarerSupportIndicator;
-using OmopTransformer.SUS.OP.Observation.SourceOfReferralForOutpatients;
 using OmopTransformer.SUS.OP.VisitDetails;
+using OmopTransformer.SUS.OP.Observation.CarerSupportIndicator;
+// using OmopTransformer.SUS.OP.Observation.SourceOfReferralForOutpatients;
 //using OmopTransformer.SUS.OP.CareSite;
 //using OmopTransformer.SUS.OP.Provider;
 using OmopTransformer.Omop.Measurement;
@@ -84,20 +84,20 @@ internal class SusOPTransformer : Transformer
 
     public async Task Transform(CancellationToken cancellationToken)
     {
-        //await Transform<SusOPPersonRecord, SusOPPerson>(
-        //   _personRecorder.InsertUpdatePersons,
-        //   "Sus OP Person",
-        //   cancellationToken);
+        await Transform<SusOPPersonRecord, SusOPPerson>(
+           _personRecorder.InsertUpdatePersons,
+           "Sus OP Person",
+           cancellationToken);
 
-        //await Transform<SusOPLocationRecord, SusOPLocation>(
-        //   _locationRecorder.InsertUpdateLocations,
-        //   "SUS OP Location",
-        //   cancellationToken);
+        await Transform<SusOPLocationRecord, SusOPLocation>(
+           _locationRecorder.InsertUpdateLocations,
+           "SUS OP Location",
+           cancellationToken);
 
-        //await Transform<SusOPDeathRecord, SusOPDeath>(
-        //    _deathRecorder.InsertUpdateDeaths,
-        //    "SUS OP Death",
-        //    cancellationToken);
+        await Transform<SusOPDeathRecord, SusOPDeath>(
+            _deathRecorder.InsertUpdateDeaths,
+            "SUS OP Death",
+            cancellationToken);
 
         await Transform<SusOPMeasurementRecord, SusOPMeasurement>(
             _measurementRecorder.InsertUpdateMeasurements,
@@ -119,15 +119,15 @@ internal class SusOPTransformer : Transformer
             "SUS OP VisitOccurrenceWithSpell",
             cancellationToken);
 
-        //await Transform<SusOPCarerSupportIndicatorRecord, SusOPCarerSupportIndicator>(
-        //   _observationRecorder.InsertUpdateObservations,
-        //   "SUS OP CarerSupportIndicator",
-        //   cancellationToken);
-
         await Transform<SusOPVisitDetailsRecord, SusOPVisitDetail>(
             _visitDetailRecorder.InsertUpdateVisitDetail,
             "SUS OP VisitDetail",
             cancellationToken);
+
+        await Transform<SusOPCarerSupportIndicatorRecord, SusOPCarerSupportIndicator>(
+           _observationRecorder.InsertUpdateObservations,
+           "SUS OP CarerSupportIndicator",
+           cancellationToken);
 
         //await Transform<SusOPCareSiteRecord, SusOPCareSite>(
         //    _careSiteRecorder.InsertUpdateCareSite,
