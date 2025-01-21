@@ -53,7 +53,7 @@ internal class ProcedureOccurrenceRecorder : IProcedureOccurrenceRecorder
 
             foreach (var record in batch)
             {
-                if (record.procedure_concept_id == null)
+                if (record.IsValid == false)
                     continue;
 
                 dataTable.Rows.Add(

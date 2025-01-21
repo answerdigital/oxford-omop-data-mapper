@@ -11,4 +11,8 @@ internal abstract class OmopDeath<T> : IOmopRecord<T>
     public virtual int? cause_source_concept_id { get; set; }
     public string OmopTargetTypeDescription => "Death";
     public T? Source { get; set; }
+
+    public virtual bool IsValid => 
+        death_date.HasValue && 
+        NhsNumber != null;
 }

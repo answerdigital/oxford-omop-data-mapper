@@ -13,7 +13,6 @@
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="CsvHelper" Version="33.0.1" />
     <PackageReference Include="Dapper" Version="2.1.44" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.1" />
@@ -320,12 +319,15 @@
     <None Update="SUS\APC\Person\SusAPCPerson.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-	<None Update="SUS\APC\Location\SusAPCLocation.xml">
-		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</None>
-	<None Update="SUS\APC\Death\SusAPCDeath.xml">
-		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</None>
+    <None Update="SUS\APC\Location\SusAPCLocation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\APC\Death\SusAPCDeath.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\APC\Measurements\SusAPCMeasurement.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
 	  <None Update="SUS\APC\ConditionOccurrence\SusAPCConditionOccurrence.xml">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
@@ -369,6 +371,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SUS\OP\VisitOccurrenceWithSpell\SusOPVisitOccurrenceWithSpell.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\OP\Measurements\SusOPMeasurement.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

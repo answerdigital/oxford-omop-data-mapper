@@ -5,15 +5,15 @@ using Microsoft.Extensions.Options;
 
 namespace OmopTransformer;
 
-internal class Icd10Resolver
+internal abstract class Icd10Resolver
 {
     private readonly Configuration _configuration;
     private readonly ILogger<Icd10Resolver> _logger;
 
     private Dictionary<string, int>? _mappings;
-    private readonly object _loadingLock = new ();
+    private readonly object _loadingLock = new();
 
-    public Icd10Resolver(IOptions<Configuration> configuration, ILogger<Icd10Resolver> logger)
+    protected Icd10Resolver(IOptions<Configuration> configuration, ILogger<Icd10Resolver> logger)
     {
         _logger = logger;
         _configuration = configuration.Value;
@@ -24,23 +24,18 @@ internal class Icd10Resolver
         _logger.LogInformation("Loading ICD10 codes.");
 
         var connection = new SqlConnection(_configuration.ConnectionString);
-            
+
         connection.Open();
 
-        string query = "select " +
-                       "	ccm.target_concept_id as concept_id, " +
-                       "	replace(ccm.source_concept_code, '.', '') as Code  " +
-                       "from omop_staging.concept_code_map ccm " +
-                       "	inner join cdm.concept c " +
-                       "		on ccm.source_concept_id = c.concept_id " +
-                       "where c.vocabulary_id = 'ICD10' ";
         return
             connection
-                .Query<Row>(sql: query)
+                .Query<Row>(sql: Query)
                 .ToDictionary(
-                    row => row.Code!, 
+                    row => row.Code!,
                     row => row.concept_id);
     }
+
+    public abstract string Query { get; }
 
     public int? GetConceptCode(string? icd10Code)
     {
@@ -87,7 +82,7 @@ internal class Icd10Resolver
 
     private static string TrimAtFirstNonNumericChar(string text)
     {
-        var firstNonNumericIndex = 
+        var firstNonNumericIndex =
             text
                 .Select((c, index) => new { c, index })
                 .FirstOrDefault(charAndIndex => char.IsNumber(charAndIndex.c) == false);

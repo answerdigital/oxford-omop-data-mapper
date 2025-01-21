@@ -19,4 +19,6 @@ internal abstract class OmopProvider<T> : IOmopRecord<T>
     public T? Source { get; set; }
 
     public string OmopTargetTypeDescription => "Provider";
+
+    public virtual bool IsValid => true;
 }

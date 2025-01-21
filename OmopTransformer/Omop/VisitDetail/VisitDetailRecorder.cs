@@ -53,6 +53,9 @@ internal class VisitDetailRecorder : IVisitDetailRecorder
 
             foreach (var record in batch)
             {
+                if (record.IsValid == false)
+                    continue;
+
                 dataTable.Rows.Add(
                    record.nhs_number,
                     record.HospitalProviderSpellNumber,

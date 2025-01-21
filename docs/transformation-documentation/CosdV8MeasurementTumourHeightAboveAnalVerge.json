@@ -64,24 +64,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "measurement_source_value",
-      "operation_description": "Value copied from `TumourHeightAboveAnalVerge`",
-      "dataSource": [
-        {
-          "name": "TumourHeightAboveAnalVerge",
-          "description": "Is the approximate height of the lower limit of the Tumour above the anal verge (as measured by a rigid sigmoidoscopy) during a Colorectal Cancer Care Spell, where the UNIT OF MEASUREMENT is 'Centimetres (cm)'",
-          "origins": [
-            {
-              "origin": "TUMOUR HEIGHT ABOVE ANAL VERGE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/tumour_height_above_anal_verge.html"
-            }
-          ]
-        }
-      ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreDiagnosis/ColorectalDiagnosis/TumourHeightAboveAnalVerge/@value)[1]', 'varchar(max)') as TumourHeightAboveAnalVerge\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tClinicalDateCancerDiagnosis,\n\tTumourHeightAboveAnalVerge\nfrom CO\nwhere TumourHeightAboveAnalVerge is not null;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "measurement_concept_id",
       "operation_description": "Constant value set to `3029142`. `Distance from anal verge`",
       "dataSource": null,
@@ -98,6 +80,24 @@
     {
       "name": "value_as_number",
       "operation_description": "Converts text to integers.",
+      "dataSource": [
+        {
+          "name": "TumourHeightAboveAnalVerge",
+          "description": "Is the approximate height of the lower limit of the Tumour above the anal verge (as measured by a rigid sigmoidoscopy) during a Colorectal Cancer Care Spell, where the UNIT OF MEASUREMENT is 'Centimetres (cm)'",
+          "origins": [
+            {
+              "origin": "TUMOUR HEIGHT ABOVE ANAL VERGE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/tumour_height_above_anal_verge.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreDiagnosis/ColorectalDiagnosis/TumourHeightAboveAnalVerge/@value)[1]', 'varchar(max)') as TumourHeightAboveAnalVerge\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tClinicalDateCancerDiagnosis,\n\tTumourHeightAboveAnalVerge\nfrom CO\nwhere TumourHeightAboveAnalVerge is not null;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "measurement_source_value",
+      "operation_description": "Value copied from `TumourHeightAboveAnalVerge`",
       "dataSource": [
         {
           "name": "TumourHeightAboveAnalVerge",

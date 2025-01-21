@@ -54,6 +54,9 @@ internal class PersonRecorder : IPersonRecorder
 
             foreach (var record in batch)
             {
+                if (record.IsValid == false)
+                    continue;
+
                 dataTable.Rows.Add(
                    record.gender_concept_id,
                     record.year_of_birth,

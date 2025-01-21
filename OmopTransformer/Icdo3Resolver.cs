@@ -11,7 +11,7 @@ internal class Icdo3Resolver
     private readonly ILogger<Icdo3Resolver> _logger;
 
     private Dictionary<string, int>? _mappings;
-    private readonly object _loadingLock = new ();
+    private readonly object _loadingLock = new();
 
     public Icdo3Resolver(IOptions<Configuration> configuration, ILogger<Icdo3Resolver> logger)
     {
@@ -24,23 +24,14 @@ internal class Icdo3Resolver
         _logger.LogInformation("Loading IDC-O-3 codes.");
 
         var connection = new SqlConnection(_configuration.ConnectionString);
-            
-        connection.Open();
 
-        string query =
-            "select " +
-            "	ccm.target_concept_id as concept_id, " +
-            "	ccm.source_concept_code as concept_code " +
-            "from omop_staging.concept_code_map ccm " +
-            "	inner join cdm.concept c " +
-            "		on ccm.source_concept_id = c.concept_id " +
-            "where c.vocabulary_id = 'ICDO3' ";
+        connection.Open();
 
         return
             connection
-                .Query<Row>(query)
+                .Query<Row>(sql: "select concept_id, concept_code as Code from cdm.concept where vocabulary_id = 'ICDO3'")
                 .ToDictionary(
-                    row => row.concept_code!, 
+                    row => row.Code!,
                     row => row.concept_id);
     }
 
@@ -86,6 +77,6 @@ internal class Icdo3Resolver
     {
         public int concept_id { get; init; }
 
-        public string? concept_code { get; init; }
+        public string? Code { get; init; }
     }
 }

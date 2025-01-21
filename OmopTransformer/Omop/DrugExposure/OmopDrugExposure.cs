@@ -25,4 +25,11 @@ internal abstract class OmopDrugExposure<T> : IOmopRecord<T>
     public virtual string? RecordConnectionIdentifier { get; set; }
     public string OmopTargetTypeDescription => "DrugExposure";
     public T? Source { get; set; }
+
+    public virtual bool IsValid =>
+        drug_concept_id != null &&
+        drug_exposure_end_date.HasValue &&
+        drug_exposure_start_date.HasValue &&
+        drug_type_concept_id != null &&
+        nhs_number != null;
 }

@@ -11,13 +11,22 @@ has_toc: false
 * [measurement_date]({% link docs/transformation-documentation/Measurement_measurement_date.md %})
 * [measurement_datetime]({% link docs/transformation-documentation/Measurement_measurement_datetime.md %})
 * [measurement_type_concept_id]({% link docs/transformation-documentation/Measurement_measurement_type_concept_id.md %})
-* [measurement_source_value]({% link docs/transformation-documentation/Measurement_measurement_source_value.md %})
+* [measurement_source_concept_id]({% link docs/transformation-documentation/Measurement_measurement_source_concept_id.md %})
+* [value_source_value]({% link docs/transformation-documentation/Measurement_value_source_value.md %})
 * [measurement_concept_id]({% link docs/transformation-documentation/Measurement_measurement_concept_id.md %})
 * [operator_concept_id]({% link docs/transformation-documentation/Measurement_operator_concept_id.md %})
 * [value_as_number]({% link docs/transformation-documentation/Measurement_value_as_number.md %})
-* [measurement_source_concept_id]({% link docs/transformation-documentation/Measurement_measurement_source_concept_id.md %})
+* [measurement_source_value]({% link docs/transformation-documentation/Measurement_measurement_source_value.md %})
 * [unit_source_value]({% link docs/transformation-documentation/Measurement_unit_source_value.md %})
 
+## SusOPMeasurement
+<a href="SusOPMeasurement.svg" target="_blank"><img src="SusOPMeasurement.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPMeasurement%20mapping){: .btn }
+## SusAPCMeasurement
+<a href="SusAPCMeasurement.svg" target="_blank"><img src="SusAPCMeasurement.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCMeasurement%20mapping){: .btn }
 ## CosdV9MeasurementTumourLaterality
 <a href="CosdV9MeasurementTumourLaterality.svg" target="_blank"><img src="CosdV9MeasurementTumourLaterality.svg" /></a>
 
