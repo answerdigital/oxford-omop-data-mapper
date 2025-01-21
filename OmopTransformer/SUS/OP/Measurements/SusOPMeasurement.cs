@@ -18,7 +18,7 @@ internal class SusOPMeasurement : OmopMeasurement<SusOPMeasurementRecord>
     [ConstantValue(32828, "EHR episode record")]
     public override int? measurement_type_concept_id { get; set; }
 
-    [Transform(typeof(Icd10Selector), nameof(Source.DiagnosisICD))]
+    [Transform(typeof(Icd10StandardNonStandardSelector), nameof(Source.DiagnosisICD))]
     public override int? measurement_source_concept_id { get; set; }
 
     [Transform(typeof(RelationshipSelector), nameof(Source.DiagnosisICD))]
