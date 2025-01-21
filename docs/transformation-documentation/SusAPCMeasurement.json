@@ -1,0 +1,110 @@
+{
+  "omopTable": "Measurement",
+  "origin": "SUS",
+  "omopColumns": [
+    {
+      "name": "nhs_number",
+      "operation_description": "Value copied from `NHSNumber`",
+      "dataSource": [
+        {
+          "name": "NHSNumber",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "measurement_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "CDSActivityDate",
+          "description": "Start date of the episode, if exists, else the start date of the spell.",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "measurement_datetime",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "CDSActivityDate",
+          "description": "Start date of the episode, if exists, else the start date of the spell.",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "measurement_type_concept_id",
+      "operation_description": "Constant value set to `32828`. EHR episode record",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "measurement_source_concept_id",
+      "operation_description": "Resolve ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.",
+      "dataSource": [
+        {
+          "name": "DiagnosisICD",
+          "description": "ICD10 diagnosis code",
+          "origins": [
+            {
+              "origin": "PRIMARY DIAGNOSIS (ICD)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "value_source_value",
+      "operation_description": "Resolve ICD10 codes to OMOP concept relationship values",
+      "dataSource": [
+        {
+          "name": "DiagnosisICD",
+          "description": "ICD10 diagnosis code",
+          "origins": [
+            {
+              "origin": "PRIMARY DIAGNOSIS (ICD)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "measurement_concept_id",
+      "operation_description": "Maps concepts to standard valid concepts in the `measurement` domain.",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    }
+  ]
+}

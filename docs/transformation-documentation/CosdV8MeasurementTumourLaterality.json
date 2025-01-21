@@ -72,24 +72,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "measurement_source_value",
-      "operation_description": "Value copied from `TumourLaterality`",
-      "dataSource": [
-        {
-          "name": "TumourLaterality",
-          "description": "Identifies the side of the body for a Tumour relating to paired organs within a PATIENT.",
-          "origins": [
-            {
-              "origin": "TUMOUR LATERALITY",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/tumour_laterality.html"
-            }
-          ]
-        }
-      ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)')  as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/TumourLaterality/@code)[1]', 'varchar(max)') as TumourLaterality\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tTumourLaterality\nfrom CO\nwhere TumourLaterality is not null\nand TumourLaterality in ('L','R','M','B');\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "measurement_concept_id",
       "operation_description": "Lookup TumourLaterality concepts.",
       "dataSource": [
@@ -106,6 +88,24 @@
       ],
       "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)')  as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/TumourLaterality/@code)[1]', 'varchar(max)') as TumourLaterality\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tTumourLaterality\nfrom CO\nwhere TumourLaterality is not null\nand TumourLaterality in ('L','R','M','B');\n\t",
       "lookup_table_markdown": "\r\n\r\n|TumourLaterality|measurement_concept_id|notes|\r\n|------|-----|-----|\r\n|L|36770232|Left|\r\n|R|36770058|Right|\r\n|M|36769853|Midline|\r\n|B|36770109|Bilateral|\r\n\r\nNotes\r\n* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&conceptClass=Topography&page=1&pageSize=500&query=&boosts)\r\n* [NHS - Tumour Laterality](https://www.datadictionary.nhs.uk/data_elements/tumour_laterality.html?hl=tumour%2Claterality)\r\n"
+    },
+    {
+      "name": "measurement_source_value",
+      "operation_description": "Value copied from `TumourLaterality`",
+      "dataSource": [
+        {
+          "name": "TumourLaterality",
+          "description": "Identifies the side of the body for a Tumour relating to paired organs within a PATIENT.",
+          "origins": [
+            {
+              "origin": "TUMOUR LATERALITY",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/tumour_laterality.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)')  as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/TumourLaterality/@code)[1]', 'varchar(max)') as TumourLaterality\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tTumourLaterality\nfrom CO\nwhere TumourLaterality is not null\nand TumourLaterality in ('L','R','M','B');\n\t",
+      "lookup_table_markdown": null
     }
   ]
 }

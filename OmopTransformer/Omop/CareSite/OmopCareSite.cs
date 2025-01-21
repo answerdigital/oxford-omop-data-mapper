@@ -10,6 +10,7 @@ internal abstract class OmopCareSite<T> : IOmopRecord<T>
     public virtual string? place_of_service_source_value { get; set; }
 
     public T? Source { get; set; }
+    public virtual bool IsValid => true;
 
     public string OmopTargetTypeDescription => "CareSite";
 }

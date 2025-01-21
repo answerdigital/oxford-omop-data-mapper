@@ -47,21 +47,24 @@ internal class LocationRecorder : ILocationRecorder
             dataTable.Columns.Add("longitude");
             dataTable.Columns.Add("NhsNumber");
 
-            foreach (var omopLocation in batch)
+            foreach (var record in batch)
             {
+                if (record.IsValid == false)
+                    continue;
+
                 dataTable.Rows.Add(
-                    omopLocation.address_1,
-                    omopLocation.address_2,
-                    omopLocation.city,
-                    omopLocation.state,
-                    omopLocation.zip,
-                    omopLocation.county,
-                    omopLocation.location_source_value,
-                    omopLocation.country_concept_id,
-                    omopLocation.country_source_value,
-                    omopLocation.latitude,
-                    omopLocation.longitude,
-                    omopLocation.nhs_number);
+                    record.address_1,
+                    record.address_2,
+                    record.city,
+                    record.state,
+                    record.zip,
+                    record.county,
+                    record.location_source_value,
+                    record.country_concept_id,
+                    record.country_source_value,
+                    record.latitude,
+                    record.longitude,
+                    record.nhs_number);
             }
 
             var parameter = new

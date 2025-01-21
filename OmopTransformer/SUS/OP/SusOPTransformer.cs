@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using OmopTransformer.SUS.OP.Death;
 using OmopTransformer.SUS.OP.Location;
-//using OmopTransformer.SUS.OP.ConditionOccurrence;
-//using OmopTransformer.SUS.OP.ProcedureOccurrence;
+using OmopTransformer.SUS.OP.ConditionOccurrence;
+using OmopTransformer.SUS.OP.ProcedureOccurrence;
+using OmopTransformer.SUS.OP.Measurements.SusOPMeasurement;
 //using OmopTransformer.SUS.OP.VisitOccurrenceWithoutSpell;
 //using OmopTransformer.SUS.OP.VisitOccurrenceWithSpell;
 //using OmopTransformer.SUS.OP.Observation.AnaestheticDuringLabourDelivery;
@@ -15,6 +16,7 @@ using OmopTransformer.SUS.OP.Location;
 //using OmopTransformer.SUS.OP.VisitDetails;
 //using OmopTransformer.SUS.OP.CareSite;
 //using OmopTransformer.SUS.OP.Provider;
+using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.DrugExposure;
@@ -34,6 +36,7 @@ internal class SusOPTransformer : Transformer
 {
     private readonly ILocationRecorder _locationRecorder;
     private readonly IPersonRecorder _personRecorder;
+    private readonly IMeasurementRecorder _measurementRecorder;
     private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
     private readonly IVisitOccurrenceRecorder _visitOccurrenceRecorder;
     private readonly IVisitDetailRecorder _visitDetailRecorder;
@@ -48,6 +51,7 @@ internal class SusOPTransformer : Transformer
     public SusOPTransformer(
         ICareSiteRecorder careSiteRecorder,
         IProviderRecorder providerRecorder,
+        IMeasurementRecorder measurementRecorder,
         IRecordTransformer recordTransformer,
         ILogger<IRecordTransformer> logger,
         TransformOptions transformOptions,
@@ -71,6 +75,7 @@ internal class SusOPTransformer : Transformer
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
+        _measurementRecorder = measurementRecorder;
         _conditionOccurrenceRecorder = conditionOccurrenceRecorder;
         _visitOccurrenceRecorder = visitOccurrenceRecorder;
         _visitDetailRecorder = visitDetailRecorder;
@@ -100,15 +105,20 @@ internal class SusOPTransformer : Transformer
             "SUS OP Death",
             cancellationToken);
 
-        //await Transform<SusOPProcedureOccurrenceRecord, SusOPProcedureOccurrence>(
-        //    _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
-        //    "SUS OP Procedure Occurrence",
-        //    cancellationToken);
+        await Transform<SusOPMeasurementRecord, SusOPMeasurement>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "SUS OP Measurements",
+            cancellationToken);
 
-        //await Transform<SusOPConditionOccurrenceRecord, SusOPConditionOccurrence>(
-        //    _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
-        //    "SUS OP Conditon Occurrence",
-        //    cancellationToken);
+        await Transform<SusOPProcedureOccurrenceRecord, SusOPProcedureOccurrence>(
+           _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+           "SUS OP Procedure Occurrence",
+           cancellationToken);
+
+        await Transform<SusOPConditionOccurrenceRecord, SusOPConditionOccurrence>(
+           _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+           "SUS OP Conditon Occurrence",
+           cancellationToken);
 
         //await Transform<SusOPVisitOccurrenceWithSpellRecord, SusOPVisitOccurrenceWithSpell>(
         //    _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,

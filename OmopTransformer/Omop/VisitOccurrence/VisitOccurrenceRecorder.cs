@@ -54,6 +54,9 @@ internal class VisitOccurrenceRecorder : IVisitOccurrenceRecorder
 
             foreach (var record in batch)
             {
+                if (record.IsValid == false)
+                    continue;
+
                 dataTable.Rows.Add(
                    record.NhsNumber,
                     record.HospitalProviderSpellNumber,

@@ -64,24 +64,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "measurement_source_value",
-      "operation_description": "Value copied from `SynchronousTumourIndicator`",
-      "dataSource": [
-        {
-          "name": "SynchronousTumourIndicator",
-          "description": "An indication of whether there is a presence of synchronous tumours at a tumour site during a Cancer Care Spell.",
-          "origins": [
-            {
-              "origin": "SYNCHRONOUS TUMOUR INDICATOR",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/synchronous_tumour_indicator.html"
-            }
-          ]
-        }
-      ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreDiagnosis/ColorectalDiagnosis/SynchronousTumourColonLocation/@code)[1]', 'varchar(max)') as SynchronousTumourIndicator\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tClinicalDateCancerDiagnosis,\n\tSynchronousTumourIndicator\nfrom CO\nwhere SynchronousTumourIndicator is not null;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "measurement_concept_id",
       "operation_description": "Lookup SynchronousTumour concepts.",
       "dataSource": [
@@ -98,6 +80,24 @@
       ],
       "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreDiagnosis/ColorectalDiagnosis/SynchronousTumourColonLocation/@code)[1]', 'varchar(max)') as SynchronousTumourIndicator\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tClinicalDateCancerDiagnosis,\n\tSynchronousTumourIndicator\nfrom CO\nwhere SynchronousTumourIndicator is not null;\n\t",
       "lookup_table_markdown": "\r\n\r\n|SynchronousTumourIndicator|measurement_concept_id|notes|\r\n|------|-----|-----|\r\n|01|36768217|Cecum|\r\n|02|36770601|Appendix|\r\n|03|36768852|Ascending Colon|\r\n|04|36768109|Hepatic Flexure|\r\n|05|36770627|Transverse Colon|\r\n|06|36769645|Splenic Flexure|\r\n|07|36769819|Descending Colon|\r\n|08|36770395|Sigmoid Colon|\r\n|09|36768690|Rectosigmoid|\r\n|10|36769244|Rectum|\r\n\r\nNotes\r\n* [OMOP Cancer Modifier Measurements](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&standardConcept=Standard&page=1&pageSize=500&query=&boosts)\r\n* [NHS - Synchronous Tumour Colon location (at Diagnosis)](https://www.datadictionary.nhs.uk/data_elements/synchronous_tumour_colon_location__at_diagnosis_.html?hl=synchronous%2Ctumour%2Ccolon%2Clocation%2Cdiagnosis)\r\n"
+    },
+    {
+      "name": "measurement_source_value",
+      "operation_description": "Value copied from `SynchronousTumourIndicator`",
+      "dataSource": [
+        {
+          "name": "SynchronousTumourIndicator",
+          "description": "An indication of whether there is a presence of synchronous tumours at a tumour site during a Cancer Care Spell.",
+          "origins": [
+            {
+              "origin": "SYNCHRONOUS TUMOUR INDICATOR",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/synchronous_tumour_indicator.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreDiagnosis/ColorectalDiagnosis/SynchronousTumourColonLocation/@code)[1]', 'varchar(max)') as SynchronousTumourIndicator\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tClinicalDateCancerDiagnosis,\n\tSynchronousTumourIndicator\nfrom CO\nwhere SynchronousTumourIndicator is not null;\n\t",
+      "lookup_table_markdown": null
     }
   ]
 }
