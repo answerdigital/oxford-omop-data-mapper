@@ -43,6 +43,9 @@ internal class CareSiteRecorder : ICareSiteRecorder
 
             foreach (var record in batch)
             {
+                if (record.IsValid == false)
+                    continue;
+
                 dataTable.Rows.Add(
                     record.care_site_name,
                     record.place_of_service_concept_id,

@@ -6,6 +6,16 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # measurement_concept_id
+### Sus OP  Measurement
+Source column  `measurement_source_concept_id`.
+Maps concepts to standard valid concepts in the `measurement` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20Sus%20OP%20%20Measurement%20mapping){: .btn }
+### Sus APC  Measurement
+Source column  `measurement_source_concept_id`.
+Maps concepts to standard valid concepts in the `measurement` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20Sus%20APC%20%20Measurement%20mapping){: .btn }
 ### COSD V9 Measurement Tumour Laterality
 Source column  `TumourLaterality`.
 Lookup TumourLaterality concepts.

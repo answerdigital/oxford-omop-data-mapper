@@ -21,4 +21,10 @@ internal abstract class OmopConditionOccurrence<T> : IOmopRecord<T>
 
     public string OmopTargetTypeDescription => "ConditionOccurrence";
     public T? Source { get; set; }
+
+    public virtual bool IsValid =>
+        condition_concept_id != null &&
+        condition_start_date.HasValue &&
+        condition_type_concept_id != null &&
+        nhs_number != null;
 }

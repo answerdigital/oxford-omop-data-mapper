@@ -58,7 +58,7 @@ internal class DrugExposureRecorder : IDrugExposureRecorder
 
             foreach (var record in batch)
             {
-                if (record.drug_concept_id == null) 
+                if (record.IsValid == false)
                     continue;
 
                 dataTable.Rows.Add(

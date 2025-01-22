@@ -6,6 +6,14 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # measurement_type_concept_id
+### Sus OP  Measurement
+* Constant value set to `32828`. EHR episode record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_type_concept_id%20field%20Sus%20OP%20%20Measurement%20mapping){: .btn }
+### Sus APC  Measurement
+* Constant value set to `32828`. EHR episode record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_type_concept_id%20field%20Sus%20APC%20%20Measurement%20mapping){: .btn }
 ### COSD V9 Measurement Tumour Laterality
 * Constant value set to `32828`. EHR episode record
 

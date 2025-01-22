@@ -320,6 +320,7 @@ internal class Program
         builder.Services.AddSingleton<Opcs4Resolver>();
         builder.Services.AddSingleton<Icdo3Resolver>();
         builder.Services.AddSingleton<ConceptResolver>();
+        builder.Services.AddSingleton<RelationshipResolver>();
 
         IHostEnvironment env = builder.Environment;
 

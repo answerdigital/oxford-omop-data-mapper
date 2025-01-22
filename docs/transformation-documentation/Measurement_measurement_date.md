@@ -6,6 +6,50 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # measurement_date
+### Sus OP  Measurement
+Source column  `CDSActivityDate`.
+Converts text to dates.
+
+* `CDSActivityDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+
+```sql
+select
+    distinct
+        d.DiagnosisICD,
+        op.GeneratedRecordIdentifier,
+        op.NHSNumber,
+        op.CDSActivityDate
+from omop_staging.sus_OP_ICDDiagnosis d
+    inner join omop_staging.sus_OP op
+        on d.MessageId = op.MessageId
+where op.NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_date%20field%20Sus%20OP%20%20Measurement%20mapping){: .btn }
+### Sus APC  Measurement
+Source column  `CDSActivityDate`.
+Converts text to dates.
+
+* `CDSActivityDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+
+```sql
+select
+    distinct
+        d.DiagnosisICD,
+        apc.GeneratedRecordIdentifier,
+        apc.NHSNumber,
+        apc.CDSActivityDate
+from omop_staging.sus_ICDDiagnosis d
+    inner join omop_staging.sus_APC apc
+        on d.MessageId = apc.MessageId
+where apc.NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_date%20field%20Sus%20APC%20%20Measurement%20mapping){: .btn }
 ### COSD V9 Measurement Tumour Laterality
 Source column  `DateOfPrimaryDiagnosisClinicallyAgreed`.
 Converts text to dates.
