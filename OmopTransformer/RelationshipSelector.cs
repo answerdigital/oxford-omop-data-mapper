@@ -3,8 +3,8 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer;
 
-[Description("Resolve ICD10 codes to OMOP concept relationship values")]
-internal class RelationshipSelector(string? code, RelationshipResolver relationshipResolver) : ISelector
+[Description("Resolve Measurement domain ICD10 codes to `Maps To Value` concepts.")]
+internal class RelationshipSelector(string? code, MeasurementMapsToValueResolver relationshipResolver) : ISelector
 {
-    public object? GetValue() => relationshipResolver.GetRelatedConceptValue(code);
+    public object? GetValue() => relationshipResolver.GetConceptCode(code);
 }
