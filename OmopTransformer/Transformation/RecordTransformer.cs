@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Linq;
 using OmopTransformer.Annotations;
 using OmopTransformer.Omop;
 
@@ -13,14 +12,22 @@ internal class RecordTransformer : IRecordTransformer
     private readonly Opcs4Resolver _opcs4Resolver;
     private readonly ConceptResolver _resolver;
     private readonly Icdo3Resolver _icdo3Resolver;
+    private readonly RelationshipResolver _relationshipResolver;
 
-    public RecordTransformer(ILogger<RecordTransformer> logger, Icd10Resolver cd10Resolver, ConceptResolver resolver, Opcs4Resolver opcs4Resolver, Icdo3Resolver icdo3Resolver)
+    public RecordTransformer(
+        ILogger<RecordTransformer> logger, 
+        Icd10Resolver cd10Resolver, 
+        ConceptResolver resolver, 
+        Opcs4Resolver opcs4Resolver, 
+        Icdo3Resolver icdo3Resolver,
+        RelationshipResolver relationshipResolver)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _cd10Resolver = cd10Resolver;
         _resolver = resolver;
         _opcs4Resolver = opcs4Resolver;
         _icdo3Resolver = icdo3Resolver;
+        _relationshipResolver = relationshipResolver;
     }
 
     public void Transform<T>(IOmopRecord<T> record)
@@ -117,7 +124,7 @@ internal class RecordTransformer : IRecordTransformer
         if (argument == null)
             return;
         
-        if (lookup.Mappings.TryGetValue(argument, out ValueWithNote? value))
+        if (lookup.Mappings.TryGetValue(argument, out var value))
         {
             if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
             {
@@ -177,6 +184,7 @@ internal class RecordTransformer : IRecordTransformer
                 .Concat(firstConstructorTypes.Any(type => type == typeof(Opcs4Resolver)) ? new[] { _opcs4Resolver } : new List<object>())
                 .Concat(firstConstructorTypes.Any(type => type == typeof(Icdo3Resolver)) ? new[] { _icdo3Resolver } : new List<object>())
                 .Concat(firstConstructorTypes.Any(type => type == typeof(ConceptResolver)) ? new[] { _resolver } : new List<object>())
+                .Concat(firstConstructorTypes.Any(type => type == typeof(RelationshipResolver)) ? new[] { _relationshipResolver } : new List<object>())
                 .ToArray();
 
         var selector = (ISelector)Activator.CreateInstance(transformAttribute.Type, arguments)!;

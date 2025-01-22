@@ -50,6 +50,9 @@ internal class ProviderRecorder : IProviderRecorder
 
             foreach (var record in batch)
             {
+                if (record.IsValid == false)
+                    continue;
+
                 dataTable.Rows.Add(
                     record.provider_name,
                     record.npi,

@@ -21,4 +21,11 @@ internal abstract class OmopVisitDetail<T> : IOmopRecord<T>
     public virtual int? discharged_to_concept_id { get; set; }
     public string OmopTargetTypeDescription => "VisitDetail";
     public T? Source { get; set; }
+
+    public virtual bool IsValid =>
+        nhs_number != null &&
+        visit_detail_concept_id != null &&
+        visit_detail_start_date.HasValue &&
+        visit_detail_end_date.HasValue &&
+        visit_detail_type_concept_id != null;
 }
