@@ -210,6 +210,10 @@ internal class RecordTransformer : IRecordTransformer
                         property.SetValue(record, new int[] { (int)value });
                     }
                 }
+                else if (property.PropertyType == typeof(string) && value is int)
+                {
+                    property.SetValue(record, value.ToString());
+                }
                 else
                 {
                     throw new NotSupportedException($"Cannot set value of type {value.GetType()} to property of type {property.PropertyType}");
