@@ -16,7 +16,9 @@ internal class BatchTimingLogger<T>(int batchSize, int itemCount, string stageNa
     {
         _count++;
 
-        logger.LogInformation($"Batch {_count} of {Math.Ceiling(itemCount / (decimal)BatchSize)} completed in {_batchStopwatch.ElapsedMilliseconds}ms.");
+        string completedIn = _batchStopwatch.ElapsedMilliseconds < 1000 ? $"completed in {_batchStopwatch.ElapsedMilliseconds}ms" : $"completed in {_batchStopwatch.ElapsedMilliseconds / 1000} seconds";
+
+        logger.LogInformation($"Batch {_count} of {Math.Ceiling(itemCount / (decimal)BatchSize)} {completedIn}.");
 
         _batchStopwatch.Restart();
     }
