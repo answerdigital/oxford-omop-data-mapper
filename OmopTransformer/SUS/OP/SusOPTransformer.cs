@@ -7,9 +7,9 @@ using OmopTransformer.SUS.OP.Measurements.SusOPMeasurement;
 using OmopTransformer.SUS.OP.VisitOccurrenceWithSpell;
 using OmopTransformer.SUS.OP.VisitDetails;
 using OmopTransformer.SUS.OP.Observation.CarerSupportIndicator;
-// using OmopTransformer.SUS.OP.Observation.SourceOfReferralForOutpatients;
-//using OmopTransformer.SUS.OP.CareSite;
-//using OmopTransformer.SUS.OP.Provider;
+using OmopTransformer.SUS.OP.Observation.SourceOfReferralForOutpatients;
+using OmopTransformer.SUS.OP.CareSite;
+using OmopTransformer.SUS.OP.Provider;
 using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
@@ -129,15 +129,20 @@ internal class SusOPTransformer : Transformer
            "SUS OP CarerSupportIndicator",
            cancellationToken);
 
-        //await Transform<SusOPCareSiteRecord, SusOPCareSite>(
-        //    _careSiteRecorder.InsertUpdateCareSite,
-        //    "SUS OP CareSite",
-        //    cancellationToken);
+        await Transform<SusOPSourceOfReferralForOutpatientsRecord, SusOPSourceOfReferralForOutpatients>(
+           _observationRecorder.InsertUpdateObservations,
+           "SUS OP SourceOfReferralForOutpatients",
+           cancellationToken);
 
-        //await Transform<SusOPProviderRecord, SusOPProvider>(
-        //    _providerRecorder.InsertUpdateProvider,
-        //    "SUS OP Provider",
-        //    cancellationToken);
+        await Transform<SusOPCareSiteRecord, SusOPCareSite>(
+           _careSiteRecorder.InsertUpdateCareSite,
+           "SUS OP CareSite",
+           cancellationToken);
+
+        await Transform<SusOPProviderRecord, SusOPProvider>(
+           _providerRecorder.InsertUpdateProvider,
+           "SUS OP Provider",
+           cancellationToken);
 
         _conceptResolver.PrintErrors();
     }

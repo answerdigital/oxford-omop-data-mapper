@@ -1,0 +1,44 @@
+﻿<Query>
+    <Sql>
+with 
+counts as ( 
+	select 
+	SiteCodeofTreatment, 
+	MainSpecialtyCode, 
+	count(*) as cnt 
+	from omop_staging.sus_OP 
+	where SiteCodeofTreatment is not null 
+	and MainSpecialtyCode is not null 
+	group by 
+	SiteCodeofTreatment, 
+	MainSpecialtyCode 
+), 
+
+ranked as ( 
+	select 
+	SiteCodeofTreatment, 
+	MainSpecialtyCode, 
+	cnt, 
+	row_number() over ( 
+	partition by SiteCodeofTreatment 
+	order by cnt desc, MainSpecialtyCode 
+	) as rnk 
+	from counts 
+)
+select 
+	SiteCodeofTreatment, 
+	MainSpecialtyCode 
+from ranked 
+where rnk = 1;
+	</Sql>
+    <Explanations>
+		<Explanation columnName="SiteCodeofTreatment">
+			<Description>ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated</Description>
+			<Origin>SITE CODE (OF TREATMENT)</Origin>
+		</Explanation>
+		<Explanation columnName="MainSpecialtyCode">
+			<Description>A unique code identifying each MAIN SPECIALTY designated by Royal Colleges.</Description>
+			<Origin>MAIN SPECIALTY CODE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

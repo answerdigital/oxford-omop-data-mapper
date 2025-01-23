@@ -1,0 +1,38 @@
+﻿<Query>
+    <Sql>
+with counts as (
+	select 
+	ConsultantCode,
+	MainSpecialtyCode,
+	count(*) as SpecialtyFrequency,
+	row_number() over (
+	partition by ConsultantCode 
+	order by count(*) desc, MainSpecialtyCode
+) rnk
+from (
+	select
+	ConsultantCode,
+	MainSpecialtyCode
+	from omop_staging.sus_OP 
+	where MainSpecialtyCode is not null
+	and ConsultantCode is not null
+) grouped
+	group by ConsultantCode, MainSpecialtyCode
+)
+select 
+	ConsultantCode,
+	MainSpecialtyCode
+	from counts
+	where rnk = 1;
+	</Sql>
+    <Explanations>
+		<Explanation columnName="ConsultantCode">
+			<Description>A unique code identifying a care professional</Description>
+			<Origin>CONSULTANT CODE</Origin>
+		</Explanation>
+		<Explanation columnName="MainSpecialtyCode">
+			<Description>A unique code identifying each MAIN SPECIALTY designated by Royal Colleges.</Description>
+			<Origin>MAIN SPECIALTY CODE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
