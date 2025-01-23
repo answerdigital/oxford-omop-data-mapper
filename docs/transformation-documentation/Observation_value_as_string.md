@@ -6,6 +6,47 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # value_as_string
+### SUS OP Source Of Referral For Outpatients
+* Value copied from `ReferrerCode`
+
+* `ReferrerCode` Referrer code is the code of the person making the referral request. [REFERRER CODE](https://www.datadictionary.nhs.uk/data_elements/referrer_code.html)
+
+```sql
+select
+	NHSNumber,
+	GeneratedRecordIdentifier,
+	AppointmentDate,
+	AppointmentTime,
+	ReferrerCode   -- Referrer code is the code of the person making the referral request
+from [omop_staging].[sus_OP]
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20SUS%20OP%20Source%20Of%20Referral%20For%20Outpatients%20mapping){: .btn }
+### SUS Outpatient Carer Support Indicator Observation
+* Value copied from `CarerSupportIndicator`
+
+* `CarerSupportIndicator` An indication of whether Carer support is available to the PATIENT at their normal residence. [CARER SUPPORT INDICATOR](https://www.datadictionary.nhs.uk/data_elements/carer_support_indicator.html)
+
+```sql
+select 
+	op.NHSNumber, 
+	max(op.CDSActivityDate) as CDSActivityDate, 
+	op.CarerSupportIndicator,
+	op.GeneratedRecordIdentifier
+from omop_staging.sus_OP op
+where op.CarerSupportIndicator is not null
+	and op.NHSNumber is not null
+group by
+	op.NHSNumber, 
+	op.CarerSupportIndicator,
+	op.GeneratedRecordIdentifier;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20SUS%20Outpatient%20Carer%20Support%20Indicator%20Observation%20mapping){: .btn }
 ### SUS Inpatient Total Previous Pregnancies Observation
 * Value copied from `TotalPreviousPregnancies`
 

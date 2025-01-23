@@ -39,24 +39,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "HospitalProviderSpellNumber",
-      "operation_description": "Value copied from `HospitalProviderSpellNumber`",
-      "dataSource": [
-        {
-          "name": "HospitalProviderSpellNumber",
-          "description": "CDS specific hospital spell number that binds many episodes together.",
-          "origins": [
-            {
-              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom [omop_staging].[sus_APC] apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "observation_concept_id",
       "operation_description": "Constant value set to `4078008`. Number of previous pregnancies",
       "dataSource": null,
@@ -107,8 +89,8 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "value_as_number",
-      "operation_description": "Converts text to integers.",
+      "name": "value_as_string",
+      "operation_description": "Value copied from `TotalPreviousPregnancies`",
       "dataSource": [
         {
           "name": "TotalPreviousPregnancies",
@@ -125,8 +107,26 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "value_as_string",
-      "operation_description": "Value copied from `TotalPreviousPregnancies`",
+      "name": "HospitalProviderSpellNumber",
+      "operation_description": "Value copied from `HospitalProviderSpellNumber`",
+      "dataSource": [
+        {
+          "name": "HospitalProviderSpellNumber",
+          "description": "CDS specific hospital spell number that binds many episodes together.",
+          "origins": [
+            {
+              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom [omop_staging].[sus_APC] apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "value_as_number",
+      "operation_description": "Converts text to integers.",
       "dataSource": [
         {
           "name": "TotalPreviousPregnancies",

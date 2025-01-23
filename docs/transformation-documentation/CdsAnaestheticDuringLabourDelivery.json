@@ -39,24 +39,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "HospitalProviderSpellNumber",
-      "operation_description": "Value copied from `HospitalProviderSpellNumber`",
-      "dataSource": [
-        {
-          "name": "HospitalProviderSpellNumber",
-          "description": "CDS specific hospital spell number that binds many episodes together.",
-          "origins": [
-            {
-              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier, \n\tcoalesce(max(l8.DeliveryDate), max(l1.CDSActivityDate)) as observation_date, \n\tl8.AnaestheticDuringLabourDelivery\nfrom  [omop_staging].[cds_line01] l1\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\tinner join [omop_staging].[cds_line08] l8\t\t\t\t\t\t\t\t\t\t\t\t\n\t\ton l1.MessageId = l8.MessageId\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere l8.AnaestheticDuringLabourDelivery is not null \n\tand l1.NHSNumber is not null \n\tand (l1.CdsRecordType = '140' or l1.CdsRecordType = '120')\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ngroup by \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier, \n\tl8.DeliveryDate, \n\tl8.AnaestheticDuringLabourDelivery\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "observation_concept_id",
       "operation_description": "Constant value set to `4163264`. Type of anesthetic",
       "dataSource": null,
@@ -125,6 +107,24 @@
             {
               "origin": "ANAESTHETIC GIVEN DURING LABOUR OR DELIVERY CODE",
               "url": "https://www.datadictionary.nhs.uk/data_elements/anaesthetic_given_during_labour_or_delivery_code.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier, \n\tcoalesce(max(l8.DeliveryDate), max(l1.CDSActivityDate)) as observation_date, \n\tl8.AnaestheticDuringLabourDelivery\nfrom  [omop_staging].[cds_line01] l1\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\tinner join [omop_staging].[cds_line08] l8\t\t\t\t\t\t\t\t\t\t\t\t\n\t\ton l1.MessageId = l8.MessageId\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere l8.AnaestheticDuringLabourDelivery is not null \n\tand l1.NHSNumber is not null \n\tand (l1.CdsRecordType = '140' or l1.CdsRecordType = '120')\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ngroup by \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier, \n\tl8.DeliveryDate, \n\tl8.AnaestheticDuringLabourDelivery\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "HospitalProviderSpellNumber",
+      "operation_description": "Value copied from `HospitalProviderSpellNumber`",
+      "dataSource": [
+        {
+          "name": "HospitalProviderSpellNumber",
+          "description": "CDS specific hospital spell number that binds many episodes together.",
+          "origins": [
+            {
+              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
             }
           ]
         }

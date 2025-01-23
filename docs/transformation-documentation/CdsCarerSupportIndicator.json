@@ -39,24 +39,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "HospitalProviderSpellNumber",
-      "operation_description": "Value copied from `HospitalProviderSpellNumber`",
-      "dataSource": [
-        {
-          "name": "HospitalProviderSpellNumber",
-          "description": "CDS specific hospital spell number that binds many episodes together.",
-          "origins": [
-            {
-              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect \n\tl1.NHSNumber, \n\tmax(l1.CDSActivityDate) as CDSActivityDate, \n\tl1.CarerSupportIndicator,\n\tl5.HospitalProviderSpellNumber,\n\tl1.RecordConnectionIdentifier\nfrom omop_staging.cds_line01 l1\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere NHSNumber is not null\n\tand CarerSupportIndicator is not null\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ngroup by \n\tl1.NHSNumber, \n\tl1.CarerSupportIndicator,\n\tl5.HospitalProviderSpellNumber,\n\tl1.RecordConnectionIdentifier;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "observation_concept_id",
       "operation_description": "Constant value set to `4224770`. Social support status",
       "dataSource": null,
@@ -117,6 +99,24 @@
             {
               "origin": "CARER SUPPORT INDICATOR",
               "url": "https://www.datadictionary.nhs.uk/data_elements/carer_support_indicator.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect \n\tl1.NHSNumber, \n\tmax(l1.CDSActivityDate) as CDSActivityDate, \n\tl1.CarerSupportIndicator,\n\tl5.HospitalProviderSpellNumber,\n\tl1.RecordConnectionIdentifier\nfrom omop_staging.cds_line01 l1\n\tleft outer join omop_staging.cds_line05 l5\n\t\ton l1.MessageId = l5.MessageId\nwhere NHSNumber is not null\n\tand CarerSupportIndicator is not null\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\ngroup by \n\tl1.NHSNumber, \n\tl1.CarerSupportIndicator,\n\tl5.HospitalProviderSpellNumber,\n\tl1.RecordConnectionIdentifier;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "HospitalProviderSpellNumber",
+      "operation_description": "Value copied from `HospitalProviderSpellNumber`",
+      "dataSource": [
+        {
+          "name": "HospitalProviderSpellNumber",
+          "description": "CDS specific hospital spell number that binds many episodes together.",
+          "origins": [
+            {
+              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
             }
           ]
         }
