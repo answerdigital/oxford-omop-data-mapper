@@ -4,16 +4,10 @@ using OmopTransformer.SUS.OP.Location;
 using OmopTransformer.SUS.OP.ConditionOccurrence;
 using OmopTransformer.SUS.OP.ProcedureOccurrence;
 using OmopTransformer.SUS.OP.Measurements.SusOPMeasurement;
-//using OmopTransformer.SUS.OP.VisitOccurrenceWithoutSpell;
-//using OmopTransformer.SUS.OP.VisitOccurrenceWithSpell;
-//using OmopTransformer.SUS.OP.Observation.AnaestheticDuringLabourDelivery;
-//using OmopTransformer.SUS.OP.Observation.AnaestheticGivenPostLabourDelivery;
-//using OmopTransformer.SUS.OP.Observation.BirthWeight;
-//using OmopTransformer.SUS.OP.Observation.CarerSupportIndicator;
-//using OmopTransformer.SUS.OP.Observation.GestationLengthLabourOnset;
-//using OmopTransformer.SUS.OP.Observation.NumberOfBabies;
-//using OmopTransformer.SUS.OP.Observation.TotalPreviousPregnancies;
-//using OmopTransformer.SUS.OP.VisitDetails;
+using OmopTransformer.SUS.OP.VisitOccurrenceWithSpell;
+using OmopTransformer.SUS.OP.VisitDetails;
+using OmopTransformer.SUS.OP.Observation.CarerSupportIndicator;
+// using OmopTransformer.SUS.OP.Observation.SourceOfReferralForOutpatients;
 //using OmopTransformer.SUS.OP.CareSite;
 //using OmopTransformer.SUS.OP.Provider;
 using OmopTransformer.Omop.Measurement;
@@ -120,55 +114,20 @@ internal class SusOPTransformer : Transformer
            "SUS OP Conditon Occurrence",
            cancellationToken);
 
-        //await Transform<SusOPVisitOccurrenceWithSpellRecord, SusOPVisitOccurrenceWithSpell>(
-        //    _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
-        //    "SUS OP VisitOccurrenceWithSpell",
-        //    cancellationToken);
+        await Transform<SusOPVisitOccurrenceWithSpellRecord, SusOPVisitOccurrenceWithSpell>(
+            _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
+            "SUS OP VisitOccurrenceWithSpell",
+            cancellationToken);
 
-        //await Transform<SusOPVisitOccurrenceWithoutSpellRecord, SusOPVisitOccurrenceWithoutSpell>(
-        //    _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
-        //    "SUS OP VisitOccurrenceWithoutSpell",
-        //    cancellationToken);
+        await Transform<SusOPVisitDetailsRecord, SusOPVisitDetail>(
+            _visitDetailRecorder.InsertUpdateVisitDetail,
+            "SUS OP VisitDetail",
+            cancellationToken);
 
-        //await Transform<SusOPAnaestheticDuringLabourDeliveryRecord, SusOPAnaestheticDuringLabourDelivery>(
-        //    _observationRecorder.InsertUpdateObservations,
-        //"SUS OP AnaestheticDuringLabourDelivery",
-        //    cancellationToken);
-
-        //await Transform<SusOPAnaestheticGivenPostLabourDeliveryRecord, SusOPAnaestheticGivenPostLabourDelivery>(
-        //    _observationRecorder.InsertUpdateObservations,
-        //    "SUS OP AnaestheticGivenPostLabourDelivery",
-        //    cancellationToken);
-
-        //await Transform<SusOPBirthWeightRecord, SusOPBirthWeight>(
-        //    _observationRecorder.InsertUpdateObservations,
-        //    "SUS OP BirthWeight",
-        //    cancellationToken);
-
-        //await Transform<SusOPCarerSupportIndicatorRecord, SusOPCarerSupportIndicator>(
-        //    _observationRecorder.InsertUpdateObservations,
-        //    "SUS OP CarerSupportIndicator",
-        //    cancellationToken);
-
-        //await Transform<SusOPGestationLengthLabourOnsetRecord, SusOPGestationLengthLabourOnset>(
-        //    _observationRecorder.InsertUpdateObservations,
-        //    "SUS OP GestationLengthLabourOnset",
-        //    cancellationToken);
-
-        //await Transform<SusOPNumberOfBabiesRecord, SusOPNumberOfBabies>(
-        //    _observationRecorder.InsertUpdateObservations,
-        //    "SUS OP NumberOfBabies",
-        //    cancellationToken);
-
-        //await Transform<SusOPTotalPreviousPregnanciesRecord, SusOPTotalPreviousPregnancies>(
-        //    _observationRecorder.InsertUpdateObservations,
-        //    "SUS OP TotalPreviousPregnancies",
-        //    cancellationToken);
-
-        //await Transform<SusOPVisitDetailsRecord, SusOPVisitDetail>(
-        //    _visitDetailRecorder.InsertUpdateVisitDetail,
-        //    "SUS OP VisitDetail",
-        //    cancellationToken);
+        await Transform<SusOPCarerSupportIndicatorRecord, SusOPCarerSupportIndicator>(
+           _observationRecorder.InsertUpdateObservations,
+           "SUS OP CarerSupportIndicator",
+           cancellationToken);
 
         //await Transform<SusOPCareSiteRecord, SusOPCareSite>(
         //    _careSiteRecorder.InsertUpdateCareSite,
