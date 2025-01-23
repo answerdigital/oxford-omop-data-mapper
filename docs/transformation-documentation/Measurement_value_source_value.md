@@ -8,7 +8,7 @@ has_toc: false
 # value_source_value
 ### Sus OP  Measurement
 Source column  `DiagnosisICD`.
-Resolve ICD10 codes to OMOP concept relationship values
+Resolve Measurement domain ICD10 codes to `Maps To Value` concepts.
 
 * `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
 
@@ -30,7 +30,7 @@ where op.NHSNumber is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20value_source_value%20field%20Sus%20OP%20%20Measurement%20mapping){: .btn }
 ### Sus APC  Measurement
 Source column  `DiagnosisICD`.
-Resolve ICD10 codes to OMOP concept relationship values
+Resolve Measurement domain ICD10 codes to `Maps To Value` concepts.
 
 * `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
 

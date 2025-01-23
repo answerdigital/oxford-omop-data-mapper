@@ -12,7 +12,7 @@ internal class RecordTransformer : IRecordTransformer
     private readonly Opcs4Resolver _opcs4Resolver;
     private readonly ConceptResolver _resolver;
     private readonly Icdo3Resolver _icdo3Resolver;
-    private readonly RelationshipResolver _relationshipResolver;
+    private readonly MeasurementMapsToValueResolver _relationshipResolver;
 
     public RecordTransformer(
         ILogger<RecordTransformer> logger, 
@@ -20,7 +20,7 @@ internal class RecordTransformer : IRecordTransformer
         ConceptResolver resolver, 
         Opcs4Resolver opcs4Resolver, 
         Icdo3Resolver icdo3Resolver,
-        RelationshipResolver relationshipResolver)
+        MeasurementMapsToValueResolver relationshipResolver)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _cd10Resolver = cd10Resolver;
@@ -184,7 +184,7 @@ internal class RecordTransformer : IRecordTransformer
                 .Concat(firstConstructorTypes.Any(type => type == typeof(Opcs4Resolver)) ? new[] { _opcs4Resolver } : new List<object>())
                 .Concat(firstConstructorTypes.Any(type => type == typeof(Icdo3Resolver)) ? new[] { _icdo3Resolver } : new List<object>())
                 .Concat(firstConstructorTypes.Any(type => type == typeof(ConceptResolver)) ? new[] { _resolver } : new List<object>())
-                .Concat(firstConstructorTypes.Any(type => type == typeof(RelationshipResolver)) ? new[] { _relationshipResolver } : new List<object>())
+                .Concat(firstConstructorTypes.Any(type => type == typeof(MeasurementMapsToValueResolver)) ? new[] { _relationshipResolver } : new List<object>())
                 .ToArray();
 
         var selector = (ISelector)Activator.CreateInstance(transformAttribute.Type, arguments)!;
