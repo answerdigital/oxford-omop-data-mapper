@@ -1,12 +1,12 @@
 ﻿<Query>
     <Sql>
 select
-	NHSNumber as person_id,
+	NHSNumber,
 	GeneratedRecordIdentifier,
 	AppointmentDate,
 	AppointmentTime,
 	ReferrerCode   -- Referrer code is the code of the person making the referral request
-from [OMOP_SUS].[omop_staging].[sus_OP]
+from [omop_staging].[sus_OP]
 	</Sql>
 	<Explanations>
 		<Explanation columnName="NHSNumber">
