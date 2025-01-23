@@ -31,6 +31,8 @@ using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Omop.Provider;
 using OmopTransformer.SUS.APC;
 using OmopTransformer.SUS.OP;
+using OmopTransformer.SUS.Staging.AE;
+using OmopTransformer.SUS.Staging.AE.Clearing;
 using OmopTransformer.SUS.Staging.APC;
 using OmopTransformer.SUS.Staging.APC.Clearing;
 using OmopTransformer.SUS.Staging.OP;
@@ -207,6 +209,30 @@ internal class Program
                         break;
                     case "clear":
                         builder.Services.AddHostedService<SusOPClearStagingHostedService>();
+                        break;
+                    default:
+                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
+                        return;
+                }
+            }
+            else if (string.Equals(stagingOptions.Type, "sus-ae", StringComparison.OrdinalIgnoreCase))
+            {
+                if (stagingOptions.Action == null)
+                {
+                    await ActionMustBeSpecifiedError();
+                    return;
+                }
+
+                switch (stagingOptions.Action.ToLower())
+                {
+                    case "load":
+                        builder.Services.AddTransient<ISusAEInserter, SusAEInserter>();
+                        builder.Services.AddTransient<ISusAEParser, SusAEParser>();
+                        builder.Services.AddTransient<ISusAEStaging, SusAEStaging>();
+                        builder.Services.AddHostedService<SusAELoadStagingHostedService>();
+                        break;
+                    case "clear":
+                        builder.Services.AddHostedService<SusAEClearStagingHostedService>();
                         break;
                     default:
                         await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
