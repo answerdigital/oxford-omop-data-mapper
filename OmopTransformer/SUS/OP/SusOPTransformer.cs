@@ -7,21 +7,15 @@ using OmopTransformer.SUS.OP.Measurements.SusOPMeasurement;
 using OmopTransformer.SUS.OP.VisitOccurrenceWithSpell;
 using OmopTransformer.SUS.OP.VisitDetails;
 using OmopTransformer.SUS.OP.Observation.CarerSupportIndicator;
-// using OmopTransformer.SUS.OP.Observation.SourceOfReferralForOutpatients;
-//using OmopTransformer.SUS.OP.CareSite;
-//using OmopTransformer.SUS.OP.Provider;
 using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
-using OmopTransformer.Omop.DrugExposure;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Observation;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.Omop.VisitOccurrence;
-using OmopTransformer.Omop.CareSite;
-using OmopTransformer.Omop.Provider;
 using OmopTransformer.Transformation;
 
 namespace OmopTransformer.SUS.OP;
@@ -36,15 +30,10 @@ internal class SusOPTransformer : Transformer
     private readonly IVisitDetailRecorder _visitDetailRecorder;
     private readonly IDeathRecorder _deathRecorder;
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
-    private readonly IDrugExposureRecorder _drugExposureRecorder;
     private readonly IObservationRecorder _observationRecorder;
     private readonly ConceptResolver _conceptResolver;
-    private readonly ICareSiteRecorder _careSiteRecorder;
-    private readonly IProviderRecorder _providerRecorder;
 
     public SusOPTransformer(
-        ICareSiteRecorder careSiteRecorder,
-        IProviderRecorder providerRecorder,
         IMeasurementRecorder measurementRecorder,
         IRecordTransformer recordTransformer,
         ILogger<IRecordTransformer> logger,
@@ -58,7 +47,6 @@ internal class SusOPTransformer : Transformer
         IDeathRecorder deathRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
         ConceptResolver conceptResolver, 
-        IDrugExposureRecorder drugExposureRecorder, 
         IObservationRecorder observationRecorder,
         IConceptMapper conceptMapper) : base(recordTransformer,
         logger,
@@ -76,10 +64,7 @@ internal class SusOPTransformer : Transformer
         _deathRecorder = deathRecorder;
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
         _conceptResolver = conceptResolver;
-        _drugExposureRecorder = drugExposureRecorder;
         _observationRecorder = observationRecorder;
-        _careSiteRecorder = careSiteRecorder;
-        _providerRecorder = providerRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -128,17 +113,7 @@ internal class SusOPTransformer : Transformer
            _observationRecorder.InsertUpdateObservations,
            "SUS OP CarerSupportIndicator",
            cancellationToken);
-
-        //await Transform<SusOPCareSiteRecord, SusOPCareSite>(
-        //    _careSiteRecorder.InsertUpdateCareSite,
-        //    "SUS OP CareSite",
-        //    cancellationToken);
-
-        //await Transform<SusOPProviderRecord, SusOPProvider>(
-        //    _providerRecorder.InsertUpdateProvider,
-        //    "SUS OP Provider",
-        //    cancellationToken);
-
+        
         _conceptResolver.PrintErrors();
     }
 }
