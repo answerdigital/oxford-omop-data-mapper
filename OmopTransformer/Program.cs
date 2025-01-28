@@ -31,6 +31,7 @@ using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Omop.Provider;
 using OmopTransformer.SUS.APC;
 using OmopTransformer.SUS.OP;
+using OmopTransformer.SUS.AE;
 using OmopTransformer.SUS.Staging.AE;
 using OmopTransformer.SUS.Staging.AE.Clearing;
 using OmopTransformer.SUS.Staging.APC;
@@ -293,6 +294,11 @@ internal class Program
             {
                 builder.Services.AddTransient<SusOPTransformer>();
                 builder.Services.AddHostedService<SusOPTransformHostedService>();
+            }
+            else if (string.Equals(transformOptions.Type, "sus-ae", StringComparison.OrdinalIgnoreCase))
+            {
+                builder.Services.AddTransient<SusAETransformer>();
+                builder.Services.AddHostedService<SusAETransformHostedService>();
             }
             else
             {
