@@ -19,6 +19,8 @@ using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.Omop.VisitOccurrence;
+using OmopTransformer.Omop.CareSite;
+using OmopTransformer.Omop.Provider;
 using OmopTransformer.Transformation;
 
 namespace OmopTransformer.SUS.OP;
@@ -35,8 +37,12 @@ internal class SusOPTransformer : Transformer
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
     private readonly IObservationRecorder _observationRecorder;
     private readonly ConceptResolver _conceptResolver;
+    private readonly ICareSiteRecorder _careSiteRecorder;
+    private readonly IProviderRecorder _providerRecorder;
 
     public SusOPTransformer(
+        ICareSiteRecorder careSiteRecorder,
+        IProviderRecorder providerRecorder,
         IMeasurementRecorder measurementRecorder,
         IRecordTransformer recordTransformer,
         ILogger<IRecordTransformer> logger,
@@ -68,6 +74,8 @@ internal class SusOPTransformer : Transformer
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
         _conceptResolver = conceptResolver;
         _observationRecorder = observationRecorder;
+        _careSiteRecorder = careSiteRecorder;
+        _providerRecorder = providerRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
