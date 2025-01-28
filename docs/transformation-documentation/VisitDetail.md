@@ -18,9 +18,21 @@ has_toc: false
 * [visit_detail_type_concept_id]({% link docs/transformation-documentation/VisitDetail_visit_detail_type_concept_id.md %})
 * [admitted_from_concept_id]({% link docs/transformation-documentation/VisitDetail_admitted_from_concept_id.md %})
 * [admitted_from_source_value]({% link docs/transformation-documentation/VisitDetail_admitted_from_source_value.md %})
-* [discharged_to_concept_id]({% link docs/transformation-documentation/VisitDetail_discharged_to_concept_id.md %})
 * [discharged_to_source_value]({% link docs/transformation-documentation/VisitDetail_discharged_to_source_value.md %})
+* [discharged_to_concept_id]({% link docs/transformation-documentation/VisitDetail_discharged_to_concept_id.md %})
 
+## SusOPVisitDetail
+<a href="SusOPVisitDetail.svg" target="_blank"><img src="SusOPVisitDetail.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * `Emergency` covers a visit to A&E within the given Hospital Provider, and hence covers Admission Code 21 and 24 only
+> * `Location Class` ID 24 is a Consultant Clinic within the Health Care Provider.
+> * `Patient Classification` ID 1 is the only entry that covers 24 hours or more with the use of a bed, and whilst others may be a day/night only, they will be discounted because they are less than 24 hours. Also, maternity is also not taken as an `Inpatient` visit.
+> * No calculations to be made between Start and end visit date to try to calculate 24 hours, but instead the `Patient Classification` will be sufficient
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPVisitDetail%20mapping){: .btn }
 ## SusAPCVisitDetail
 <a href="SusAPCVisitDetail.svg" target="_blank"><img src="SusAPCVisitDetail.svg" /></a>
 

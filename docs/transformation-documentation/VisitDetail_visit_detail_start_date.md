@@ -6,6 +6,72 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # visit_detail_start_date
+### Sus Outpatient VisitDetails
+Source column  `VisitStartDate`.
+Converts text to dates.
+
+* `VisitStartDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [START DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html), [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
+
+```sql
+;with RecordConnectionIdentifierNHSNumberCombination as (
+	select
+		distinct 
+			op.NHSNumber,
+			op.GeneratedRecordIdentifier
+	from omop_staging.sus_OP op
+),
+
+RecordsWithVariableNhsNumber as (
+select
+	m1.GeneratedRecordIdentifier
+from RecordConnectionIdentifierNHSNumberCombination m1
+	inner join RecordConnectionIdentifierNHSNumberCombination m2
+		on m1.NHSNumber != m2.NHSNumber
+where m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier
+),
+
+VisitDetail as (
+	select  
+		distinct
+    
+			op.NHSNumber,
+			op.SUSgeneratedspellID,
+
+			case 
+				when op.LocationClassatAttendance in ('04') then 581380
+				else 9202
+			end as VisitOccurrenceConceptId,    -- ""visit_concept_id""
+
+			op.GeneratedRecordIdentifier,
+
+			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
+			coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
+
+			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
+			null as VisitEndTime,
+
+			32818 as VisitTypeConceptId,
+
+			op.SourceofReferralForOutpatients
+	from omop_staging.sus_OP op
+		inner join dbo.Code c 
+			on op.TreatmentFunctionCode = c.Code
+	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
+		and op.NHSNumber is not null
+		and c.CodeTypeId = 2 -- activity_treatment_function_code
+		and not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = op.GeneratedRecordIdentifier)
+)
+
+select
+	*
+from VisitDetail
+
+		
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_start_date%20field%20Sus%20Outpatient%20VisitDetails%20mapping){: .btn }
 ### Sus Inptatient VisitDetails
 Source column  `VisitStartDate`.
 Converts text to dates.

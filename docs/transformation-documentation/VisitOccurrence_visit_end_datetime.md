@@ -6,6 +6,47 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # visit_end_datetime
+### SUS OP VisitOccurrenceWithSpell
+Source columns  `VisitEndDate`, `VisitEndTime`.
+Combines a date with a time of day.
+
+* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
+
+* `VisitEndTime` The latest episode end time for the spell, or midnight if none are specified. [END TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html)
+
+```sql
+select
+	op.NHSNumber,
+	op.SUSgeneratedspellID,
+	op.GeneratedRecordIdentifier,
+	coalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date
+	coalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time
+
+	coalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,
+	'000000' as VisitEndTime,
+
+	case
+		when max(op.LocationClassatAttendance) in ('04') then 581380
+	else 9202
+	end as VisitOccurrenceConceptId,    -- ""visit_concept_id""
+
+	32818 as VisitTypeConceptId
+from [omop_staging].[sus_OP] op
+	inner join dbo.Code c
+	on c.Code = op.TreatmentFunctionCode
+where op.UpdateType = 9   -- New/Modification     (1 = Delete)
+	and op.NHSNumber is not null
+	and c.CodeTypeId = 2 -- activity_treatment_function_code
+	and op.SUSgeneratedspellID is not null
+group by
+	op.NHSNumber,
+	op.SUSgeneratedspellID,
+	GeneratedRecordIdentifier;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_end_datetime%20field%20SUS%20OP%20VisitOccurrenceWithSpell%20mapping){: .btn }
 ### SUS APC VisitOccurrenceWithSpell
 Source columns  `EpisodeEndDate`, `EpisodeEndTime`.
 Combines a date with a time of day.

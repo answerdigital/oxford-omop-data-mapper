@@ -6,6 +6,44 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # NhsNumber
+### SUS OP VisitOccurrenceWithSpell
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+select
+	op.NHSNumber,
+	op.SUSgeneratedspellID,
+	op.GeneratedRecordIdentifier,
+	coalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date
+	coalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time
+
+	coalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,
+	'000000' as VisitEndTime,
+
+	case
+		when max(op.LocationClassatAttendance) in ('04') then 581380
+	else 9202
+	end as VisitOccurrenceConceptId,    -- ""visit_concept_id""
+
+	32818 as VisitTypeConceptId
+from [omop_staging].[sus_OP] op
+	inner join dbo.Code c
+	on c.Code = op.TreatmentFunctionCode
+where op.UpdateType = 9   -- New/Modification     (1 = Delete)
+	and op.NHSNumber is not null
+	and c.CodeTypeId = 2 -- activity_treatment_function_code
+	and op.SUSgeneratedspellID is not null
+group by
+	op.NHSNumber,
+	op.SUSgeneratedspellID,
+	GeneratedRecordIdentifier;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20NhsNumber%20field%20SUS%20OP%20VisitOccurrenceWithSpell%20mapping){: .btn }
 ### SUS APC VisitOccurrenceWithSpell
 * Value copied from `NHSNumber`
 

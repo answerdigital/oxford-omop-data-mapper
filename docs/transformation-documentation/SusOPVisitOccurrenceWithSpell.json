@@ -1,0 +1,212 @@
+{
+  "omopTable": "VisitOccurrence",
+  "origin": "SUS",
+  "omopColumns": [
+    {
+      "name": "NhsNumber",
+      "operation_description": "Value copied from `NHSNumber`",
+      "dataSource": [
+        {
+          "name": "NHSNumber",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\top.GeneratedRecordIdentifier,\n\tcoalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date\n\tcoalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time\n\n\tcoalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,\n\t'000000' as VisitEndTime,\n\n\tcase\n\t\twhen max(op.LocationClassatAttendance) in ('04') then 581380\n\telse 9202\n\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t32818 as VisitTypeConceptId\nfrom [omop_staging].[sus_OP] op\n\tinner join dbo.Code c\n\ton c.Code = op.TreatmentFunctionCode\nwhere op.UpdateType = 9   -- New/Modification     (1 = Delete)\n\tand op.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand op.SUSgeneratedspellID is not null\ngroup by\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\tGeneratedRecordIdentifier;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "RecordConnectionIdentifier",
+      "operation_description": "Value copied from `GeneratedRecordIdentifier`",
+      "dataSource": [
+        {
+          "name": "GeneratedRecordIdentifier",
+          "description": "CDS specific identifier that binds multiple CDS messages together.",
+          "origins": [
+            {
+              "origin": "CDS RECORD IDENTIFIER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\top.GeneratedRecordIdentifier,\n\tcoalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date\n\tcoalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time\n\n\tcoalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,\n\t'000000' as VisitEndTime,\n\n\tcase\n\t\twhen max(op.LocationClassatAttendance) in ('04') then 581380\n\telse 9202\n\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t32818 as VisitTypeConceptId\nfrom [omop_staging].[sus_OP] op\n\tinner join dbo.Code c\n\ton c.Code = op.TreatmentFunctionCode\nwhere op.UpdateType = 9   -- New/Modification     (1 = Delete)\n\tand op.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand op.SUSgeneratedspellID is not null\ngroup by\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\tGeneratedRecordIdentifier;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "HospitalProviderSpellNumber",
+      "operation_description": "Value copied from `SUSgeneratedspellID`",
+      "dataSource": [
+        {
+          "name": "SUSgeneratedspellID",
+          "description": "CDS specific hospital spell number that binds many episodes together.",
+          "origins": [
+            {
+              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\top.GeneratedRecordIdentifier,\n\tcoalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date\n\tcoalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time\n\n\tcoalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,\n\t'000000' as VisitEndTime,\n\n\tcase\n\t\twhen max(op.LocationClassatAttendance) in ('04') then 581380\n\telse 9202\n\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t32818 as VisitTypeConceptId\nfrom [omop_staging].[sus_OP] op\n\tinner join dbo.Code c\n\ton c.Code = op.TreatmentFunctionCode\nwhere op.UpdateType = 9   -- New/Modification     (1 = Delete)\n\tand op.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand op.SUSgeneratedspellID is not null\ngroup by\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\tGeneratedRecordIdentifier;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_start_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "VisitStartDate",
+          "description": "Start date of the episode.",
+          "origins": [
+            {
+              "origin": "START DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\top.GeneratedRecordIdentifier,\n\tcoalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date\n\tcoalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time\n\n\tcoalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,\n\t'000000' as VisitEndTime,\n\n\tcase\n\t\twhen max(op.LocationClassatAttendance) in ('04') then 581380\n\telse 9202\n\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t32818 as VisitTypeConceptId\nfrom [omop_staging].[sus_OP] op\n\tinner join dbo.Code c\n\ton c.Code = op.TreatmentFunctionCode\nwhere op.UpdateType = 9   -- New/Modification     (1 = Delete)\n\tand op.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand op.SUSgeneratedspellID is not null\ngroup by\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\tGeneratedRecordIdentifier;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_start_datetime",
+      "operation_description": "Combines a date with a time of day.",
+      "dataSource": [
+        {
+          "name": "VisitStartDate",
+          "description": "Start date of the episode.",
+          "origins": [
+            {
+              "origin": "START DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html"
+            }
+          ]
+        },
+        {
+          "name": "VisitStartTime",
+          "description": "The earliest episode start time for the spell, or midnight if none are specified.",
+          "origins": [
+            {
+              "origin": "START TIME (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\top.GeneratedRecordIdentifier,\n\tcoalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date\n\tcoalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time\n\n\tcoalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,\n\t'000000' as VisitEndTime,\n\n\tcase\n\t\twhen max(op.LocationClassatAttendance) in ('04') then 581380\n\telse 9202\n\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t32818 as VisitTypeConceptId\nfrom [omop_staging].[sus_OP] op\n\tinner join dbo.Code c\n\ton c.Code = op.TreatmentFunctionCode\nwhere op.UpdateType = 9   -- New/Modification     (1 = Delete)\n\tand op.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand op.SUSgeneratedspellID is not null\ngroup by\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\tGeneratedRecordIdentifier;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_end_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "VisitEndDate",
+          "description": "The latest episode end date for the spell, or the latest activity date if none are specified.",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            },
+            {
+              "origin": "END DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\top.GeneratedRecordIdentifier,\n\tcoalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date\n\tcoalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time\n\n\tcoalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,\n\t'000000' as VisitEndTime,\n\n\tcase\n\t\twhen max(op.LocationClassatAttendance) in ('04') then 581380\n\telse 9202\n\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t32818 as VisitTypeConceptId\nfrom [omop_staging].[sus_OP] op\n\tinner join dbo.Code c\n\ton c.Code = op.TreatmentFunctionCode\nwhere op.UpdateType = 9   -- New/Modification     (1 = Delete)\n\tand op.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand op.SUSgeneratedspellID is not null\ngroup by\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\tGeneratedRecordIdentifier;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_end_datetime",
+      "operation_description": "Combines a date with a time of day.",
+      "dataSource": [
+        {
+          "name": "VisitEndDate",
+          "description": "The latest episode end date for the spell, or the latest activity date if none are specified.",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            },
+            {
+              "origin": "END DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html"
+            }
+          ]
+        },
+        {
+          "name": "VisitEndTime",
+          "description": "The latest episode end time for the spell, or midnight if none are specified.",
+          "origins": [
+            {
+              "origin": "END TIME (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\top.GeneratedRecordIdentifier,\n\tcoalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date\n\tcoalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time\n\n\tcoalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,\n\t'000000' as VisitEndTime,\n\n\tcase\n\t\twhen max(op.LocationClassatAttendance) in ('04') then 581380\n\telse 9202\n\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t32818 as VisitTypeConceptId\nfrom [omop_staging].[sus_OP] op\n\tinner join dbo.Code c\n\ton c.Code = op.TreatmentFunctionCode\nwhere op.UpdateType = 9   -- New/Modification     (1 = Delete)\n\tand op.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand op.SUSgeneratedspellID is not null\ngroup by\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\tGeneratedRecordIdentifier;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_concept_id",
+      "operation_description": "Value copied from `VisitOccurrenceConceptId`",
+      "dataSource": [
+        {
+          "name": "VisitOccurrenceConceptId",
+          "description": "\n\n| Visit Occurrence Type              | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |\n|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|\n| Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |\n| Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |\n| Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |\n| Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |\n| Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |\n\t\t\t",
+          "origins": [
+            {
+              "origin": "ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/admission_method_code__hospital_provider_spell_.html"
+            },
+            {
+              "origin": "PATIENT CLASSIFICATION CODE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html"
+            },
+            {
+              "origin": "LOCATION CLASS",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/location_class.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\top.GeneratedRecordIdentifier,\n\tcoalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date\n\tcoalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time\n\n\tcoalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,\n\t'000000' as VisitEndTime,\n\n\tcase\n\t\twhen max(op.LocationClassatAttendance) in ('04') then 581380\n\telse 9202\n\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t32818 as VisitTypeConceptId\nfrom [omop_staging].[sus_OP] op\n\tinner join dbo.Code c\n\ton c.Code = op.TreatmentFunctionCode\nwhere op.UpdateType = 9   -- New/Modification     (1 = Delete)\n\tand op.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand op.SUSgeneratedspellID is not null\ngroup by\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\tGeneratedRecordIdentifier;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_type_concept_id",
+      "operation_description": "Value copied from `VisitTypeConceptId`",
+      "dataSource": [
+        {
+          "name": "VisitTypeConceptId",
+          "description": "For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record)",
+          "origins": [
+            {
+              "origin": "END DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html"
+            },
+            {
+              "origin": "DISCHARGE DATE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html"
+            },
+            {
+              "origin": "PATIENT CLASSIFICATION CODE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\top.GeneratedRecordIdentifier,\n\tcoalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date\n\tcoalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time\n\n\tcoalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,\n\t'000000' as VisitEndTime,\n\n\tcase\n\t\twhen max(op.LocationClassatAttendance) in ('04') then 581380\n\telse 9202\n\tend as VisitOccurrenceConceptId,    -- \"\"visit_concept_id\"\"\n\n\t32818 as VisitTypeConceptId\nfrom [omop_staging].[sus_OP] op\n\tinner join dbo.Code c\n\ton c.Code = op.TreatmentFunctionCode\nwhere op.UpdateType = 9   -- New/Modification     (1 = Delete)\n\tand op.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand op.SUSgeneratedspellID is not null\ngroup by\n\top.NHSNumber,\n\top.SUSgeneratedspellID,\n\tGeneratedRecordIdentifier;\n\t",
+      "lookup_table_markdown": null
+    }
+  ]
+}

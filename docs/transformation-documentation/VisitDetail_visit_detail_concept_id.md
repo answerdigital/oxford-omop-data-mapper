@@ -6,6 +6,80 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # visit_detail_concept_id
+### Sus Outpatient VisitDetails
+* Value copied from `VisitOccurrenceConceptId`
+
+* `VisitOccurrenceConceptId` 
+
+| Visit Occurrence Type (Info only)  | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |
+|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|
+| Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
+| Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
+| Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
+| Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |
+| Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
+			 [ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/admission_method_code__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html), [LOCATION CLASS](https://www.datadictionary.nhs.uk/data_elements/location_class.html)
+
+```sql
+;with RecordConnectionIdentifierNHSNumberCombination as (
+	select
+		distinct 
+			op.NHSNumber,
+			op.GeneratedRecordIdentifier
+	from omop_staging.sus_OP op
+),
+
+RecordsWithVariableNhsNumber as (
+select
+	m1.GeneratedRecordIdentifier
+from RecordConnectionIdentifierNHSNumberCombination m1
+	inner join RecordConnectionIdentifierNHSNumberCombination m2
+		on m1.NHSNumber != m2.NHSNumber
+where m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier
+),
+
+VisitDetail as (
+	select  
+		distinct
+    
+			op.NHSNumber,
+			op.SUSgeneratedspellID,
+
+			case 
+				when op.LocationClassatAttendance in ('04') then 581380
+				else 9202
+			end as VisitOccurrenceConceptId,    -- ""visit_concept_id""
+
+			op.GeneratedRecordIdentifier,
+
+			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
+			coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
+
+			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
+			null as VisitEndTime,
+
+			32818 as VisitTypeConceptId,
+
+			op.SourceofReferralForOutpatients
+	from omop_staging.sus_OP op
+		inner join dbo.Code c 
+			on op.TreatmentFunctionCode = c.Code
+	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
+		and op.NHSNumber is not null
+		and c.CodeTypeId = 2 -- activity_treatment_function_code
+		and not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = op.GeneratedRecordIdentifier)
+)
+
+select
+	*
+from VisitDetail
+
+		
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_concept_id%20field%20Sus%20Outpatient%20VisitDetails%20mapping){: .btn }
 ### Sus Inptatient VisitDetails
 * Value copied from `VisitOccurrenceConceptId`
 
