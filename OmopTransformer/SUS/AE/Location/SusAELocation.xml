@@ -1,0 +1,22 @@
+﻿<Query>
+    <Sql>
+select
+	distinct
+		Postcode,
+		NHSNumber
+from omop_staging.sus_AE
+where Postcode is not null
+and NHSNumber is not null
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="Postcode">
+			<Description>Patient Postcode</Description>
+			<Origin>POSTCODE</Origin>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

@@ -1,0 +1,31 @@
+﻿<Query>
+    <Sql>
+	select
+		NHSNumber,
+		max(DateofBirth) as DateOfBirth,
+		max(EthnicCategory) as EthnicCategory,
+		max(Sex) as PersonCurrentGenderCode
+	from omop_staging.sus_AE
+	where NHSNumber is not null
+	group by NHSNumber
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="PersonCurrentGenderCode">
+			<Description>Patient PersonCurrentGenderCode</Description>
+			<Origin>PERSON GENDER CODE CURRENT</Origin>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="DateOfBirth">
+			<Description>Patient's date of birth.</Description>
+			<Origin>PERSON BIRTH DATE</Origin>
+		</Explanation>
+		<Explanation columnName="EthnicCategory">
+			<Description>Patient EthnicCategory</Description>
+			<Origin>ETHNIC CATEGORY</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

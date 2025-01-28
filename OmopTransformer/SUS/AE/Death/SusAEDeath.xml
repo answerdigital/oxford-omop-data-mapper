@@ -1,0 +1,24 @@
+﻿<Query>
+    <Sql>
+	select
+		NHSNumber as nhs_number,
+		coalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date
+	from [omop_staging].[sus_AE]
+	where ((ReferralToTreatmentPeriodStatus = 36) --PATIENT died before treatment
+		or (AEPatientGroup = 70)) -- PATIENT brought in dead
+		and (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)
+		and NHSNumber is not null
+	group by NHSNumber
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="death_date">
+			<Description>Discharge date of the patient's spell.</Description>
+			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+		<Explanation columnName="nhs_number">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

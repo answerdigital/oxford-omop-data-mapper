@@ -381,6 +381,15 @@
     <None Update="SUS\OP\Provider\SusOPProvider.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SUS\AE\Person\SusAEPerson.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\AE\Location\SusAELocation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\AE\Death\SusAEDeath.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<ItemGroup>
