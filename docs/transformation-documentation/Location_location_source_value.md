@@ -36,10 +36,7 @@ select
 		Postcode,
 		NHSNumber
 from omop_staging.sus_APC
-	and
-(
-	Postcode is not null
-);
+where Postcode is not null;
 	
 ```
 

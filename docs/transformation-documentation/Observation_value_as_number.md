@@ -77,7 +77,6 @@ select
 	apc.GestationLengthLabourOnset
 from [omop_staging].[sus_APC] as apc																			
 where apc.NHSNumber is not null
-  and len(apc.NHSNumber) = 10
   and apc.GestationLengthLabourOnset is not null
   and apc.CDSType in ('120', '140')
 group by 

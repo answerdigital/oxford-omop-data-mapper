@@ -21,6 +21,24 @@
       "lookup_table_markdown": null
     },
     {
+      "name": "RecordConnectionIdentifier",
+      "operation_description": "Value copied from `RecordConnectionIdentifier`",
+      "dataSource": [
+        {
+          "name": "RecordConnectionIdentifier",
+          "description": "CDS specific identifier that binds multiple CDS messages together.",
+          "origins": [
+            {
+              "origin": "CDS RECORD IDENTIFIER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tl1.NHSNumber,\n\t\t\tl1.RecordConnectionIdentifier\n\tfrom omop_staging.cds_line01 l1\n), RecordsWithVariableNhsNumber as (\nselect\n\tm1.RecordConnectionIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.RecordConnectionIdentifier = m2.RecordConnectionIdentifier\n)\nselect\n\tl1.NHSNumber,\n\tl1.RecordConnectionIdentifier,\n\tmin (l1.CDSActivityDate) as EpisodeStartDate,\n\t'000000' as EpisodeStartTime,\n\tmax (l1.CDSActivityDate) as EpisodeEndDate,\n\t'000000' as EpisodeEndTime,\n\tmax (l5.SourceofAdmissionCode) as SourceofAdmissionCode,\n\tmax (l5.DischargeDestinationCode) as DischargeDestinationCode\nfrom omop_staging.cds_line01 l1\n\tleft join omop_staging.cds_line04 l4 \n\t\ton l1.MessageId = l4.MessageId -- Location Details \n\tleft join omop_staging.cds_line05 l5 \n\t\ton l1.MessageId = l5.MessageId  -- Hospital Provider Spell\n\tinner join dbo.Code c \n\t\ton c.Code = l1.ActivityTreatmentFunctionCode\nwhere l1.CDSUpdateType = 9   -- New/Modification     (1 = Delete)\n\tand l1.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand l5.HospitalProviderSpellNumber is null\n\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.RecordConnectionIdentifier = l1.RecordConnectionIdentifier)\ngroup by \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier;\n\t",
+      "lookup_table_markdown": null
+    },
+    {
       "name": "visit_start_date",
       "operation_description": "Converts text to dates.",
       "dataSource": [
@@ -181,24 +199,6 @@
             {
               "origin": "DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)",
               "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html"
-            }
-          ]
-        }
-      ],
-      "query": "\n;with RecordConnectionIdentifierNHSNumberCombination as (\n\tselect\n\t\tdistinct \n\t\t\tl1.NHSNumber,\n\t\t\tl1.RecordConnectionIdentifier\n\tfrom omop_staging.cds_line01 l1\n), RecordsWithVariableNhsNumber as (\nselect\n\tm1.RecordConnectionIdentifier\nfrom RecordConnectionIdentifierNHSNumberCombination m1\n\tinner join RecordConnectionIdentifierNHSNumberCombination m2\n\t\ton m1.NHSNumber != m2.NHSNumber\nwhere m1.RecordConnectionIdentifier = m2.RecordConnectionIdentifier\n)\nselect\n\tl1.NHSNumber,\n\tl1.RecordConnectionIdentifier,\n\tmin (l1.CDSActivityDate) as EpisodeStartDate,\n\t'000000' as EpisodeStartTime,\n\tmax (l1.CDSActivityDate) as EpisodeEndDate,\n\t'000000' as EpisodeEndTime,\n\tmax (l5.SourceofAdmissionCode) as SourceofAdmissionCode,\n\tmax (l5.DischargeDestinationCode) as DischargeDestinationCode\nfrom omop_staging.cds_line01 l1\n\tleft join omop_staging.cds_line04 l4 \n\t\ton l1.MessageId = l4.MessageId -- Location Details \n\tleft join omop_staging.cds_line05 l5 \n\t\ton l1.MessageId = l5.MessageId  -- Hospital Provider Spell\n\tinner join dbo.Code c \n\t\ton c.Code = l1.ActivityTreatmentFunctionCode\nwhere l1.CDSUpdateType = 9   -- New/Modification     (1 = Delete)\n\tand l1.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand l5.HospitalProviderSpellNumber is null\n\tand not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.RecordConnectionIdentifier = l1.RecordConnectionIdentifier)\ngroup by \n\tl1.NHSNumber, \n\tl1.RecordConnectionIdentifier;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "RecordConnectionIdentifier",
-      "operation_description": "Value copied from `RecordConnectionIdentifier`",
-      "dataSource": [
-        {
-          "name": "RecordConnectionIdentifier",
-          "description": "CDS specific identifier that binds multiple CDS messages together.",
-          "origins": [
-            {
-              "origin": "CDS RECORD IDENTIFIER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
             }
           ]
         }

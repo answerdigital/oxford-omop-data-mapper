@@ -34,7 +34,7 @@ internal class VisitDetailRecorder : IVisitDetailRecorder
             var dataTable = new DataTable();
 
             dataTable.Columns.Add("nhs_number");
-            dataTable.Columns.Add("HospitalProviderSpellNumber", typeof(int));
+            dataTable.Columns.Add("HospitalProviderSpellNumber", typeof(string));
             dataTable.Columns.Add("RecordConnectionIdentifier");
             dataTable.Columns.Add("visit_detail_concept_id");
             dataTable.Columns.Add("visit_detail_start_date", typeof(DateTime));

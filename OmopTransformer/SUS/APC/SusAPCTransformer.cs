@@ -19,7 +19,6 @@ using OmopTransformer.SUS.APC.Provider;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.Death;
-using OmopTransformer.Omop.DrugExposure;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Observation;
 using OmopTransformer.Omop.Person;
@@ -42,7 +41,6 @@ internal class SusAPCTransformer : Transformer
     private readonly IVisitDetailRecorder _visitDetailRecorder;
     private readonly IDeathRecorder _deathRecorder;
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
-    private readonly IDrugExposureRecorder _drugExposureRecorder;
     private readonly IObservationRecorder _observationRecorder;
     private readonly ConceptResolver _conceptResolver;
     private readonly ICareSiteRecorder _careSiteRecorder;
@@ -64,14 +62,15 @@ internal class SusAPCTransformer : Transformer
         IDeathRecorder deathRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
         ConceptResolver conceptResolver, 
-        IDrugExposureRecorder drugExposureRecorder, 
         IObservationRecorder observationRecorder,
-        IConceptMapper conceptMapper) : base(recordTransformer,
-        logger,
-        transformOptions,
-        recordProvider,
-        "SUSAPC",
-        conceptMapper)
+        IConceptMapper conceptMapper) : 
+        base(
+            recordTransformer,
+            logger,
+            transformOptions,
+            recordProvider,
+            "SUSAPC",
+            conceptMapper)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
@@ -82,7 +81,6 @@ internal class SusAPCTransformer : Transformer
         _deathRecorder = deathRecorder;
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
         _conceptResolver = conceptResolver;
-        _drugExposureRecorder = drugExposureRecorder;
         _observationRecorder = observationRecorder;
         _careSiteRecorder = careSiteRecorder;
         _providerRecorder = providerRecorder;

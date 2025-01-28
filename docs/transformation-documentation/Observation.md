@@ -9,16 +9,44 @@ has_toc: false
 # Observation
 * [nhs_number]({% link docs/transformation-documentation/Observation_nhs_number.md %})
 * [RecordConnectionIdentifier]({% link docs/transformation-documentation/Observation_RecordConnectionIdentifier.md %})
-* [HospitalProviderSpellNumber]({% link docs/transformation-documentation/Observation_HospitalProviderSpellNumber.md %})
 * [observation_concept_id]({% link docs/transformation-documentation/Observation_observation_concept_id.md %})
 * [observation_date]({% link docs/transformation-documentation/Observation_observation_date.md %})
 * [observation_datetime]({% link docs/transformation-documentation/Observation_observation_datetime.md %})
 * [observation_type_concept_id]({% link docs/transformation-documentation/Observation_observation_type_concept_id.md %})
-* [value_as_number]({% link docs/transformation-documentation/Observation_value_as_number.md %})
 * [value_as_string]({% link docs/transformation-documentation/Observation_value_as_string.md %})
+* [HospitalProviderSpellNumber]({% link docs/transformation-documentation/Observation_HospitalProviderSpellNumber.md %})
+* [value_as_number]({% link docs/transformation-documentation/Observation_value_as_number.md %})
 * [unit_concept_id]({% link docs/transformation-documentation/Observation_unit_concept_id.md %})
 * [observation_source_concept_id]({% link docs/transformation-documentation/Observation_observation_source_concept_id.md %})
 
+## SusOPSourceOfReferralForOutpatients
+<a href="SusOPSourceOfReferralForOutpatients.svg" target="_blank"><img src="SusOPSourceOfReferralForOutpatients.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observations do not require a standardized test or other activity to generate clinical fact. Typical observations are medical history, family history, lifestyle choices, healthcare utilization patterns, social circumstances etc
+>
+> Valid Observation Concepts are not enforced to be from any domain.  They should still be standard concepts and typically belong to the Observation or Measurement domain.
+>
+> Observations can be stored as attribute value pairs, with the attribute as the Observation Concept and the value representing the clinical fact. This fact can be stored as a Concept (value_as_concept), a numerical value (value_as_number) or a verbatim string (value_as_string)
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPSourceOfReferralForOutpatients%20mapping){: .btn }
+## SusOPCarerSupportIndicator
+<a href="SusOPCarerSupportIndicator.svg" target="_blank"><img src="SusOPCarerSupportIndicator.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observations do not require a standardized test or other activity to generate clinical fact. Typical observations are medical history, family history, lifestyle choices, healthcare utilization patterns, social circumstances etc
+>
+> Valid Observation Concepts are not enforced to be from any domain.  They should still be standard concepts and typically belong to the Observation or Measurement domain.
+>
+> Observations can be stored as attribute value pairs, with the attribute as the Observation Concept and the value representing the clinical fact. This fact can be stored as a Concept (value_as_concept), a numerical value (value_as_number) or a verbatim string (value_as_string)
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPCarerSupportIndicator%20mapping){: .btn }
 ## SusAPCTotalPreviousPregnancies
 <a href="SusAPCTotalPreviousPregnancies.svg" target="_blank"><img src="SusAPCTotalPreviousPregnancies.svg" /></a>
 
