@@ -23,7 +23,7 @@ internal class SusOPSourceOfReferralForOutpatients : OmopObservation<SusOPSource
     [Transform(typeof(DateConverter), nameof(Source.AppointmentDate))]
     public override DateTime? observation_date { get; set; }
 
-[Transform(typeof(DateAndTimeCombiner), nameof(Source.AppointmentDate), nameof(Source.AppointmentTime))]
+    [Transform(typeof(DateAndTimeCombiner), nameof(Source.AppointmentDate), nameof(Source.AppointmentTime))]
     public override DateTime? observation_datetime { get; set; }
 
     [ConstantValue(32818, "EHR administration record")]

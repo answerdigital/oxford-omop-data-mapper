@@ -15,13 +15,13 @@ internal class SusOPProcedureOccurrence : OmopProcedureOccurrence<SusOPProcedure
     [Transform(typeof(DateConverter), nameof(Source.AppointmentDate))]
     public override DateTime? procedure_date { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.AppointmentDate))]
+    [Transform(typeof(DateAndTimeCombiner), nameof(Source.AppointmentDate), nameof(Source.AppointmentTime))]
     public override DateTime? procedure_datetime { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.AppointmentDate))]
     public override DateTime? procedure_end_date { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.AppointmentDate))]
+    [Transform(typeof(DateAndTimeCombiner), nameof(Source.AppointmentDate), nameof(Source.AppointmentTime))]
     public override DateTime? procedure_end_datetime { get; set; }
 
     [ConstantValue(32818, "`EHR Administration record`")]

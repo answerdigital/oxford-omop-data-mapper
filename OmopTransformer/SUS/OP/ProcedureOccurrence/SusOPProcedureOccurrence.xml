@@ -5,6 +5,7 @@
 		op.GeneratedRecordIdentifier,
 		op.NHSNumber,
 		op.AppointmentDate,
+		op.AppointmentTime,
 		p.ProcedureOPCS as PrimaryProcedure
 		from omop_staging.sus_OP op
 		inner join omop_staging.sus_OP_OPCSProcedure p
@@ -29,6 +30,11 @@
 		<Explanation columnName="AppointmentDate">
 			<Description>Appointment Date.</Description>
 			<Origin>APPOINTMENT DATE</Origin>
+		</Explanation>
+
+		<Explanation columnName="AppointmentTime">
+			<Description>Appointment Time.</Description>
+			<Origin>APPOINTMENT TIME</Origin>
 		</Explanation>
 		
 		<Explanation columnName="PrimaryProcedure">
