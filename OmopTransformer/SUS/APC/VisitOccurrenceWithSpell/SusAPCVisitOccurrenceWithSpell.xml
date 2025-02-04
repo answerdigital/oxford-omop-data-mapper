@@ -1,50 +1,25 @@
 ﻿<Query>
     <Sql>
-select
-	apc.NHSNumber,
-	apc.HospitalProviderSpellNumber,
-	min (apc.StartDateHospitalProviderSpell) as EpisodeStartDate,
-	coalesce
-	(
-		min (apc.StartTimeEpisode),
-		'000000'
-	) as EpisodeStartTime,
-	coalesce
-	(
-		max (apc.DischargeDateFromHospitalProviderSpell),
-		max (apc.EndDateConsultantEpisode),
-		max (apc.CDSActivityDate)
-	) as EpisodeEndDate,
-	coalesce
-	(
-		max (apc.DischargeTimeHospitalProviderSpell),
-		'000000'
-	) as EpisodeEndTime,
-	apc.GeneratedRecordIdentifier,
-	case
-		when max(apc.AdmissionMethodHospitalProviderSpell) in ('21','24') and max(apc.PatientClassification) = 1 then 262
-        when max(apc.AdmissionMethodHospitalProviderSpell) in ('21','24') then 9203
-        when max(apc.PatientClassification) in (1) then 9201
-        when max(apc.LocationClassAtEpisodeStartDate) in ('02') then 581476
-		else 9202
-	end as VisitOccurrenceConceptId,    -- "visit_concept_id"
-	case
-		when max(apc.EndDateConsultantEpisode) is null and max(apc.DischargeDestinationHospitalProviderSpell) is null then 32220
-        else 32818
-	end as VisitTypeConceptId,
-	max (apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,
-	max (apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode
-from [omop_staging].[sus_APC] apc
-	inner join dbo.Code c
-		on c.Code = apc.TreatmentFunctionCode
-where apc.UpdateType = 9   -- New/Modification     (1 = Delete)
-	and apc.NHSNumber is not null
-	and c.CodeTypeId = 2 -- activity_treatment_function_code
-	and apc.HospitalProviderSpellNumber is not null
-group by
-	apc.GeneratedRecordIdentifier,
-	apc.NHSNumber,
-	apc.HospitalProviderSpellNumber;
+	select
+		distinct
+		apc.NHSNumber,
+		apc.HospitalProviderSpellNumber,
+		apc.GeneratedRecordIdentifier,
+
+		9201 as VisitOccurrenceConceptId,  -- "visit_concept_id"
+		32818 as VisitTypeConceptId,
+
+		coalesce(apc.StartDateConsultantEpisode, apc.StartDateHospitalProviderSpell, apc.CDSActivityDate) as VisitStartDate,
+		coalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,
+		coalesce(apc.EndDateConsultantEpisode, apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate) as VisitEndDate,
+		coalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,
+
+		apc.SourceOfAdmissionHospitalProviderSpell,
+		apc.DischargeDestinationHospitalProviderSpell
+
+	from omop_staging.sus_APC apc
+	where apc.UpdateType = 9
+		and apc.NHSNumber is not null
 	</Sql>
 
 	<Explanations>
