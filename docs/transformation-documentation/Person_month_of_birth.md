@@ -46,6 +46,26 @@ Selects the month of the year or null if the date is null.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20month_of_birth%20field%20SUS%20Inpatient%20Person%20mapping){: .btn }
+### SUS A&E Person
+Source column  `DateOfBirth`.
+Selects the month of the year or null if the date is null.
+
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+
+```sql
+	select
+		NHSNumber,
+		max(DateofBirth) as DateOfBirth,
+		max(EthnicCategory) as EthnicCategory,
+		max(Sex) as PersonCurrentGenderCode
+	from omop_staging.sus_AE
+	where NHSNumber is not null
+	group by NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20month_of_birth%20field%20SUS%20A&E%20Person%20mapping){: .btn }
 ### SACT
 Source column  `Date_Of_Birth`.
 Selects the month of the year or null if the date is null.

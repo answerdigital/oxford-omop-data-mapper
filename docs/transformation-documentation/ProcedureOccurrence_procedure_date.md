@@ -18,6 +18,7 @@ Converts text to dates.
 		op.GeneratedRecordIdentifier,
 		op.NHSNumber,
 		op.AppointmentDate,
+		op.AppointmentTime,
 		p.ProcedureOPCS as PrimaryProcedure
 		from omop_staging.sus_OP op
 		inner join omop_staging.sus_OP_OPCSProcedure p

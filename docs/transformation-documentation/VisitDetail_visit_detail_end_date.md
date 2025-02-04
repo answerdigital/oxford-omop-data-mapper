@@ -13,60 +13,27 @@ Converts text to dates.
 * `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
 
 ```sql
-;with RecordConnectionIdentifierNHSNumberCombination as (
-	select
-		distinct 
-			op.NHSNumber,
-			op.GeneratedRecordIdentifier
-	from omop_staging.sus_OP op
-),
-
-RecordsWithVariableNhsNumber as (
-select
-	m1.GeneratedRecordIdentifier
-from RecordConnectionIdentifierNHSNumberCombination m1
-	inner join RecordConnectionIdentifierNHSNumberCombination m2
-		on m1.NHSNumber != m2.NHSNumber
-where m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier
-),
-
-VisitDetail as (
 	select  
 		distinct
-    
 			op.NHSNumber,
 			op.SUSgeneratedspellID,
 
-			case 
-				when op.LocationClassatAttendance in ('04') then 581380
-				else 9202
-			end as VisitOccurrenceConceptId,    -- ""visit_concept_id""
+			9202 as VisitOccurrenceConceptId,    -- ""visit_concept_id""
 
 			op.GeneratedRecordIdentifier,
 
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
 			coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
-
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
 			null as VisitEndTime,
 
 			32818 as VisitTypeConceptId,
-
 			op.SourceofReferralForOutpatients
+
 	from omop_staging.sus_OP op
-		inner join dbo.Code c 
-			on op.TreatmentFunctionCode = c.Code
 	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
 		and op.NHSNumber is not null
-		and c.CodeTypeId = 2 -- activity_treatment_function_code
-		and not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = op.GeneratedRecordIdentifier)
-)
 
-select
-	*
-from VisitDetail
-
-		
 	
 ```
 
@@ -116,7 +83,7 @@ VisitDetail as (
 			coalesce(apc.StartDateConsultantEpisode, apc.StartDateHospitalProviderSpell, apc.CDSActivityDate) as VisitStartDate,
 			coalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time
 
-coalesce(apc.EndDateConsultantEpisode, apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate) as VisitEndDate,
+			coalesce(apc.EndDateConsultantEpisode, apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate) as VisitEndDate,
 			coalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,
 
 			32818 as VisitTypeConceptId,

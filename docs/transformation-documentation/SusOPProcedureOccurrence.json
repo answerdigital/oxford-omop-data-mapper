@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -42,12 +42,12 @@
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "procedure_datetime",
-      "operation_description": "Converts text to dates.",
+      "operation_description": "Combines a date with a time of day.",
       "dataSource": [
         {
           "name": "AppointmentDate",
@@ -58,9 +58,19 @@
               "url": "https://www.datadictionary.nhs.uk/data_elements/appointment_date.html"
             }
           ]
+        },
+        {
+          "name": "AppointmentTime",
+          "description": "Appointment Time.",
+          "origins": [
+            {
+              "origin": "APPOINTMENT TIME",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/appointment_time.html"
+            }
+          ]
         }
       ],
-      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,12 +88,12 @@
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "procedure_end_datetime",
-      "operation_description": "Converts text to dates.",
+      "operation_description": "Combines a date with a time of day.",
       "dataSource": [
         {
           "name": "AppointmentDate",
@@ -94,9 +104,19 @@
               "url": "https://www.datadictionary.nhs.uk/data_elements/appointment_date.html"
             }
           ]
+        },
+        {
+          "name": "AppointmentTime",
+          "description": "Appointment Time.",
+          "origins": [
+            {
+              "origin": "APPOINTMENT TIME",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/appointment_time.html"
+            }
+          ]
         }
       ],
-      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -121,7 +141,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -139,7 +159,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -157,7 +177,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
+      "query": "\n\t\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\t\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\t\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     }
   ]
