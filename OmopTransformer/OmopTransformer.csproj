@@ -369,10 +369,10 @@
     <None Update="SUS\OP\Observation\SourceOfReferralForOutpatients\SusOPSourceOfReferralForOutpatients.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SUS\OP\VisitDetails\SusOPVisitDetails.xml">
+    <None Update="SUS\OP\VisitOccurrenceWithSpell\SusOPVisitOccurrenceWithSpell.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SUS\OP\VisitOccurrenceWithSpell\SusOPVisitOccurrenceWithSpell.xml">
+    <None Update="SUS\OP\VisitDetails\SusOPVisitDetails.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SUS\OP\CareSite\SusOPCareSite.xml">
