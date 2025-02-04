@@ -23,6 +23,10 @@ has_toc: false
 <a href="SusAPCDeath.svg" target="_blank"><img src="SusAPCDeath.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCDeath%20mapping){: .btn }
+## SusAEDeath
+<a href="SusAEDeath.svg" target="_blank"><img src="SusAEDeath.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAEDeath%20mapping){: .btn }
 ## CosdDeathV9DeathDischargeDestination
 <a href="CosdDeathV9DeathDischargeDestination.svg" target="_blank"><img src="CosdDeathV9DeathDischargeDestination.svg" /></a>
 

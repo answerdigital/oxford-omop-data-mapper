@@ -6,6 +6,47 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # care_site_name
+### SUS Outpatient Care Site
+* Value copied from `SiteCodeofTreatment`
+
+* `SiteCodeofTreatment` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [SITE CODE (OF TREATMENT)](https://www.datadictionary.nhs.uk/data_elements/site_code__of_treatment_.html)
+
+```sql
+with 
+counts as ( 
+	select 
+	SiteCodeofTreatment, 
+	MainSpecialtyCode, 
+	count(*) as cnt 
+	from omop_staging.sus_OP 
+	where SiteCodeofTreatment is not null 
+	and MainSpecialtyCode is not null 
+	group by 
+	SiteCodeofTreatment, 
+	MainSpecialtyCode 
+), 
+
+ranked as ( 
+	select 
+	SiteCodeofTreatment, 
+	MainSpecialtyCode, 
+	cnt, 
+	row_number() over ( 
+	partition by SiteCodeofTreatment 
+	order by cnt desc, MainSpecialtyCode 
+	) as rnk 
+	from counts 
+)
+select 
+	SiteCodeofTreatment, 
+	MainSpecialtyCode 
+from ranked 
+where rnk = 1;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20CareSite%20table%20care_site_name%20field%20SUS%20Outpatient%20Care%20Site%20mapping){: .btn }
 ### SUS Inpatient Care Site
 * Value copied from `SiteCodeOfTreatmentAtEpisodeStartDate`
 

@@ -14,10 +14,7 @@ internal class SusAPCVisitDetail : OmopVisitDetail<SusAPCVisitDetailsRecord>
 {
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? nhs_number { get; set; }
-
-    [CopyValue(nameof(Source.GeneratedRecordIdentifier))]
-    public override string? RecordConnectionIdentifier { get; set; }
-
+    
     [CopyValue(nameof(Source.HospitalProviderSpellNumber))]
     public override string? HospitalProviderSpellNumber { get; set; }
 

@@ -1,0 +1,2 @@
+drop index idx_cdm_condition_occurrence_RecordConnectionIdentifier on [cdm].[condition_occurrence]
+create nonclustered index idx_cdm_condition_occurrence_RecordConnectionIdentifier_condition_concept_id_condition_start_date on [cdm].[condition_occurrence] (RecordConnectionIdentifier, condition_concept_id, condition_start_date) 

@@ -98,6 +98,52 @@ Notes
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_concept_id%20field%20SUS%20Inpatient%20Person%20mapping){: .btn }
+### SUS A&E Person
+Source column  `EthnicCategory`.
+Lookup race source concept.
+
+
+|EthnicCategory|race_source_concept_id|notes|
+|------|-----|-----|
+|A|700385|White - British|
+|B|700386|White - Irish|
+|C|700387|White - Any other White background|
+|D|700388|Mixed - White and Black Caribbean|
+|E|700389|Mixed - White and Black African|
+|F|700390|Mixed - White and Asian|
+|G|700391|Mixed - Any other mixed background|
+|H|700362|Asian or Asian British - Indian|
+|J|700363|Asian or Asian British - Pakistani|
+|K|700364|Asian or Asian British - Bangladeshi|
+|L|700365|Asian or Asian British - Any other Asian background|
+|M|700366|Black or Black British - Caribbean|
+|N|700367|Black or Black British - African|
+|P|700368|Black or Black British - Any other Black background|
+|R|700369|Other Ethnic Groups - Chinese|
+|S||Other Ethnic Groups - Any other ethnic group|
+|Z||Not stated|
+|99||Not known|
+
+Notes
+* [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+* [OMOP Race](https://athena.ohdsi.org/search-terms/terms?conceptClass=Race&invalidReason=Valid&vocabulary=Race&page=1&pageSize=50&query=)
+
+* `EthnicCategory` Patient EthnicCategory [ETHNIC CATEGORY](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
+
+```sql
+	select
+		NHSNumber,
+		max(DateofBirth) as DateOfBirth,
+		max(EthnicCategory) as EthnicCategory,
+		max(Sex) as PersonCurrentGenderCode
+	from omop_staging.sus_AE
+	where NHSNumber is not null
+	group by NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_concept_id%20field%20SUS%20A&E%20Person%20mapping){: .btn }
 ### COSD Demographics
 Source column  `EthnicCategory`.
 Lookup race source concept.

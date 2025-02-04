@@ -44,6 +44,25 @@ where Postcode is not null;
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20SUS%20Inpatient%20Location%20mapping){: .btn }
+### SUS A&E Location
+Source column  `Postcode`.
+Uppercase the postcode then insert the space in the correct location, if needed.
+
+* `Postcode` Patient Postcode [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+
+```sql
+select
+	distinct
+		Postcode,
+		NHSNumber
+from omop_staging.sus_AE
+where Postcode is not null
+and NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20SUS%20A&E%20Location%20mapping){: .btn }
 ### SACT
 Source column  `Patient_Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.

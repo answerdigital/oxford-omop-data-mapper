@@ -13,12 +13,12 @@ has_toc: false
 
 ```sql
 	select
-	  NHSNumber as nhs_number,
-	  max(ReferralToTreatmentPeriodEndDate) as death_date
+		NHSNumber as nhs_number,
+		coalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date
 	from [omop_staging].[sus_OP]
 	where ReferralToTreatmentPeriodStatus = 36
-	  and ReferralToTreatmentPeriodEndDate is not null
-	  and NHSNumber is not null
+		and (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)
+		and NHSNumber is not null
 	group by NHSNumber
 	
 ```
@@ -63,6 +63,26 @@ group by apc.NHSNumber
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Death%20table%20NhsNumber%20field%20SUS%20Inpatient%20Death%20mapping){: .btn }
+### SUS A&E Death
+* Value copied from `nhs_number`
+
+* `nhs_number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+	select
+		NHSNumber as nhs_number,
+		coalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date
+	from [omop_staging].[sus_AE]
+	where ((ReferralToTreatmentPeriodStatus = 36) --PATIENT died before treatment
+		or (AEPatientGroup = 70)) -- PATIENT brought in dead
+		and (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)
+		and NHSNumber is not null
+	group by NHSNumber
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Death%20table%20NhsNumber%20field%20SUS%20A&E%20Death%20mapping){: .btn }
 ### COSD v9 DeathDischargeDestination
 * Value copied from `NhsNumber`
 

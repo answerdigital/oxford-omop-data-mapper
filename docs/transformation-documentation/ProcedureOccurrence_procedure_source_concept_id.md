@@ -18,6 +18,7 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 		op.GeneratedRecordIdentifier,
 		op.NHSNumber,
 		op.AppointmentDate,
+		op.AppointmentTime,
 		p.ProcedureOPCS as PrimaryProcedure
 		from omop_staging.sus_OP op
 		inner join omop_staging.sus_OP_OPCSProcedure p

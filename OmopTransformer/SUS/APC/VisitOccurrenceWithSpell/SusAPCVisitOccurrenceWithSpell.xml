@@ -1,5 +1,6 @@
 ﻿<Query>
     <Sql>
+
 	select
 		distinct
 		apc.NHSNumber,
@@ -20,6 +21,7 @@
 	from omop_staging.sus_APC apc
 	where apc.UpdateType = 9
 		and apc.NHSNumber is not null
+
 	</Sql>
 
 	<Explanations>

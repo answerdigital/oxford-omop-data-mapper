@@ -101,6 +101,12 @@ begin
 				where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
 					and vo.person_id = p.person_id
 			)
+			and exists ( -- Avoid inserting visit detail if the parent visit occurrence does not exist. Around 1/1,000,000 records exhibit this problem.
+				select *
+				from cdm.visit_occurrence vo
+				where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+					and vo.person_id = p.person_id
+			)
 		);
 
 	declare @columns table (Name varchar(max));

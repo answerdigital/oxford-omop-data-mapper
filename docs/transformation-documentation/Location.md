@@ -23,6 +23,10 @@ has_toc: false
 <a href="SusAPCLocation.svg" target="_blank"><img src="SusAPCLocation.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCLocation%20mapping){: .btn }
+## SusAELocation
+<a href="SusAELocation.svg" target="_blank"><img src="SusAELocation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAELocation%20mapping){: .btn }
 ## SactLocation
 <a href="SactLocation.svg" target="_blank"><img src="SactLocation.svg" /></a>
 

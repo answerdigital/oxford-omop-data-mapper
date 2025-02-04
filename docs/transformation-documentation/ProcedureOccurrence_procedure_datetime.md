@@ -7,10 +7,12 @@ has_toc: false
 ---
 # procedure_datetime
 ### SUS Outpatient Procedure Occurrence
-Source column  `AppointmentDate`.
-Converts text to dates.
+Source columns  `AppointmentDate`, `AppointmentTime`.
+Combines a date with a time of day.
 
 * `AppointmentDate` Appointment Date. [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
+
+* `AppointmentTime` Appointment Time. [APPOINTMENT TIME](https://www.datadictionary.nhs.uk/data_elements/appointment_time.html)
 
 ```sql
 		select
@@ -18,6 +20,7 @@ Converts text to dates.
 		op.GeneratedRecordIdentifier,
 		op.NHSNumber,
 		op.AppointmentDate,
+		op.AppointmentTime,
 		p.ProcedureOPCS as PrimaryProcedure
 		from omop_staging.sus_OP op
 		inner join omop_staging.sus_OP_OPCSProcedure p

@@ -27,6 +27,10 @@ has_toc: false
 <a href="SusAPCPerson.svg" target="_blank"><img src="SusAPCPerson.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCPerson%20mapping){: .btn }
+## SusAEPerson
+<a href="SusAEPerson.svg" target="_blank"><img src="SusAEPerson.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAEPerson%20mapping){: .btn }
 ## SactPerson
 <a href="SactPerson.svg" target="_blank"><img src="SactPerson.svg" /></a>
 
