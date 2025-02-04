@@ -1,27 +1,23 @@
 ﻿<Query>
     <Sql>
+
 	select
+		distinct
 		op.NHSNumber,
 		op.SUSgeneratedspellID,
 		op.GeneratedRecordIdentifier,
 
-		coalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date
-		coalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time
-		coalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,
-		null as VisitEndTime,
+		9201 as VisitOccurrenceConceptId,  -- "outpatient visit"
+		32818 as VisitTypeConceptId,
 
-		9202 as VisitOccurrenceConceptId,    -- ""visit_concept_id""
+		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
+		coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
+		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
+		null as VisitEndTime
 
-		32818 as VisitTypeConceptId
-
-	from [omop_staging].[sus_OP] op
-	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
+	from omop_staging.sus_OP op
+	where op.UpdateType = 9
 		and op.NHSNumber is not null
-		and op.SUSgeneratedspellID is not null
-	group by
-		op.NHSNumber,
-		op.SUSgeneratedspellID,
-		GeneratedRecordIdentifier;
 
 	</Sql>
 

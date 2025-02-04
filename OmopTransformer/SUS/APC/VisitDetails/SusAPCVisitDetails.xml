@@ -17,7 +17,7 @@
 		apc.HospitalProviderSpellNumber,
 		apc.GeneratedRecordIdentifier,
 
-		9201 as VisitOccurrenceConceptId,  -- "visit_concept_id"
+		9201 as VisitOccurrenceConceptId,  -- "inpatient visit"
 		32818 as VisitTypeConceptId,
 
 		coalesce(apc.StartDateConsultantEpisode, apc.StartDateHospitalProviderSpell, apc.CDSActivityDate) as VisitStartDate,
