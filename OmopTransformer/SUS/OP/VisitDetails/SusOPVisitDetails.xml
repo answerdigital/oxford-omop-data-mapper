@@ -8,8 +8,6 @@
 
 			9202 as VisitOccurrenceConceptId,    -- ""visit_concept_id""
 
-			op.GeneratedRecordIdentifier,
-
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
 			coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
@@ -25,10 +23,6 @@
 	</Sql>
 
 	<Explanations>
-		<Explanation columnName="GeneratedRecordIdentifier">
-			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
-			<Origin>CDS RECORD IDENTIFIER</Origin>
-		</Explanation>
 		<Explanation columnName="NHSNumber">
 			<Description>Patient NHS Number</Description>
 			<Origin>NHS NUMBER</Origin>

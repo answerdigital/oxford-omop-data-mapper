@@ -2,7 +2,6 @@
     <Sql>
 
 	select
-		distinct
 		max(apc.NHSNumber) as NHSNumber,
 		apc.HospitalProviderSpellNumber,
 
