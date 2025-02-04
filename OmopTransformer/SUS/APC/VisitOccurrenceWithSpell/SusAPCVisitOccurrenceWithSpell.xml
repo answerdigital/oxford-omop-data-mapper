@@ -3,24 +3,23 @@
 
 	select
 		distinct
-		apc.NHSNumber,
+		max(apc.NHSNumber) as NHSNumber,
 		apc.HospitalProviderSpellNumber,
-		apc.GeneratedRecordIdentifier,
 
 		9201 as VisitOccurrenceConceptId,  -- "inpatient visit"
 		32818 as VisitTypeConceptId,
 
-		coalesce(apc.StartDateConsultantEpisode, apc.StartDateHospitalProviderSpell, apc.CDSActivityDate) as VisitStartDate,
-		coalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,
-		coalesce(apc.EndDateConsultantEpisode, apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate) as VisitEndDate,
-		coalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,
+		coalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,
+		coalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,
+		coalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,
+		coalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,
 
-		apc.SourceOfAdmissionHospitalProviderSpell,
-		apc.DischargeDestinationHospitalProviderSpell
+		max(apc.SourceOfAdmissionHospitalProviderSpell) as SourceOfAdmissionHospitalProviderSpell,
+		max(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationHospitalProviderSpell
 
 	from omop_staging.sus_APC apc
-	where apc.UpdateType = 9
-		and apc.NHSNumber is not null
+	where apc.NHSNumber is not null
+	group by HospitalProviderSpellNumber
 
 	</Sql>
 
@@ -54,11 +53,6 @@
 		<Explanation columnName="EpisodeEndTime">
 			<Description>The latest episode end time for the spell, or midnight if none are specified.</Description>
 			<Origin>END TIME (EPISODE)</Origin>
-		</Explanation>
-		
-		<Explanation columnName="GeneratedRecordIdentifier">
-			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
-			<Origin>CDS RECORD IDENTIFIER</Origin>
 		</Explanation>
 
 		<Explanation columnName="VisitOccurrenceConceptId">

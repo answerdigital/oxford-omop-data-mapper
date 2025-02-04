@@ -1,21 +1,9 @@
 ﻿<Query>
     <Sql>
 
-	with SpellRowCounts as (
-		select 
-			NHSNumber,
-			HospitalProviderSpellNumber
-		from omop_staging.sus_APC
-		where NHSNumber is not null
-		group by NHSNumber, HospitalProviderSpellNumber
-		having count(*) > 1
-	)
-
 	select
-		distinct
 		apc.NHSNumber,
 		apc.HospitalProviderSpellNumber,
-		apc.GeneratedRecordIdentifier,
 
 		9201 as VisitOccurrenceConceptId,  -- "inpatient visit"
 		32818 as VisitTypeConceptId,
@@ -29,19 +17,11 @@
 		apc.DischargeDestinationHospitalProviderSpell
 
 	from omop_staging.sus_APC apc
-	inner join SpellRowCounts src 
-		on apc.NHSNumber = src.NHSNumber
-		and apc.HospitalProviderSpellNumber = src.HospitalProviderSpellNumber
-	where apc.UpdateType = 9
-		and apc.NHSNumber is not null
-		
+	where apc.NHSNumber is not null
+
 	</Sql>
 
 	<Explanations>
-		<Explanation columnName="GeneratedRecordIdentifier">
-			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
-			<Origin>CDS RECORD IDENTIFIER</Origin>
-		</Explanation>
 		<Explanation columnName="NHSNumber">
 			<Description>Patient NHS Number</Description>
 			<Origin>NHS NUMBER</Origin>
