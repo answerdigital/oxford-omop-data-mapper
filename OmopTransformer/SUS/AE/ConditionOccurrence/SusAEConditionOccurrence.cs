@@ -9,11 +9,11 @@ internal class SusAEConditionOccurrence : OmopConditionOccurrence<SusAECondition
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? nhs_number { get; set; }
 
-    // [Transform(typeof(Icd10StandardNonStandardSelector), nameof(Source.AccidentAndEmergencyDiagnosis))]
-    // public override int? condition_source_concept_id { get; set; }
+    [Transform(typeof(NhsAEDiagnosisLookup), nameof(Source.AccidentAndEmergencyDiagnosis))]
+    public override int? condition_source_concept_id { get; set; }
 
-    // [Transform(typeof(StandardConditionConceptSelector), useOmopTypeAsSource: true, nameof(condition_source_concept_id))]
-    // public override int? condition_concept_id { get; set; }
+    [Transform(typeof(StandardConditionConceptSelector), useOmopTypeAsSource: true, nameof(condition_source_concept_id))]
+    public override int? condition_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.CDSActivityDate))]
     public override DateTime? condition_start_date { get; set; }

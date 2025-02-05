@@ -9,8 +9,8 @@ internal class SusAEProcedureOccurrence : OmopProcedureOccurrence<SusAEProcedure
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? nhs_number { get; set; }
 
-    // [Transform(typeof(StandardProcedureConceptSelector), useOmopTypeAsSource: true, nameof(procedure_source_concept_id))]
-    // public override int? procedure_concept_id { get; set; }
+    [Transform(typeof(StandardProcedureConceptSelector), useOmopTypeAsSource: true, nameof(procedure_source_concept_id))]
+    public override int? procedure_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
     public override DateTime? procedure_date { get; set; }
@@ -29,6 +29,9 @@ internal class SusAEProcedureOccurrence : OmopProcedureOccurrence<SusAEProcedure
 
     [CopyValue(nameof(Source.PrimaryProcedure))]
     public override string? procedure_source_value { get; set; }
+
+    [Transform(typeof(NhsAETreatmentLookup), nameof(Source.PrimaryProcedure))]
+    public override int? procedure_source_concept_id { get; set; }
 
     [CopyValue(nameof(Source.GeneratedRecordIdentifier))]
     public override string? RecordConnectionIdentifier { get; set; }
