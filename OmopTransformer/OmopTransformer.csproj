@@ -390,7 +390,16 @@
     <None Update="SUS\AE\Death\SusAEDeath.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SUS\AE\Death\SusAEDeath.xml">
+    <None Update="SUS\AE\ProcedureOccurrence\SusAEProcedureOccurrence.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\AE\ConditionOccurrence\SusAEConditionOccurrence.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\AE\VisitDetails\SusAEVisitDetails.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\AE\VisitOccurrenceWithSpell\SusAEVisitOccurrenceWithSpell.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
