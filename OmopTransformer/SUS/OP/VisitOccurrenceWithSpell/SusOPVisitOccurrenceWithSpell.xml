@@ -6,7 +6,7 @@
 		op.NHSNumber,
 		op.SUSgeneratedspellID,
 
-		9201 as VisitOccurrenceConceptId,  -- "outpatient visit"
+		9202 as VisitOccurrenceConceptId,  -- "outpatient visit"
 		32818 as VisitTypeConceptId,
 
 		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date

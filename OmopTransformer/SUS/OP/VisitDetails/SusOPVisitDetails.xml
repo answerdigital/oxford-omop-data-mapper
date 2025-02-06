@@ -6,7 +6,7 @@
 			op.NHSNumber,
 			op.SUSgeneratedspellID,
 
-			9202 as VisitOccurrenceConceptId,    -- ""visit_concept_id""
+			9202 as VisitOccurrenceConceptId,  -- "outpatient visit"
 
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
 			coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
@@ -34,14 +34,6 @@
 
 		<Explanation columnName="VisitOccurrenceConceptId">
 			<Description>
-
-| Visit Occurrence Type (Info only)  | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |
-|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|
-| Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
-| Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
-| Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
-| Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |
-| Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
 			</Description>
 			<Origin>ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)</Origin>
 			<Origin>PATIENT CLASSIFICATION CODE</Origin>
