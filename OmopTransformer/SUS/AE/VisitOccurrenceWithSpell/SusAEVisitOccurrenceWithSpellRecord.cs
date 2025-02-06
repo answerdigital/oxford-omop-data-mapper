@@ -4,12 +4,11 @@ namespace OmopTransformer.SUS.AE.VisitOccurrenceWithSpell;
 
 [DataOrigin("SUS")]
 [Description("SUS AE VisitOccurrenceWithSpell")]
-[SourceQuery("SusOPVisitOccurrenceWithSpell.xml")]
+[SourceQuery("SusAEVisitOccurrenceWithSpell.xml")]
 internal class SusAEVisitOccurrenceWithSpellRecord
 {
     public string? NHSNumber { get; set; }
     public string? AEAttendanceNumber { get; set; }
-    public string? GeneratedRecordIdentifier { get; set; }
     public string? VisitStartDate { get; set; }
     public string? VisitStartTime { get; set; }
     public string? VisitEndDate { get; set; }

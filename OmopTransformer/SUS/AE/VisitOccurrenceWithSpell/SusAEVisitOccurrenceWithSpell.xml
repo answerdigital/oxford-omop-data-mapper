@@ -5,7 +5,6 @@
 		distinct
 			ae.NHSNumber,
 			ae.AEAttendanceNumber,
-			ae.GeneratedRecordIdentifier,
 
 			9203 as VisitOccurrenceConceptId,    -- ""Emergency Room Visit""
 			32818 as VisitTypeConceptId,
@@ -53,11 +52,6 @@
 		<Explanation columnName="VisitEndTime">
 			<Description>The latest episode end time for the spell, or midnight if none are specified.</Description>
 			<Origin>END TIME (EPISODE)</Origin>
-		</Explanation>
-		
-		<Explanation columnName="GeneratedRecordIdentifier">
-			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
-			<Origin>CDS RECORD IDENTIFIER</Origin>
 		</Explanation>
 
 		<Explanation columnName="VisitTypeConceptId">

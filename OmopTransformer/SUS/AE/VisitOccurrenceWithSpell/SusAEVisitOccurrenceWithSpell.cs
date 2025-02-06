@@ -12,9 +12,6 @@ internal class SusAEVisitOccurrenceWithSpell : OmopVisitOccurrence<SusAEVisitOcc
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? NhsNumber { get; set; }
 
-    [CopyValue(nameof(Source.GeneratedRecordIdentifier))]
-    public override string? RecordConnectionIdentifier { get; set; }
-
     [CopyValue(nameof(Source.AEAttendanceNumber))]
     public override string? HospitalProviderSpellNumber { get; set; }
 
