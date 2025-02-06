@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using OmopTransformer.SUS.AE.Death;
 using OmopTransformer.SUS.AE.Location;
-// using OmopTransformer.SUS.AE.ConditionOccurrence;
-// using OmopTransformer.SUS.AE.ProcedureOccurrence;
+using OmopTransformer.SUS.AE.ConditionOccurrence;
+using OmopTransformer.SUS.AE.ProcedureOccurrence;
 // using OmopTransformer.SUS.AE.Measurements.SusAEMeasurement;
-// using OmopTransformer.SUS.AE.VisitOccurrenceWithSpell;
+using OmopTransformer.SUS.AE.VisitOccurrenceWithSpell;
 // using OmopTransformer.SUS.AE.Observation.AnaestheticDuringLabourDelivery;
 // using OmopTransformer.SUS.AE.Observation.AnaestheticGivenPostLabourDelivery;
 // using OmopTransformer.SUS.AE.Observation.BirthWeight;
@@ -100,25 +100,25 @@ internal class SusAETransformer : Transformer
           "SUS AE Death",
           cancellationToken);
 
-        // await Transform<SusAEProcedureOccurrenceRecord, SusAEProcedureOccurrence>(
-        //   _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
-        //   "SUS AE Procedure Occurrence",
-        //   cancellationToken);
+        await Transform<SusAEProcedureOccurrenceRecord, SusAEProcedureOccurrence>(
+          _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+          "SUS AE Procedure Occurrence",
+          cancellationToken);
 
-        // await Transform<SusAEConditionOccurrenceRecord, SusAEConditionOccurrence>(
-        //   _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
-        //   "SUS AE Conditon Occurrence",
-        //   cancellationToken);
+        await Transform<SusAEConditionOccurrenceRecord, SusAEConditionOccurrence>(
+          _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+          "SUS AE Conditon Occurrence",
+          cancellationToken);
 
         await Transform<SusAELocationRecord, SusAELocation>(
           _locationRecorder.InsertUpdateLocations,
           "SUS AE Location",
           cancellationToken);
 
-        // await Transform<SusAEVisitOccurrenceWithSpellRecord, SusAEVisitOccurrenceWithSpell>(
-        //   _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
-        //   "SUS AE VisitOccurrenceWithSpell",
-        //   cancellationToken);
+        await Transform<SusAEVisitOccurrenceWithSpellRecord, SusAEVisitOccurrenceWithSpell>(
+          _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
+          "SUS AE VisitOccurrenceWithSpell",
+          cancellationToken);
 
         // await Transform<SusAEAnaestheticDuringLabourDeliveryRecord, SusAEAnaestheticDuringLabourDelivery>(
         //   _observationRecorder.InsertUpdateObservations,
