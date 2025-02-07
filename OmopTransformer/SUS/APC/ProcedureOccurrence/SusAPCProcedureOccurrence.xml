@@ -20,12 +20,10 @@ where NHSNumber is not null
 			<Description>Patient NHS Number</Description>
 			<Origin>NHS NUMBER</Origin>
 		</Explanation>
-
 		<Explanation columnName="PrimaryProcedureDate">
 			<Description>Procedure Date.</Description>
 			<Origin>PROCEDURE DATE</Origin>
 		</Explanation>
-		
 		<Explanation columnName="PrimaryProcedure">
 			<Description>OPC4 Procedure code.</Description>
 			<Origin>PROCEDURE (OPCS)</Origin>

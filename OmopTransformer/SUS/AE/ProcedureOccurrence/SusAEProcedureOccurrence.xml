@@ -11,9 +11,6 @@
 			on AE.MessageId = p.MessageId
 	where NHSNumber is not null
 	</Sql>
-    <Explanation>
-		<OmopColumnExplanation columnName="PrimaryProcedure"></OmopColumnExplanation>
-	</Explanation>
 	<Explanations>
 		<Explanation columnName="GeneratedRecordIdentifier">
 			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
@@ -23,16 +20,16 @@
 			<Description>Patient NHS Number</Description>
 			<Origin>NHS NUMBER</Origin>
 		</Explanation>
-		<Explanation columnName="CDSActivityDate">
-			<Description>Event date</Description>
-			<Origin>CDS ACTIVITY DATE</Origin>
+		<Explanation columnName="PrimaryProcedureDate">
+			<Description>Procedure Date.</Description>
+			<Origin>PROCEDURE DATE</Origin>
 		</Explanation>
 		<Explanation columnName="PrimaryProcedure">
 			<Description>
-				ACCIDENT AND EMERGENCY TREATMENT is a six character code, comprising:
-					Condition	n2 (see Treatment Table below)
-					Sub-Analysis	n1 (see Sub-analysis Table below)
-					Local use	up to an3
+			ACCIDENT AND EMERGENCY TREATMENT is a six character code, comprising:
+				Condition	n2 (see Treatment Table below)
+				Sub-Analysis	n1 (see Sub-analysis Table below)
+				Local use	up to an3
 			</Description>
 			<Origin>ACCIDENT and EMERGENCY CLINICAL CODES</Origin>
 		</Explanation>
