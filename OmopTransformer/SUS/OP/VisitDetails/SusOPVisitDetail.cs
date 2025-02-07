@@ -15,9 +15,6 @@ internal class SusOPVisitDetail : OmopVisitDetail<SusOPVisitDetailsRecord>
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? nhs_number { get; set; }
 
-    [CopyValue(nameof(Source.GeneratedRecordIdentifier))]
-    public override string? RecordConnectionIdentifier { get; set; }
-
     [CopyValue(nameof(Source.SUSgeneratedspellID))]
     public override string? HospitalProviderSpellNumber { get; set; }
 
@@ -38,5 +35,8 @@ internal class SusOPVisitDetail : OmopVisitDetail<SusOPVisitDetailsRecord>
 
     [CopyValue(nameof(Source.VisitTypeConceptId))]
     public override int? visit_detail_type_concept_id { get; set; }
+
+    [CopyValue(nameof(Source.SourceofAdmissionCode))]
+    public override string? admitted_from_source_value { get; set; }
 
 }

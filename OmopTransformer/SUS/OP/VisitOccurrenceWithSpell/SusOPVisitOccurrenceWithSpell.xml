@@ -12,7 +12,9 @@
 		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
 		coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
 		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
-		null as VisitEndTime
+		null as VisitEndTime,
+
+		op.SourceofReferralForOutpatients as SourceofAdmissionCode
 
 	from omop_staging.sus_OP op
 	where op.UpdateType = 9
@@ -66,5 +68,11 @@
 			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
 			<Origin>PATIENT CLASSIFICATION CODE</Origin>
 		</Explanation>
+
+		<Explanation columnName="SourceofAdmissionCode">
+			<Description>Admission Source.</Description>
+			<Origin>ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+
 	</Explanations>
 </Query>

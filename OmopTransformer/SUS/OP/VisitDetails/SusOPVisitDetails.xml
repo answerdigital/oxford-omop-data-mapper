@@ -14,7 +14,7 @@
 			null as VisitEndTime,
 
 			32818 as VisitTypeConceptId,
-			op.SourceofReferralForOutpatients
+			op.SourceofReferralForOutpatients as SourceofAdmissionCode
 
 	from omop_staging.sus_OP op
 	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
@@ -72,5 +72,11 @@
 			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
 			<Origin>PATIENT CLASSIFICATION CODE</Origin>
 		</Explanation>
+
+		<Explanation columnName="SourceofAdmissionCode">
+			<Description>Admission Source.</Description>
+			<Origin>ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+
 	</Explanations>
 </Query>

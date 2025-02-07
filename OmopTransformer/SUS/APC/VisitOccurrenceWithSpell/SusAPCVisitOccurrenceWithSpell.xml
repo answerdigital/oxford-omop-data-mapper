@@ -13,8 +13,8 @@
 		coalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,
 		coalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,
 
-		max(apc.SourceOfAdmissionHospitalProviderSpell) as SourceOfAdmissionHospitalProviderSpell,
-		max(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationHospitalProviderSpell
+		max(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,
+		max(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode
 
 	from omop_staging.sus_APC apc
 	where apc.NHSNumber is not null
