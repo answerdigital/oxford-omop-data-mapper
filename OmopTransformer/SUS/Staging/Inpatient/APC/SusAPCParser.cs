@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using CsvHelper;
 
-namespace OmopTransformer.SUS.Staging.APC;
+namespace OmopTransformer.SUS.Staging.Inpatient.APC;
 
 internal class SusAPCParser : ISusAPCParser
 {

@@ -1,4 +1,4 @@
-﻿namespace OmopTransformer.SUS.Staging.APC;
+﻿namespace OmopTransformer.SUS.Staging.Inpatient.APC;
 
 public class SusAPCOpcsProcedure
 {
