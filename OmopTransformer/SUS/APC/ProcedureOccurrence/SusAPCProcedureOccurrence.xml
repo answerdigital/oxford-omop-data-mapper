@@ -11,11 +11,6 @@ from omop_staging.sus_APC apc
 		on apc.MessageId = p.MessageId
 where NHSNumber is not null
 	</Sql>
-    <Explanation>
-		<OmopColumnExplanation columnName="PrimaryProcedure"></OmopColumnExplanation>
-	</Explanation>
-
-
 	<Explanations>
 		<Explanation columnName="GeneratedRecordIdentifier">
 			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
