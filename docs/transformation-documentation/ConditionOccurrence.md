@@ -7,18 +7,18 @@ has_toc: false
 ---
 
 # ConditionOccurrence
-* [nhs_number]({% link oxford-omop-data-mapper/docs/transformation-documentation/ConditionOccurrence_nhs_number.md %})
-* [condition_source_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/ConditionOccurrence_condition_source_concept_id.md %})
-* [condition_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/ConditionOccurrence_condition_concept_id.md %})
-* [condition_start_date]({% link oxford-omop-data-mapper/docs/transformation-documentation/ConditionOccurrence_condition_start_date.md %})
-* [condition_start_datetime]({% link oxford-omop-data-mapper/docs/transformation-documentation/ConditionOccurrence_condition_start_datetime.md %})
-* [condition_end_date]({% link oxford-omop-data-mapper/docs/transformation-documentation/ConditionOccurrence_condition_end_date.md %})
-* [condition_end_datetime]({% link oxford-omop-data-mapper/docs/transformation-documentation/ConditionOccurrence_condition_end_datetime.md %})
-* [condition_source_value]({% link oxford-omop-data-mapper/docs/transformation-documentation/ConditionOccurrence_condition_source_value.md %})
-* [condition_type_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/ConditionOccurrence_condition_type_concept_id.md %})
-* [RecordConnectionIdentifier]({% link oxford-omop-data-mapper/docs/transformation-documentation/ConditionOccurrence_RecordConnectionIdentifier.md %})
-* [condition_status_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/ConditionOccurrence_condition_status_concept_id.md %})
-* [condition_status_source_value]({% link oxford-omop-data-mapper/docs/transformation-documentation/ConditionOccurrence_condition_status_source_value.md %})
+* [nhs_number]({% link docs/transformation-documentation/ConditionOccurrence_nhs_number.md %})
+* [condition_source_concept_id]({% link docs/transformation-documentation/ConditionOccurrence_condition_source_concept_id.md %})
+* [condition_concept_id]({% link docs/transformation-documentation/ConditionOccurrence_condition_concept_id.md %})
+* [condition_start_date]({% link docs/transformation-documentation/ConditionOccurrence_condition_start_date.md %})
+* [condition_start_datetime]({% link docs/transformation-documentation/ConditionOccurrence_condition_start_datetime.md %})
+* [condition_end_date]({% link docs/transformation-documentation/ConditionOccurrence_condition_end_date.md %})
+* [condition_end_datetime]({% link docs/transformation-documentation/ConditionOccurrence_condition_end_datetime.md %})
+* [condition_source_value]({% link docs/transformation-documentation/ConditionOccurrence_condition_source_value.md %})
+* [condition_type_concept_id]({% link docs/transformation-documentation/ConditionOccurrence_condition_type_concept_id.md %})
+* [RecordConnectionIdentifier]({% link docs/transformation-documentation/ConditionOccurrence_RecordConnectionIdentifier.md %})
+* [condition_status_concept_id]({% link docs/transformation-documentation/ConditionOccurrence_condition_status_concept_id.md %})
+* [condition_status_source_value]({% link docs/transformation-documentation/ConditionOccurrence_condition_status_source_value.md %})
 
 ## SusOPConditionOccurrence
 <a href="SusOPConditionOccurrence.svg" target="_blank"><img src="SusOPConditionOccurrence.svg" /></a>

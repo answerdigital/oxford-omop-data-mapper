@@ -116,7 +116,7 @@ internal class DocumentationRenderer
 
                 var fileName = $"{omopTarget.Key}_{name}.md";
 
-                omopTable.AppendLine($"* [{name}]({{% link oxford-omop-data-mapper/docs/transformation-documentation/{fileName} %}})");
+                omopTable.AppendLine($"* [{name}]({{% link docs/transformation-documentation/{fileName} %}})");
 
                 var stringBuilder = new StringBuilder();
 

@@ -7,17 +7,17 @@ has_toc: false
 ---
 
 # ProcedureOccurrence
-* [nhs_number]({% link oxford-omop-data-mapper/docs/transformation-documentation/ProcedureOccurrence_nhs_number.md %})
-* [procedure_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/ProcedureOccurrence_procedure_concept_id.md %})
-* [procedure_date]({% link oxford-omop-data-mapper/docs/transformation-documentation/ProcedureOccurrence_procedure_date.md %})
-* [procedure_datetime]({% link oxford-omop-data-mapper/docs/transformation-documentation/ProcedureOccurrence_procedure_datetime.md %})
-* [procedure_end_date]({% link oxford-omop-data-mapper/docs/transformation-documentation/ProcedureOccurrence_procedure_end_date.md %})
-* [procedure_end_datetime]({% link oxford-omop-data-mapper/docs/transformation-documentation/ProcedureOccurrence_procedure_end_datetime.md %})
-* [procedure_type_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/ProcedureOccurrence_procedure_type_concept_id.md %})
-* [procedure_source_value]({% link oxford-omop-data-mapper/docs/transformation-documentation/ProcedureOccurrence_procedure_source_value.md %})
-* [procedure_source_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/ProcedureOccurrence_procedure_source_concept_id.md %})
-* [RecordConnectionIdentifier]({% link oxford-omop-data-mapper/docs/transformation-documentation/ProcedureOccurrence_RecordConnectionIdentifier.md %})
-* [quantity]({% link oxford-omop-data-mapper/docs/transformation-documentation/ProcedureOccurrence_quantity.md %})
+* [nhs_number]({% link docs/transformation-documentation/ProcedureOccurrence_nhs_number.md %})
+* [procedure_concept_id]({% link docs/transformation-documentation/ProcedureOccurrence_procedure_concept_id.md %})
+* [procedure_date]({% link docs/transformation-documentation/ProcedureOccurrence_procedure_date.md %})
+* [procedure_datetime]({% link docs/transformation-documentation/ProcedureOccurrence_procedure_datetime.md %})
+* [procedure_end_date]({% link docs/transformation-documentation/ProcedureOccurrence_procedure_end_date.md %})
+* [procedure_end_datetime]({% link docs/transformation-documentation/ProcedureOccurrence_procedure_end_datetime.md %})
+* [procedure_type_concept_id]({% link docs/transformation-documentation/ProcedureOccurrence_procedure_type_concept_id.md %})
+* [procedure_source_value]({% link docs/transformation-documentation/ProcedureOccurrence_procedure_source_value.md %})
+* [procedure_source_concept_id]({% link docs/transformation-documentation/ProcedureOccurrence_procedure_source_concept_id.md %})
+* [RecordConnectionIdentifier]({% link docs/transformation-documentation/ProcedureOccurrence_RecordConnectionIdentifier.md %})
+* [quantity]({% link docs/transformation-documentation/ProcedureOccurrence_quantity.md %})
 
 ## SusOPProcedureOccurrence
 <a href="SusOPProcedureOccurrence.svg" target="_blank"><img src="SusOPProcedureOccurrence.svg" /></a>

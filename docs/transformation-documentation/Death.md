@@ -7,13 +7,13 @@ has_toc: false
 ---
 
 # Death
-* [NhsNumber]({% link oxford-omop-data-mapper/docs/transformation-documentation/Death_NhsNumber.md %})
-* [death_date]({% link oxford-omop-data-mapper/docs/transformation-documentation/Death_death_date.md %})
-* [death_datetime]({% link oxford-omop-data-mapper/docs/transformation-documentation/Death_death_datetime.md %})
-* [death_type_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/Death_death_type_concept_id.md %})
-* [cause_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/Death_cause_concept_id.md %})
-* [cause_source_value]({% link oxford-omop-data-mapper/docs/transformation-documentation/Death_cause_source_value.md %})
-* [cause_source_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/Death_cause_source_concept_id.md %})
+* [NhsNumber]({% link docs/transformation-documentation/Death_NhsNumber.md %})
+* [death_date]({% link docs/transformation-documentation/Death_death_date.md %})
+* [death_datetime]({% link docs/transformation-documentation/Death_death_datetime.md %})
+* [death_type_concept_id]({% link docs/transformation-documentation/Death_death_type_concept_id.md %})
+* [cause_concept_id]({% link docs/transformation-documentation/Death_cause_concept_id.md %})
+* [cause_source_value]({% link docs/transformation-documentation/Death_cause_source_value.md %})
+* [cause_source_concept_id]({% link docs/transformation-documentation/Death_cause_source_concept_id.md %})
 
 ## SusOPDeath
 <a href="SusOPDeath.svg" target="_blank"><img src="SusOPDeath.svg" /></a>

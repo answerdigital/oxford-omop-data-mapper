@@ -7,9 +7,9 @@ has_toc: false
 ---
 
 # CareSite
-* [care_site_name]({% link oxford-omop-data-mapper/docs/transformation-documentation/CareSite_care_site_name.md %})
-* [place_of_service_source_value]({% link oxford-omop-data-mapper/docs/transformation-documentation/CareSite_place_of_service_source_value.md %})
-* [place_of_service_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/CareSite_place_of_service_concept_id.md %})
+* [care_site_name]({% link docs/transformation-documentation/CareSite_care_site_name.md %})
+* [place_of_service_source_value]({% link docs/transformation-documentation/CareSite_place_of_service_source_value.md %})
+* [place_of_service_concept_id]({% link docs/transformation-documentation/CareSite_place_of_service_concept_id.md %})
 
 ## SusOPCareSite
 <a href="SusOPCareSite.svg" target="_blank"><img src="SusOPCareSite.svg" /></a>
