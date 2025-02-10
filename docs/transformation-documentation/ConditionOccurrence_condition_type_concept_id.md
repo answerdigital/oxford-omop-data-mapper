@@ -14,6 +14,10 @@ has_toc: false
 * Constant value set to `32818`. EHR administration record
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_type_concept_id%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
+### SUS Inpatient Condition Occurrence
+* Constant value set to `32818`. EHR administration record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_type_concept_id%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 * Constant value set to `32828`. `EHR episode record`
 

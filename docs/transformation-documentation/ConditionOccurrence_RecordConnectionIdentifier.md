@@ -27,6 +27,27 @@ has_toc: false
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20RecordConnectionIdentifier%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
+### SUS Inpatient Condition Occurrence
+* Value copied from `GeneratedRecordIdentifier`
+
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
+
+```sql
+	select
+		distinct
+			d.AccidentAndEmergencyDiagnosis,
+			ae.GeneratedRecordIdentifier,
+			ae.NHSNumber,
+			ae.CDSActivityDate
+	from omop_staging.sus_AE_diagnosis d
+		inner join omop_staging.sus_AE ae
+			on d.MessageId = ae.MessageId
+	where ae.NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20RecordConnectionIdentifier%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
 ### CDS Condition Occurrence
 * Value copied from `RecordConnectionIdentifier`
 

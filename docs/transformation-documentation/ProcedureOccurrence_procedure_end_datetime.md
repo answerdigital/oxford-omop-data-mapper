@@ -53,6 +53,28 @@ where NHSNumber is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_end_datetime%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
+### SUS AE Procedure Occurrence
+Source column  `PrimaryProcedureDate`.
+Converts text to dates.
+
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+
+```sql
+	select
+		distinct
+			ae.GeneratedRecordIdentifier,
+			ae.NHSNumber,
+			ae.CDSActivityDate as PrimaryProcedureDate,
+			p.AccidentAndEmergencyTreatment as PrimaryProcedure
+	from omop_staging.sus_AE ae
+		inner join omop_staging.sus_AE_treatment p
+			on AE.MessageId = p.MessageId
+	where NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_end_datetime%20field%20SUS%20AE%20Procedure%20Occurrence%20mapping){: .btn }
 ### CDS Procedure Occurrence
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.

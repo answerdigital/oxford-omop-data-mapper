@@ -1,0 +1,146 @@
+{
+  "omopTable": "ConditionOccurrence",
+  "origin": "SUS",
+  "omopColumns": [
+    {
+      "name": "nhs_number",
+      "operation_description": "Value copied from `NHSNumber`",
+      "dataSource": [
+        {
+          "name": "NHSNumber",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\td.AccidentAndEmergencyDiagnosis,\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate\n\tfrom omop_staging.sus_AE_diagnosis d\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton d.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "condition_source_concept_id",
+      "operation_description": "Accident and Emergency Diagnosis to SNOMED",
+      "dataSource": [
+        {
+          "name": "AccidentAndEmergencyDiagnosis",
+          "description": "\n\t\t\t\tACCIDENT AND EMERGENCY DIAGNOSIS is a six character code, comprising:\n\t\t\t\t\tDiagnosis Condition\tn2\n\t\t\t\t\tSub-Analysis\tn1\n\t\t\t\t\tACCIDENT AND EMERGENCY ANATOMICAL AREA\tn2\n\t\t\t\t\tACCIDENT AND EMERGENCY ANATOMICAL SIDE\n\t\t\t",
+          "origins": [
+            {
+              "origin": "PRIMARY DIAGNOSIS",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\td.AccidentAndEmergencyDiagnosis,\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate\n\tfrom omop_staging.sus_AE_diagnosis d\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton d.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\t",
+      "lookup_table_markdown": "\r\n\r\n|AccidentAndEmergencyDiagnosis|condition_source_concept_id|notes|\r\n|------|-----|-----|\r\n|01 02|428088000|Laceration of Head|\r\n|01 03|35933005|Laceration of Face|\r\n|01 07|35933005|Laceration of Mouth, Jaw, Teeth|\r\n|01 09|283364000|Laceration of Neck|\r\n|01 10|283367007|Laceration of Shoulder|\r\n|01 12|283369005|Laceration of Upper Arm|\r\n|01 13|283370006|Laceration of Elbow|\r\n|01 14|283371005|Laceration of Forearm|\r\n|01 16|284549007|Laceration of Hand|\r\n|01 17|35933005|Laceration of Digit|\r\n|01 22|35933005|Laceration of Chest|\r\n|01 24|283378004|Laceration of Abdomen|\r\n|01 25|35933005|Laceration of Back/buttocks|\r\n|01 26|35933005|Laceration of Ano/rectal|\r\n|01 30|283385000|Laceration of Thigh|\r\n|01 31|283386004|Laceration of Knee|\r\n|01 32|283387008|Laceration of Lower leg|\r\n|01 34|284551006|Laceration of Foot|\r\n|01 35|284552004|Laceration of Toe|\r\n|02 02|735645009|Contusion of Head|\r\n|02 03|125668004|Contusion of Face|\r\n|02 05|50228009|Contusion of Ear|\r\n|02 06|60897004|Contusion of Nose|\r\n|02 09|8513005|Contusion of Neck|\r\n|02 10|125667009|Contusion of Shoulder|\r\n|02 12|85636003|Contusion of Upper Arm|\r\n|02 13|91613004|Contusion of Elbow|\r\n|02 14|39812007|Contusion of Forearm|\r\n|02 15|48123002|Contusion of Wrist|\r\n|02 16|5662003|Contusion of Hand|\r\n|02 17|125667009|Contusion of Digit|\r\n|02 21|14992004|Contusion of Pelvis|\r\n|02 22|10050004|Contusion of Chest|\r\n|02 24|1873941000000104|Contusion of Abdomen|\r\n|02 25|125667009|Contusion of Back/buttocks|\r\n|02 26|125667009|Contusion of Ano/rectal|\r\n|02 28|44801007|Contusion of Hip|\r\n|02 30|84416003|Contusion of Thigh|\r\n|02 31|22878006|Contusion of Knee|\r\n|02 32|45613006|Contusion of Lower leg|\r\n|02 33|55042009|Contusion of Ankle|\r\n|02 34|74814004|Contusion of Foot|\r\n|02 35|58075000|Contusion of Toe|\r\n|02136|111721009|Contusion of Multiple Site|\r\n|03|19660004|Soft tissue inflammation|\r\n|03 10|19660004|Soft tissue inflammation of Shoulder|\r\n|03 22|19660004|Soft tissue inflammation of Chest|\r\n|03 24|19660004|Soft tissue inflammation of Abdomen|\r\n|03 27|19660004|Soft tissue inflammation of Genitalia|\r\n|03 28|19660004|Soft tissue inflammation of Hip|\r\n|04 01|82271004|Head injury of Brain|\r\n|04 02|82271004|Head injury of Head|\r\n|04 03|82271004|Head injury of Face|\r\n|04 04|82271004|Head injury of Eye|\r\n|04 07|82271004|Head injury of Mouth, Jaw, Teeth|\r\n|05 03|87642003|Dislocation of Face|\r\n|05 12|87642003|Dislocation of Upper Arm|\r\n|05 13|87642003|Dislocation of Elbow|\r\n|05 16|87642003|Dislocation of Hand|\r\n|05 17|87642003|Dislocation of Digit|\r\n|05 19|87642003|Dislocation of Thoracic|\r\n|05 21|87642003|Dislocation of Pelvis|\r\n|05 24|87642003|Dislocation of Abdomen|\r\n|05 31|87642003|Dislocation of Knee|\r\n|05 32|87642003|Dislocation of Lower leg|\r\n|05 34|210366009|Dislocation of Foot|\r\n|05 35|204629008|Dislocation of Toe|\r\n|05110|87642003|Dislocation of Shoulder|\r\n|05113|87642003|Dislocation of Elbow|\r\n|05115|833335001|Dislocation of Wrist|\r\n|05116|87642003|Dislocation of Hand|\r\n|05117|87642003|Dislocation of Digit|\r\n|05118|209054005|Dislocation of Cervical spine|\r\n|05128|87642003|Dislocation of Hip|\r\n|05131|87642003|Dislocation of Knee|\r\n|05133|87642003|Dislocation of Ankle|\r\n|05135|204629008|Dislocation of Toe|\r\n|05202|704013006|Open fracture of Head|\r\n|05203|397181002|Open fracture of Face|\r\n|05206|439987009|Open fracture of Nose|\r\n|05210|397181002|Open fracture of Shoulder|\r\n|05212|18336000|Open fracture of Upper Arm|\r\n|05213|10820261000119101|Open fracture of Elbow|\r\n|05214|91296001|Open fracture of Forearm|\r\n|05216|704013006|Open fracture of Hand|\r\n|05217|397181002|Open fracture of Digit|\r\n|05218|269070003|Open fracture of Cervical spine|\r\n|05221|15474008|Open fracture of Pelvis|\r\n|05222|397181002|Open fracture of Chest|\r\n|05225|397181002|Open fracture of Back/buttocks|\r\n|05230|361118003|Open fracture of Thigh|\r\n|05231|439987009|Open fracture of Knee|\r\n|05232|414942001|Open fracture of Lower leg|\r\n|05233|48187004|Open fracture of Ankle|\r\n|05234|367527001|Open fracture of Foot|\r\n|05235|439987009|Open fracture of Toe|\r\n|05302|704005005|Closed fracture of Head|\r\n|05303|69102005|Closed fracture of Face|\r\n|05306|423125000|Closed fracture of Nose|\r\n|05310|704210003|Closed fracture of Shoulder|\r\n|05312|36991002|Closed fracture of Upper Arm|\r\n|05313|10938001000119101|Closed fracture of Elbow|\r\n|05314|91419009|Closed fracture of Forearm|\r\n|05316|704005005|Closed fracture of Hand|\r\n|05317|423125000|Closed fracture of Digit|\r\n|05318|269062008|Closed fracture of Cervical spine|\r\n|05319|423125000|Closed fracture of Thoracic|\r\n|05320|423125000|Closed fracture of Lumbosacral spine|\r\n|05321|91037003|Closed fracture of Pelvis|\r\n|05322|423125000|Closed fracture of Chest|\r\n|05325|423125000|Closed fracture of Back/buttocks|\r\n|05328|359817006|Closed fracture of Hip|\r\n|05330|359817006|Closed fracture of Thigh|\r\n|05331|423125000|Closed fracture of Knee|\r\n|05332|413876003|Closed fracture of Lower leg|\r\n|05333|42188001|Closed fracture of Ankle|\r\n|05334|342070009|Closed fracture of Foot|\r\n|05335|423125000|Closed fracture of Toe|\r\n|05505|81723002|Amputation of Ear|\r\n|05507|81723002|Amputation of Mouth, Jaw, Teeth|\r\n|05517|81723002|Amputation of Digit|\r\n|06 10|3199001|Sprain of Shoulder|\r\n|06 13|384709000|Sprain of Elbow|\r\n|06 15|70704007|Sprain of Wrist|\r\n|06 16|87778004|Sprain of Hand|\r\n|06 17|384709000|Sprain of Digit|\r\n|06 18|384709000|Sprain of Cervical spine|\r\n|06 19|384709000|Sprain of Thoracic|\r\n|06 28|17883008|Sprain of Hip|\r\n|06 31|54888009|Sprain of Knee|\r\n|06 33|44465007|Sprain of Ankle|\r\n|06 34|49388007|Sprain of Foot|\r\n|06 35|12531000132101|Sprain of Toe|\r\n|07|312847008|Tendon injury|\r\n|07 09|312847008|Tendon injury of Neck|\r\n|07 10|312847008|Tendon injury of Shoulder|\r\n|07 12|312847008|Tendon injury of Upper Arm|\r\n|07 14|312847008|Tendon injury of Forearm|\r\n|07 15|312847008|Tendon injury of Wrist|\r\n|07 16|262971000|Tendon injury of Hand|\r\n|07 17|312847008|Tendon injury of Digit|\r\n|07 18|312847008|Tendon injury of Cervical spine|\r\n|07 20|312847008|Tendon injury of Lumbosacral spine|\r\n|07 30|312847008|Tendon injury of Thigh|\r\n|07 31|312847008|Tendon injury of Knee|\r\n|07 32|312847008|Tendon injury of Lower leg|\r\n|07 33|312847008|Tendon injury of Ankle|\r\n|07 34|312847008|Tendon injury of Foot|\r\n|07 35|312847008|Tendon injury of Toe|\r\n|09|57662003|Vascular injury|\r\n|10|125666000|Burns|\r\n|10 02|125666000|Burns of Head|\r\n|10 03|262582004|Burns of Face|\r\n|10 04|125666000|Burns of Eye|\r\n|10 08|284207003|Burns of Throat|\r\n|10 09|60713008|Burns of Neck|\r\n|10 10|57143002|Burns of Shoulder|\r\n|10 12|14261008|Burns of Upper Arm|\r\n|10 14|80827001|Burns of Forearm|\r\n|10 16|14893008|Burns of Hand|\r\n|10 17|125666000|Burns of Digit|\r\n|10 25|125666000|Burns of Back/buttocks|\r\n|10 26|125666000|Burns of Ano/rectal|\r\n|10 30|6132001|Burns of Thigh|\r\n|10 31|19684007|Burns of Knee|\r\n|10 32|37696000|Burns of Lower leg|\r\n|10 34|11980003|Burns of Foot|\r\n|10 35|88374002|Burns of Toe|\r\n|12|125670008|Foreign body|\r\n|12 05|125670008|Foreign body of Ear|\r\n|12 06|74699008|Foreign body of Nose|\r\n|12 08|125670008|Foreign body of Throat|\r\n|12 17|125670008|Foreign body of Digit|\r\n|12 26|125670008|Foreign body of Ano/rectal|\r\n|12 27|125670008|Foreign body of Genitalia|\r\n|12 36|125670008|Foreign body of Multiple Site|\r\n|14|75478009|Poisoning|\r\n|144|436585|Other, including alcohol|\r\n|14436|436585|Other, including alcohol of Multiple Site|\r\n|15|87970004|Near drowning|\r\n|16|105612003|Visceral injury|\r\n|16 22|105612003|Visceral injury of Chest|\r\n|17|40733004|Infectious Disease|\r\n|171|719951000000109|Notifiable disease|\r\n|172|40733004|Non-notifiable disease|\r\n|17208|40733004|Non-notifiable disease of Throat|\r\n|17234|40733004|Non-notifiable disease of Foot|\r\n|17236|40733004|Non-notifiable disease of Multiple Site|\r\n|18|275393007|Local infection|\r\n|18 23|76844004|Local infection of Breast|\r\n|18 36|76844004|Local infection of Multiple Site|\r\n|19|132797|Septicaemia|\r\n|201|428196007|Myocardial ischaemia & infarction|\r\n|202|441545004|Other non-ischaemia|\r\n|20236|441545004|Other non-ischaemia of Multiple Site|\r\n|21|230690007|Cerebro-vascular condition|\r\n|21 02|230690007|Cerebro-vascular condition of Head|\r\n|22|27550009|Other vascular condition|\r\n|22 19|27550009|Other vascular condition of Thoracic|\r\n|22 24|27550009|Other vascular condition of Abdomen|\r\n|23|57407000|Haematological|\r\n|24|87536007|Central Nervous System|\r\n|241|84757009|Epilepsy|\r\n|242|87536007|Other non-epilepsy|\r\n|24236|87536007|Other non-epilepsy of Multiple Site|\r\n|251|195967001|Bronchial asthma|\r\n|252|50043002|Other non-asthma|\r\n|25222|50043002|Other non-asthma of Chest|\r\n|26|24813008|Gastrointestinal condition|\r\n|26 08|24813008|Gastrointestinal condition of Throat|\r\n|26 24|24813008|Gastrointestinal condition of Abdomen|\r\n|261|74474003|Haemorrhage|\r\n|262|116290004|Acute abdominal pain|\r\n|26324|24813008|Other of Abdomen|\r\n|27|251956004|Urological|\r\n|27 27|251956004|Urological of Genitalia|\r\n|28|1078831000000107|Obstetric|\r\n|28 27|1078831000000107|Obstetric of Genitalia|\r\n|29|1078831000000107|Gynaecological|\r\n|29 21|1078831000000107|Gynaecological of Pelvis|\r\n|29 29|1078831000000107|Gynaecological of Groin|\r\n|30|309048008|Diabetes|\r\n|301|73211009|Diabetic|\r\n|302|309048008|Other non-diabetic|\r\n|31|95320005|Dermatological|\r\n|32|781474001|Allergy|\r\n|33|128234004|Facio-maxillary|\r\n|33 02|128234004|Facio-maxillary of Head|\r\n|33 07|128234004|Facio-maxillary of Mouth, Jaw, Teeth|\r\n|34|232208008|Ear, Nose & Throat|\r\n|34 05|232208008|Ear, Nose & Throat of Ear|\r\n|34 06|232208008|Ear, Nose & Throat of Nose|\r\n|34 08|232208008|Ear, Nose & Throat of Throat|\r\n|35|74732009|Mental disorder|\r\n|36 04|371409005|Ophthalmological of Eye|\r\n|37|162218007|Social problem|\r\n|38|0|Diagnosis not classifiable|\r\n|39|0|Nothing abnormal detected|\r\n\r\nNotes\r\n* [ACCIDENT and EMERGENCY CLINICAL CODES](https://v2.datadictionary.nhs.uk/web_site_content/pages/codes/administrative_codes/a_amp_e_diagnosis_tables.asp@shownav=1.html)\r\n* [OMOP Conditions](https://athena.ohdsi.org/search-terms/terms?standardConcept=Standard&vocabulary=SNOMED&invalidReason=Valid&conceptClass=Clinical+Finding&conceptClass=Disorder&page=1&pageSize=15&query=)\r\n"
+    },
+    {
+      "name": "condition_concept_id",
+      "operation_description": "Maps concepts to standard valid concepts in the `condition` domain.",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "condition_start_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "CDSActivityDate",
+          "description": "Event date",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\td.AccidentAndEmergencyDiagnosis,\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate\n\tfrom omop_staging.sus_AE_diagnosis d\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton d.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "condition_start_datetime",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "CDSActivityDate",
+          "description": "Event date",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\td.AccidentAndEmergencyDiagnosis,\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate\n\tfrom omop_staging.sus_AE_diagnosis d\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton d.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "condition_end_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "CDSActivityDate",
+          "description": "Event date",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\td.AccidentAndEmergencyDiagnosis,\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate\n\tfrom omop_staging.sus_AE_diagnosis d\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton d.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "condition_end_datetime",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "CDSActivityDate",
+          "description": "Event date",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\td.AccidentAndEmergencyDiagnosis,\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate\n\tfrom omop_staging.sus_AE_diagnosis d\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton d.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "condition_type_concept_id",
+      "operation_description": "Constant value set to `32818`. EHR administration record",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "RecordConnectionIdentifier",
+      "operation_description": "Value copied from `GeneratedRecordIdentifier`",
+      "dataSource": [
+        {
+          "name": "GeneratedRecordIdentifier",
+          "description": "CDS specific identifier that binds multiple CDS messages together.",
+          "origins": [
+            {
+              "origin": "CDS RECORD IDENTIFIER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\td.AccidentAndEmergencyDiagnosis,\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate\n\tfrom omop_staging.sus_AE_diagnosis d\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton d.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\t",
+      "lookup_table_markdown": null
+    }
+  ]
+}

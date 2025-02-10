@@ -6,6 +6,36 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # admitted_from_source_value
+### SUS OP VisitOccurrenceWithSpell
+* Value copied from `SourceofAdmissionCode`
+
+* `SourceofAdmissionCode` Admission Source. [ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)
+
+```sql
+	select
+		distinct
+		op.NHSNumber,
+		op.SUSgeneratedspellID,
+
+		9202 as VisitOccurrenceConceptId,  -- "outpatient visit"
+		32818 as VisitTypeConceptId,
+
+		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
+		coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
+		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
+		null as VisitEndTime,
+
+		op.SourceofReferralForOutpatients as SourceofAdmissionCode
+
+	from omop_staging.sus_OP op
+	where op.UpdateType = 9
+		and op.NHSNumber is not null
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20admitted_from_source_value%20field%20SUS%20OP%20VisitOccurrenceWithSpell%20mapping){: .btn }
 ### SUS APC VisitOccurrenceWithSpell
 * Value copied from `SourceofAdmissionCode`
 
@@ -14,46 +44,23 @@ has_toc: false
 ```sql
 	select
 		max(apc.NHSNumber) as NHSNumber,
-		apc.HospitalProviderSpellNumber as HospitalProviderSpellNumber,
-		min (apc.StartDateHospitalProviderSpell) as EpisodeStartDate,
-		coalesce
-		(
-			min (apc.StartTimeEpisode),
-			'000000'
-		) as EpisodeStartTime,
-		coalesce
-		(
-			max (apc.DischargeDateFromHospitalProviderSpell),
-			max (apc.EndDateConsultantEpisode),
-			max (apc.CDSActivityDate)
-		) as EpisodeEndDate,
-		coalesce
-		(
-			max (apc.DischargeTimeHospitalProviderSpell),
-			'000000'
-		) as EpisodeEndTime,
-	case
-			when max(apc.AdmissionMethodHospitalProviderSpell) in ('21','24') and max(apc.PatientClassification) = 1 then 262
-			when max(apc.AdmissionMethodHospitalProviderSpell) in ('21','24') then 9203
-			when max(apc.PatientClassification) in (1) then 9201
-			when max(apc.LocationClassAtEpisodeStartDate) in ('02') then 581476
-			else 9202
-		end as VisitOccurrenceConceptId,    -- "visit_concept_id"
-		case
-			when max(apc.EndDateConsultantEpisode) is null and max(apc.DischargeDestinationHospitalProviderSpell) is null then 32220
-			else 32818
-		end as VisitTypeConceptId,
-		max (apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,
-		max (apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode
-	from [omop_staging].[sus_APC] apc
-		inner join dbo.Code c
-			on c.Code = apc.TreatmentFunctionCode
-	where apc.UpdateType = 9   -- New/Modification     (1 = Delete)
-		and apc.NHSNumber is not null
-		and c.CodeTypeId = 2 -- activity_treatment_function_code
-		and apc.HospitalProviderSpellNumber is not null
-	group by
-		apc.HospitalProviderSpellNumber
+		apc.HospitalProviderSpellNumber,
+
+		9201 as VisitOccurrenceConceptId,  -- "inpatient visit"
+		32818 as VisitTypeConceptId,
+
+		coalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,
+		coalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,
+		coalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,
+		coalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,
+
+		max(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,
+		max(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode
+
+	from omop_staging.sus_APC apc
+	where apc.NHSNumber is not null
+	group by HospitalProviderSpellNumber
+
 	
 ```
 

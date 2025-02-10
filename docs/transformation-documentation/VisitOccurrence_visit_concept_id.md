@@ -9,40 +9,27 @@ has_toc: false
 ### SUS OP VisitOccurrenceWithSpell
 * Value copied from `VisitOccurrenceConceptId`
 
-* `VisitOccurrenceConceptId` 
-
-| Visit Occurrence Type              | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |
-|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|
-| Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
-| Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
-| Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
-| Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |
-| Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
-			 [ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/admission_method_code__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html), [LOCATION CLASS](https://www.datadictionary.nhs.uk/data_elements/location_class.html)
+* `VisitOccurrenceConceptId`  [ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/admission_method_code__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html), [LOCATION CLASS](https://www.datadictionary.nhs.uk/data_elements/location_class.html)
 
 ```sql
 	select
+		distinct
 		op.NHSNumber,
 		op.SUSgeneratedspellID,
-		op.GeneratedRecordIdentifier,
 
-		coalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date
-		coalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time
-		coalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,
+		9202 as VisitOccurrenceConceptId,  -- "outpatient visit"
+		32818 as VisitTypeConceptId,
+
+		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
+		coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
+		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
 		null as VisitEndTime,
 
-		9202 as VisitOccurrenceConceptId,    -- ""visit_concept_id""
+		op.SourceofReferralForOutpatients as SourceofAdmissionCode
 
-		32818 as VisitTypeConceptId
-
-	from [omop_staging].[sus_OP] op
-	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
+	from omop_staging.sus_OP op
+	where op.UpdateType = 9
 		and op.NHSNumber is not null
-		and op.SUSgeneratedspellID is not null
-	group by
-		op.NHSNumber,
-		op.SUSgeneratedspellID,
-		GeneratedRecordIdentifier;
 
 	
 ```
@@ -61,56 +48,73 @@ has_toc: false
 | Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
 | Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |
 | Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
+
 			 [ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/admission_method_code__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html), [LOCATION CLASS](https://www.datadictionary.nhs.uk/data_elements/location_class.html)
 
 ```sql
 	select
 		max(apc.NHSNumber) as NHSNumber,
-		apc.HospitalProviderSpellNumber as HospitalProviderSpellNumber,
-		min (apc.StartDateHospitalProviderSpell) as EpisodeStartDate,
-		coalesce
-		(
-			min (apc.StartTimeEpisode),
-			'000000'
-		) as EpisodeStartTime,
-		coalesce
-		(
-			max (apc.DischargeDateFromHospitalProviderSpell),
-			max (apc.EndDateConsultantEpisode),
-			max (apc.CDSActivityDate)
-		) as EpisodeEndDate,
-		coalesce
-		(
-			max (apc.DischargeTimeHospitalProviderSpell),
-			'000000'
-		) as EpisodeEndTime,
-	case
-			when max(apc.AdmissionMethodHospitalProviderSpell) in ('21','24') and max(apc.PatientClassification) = 1 then 262
-			when max(apc.AdmissionMethodHospitalProviderSpell) in ('21','24') then 9203
-			when max(apc.PatientClassification) in (1) then 9201
-			when max(apc.LocationClassAtEpisodeStartDate) in ('02') then 581476
-			else 9202
-		end as VisitOccurrenceConceptId,    -- "visit_concept_id"
-		case
-			when max(apc.EndDateConsultantEpisode) is null and max(apc.DischargeDestinationHospitalProviderSpell) is null then 32220
-			else 32818
-		end as VisitTypeConceptId,
-		max (apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,
-		max (apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode
-	from [omop_staging].[sus_APC] apc
-		inner join dbo.Code c
-			on c.Code = apc.TreatmentFunctionCode
-	where apc.UpdateType = 9   -- New/Modification     (1 = Delete)
-		and apc.NHSNumber is not null
-		and c.CodeTypeId = 2 -- activity_treatment_function_code
-		and apc.HospitalProviderSpellNumber is not null
-	group by
-		apc.HospitalProviderSpellNumber
+		apc.HospitalProviderSpellNumber,
+
+		9201 as VisitOccurrenceConceptId,  -- "inpatient visit"
+		32818 as VisitTypeConceptId,
+
+		coalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,
+		coalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,
+		coalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,
+		coalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,
+
+		max(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,
+		max(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode
+
+	from omop_staging.sus_APC apc
+	where apc.NHSNumber is not null
+	group by HospitalProviderSpellNumber
+
 	
 ```
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_concept_id%20field%20SUS%20APC%20VisitOccurrenceWithSpell%20mapping){: .btn }
+### SUS AE VisitOccurrenceWithSpell
+* Value copied from `VisitOccurrenceConceptId`
+
+* `VisitOccurrenceConceptId` 
+
+| Visit Occurrence Type              | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |
+|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|
+| Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
+| Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
+| Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
+| Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |
+| Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
+			 [ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/admission_method_code__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html), [LOCATION CLASS](https://www.datadictionary.nhs.uk/data_elements/location_class.html)
+
+```sql
+	select  
+		distinct
+			ae.NHSNumber,
+			ae.AEAttendanceNumber,
+
+			9203 as VisitOccurrenceConceptId,    -- ""Emergency Room Visit""
+			32818 as VisitTypeConceptId,
+
+			coalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,
+			coalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,
+			coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EpisodeEndDate,
+			coalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EpisodeEndTime,
+
+			ae.AEArrivalMode as SourceofAdmissionCode,
+			ae.AEAttendanceDisposal as DischargeDestinationCode
+
+	from omop_staging.sus_AE ae
+	where ae.NHSNumber is not null
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_concept_id%20field%20SUS%20AE%20VisitOccurrenceWithSpell%20mapping){: .btn }
 ### CDS VisitOccurrenceWithSpell
 * Value copied from `VisitOccurrenceConceptId`
 

@@ -49,6 +49,32 @@ where NHSNumber is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_value%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
+### SUS AE Procedure Occurrence
+* Value copied from `PrimaryProcedure`
+
+* `PrimaryProcedure` 
+			ACCIDENT AND EMERGENCY TREATMENT is a six character code, comprising:
+				Condition	n2 (see Treatment Table below)
+				Sub-Analysis	n1 (see Sub-analysis Table below)
+				Local use	up to an3
+			 [ACCIDENT and EMERGENCY CLINICAL CODES]()
+
+```sql
+	select
+		distinct
+			ae.GeneratedRecordIdentifier,
+			ae.NHSNumber,
+			ae.CDSActivityDate as PrimaryProcedureDate,
+			p.AccidentAndEmergencyTreatment as PrimaryProcedure
+	from omop_staging.sus_AE ae
+		inner join omop_staging.sus_AE_treatment p
+			on AE.MessageId = p.MessageId
+	where NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_value%20field%20SUS%20AE%20Procedure%20Occurrence%20mapping){: .btn }
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 * Value copied from `ProcedureOpcsCode`
 

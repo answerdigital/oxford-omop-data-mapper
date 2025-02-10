@@ -51,6 +51,81 @@ where NHSNumber is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_concept_id%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
+### SUS AE Procedure Occurrence
+Source column  `PrimaryProcedure`.
+Accident and Emergency Treatment to SNOMED
+
+
+|PrimaryProcedure|procedure_source_concept_id|notes|
+|------|-----|-----|
+|01|4305581|Dressing|
+|02|4080807|Bandage|
+|03|4088727|Sutures|
+|04|42538257|Wound closure|
+|041|4074344|Wound closure - steristrips|
+|042|4141971|Wound closure - wound glue|
+|043|42538257|Wound closure - other|
+|05|4232206|Plaster of Paris|
+|06|4038879|Splint|
+|07|4052492|Prescription|
+|08|4032408|Removal foreign body|
+|091|4145658|Physiotherapy|
+|092|4080504|Physiotherapy - manipulation|
+|093|4145658|Physiotherapy - other |
+|10|4045714|Reduction|
+|11|4211374|Incision & Drainage|
+|12|4311035|Intravenous cannula|
+|13|4041656|Central line|
+|14|4046291|Lavage/Emesis|
+|15|4202832|Intubation|
+|16|44782942|Chest drain|
+|17|4074328|Urinary catheter|
+|18|4180456|Defibrillation/pacing|
+|19|4205502|Resuscitation|
+|20|46273093|Minor surgery|
+|21|4304206|Observation|
+|23|4160439|Anaesthesia|
+|231|4174669|General anaesthetic|
+|232|4303995|Local anaesthetic|
+|233|4117443|Regional block|
+|234|4140470|Entonox|
+|235|4219502|Sedation|
+|236|4160439|Anaesthesia - other|
+|24|4293740|Tetanus|
+|241|4293740|Tetanus - immune|
+|242|4293740|Tetanus toxoid course|
+|243|4293740|Tetanus toxoid booster|
+|244|4037789|Human immunoglobulin|
+|25|44790388|Nebuliser|
+|28|4085113|Parenteral thrombolysis|
+
+Notes
+* [ACCIDENT and EMERGENCY CLINICAL CODES](https://v2.datadictionary.nhs.uk/web_site_content/pages/codes/administrative_codes/a_amp_e_treatment_tables.asp@shownav=1.html)
+* [OMOP Procedures](https://athena.ohdsi.org/search-terms/terms?domain=Procedure&standardConcept=Standard&vocabulary=SNOMED&invalidReason=Valid&page=1&pageSize=15&query=)
+
+* `PrimaryProcedure` 
+			ACCIDENT AND EMERGENCY TREATMENT is a six character code, comprising:
+				Condition	n2 (see Treatment Table below)
+				Sub-Analysis	n1 (see Sub-analysis Table below)
+				Local use	up to an3
+			 [ACCIDENT and EMERGENCY CLINICAL CODES]()
+
+```sql
+	select
+		distinct
+			ae.GeneratedRecordIdentifier,
+			ae.NHSNumber,
+			ae.CDSActivityDate as PrimaryProcedureDate,
+			p.AccidentAndEmergencyTreatment as PrimaryProcedure
+	from omop_staging.sus_AE ae
+		inner join omop_staging.sus_AE_treatment p
+			on AE.MessageId = p.MessageId
+	where NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_concept_id%20field%20SUS%20AE%20Procedure%20Occurrence%20mapping){: .btn }
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 Source column  `ProcedureOpcsCode`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.

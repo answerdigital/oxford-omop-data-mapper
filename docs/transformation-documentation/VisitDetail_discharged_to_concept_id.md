@@ -7,11 +7,11 @@ has_toc: false
 ---
 # discharged_to_concept_id
 ### Sus Inptatient VisitDetails
-Source column  `DischargeDestinationHospitalProviderSpell`.
+Source column  `DischargeDestinationCode`.
 Lookup discharge destination concept.
 
 
-|DischargeDestinationHospitalProviderSpell|discharged_to_concept_id|notes|
+|DischargeDestinationCode|discharged_to_concept_id|notes|
 |------|-----|-----|
 |19|581476|Home Visit|
 |29|8602|Temporary Lodging|
@@ -38,77 +38,25 @@ Lookup discharge destination concept.
 Notes
 * [Discharge Destination](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
 
-* `DischargeDestinationHospitalProviderSpell` Discharge Destination Code [DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
-
 ```sql
-;with RecordConnectionIdentifierNHSNumberCombination as (
 	select
-		distinct 
-			apc.NHSNumber,
-			apc.GeneratedRecordIdentifier
+		apc.NHSNumber,
+		apc.HospitalProviderSpellNumber,
+
+		9201 as VisitOccurrenceConceptId,  -- "inpatient visit"
+		32818 as VisitTypeConceptId,
+
+		coalesce(apc.StartDateConsultantEpisode, apc.StartDateHospitalProviderSpell, apc.CDSActivityDate) as VisitStartDate,
+		coalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,
+		coalesce(apc.EndDateConsultantEpisode, apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate) as VisitEndDate,
+		coalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,
+
+		apc.SourceOfAdmissionHospitalProviderSpell as SourceofAdmissionCode,
+		apc.DischargeDestinationHospitalProviderSpell as DischargeDestinationCode
+
 	from omop_staging.sus_APC apc
-),
+	where apc.NHSNumber is not null
 
-RecordsWithVariableNhsNumber as (
-select
-	m1.GeneratedRecordIdentifier
-from RecordConnectionIdentifierNHSNumberCombination m1
-	inner join RecordConnectionIdentifierNHSNumberCombination m2
-		on m1.NHSNumber != m2.NHSNumber
-where m1.GeneratedRecordIdentifier = m2.GeneratedRecordIdentifier
-),
-
-VisitDetail as (
-	select  
-		distinct
-    
-			apc.NHSNumber,
-			apc.HospitalProviderSpellNumber,
-
-			case 
-				when apc.AdmissionMethodHospitalProviderSpell in ('21','24') and apc.PatientClassification = 1 then 262 
-				when apc.AdmissionMethodHospitalProviderSpell in ('21','24') then 9203
-				when apc.PatientClassification in (1) then 9201
-				when apc.LocationClassAtEpisodeStartDate in ('02') then 581476
-				else 9202
-			end as VisitOccurrenceConceptId,    -- ""visit_concept_id""
-
-			apc.GeneratedRecordIdentifier,
-
-			coalesce(apc.StartDateConsultantEpisode, apc.StartDateHospitalProviderSpell, apc.CDSActivityDate) as VisitStartDate,
-			coalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,  -- visit_start_time
-
-			coalesce(apc.EndDateConsultantEpisode, apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate) as VisitEndDate,
-			coalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,
-
-			32818 as VisitTypeConceptId,
-
-			case 
-				when apc.DischargeDateFromHospitalProviderSpell is null and apc.PatientClassification = 1 then 2
-				else 1
-			end as RowPriority,
-
-			apc.SourceOfAdmissionHospitalProviderSpell,
-			apc.DischargeDestinationHospitalProviderSpell
-	from omop_staging.sus_APC apc
-		inner join dbo.Code c 
-			on apc.TreatmentFunctionCode = c.Code
-	where apc.UpdateType = 9   -- New/Modification     (1 = Delete)
-		and apc.NHSNumber is not null
-		and c.CodeTypeId = 2 -- activity_treatment_function_code
-		and not exists (select * from RecordsWithVariableNhsNumber rwvnn where rwvnn.GeneratedRecordIdentifier = apc.GeneratedRecordIdentifier)
-), VisitDetailWithRank as (
-	select
-		*,
-		row_number() over (partition by GeneratedRecordIdentifier order by RowPriority asc) as RowRank
-	from VisitDetail
-)
-select
-	*
-from VisitDetailWithRank
-where RowRank = 1
-
-		
 	
 ```
 

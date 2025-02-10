@@ -6,38 +6,6 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # RecordConnectionIdentifier
-### Sus Outpatient VisitDetails
-* Value copied from `GeneratedRecordIdentifier`
-
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
-
-```sql
-	select  
-		distinct
-			op.NHSNumber,
-			op.SUSgeneratedspellID,
-
-			9202 as VisitOccurrenceConceptId,    -- ""visit_concept_id""
-
-			op.GeneratedRecordIdentifier,
-
-			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
-			coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
-			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
-			null as VisitEndTime,
-
-			32818 as VisitTypeConceptId,
-			op.SourceofReferralForOutpatients
-
-	from omop_staging.sus_OP op
-	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
-		and op.NHSNumber is not null
-
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20RecordConnectionIdentifier%20field%20Sus%20Outpatient%20VisitDetails%20mapping){: .btn }
 ### CDS VisitDetails
 * Value copied from `RecordConnectionIdentifier`
 

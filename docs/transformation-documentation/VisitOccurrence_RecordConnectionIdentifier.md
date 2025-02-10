@@ -6,40 +6,6 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # RecordConnectionIdentifier
-### SUS OP VisitOccurrenceWithSpell
-* Value copied from `GeneratedRecordIdentifier`
-
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
-
-```sql
-	select
-		op.NHSNumber,
-		op.SUSgeneratedspellID,
-		op.GeneratedRecordIdentifier,
-
-		coalesce(min(op.AppointmentDate), min(op.CDSActivityDate)) as VisitStartDate,  -- visit_start_date
-		coalesce(min(op.AppointmentTime), '000000') as VisitStartTime,  -- visit_start_time
-		coalesce(max(op.AppointmentDate), max(op.CDSActivityDate)) as VisitEndDate,
-		null as VisitEndTime,
-
-		9202 as VisitOccurrenceConceptId,    -- ""visit_concept_id""
-
-		32818 as VisitTypeConceptId
-
-	from [omop_staging].[sus_OP] op
-	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
-		and op.NHSNumber is not null
-		and op.SUSgeneratedspellID is not null
-	group by
-		op.NHSNumber,
-		op.SUSgeneratedspellID,
-		GeneratedRecordIdentifier;
-
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20RecordConnectionIdentifier%20field%20SUS%20OP%20VisitOccurrenceWithSpell%20mapping){: .btn }
 ### CDS VisitOccurrenceWithoutSpell
 * Value copied from `RecordConnectionIdentifier`
 
