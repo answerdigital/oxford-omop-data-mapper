@@ -30,10 +30,10 @@ internal class SusOPVisitDetail : OmopVisitDetail<SusOPVisitDetailsRecord>
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.VisitEndDate), nameof(Source.VisitEndTime))]
     public override DateTime? visit_detail_end_datetime { get; set; }
 
-    [CopyValue(nameof(Source.VisitOccurrenceConceptId))]
+    [ConstantValue(9202, "`Outpatient Visit`")] 
     public override int? visit_detail_concept_id { get; set; }
 
-    [CopyValue(nameof(Source.VisitTypeConceptId))]
+    [ConstantValue(32818, "`EHR administration record`")]
     public override int? visit_detail_type_concept_id { get; set; }
 
     [CopyValue(nameof(Source.SourceofAdmissionCode))]

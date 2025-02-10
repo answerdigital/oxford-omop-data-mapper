@@ -13,7 +13,5 @@ internal class SusOPVisitOccurrenceWithSpellRecord
     public string? VisitStartTime { get; set; }
     public string? VisitEndDate { get; set; }
     public string? VisitEndTime { get; set; }
-    public int? VisitOccurrenceConceptId { get; set; }
-    public int? VisitTypeConceptId { get; set; }
     public int? SourceofAdmissionCode { get; set; }
 }
