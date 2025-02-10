@@ -9,11 +9,11 @@ internal class SusOPVisitDetailsRecord
 {
     public string? NHSNumber { get; set; }
     public string? SUSgeneratedspellID { get; set; }
-    public string? GeneratedRecordIdentifier { get; set; }
     public string? VisitStartDate { get; set; }
     public string? VisitStartTime { get; set; }
     public string? VisitEndDate { get; set; }
     public string? VisitEndTime { get; set; }
     public int? VisitOccurrenceConceptId { get; set; }
     public int? VisitTypeConceptId { get; set; }
+    public int? SourceofAdmissionCode { get; set; }
 }
