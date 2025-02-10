@@ -7,17 +7,17 @@ has_toc: false
 ---
 
 # Observation
-* [nhs_number]({% link docs/transformation-documentation/Observation_nhs_number.md %})
-* [RecordConnectionIdentifier]({% link docs/transformation-documentation/Observation_RecordConnectionIdentifier.md %})
-* [observation_concept_id]({% link docs/transformation-documentation/Observation_observation_concept_id.md %})
-* [observation_date]({% link docs/transformation-documentation/Observation_observation_date.md %})
-* [observation_datetime]({% link docs/transformation-documentation/Observation_observation_datetime.md %})
-* [observation_type_concept_id]({% link docs/transformation-documentation/Observation_observation_type_concept_id.md %})
-* [value_as_string]({% link docs/transformation-documentation/Observation_value_as_string.md %})
-* [HospitalProviderSpellNumber]({% link docs/transformation-documentation/Observation_HospitalProviderSpellNumber.md %})
-* [value_as_number]({% link docs/transformation-documentation/Observation_value_as_number.md %})
-* [unit_concept_id]({% link docs/transformation-documentation/Observation_unit_concept_id.md %})
-* [observation_source_concept_id]({% link docs/transformation-documentation/Observation_observation_source_concept_id.md %})
+* [nhs_number]({% link oxford-omop-data-mapper/docs/transformation-documentation/Observation_nhs_number.md %})
+* [RecordConnectionIdentifier]({% link oxford-omop-data-mapper/docs/transformation-documentation/Observation_RecordConnectionIdentifier.md %})
+* [observation_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/Observation_observation_concept_id.md %})
+* [observation_date]({% link oxford-omop-data-mapper/docs/transformation-documentation/Observation_observation_date.md %})
+* [observation_datetime]({% link oxford-omop-data-mapper/docs/transformation-documentation/Observation_observation_datetime.md %})
+* [observation_type_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/Observation_observation_type_concept_id.md %})
+* [value_as_string]({% link oxford-omop-data-mapper/docs/transformation-documentation/Observation_value_as_string.md %})
+* [HospitalProviderSpellNumber]({% link oxford-omop-data-mapper/docs/transformation-documentation/Observation_HospitalProviderSpellNumber.md %})
+* [value_as_number]({% link oxford-omop-data-mapper/docs/transformation-documentation/Observation_value_as_number.md %})
+* [unit_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/Observation_unit_concept_id.md %})
+* [observation_source_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/Observation_observation_source_concept_id.md %})
 
 ## SusOPSourceOfReferralForOutpatients
 <a href="SusOPSourceOfReferralForOutpatients.svg" target="_blank"><img src="SusOPSourceOfReferralForOutpatients.svg" /></a>

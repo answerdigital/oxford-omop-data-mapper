@@ -7,13 +7,13 @@ has_toc: false
 ---
 
 # Location
-* [nhs_number]({% link docs/transformation-documentation/Location_nhs_number.md %})
-* [zip]({% link docs/transformation-documentation/Location_zip.md %})
-* [location_source_value]({% link docs/transformation-documentation/Location_location_source_value.md %})
-* [address_1]({% link docs/transformation-documentation/Location_address_1.md %})
-* [address_2]({% link docs/transformation-documentation/Location_address_2.md %})
-* [city]({% link docs/transformation-documentation/Location_city.md %})
-* [county]({% link docs/transformation-documentation/Location_county.md %})
+* [nhs_number]({% link oxford-omop-data-mapper/docs/transformation-documentation/Location_nhs_number.md %})
+* [zip]({% link oxford-omop-data-mapper/docs/transformation-documentation/Location_zip.md %})
+* [location_source_value]({% link oxford-omop-data-mapper/docs/transformation-documentation/Location_location_source_value.md %})
+* [address_1]({% link oxford-omop-data-mapper/docs/transformation-documentation/Location_address_1.md %})
+* [address_2]({% link oxford-omop-data-mapper/docs/transformation-documentation/Location_address_2.md %})
+* [city]({% link oxford-omop-data-mapper/docs/transformation-documentation/Location_city.md %})
+* [county]({% link oxford-omop-data-mapper/docs/transformation-documentation/Location_county.md %})
 
 ## SusOPLocation
 <a href="SusOPLocation.svg" target="_blank"><img src="SusOPLocation.svg" /></a>

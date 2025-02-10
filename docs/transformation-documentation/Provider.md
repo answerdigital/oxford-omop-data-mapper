@@ -7,9 +7,9 @@ has_toc: false
 ---
 
 # Provider
-* [provider_source_value]({% link docs/transformation-documentation/Provider_provider_source_value.md %})
-* [specialty_source_value]({% link docs/transformation-documentation/Provider_specialty_source_value.md %})
-* [specialty_concept_id]({% link docs/transformation-documentation/Provider_specialty_concept_id.md %})
+* [provider_source_value]({% link oxford-omop-data-mapper/docs/transformation-documentation/Provider_provider_source_value.md %})
+* [specialty_source_value]({% link oxford-omop-data-mapper/docs/transformation-documentation/Provider_specialty_source_value.md %})
+* [specialty_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/Provider_specialty_concept_id.md %})
 
 ## SusOPProvider
 <a href="SusOPProvider.svg" target="_blank"><img src="SusOPProvider.svg" /></a>

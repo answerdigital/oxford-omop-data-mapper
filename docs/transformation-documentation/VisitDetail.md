@@ -7,19 +7,19 @@ has_toc: false
 ---
 
 # VisitDetail
-* [nhs_number]({% link docs/transformation-documentation/VisitDetail_nhs_number.md %})
-* [HospitalProviderSpellNumber]({% link docs/transformation-documentation/VisitDetail_HospitalProviderSpellNumber.md %})
-* [visit_detail_start_date]({% link docs/transformation-documentation/VisitDetail_visit_detail_start_date.md %})
-* [visit_detail_start_datetime]({% link docs/transformation-documentation/VisitDetail_visit_detail_start_datetime.md %})
-* [visit_detail_end_date]({% link docs/transformation-documentation/VisitDetail_visit_detail_end_date.md %})
-* [visit_detail_end_datetime]({% link docs/transformation-documentation/VisitDetail_visit_detail_end_datetime.md %})
-* [visit_detail_concept_id]({% link docs/transformation-documentation/VisitDetail_visit_detail_concept_id.md %})
-* [visit_detail_type_concept_id]({% link docs/transformation-documentation/VisitDetail_visit_detail_type_concept_id.md %})
-* [admitted_from_source_value]({% link docs/transformation-documentation/VisitDetail_admitted_from_source_value.md %})
-* [RecordConnectionIdentifier]({% link docs/transformation-documentation/VisitDetail_RecordConnectionIdentifier.md %})
-* [admitted_from_concept_id]({% link docs/transformation-documentation/VisitDetail_admitted_from_concept_id.md %})
-* [discharged_to_source_value]({% link docs/transformation-documentation/VisitDetail_discharged_to_source_value.md %})
-* [discharged_to_concept_id]({% link docs/transformation-documentation/VisitDetail_discharged_to_concept_id.md %})
+* [nhs_number]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_nhs_number.md %})
+* [HospitalProviderSpellNumber]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_HospitalProviderSpellNumber.md %})
+* [visit_detail_start_date]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_visit_detail_start_date.md %})
+* [visit_detail_start_datetime]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_visit_detail_start_datetime.md %})
+* [visit_detail_end_date]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_visit_detail_end_date.md %})
+* [visit_detail_end_datetime]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_visit_detail_end_datetime.md %})
+* [visit_detail_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_visit_detail_concept_id.md %})
+* [visit_detail_type_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_visit_detail_type_concept_id.md %})
+* [admitted_from_source_value]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_admitted_from_source_value.md %})
+* [RecordConnectionIdentifier]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_RecordConnectionIdentifier.md %})
+* [admitted_from_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_admitted_from_concept_id.md %})
+* [discharged_to_source_value]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_discharged_to_source_value.md %})
+* [discharged_to_concept_id]({% link oxford-omop-data-mapper/docs/transformation-documentation/VisitDetail_discharged_to_concept_id.md %})
 
 ## SusOPVisitDetail
 <a href="SusOPVisitDetail.svg" target="_blank"><img src="SusOPVisitDetail.svg" /></a>
