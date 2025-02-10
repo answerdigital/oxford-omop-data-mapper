@@ -1,15 +1,15 @@
 ﻿<Query>
     <Sql>
-select
-	distinct
-		apc.GeneratedRecordIdentifier,
-		apc.NHSNumber,
-		p.ProcedureDateOPCS as PrimaryProcedureDate,
-		p.ProcedureOPCS as PrimaryProcedure
-from omop_staging.sus_APC apc
-	inner join omop_staging.sus_OPCSProcedure p
-		on apc.MessageId = p.MessageId
-where NHSNumber is not null
+	select
+		distinct
+			ae.GeneratedRecordIdentifier,
+			ae.NHSNumber,
+			ae.CDSActivityDate as PrimaryProcedureDate,
+			p.AccidentAndEmergencyTreatment as PrimaryProcedure
+	from omop_staging.sus_AE ae
+		inner join omop_staging.sus_AE_treatment p
+			on AE.MessageId = p.MessageId
+	where NHSNumber is not null
 	</Sql>
 	<Explanations>
 		<Explanation columnName="GeneratedRecordIdentifier">
@@ -25,8 +25,13 @@ where NHSNumber is not null
 			<Origin>PROCEDURE DATE</Origin>
 		</Explanation>
 		<Explanation columnName="PrimaryProcedure">
-			<Description>OPC4 Procedure code.</Description>
-			<Origin>PROCEDURE (OPCS)</Origin>
+			<Description>
+			ACCIDENT AND EMERGENCY TREATMENT is a six character code, comprising:
+				Condition	n2 (see Treatment Table below)
+				Sub-Analysis	n1 (see Sub-analysis Table below)
+				Local use	up to an3
+			</Description>
+			<Origin>ACCIDENT and EMERGENCY CLINICAL CODES</Origin>
 		</Explanation>
 	</Explanations>
 </Query>
