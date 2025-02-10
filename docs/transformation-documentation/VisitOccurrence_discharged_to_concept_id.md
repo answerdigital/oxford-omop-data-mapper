@@ -45,9 +45,6 @@ Notes
 		max(apc.NHSNumber) as NHSNumber,
 		apc.HospitalProviderSpellNumber,
 
-		9201 as VisitOccurrenceConceptId,  -- "inpatient visit"
-		32818 as VisitTypeConceptId,
-
 		coalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,
 		coalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,
 		coalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,

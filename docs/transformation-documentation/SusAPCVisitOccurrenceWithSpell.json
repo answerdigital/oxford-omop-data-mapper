@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\t9201 as VisitOccurrenceConceptId,  -- \"inpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
+      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\t9201 as VisitOccurrenceConceptId,  -- \"inpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
+      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -53,7 +53,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\t9201 as VisitOccurrenceConceptId,  -- \"inpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
+      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -81,7 +81,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\t9201 as VisitOccurrenceConceptId,  -- \"inpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
+      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -103,7 +103,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\t9201 as VisitOccurrenceConceptId,  -- \"inpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
+      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -135,59 +135,21 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\t9201 as VisitOccurrenceConceptId,  -- \"inpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
+      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "visit_concept_id",
-      "operation_description": "Value copied from `VisitOccurrenceConceptId`",
-      "dataSource": [
-        {
-          "name": "VisitOccurrenceConceptId",
-          "description": "\n\n| Visit Occurrence Type              | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |\n|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|\n| Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |\n| Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |\n| Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |\n| Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |\n| Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |\n\n\t\t\t",
-          "origins": [
-            {
-              "origin": "ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/admission_method_code__hospital_provider_spell_.html"
-            },
-            {
-              "origin": "PATIENT CLASSIFICATION CODE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html"
-            },
-            {
-              "origin": "LOCATION CLASS",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/location_class.html"
-            }
-          ]
-        }
-      ],
-      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\t9201 as VisitOccurrenceConceptId,  -- \"inpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
+      "operation_description": "Constant value set to `9201`. `Inpatient Visit`",
+      "dataSource": null,
+      "query": null,
       "lookup_table_markdown": null
     },
     {
       "name": "visit_type_concept_id",
-      "operation_description": "Value copied from `VisitTypeConceptId`",
-      "dataSource": [
-        {
-          "name": "VisitTypeConceptId",
-          "description": "For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record)",
-          "origins": [
-            {
-              "origin": "END DATE (EPISODE)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html"
-            },
-            {
-              "origin": "DISCHARGE DATE (HOSPITAL PROVIDER SPELL)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html"
-            },
-            {
-              "origin": "PATIENT CLASSIFICATION CODE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html"
-            }
-          ]
-        }
-      ],
-      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\t9201 as VisitOccurrenceConceptId,  -- \"inpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
+      "operation_description": "Constant value set to `32818`. `EHR administration record`",
+      "dataSource": null,
+      "query": null,
       "lookup_table_markdown": null
     },
     {
@@ -205,7 +167,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\t9201 as VisitOccurrenceConceptId,  -- \"inpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
+      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -223,7 +185,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\t9201 as VisitOccurrenceConceptId,  -- \"inpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
+      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
       "lookup_table_markdown": "\r\n\r\n|SourceofAdmissionCode|admitted_from_concept_id|notes|\r\n|------|-----|-----|\r\n|19|581476|Home Visit|\r\n|29|8602|Temporary Lodging|\r\n|37|38003619|Prison / Correctional Facility|\r\n|40|38003619|Prison / Correctional Facility|\r\n|42|38003619|Prison / Correctional Facility|\r\n|49|38004284|Psychiatric Hospital|\r\n|51|8717|Inpatient Hospital|\r\n|52|8650|Birthing Center|\r\n|53|8976|Psychiatric Residential Treatment Center|\r\n|55|8863|Skilled Nursing Facility|\r\n|56|38004306|Custodial Care Facility|\r\n|66|38004205|Foster Care Agency|\r\n|79|8650|Birthing Center|\r\n|87|8717|Inpatient Hospital|\r\n|88|8546|Hospice|\r\n|98||No mapping possible|\r\n|99||No mapping possible|\r\n\r\nNotes\r\n* [Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)\r\n"
     },
     {
@@ -241,7 +203,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\t9201 as VisitOccurrenceConceptId,  -- \"inpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
+      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
       "lookup_table_markdown": "\r\n\r\n|DischargeDestinationCode|discharged_to_concept_id|notes|\r\n|------|-----|-----|\r\n|19|581476|Home Visit|\r\n|29|8602|Temporary Lodging|\r\n|30|38004284|Psychiatric Hospital|\r\n|37|38003619|Prison / Correctional Facility|\r\n|38|38003619|Prison / Correctional Facility|\r\n|48|38004284|Psychiatric Hospital|\r\n|49|38004284|Psychiatric Hospital|\r\n|50|8971|Inpatient Psychiatric Facility|\r\n|51|8717|Inpatient Hospital|\r\n|52|8650|Birthing Center|\r\n|53|8976|Psychiatric Residential Treatment Center|\r\n|54|8676|Nursing Facility|\r\n|65|8676|Nursing Facility|\r\n|66|38004205|Foster Care Agency|\r\n|79||No mapping possible|\r\n|84|8971|Inpatient Psychiatric Facility|\r\n|85|8676|Nursing Facility|\r\n|87|8717|Inpatient Hospital|\r\n|88|8546|Hospice|\r\n|98||No mapping possible|\r\n|99||No mapping possible|\r\n\r\nNotes\r\n* [Discharge Destination](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)\r\n"
     },
     {
@@ -259,7 +221,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\t9201 as VisitOccurrenceConceptId,  -- \"inpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
+      "query": "\n\n\tselect\n\t\tmax(apc.NHSNumber) as NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\n\t\tcoalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,\n\t\tcoalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,\n\t\tcoalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,\n\t\tcoalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,\n\n\t\tmax(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,\n\t\tmax(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode\n\n\tfrom omop_staging.sus_APC apc\n\twhere apc.NHSNumber is not null\n\tgroup by HospitalProviderSpellNumber\n\n\t",
       "lookup_table_markdown": null
     }
   ]
