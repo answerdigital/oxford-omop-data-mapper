@@ -1,10 +1,8 @@
 title: Oxford Omop Data Mapper
 description: 
-remote_theme: just-the-docs/just-the-docs
+theme: just-the-docs
 
-url: https://answerdigital.github.io
-domain: answerdigital.github.io
-baseurl: /oxford-omop-data-mapper/
+url: https://answerdigital.github.io/oxford-omop-data-mapper/
 
 aux_links:
     GitHub: https://github.com/answerdigital/oxford-omop-data-mapper
