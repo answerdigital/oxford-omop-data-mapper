@@ -3,6 +3,7 @@ description:
 remote_theme: just-the-docs/just-the-docs
 
 url: https://answerdigital.github.io/oxford-omop-data-mapper/
+baseurl: /oxford-omop-data-mapper/
 
 aux_links:
     GitHub: https://github.com/answerdigital/oxford-omop-data-mapper
