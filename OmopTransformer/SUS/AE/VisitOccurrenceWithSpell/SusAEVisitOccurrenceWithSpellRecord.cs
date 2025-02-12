@@ -13,4 +13,6 @@ internal class SusAEVisitOccurrenceWithSpellRecord
     public string? VisitStartTime { get; set; }
     public string? VisitEndDate { get; set; }
     public string? VisitEndTime { get; set; }
+    public string? SourceofAdmissionCode { get; set; }
+    public string? DischargeDestinationCode { get; set; }
 }
