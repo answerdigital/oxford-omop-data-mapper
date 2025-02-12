@@ -34,10 +34,12 @@ using OmopTransformer.SUS.OP;
 using OmopTransformer.SUS.AE;
 using OmopTransformer.SUS.Staging.AE;
 using OmopTransformer.SUS.Staging.AE.Clearing;
-using OmopTransformer.SUS.Staging.APC;
-using OmopTransformer.SUS.Staging.APC.Clearing;
 using OmopTransformer.SUS.Staging.OP;
 using OmopTransformer.SUS.Staging.OP.Clearing;
+using OmopTransformer.SUS.Staging.Inpatient.APC;
+using OmopTransformer.SUS.Staging.Inpatient.Clearing;
+using OmopTransformer.SUS.Staging.Inpatient;
+using OmopTransformer.SUS.Staging.Inpatient.CCMDS;
 
 [assembly: InternalsVisibleTo("OmopTransformerTests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2, PublicKey=0024000004800000940000000602000000240000525341310004000001000100c547cac37abd99c8db225ef2f6c8a3602f3b3606cc9891605d02baa56104f4cfc0734aa39b93bf7852f7d9266654753cc297e7d2edfe0bac1cdcf9f717241550e0a7b191195b7667bb4f64bcb8e2121380fd1d9d46ad2d92d2d15605093924cceaf74c4861eff62abf69b9291ed0a340e113be11e6a7d3113e92484cf7045cc7")]
@@ -181,11 +183,15 @@ internal class Program
                     case "load":
                         builder.Services.AddTransient<ISusAPCInserter, SusApcInserter>();
                         builder.Services.AddTransient<ISusAPCParser, SusAPCParser>();
-                        builder.Services.AddTransient<ISusApcStaging, SusApcStaging>();
-                        builder.Services.AddHostedService<SusAPCLoadStagingHostedService>();
+                        builder.Services.AddTransient<ISusCCMDSInserter, SusCCMDSInserter>();
+                        builder.Services.AddTransient<ISusCCMDSParser, SusCCMDSParser>();
+
+                        builder.Services.AddTransient<ISusInpatientStaging, SusInpatientStaging>();
+
+                        builder.Services.AddHostedService<SusInpatientLoadStagingHostedService>();
                         break;
                     case "clear":
-                        builder.Services.AddHostedService<SusAPCClearStagingHostedService>();
+                        builder.Services.AddHostedService<SusInpatientClearStagingHostedService>();
                         break;
                     default:
                         await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
@@ -319,7 +325,7 @@ internal class Program
         builder.Services.AddTransient<ISactStagingSchema, SactStagingSchema>();
         builder.Services.AddTransient<ICdsStagingSchema, CdsStagingSchema>();
         builder.Services.AddTransient<IRtdsStagingSchema, RtdsStagingSchema>();
-        builder.Services.AddTransient<ISusAPCStagingSchema, SusAPCStagingSchema>();
+        builder.Services.AddTransient<ISusInpatientStagingSchema, SusInpatientStagingSchema>();
         builder.Services.AddTransient<ISusOPStagingSchema, SusOPStagingSchema>();
         builder.Services.AddSingleton<Icd10NonStandardResolver>();
         builder.Services.AddSingleton<Icd10StandardResolver>();
@@ -353,6 +359,9 @@ public class StagingOptions
 
     [Value(1, MetaName = "filename", Required = false, HelpText = "Filename to be processed (e.g., file.zip).")]
     public string? FileName { get; set; }
+
+    [Option("ccmds", Required = false, HelpText = "CCMDS filename for sus-apc transforms.")]
+    public string? CCMDSFileName { get; set; }
 }
 
 [Verb("transform", HelpText = "Handles transformation operations.")]

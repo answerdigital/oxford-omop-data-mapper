@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using OmopTransformer.SUS.Staging.APC.Clearing;
 
 namespace OmopTransformer.SUS.Staging.AE.Clearing;
 
 internal class SusAEStagingSchema : StagingSchema, ISusAEStagingSchema
 {
-    public SusAEStagingSchema(IOptions<Configuration> configuration, ILogger<SusAPCStagingSchema> logger) : base(configuration, logger)
+    public SusAEStagingSchema(IOptions<Configuration> configuration, ILogger<SusAEStagingSchema> logger) : base(configuration, logger)
     {
     }
 

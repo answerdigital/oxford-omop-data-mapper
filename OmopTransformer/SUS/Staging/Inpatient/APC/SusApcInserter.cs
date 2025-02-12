@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Data.SqlClient;
 
-namespace OmopTransformer.SUS.Staging.APC;
+namespace OmopTransformer.SUS.Staging.Inpatient.APC;
 
 internal class SusApcInserter : ISusAPCInserter
 {

@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace OmopTransformer.SUS.Staging.APC.Clearing;
+namespace OmopTransformer.SUS.Staging.Inpatient.Clearing;
 
-internal class SusAPCStagingSchema : StagingSchema, ISusAPCStagingSchema
+internal class SusInpatientStagingSchema : StagingSchema, ISusInpatientStagingSchema
 {
-    public SusAPCStagingSchema(IOptions<Configuration> configuration, ILogger<SusAPCStagingSchema> logger) : base(configuration, logger)
+    public SusInpatientStagingSchema(IOptions<Configuration> configuration, ILogger<SusInpatientStagingSchema> logger) : base(configuration, logger)
     {
     }
 
@@ -20,5 +20,8 @@ internal class SusAPCStagingSchema : StagingSchema, ISusAPCStagingSchema
         "if object_id('omop_staging.sus_Birth') is not null begin delete omop_staging.sus_Birth end;",
         "if object_id('omop_staging.sus_CriticalCare') is not null begin delete omop_staging.sus_CriticalCare end;",
         "if object_id('omop_staging.sus_APC') is not null begin delete omop_staging.sus_APC end;",
+        "if object_id('omop_staging.sus_CCMDS_CriticalCareActivityCode') is not null begin delete omop_staging.sus_CCMDS_CriticalCareActivityCode end",
+        "if object_id('omop_staging.sus_CCMDS_CriticalCareHighCostDrugs') is not null begin delete omop_staging.sus_CCMDS_CriticalCareHighCostDrugs end",
+        "if object_id('omop_staging.sus_CCMDS') is not null begin delete omop_staging.sus_CCMDS end",
     ];
 }

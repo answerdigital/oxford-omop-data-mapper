@@ -1,15 +1,15 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace OmopTransformer.SUS.Staging.APC;
+namespace OmopTransformer.SUS.Staging.Inpatient.CCMDS;
 
-internal class SusApcStaging : ISusApcStaging
+internal class SusCCMDSStaging : ISusCCMDSStaging
 {
-    private readonly ILogger<SusApcStaging> _logger;
+    private readonly ILogger<SusCCMDSStaging> _logger;
     private readonly StagingOptions _options;
-    private readonly ISusAPCInserter _susInserter;
-    private readonly ISusAPCParser _parser;
+    private readonly ISusCCMDSInserter _susInserter;
+    private readonly ISusCCMDSParser _parser;
 
-    public SusApcStaging(ILogger<SusApcStaging> logger, StagingOptions options, ISusAPCInserter susInserter, ISusAPCParser parser)
+    public SusCCMDSStaging(ILogger<SusCCMDSStaging> logger, StagingOptions options, ISusCCMDSInserter susInserter, ISusCCMDSParser parser)
     {
         _logger = logger;
         _options = options;
@@ -19,7 +19,7 @@ internal class SusApcStaging : ISusApcStaging
 
     public async Task StageData(CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Staging APC SUS data.");
+        _logger.LogInformation("Staging CCMDS SUS data.");
 
         if (!File.Exists(_options.FileName))
         {
@@ -30,7 +30,7 @@ internal class SusApcStaging : ISusApcStaging
 
         _logger.LogInformation("Reading {0}", _options.FileName);
 
-        IEnumerable<APCRecord> records = _parser.ReadFile(_options.FileName, cancellationToken);
+        IEnumerable<CCMDSRecord> records = _parser.ReadFile(_options.FileName, cancellationToken);
 
         _logger.LogInformation("Streaming records...");
 
