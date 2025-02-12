@@ -8,6 +8,8 @@ internal class AdmittedSourceLookup : ILookup
     public Dictionary<string, ValueWithNote> Mappings { get; } =
         new()
         {
+            { "1", new ValueWithNote("38004353", "Ambulance") },
+            { "2", new ValueWithNote("",  "No mapping possible") },
             { "19", new ValueWithNote("581476", "Home Visit") },
             { "29", new ValueWithNote("8602",  "Temporary Lodging") },
             { "37", new ValueWithNote("38003619",  "Prison / Correctional Facility") },
@@ -29,6 +31,7 @@ internal class AdmittedSourceLookup : ILookup
 
     public string[] ColumnNotes =>
     [
-        "[Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)"
+        "[Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)",
+        "[Admission Source A&E](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/attributes/accident_and_emergency_arrival_mode.html)"
     ];
 }
