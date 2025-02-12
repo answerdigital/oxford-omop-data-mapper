@@ -402,6 +402,15 @@
     <None Update="SUS\AE\VisitOccurrenceWithSpell\SusAEVisitOccurrenceWithSpell.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SUS\AE\Observation\SourceOfReferralForOutpatients\SusAESourceOfReferralForOutpatients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\AE\Observation\DiabeticPatient\SusAEDiabeticPatient.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\AE\Observation\AsthmaticPatient\SusAEAsthmaticPatient.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<ItemGroup>

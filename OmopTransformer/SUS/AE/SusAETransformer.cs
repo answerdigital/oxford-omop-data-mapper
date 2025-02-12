@@ -5,15 +5,10 @@ using OmopTransformer.SUS.AE.ConditionOccurrence;
 using OmopTransformer.SUS.AE.ProcedureOccurrence;
 // using OmopTransformer.SUS.AE.Measurements.SusAEMeasurement;
 using OmopTransformer.SUS.AE.VisitOccurrenceWithSpell;
-// using OmopTransformer.SUS.AE.Observation.AnaestheticDuringLabourDelivery;
-// using OmopTransformer.SUS.AE.Observation.AnaestheticGivenPostLabourDelivery;
-// using OmopTransformer.SUS.AE.Observation.BirthWeight;
-// using OmopTransformer.SUS.AE.Observation.CarerSupportIndicator;
-// using OmopTransformer.SUS.AE.Observation.GestationLengthLabourOnset;
-// using OmopTransformer.SUS.AE.Observation.NumberOfBabies;
-// using OmopTransformer.SUS.AE.Observation.TotalPreviousPregnancies;
-// using OmopTransformer.SUS.AE.Observation.SourceOfReferralForOutpatients;
-// using OmopTransformer.SUS.AE.VisitDetails;
+using OmopTransformer.SUS.AE.Observation.AsthmaticPatient;
+using OmopTransformer.SUS.AE.Observation.DiabeticPatient;
+using OmopTransformer.SUS.AE.Observation.SourceOfReferralForOutpatients;
+using OmopTransformer.SUS.AE.VisitDetails;
 // using OmopTransformer.SUS.AE.CareSite;
 // using OmopTransformer.SUS.AE.Provider;
 using OmopTransformer.Omop.ConditionOccurrence;
@@ -120,50 +115,25 @@ internal class SusAETransformer : Transformer
           "SUS AE VisitOccurrenceWithSpell",
           cancellationToken);
 
-        // await Transform<SusAEAnaestheticDuringLabourDeliveryRecord, SusAEAnaestheticDuringLabourDelivery>(
-        //   _observationRecorder.InsertUpdateObservations,
-        // "SUS AE AnaestheticDuringLabourDelivery",
-        //   cancellationToken);
+        await Transform<SusAEDiabeticPatientRecord, SusAEDiabeticPatient>(
+          _observationRecorder.InsertUpdateObservations,
+        "SUS AE DiabeticPatient",
+          cancellationToken);
 
-        // await Transform<SusAEAnaestheticGivenPostLabourDeliveryRecord, SusAEAnaestheticGivenPostLabourDelivery>(
-        //   _observationRecorder.InsertUpdateObservations,
-        //   "SUS AE AnaestheticGivenPostLabourDelivery",
-        //   cancellationToken);
+        await Transform<SusAEAsthmaticPatientRecord, SusAEAsthmaticPatient>(
+          _observationRecorder.InsertUpdateObservations,
+        "SUS AE AsthmaticPatient",
+          cancellationToken);
 
-        // await Transform<SusAEBirthWeightRecord, SusAEBirthWeight>(
-        //   _observationRecorder.InsertUpdateObservations,
-        //   "SUS AE BirthWeight",
-        //   cancellationToken);
+        await Transform<SusAESourceOfReferralForOutpatientsRecord, SusAESourceOfReferralForOutpatients>(
+          _observationRecorder.InsertUpdateObservations,
+          "SUS AE SourceOfReferralForOutpatients",
+          cancellationToken);
 
-        // await Transform<SusAECarerSupportIndicatorRecord, SusAECarerSupportIndicator>(
-        //   _observationRecorder.InsertUpdateObservations,
-        //   "SUS AE CarerSupportIndicator",
-        //   cancellationToken);
-
-        // await Transform<SusAEGestationLengthLabourOnsetRecord, SusAEGestationLengthLabourOnset>(
-        //   _observationRecorder.InsertUpdateObservations,
-        //   "SUS AE GestationLengthLabourOnset",
-        //   cancellationToken);
-
-        // await Transform<SusAENumberOfBabiesRecord, SusAENumberOfBabies>(
-        //   _observationRecorder.InsertUpdateObservations,
-        //   "SUS AE NumberOfBabies",
-        //   cancellationToken);
-
-        // await Transform<SusAETotalPreviousPregnanciesRecord, SusAETotalPreviousPregnancies>(
-        //   _observationRecorder.InsertUpdateObservations,
-        //   "SUS AE TotalPreviousPregnancies",
-        //   cancellationToken);
-
-        // await Transform<SusAESourceOfReferralForOutpatientsRecord, SusAESourceOfReferralForOutpatients>(
-        //   _observationRecorder.InsertUpdateObservations,
-        //   "SUS AE SourceOfReferralForOutpatients",
-        //   cancellationToken);
-
-        // await Transform<SusAEVisitDetailsRecord, SusAEVisitDetail>(
-        //   _visitDetailRecorder.InsertUpdateVisitDetail,
-        //   "SUS AE VisitDetail",
-        //   cancellationToken);
+        await Transform<SusAEVisitDetailsRecord, SusAEVisitDetail>(
+          _visitDetailRecorder.InsertUpdateVisitDetail,
+          "SUS AE VisitDetail",
+          cancellationToken);
 
         // await Transform<SusAECareSiteRecord, SusAECareSite>(
         //    _careSiteRecorder.InsertUpdateCareSite,
