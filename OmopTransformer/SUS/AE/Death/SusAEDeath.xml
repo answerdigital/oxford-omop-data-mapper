@@ -1,14 +1,15 @@
 ﻿<Query>
     <Sql>
-	select
-		NHSNumber as nhs_number,
-		coalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date
-	from [omop_staging].[sus_AE]
-	where ((ReferralToTreatmentPeriodStatus = 36) --PATIENT died before treatment
-		or (AEPatientGroup = 70)) -- PATIENT brought in dead
-		and (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)
-		and NHSNumber is not null
-	group by NHSNumber
+select
+	NHSNumber as nhs_number,
+	coalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date
+from [omop_staging].[sus_AE]
+where ((ReferralToTreatmentPeriodStatus = 36) --PATIENT died before treatment
+	or (AEPatientGroup = 70)
+	or (AEAttendanceDisposal = 10)) -- PATIENT brought in dead
+	and (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)
+	and NHSNumber is not null
+group by NHSNumber
 	</Sql>
 
 	<Explanations>
