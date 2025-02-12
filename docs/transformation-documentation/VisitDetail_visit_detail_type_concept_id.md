@@ -7,62 +7,11 @@ has_toc: false
 ---
 # visit_detail_type_concept_id
 ### Sus Outpatient VisitDetails
-* Value copied from `VisitTypeConceptId`
-
-* `VisitTypeConceptId` For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record) [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html)
-
-```sql
-	select  
-		distinct
-			op.NHSNumber,
-			op.SUSgeneratedspellID,
-
-			9202 as VisitOccurrenceConceptId,  -- "outpatient visit"
-
-			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
-			coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
-			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
-			null as VisitEndTime,
-
-			32818 as VisitTypeConceptId,
-			op.SourceofReferralForOutpatients as SourceofAdmissionCode
-
-	from omop_staging.sus_OP op
-	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
-		and op.NHSNumber is not null
-
-	
-```
-
+* Constant value set to `32818`. `EHR administration record`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_type_concept_id%20field%20Sus%20Outpatient%20VisitDetails%20mapping){: .btn }
 ### Sus Inptatient VisitDetails
-* Value copied from `VisitTypeConceptId`
-
-* `VisitTypeConceptId` For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record) [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html)
-
-```sql
-	select
-		apc.NHSNumber,
-		apc.HospitalProviderSpellNumber,
-
-		9201 as VisitOccurrenceConceptId,  -- "inpatient visit"
-		32818 as VisitTypeConceptId,
-
-		coalesce(apc.StartDateConsultantEpisode, apc.StartDateHospitalProviderSpell, apc.CDSActivityDate) as VisitStartDate,
-		coalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,
-		coalesce(apc.EndDateConsultantEpisode, apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate) as VisitEndDate,
-		coalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,
-
-		apc.SourceOfAdmissionHospitalProviderSpell as SourceofAdmissionCode,
-		apc.DischargeDestinationHospitalProviderSpell as DischargeDestinationCode
-
-	from omop_staging.sus_APC apc
-	where apc.NHSNumber is not null
-
-	
-```
-
+* Constant value set to `32818`. `EHR administration record`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_type_concept_id%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
 ### CDS VisitDetails

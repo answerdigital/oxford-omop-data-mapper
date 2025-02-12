@@ -18,9 +18,6 @@ Converts text to dates.
 		op.NHSNumber,
 		op.SUSgeneratedspellID,
 
-		9202 as VisitOccurrenceConceptId,  -- "outpatient visit"
-		32818 as VisitTypeConceptId,
-
 		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
 		coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
 		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
@@ -47,9 +44,6 @@ Converts text to dates.
 	select
 		max(apc.NHSNumber) as NHSNumber,
 		apc.HospitalProviderSpellNumber,
-
-		9201 as VisitOccurrenceConceptId,  -- "inpatient visit"
-		32818 as VisitTypeConceptId,
 
 		coalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,
 		coalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,
@@ -79,9 +73,6 @@ Converts text to dates.
 		distinct
 			ae.NHSNumber,
 			ae.AEAttendanceNumber,
-
-			9203 as VisitOccurrenceConceptId,    -- ""Emergency Room Visit""
-			32818 as VisitTypeConceptId,
 
 			coalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,
 			coalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,

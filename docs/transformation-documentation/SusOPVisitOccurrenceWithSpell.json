@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\t9202 as VisitOccurrenceConceptId,  -- \"outpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
+      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\t9202 as VisitOccurrenceConceptId,  -- \"outpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
+      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -53,7 +53,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\t9202 as VisitOccurrenceConceptId,  -- \"outpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
+      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -81,7 +81,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\t9202 as VisitOccurrenceConceptId,  -- \"outpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
+      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -103,7 +103,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\t9202 as VisitOccurrenceConceptId,  -- \"outpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
+      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -135,59 +135,21 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\t9202 as VisitOccurrenceConceptId,  -- \"outpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
+      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "visit_concept_id",
-      "operation_description": "Value copied from `VisitOccurrenceConceptId`",
-      "dataSource": [
-        {
-          "name": "VisitOccurrenceConceptId",
-          "description": "",
-          "origins": [
-            {
-              "origin": "ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/admission_method_code__hospital_provider_spell_.html"
-            },
-            {
-              "origin": "PATIENT CLASSIFICATION CODE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html"
-            },
-            {
-              "origin": "LOCATION CLASS",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/location_class.html"
-            }
-          ]
-        }
-      ],
-      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\t9202 as VisitOccurrenceConceptId,  -- \"outpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
+      "operation_description": "Constant value set to `9202`. `Outpatient Visit`",
+      "dataSource": null,
+      "query": null,
       "lookup_table_markdown": null
     },
     {
       "name": "visit_type_concept_id",
-      "operation_description": "Value copied from `VisitTypeConceptId`",
-      "dataSource": [
-        {
-          "name": "VisitTypeConceptId",
-          "description": "For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record)",
-          "origins": [
-            {
-              "origin": "END DATE (EPISODE)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html"
-            },
-            {
-              "origin": "DISCHARGE DATE (HOSPITAL PROVIDER SPELL)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html"
-            },
-            {
-              "origin": "PATIENT CLASSIFICATION CODE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html"
-            }
-          ]
-        }
-      ],
-      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\t9202 as VisitOccurrenceConceptId,  -- \"outpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
+      "operation_description": "Constant value set to `32818`. `EHR administration record`",
+      "dataSource": null,
+      "query": null,
       "lookup_table_markdown": null
     },
     {
@@ -205,7 +167,7 @@
           ]
         }
       ],
-      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\t9202 as VisitOccurrenceConceptId,  -- \"outpatient visit\"\n\t\t32818 as VisitTypeConceptId,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
+      "query": "\n\n\tselect\n\t\tdistinct\n\t\top.NHSNumber,\n\t\top.SUSgeneratedspellID,\n\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date\n\t\tcoalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time\n\t\tcoalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,\n\t\tnull as VisitEndTime,\n\n\t\top.SourceofReferralForOutpatients as SourceofAdmissionCode\n\n\tfrom omop_staging.sus_OP op\n\twhere op.UpdateType = 9\n\t\tand op.NHSNumber is not null\n\n\t",
       "lookup_table_markdown": null
     }
   ]

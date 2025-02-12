@@ -6,14 +6,11 @@
 			op.NHSNumber,
 			op.SUSgeneratedspellID,
 
-			9202 as VisitOccurrenceConceptId,  -- "outpatient visit"
-
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
 			coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
 			null as VisitEndTime,
 
-			32818 as VisitTypeConceptId,
 			op.SourceofReferralForOutpatients as SourceofAdmissionCode
 
 	from omop_staging.sus_OP op
@@ -30,14 +27,6 @@
 		<Explanation columnName="SUSgeneratedspellID">
 			<Description>System generated value spell id, this id is consistent across all records belonging to the same spell.</Description>
 			<Origin></Origin>
-		</Explanation>
-
-		<Explanation columnName="VisitOccurrenceConceptId">
-			<Description>
-			</Description>
-			<Origin>ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)</Origin>
-			<Origin>PATIENT CLASSIFICATION CODE</Origin>
-			<Origin>LOCATION CLASS</Origin>
 		</Explanation>
 
 		<Explanation columnName="VisitStartDate">
@@ -64,13 +53,6 @@
 			<Description>End time of the episode, if exists, else the spell discharge time, if exists, else the message date.</Description>
 			<Origin>DISCHARGE TIME (HOSPITAL PROVIDER SPELL)</Origin>
 			<Origin>END TIME (EPISODE)</Origin>
-		</Explanation>
-
-		<Explanation columnName="VisitTypeConceptId">
-			<Description>For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record)</Description>
-			<Origin>END DATE (EPISODE)</Origin>
-			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
-			<Origin>PATIENT CLASSIFICATION CODE</Origin>
 		</Explanation>
 
 		<Explanation columnName="SourceofAdmissionCode">

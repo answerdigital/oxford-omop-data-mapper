@@ -6,9 +6,6 @@
 			ae.NHSNumber,
 			ae.AEAttendanceNumber,
 
-			9203 as VisitOccurrenceConceptId,    -- ""Emergency Room Visit""
-			32818 as VisitTypeConceptId,
-
 			coalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,
 			coalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,
 			coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EpisodeEndDate,
@@ -53,29 +50,5 @@
 			<Description>The latest episode end time for the spell, or midnight if none are specified.</Description>
 			<Origin>END TIME (EPISODE)</Origin>
 		</Explanation>
-
-		<Explanation columnName="VisitTypeConceptId">
-			<Description>For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record)</Description>
-			<Origin>END DATE (EPISODE)</Origin>
-			<Origin>DISCHARGE DATE (HOSPITAL PROVIDER SPELL)</Origin>
-			<Origin>PATIENT CLASSIFICATION CODE</Origin>
-		</Explanation>
-
-		<Explanation columnName="VisitOccurrenceConceptId">
-			<Description>
-
-| Visit Occurrence Type              | Location Class Condition                                                                                                                                                                   | Patient Classification Condition | Admission Method Code Condition |
-|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|---------------------------------|
-| Emergency Room and Inpatient Visit | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
-| Emergency Room Visit               | Is either 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider) | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
-| Inpatient Visit                    | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is 1 (Ordinary admission)        | Is not 02 (Home Visit)          |
-| Home Visit                         | N/A                                                                                                                                                                                        | N/A                              | Is 02 (Home Visit)              |
-| Outpatient Visit                   | Is not 21 (Emergency Admission : Emergency Care Department or dental casualty department of the Health Care Provider) or 24 (Consultant Clinic of this or another Health Care Provider)    | Is not 1 (Ordinary admission)    | Is not 02 (Home Visit)          |
-			</Description>
-			<Origin>ADMISSION METHOD CODE (HOSPITAL PROVIDER SPELL)</Origin>
-			<Origin>PATIENT CLASSIFICATION CODE</Origin>
-			<Origin>LOCATION CLASS</Origin>
-		</Explanation>
-
 	</Explanations>
 </Query>

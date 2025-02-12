@@ -17,14 +17,11 @@ has_toc: false
 			op.NHSNumber,
 			op.SUSgeneratedspellID,
 
-			9202 as VisitOccurrenceConceptId,  -- "outpatient visit"
-
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
 			coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
 			null as VisitEndTime,
 
-			32818 as VisitTypeConceptId,
 			op.SourceofReferralForOutpatients as SourceofAdmissionCode
 
 	from omop_staging.sus_OP op
@@ -45,9 +42,6 @@ has_toc: false
 	select
 		apc.NHSNumber,
 		apc.HospitalProviderSpellNumber,
-
-		9201 as VisitOccurrenceConceptId,  -- "inpatient visit"
-		32818 as VisitTypeConceptId,
 
 		coalesce(apc.StartDateConsultantEpisode, apc.StartDateHospitalProviderSpell, apc.CDSActivityDate) as VisitStartDate,
 		coalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,

@@ -7,93 +7,15 @@ has_toc: false
 ---
 # visit_type_concept_id
 ### SUS OP VisitOccurrenceWithSpell
-* Value copied from `VisitTypeConceptId`
-
-* `VisitTypeConceptId` For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record) [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html)
-
-```sql
-	select
-		distinct
-		op.NHSNumber,
-		op.SUSgeneratedspellID,
-
-		9202 as VisitOccurrenceConceptId,  -- "outpatient visit"
-		32818 as VisitTypeConceptId,
-
-		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
-		coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
-		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
-		null as VisitEndTime,
-
-		op.SourceofReferralForOutpatients as SourceofAdmissionCode
-
-	from omop_staging.sus_OP op
-	where op.UpdateType = 9
-		and op.NHSNumber is not null
-
-	
-```
-
+* Constant value set to `32818`. `EHR administration record`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_type_concept_id%20field%20SUS%20OP%20VisitOccurrenceWithSpell%20mapping){: .btn }
 ### SUS APC VisitOccurrenceWithSpell
-* Value copied from `VisitTypeConceptId`
-
-* `VisitTypeConceptId` For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record) [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html)
-
-```sql
-	select
-		max(apc.NHSNumber) as NHSNumber,
-		apc.HospitalProviderSpellNumber,
-
-		9201 as VisitOccurrenceConceptId,  -- "inpatient visit"
-		32818 as VisitTypeConceptId,
-
-		coalesce(min(apc.StartDateConsultantEpisode), min(apc.StartDateHospitalProviderSpell), min(apc.CDSActivityDate)) as VisitStartDate,
-		coalesce(min(apc.StartTimeEpisode), min(apc.StartTimeHospitalProviderSpell), '000000') as VisitStartTime,
-		coalesce(max(apc.EndDateConsultantEpisode), max(apc.DischargeDateFromHospitalProviderSpell), max(apc.CDSActivityDate)) as VisitEndDate,
-		coalesce(max(apc.EndTimeEpisode), max(apc.DischargeTimeHospitalProviderSpell), '000000') as VisitEndTime,
-
-		max(apc.SourceOfAdmissionHospitalProviderSpell) as SourceofAdmissionCode,
-		max(apc.DischargeDestinationHospitalProviderSpell) as DischargeDestinationCode
-
-	from omop_staging.sus_APC apc
-	where apc.NHSNumber is not null
-	group by HospitalProviderSpellNumber
-
-	
-```
-
+* Constant value set to `32818`. `EHR administration record`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_type_concept_id%20field%20SUS%20APC%20VisitOccurrenceWithSpell%20mapping){: .btn }
 ### SUS AE VisitOccurrenceWithSpell
-* Value copied from `VisitTypeConceptId`
-
-* `VisitTypeConceptId` For an Inpatient who has not been discharged, `32220` (Still patient), otherwise `32818` (EHR Administration record) [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html), [PATIENT CLASSIFICATION CODE](https://www.datadictionary.nhs.uk/data_elements/patient_classification_code.html)
-
-```sql
-	select  
-		distinct
-			ae.NHSNumber,
-			ae.AEAttendanceNumber,
-
-			9203 as VisitOccurrenceConceptId,    -- ""Emergency Room Visit""
-			32818 as VisitTypeConceptId,
-
-			coalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,
-			coalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,
-			coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EpisodeEndDate,
-			coalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EpisodeEndTime,
-
-			ae.AEArrivalMode as SourceofAdmissionCode,
-			ae.AEAttendanceDisposal as DischargeDestinationCode
-
-	from omop_staging.sus_AE ae
-	where ae.NHSNumber is not null
-
-	
-```
-
+* Constant value set to `32818`. `EHR administration record`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_type_concept_id%20field%20SUS%20AE%20VisitOccurrenceWithSpell%20mapping){: .btn }
 ### CDS VisitOccurrenceWithSpell
