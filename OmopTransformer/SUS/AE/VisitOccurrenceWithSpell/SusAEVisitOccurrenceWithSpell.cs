@@ -33,4 +33,15 @@ internal class SusAEVisitOccurrenceWithSpell : OmopVisitOccurrence<SusAEVisitOcc
     [ConstantValue(32818, "`EHR administration record`")]
     public override int? visit_type_concept_id { get; set; }
 
+    [Transform(typeof(AdmittedSourceLookup), nameof(Source.SourceofAdmissionCode))]
+    public override int? admitted_from_concept_id { get; set; }
+
+    [CopyValue(nameof(Source.SourceofAdmissionCode))]
+    public override string? admitted_from_source_value { get; set; }
+
+    [Transform(typeof(DischargeDestinationLookup), nameof(Source.DischargeDestinationCode))]
+    public override int? discharged_to_concept_id { get; set; }
+
+    [CopyValue(nameof(Source.DischargeDestinationCode))]
+    public override string? discharged_to_source_value { get; set; }
 }

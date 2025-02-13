@@ -1,0 +1,44 @@
+﻿<Query>
+    <Sql>
+select
+	distinct
+		d.AccidentAndEmergencyDiagnosis,
+		ae.GeneratedRecordIdentifier,
+		ae.NHSNumber,
+		ae.ArrivalDate,
+		ae.ArrivalTime
+from omop_staging.sus_AE_diagnosis d
+	inner join omop_staging.sus_AE ae
+		on d.MessageId = ae.MessageId
+where ae.NHSNumber is not null
+and d.AccidentAndEmergencyDiagnosis in ('20','201')
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="ArrivalDate">
+			<Description>Event date</Description>
+			<Origin>ARRIVAL DATE</Origin>
+		</Explanation>
+		<Explanation columnName="ArrivalTime">
+			<Description>The time (using a 24 hour clock) that is of relevance to an ACTIVITY.</Description>
+			<Origin>ARRIVAL TIME AT ACCIDENT AND EMERGENCY DEPARTMENT</Origin>
+		</Explanation>
+		<Explanation columnName="AccidentAndEmergencyDiagnosis">
+			<Description>
+				ACCIDENT AND EMERGENCY DIAGNOSIS is a six character code, comprising:
+					Diagnosis Condition	n2
+					Sub-Analysis	n1
+					ACCIDENT AND EMERGENCY ANATOMICAL AREA	n2
+					ACCIDENT AND EMERGENCY ANATOMICAL SIDE
+			</Description>
+			<Origin>PRIMARY DIAGNOSIS</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
