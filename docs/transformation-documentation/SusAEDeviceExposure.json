@@ -1,0 +1,174 @@
+{
+  "omopTable": "DeviceExposure",
+  "origin": "SUS",
+  "omopColumns": [
+    {
+      "name": "nhs_number",
+      "operation_description": "Value copied from `NHSNumber`",
+      "dataSource": [
+        {
+          "name": "NHSNumber",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tae.GeneratedRecordIdentifier,\n\t\tae.NHSNumber,\n\t\tcoalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,\n\t\tcoalesce(ae.ArrivalTime, '000000') as StartTime,\n\t\tcoalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EndDate,\n\t\tcoalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EndTime,\n\t\ti.AccidentAndEmergencyInvestigation,\n\t\tcase\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '01' then '706245009' --X-ray\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '02' then '705983006' --Electrocardiograph\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '08' then '706585004' --Microscope (histology)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '10' then '1004163002' --Ultrasound\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '11' then '90003000' --Magnetic Resonance Imaging (MRI)\n\t\t\twhen i.AccidentAndEmergencyInvestigation in ('09', '12') then '469499004' --Computerised Tomography (CT)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '19' then '878860002' --Blood culture bottle\n\t\telse '' end as device_source_value\n\tfrom omop_staging.sus_AE_investigation i\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton i.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\tand i.AccidentAndEmergencyInvestigation in ('01', '02', '08', '09', '10', '11', '12', '19')\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "device_concept_id",
+      "operation_description": "Maps concepts to standard valid concepts in the `device` domain.",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "device_exposure_start_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "StartDate",
+          "description": "Start date of the episode.",
+          "origins": [
+            {
+              "origin": "START DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tae.GeneratedRecordIdentifier,\n\t\tae.NHSNumber,\n\t\tcoalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,\n\t\tcoalesce(ae.ArrivalTime, '000000') as StartTime,\n\t\tcoalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EndDate,\n\t\tcoalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EndTime,\n\t\ti.AccidentAndEmergencyInvestigation,\n\t\tcase\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '01' then '706245009' --X-ray\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '02' then '705983006' --Electrocardiograph\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '08' then '706585004' --Microscope (histology)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '10' then '1004163002' --Ultrasound\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '11' then '90003000' --Magnetic Resonance Imaging (MRI)\n\t\t\twhen i.AccidentAndEmergencyInvestigation in ('09', '12') then '469499004' --Computerised Tomography (CT)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '19' then '878860002' --Blood culture bottle\n\t\telse '' end as device_source_value\n\tfrom omop_staging.sus_AE_investigation i\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton i.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\tand i.AccidentAndEmergencyInvestigation in ('01', '02', '08', '09', '10', '11', '12', '19')\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "device_exposure_start_datetime",
+      "operation_description": "Combines a date with a time of day.",
+      "dataSource": [
+        {
+          "name": "StartDate",
+          "description": "Start date of the episode.",
+          "origins": [
+            {
+              "origin": "START DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html"
+            }
+          ]
+        },
+        {
+          "name": "StartTime",
+          "description": "The earliest episode start time for the spell, or midnight if none are specified.",
+          "origins": [
+            {
+              "origin": "START TIME (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tae.GeneratedRecordIdentifier,\n\t\tae.NHSNumber,\n\t\tcoalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,\n\t\tcoalesce(ae.ArrivalTime, '000000') as StartTime,\n\t\tcoalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EndDate,\n\t\tcoalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EndTime,\n\t\ti.AccidentAndEmergencyInvestigation,\n\t\tcase\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '01' then '706245009' --X-ray\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '02' then '705983006' --Electrocardiograph\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '08' then '706585004' --Microscope (histology)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '10' then '1004163002' --Ultrasound\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '11' then '90003000' --Magnetic Resonance Imaging (MRI)\n\t\t\twhen i.AccidentAndEmergencyInvestigation in ('09', '12') then '469499004' --Computerised Tomography (CT)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '19' then '878860002' --Blood culture bottle\n\t\telse '' end as device_source_value\n\tfrom omop_staging.sus_AE_investigation i\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton i.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\tand i.AccidentAndEmergencyInvestigation in ('01', '02', '08', '09', '10', '11', '12', '19')\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "device_exposure_end_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "EndDate",
+          "description": "The latest episode end date for the spell, or the latest activity date if none are specified.",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            },
+            {
+              "origin": "END DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tae.GeneratedRecordIdentifier,\n\t\tae.NHSNumber,\n\t\tcoalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,\n\t\tcoalesce(ae.ArrivalTime, '000000') as StartTime,\n\t\tcoalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EndDate,\n\t\tcoalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EndTime,\n\t\ti.AccidentAndEmergencyInvestigation,\n\t\tcase\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '01' then '706245009' --X-ray\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '02' then '705983006' --Electrocardiograph\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '08' then '706585004' --Microscope (histology)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '10' then '1004163002' --Ultrasound\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '11' then '90003000' --Magnetic Resonance Imaging (MRI)\n\t\t\twhen i.AccidentAndEmergencyInvestigation in ('09', '12') then '469499004' --Computerised Tomography (CT)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '19' then '878860002' --Blood culture bottle\n\t\telse '' end as device_source_value\n\tfrom omop_staging.sus_AE_investigation i\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton i.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\tand i.AccidentAndEmergencyInvestigation in ('01', '02', '08', '09', '10', '11', '12', '19')\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "device_exposure_end_datetime",
+      "operation_description": "Combines a date with a time of day.",
+      "dataSource": [
+        {
+          "name": "EndDate",
+          "description": "The latest episode end date for the spell, or the latest activity date if none are specified.",
+          "origins": [
+            {
+              "origin": "CDS ACTIVITY DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
+            },
+            {
+              "origin": "END DATE (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html"
+            }
+          ]
+        },
+        {
+          "name": "EndTime",
+          "description": "The latest episode end time for the spell, or midnight if none are specified.",
+          "origins": [
+            {
+              "origin": "END TIME (EPISODE)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tae.GeneratedRecordIdentifier,\n\t\tae.NHSNumber,\n\t\tcoalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,\n\t\tcoalesce(ae.ArrivalTime, '000000') as StartTime,\n\t\tcoalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EndDate,\n\t\tcoalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EndTime,\n\t\ti.AccidentAndEmergencyInvestigation,\n\t\tcase\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '01' then '706245009' --X-ray\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '02' then '705983006' --Electrocardiograph\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '08' then '706585004' --Microscope (histology)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '10' then '1004163002' --Ultrasound\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '11' then '90003000' --Magnetic Resonance Imaging (MRI)\n\t\t\twhen i.AccidentAndEmergencyInvestigation in ('09', '12') then '469499004' --Computerised Tomography (CT)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '19' then '878860002' --Blood culture bottle\n\t\telse '' end as device_source_value\n\tfrom omop_staging.sus_AE_investigation i\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton i.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\tand i.AccidentAndEmergencyInvestigation in ('01', '02', '08', '09', '10', '11', '12', '19')\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "device_type_concept_id",
+      "operation_description": "Constant value set to `32818`. `EHR administration record`",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "device_source_value",
+      "operation_description": "Value copied from `device_source_value`",
+      "dataSource": [
+        {
+          "name": "device_source_value",
+          "description": "SNOMED equivalent device from AccidentAndEmergencyInvestigation; A broad coding of types of investigation which may be requested to assist with diagnosis as a result of Accident and Emergency Attendances.",
+          "origins": [
+            {
+              "origin": "ACCIDENT AND EMERGENCY INVESTIGATION",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tae.GeneratedRecordIdentifier,\n\t\tae.NHSNumber,\n\t\tcoalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,\n\t\tcoalesce(ae.ArrivalTime, '000000') as StartTime,\n\t\tcoalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EndDate,\n\t\tcoalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EndTime,\n\t\ti.AccidentAndEmergencyInvestigation,\n\t\tcase\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '01' then '706245009' --X-ray\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '02' then '705983006' --Electrocardiograph\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '08' then '706585004' --Microscope (histology)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '10' then '1004163002' --Ultrasound\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '11' then '90003000' --Magnetic Resonance Imaging (MRI)\n\t\t\twhen i.AccidentAndEmergencyInvestigation in ('09', '12') then '469499004' --Computerised Tomography (CT)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '19' then '878860002' --Blood culture bottle\n\t\telse '' end as device_source_value\n\tfrom omop_staging.sus_AE_investigation i\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton i.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\tand i.AccidentAndEmergencyInvestigation in ('01', '02', '08', '09', '10', '11', '12', '19')\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "RecordConnectionIdentifier",
+      "operation_description": "Value copied from `GeneratedRecordIdentifier`",
+      "dataSource": [
+        {
+          "name": "GeneratedRecordIdentifier",
+          "description": "CDS specific identifier that binds multiple CDS messages together.",
+          "origins": [
+            {
+              "origin": "CDS RECORD IDENTIFIER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tae.GeneratedRecordIdentifier,\n\t\tae.NHSNumber,\n\t\tcoalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,\n\t\tcoalesce(ae.ArrivalTime, '000000') as StartTime,\n\t\tcoalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EndDate,\n\t\tcoalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EndTime,\n\t\ti.AccidentAndEmergencyInvestigation,\n\t\tcase\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '01' then '706245009' --X-ray\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '02' then '705983006' --Electrocardiograph\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '08' then '706585004' --Microscope (histology)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '10' then '1004163002' --Ultrasound\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '11' then '90003000' --Magnetic Resonance Imaging (MRI)\n\t\t\twhen i.AccidentAndEmergencyInvestigation in ('09', '12') then '469499004' --Computerised Tomography (CT)\n\t\t\twhen i.AccidentAndEmergencyInvestigation = '19' then '878860002' --Blood culture bottle\n\t\telse '' end as device_source_value\n\tfrom omop_staging.sus_AE_investigation i\n\t\tinner join omop_staging.sus_AE ae\n\t\t\ton i.MessageId = ae.MessageId\n\twhere ae.NHSNumber is not null\n\tand i.AccidentAndEmergencyInvestigation in ('01', '02', '08', '09', '10', '11', '12', '19')\n\t",
+      "lookup_table_markdown": null
+    }
+  ]
+}
