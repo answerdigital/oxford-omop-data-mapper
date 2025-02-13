@@ -25,6 +25,7 @@ using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.Omop.Death;
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.DrugExposure;
+using OmopTransformer.Omop.DeviceExposure;
 using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.Observation;
 using OmopTransformer.Omop.CareSite;
@@ -266,6 +267,7 @@ internal class Program
             builder.Services.AddTransient<IDeathRecorder, DeathRecorder>();
             builder.Services.AddTransient<IProcedureOccurrenceRecorder, ProcedureOccurrenceRecorder>();
             builder.Services.AddTransient<IDrugExposureRecorder, DrugExposureRecorder>();
+            builder.Services.AddTransient<IDeviceExposureRecorder, DeviceExposureRecorder>();
             builder.Services.AddTransient<IObservationRecorder, ObservationRecorder>();
             builder.Services.AddTransient<IMeasurementRecorder, MeasurementRecorder>();
             builder.Services.AddTransient<ICareSiteRecorder, CareSiteRecorder>();
