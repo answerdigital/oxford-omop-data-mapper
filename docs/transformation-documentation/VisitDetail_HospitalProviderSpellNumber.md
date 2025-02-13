@@ -59,6 +59,32 @@ has_toc: false
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20HospitalProviderSpellNumber%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
+### Sus Inptatient VisitDetails
+* Value copied from `HospitalProviderSpellNumber`
+
+* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
+
+```sql
+	select  
+		ae.NHSNumber,
+		ae.AEAttendanceNumber,
+
+		coalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,
+		coalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,
+		coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EpisodeEndDate,
+		coalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EpisodeEndTime,
+
+		ae.AEArrivalMode as SourceofAdmissionCode,
+		ae.AEAttendanceDisposal as DischargeDestinationCode
+
+	from omop_staging.sus_AE ae
+	where ae.NHSNumber is not null
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20HospitalProviderSpellNumber%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
 ### CDS VisitDetails
 * Value copied from `HospitalProviderSpellNumber`
 

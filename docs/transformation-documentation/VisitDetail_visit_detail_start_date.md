@@ -61,6 +61,33 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_start_date%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
+### Sus Inptatient VisitDetails
+Source column  `VisitStartDate`.
+Converts text to dates.
+
+* `VisitStartDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [START DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html), [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
+
+```sql
+	select  
+		ae.NHSNumber,
+		ae.AEAttendanceNumber,
+
+		coalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,
+		coalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,
+		coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EpisodeEndDate,
+		coalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EpisodeEndTime,
+
+		ae.AEArrivalMode as SourceofAdmissionCode,
+		ae.AEAttendanceDisposal as DischargeDestinationCode
+
+	from omop_staging.sus_AE ae
+	where ae.NHSNumber is not null
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_start_date%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
 ### CDS VisitDetails
 Source column  `VisitStartDate`.
 Converts text to dates.

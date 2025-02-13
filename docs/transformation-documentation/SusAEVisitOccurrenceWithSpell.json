@@ -151,6 +151,78 @@
       "dataSource": null,
       "query": null,
       "lookup_table_markdown": null
+    },
+    {
+      "name": "admitted_from_source_value",
+      "operation_description": "Value copied from `SourceofAdmissionCode`",
+      "dataSource": [
+        {
+          "name": "SourceofAdmissionCode",
+          "description": "Admission Source.",
+          "origins": [
+            {
+              "origin": "ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n\tselect  \n\t\tdistinct\n\t\t\tae.NHSNumber,\n\t\t\tae.AEAttendanceNumber,\n\n\t\t\tcoalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,\n\t\t\tcoalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,\n\t\t\tcoalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EpisodeEndDate,\n\t\t\tcoalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EpisodeEndTime,\n\n\t\t\tae.AEArrivalMode as SourceofAdmissionCode,\n\t\t\tae.AEAttendanceDisposal as DischargeDestinationCode\n\n\tfrom omop_staging.sus_AE ae\n\twhere ae.NHSNumber is not null\n\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "admitted_from_concept_id",
+      "operation_description": "Lookup admission source concept.",
+      "dataSource": [
+        {
+          "name": "SourceofAdmissionCode",
+          "description": "Admission Source.",
+          "origins": [
+            {
+              "origin": "ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n\tselect  \n\t\tdistinct\n\t\t\tae.NHSNumber,\n\t\t\tae.AEAttendanceNumber,\n\n\t\t\tcoalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,\n\t\t\tcoalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,\n\t\t\tcoalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EpisodeEndDate,\n\t\t\tcoalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EpisodeEndTime,\n\n\t\t\tae.AEArrivalMode as SourceofAdmissionCode,\n\t\t\tae.AEAttendanceDisposal as DischargeDestinationCode\n\n\tfrom omop_staging.sus_AE ae\n\twhere ae.NHSNumber is not null\n\n\t",
+      "lookup_table_markdown": "\r\n\r\n|SourceofAdmissionCode|admitted_from_concept_id|notes|\r\n|------|-----|-----|\r\n|1|38004353|Ambulance|\r\n|2||No mapping possible|\r\n|19|581476|Home Visit|\r\n|29|8602|Temporary Lodging|\r\n|37|38003619|Prison / Correctional Facility|\r\n|40|38003619|Prison / Correctional Facility|\r\n|42|38003619|Prison / Correctional Facility|\r\n|49|38004284|Psychiatric Hospital|\r\n|51|8717|Inpatient Hospital|\r\n|52|8650|Birthing Center|\r\n|53|8976|Psychiatric Residential Treatment Center|\r\n|55|8863|Skilled Nursing Facility|\r\n|56|38004306|Custodial Care Facility|\r\n|66|38004205|Foster Care Agency|\r\n|79|8650|Birthing Center|\r\n|87|8717|Inpatient Hospital|\r\n|88|8546|Hospice|\r\n|98||No mapping possible|\r\n|99||No mapping possible|\r\n\r\nNotes\r\n* [Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)\r\n* [Admission Source A&E](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/attributes/accident_and_emergency_arrival_mode.html)\r\n"
+    },
+    {
+      "name": "discharged_to_concept_id",
+      "operation_description": "Lookup discharge destination concept.",
+      "dataSource": [
+        {
+          "name": "DischargeDestinationCode",
+          "description": "Discharge Destination Code",
+          "origins": [
+            {
+              "origin": "DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n\tselect  \n\t\tdistinct\n\t\t\tae.NHSNumber,\n\t\t\tae.AEAttendanceNumber,\n\n\t\t\tcoalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,\n\t\t\tcoalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,\n\t\t\tcoalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EpisodeEndDate,\n\t\t\tcoalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EpisodeEndTime,\n\n\t\t\tae.AEArrivalMode as SourceofAdmissionCode,\n\t\t\tae.AEAttendanceDisposal as DischargeDestinationCode\n\n\tfrom omop_staging.sus_AE ae\n\twhere ae.NHSNumber is not null\n\n\t",
+      "lookup_table_markdown": "\r\n\r\n|DischargeDestinationCode|discharged_to_concept_id|notes|\r\n|------|-----|-----|\r\n|01|8717|In Patient Hospital|\r\n|02|581476|Home Visit|\r\n|03|38004693|Clinic or Group Practice|\r\n|04|8870|Emergency Room - Hospital|\r\n|05|8870|Emergency Room - Hospital|\r\n|06|8756|Out Patient Hospital|\r\n|07||No mapping possible|\r\n|10||No mapping possible|\r\n|11||No mapping possible|\r\n|12||No mapping possible|\r\n|13||No mapping possible|\r\n|14||No mapping possible|\r\n|19|581476|Home Visit|\r\n|29|8602|Temporary Lodging|\r\n|30|38004284|Psychiatric Hospital|\r\n|37|38003619|Prison / Correctional Facility|\r\n|38|38003619|Prison / Correctional Facility|\r\n|48|38004284|Psychiatric Hospital|\r\n|49|38004284|Psychiatric Hospital|\r\n|50|8971|Inpatient Psychiatric Facility|\r\n|51|8717|Inpatient Hospital|\r\n|52|8650|Birthing Center|\r\n|53|8976|Psychiatric Residential Treatment Center|\r\n|54|8676|Nursing Facility|\r\n|65|8676|Nursing Facility|\r\n|66|38004205|Foster Care Agency|\r\n|79||No mapping possible|\r\n|84|8971|Inpatient Psychiatric Facility|\r\n|85|8676|Nursing Facility|\r\n|87|8717|Inpatient Hospital|\r\n|88|8546|Hospice|\r\n|98||No mapping possible|\r\n|99||No mapping possible|\r\n\r\nNotes\r\n* [Discharge Destination](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)\r\n* [Discharge Destination A&E](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/data_elements/accident_and_emergency_attendance_disposal_code.html)\r\n"
+    },
+    {
+      "name": "discharged_to_source_value",
+      "operation_description": "Value copied from `DischargeDestinationCode`",
+      "dataSource": [
+        {
+          "name": "DischargeDestinationCode",
+          "description": "Discharge Destination Code",
+          "origins": [
+            {
+              "origin": "DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n\tselect  \n\t\tdistinct\n\t\t\tae.NHSNumber,\n\t\t\tae.AEAttendanceNumber,\n\n\t\t\tcoalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,\n\t\t\tcoalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,\n\t\t\tcoalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EpisodeEndDate,\n\t\t\tcoalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EpisodeEndTime,\n\n\t\t\tae.AEArrivalMode as SourceofAdmissionCode,\n\t\t\tae.AEAttendanceDisposal as DischargeDestinationCode\n\n\tfrom omop_staging.sus_AE ae\n\twhere ae.NHSNumber is not null\n\n\t",
+      "lookup_table_markdown": null
     }
   ]
 }

@@ -72,15 +72,16 @@ Converts text to dates.
 * `death_date` Discharge date of the patient's spell. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
 
 ```sql
-	select
-		NHSNumber as nhs_number,
-		coalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date
-	from [omop_staging].[sus_AE]
-	where ((ReferralToTreatmentPeriodStatus = 36) --PATIENT died before treatment
-		or (AEPatientGroup = 70)) -- PATIENT brought in dead
-		and (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)
-		and NHSNumber is not null
-	group by NHSNumber
+select
+	NHSNumber as nhs_number,
+	coalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date
+from [omop_staging].[sus_AE]
+where ((ReferralToTreatmentPeriodStatus = 36) --PATIENT died before treatment
+	or (AEPatientGroup = 70) -- PATIENT brought in dead
+	or (AEAttendanceDisposal = 10))  --PATIENT died in AE
+	and (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)
+	and NHSNumber is not null
+group by NHSNumber
 	
 ```
 

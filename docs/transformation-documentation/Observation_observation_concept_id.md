@@ -46,6 +46,18 @@ has_toc: false
 * Constant value set to `4163264`. Type of anesthetic
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20APC%20Anaesthetic%20During%20Labour%20Delivery%20Observation%20mapping){: .btn }
+### SUS AE Source Of Referral For Outpatients
+* Constant value set to `4258129`. Referral by
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20AE%20Source%20Of%20Referral%20For%20Outpatients%20mapping){: .btn }
+### SUS AE Diabetic Patient
+* Constant value set to `201820`. Diabetes mellitus (disorder)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20AE%20Diabetic%20Patient%20mapping){: .btn }
+### SUS AE Diabetic Patient
+* Constant value set to `4233784`. Asthmatic bronchitis (disorder)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20AE%20Diabetic%20Patient%20mapping){: .btn }
 ### CosdV9TobaccoSmokingStatus
 * Constant value set to `4275495`. Tobacco smoking behavior - finding
 

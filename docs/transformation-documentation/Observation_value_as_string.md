@@ -199,6 +199,83 @@ group by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20SUS%20APC%20Anaesthetic%20During%20Labour%20Delivery%20Observation%20mapping){: .btn }
+### SUS AE Source Of Referral For Outpatients
+* Value copied from `SourceofReferralForAE`
+
+* `SourceofReferralForAE` The source of referral of each Accident and Emergency Episode. [SOURCE OF REFERRAL FOR A and E]()
+
+```sql
+select
+	NHSNumber,
+	GeneratedRecordIdentifier,
+    ArrivalDate,
+    ArrivalTime,
+	SourceofReferralForAE   -- Referrer code is the code of the person making the referral request
+from omop_staging.sus_AE
+where SourceofReferralForAE is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20SUS%20AE%20Source%20Of%20Referral%20For%20Outpatients%20mapping){: .btn }
+### SUS AE Diabetic Patient
+* Value copied from `AccidentAndEmergencyDiagnosis`
+
+* `AccidentAndEmergencyDiagnosis` 
+				ACCIDENT AND EMERGENCY DIAGNOSIS is a six character code, comprising:
+					Diagnosis Condition	n2
+					Sub-Analysis	n1
+					ACCIDENT AND EMERGENCY ANATOMICAL AREA	n2
+					ACCIDENT AND EMERGENCY ANATOMICAL SIDE
+			 [PRIMARY DIAGNOSIS]()
+
+```sql
+select
+	distinct
+		d.AccidentAndEmergencyDiagnosis,
+		ae.GeneratedRecordIdentifier,
+		ae.NHSNumber,
+		ae.ArrivalDate,
+		ae.ArrivalTime
+from omop_staging.sus_AE_diagnosis d
+	inner join omop_staging.sus_AE ae
+		on d.MessageId = ae.MessageId
+where ae.NHSNumber is not null
+and d.AccidentAndEmergencyDiagnosis in ('30','301')
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20SUS%20AE%20Diabetic%20Patient%20mapping){: .btn }
+### SUS AE Diabetic Patient
+* Value copied from `AccidentAndEmergencyDiagnosis`
+
+* `AccidentAndEmergencyDiagnosis` 
+				ACCIDENT AND EMERGENCY DIAGNOSIS is a six character code, comprising:
+					Diagnosis Condition	n2
+					Sub-Analysis	n1
+					ACCIDENT AND EMERGENCY ANATOMICAL AREA	n2
+					ACCIDENT AND EMERGENCY ANATOMICAL SIDE
+			 [PRIMARY DIAGNOSIS]()
+
+```sql
+select
+	distinct
+		d.AccidentAndEmergencyDiagnosis,
+		ae.GeneratedRecordIdentifier,
+		ae.NHSNumber,
+		ae.ArrivalDate,
+		ae.ArrivalTime
+from omop_staging.sus_AE_diagnosis d
+	inner join omop_staging.sus_AE ae
+		on d.MessageId = ae.MessageId
+where ae.NHSNumber is not null
+and d.AccidentAndEmergencyDiagnosis in ('20','201')
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20SUS%20AE%20Diabetic%20Patient%20mapping){: .btn }
 ### CosdV9SourceOfReferralForOutpatients
 * Value copied from `SourceOfReferralForOutpatients`
 

@@ -33,6 +33,33 @@ has_toc: false
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20discharged_to_source_value%20field%20SUS%20APC%20VisitOccurrenceWithSpell%20mapping){: .btn }
+### SUS AE VisitOccurrenceWithSpell
+* Value copied from `DischargeDestinationCode`
+
+* `DischargeDestinationCode` Discharge Destination Code [DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
+
+```sql
+	select  
+		distinct
+			ae.NHSNumber,
+			ae.AEAttendanceNumber,
+
+			coalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,
+			coalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,
+			coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EpisodeEndDate,
+			coalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EpisodeEndTime,
+
+			ae.AEArrivalMode as SourceofAdmissionCode,
+			ae.AEAttendanceDisposal as DischargeDestinationCode
+
+	from omop_staging.sus_AE ae
+	where ae.NHSNumber is not null
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20discharged_to_source_value%20field%20SUS%20AE%20VisitOccurrenceWithSpell%20mapping){: .btn }
 ### CDS VisitOccurrenceWithSpell
 * Value copied from `DischargeDestinationCode`
 

@@ -54,12 +54,12 @@
 			<Origin>END TIME (EPISODE)</Origin>
 		</Explanation>
 
-		<Explanation columnName="SourceOfAdmissionHospitalProviderSpell">
+		<Explanation columnName="SourceofAdmissionCode">
 			<Description>Admission Source.</Description>
 			<Origin>ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)</Origin>
 		</Explanation>
 
-		<Explanation columnName="DischargeDestinationHospitalProviderSpell">
+		<Explanation columnName="DischargeDestinationCode">
 			<Description>Discharge Destination Code</Description>
 			<Origin>DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)</Origin>
 		</Explanation>

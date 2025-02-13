@@ -65,6 +65,35 @@ Combines a date with a time of day.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_end_datetime%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
+### Sus Inptatient VisitDetails
+Source columns  `VisitEndDate`, `VisitEndTime`.
+Combines a date with a time of day.
+
+* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
+
+* `VisitEndTime` End time of the episode, if exists, else the spell discharge time, if exists, else the message date. [DISCHARGE TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_time__hospital_provider_spell_.html), [END TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html)
+
+```sql
+	select  
+		ae.NHSNumber,
+		ae.AEAttendanceNumber,
+
+		coalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,
+		coalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,
+		coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EpisodeEndDate,
+		coalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EpisodeEndTime,
+
+		ae.AEArrivalMode as SourceofAdmissionCode,
+		ae.AEAttendanceDisposal as DischargeDestinationCode
+
+	from omop_staging.sus_AE ae
+	where ae.NHSNumber is not null
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_end_datetime%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
 ### CDS VisitDetails
 Source columns  `VisitEndDate`, `VisitEndTime`.
 Combines a date with a time of day.
