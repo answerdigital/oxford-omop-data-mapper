@@ -82,7 +82,7 @@ namespace OmopTransformerTests.Transformation
         {
             public List<string> LoggedMessages { get; } = new List<string>();
 
-            public IDisposable BeginScope<TState>(TState state) => null;
+            public IDisposable BeginScope<TState>(TState state) where TState : notnull => null!;
 
             public bool IsEnabled(LogLevel logLevel) => true;
 
@@ -101,9 +101,9 @@ namespace OmopTransformerTests.Transformation
         {
             public object? Source { get; set; }
             public bool IsValid { get; set; }
-            public object SourceObject => null;
+            public object? SourceObject => null;
             public IEnumerable<string> ValidationErrors => new List<string>();
-            public string OmopTargetTypeDescription { get; }
+            public string OmopTargetTypeDescription { get; } = "test";
         }
     }
 }
