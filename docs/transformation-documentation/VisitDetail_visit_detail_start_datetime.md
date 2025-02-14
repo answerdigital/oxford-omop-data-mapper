@@ -78,10 +78,10 @@ Combines a date with a time of day.
 		ae.NHSNumber,
 		ae.AEAttendanceNumber,
 
-		coalesce(ae.ArrivalDate, ae.CDSActivityDate) as EpisodeStartDate,
-		coalesce(ae.ArrivalTime, '000000') as EpisodeStartTime,
-		coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EpisodeEndDate,
-		coalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EpisodeEndTime,
+			coalesce(ae.ArrivalDate, ae.CDSActivityDate) as VisitStartDate,
+			coalesce(ae.ArrivalTime, '000000') as VisitStartTime,
+			coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as VisitEndDate,
+			coalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as VisitEndTime,
 
 		ae.AEArrivalMode as SourceofAdmissionCode,
 		ae.AEAttendanceDisposal as DischargeDestinationCode
