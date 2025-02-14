@@ -1,0 +1,13 @@
+﻿<Query>
+    <Sql>
+	select 
+		SiteCodeOfTreatment
+	from [omop_staging].[sus_AE] 	
+	</Sql>
+    <Explanations>
+		<Explanation columnName="SiteCodeOfTreatment">
+			<Description>ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated</Description>
+			<Origin>SITE CODE (OF TREATMENT)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
