@@ -2,7 +2,7 @@
 
 namespace OmopTransformer.Transformation;
 
-[Description("Accident and Emergency Treatment to SNOMED")]
+[Description("Accident and Emergency Treatment to OMOP Procedure Concept IDs")]
 internal class NhsAETreatmentLookup : ILookup
 {
     public Dictionary<string, ValueWithNote> Mappings { get; } =      
