@@ -3,4 +3,5 @@
 internal interface IOmopRecord<T> : IOmopTarget
 {
     T? Source { get; set;  }
+    bool IsValid { get; }
 }

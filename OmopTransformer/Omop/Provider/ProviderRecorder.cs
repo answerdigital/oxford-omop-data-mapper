@@ -22,6 +22,7 @@ internal class ProviderRecorder : IProviderRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} providers.", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<ProviderRecorder>(_configuration.BatchSize!.Value, records.Count, "care sites", _logger);
 

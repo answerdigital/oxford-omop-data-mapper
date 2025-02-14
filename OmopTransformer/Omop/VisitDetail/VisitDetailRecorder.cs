@@ -22,6 +22,7 @@ internal class VisitDetailRecorder : IVisitDetailRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} visit details.", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<VisitDetailRecorder>(_configuration.BatchSize!.Value, records.Count, "visit details", _logger);
 

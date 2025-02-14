@@ -111,4 +111,5 @@ internal abstract class OmopTestConcept<T> : IOmopRecord<T>
     public string OmopTargetTypeDescription => "";
 
     public T? Source { get; set; }
+    public bool IsValid { get; }
 }

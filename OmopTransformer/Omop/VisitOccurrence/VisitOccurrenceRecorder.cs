@@ -22,6 +22,7 @@ internal class VisitOccurrenceRecorder : IVisitOccurrenceRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} visit occurrences.", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<VisitOccurrenceRecorder>(_configuration.BatchSize!.Value, records.Count, "visit occurrences", _logger);
 

@@ -22,6 +22,7 @@ internal class ConditionOccurrenceRecorder : IConditionOccurrenceRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} condition occurrences.", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<ConditionOccurrenceRecorder>(_configuration.BatchSize!.Value, records.Count, "condition occurrences", _logger);
 
