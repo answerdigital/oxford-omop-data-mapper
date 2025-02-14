@@ -53,7 +53,7 @@ where NHSNumber is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_concept_id%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
 ### SUS AE Procedure Occurrence
 Source column  `PrimaryProcedure`.
-Accident and Emergency Treatment to SNOMED
+Accident and Emergency Treatment to OMOP Procedure Concept IDs
 
 
 |PrimaryProcedure|procedure_source_concept_id|notes|

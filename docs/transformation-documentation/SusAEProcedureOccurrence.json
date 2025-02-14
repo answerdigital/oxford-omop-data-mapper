@@ -126,7 +126,7 @@
     },
     {
       "name": "procedure_source_concept_id",
-      "operation_description": "Accident and Emergency Treatment to SNOMED",
+      "operation_description": "Accident and Emergency Treatment to OMOP Procedure Concept IDs",
       "dataSource": [
         {
           "name": "PrimaryProcedure",
