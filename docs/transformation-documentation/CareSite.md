@@ -19,3 +19,7 @@ has_toc: false
 <a href="SusAPCCareSite.svg" target="_blank"><img src="SusAPCCareSite.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCCareSite%20mapping){: .btn }
+## SusAECareSite
+<a href="SusAECareSite.svg" target="_blank"><img src="SusAECareSite.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAECareSite%20mapping){: .btn }

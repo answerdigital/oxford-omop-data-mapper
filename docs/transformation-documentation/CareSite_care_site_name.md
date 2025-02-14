@@ -88,3 +88,17 @@ where rnk = 1;
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20CareSite%20table%20care_site_name%20field%20SUS%20Inpatient%20Care%20Site%20mapping){: .btn }
+### SUS Inpatient Care Site
+* Value copied from `SiteCodeOfTreatment`
+
+* `SiteCodeOfTreatment` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [SITE CODE (OF TREATMENT)](https://www.datadictionary.nhs.uk/data_elements/site_code__of_treatment_.html)
+
+```sql
+	select 
+		SiteCodeOfTreatment
+	from [omop_staging].[sus_AE] 	
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20CareSite%20table%20care_site_name%20field%20SUS%20Inpatient%20Care%20Site%20mapping){: .btn }
