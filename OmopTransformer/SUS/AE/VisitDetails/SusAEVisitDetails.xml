@@ -23,7 +23,7 @@
 			<Description>Patient NHS Number</Description>
 			<Origin>NHS NUMBER</Origin>
 		</Explanation>
-		<Explanation columnName="HospitalProviderSpellNumber">
+		<Explanation columnName="AEAttendanceNumber">
 			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
 			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
 		</Explanation>
