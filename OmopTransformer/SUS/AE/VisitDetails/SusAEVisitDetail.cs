@@ -6,16 +6,13 @@ namespace OmopTransformer.SUS.AE.VisitDetails;
 
 [Notes(
     "Assumptions",
-    "* `Emergency` covers a visit to A&E within the given Hospital Provider, and hence covers Admission Code 21 and 24 only",
-    "* `Location Class` ID 24 is a Consultant Clinic within the Health Care Provider.",
-    "* `Patient Classification` ID 1 is the only entry that covers 24 hours or more with the use of a bed, and whilst others may be a day/night only, they will be discounted because they are less than 24 hours. Also, maternity is also not taken as an `Inpatient` visit.",
-    "* No calculations to be made between Start and end visit date to try to calculate 24 hours, but instead the `Patient Classification` will be sufficient")]
+    "* `Emergency` covers a visit to A&E within the given Hospital Provider, and hence covers Admission Code 21 and 24 only")]
 internal class SusAEVisitDetail : OmopVisitDetail<SusAEVisitDetailsRecord>
 {
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? nhs_number { get; set; }
     
-    [CopyValue(nameof(Source.HospitalProviderSpellNumber))]
+    [CopyValue(nameof(Source.AEAttendanceNumber))]
     public override string? HospitalProviderSpellNumber { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.VisitStartDate))]
@@ -30,7 +27,7 @@ internal class SusAEVisitDetail : OmopVisitDetail<SusAEVisitDetailsRecord>
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.VisitEndDate), nameof(Source.VisitEndTime))]
     public override DateTime? visit_detail_end_datetime { get; set; }
 
-    [ConstantValue(9201, "`Inpatient Visit`")] 
+    [ConstantValue(9203, "`Emergency Room Visit`")] 
     public override int? visit_detail_concept_id { get; set; }
 
     [ConstantValue(32818, "`EHR administration record`")]
