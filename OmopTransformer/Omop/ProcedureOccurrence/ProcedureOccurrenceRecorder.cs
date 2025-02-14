@@ -22,6 +22,7 @@ internal class ProcedureOccurrenceRecorder : IProcedureOccurrenceRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} procedure occurrences.", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<ProcedureOccurrenceRecorder>(_configuration.BatchSize!.Value, records.Count, "procedure occurrences", _logger);
 

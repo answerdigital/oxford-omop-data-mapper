@@ -22,6 +22,7 @@ internal class MeasurementRecorder : IMeasurementRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} Measurements.", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<MeasurementRecorder>(_configuration.BatchSize!.Value, records.Count, "Measurements", _logger);
 
