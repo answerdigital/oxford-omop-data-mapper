@@ -1,13 +1,16 @@
 ---
 layout: default
-title: device_source_value
+title: device_source_concept_id
 parent: DeviceExposure
 grand_parent: Transformation Documentation
 has_toc: false
 ---
-# device_source_value
+# device_source_concept_id
 ### SUS AE Device Exposure
-* Value copied from `AccidentAndEmergencyInvestigation`
+Source column  `device_source_value`.
+Converts text to integers.
+
+* `device_source_value` SNOMED equivalent device from AccidentAndEmergencyInvestigation; A broad coding of types of investigation which may be requested to assist with diagnosis as a result of Accident and Emergency Attendances. [ACCIDENT AND EMERGENCY INVESTIGATION]()
 
 ```sql
 	select
@@ -36,4 +39,4 @@ has_toc: false
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_source_value%20field%20SUS%20AE%20Device%20Exposure%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_source_concept_id%20field%20SUS%20AE%20Device%20Exposure%20mapping){: .btn }

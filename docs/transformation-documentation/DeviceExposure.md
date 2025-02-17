@@ -14,6 +14,7 @@ has_toc: false
 * [device_exposure_end_date]({% link docs/transformation-documentation/DeviceExposure_device_exposure_end_date.md %})
 * [device_exposure_end_datetime]({% link docs/transformation-documentation/DeviceExposure_device_exposure_end_datetime.md %})
 * [device_type_concept_id]({% link docs/transformation-documentation/DeviceExposure_device_type_concept_id.md %})
+* [device_source_concept_id]({% link docs/transformation-documentation/DeviceExposure_device_source_concept_id.md %})
 * [device_source_value]({% link docs/transformation-documentation/DeviceExposure_device_source_value.md %})
 * [RecordConnectionIdentifier]({% link docs/transformation-documentation/DeviceExposure_RecordConnectionIdentifier.md %})
 

@@ -13,5 +13,6 @@ internal class SusAEDeviceExposureRecord
     public string? StartTime { get; set; }
     public string? EndDate { get; set; }
     public string? EndTime { get; set; }
+    public string? AccidentAndEmergencyInvestigation { get; set; }
     public string? device_source_value { get; set; }
 }
