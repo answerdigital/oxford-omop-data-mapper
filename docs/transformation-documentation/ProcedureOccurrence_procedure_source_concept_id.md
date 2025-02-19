@@ -53,7 +53,7 @@ where NHSNumber is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_concept_id%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
 ### SUS AE Procedure Occurrence
 Source column  `PrimaryProcedure`.
-Accident and Emergency Treatment to SNOMED
+Accident and Emergency Treatment to OMOP Procedure Concept IDs
 
 
 |PrimaryProcedure|procedure_source_concept_id|notes|
@@ -83,7 +83,7 @@ Accident and Emergency Treatment to SNOMED
 |102|42709780|Manipulation - manipulation of lower limb fracture|
 |103|4190331|Manipulation - manipulation of dislocation|
 |11|4211374|I&D|
-|12|44810625|IV Cannula|
+|12|4311035|IV Cannula|
 |13|4041656|Central Line|
 |14|4178105|Irrigation|
 |15|4202832|Intubation|
@@ -95,6 +95,9 @@ Accident and Emergency Treatment to SNOMED
 |19|4205502|CPR|
 |20|46273093|Minor Surgery|
 |21|4304206|Observation|
+|22|4172321|Guidance|
+|221|4172321|Guidance - written|
+|222|4172321|Guidance - verbal|
 |23|4160439|Anaesthesia|
 |231|4174669|Anaesthesia - general anaesthetic|
 |232|4303995|Anaesthesia - local anaesthetic|
@@ -114,16 +117,20 @@ Accident and Emergency Treatment to SNOMED
 |281|4018703|Thrombolysis - streptokinase parenteral thrombolysis|
 |282|4085113|Thrombolysis - recombinant|
 |283|4241698|Thrombolysis - plasminogen activator|
+|29|4088217|Parenteral Drugs|
 |291|4161519|Parenteral Drugs - intravenous drug, e.g. stat/bolus|
 |292|4030886|Parenteral Drugs - intravenous infusion|
 |30|4254901|Vital Signs|
 |31|4118442|Burns Review|
+|32|4079701|X-ray Review|
+|33|4295944|Fracture Review|
 |34|4075964|Wound Cleaning|
 |35|44793314|Dressing/Wound Review|
 |36|4180243|Sling|
 |37|4262407|Epistaxis Control|
 |38|4092976|Nasal Airway|
 |39|4339620|Oral Airway|
+|40|4239130|Supplemental Oxygen|
 |41|4306204|Positive Pressure|
 |42|4213288|Arterial Line|
 |43|763496|Infusion Fluids|
@@ -155,11 +162,14 @@ Accident and Emergency Treatment to SNOMED
 |553|4259619|Eye - retrobulbar injection|
 |554|4161695|Eye - epilation of lashes|
 |555|4252594|Eye - subconjunctival injection|
+|56|4305000|Dental|
 |57|4052492|Prescription|
+|27||Not Mappable|
+|99||Not Mappable|
 
 Notes
-* [ACCIDENT and EMERGENCY CLINICAL CODES](https://v2.datadictionary.nhs.uk/web_site_content/pages/codes/administrative_codes/a_amp_e_treatment_tables.asp@shownav=1.html)
-* [OMOP Procedures](https://athena.ohdsi.org/search-terms/terms?domain=Procedure&standardConcept=Standard&vocabulary=SNOMED&invalidReason=Valid&page=1&pageSize=15&query=)
+* [ACCIDENT and EMERGENCY CLINICAL CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/supporting_information/accident_and_emergency_treatment_tables.html)
+* [OMOP Procedures](https://athena.ohdsi.org/search-terms/terms?domain=Procedure&invalidReason=Valid&standardConcept=Standard&vocabulary=SNOMED&page=1&pageSize=15&query=)
 
 * `PrimaryProcedure` 
 			ACCIDENT AND EMERGENCY TREATMENT is a six character code, comprising:

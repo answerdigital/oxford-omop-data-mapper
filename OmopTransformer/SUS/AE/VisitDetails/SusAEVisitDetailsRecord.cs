@@ -8,7 +8,7 @@ namespace OmopTransformer.SUS.AE.VisitDetails;
 internal class SusAEVisitDetailsRecord
 {
     public string? NHSNumber { get; set; }
-    public string? HospitalProviderSpellNumber { get; set; }
+    public string? AEAttendanceNumber { get; set; }
     public string? VisitStartDate { get; set; }
     public string? VisitStartTime { get; set; }
     public string? VisitEndDate { get; set; }

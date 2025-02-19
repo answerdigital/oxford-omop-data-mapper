@@ -32,4 +32,7 @@ internal class SusOPConditionOccurrence : OmopConditionOccurrence<SusOPCondition
     
     [ConstantValue(32818, "EHR administration record")]
     public override int? condition_type_concept_id { get; set; }
+
+    [CopyValue(nameof(Source.GeneratedRecordIdentifier))]
+    public override string? RecordConnectionIdentifier { get; set; }
 }

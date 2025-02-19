@@ -22,6 +22,7 @@ internal class DeathRecorder : IDeathRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} Deaths.", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<DeathRecorder>(_configuration.BatchSize!.Value, records.Count, "deaths", _logger);
 

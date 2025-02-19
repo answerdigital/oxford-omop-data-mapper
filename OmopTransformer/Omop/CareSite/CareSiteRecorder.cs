@@ -22,6 +22,7 @@ internal class CareSiteRecorder : ICareSiteRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} care sites.", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<CareSiteRecorder>(_configuration.BatchSize!.Value, records.Count, "care sites", _logger);
 

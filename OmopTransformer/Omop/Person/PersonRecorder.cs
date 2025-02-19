@@ -22,6 +22,7 @@ internal class PersonRecorder : IPersonRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} persons.", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<PersonRecorder>(_configuration.BatchSize!.Value, records.Count, "procedure occurrences", _logger);
 
