@@ -27,7 +27,7 @@ internal class SusAEDeviceExposure : OmopDeviceExposure<SusAEDeviceExposureRecor
     [ConstantValue(32818, "`EHR administration record`")]
     public override int? device_type_concept_id { get; set; }
 
-    [Transform(typeof(NumberParser), nameof(Source.device_source_value))]
+    [Transform(typeof(AccidentAndEmergencyInvestigationLookup), nameof(Source.AccidentAndEmergencyInvestigation))]
     public override int? device_source_concept_id { get; set; }
 
     [CopyValue(nameof(Source.AccidentAndEmergencyInvestigation))]
