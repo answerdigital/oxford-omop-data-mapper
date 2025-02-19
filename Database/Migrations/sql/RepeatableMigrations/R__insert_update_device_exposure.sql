@@ -54,9 +54,9 @@ begin
 		(
 			select
 				top 1
-					vd.visit_occurrence_id
-			from cdm.visit_detail vd
-			where vd.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+					vo.visit_occurrence_id
+			from cdm.visit_occurrence vo
+			where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
 		) as visit_occurrence_id,
 		(
 			select
