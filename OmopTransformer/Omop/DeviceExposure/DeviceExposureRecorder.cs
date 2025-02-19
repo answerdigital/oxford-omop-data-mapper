@@ -22,6 +22,7 @@ internal class DeviceExposureRecorder : IDeviceExposureRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} Device Exposure(s).", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<DeviceExposureRecorder>(_configuration.BatchSize!.Value, records.Count, "device exposure", _logger);
 
