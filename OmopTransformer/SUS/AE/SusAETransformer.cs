@@ -24,6 +24,7 @@ using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Omop.Provider;
 using OmopTransformer.Transformation;
+using OmopTransformer.Omop;
 
 namespace OmopTransformer.SUS.AE;
 
@@ -61,12 +62,14 @@ internal class SusAETransformer : Transformer
         ConceptResolver conceptResolver, 
         IDrugExposureRecorder drugExposureRecorder, 
         IObservationRecorder observationRecorder,
-        IConceptMapper conceptMapper) : base(recordTransformer,
+        IConceptMapper conceptMapper,
+        IRunAnalysisRecorder runAnalysisRecorder) : base(recordTransformer,
         logger,
         transformOptions,
         recordProvider,
         "SUSAE",
-        conceptMapper)
+        conceptMapper,
+        runAnalysisRecorder)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
@@ -85,54 +88,66 @@ internal class SusAETransformer : Transformer
 
     public async Task Transform(CancellationToken cancellationToken)
     {
+        Guid runId = Guid.NewGuid();
+
         await Transform<SusAEPersonRecord, SusAEPerson>(
           _personRecorder.InsertUpdatePersons,
           "Sus AE Person",
+          runId,
           cancellationToken);
 
         await Transform<SusAEDeathRecord, SusAEDeath>(
           _deathRecorder.InsertUpdateDeaths,
           "SUS AE Death",
+          runId,
           cancellationToken);
 
         await Transform<SusAEProcedureOccurrenceRecord, SusAEProcedureOccurrence>(
           _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
           "SUS AE Procedure Occurrence",
+          runId,
           cancellationToken);
 
         await Transform<SusAEConditionOccurrenceRecord, SusAEConditionOccurrence>(
           _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
           "SUS AE Conditon Occurrence",
+          runId,
           cancellationToken);
 
         await Transform<SusAELocationRecord, SusAELocation>(
           _locationRecorder.InsertUpdateLocations,
           "SUS AE Location",
+          runId,
           cancellationToken);
 
         await Transform<SusAEVisitOccurrenceWithSpellRecord, SusAEVisitOccurrenceWithSpell>(
           _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
           "SUS AE VisitOccurrenceWithSpell",
+          runId,
           cancellationToken);
 
         await Transform<SusAEDiabeticPatientRecord, SusAEDiabeticPatient>(
           _observationRecorder.InsertUpdateObservations,
         "SUS AE DiabeticPatient",
+          runId,
           cancellationToken);
 
         await Transform<SusAEAsthmaticPatientRecord, SusAEAsthmaticPatient>(
           _observationRecorder.InsertUpdateObservations,
         "SUS AE AsthmaticPatient",
+          runId,
           cancellationToken);
 
         await Transform<SusAESourceOfReferralForOutpatientsRecord, SusAESourceOfReferralForOutpatients>(
           _observationRecorder.InsertUpdateObservations,
           "SUS AE SourceOfReferralForOutpatients",
+          runId,
           cancellationToken);
 
         await Transform<SusAEVisitDetailsRecord, SusAEVisitDetail>(
           _visitDetailRecorder.InsertUpdateVisitDetail,
           "SUS AE VisitDetail",
+          runId,
           cancellationToken);
 
         // await Transform<SusAECareSiteRecord, SusAECareSite>(

@@ -12,11 +12,13 @@ internal abstract class Transformer
     private readonly TransformOptions _transformOptions;
     private readonly IRecordProvider _recordProvider;
     private readonly IConceptMapper _conceptMapper;
+    private readonly IRunAnalysisRecorder _runAnalysisRecorder;
+
     private bool _isConceptMapRendered = false;
 
     private readonly string _dataSource;
 
-    protected Transformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, string dataSource, IConceptMapper conceptMapper)
+    protected Transformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, string dataSource, IConceptMapper conceptMapper, IRunAnalysisRecorder runAnalysisRecorder)
     {
         _recordTransformer = recordTransformer;
         _logger = logger;
@@ -24,11 +26,13 @@ internal abstract class Transformer
         _recordProvider = recordProvider;
         _dataSource = dataSource;
         _conceptMapper = conceptMapper;
+        _runAnalysisRecorder = runAnalysisRecorder;
     }
 
     public async Task Transform<TSource, TTarget>(
         Func<IReadOnlyCollection<TTarget>, string, CancellationToken, Task> insertRecord,
         string name,
+        Guid runId,
         CancellationToken cancellationToken)
         where TTarget : IOmopRecord<TSource>, new()
     {
@@ -60,6 +64,16 @@ internal abstract class Transformer
         if (_transformOptions.DryRun == false)
         {
             await insertRecord(mappedRecords, _dataSource, cancellationToken);
+
+            await 
+                _runAnalysisRecorder
+                .InsertRunAnalysis(
+                    runId: runId,
+                    tableType: _dataSource,
+                    origin: typeof(TTarget).Name,
+                    validCount: mappedRecords.Count(r => r.IsValid),
+                    invalidCount: mappedRecords.Count(r => r.IsValid == false),
+                    cancellationToken);
         }
 
         stopwatch.Stop();
