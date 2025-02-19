@@ -16,8 +16,8 @@
   </g>
   <g>
     <rect x="445" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="458" y="228" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">HOSPITAL PROVIDER SPELL</text>
-    <text x="458" y="246" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">NUMBER</text>
+    <text x="458" y="228" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">A and E</text>
+    <text x="458" y="246" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">ATTENDANCE NUMBER (Retired)</text>
   </g>
   <g>
     <line x1="645" y1="420" x2="645" y2="615" stroke="white" stroke-width="2" />

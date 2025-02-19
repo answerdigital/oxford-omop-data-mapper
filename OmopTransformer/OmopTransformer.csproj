@@ -414,6 +414,9 @@
     <None Update="SUS\AE\Observation\AsthmaticPatient\SusAEAsthmaticPatient.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SUS\AE\DeviceExposure\SusAEDeviceExposure.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<ItemGroup>

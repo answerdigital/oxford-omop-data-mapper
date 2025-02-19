@@ -22,6 +22,7 @@ internal class ObservationRecorder : IObservationRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} observation.", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<ObservationRecorder>(_configuration.BatchSize!.Value, records.Count, "observation", _logger);
 

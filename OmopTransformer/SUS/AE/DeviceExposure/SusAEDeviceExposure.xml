@@ -1,0 +1,56 @@
+﻿<Query>
+    <Sql>
+	select
+		ae.GeneratedRecordIdentifier,
+		ae.NHSNumber,
+		coalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,
+		coalesce(ae.ArrivalTime, '000000') as StartTime,
+		coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EndDate,
+		coalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EndTime,
+		i.AccidentAndEmergencyInvestigation
+	from omop_staging.sus_AE_investigation i
+		inner join omop_staging.sus_AE ae
+			on i.MessageId = ae.MessageId
+	where ae.NHSNumber is not null
+	and i.AccidentAndEmergencyInvestigation in ('01', '02', '08', '09', '10', '11', '12', '19')
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+
+		<Explanation columnName="StartDate">
+			<Description>Start date of the episode.</Description>
+			<Origin>START DATE (EPISODE)</Origin>
+		</Explanation>
+
+		<Explanation columnName="StartTime">
+			<Description>The earliest episode start time for the spell, or midnight if none are specified.</Description>
+			<Origin>START TIME (EPISODE)</Origin>
+		</Explanation>
+
+		<Explanation columnName="EndDate">
+			<Description>The latest episode end date for the spell, or the latest activity date if none are specified.</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+			<Origin>END DATE (EPISODE)</Origin>
+		</Explanation>
+
+		<Explanation columnName="EndTime">
+			<Description>The latest episode end time for the spell, or midnight if none are specified.</Description>
+			<Origin>END TIME (EPISODE)</Origin>
+		</Explanation>
+
+		<Explanation columnName="AccidentAndEmergencyInvestigation">
+			<Description>A broad coding of types of investigation which may be requested to assist with diagnosis as a result of Accident and Emergency Attendances.</Description>
+			<Origin>ACCIDENT AND EMERGENCY INVESTIGATION</Origin>
+		</Explanation>
+
+	</Explanations>
+</Query>

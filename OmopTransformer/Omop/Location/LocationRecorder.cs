@@ -22,6 +22,7 @@ internal class LocationRecorder : ILocationRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} locations.", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<LocationRecorder>(_configuration.BatchSize!.Value, records.Count, "locations", _logger);
 

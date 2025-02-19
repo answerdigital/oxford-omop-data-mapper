@@ -52,253 +52,230 @@ Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
 ### SUS Inpatient Condition Occurrence
 Source column  `AccidentAndEmergencyDiagnosis`.
-Accident and Emergency Diagnosis to SNOMED
+Accident and Emergency Diagnosis to OMOP Condition Concept IDs
 
 
 |AccidentAndEmergencyDiagnosis|condition_source_concept_id|notes|
 |------|-----|-----|
-|01 02|428088000|Laceration of Head|
-|01 03|35933005|Laceration of Face|
-|01 07|35933005|Laceration of Mouth, Jaw, Teeth|
-|01 09|283364000|Laceration of Neck|
-|01 10|283367007|Laceration of Shoulder|
-|01 12|283369005|Laceration of Upper Arm|
-|01 13|283370006|Laceration of Elbow|
-|01 14|283371005|Laceration of Forearm|
-|01 16|284549007|Laceration of Hand|
-|01 17|35933005|Laceration of Digit|
-|01 22|35933005|Laceration of Chest|
-|01 24|283378004|Laceration of Abdomen|
-|01 25|35933005|Laceration of Back/buttocks|
-|01 26|35933005|Laceration of Ano/rectal|
-|01 30|283385000|Laceration of Thigh|
-|01 31|283386004|Laceration of Knee|
-|01 32|283387008|Laceration of Lower leg|
-|01 34|284551006|Laceration of Foot|
-|01 35|284552004|Laceration of Toe|
-|02 02|735645009|Contusion of Head|
-|02 03|125668004|Contusion of Face|
-|02 05|50228009|Contusion of Ear|
-|02 06|60897004|Contusion of Nose|
-|02 09|8513005|Contusion of Neck|
-|02 10|125667009|Contusion of Shoulder|
-|02 12|85636003|Contusion of Upper Arm|
-|02 13|91613004|Contusion of Elbow|
-|02 14|39812007|Contusion of Forearm|
-|02 15|48123002|Contusion of Wrist|
-|02 16|5662003|Contusion of Hand|
-|02 17|125667009|Contusion of Digit|
-|02 21|14992004|Contusion of Pelvis|
-|02 22|10050004|Contusion of Chest|
-|02 24|1873941000000104|Contusion of Abdomen|
-|02 25|125667009|Contusion of Back/buttocks|
-|02 26|125667009|Contusion of Ano/rectal|
-|02 28|44801007|Contusion of Hip|
-|02 30|84416003|Contusion of Thigh|
-|02 31|22878006|Contusion of Knee|
-|02 32|45613006|Contusion of Lower leg|
-|02 33|55042009|Contusion of Ankle|
-|02 34|74814004|Contusion of Foot|
-|02 35|58075000|Contusion of Toe|
-|02136|111721009|Contusion of Multiple Site|
-|03|19660004|Soft tissue inflammation|
-|03 10|19660004|Soft tissue inflammation of Shoulder|
-|03 22|19660004|Soft tissue inflammation of Chest|
-|03 24|19660004|Soft tissue inflammation of Abdomen|
-|03 27|19660004|Soft tissue inflammation of Genitalia|
-|03 28|19660004|Soft tissue inflammation of Hip|
-|04 01|82271004|Head injury of Brain|
-|04 02|82271004|Head injury of Head|
-|04 03|82271004|Head injury of Face|
-|04 04|82271004|Head injury of Eye|
-|04 07|82271004|Head injury of Mouth, Jaw, Teeth|
-|05 03|87642003|Dislocation of Face|
-|05 12|87642003|Dislocation of Upper Arm|
-|05 13|87642003|Dislocation of Elbow|
-|05 16|87642003|Dislocation of Hand|
-|05 17|87642003|Dislocation of Digit|
-|05 19|87642003|Dislocation of Thoracic|
-|05 21|87642003|Dislocation of Pelvis|
-|05 24|87642003|Dislocation of Abdomen|
-|05 31|87642003|Dislocation of Knee|
-|05 32|87642003|Dislocation of Lower leg|
-|05 34|210366009|Dislocation of Foot|
-|05 35|204629008|Dislocation of Toe|
-|05110|87642003|Dislocation of Shoulder|
-|05113|87642003|Dislocation of Elbow|
-|05115|833335001|Dislocation of Wrist|
-|05116|87642003|Dislocation of Hand|
-|05117|87642003|Dislocation of Digit|
-|05118|209054005|Dislocation of Cervical spine|
-|05128|87642003|Dislocation of Hip|
-|05131|87642003|Dislocation of Knee|
-|05133|87642003|Dislocation of Ankle|
-|05135|204629008|Dislocation of Toe|
-|05202|704013006|Open fracture of Head|
-|05203|397181002|Open fracture of Face|
-|05206|439987009|Open fracture of Nose|
-|05210|397181002|Open fracture of Shoulder|
-|05212|18336000|Open fracture of Upper Arm|
-|05213|10820261000119101|Open fracture of Elbow|
-|05214|91296001|Open fracture of Forearm|
-|05216|704013006|Open fracture of Hand|
-|05217|397181002|Open fracture of Digit|
-|05218|269070003|Open fracture of Cervical spine|
-|05221|15474008|Open fracture of Pelvis|
-|05222|397181002|Open fracture of Chest|
-|05225|397181002|Open fracture of Back/buttocks|
-|05230|361118003|Open fracture of Thigh|
-|05231|439987009|Open fracture of Knee|
-|05232|414942001|Open fracture of Lower leg|
-|05233|48187004|Open fracture of Ankle|
-|05234|367527001|Open fracture of Foot|
-|05235|439987009|Open fracture of Toe|
-|05302|704005005|Closed fracture of Head|
-|05303|69102005|Closed fracture of Face|
-|05306|423125000|Closed fracture of Nose|
-|05310|704210003|Closed fracture of Shoulder|
-|05312|36991002|Closed fracture of Upper Arm|
-|05313|10938001000119101|Closed fracture of Elbow|
-|05314|91419009|Closed fracture of Forearm|
-|05316|704005005|Closed fracture of Hand|
-|05317|423125000|Closed fracture of Digit|
-|05318|269062008|Closed fracture of Cervical spine|
-|05319|423125000|Closed fracture of Thoracic|
-|05320|423125000|Closed fracture of Lumbosacral spine|
-|05321|91037003|Closed fracture of Pelvis|
-|05322|423125000|Closed fracture of Chest|
-|05325|423125000|Closed fracture of Back/buttocks|
-|05328|359817006|Closed fracture of Hip|
-|05330|359817006|Closed fracture of Thigh|
-|05331|423125000|Closed fracture of Knee|
-|05332|413876003|Closed fracture of Lower leg|
-|05333|42188001|Closed fracture of Ankle|
-|05334|342070009|Closed fracture of Foot|
-|05335|423125000|Closed fracture of Toe|
-|05505|81723002|Amputation of Ear|
-|05507|81723002|Amputation of Mouth, Jaw, Teeth|
-|05517|81723002|Amputation of Digit|
-|06 10|3199001|Sprain of Shoulder|
-|06 13|384709000|Sprain of Elbow|
-|06 15|70704007|Sprain of Wrist|
-|06 16|87778004|Sprain of Hand|
-|06 17|384709000|Sprain of Digit|
-|06 18|384709000|Sprain of Cervical spine|
-|06 19|384709000|Sprain of Thoracic|
-|06 28|17883008|Sprain of Hip|
-|06 31|54888009|Sprain of Knee|
-|06 33|44465007|Sprain of Ankle|
-|06 34|49388007|Sprain of Foot|
-|06 35|12531000132101|Sprain of Toe|
-|07|312847008|Tendon injury|
-|07 09|312847008|Tendon injury of Neck|
-|07 10|312847008|Tendon injury of Shoulder|
-|07 12|312847008|Tendon injury of Upper Arm|
-|07 14|312847008|Tendon injury of Forearm|
-|07 15|312847008|Tendon injury of Wrist|
-|07 16|262971000|Tendon injury of Hand|
-|07 17|312847008|Tendon injury of Digit|
-|07 18|312847008|Tendon injury of Cervical spine|
-|07 20|312847008|Tendon injury of Lumbosacral spine|
-|07 30|312847008|Tendon injury of Thigh|
-|07 31|312847008|Tendon injury of Knee|
-|07 32|312847008|Tendon injury of Lower leg|
-|07 33|312847008|Tendon injury of Ankle|
-|07 34|312847008|Tendon injury of Foot|
-|07 35|312847008|Tendon injury of Toe|
-|09|57662003|Vascular injury|
-|10|125666000|Burns|
-|10 02|125666000|Burns of Head|
-|10 03|262582004|Burns of Face|
-|10 04|125666000|Burns of Eye|
-|10 08|284207003|Burns of Throat|
-|10 09|60713008|Burns of Neck|
-|10 10|57143002|Burns of Shoulder|
-|10 12|14261008|Burns of Upper Arm|
-|10 14|80827001|Burns of Forearm|
-|10 16|14893008|Burns of Hand|
-|10 17|125666000|Burns of Digit|
-|10 25|125666000|Burns of Back/buttocks|
-|10 26|125666000|Burns of Ano/rectal|
-|10 30|6132001|Burns of Thigh|
-|10 31|19684007|Burns of Knee|
-|10 32|37696000|Burns of Lower leg|
-|10 34|11980003|Burns of Foot|
-|10 35|88374002|Burns of Toe|
-|12|125670008|Foreign body|
-|12 05|125670008|Foreign body of Ear|
-|12 06|74699008|Foreign body of Nose|
-|12 08|125670008|Foreign body of Throat|
-|12 17|125670008|Foreign body of Digit|
-|12 26|125670008|Foreign body of Ano/rectal|
-|12 27|125670008|Foreign body of Genitalia|
-|12 36|125670008|Foreign body of Multiple Site|
-|14|75478009|Poisoning|
+|01 02|4179823|Laceration of Head|
+|01 03|443419|Laceration of Face|
+|01 07|443419|Laceration of Mouth, Jaw, Teeth|
+|01 09|4151524|Laceration of Neck|
+|01 10|4151525|Laceration of Shoulder|
+|01 12|4152933|Laceration of Upper Arm|
+|01 13|4151527|Laceration of Elbow|
+|01 14|4155034|Laceration of Forearm|
+|01 16|4113008|Laceration of Hand|
+|01 17|443419|Laceration of Digit|
+|01 22|443419|Laceration of Chest|
+|01 24|4152935|Laceration of Abdomen|
+|01 25|443419|Laceration of Back/buttocks|
+|01 26|443419|Laceration of Ano/rectal|
+|01 30|4152936|Laceration of Thigh|
+|01 31|4155039|Laceration of Knee|
+|01 32|4155040|Laceration of Lower leg|
+|01 34|4109685|Laceration of Foot|
+|01 35|4107674|Laceration of Toe|
+|02 02|42536696|Contusion of Head|
+|02 03|4054068|Contusion of Face|
+|02 05|4174369|Contusion of Ear|
+|02 06|4246724|Contusion of Nose|
+|02 09|4310238|Contusion of Neck|
+|02 10|441737|Contusion of Shoulder|
+|02 12|73923|Contusion of Upper Arm|
+|02 13|78605|Contusion of Elbow|
+|02 14|140273|Contusion of Forearm|
+|02 15|81186|Contusion of Wrist|
+|02 16|81723|Contusion of Hand|
+|02 17|441737|Contusion of Digit|
+|02 21|4033717|Contusion of Pelvis|
+|02 22|81175|Contusion of Chest|
+|02 24|1245923|Contusion of Abdomen|
+|02 25|441737|Contusion of Back/buttocks|
+|02 26|441737|Contusion of Ano/rectal|
+|02 28|195401|Contusion of Hip|
+|02 30|436278|Contusion of Thigh|
+|02 31|78619|Contusion of Knee|
+|02 32|77734|Contusion of Lower leg|
+|02 33|80573|Contusion of Ankle|
+|02 34|73090|Contusion of Foot|
+|02 35|74816|Contusion of Toe|
+|02136|433071|Contusion of Multiple Site|
+|03|376208|Soft tissue inflammation|
+|03 10|376208|Soft tissue inflammation of Shoulder|
+|03 22|376208|Soft tissue inflammation of Chest|
+|03 24|376208|Soft tissue inflammation of Abdomen|
+|03 27|376208|Soft tissue inflammation of Genitalia|
+|03 28|376208|Soft tissue inflammation of Hip|
+|04 01|375415|Head injury of Brain|
+|04 02|375415|Head injury of Head|
+|04 03|375415|Head injury of Face|
+|04 04|375415|Head injury of Eye|
+|04 07|375415|Head injury of Mouth, Jaw, Teeth|
+|05 03|74726|Dislocation of Face|
+|05 12|74726|Dislocation of Upper Arm|
+|05 13|74726|Dislocation of Elbow|
+|05 16|74726|Dislocation of Hand|
+|05 17|74726|Dislocation of Digit|
+|05 19|74726|Dislocation of Thoracic|
+|05 21|74726|Dislocation of Pelvis|
+|05 24|74726|Dislocation of Abdomen|
+|05 31|74726|Dislocation of Knee|
+|05 32|74726|Dislocation of Lower leg|
+|05 34|4050079|Dislocation of Foot|
+|05 35|4004143|Dislocation of Toe|
+|05110|74726|Dislocation of Shoulder|
+|05113|74726|Dislocation of Elbow|
+|05115|3654438|Dislocation of Wrist|
+|05116|74726|Dislocation of Hand|
+|05117|74726|Dislocation of Digit|
+|05118|438889|Dislocation of Cervical spine|
+|05128|74726|Dislocation of Hip|
+|05131|74726|Dislocation of Knee|
+|05133|74726|Dislocation of Ankle|
+|05135|4004143|Dislocation of Toe|
+|05202|45766773|Open fracture of Head|
+|05203|4264281|Open fracture of Face|
+|05206|4206244|Open fracture of Nose|
+|05210|4264281|Open fracture of Shoulder|
+|05212|4079931|Open fracture of Upper Arm|
+|05213|37209103|Open fracture of Elbow|
+|05214|440851|Open fracture of Forearm|
+|05216|45766773|Open fracture of Hand|
+|05217|4264281|Open fracture of Digit|
+|05218|443248|Open fracture of Cervical spine|
+|05221|75932|Open fracture of Pelvis|
+|05222|4264281|Open fracture of Chest|
+|05225|4264281|Open fracture of Back/buttocks|
+|05230|4263628|Open fracture of Thigh|
+|05231|4206244|Open fracture of Knee|
+|05232|4186548|Open fracture of Lower leg|
+|05233|78888|Open fracture of Ankle|
+|05234|435101|Open fracture of Foot|
+|05235|4206244|Open fracture of Toe|
+|05302|45772685|Closed fracture of Head|
+|05303|4286936|Closed fracture of Face|
+|05306|4307254|Closed fracture of Nose|
+|05310|45766940|Closed fracture of Shoulder|
+|05312|4282857|Closed fracture of Upper Arm|
+|05313|760525|Closed fracture of Elbow|
+|05314|441974|Closed fracture of Forearm|
+|05316|45772685|Closed fracture of Hand|
+|05317|4307254|Closed fracture of Digit|
+|05318|437993|Closed fracture of Cervical spine|
+|05319|4307254|Closed fracture of Thoracic|
+|05320|4307254|Closed fracture of Lumbosacral spine|
+|05321|77129|Closed fracture of Pelvis|
+|05322|4307254|Closed fracture of Chest|
+|05325|4307254|Closed fracture of Back/buttocks|
+|05328|4230399|Closed fracture of Hip|
+|05330|4230399|Closed fracture of Thigh|
+|05331|4307254|Closed fracture of Knee|
+|05332|4211657|Closed fracture of Lower leg|
+|05333|75095|Closed fracture of Ankle|
+|05334|441980|Closed fracture of Foot|
+|05335|4307254|Closed fracture of Toe|
+|05505|4096479|Amputation of Ear|
+|05507|4096479|Amputation of Mouth, Jaw, Teeth|
+|05517|4096479|Amputation of Digit|
+|06 10|4136228|Sprain of Shoulder|
+|06 13|3171204|Sprain of Elbow|
+|06 15|78272|Sprain of Wrist|
+|06 16|73045|Sprain of Hand|
+|06 17|3171204|Sprain of Digit|
+|06 18|3171204|Sprain of Cervical spine|
+|06 19|3171204|Sprain of Thoracic|
+|06 28|441701|Sprain of Hip|
+|06 31|4207505|Sprain of Knee|
+|06 33|81151|Sprain of Ankle|
+|06 34|436253|Sprain of Foot|
+|06 35|36712848|Sprain of Toe|
+|07|4194894|Tendon injury|
+|07 09|4194894|Tendon injury of Neck|
+|07 10|4194894|Tendon injury of Shoulder|
+|07 12|4194894|Tendon injury of Upper Arm|
+|07 14|4194894|Tendon injury of Forearm|
+|07 15|4194894|Tendon injury of Wrist|
+|07 16|4134947|Tendon injury of Hand|
+|07 17|4194894|Tendon injury of Digit|
+|07 18|4194894|Tendon injury of Cervical spine|
+|07 20|4194894|Tendon injury of Lumbosacral spine|
+|07 30|4194894|Tendon injury of Thigh|
+|07 31|4194894|Tendon injury of Knee|
+|07 32|4194894|Tendon injury of Lower leg|
+|07 33|4194894|Tendon injury of Ankle|
+|07 34|4194894|Tendon injury of Foot|
+|07 35|4194894|Tendon injury of Toe|
+|09|192763|Vascular injury|
+|10|442013|Burns|
+|10 02|442013|Burns of Head|
+|10 03|4096477|Burns of Face|
+|10 04|442013|Burns of Eye|
+|10 08|4111364|Burns of Throat|
+|10 09|26286|Burns of Neck|
+|10 10|73913|Burns of Shoulder|
+|10 12|76304|Burns of Upper Arm|
+|10 14|133655|Burns of Forearm|
+|10 16|75426|Burns of Hand|
+|10 17|442013|Burns of Digit|
+|10 25|442013|Burns of Back/buttocks|
+|10 26|442013|Burns of Ano/rectal|
+|10 30|433915|Burns of Thigh|
+|10 31|72516|Burns of Knee|
+|10 32|75121|Burns of Lower leg|
+|10 34|74250|Burns of Foot|
+|10 35|80295|Burns of Toe|
+|12|4053838|Foreign body|
+|12 05|4053838|Foreign body of Ear|
+|12 06|256571|Foreign body of Nose|
+|12 08|4053838|Foreign body of Throat|
+|12 17|4053838|Foreign body of Digit|
+|12 26|4053838|Foreign body of Ano/rectal|
+|12 27|4053838|Foreign body of Genitalia|
+|12 36|4053838|Foreign body of Multiple Site|
+|14|442562|Poisoning|
 |144|436585|Other, including alcohol|
 |14436|436585|Other, including alcohol of Multiple Site|
-|15|87970004|Near drowning|
-|16|105612003|Visceral injury|
-|16 22|105612003|Visceral injury of Chest|
-|17|40733004|Infectious Disease|
-|171|719951000000109|Notifiable disease|
-|172|40733004|Non-notifiable disease|
-|17208|40733004|Non-notifiable disease of Throat|
-|17234|40733004|Non-notifiable disease of Foot|
-|17236|40733004|Non-notifiable disease of Multiple Site|
-|18|275393007|Local infection|
-|18 23|76844004|Local infection of Breast|
-|18 36|76844004|Local infection of Multiple Site|
+|15|439973|Near drowning|
+|16|193631|Visceral injury|
+|16 22|193631|Visceral injury of Chest|
+|17|432250|Infectious Disease|
+|171|432250|Notifiable disease|
+|172|432250|Non-notifiable disease|
+|17208|432250|Non-notifiable disease of Throat|
+|17234|432250|Non-notifiable disease of Foot|
+|17236|432250|Non-notifiable disease of Multiple Site|
+|18|4170116|Local infection|
+|18 23|4297984|Local infection of Breast|
+|18 36|4297984|Local infection of Multiple Site|
 |19|132797|Septicaemia|
-|201|428196007|Myocardial ischaemia & infarction|
-|202|441545004|Other non-ischaemia|
-|20236|441545004|Other non-ischaemia of Multiple Site|
-|21|230690007|Cerebro-vascular condition|
-|21 02|230690007|Cerebro-vascular condition of Head|
-|22|27550009|Other vascular condition|
-|22 19|27550009|Other vascular condition of Thoracic|
-|22 24|27550009|Other vascular condition of Abdomen|
-|23|57407000|Haematological|
-|24|87536007|Central Nervous System|
-|241|84757009|Epilepsy|
-|242|87536007|Other non-epilepsy|
-|24236|87536007|Other non-epilepsy of Multiple Site|
-|251|195967001|Bronchial asthma|
-|252|50043002|Other non-asthma|
-|25222|50043002|Other non-asthma of Chest|
-|26|24813008|Gastrointestinal condition|
-|26 08|24813008|Gastrointestinal condition of Throat|
-|26 24|24813008|Gastrointestinal condition of Abdomen|
-|261|74474003|Haemorrhage|
-|262|116290004|Acute abdominal pain|
-|26324|24813008|Other of Abdomen|
-|27|251956004|Urological|
-|27 27|251956004|Urological of Genitalia|
-|28|1078831000000107|Obstetric|
-|28 27|1078831000000107|Obstetric of Genitalia|
-|29|1078831000000107|Gynaecological|
-|29 21|1078831000000107|Gynaecological of Pelvis|
-|29 29|1078831000000107|Gynaecological of Groin|
-|30|309048008|Diabetes|
-|301|73211009|Diabetic|
-|302|309048008|Other non-diabetic|
-|31|95320005|Dermatological|
-|32|781474001|Allergy|
-|33|128234004|Facio-maxillary|
-|33 02|128234004|Facio-maxillary of Head|
-|33 07|128234004|Facio-maxillary of Mouth, Jaw, Teeth|
-|34|232208008|Ear, Nose & Throat|
-|34 05|232208008|Ear, Nose & Throat of Ear|
-|34 06|232208008|Ear, Nose & Throat of Nose|
-|34 08|232208008|Ear, Nose & Throat of Throat|
-|35|74732009|Mental disorder|
-|36 04|371409005|Ophthalmological of Eye|
-|37|162218007|Social problem|
-|38|0|Diagnosis not classifiable|
-|39|0|Nothing abnormal detected|
+|201|4323202|Myocardial ischaemia & infarction|
+|202|40479593|Other non-ischaemia|
+|20236|40479593|Other non-ischaemia of Multiple Site|
+|21|381316|Cerebro-vascular condition|
+|21 02|381316|Cerebro-vascular condition of Head|
+|22|443784|Other vascular condition|
+|30|201820|Diabetes|
+|301|201820|Diabetic|
+|302|31821|Other non-diabetic|
+|31|4317258|Dermatological|
+|32|36683564|Allergy|
+|33|4134585|Facio-maxillary|
+|33 02|4134585|Facio-maxillary of Head|
+|33 07|4134585|Facio-maxillary of Mouth, Jaw, Teeth|
+|34|4339468|Ear, Nose & Throat|
+|34 05|4339468|Ear, Nose & Throat of Ear|
+|34 06|4339468|Ear, Nose & Throat of Nose|
+|34 08|4339468|Ear, Nose & Throat of Throat|
+|35|432586|Mental disorder|
+|36 04|373499|Ophthalmological of Eye|
+|37|439437|Social problem|
+|38||Diagnosis not classifiable|
+|39||Nothing abnormal detected|
 
 Notes
-* [ACCIDENT and EMERGENCY CLINICAL CODES](https://v2.datadictionary.nhs.uk/web_site_content/pages/codes/administrative_codes/a_amp_e_diagnosis_tables.asp@shownav=1.html)
-* [OMOP Conditions](https://athena.ohdsi.org/search-terms/terms?standardConcept=Standard&vocabulary=SNOMED&invalidReason=Valid&conceptClass=Clinical+Finding&conceptClass=Disorder&page=1&pageSize=15&query=)
+* [ACCIDENT and EMERGENCY CLINICAL CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/supporting_information/accident_and_emergency_diagnosis_tables.html)
+* [OMOP Conditions](https://athena.ohdsi.org/search-terms/terms?domain=Condition&invalidReason=Valid&standardConcept=Standard&vocabulary=SNOMED&page=1&pageSize=15&query=)
 
 * `AccidentAndEmergencyDiagnosis` 
 				ACCIDENT AND EMERGENCY DIAGNOSIS is a six character code, comprising:

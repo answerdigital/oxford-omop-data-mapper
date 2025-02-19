@@ -22,6 +22,7 @@ internal class DrugExposureRecorder : IDrugExposureRecorder
         if (records == null) throw new ArgumentNullException(nameof(records));
 
         _logger.LogInformation("Recording {0} Drug Exposure.", records.Count);
+        Logger.LogNonValid(_logger, records);
 
         var batchLogger = new BatchTimingLogger<DrugExposureRecorder>(_configuration.BatchSize!.Value, records.Count, "drug exposure", _logger);
 
