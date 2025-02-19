@@ -58,19 +58,19 @@ Accident and Emergency Diagnosis to OMOP Condition Concept IDs
 |AccidentAndEmergencyDiagnosis|condition_source_concept_id|notes|
 |------|-----|-----|
 |01 02|4179823|Laceration of Head|
-|01 03|4148390|Laceration of Face|
-|01 07|4148390|Laceration of Mouth, Jaw, Teeth|
+|01 03|443419|Laceration of Face|
+|01 07|443419|Laceration of Mouth, Jaw, Teeth|
 |01 09|4151524|Laceration of Neck|
 |01 10|4151525|Laceration of Shoulder|
 |01 12|4152933|Laceration of Upper Arm|
 |01 13|4151527|Laceration of Elbow|
 |01 14|4155034|Laceration of Forearm|
 |01 16|4113008|Laceration of Hand|
-|01 17|4148390|Laceration of Digit|
-|01 22|4148390|Laceration of Chest|
+|01 17|443419|Laceration of Digit|
+|01 22|443419|Laceration of Chest|
 |01 24|4152935|Laceration of Abdomen|
-|01 25|4148390|Laceration of Back/buttocks|
-|01 26|4148390|Laceration of Ano/rectal|
+|01 25|443419|Laceration of Back/buttocks|
+|01 26|443419|Laceration of Ano/rectal|
 |01 30|4152936|Laceration of Thigh|
 |01 31|4155039|Laceration of Knee|
 |01 32|4155040|Laceration of Lower leg|
@@ -112,27 +112,27 @@ Accident and Emergency Diagnosis to OMOP Condition Concept IDs
 |04 03|375415|Head injury of Face|
 |04 04|375415|Head injury of Eye|
 |04 07|375415|Head injury of Mouth, Jaw, Teeth|
-|05 03|4227147|Dislocation of Face|
-|05 12|4227147|Dislocation of Upper Arm|
-|05 13|4227147|Dislocation of Elbow|
-|05 16|4227147|Dislocation of Hand|
-|05 17|4227147|Dislocation of Digit|
-|05 19|4227147|Dislocation of Thoracic|
-|05 21|4227147|Dislocation of Pelvis|
-|05 24|4227147|Dislocation of Abdomen|
-|05 31|4227147|Dislocation of Knee|
-|05 32|4227147|Dislocation of Lower leg|
+|05 03|74726|Dislocation of Face|
+|05 12|74726|Dislocation of Upper Arm|
+|05 13|74726|Dislocation of Elbow|
+|05 16|74726|Dislocation of Hand|
+|05 17|74726|Dislocation of Digit|
+|05 19|74726|Dislocation of Thoracic|
+|05 21|74726|Dislocation of Pelvis|
+|05 24|74726|Dislocation of Abdomen|
+|05 31|74726|Dislocation of Knee|
+|05 32|74726|Dislocation of Lower leg|
 |05 34|4050079|Dislocation of Foot|
 |05 35|4004143|Dislocation of Toe|
-|05110|4227147|Dislocation of Shoulder|
-|05113|4227147|Dislocation of Elbow|
+|05110|74726|Dislocation of Shoulder|
+|05113|74726|Dislocation of Elbow|
 |05115|3654438|Dislocation of Wrist|
-|05116|4227147|Dislocation of Hand|
-|05117|4227147|Dislocation of Digit|
+|05116|74726|Dislocation of Hand|
+|05117|74726|Dislocation of Digit|
 |05118|438889|Dislocation of Cervical spine|
-|05128|4227147|Dislocation of Hip|
-|05131|4227147|Dislocation of Knee|
-|05133|4227147|Dislocation of Ankle|
+|05128|74726|Dislocation of Hip|
+|05131|74726|Dislocation of Knee|
+|05133|74726|Dislocation of Ankle|
 |05135|4004143|Dislocation of Toe|
 |05202|45766773|Open fracture of Head|
 |05203|4264281|Open fracture of Face|
@@ -175,16 +175,16 @@ Accident and Emergency Diagnosis to OMOP Condition Concept IDs
 |05333|75095|Closed fracture of Ankle|
 |05334|441980|Closed fracture of Foot|
 |05335|4307254|Closed fracture of Toe|
-|05505|4217482|Amputation of Ear|
-|05507|4217482|Amputation of Mouth, Jaw, Teeth|
-|05517|4217482|Amputation of Digit|
+|05505|4096479|Amputation of Ear|
+|05507|4096479|Amputation of Mouth, Jaw, Teeth|
+|05517|4096479|Amputation of Digit|
 |06 10|4136228|Sprain of Shoulder|
-|06 13|4298490|Sprain of Elbow|
+|06 13|3171204|Sprain of Elbow|
 |06 15|78272|Sprain of Wrist|
 |06 16|73045|Sprain of Hand|
-|06 17|4298490|Sprain of Digit|
-|06 18|4298490|Sprain of Cervical spine|
-|06 19|4298490|Sprain of Thoracic|
+|06 17|3171204|Sprain of Digit|
+|06 18|3171204|Sprain of Cervical spine|
+|06 19|3171204|Sprain of Thoracic|
 |06 28|441701|Sprain of Hip|
 |06 31|4207505|Sprain of Knee|
 |06 33|81151|Sprain of Ankle|
@@ -240,7 +240,7 @@ Accident and Emergency Diagnosis to OMOP Condition Concept IDs
 |16|193631|Visceral injury|
 |16 22|193631|Visceral injury of Chest|
 |17|432250|Infectious Disease|
-|171|44804362|Notifiable disease|
+|171|432250|Notifiable disease|
 |172|432250|Non-notifiable disease|
 |17208|432250|Non-notifiable disease of Throat|
 |17234|432250|Non-notifiable disease of Foot|
@@ -255,32 +255,9 @@ Accident and Emergency Diagnosis to OMOP Condition Concept IDs
 |21|381316|Cerebro-vascular condition|
 |21 02|381316|Cerebro-vascular condition of Head|
 |22|443784|Other vascular condition|
-|22 19|443784|Other vascular condition of Thoracic|
-|22 24|443784|Other vascular condition of Abdomen|
-|23|3396312|Haematological|
-|24|373087|Central Nervous System|
-|241|380378|Epilepsy|
-|242|373087|Other non-epilepsy|
-|24236|373087|Other non-epilepsy of Multiple Site|
-|251|317009|Bronchial asthma|
-|252|320136|Other non-asthma|
-|25222|320136|Other non-asthma of Chest|
-|26|200447|Gastrointestinal condition|
-|26 08|200447|Gastrointestinal condition of Throat|
-|26 24|200447|Gastrointestinal condition of Abdomen|
-|261|192671|Haemorrhage|
-|262|4023573|Acute abdominal pain|
-|26324|200447|Other of Abdomen|
-|27|3379561|Urological|
-|27 27|3379561|Urological of Genitalia|
-|28|35609113|Obstetric|
-|28 27|35609113|Obstetric of Genitalia|
-|29|35609113|Gynaecological|
-|29 21|35609113|Gynaecological of Pelvis|
-|29 29|35609113|Gynaecological of Groin|
-|30|4151575|Diabetes|
+|30|201820|Diabetes|
 |301|201820|Diabetic|
-|302|4151575|Other non-diabetic|
+|302|31821|Other non-diabetic|
 |31|4317258|Dermatological|
 |32|36683564|Allergy|
 |33|4134585|Facio-maxillary|
@@ -297,8 +274,8 @@ Accident and Emergency Diagnosis to OMOP Condition Concept IDs
 |39||Nothing abnormal detected|
 
 Notes
-* [ACCIDENT and EMERGENCY CLINICAL CODES](https://v2.datadictionary.nhs.uk/web_site_content/pages/codes/administrative_codes/a_amp_e_diagnosis_tables.asp@shownav=1.html)
-* [OMOP Conditions](https://athena.ohdsi.org/search-terms/terms?standardConcept=Standard&vocabulary=SNOMED&invalidReason=Valid&conceptClass=Clinical+Finding&conceptClass=Disorder&page=1&pageSize=15&query=)
+* [ACCIDENT and EMERGENCY CLINICAL CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/supporting_information/accident_and_emergency_diagnosis_tables.html)
+* [OMOP Conditions](https://athena.ohdsi.org/search-terms/terms?domain=Condition&invalidReason=Valid&standardConcept=Standard&vocabulary=SNOMED&page=1&pageSize=15&query=)
 
 * `AccidentAndEmergencyDiagnosis` 
 				ACCIDENT AND EMERGENCY DIAGNOSIS is a six character code, comprising:
