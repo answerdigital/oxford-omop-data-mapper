@@ -86,7 +86,6 @@ begin
 		Name
 	)
 	values
-	('visit_occurrence_id'),
 	('person_id'),
 	('visit_concept_id'),
 	('visit_start_date'),
