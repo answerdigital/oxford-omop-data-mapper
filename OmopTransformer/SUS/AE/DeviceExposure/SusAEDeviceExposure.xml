@@ -1,7 +1,7 @@
 ﻿<Query>
     <Sql>
 	select
-		ae.GeneratedRecordIdentifier,
+		ae.AEAttendanceNumber,
 		ae.NHSNumber,
 		coalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,
 		coalesce(ae.ArrivalTime, '000000') as StartTime,
@@ -16,9 +16,9 @@
 	</Sql>
 
 	<Explanations>
-		<Explanation columnName="GeneratedRecordIdentifier">
-			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
-			<Origin>CDS RECORD IDENTIFIER</Origin>
+		<Explanation columnName="AEAttendanceNumber">
+			<Description></Description>
+			<Origin>A and E ATTENDANCE NUMBER (Retired)</Origin>
 		</Explanation>
 
 		<Explanation columnName="NHSNumber">

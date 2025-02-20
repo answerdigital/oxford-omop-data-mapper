@@ -1,19 +1,19 @@
 ---
 layout: default
-title: RecordConnectionIdentifier
+title: HospitalProviderSpellNumber
 parent: DeviceExposure
 grand_parent: Transformation Documentation
 has_toc: false
 ---
-# RecordConnectionIdentifier
+# HospitalProviderSpellNumber
 ### SUS AE Device Exposure
-* Value copied from `GeneratedRecordIdentifier`
+* Value copied from `AEAttendanceNumber`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
+* `AEAttendanceNumber`  [A and E ATTENDANCE NUMBER (Retired)]()
 
 ```sql
 	select
-		ae.GeneratedRecordIdentifier,
+		ae.AEAttendanceNumber,
 		ae.NHSNumber,
 		coalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,
 		coalesce(ae.ArrivalTime, '000000') as StartTime,
@@ -29,4 +29,4 @@ has_toc: false
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20RecordConnectionIdentifier%20field%20SUS%20AE%20Device%20Exposure%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20HospitalProviderSpellNumber%20field%20SUS%20AE%20Device%20Exposure%20mapping){: .btn }

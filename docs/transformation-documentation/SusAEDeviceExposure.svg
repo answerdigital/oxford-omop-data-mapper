@@ -120,7 +120,8 @@
   </g>
   <g>
     <rect x="2965" y="20" width="400" height="400" fill="#3E5EB2" stroke="white" stroke-width="2" />
-    <text x="2978" y="228" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">CDS RECORD IDENTIFIER</text>
+    <text x="2978" y="228" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">A and E</text>
+    <text x="2978" y="246" fill="white" font-family="Helvetica" font-size="1.2em" text-anchor="start">ATTENDANCE NUMBER (Retired)</text>
   </g>
   <g>
     <line x1="3165" y1="420" x2="3165" y2="615" stroke="white" stroke-width="2" />
@@ -130,6 +131,6 @@
   </g>
   <g>
     <rect x="2965" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
-    <text x="2978" y="668" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">RecordConnectionIdentifier</text>
+    <text x="2978" y="668" fill="#3E5EB2" font-family="Helvetica" font-size="1.2em" text-anchor="start">HospitalProviderSpellNumber</text>
   </g>
 </svg>

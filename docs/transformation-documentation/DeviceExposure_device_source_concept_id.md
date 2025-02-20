@@ -27,7 +27,7 @@ Lookup discharge destination concept.
 
 ```sql
 	select
-		ae.GeneratedRecordIdentifier,
+		ae.AEAttendanceNumber,
 		ae.NHSNumber,
 		coalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,
 		coalesce(ae.ArrivalTime, '000000') as StartTime,

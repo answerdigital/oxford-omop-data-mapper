@@ -16,7 +16,7 @@ has_toc: false
 * [device_type_concept_id]({% link docs/transformation-documentation/DeviceExposure_device_type_concept_id.md %})
 * [device_source_concept_id]({% link docs/transformation-documentation/DeviceExposure_device_source_concept_id.md %})
 * [device_source_value]({% link docs/transformation-documentation/DeviceExposure_device_source_value.md %})
-* [RecordConnectionIdentifier]({% link docs/transformation-documentation/DeviceExposure_RecordConnectionIdentifier.md %})
+* [HospitalProviderSpellNumber]({% link docs/transformation-documentation/DeviceExposure_HospitalProviderSpellNumber.md %})
 
 ## SusAEDeviceExposure
 <a href="SusAEDeviceExposure.svg" target="_blank"><img src="SusAEDeviceExposure.svg" /></a>

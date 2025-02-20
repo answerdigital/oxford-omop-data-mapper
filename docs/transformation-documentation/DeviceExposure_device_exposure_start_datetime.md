@@ -16,7 +16,7 @@ Combines a date with a time of day.
 
 ```sql
 	select
-		ae.GeneratedRecordIdentifier,
+		ae.AEAttendanceNumber,
 		ae.NHSNumber,
 		coalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,
 		coalesce(ae.ArrivalTime, '000000') as StartTime,

@@ -54,6 +54,7 @@ internal class DeviceExposureRecorder : IDeviceExposureRecorder
             dataTable.Columns.Add("unit_source_value");
             dataTable.Columns.Add("unit_source_concept_id");
             dataTable.Columns.Add("RecordConnectionIdentifier");
+            dataTable.Columns.Add("HospitalProviderSpellNumber");
 
             foreach (var record in batch)
             {
@@ -79,7 +80,8 @@ internal class DeviceExposureRecorder : IDeviceExposureRecorder
                     record.unit_concept_id,
                     record.unit_source_value,
                     record.unit_source_concept_id,
-                    record.RecordConnectionIdentifier);
+                    record.RecordConnectionIdentifier,
+                    record.HospitalProviderSpellNumber);
             }
 
             var parameter = new
