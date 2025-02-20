@@ -1,3 +1,11 @@
+drop type [cdm].[device_exposure_row];
+
+go
+
+drop procedure cdm.insert_update_device_exposure;
+
+go
+
 create type [cdm].[device_exposure_row] as table
 (
     nhs_number varchar(10) not null,
