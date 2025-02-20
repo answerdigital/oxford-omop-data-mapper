@@ -1,8 +1,8 @@
-drop type [cdm].[device_exposure_row];
+drop procedure cdm.insert_update_device_exposure;
 
 go
 
-drop procedure cdm.insert_update_device_exposure;
+drop type [cdm].[device_exposure_row];
 
 go
 
@@ -12,7 +12,7 @@ create type [cdm].[device_exposure_row] as table
     [device_concept_id] [int] NOT NULL,
     [device_exposure_start_date] [date] NOT NULL,
     [device_exposure_start_datetime] [datetime] NULL,
-    [device_exposure_end_date] [date] NOT NULL,
+    [device_exposure_end_date] [date] NULL,
     [device_exposure_end_datetime] [datetime] NULL,
     [device_type_concept_id] [int] NOT NULL,
     [unique_device_id] [varchar](50) NULL,
