@@ -21,6 +21,7 @@ internal abstract class OmopDeviceExposure<T> : IOmopRecord<T>
     public virtual string? unit_source_value { get; set; }
     public virtual int? unit_source_concept_id { get; set; }
     public virtual string? HospitalProviderSpellNumber { get; set; }
+    public virtual string? RecordConnectionIdentifier { get; set; }
     public string OmopTargetTypeDescription => "DeviceExposure";
     public T? Source { get; set; }
 
