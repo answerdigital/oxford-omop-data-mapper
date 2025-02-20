@@ -7,7 +7,7 @@ namespace OmopTransformer.SUS.AE.DeviceExposure;
 [SourceQuery("SusAEDeviceExposure.xml")]
 internal class SusAEDeviceExposureRecord
 {
-    public string? GeneratedRecordIdentifier { get; set; }
+    public string? AEAttendanceNumber { get; set; }
     public string? NHSNumber { get; set; }
     public string? StartDate { get; set; }
     public string? StartTime { get; set; }

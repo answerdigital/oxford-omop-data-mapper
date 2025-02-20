@@ -35,7 +35,8 @@ begin
         unit_concept_id,
         unit_source_value,
         unit_source_concept_id,
-        RecordConnectionIdentifier
+		RecordConnectionIdentifier,
+        HospitalProviderSpellNumber
 	)
 	output inserted.device_exposure_id
 	into @NewRecords (device_exposure_id)
@@ -56,21 +57,24 @@ begin
 				top 1
 					vo.visit_occurrence_id
 			from cdm.visit_occurrence vo
-			where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+			where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+			and vo.person_id = p.person_id
 		) as visit_occurrence_id,
 		(
 			select
 				top 1
 					vd.visit_detail_id
 			from cdm.visit_detail vd
-			where vd.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+			where vd.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+			and vd.person_id = p.person_id
 		) as visit_detail_id,
         r.device_source_value,
         r.device_source_concept_id,
         r.unit_concept_id,
         r.unit_source_value,
         r.unit_source_concept_id,
-        r.RecordConnectionIdentifier
+		r.RecordConnectionIdentifier,
+        r.HospitalProviderSpellNumber
 	from @rows r
 		inner join cdm.person p
 			on r.nhs_number = p.person_source_value
@@ -78,7 +82,7 @@ begin
 		not exists (
 			select	*
 			from cdm.device_exposure vo
-			where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+			where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
 				and vo.device_concept_id = r.device_concept_id
 		);
 
@@ -108,7 +112,8 @@ begin
     ('unit_concept_id'),
     ('unit_source_value'),
     ('unit_source_concept_id'),
-    ('RecordConnectionIdentifier');
+	('RecordConnectionIdentifier'),
+    ('HospitalProviderSpellNumber');
 
 	insert into provenance
 	(

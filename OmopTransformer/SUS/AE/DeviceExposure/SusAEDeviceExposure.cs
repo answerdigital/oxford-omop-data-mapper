@@ -33,6 +33,6 @@ internal class SusAEDeviceExposure : OmopDeviceExposure<SusAEDeviceExposureRecor
     [CopyValue(nameof(Source.AccidentAndEmergencyInvestigation))]
     public override string? device_source_value { get; set; }
 
-    [CopyValue(nameof(Source.GeneratedRecordIdentifier))]
-    public override string? RecordConnectionIdentifier { get; set; }
+    [CopyValue(nameof(Source.AEAttendanceNumber))]
+    public override string? HospitalProviderSpellNumber { get; set; }
 }
