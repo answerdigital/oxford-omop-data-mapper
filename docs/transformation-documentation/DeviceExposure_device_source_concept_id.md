@@ -7,10 +7,23 @@ has_toc: false
 ---
 # device_source_concept_id
 ### SUS AE Device Exposure
-Source column  `device_source_value`.
-Converts text to integers.
+Source column  `AccidentAndEmergencyInvestigation`.
+Lookup discharge destination concept.
 
-* `device_source_value` SNOMED equivalent device from AccidentAndEmergencyInvestigation; A broad coding of types of investigation which may be requested to assist with diagnosis as a result of Accident and Emergency Attendances. [ACCIDENT AND EMERGENCY INVESTIGATION]()
+
+|AccidentAndEmergencyInvestigation|device_source_concept_id|notes|
+|------|-----|-----|
+|01|45768233|X-ray|
+|02|45768113|Electrocardiograph|
+|08|45768357|Microscope (histology)|
+|10|45768281|Ultrasound|
+|11|4234381|Magnetic Resonance Imaging (MRI)|
+|12|45762714|Computerised Tomography (CT)|
+|09|45762714|Computerised Tomography (CT)|
+|19|618883|Blood culture bottle|
+
+
+* `AccidentAndEmergencyInvestigation` A broad coding of types of investigation which may be requested to assist with diagnosis as a result of Accident and Emergency Attendances. [ACCIDENT AND EMERGENCY INVESTIGATION]()
 
 ```sql
 	select
@@ -20,16 +33,7 @@ Converts text to integers.
 		coalesce(ae.ArrivalTime, '000000') as StartTime,
 		coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as EndDate,
 		coalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as EndTime,
-		i.AccidentAndEmergencyInvestigation,
-		case
-			when i.AccidentAndEmergencyInvestigation = '01' then '45768233' --X-ray
-			when i.AccidentAndEmergencyInvestigation = '02' then '45768113' --Electrocardiograph
-			when i.AccidentAndEmergencyInvestigation = '08' then '45768357' --Microscope (histology)
-			when i.AccidentAndEmergencyInvestigation = '10' then '45768281' --Ultrasound
-			when i.AccidentAndEmergencyInvestigation = '11' then '4234381' --Magnetic Resonance Imaging (MRI)
-			when i.AccidentAndEmergencyInvestigation in ('09', '12') then '45762714' --Computerised Tomography (CT)
-			when i.AccidentAndEmergencyInvestigation = '19' then '618883' --Blood culture bottle
-		else '' end as device_source_value
+		i.AccidentAndEmergencyInvestigation
 	from omop_staging.sus_AE_investigation i
 		inner join omop_staging.sus_AE ae
 			on i.MessageId = ae.MessageId

@@ -66,6 +66,7 @@ begin
 					vo.visit_occurrence_id
 			from cdm.visit_occurrence vo
 			where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+				and p.person_id = vo.person_id
 		) as visit_occurrence_id,
 		(
 			select
@@ -73,6 +74,7 @@ begin
 					vd.visit_detail_id
 			from cdm.visit_detail vd
 			where vd.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+				and p.person_id = vd.person_id
 		) as visit_detail_id,
 		r.drug_source_value,
 		r.drug_source_concept_id,
