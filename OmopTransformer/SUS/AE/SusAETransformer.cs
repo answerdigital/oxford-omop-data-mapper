@@ -9,9 +9,8 @@ using OmopTransformer.SUS.AE.Observation.AsthmaticPatient;
 using OmopTransformer.SUS.AE.Observation.DiabeticPatient;
 using OmopTransformer.SUS.AE.Observation.SourceOfReferralForOutpatients;
 using OmopTransformer.SUS.AE.VisitDetails;
+using OmopTransformer.SUS.AE.CareSite;
 using OmopTransformer.SUS.AE.DeviceExposure;
-// using OmopTransformer.SUS.AE.CareSite;
-// using OmopTransformer.SUS.AE.Provider;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.Death;
@@ -145,15 +144,10 @@ internal class SusAETransformer : Transformer
            "SUS AE DeviceExposure",
            cancellationToken);
 
-        // await Transform<SusAECareSiteRecord, SusAECareSite>(
-        //    _careSiteRecorder.InsertUpdateCareSite,
-        //    "SUS AE CareSite",
-        //    cancellationToken);
-
-        // await Transform<SusAEProviderRecord, SusAEProvider>(
-        //    _providerRecorder.InsertUpdateProvider,
-        //    "SUS AE Provider",
-        //    cancellationToken);
+        await Transform<SusAECareSiteRecord, SusAECareSite>(
+           _careSiteRecorder.InsertUpdateCareSite,
+           "SUS AE CareSite",
+           cancellationToken);
 
         // await Transform<SusAEMeasurementRecord, SusAEMeasurement>(
         //     _measurementRecorder.InsertUpdateMeasurements,
