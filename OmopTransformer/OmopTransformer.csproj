@@ -390,6 +390,9 @@
     <None Update="SUS\AE\Death\SusAEDeath.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SUS\AE\CareSite\SusAECareSite.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
 	  <None Update="SUS\AE\ProcedureOccurrence\SusAEProcedureOccurrence.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
@@ -409,6 +412,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SUS\AE\Observation\AsthmaticPatient\SusAEAsthmaticPatient.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\AE\DeviceExposure\SusAEDeviceExposure.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

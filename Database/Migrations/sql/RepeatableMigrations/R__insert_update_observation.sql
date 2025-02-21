@@ -111,7 +111,6 @@ begin
 		Name
 	)
 	values
-	('observation_id'),
 	('person_id'),
 	('observation_concept_id'),
 	('observation_date'),

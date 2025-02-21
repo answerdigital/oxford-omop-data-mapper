@@ -95,8 +95,7 @@ begin
 	('visit_detail_id'),
 	('condition_source_value'),
 	('condition_source_concept_id'),
-	('condition_status_source_value'),
-	('condition_occurrence_id');
+	('condition_status_source_value');
 
 	insert into provenance
 	(

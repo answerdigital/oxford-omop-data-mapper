@@ -116,7 +116,6 @@ begin
 		Name
 	)
 	values
-	('visit_detail_id'),
 	('person_id'),
 	('visit_detail_concept_id'),
 	('visit_detail_start_date'),
