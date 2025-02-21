@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using OmopTransformer.Omop;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.RTDS.Demographics;
@@ -11,7 +12,23 @@ internal class RtdsTransformer : Transformer
     private readonly ILocationRecorder _locationRecorder;
     private readonly IPersonRecorder _personRecorder;
     
-    public RtdsTransformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, ILocationRecorder locationRecorder, IPersonRecorder personRecorder, IConceptMapper conceptMapper) : base(recordTransformer, logger, transformOptions, recordProvider, "RTDS", conceptMapper)
+    public RtdsTransformer(
+        IRecordTransformer recordTransformer, 
+        ILogger<IRecordTransformer> logger, 
+        TransformOptions transformOptions, 
+        IRecordProvider recordProvider, 
+        ILocationRecorder locationRecorder, 
+        IPersonRecorder personRecorder, 
+        IConceptMapper conceptMapper,
+        IRunAnalysisRecorder runAnalysisRecorder) 
+        : base(
+            recordTransformer, 
+            logger, 
+            transformOptions, 
+            recordProvider, 
+            "RTDS",
+            conceptMapper,
+            runAnalysisRecorder)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
@@ -19,14 +36,18 @@ internal class RtdsTransformer : Transformer
 
     public async Task Transform(CancellationToken cancellationToken)
     {
+        Guid runId = Guid.NewGuid();
+
         await Transform<RtdsDemographics, RtdsPerson>(
             _personRecorder.InsertUpdatePersons,
             "Rtds Person",
+            runId,
             cancellationToken);
         
         await Transform<RtdsPasLocation, RtdsLocation>(
             _locationRecorder.InsertUpdateLocations,
             "Rtds Location",
+            runId,
             cancellationToken);
     }
 }

@@ -22,6 +22,7 @@ using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Omop.Provider;
 using OmopTransformer.Transformation;
+using OmopTransformer.Omop;
 
 namespace OmopTransformer.SUS.OP;
 
@@ -57,12 +58,14 @@ internal class SusOPTransformer : Transformer
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
         ConceptResolver conceptResolver, 
         IObservationRecorder observationRecorder,
-        IConceptMapper conceptMapper) : base(recordTransformer,
+        IConceptMapper conceptMapper,
+        IRunAnalysisRecorder runAnalysisRecorder) : base(recordTransformer,
         logger,
         transformOptions,
         recordProvider,
         "SUSOP",
-        conceptMapper)
+        conceptMapper, 
+        runAnalysisRecorder)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
@@ -80,64 +83,78 @@ internal class SusOPTransformer : Transformer
 
     public async Task Transform(CancellationToken cancellationToken)
     {
+        Guid runId = Guid.NewGuid();
+
         await Transform<SusOPPersonRecord, SusOPPerson>(
            _personRecorder.InsertUpdatePersons,
            "Sus OP Person",
+           runId,
            cancellationToken);
 
         await Transform<SusOPLocationRecord, SusOPLocation>(
            _locationRecorder.InsertUpdateLocations,
            "SUS OP Location",
+           runId,
            cancellationToken);
 
         await Transform<SusOPDeathRecord, SusOPDeath>(
             _deathRecorder.InsertUpdateDeaths,
             "SUS OP Death",
+            runId,
             cancellationToken);
 
         await Transform<SusOPMeasurementRecord, SusOPMeasurement>(
             _measurementRecorder.InsertUpdateMeasurements,
             "SUS OP Measurements",
+            runId,
             cancellationToken);
 
         await Transform<SusOPProcedureOccurrenceRecord, SusOPProcedureOccurrence>(
            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
            "SUS OP Procedure Occurrence",
+           runId,
            cancellationToken);
 
         await Transform<SusOPConditionOccurrenceRecord, SusOPConditionOccurrence>(
            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
            "SUS OP Conditon Occurrence",
+           runId,
            cancellationToken);
 
         await Transform<SusOPVisitOccurrenceWithSpellRecord, SusOPVisitOccurrenceWithSpell>(
             _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
             "SUS OP VisitOccurrenceWithSpell",
+            runId,
             cancellationToken);
 
         await Transform<SusOPVisitDetailsRecord, SusOPVisitDetail>(
             _visitDetailRecorder.InsertUpdateVisitDetail,
             "SUS OP VisitDetail",
+            runId,
             cancellationToken);
 
         await Transform<SusOPCarerSupportIndicatorRecord, SusOPCarerSupportIndicator>(
            _observationRecorder.InsertUpdateObservations,
            "SUS OP CarerSupportIndicator",
+           runId,
            cancellationToken);
 
         await Transform<SusOPSourceOfReferralForOutpatientsRecord, SusOPSourceOfReferralForOutpatients>(
            _observationRecorder.InsertUpdateObservations,
            "SUS OP SourceOfReferralForOutpatients",
+           runId,
            cancellationToken);
 
         await Transform<SusOPCareSiteRecord, SusOPCareSite>(
            _careSiteRecorder.InsertUpdateCareSite,
            "SUS OP CareSite",
+           runId,
            cancellationToken);
 
         await Transform<SusOPProviderRecord, SusOPProvider>(
            _providerRecorder.InsertUpdateProvider,
            "SUS OP Provider",
+           runId,
            cancellationToken);
 
         _conceptResolver.PrintErrors();
