@@ -1,4 +1,7 @@
-drop procedure cdm.insert_update_device_exposure;
+if object_id('cdm.insert_update_device_exposure') is not null
+begin
+    drop procedure cdm.insert_update_device_exposure;
+end
 
 go
 
