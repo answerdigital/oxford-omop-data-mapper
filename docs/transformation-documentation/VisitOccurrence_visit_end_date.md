@@ -76,7 +76,7 @@ Converts text to dates.
 
 			coalesce(ae.ArrivalDate, ae.CDSActivityDate) as VisitStartDate,
 			coalesce(ae.ArrivalTime, '000000') as VisitStartTime,
-			coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate) as VisitEndDate,
+			coalesce(ae.AEDepartureDate, ae.AEAttendanceConclusionDate, ae.ArrivalDate, ae.CDSActivityDate) as VisitEndDate,
 			coalesce(ae.AEDepartureTime, ae.AEAttendanceConclusionTime, '000000') as VisitEndTime,
 
 			ae.AEArrivalMode as SourceofAdmissionCode,
