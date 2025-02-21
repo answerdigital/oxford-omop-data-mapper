@@ -8,5 +8,4 @@ namespace OmopTransformer.SUS.AE.CareSite;
 internal class SusAECareSiteRecord
 {
     public string? SiteCodeOfTreatment { get; set; }
-    public string? MainSpecialtyCode { get; set; }
 }

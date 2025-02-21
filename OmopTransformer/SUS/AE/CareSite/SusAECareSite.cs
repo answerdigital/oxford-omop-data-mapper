@@ -10,8 +10,6 @@ internal class SusAECareSite : OmopCareSite<SusAECareSiteRecord>
     public override string? care_site_name { get; set; }
 
     [ConstantValue(8870, "`Emergency Room - Hospital`")]
-    public override string? place_of_service_source_value { get; set; }
-
-    [ConstantValue(38004515, "`Inpatient Hospital`")]
     public override int? place_of_service_concept_id { get; set; }
 }
+
