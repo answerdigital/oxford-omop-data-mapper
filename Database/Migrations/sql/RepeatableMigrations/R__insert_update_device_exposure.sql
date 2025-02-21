@@ -93,7 +93,6 @@ begin
 		Name
 	)
 	values
-	('device_exposure_id'),
 	('person_id'),
     ('device_concept_id'),
     ('device_exposure_start_date'),

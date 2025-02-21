@@ -53,7 +53,6 @@ begin
 		Name
 	)
 	values
-	('person_id'),
 	('death_date'),
 	('death_datetime'),
 	('death_type_concept_id'),

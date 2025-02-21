@@ -99,7 +99,6 @@ begin
 		Name
 	)
 	values
-	('drug_exposure_id'),
 	('person_id'),
 	('drug_concept_id'),
 	('drug_exposure_start_date'),
