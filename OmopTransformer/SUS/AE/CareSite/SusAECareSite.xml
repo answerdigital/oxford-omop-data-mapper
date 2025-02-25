@@ -1,6 +1,6 @@
 ﻿<Query>
     <Sql>
-	select 
+	select distinct
 		SiteCodeOfTreatment
 	from [omop_staging].[sus_AE] 	
 	</Sql>
