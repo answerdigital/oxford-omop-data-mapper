@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <AssemblyName>omop</AssemblyName>
+	  <Configurations>Debug;Release;Release_no_docs</Configurations>
   </PropertyGroup>
 
 
@@ -418,7 +419,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' != 'Release_no_docs'">
 		<ItemGroup>
 			<DocumentationDirectory Include="$(MSBuildProjectDirectory)\..\docs\transformation-documentation" />
 		</ItemGroup>
