@@ -5,7 +5,7 @@ USER app
 WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
+ARG BUILD_CONFIGURATION=Release_no_docs
 WORKDIR /src
 COPY . .
 RUN dotnet restore ./OmopTransformer.sln
