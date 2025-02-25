@@ -14,7 +14,7 @@ WORKDIR /src
 RUN dotnet build OmopTransformer.sln -c $BUILD_CONFIGURATION -o /app/build
 RUN dotnet test OmopTransformer.sln -c $BUILD_CONFIGURATION -o /app/build
 FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
+ARG BUILD_CONFIGURATION=Release_no_docs
 RUN dotnet publish "OmopTransformer/OmopTransformer.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
