@@ -342,7 +342,8 @@ internal class Program
 
         builder.Configuration
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true);
+            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true)
+            .AddEnvironmentVariables();
 
         builder.Services.Configure<Configuration>(builder.Configuration);
 
