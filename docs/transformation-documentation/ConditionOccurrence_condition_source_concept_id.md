@@ -255,6 +255,29 @@ Accident and Emergency Diagnosis to OMOP Condition Concept IDs
 |21|381316|Cerebro-vascular condition|
 |21 02|381316|Cerebro-vascular condition of Head|
 |22|443784|Other vascular condition|
+|22 19|443784|Other vascular condition of Thoracic|
+|22 24|443784|Other vascular condition of Abdomen|
+|23|40528016|Haematological|
+|24|87536007|Central Nervous System|
+|241|380378|Epilepsy|
+|242|87536007|Other non-epilepsy|
+|24236|87536007|Other non-epilepsy of Multiple Site|
+|251|317009|Bronchial asthma|
+|252|320136|Other non-asthma|
+|25222|320136|Other non-asthma of Chest|
+|26|200447|Gastrointestinal condition|
+|26 08|200447|Gastrointestinal condition of Throat|
+|26 24|200447|Gastrointestinal condition of Abdomen|
+|261|192671|Haemorrhage|
+|262|4023573|Acute abdominal pain|
+|26324|200447|Other of Abdomen|
+|27|201337|Urological|
+|27 27|201337|Urological of Genitalia|
+|28|4150758|Obstetric|
+|28 27|4150758|Obstetric of Genitalia|
+|29|4028934|Gynaecological|
+|29 21|4028934|Gynaecological of Pelvis|
+|29 29|4028934|Gynaecological of Groin|
 |30|201820|Diabetes|
 |301|201820|Diabetic|
 |302|31821|Other non-diabetic|

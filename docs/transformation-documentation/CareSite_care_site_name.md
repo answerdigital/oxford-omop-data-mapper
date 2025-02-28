@@ -94,7 +94,7 @@ where rnk = 1;
 * `SiteCodeOfTreatment` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [SITE CODE (OF TREATMENT)](https://www.datadictionary.nhs.uk/data_elements/site_code__of_treatment_.html)
 
 ```sql
-	select 
+	select distinct
 		SiteCodeOfTreatment
 	from [omop_staging].[sus_AE] 	
 	
