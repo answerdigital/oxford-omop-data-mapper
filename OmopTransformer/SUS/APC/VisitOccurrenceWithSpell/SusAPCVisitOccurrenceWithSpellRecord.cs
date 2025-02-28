@@ -9,10 +9,10 @@ internal class SusAPCVisitOccurrenceWithSpellRecord
 {
     public string? NHSNumber { get; set; }
     public string? HospitalProviderSpellNumber { get; set; }
-    public string? EpisodeStartDate { get; set; }
-    public string? EpisodeStartTime { get; set; }
-    public string? EpisodeEndDate { get; set; }
-    public string? EpisodeEndTime { get; set; }
+    public string? VisitStartDate { get; set; }
+    public string? VisitStartTime { get; set; }
+    public string? VisitEndDate { get; set; }
+    public string? VisitEndTime { get; set; }
     public int? SourceofAdmissionCode { get; set; }
     public int? DischargeDestinationCode { get; set; }
 }
