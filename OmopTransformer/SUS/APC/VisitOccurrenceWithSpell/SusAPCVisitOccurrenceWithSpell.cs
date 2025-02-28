@@ -18,16 +18,16 @@ internal class SusAPCVisitOccurrenceWithSpell : OmopVisitOccurrence<SusAPCVisitO
     [CopyValue(nameof(Source.HospitalProviderSpellNumber))]
     public override string? HospitalProviderSpellNumber { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.EpisodeStartDate))]
+    [Transform(typeof(DateConverter), nameof(Source.VisitStartDate))]
     public override DateTime? visit_start_date { get; set; }
 
-    [Transform(typeof(DateAndTimeCombiner), nameof(Source.EpisodeStartDate), nameof(Source.EpisodeStartTime))]
+    [Transform(typeof(DateAndTimeCombiner), nameof(Source.VisitStartDate), nameof(Source.VisitStartTime))]
     public override DateTime? visit_start_datetime { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.EpisodeEndDate))]
+    [Transform(typeof(DateConverter), nameof(Source.VisitEndDate))]
     public override DateTime? visit_end_date { get; set; }
 
-    [Transform(typeof(DateAndTimeCombiner), nameof(Source.EpisodeEndDate), nameof(Source.EpisodeEndTime))]
+    [Transform(typeof(DateAndTimeCombiner), nameof(Source.VisitEndDate), nameof(Source.VisitEndTime))]
     public override DateTime? visit_end_datetime { get; set; }
 
     [ConstantValue(9201, "`Inpatient Visit`")] 
