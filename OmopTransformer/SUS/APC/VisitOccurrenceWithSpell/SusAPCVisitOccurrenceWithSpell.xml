@@ -30,23 +30,23 @@
 			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
 		</Explanation>
 
-		<Explanation columnName="EpisodeStartDate">
+		<Explanation columnName="VisitStartDate">
 			<Description>Start date of the episode.</Description>
 			<Origin>START DATE (EPISODE)</Origin>
 		</Explanation>
 
-		<Explanation columnName="EpisodeStartTime">
+		<Explanation columnName="VisitStartTime">
 			<Description>The earliest episode start time for the spell, or midnight if none are specified.</Description>
 			<Origin>START TIME (EPISODE)</Origin>
 		</Explanation>
 
-		<Explanation columnName="EpisodeEndDate">
+		<Explanation columnName="VisitEndDate">
 			<Description>The latest episode end date for the spell, or the latest activity date if none are specified.</Description>
 			<Origin>CDS ACTIVITY DATE</Origin>
 			<Origin>END DATE (EPISODE)</Origin>
 		</Explanation>
 
-		<Explanation columnName="EpisodeEndTime">
+		<Explanation columnName="VisitEndTime">
 			<Description>The latest episode end time for the spell, or midnight if none are specified.</Description>
 			<Origin>END TIME (EPISODE)</Origin>
 		</Explanation>

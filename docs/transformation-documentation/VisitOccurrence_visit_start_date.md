@@ -35,10 +35,10 @@ Converts text to dates.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_start_date%20field%20SUS%20OP%20VisitOccurrenceWithSpell%20mapping){: .btn }
 ### SUS APC VisitOccurrenceWithSpell
-Source column  `EpisodeStartDate`.
+Source column  `VisitStartDate`.
 Converts text to dates.
 
-* `EpisodeStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
+* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
 ```sql
 	select

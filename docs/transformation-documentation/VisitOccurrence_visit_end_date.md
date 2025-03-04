@@ -35,10 +35,10 @@ Converts text to dates.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_end_date%20field%20SUS%20OP%20VisitOccurrenceWithSpell%20mapping){: .btn }
 ### SUS APC VisitOccurrenceWithSpell
-Source column  `EpisodeEndDate`.
+Source column  `VisitEndDate`.
 Converts text to dates.
 
-* `EpisodeEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
+* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
 
 ```sql
 	select

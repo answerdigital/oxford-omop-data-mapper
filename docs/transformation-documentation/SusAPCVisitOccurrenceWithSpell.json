@@ -43,7 +43,7 @@
       "operation_description": "Converts text to dates.",
       "dataSource": [
         {
-          "name": "EpisodeStartDate",
+          "name": "VisitStartDate",
           "description": "Start date of the episode.",
           "origins": [
             {
@@ -61,7 +61,7 @@
       "operation_description": "Combines a date with a time of day.",
       "dataSource": [
         {
-          "name": "EpisodeStartDate",
+          "name": "VisitStartDate",
           "description": "Start date of the episode.",
           "origins": [
             {
@@ -71,7 +71,7 @@
           ]
         },
         {
-          "name": "EpisodeStartTime",
+          "name": "VisitStartTime",
           "description": "The earliest episode start time for the spell, or midnight if none are specified.",
           "origins": [
             {
@@ -89,7 +89,7 @@
       "operation_description": "Converts text to dates.",
       "dataSource": [
         {
-          "name": "EpisodeEndDate",
+          "name": "VisitEndDate",
           "description": "The latest episode end date for the spell, or the latest activity date if none are specified.",
           "origins": [
             {
@@ -111,7 +111,7 @@
       "operation_description": "Combines a date with a time of day.",
       "dataSource": [
         {
-          "name": "EpisodeEndDate",
+          "name": "VisitEndDate",
           "description": "The latest episode end date for the spell, or the latest activity date if none are specified.",
           "origins": [
             {
@@ -125,7 +125,7 @@
           ]
         },
         {
-          "name": "EpisodeEndTime",
+          "name": "VisitEndTime",
           "description": "The latest episode end time for the spell, or midnight if none are specified.",
           "origins": [
             {
