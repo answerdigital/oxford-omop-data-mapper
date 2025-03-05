@@ -29,6 +29,7 @@ using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Omop.Provider;
 using OmopTransformer.Transformation;
 using OmopTransformer.Omop;
+using OmopTransformer.SUS.CCMDS.VisitDetails;
 
 namespace OmopTransformer.SUS.APC;
 
@@ -200,6 +201,23 @@ internal class SusAPCTransformer : Transformer
             "SUS APC Measurements",
             runId,
             cancellationToken);
+
+        await Transform<SusCCMDSVisitDetailsRecord, SusCCMDSVisitDetail>(
+            _visitDetailRecorder.InsertUpdateVisitDetail,
+            "SUS CCMDS VisitDetail",
+            runId,
+            cancellationToken);
+
+        // await Transform<SusCCMDSProcedureOccurrenceRecord, SusCCMDSProcedureOccurrence>(
+        //   _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+        //   "SUS CCMDS Procedure Occurrence",
+        //   runId,
+        //   cancellationToken);
+
+        // await Transform<SusCCMDSMeasurementRecord, SusCCMDSMeasurement>(
+        //     _measurementRecorder.InsertUpdateMeasurements,
+        //     "SUS CCMDS Measurements",
+        //     cancellationToken);
 
         _conceptResolver.PrintErrors();
     }
