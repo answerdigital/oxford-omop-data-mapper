@@ -33,6 +33,28 @@ has_toc: false
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20HospitalProviderSpellNumber%20field%20Sus%20Outpatient%20VisitDetails%20mapping){: .btn }
+### Sus Critical Care VisitDetails
+* Value copied from `HospitalProviderSpellNumber`
+
+* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
+
+```sql
+		select distinct
+				apc.NHSNumber,
+				apc.HospitalProviderSpellNumber,
+				cc.CriticalCareStartDate as VisitStartDate,
+				coalesce(cc.CriticalCareStartTime, '000000') as VisitStartTime,
+				cc.CriticalCarePeriodDischargeDate as VisitEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, '000000') as VisitEndTime
+		from omop_staging.sus_CCMDS cc
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20HospitalProviderSpellNumber%20field%20Sus%20Critical%20Care%20VisitDetails%20mapping){: .btn }
 ### Sus Inptatient VisitDetails
 * Value copied from `HospitalProviderSpellNumber`
 

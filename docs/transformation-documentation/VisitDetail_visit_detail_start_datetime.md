@@ -36,6 +36,31 @@ Combines a date with a time of day.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_start_datetime%20field%20Sus%20Outpatient%20VisitDetails%20mapping){: .btn }
+### Sus Critical Care VisitDetails
+Source columns  `VisitStartDate`, `VisitStartTime`.
+Combines a date with a time of day.
+
+* `VisitStartDate` Start date of the episode, if exists, else the start date of the spell. [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
+
+* `VisitStartTime` Start time of the episode, if exists, else midnight. [CRITICAL CARE START TIME](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_time.html)
+
+```sql
+		select distinct
+				apc.NHSNumber,
+				apc.HospitalProviderSpellNumber,
+				cc.CriticalCareStartDate as VisitStartDate,
+				coalesce(cc.CriticalCareStartTime, '000000') as VisitStartTime,
+				cc.CriticalCarePeriodDischargeDate as VisitEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, '000000') as VisitEndTime
+		from omop_staging.sus_CCMDS cc
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_start_datetime%20field%20Sus%20Critical%20Care%20VisitDetails%20mapping){: .btn }
 ### Sus Inptatient VisitDetails
 Source columns  `VisitStartDate`, `VisitStartTime`.
 Combines a date with a time of day.

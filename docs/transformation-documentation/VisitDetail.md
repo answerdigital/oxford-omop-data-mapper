@@ -33,6 +33,10 @@ has_toc: false
 > * No calculations to be made between Start and end visit date to try to calculate 24 hours, but instead the `Patient Classification` will be sufficient
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPVisitDetail%20mapping){: .btn }
+## SusCCMDSVisitDetail
+<a href="SusCCMDSVisitDetail.svg" target="_blank"><img src="SusCCMDSVisitDetail.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusCCMDSVisitDetail%20mapping){: .btn }
 ## SusAPCVisitDetail
 <a href="SusAPCVisitDetail.svg" target="_blank"><img src="SusAPCVisitDetail.svg" /></a>
 
