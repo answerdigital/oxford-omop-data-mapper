@@ -6,8 +6,8 @@
 				apc.HospitalProviderSpellNumber,
 				cc.CriticalCareStartDate as VisitStartDate,
 				coalesce(cc.CriticalCareStartTime, '000000') as VisitStartTime,
-				cc.CriticalCarePeriodDischargeDate as VisitEndDate,
-				coalesce(cc.CriticalCarePeriodDischargeTime, '000000') as VisitEndTime
+				coalesce(cc.CriticalCarePeriodDischargeTime, cc.EventDate) as VisitEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, cc.EventDate, '000000') as VisitEndTime
 		from omop_staging.sus_CCMDS cc
 		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 		where apc.NHSNumber is not null
