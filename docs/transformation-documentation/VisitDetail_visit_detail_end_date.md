@@ -34,6 +34,29 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_end_date%20field%20Sus%20Outpatient%20VisitDetails%20mapping){: .btn }
+### Sus Critical Care VisitDetails
+Source column  `VisitEndDate`.
+Converts text to dates.
+
+* `VisitEndDate` Discharge date of the critical care period, if exists, else the event date [CRITICAL CARE PERIOD DISCHARGE DATE](), [EVENT DATE]()
+
+```sql
+		select distinct
+				apc.NHSNumber,
+				apc.HospitalProviderSpellNumber,
+				cc.CriticalCareStartDate as VisitStartDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,
+				coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime
+		from omop_staging.sus_CCMDS cc
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_end_date%20field%20Sus%20Critical%20Care%20VisitDetails%20mapping){: .btn }
 ### Sus Inptatient VisitDetails
 Source column  `VisitEndDate`.
 Converts text to dates.

@@ -33,6 +33,28 @@ has_toc: false
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20nhs_number%20field%20Sus%20Outpatient%20VisitDetails%20mapping){: .btn }
+### Sus Critical Care VisitDetails
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+		select distinct
+				apc.NHSNumber,
+				apc.HospitalProviderSpellNumber,
+				cc.CriticalCareStartDate as VisitStartDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,
+				coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime
+		from omop_staging.sus_CCMDS cc
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20nhs_number%20field%20Sus%20Critical%20Care%20VisitDetails%20mapping){: .btn }
 ### Sus Inptatient VisitDetails
 * Value copied from `NHSNumber`
 

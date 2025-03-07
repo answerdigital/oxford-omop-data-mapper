@@ -71,7 +71,8 @@ begin
 			(
 				r.RecordConnectionIdentifier is null and
 				co.condition_concept_id = r.condition_concept_id and
-				co.condition_start_date = r.condition_start_date
+				co.condition_start_date = r.condition_start_date and
+				co.person_id = p.person_id
 			)
 		);
 

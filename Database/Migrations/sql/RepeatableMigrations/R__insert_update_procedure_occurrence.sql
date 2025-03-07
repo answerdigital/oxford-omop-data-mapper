@@ -71,7 +71,8 @@ begin
 				(
 					r.RecordConnectionIdentifier is null and
 					vo.procedure_date = r.procedure_date and
-					vo.procedure_concept_id = r.procedure_concept_id
+					vo.procedure_concept_id = r.procedure_concept_id and
+					vo.person_id = p.person_id
 				)
 		);
 
