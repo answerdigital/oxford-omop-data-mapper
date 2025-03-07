@@ -40,18 +40,18 @@ Combines a date with a time of day.
 Source columns  `VisitStartDate`, `VisitStartTime`.
 Combines a date with a time of day.
 
-* `VisitStartDate` Start date of the episode, if exists, else the start date of the spell. [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
+* `VisitStartDate` Start date of the visit [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
 
-* `VisitStartTime` Start time of the episode, if exists, else midnight. [CRITICAL CARE START TIME](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_time.html)
+* `VisitStartTime` Start time of the visit, if exists, else midnight. [CRITICAL CARE START TIME](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_time.html)
 
 ```sql
 		select distinct
 				apc.NHSNumber,
 				apc.HospitalProviderSpellNumber,
 				cc.CriticalCareStartDate as VisitStartDate,
-				coalesce(cc.CriticalCareStartTime, '000000') as VisitStartTime,
-				cc.CriticalCarePeriodDischargeDate as VisitEndDate,
-				coalesce(cc.CriticalCarePeriodDischargeTime, '000000') as VisitEndTime
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,
+				coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime
 		from omop_staging.sus_CCMDS cc
 		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 		where apc.NHSNumber is not null

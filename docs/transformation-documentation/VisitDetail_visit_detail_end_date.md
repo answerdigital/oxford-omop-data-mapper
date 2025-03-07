@@ -38,16 +38,16 @@ Converts text to dates.
 Source column  `VisitEndDate`.
 Converts text to dates.
 
-* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CRITICAL CARE PERIOD DISCHARGE DATE]()
+* `VisitEndDate` Discharge date of the critical care period, if exists, else the event date [CRITICAL CARE PERIOD DISCHARGE DATE](), [EVENT DATE]()
 
 ```sql
 		select distinct
 				apc.NHSNumber,
 				apc.HospitalProviderSpellNumber,
 				cc.CriticalCareStartDate as VisitStartDate,
-				coalesce(cc.CriticalCareStartTime, '000000') as VisitStartTime,
-				cc.CriticalCarePeriodDischargeDate as VisitEndDate,
-				coalesce(cc.CriticalCarePeriodDischargeTime, '000000') as VisitEndTime
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,
+				coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime
 		from omop_staging.sus_CCMDS cc
 		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 		where apc.NHSNumber is not null
