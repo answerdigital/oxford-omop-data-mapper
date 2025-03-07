@@ -25,21 +25,23 @@
 		</Explanation>
 
 		<Explanation columnName="VisitStartDate">
-			<Description>Start date of the episode, if exists, else the start date of the spell.</Description>
+			<Description>Start date of the visit</Description>
 			<Origin>CRITICAL CARE START DATE</Origin>
 		</Explanation>
 
 		<Explanation columnName="VisitStartTime">
-			<Description>Start time of the episode, if exists, else midnight.</Description>
+			<Description>Start time of the visit, if exists, else midnight.</Description>
 			<Origin>CRITICAL CARE START TIME</Origin>
 		</Explanation>
 
 		<Explanation columnName="VisitEndDate">
-			<Description>End date of the episode, if exists, else the spell discharge date, if exists, else the message date.</Description>
+			<Description>Discharge date of the critical care period, if exists, else the event date</Description>
 			<Origin>CRITICAL CARE PERIOD DISCHARGE DATE</Origin>
+			<Origin>EVENT DATE</Origin>
 		</Explanation>
 		<Explanation columnName="VisitEndTime">
-			<Description>End time of the episode, if exists, else the spell discharge time, if exists, else the message date.</Description>
-			<Origin>CRITICAL CARE PERIOD DISCHARGE</Origin>
-		</Explanation>	</Explanations>
+			<Description>Discharge time of the critical care period, if exists, else midnight.</Description>
+			<Origin>CRITICAL CARE PERIOD DISCHARGE TIME</Origin>
+		</Explanation>	
+	</Explanations>
 </Query>
