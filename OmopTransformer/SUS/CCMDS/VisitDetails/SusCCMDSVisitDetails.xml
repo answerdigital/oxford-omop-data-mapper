@@ -1,0 +1,47 @@
+﻿<Query>
+    <Sql>
+
+		select distinct
+				apc.NHSNumber,
+				apc.HospitalProviderSpellNumber,
+				cc.CriticalCareStartDate as VisitStartDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,
+				coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime
+		from omop_staging.sus_CCMDS cc
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="HospitalProviderSpellNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
+		</Explanation>
+
+		<Explanation columnName="VisitStartDate">
+			<Description>Start date of the visit</Description>
+			<Origin>CRITICAL CARE START DATE</Origin>
+		</Explanation>
+
+		<Explanation columnName="VisitStartTime">
+			<Description>Start time of the visit, if exists, else midnight.</Description>
+			<Origin>CRITICAL CARE START TIME</Origin>
+		</Explanation>
+
+		<Explanation columnName="VisitEndDate">
+			<Description>Discharge date of the critical care period, if exists, else the event date</Description>
+			<Origin>CRITICAL CARE PERIOD DISCHARGE DATE</Origin>
+			<Origin>EVENT DATE</Origin>
+		</Explanation>
+		<Explanation columnName="VisitEndTime">
+			<Description>Discharge time of the critical care period, if exists, else midnight.</Description>
+			<Origin>CRITICAL CARE PERIOD DISCHARGE TIME</Origin>
+		</Explanation>	
+	</Explanations>
+</Query>

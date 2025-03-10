@@ -100,6 +100,8 @@ begin
 				from cdm.visit_detail vo
 				where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
 					and vo.person_id = p.person_id
+					and vo.visit_detail_start_date = r.visit_detail_start_date
+					and vo.visit_detail_concept_id = r.visit_detail_concept_id
 			)
 			and exists ( -- Avoid inserting visit detail if the parent visit occurrence does not exist. Around 1/1,000,000 records exhibit this problem.
 				select *
