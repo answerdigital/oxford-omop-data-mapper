@@ -60,7 +60,7 @@ begin
 			select 1 
 			from cdm.procedure_occurrence po
 			where r.RecordConnectionIdentifier is not null
-				and co.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+				and po.RecordConnectionIdentifier = r.RecordConnectionIdentifier
 				and po.procedure_date = r.procedure_date
 				and po.procedure_concept_id = r.procedure_concept_id
 		)
