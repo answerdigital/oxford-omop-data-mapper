@@ -57,20 +57,20 @@ begin
 		r.condition_status_source_value,
 		r.RecordConnectionIdentifier
 	from @rows r
-    inner join cdm.person p on tr.nhs_number = p.person_source_value
+    inner join cdm.person p on r.nhs_number = p.person_source_value
     where not exists (
         select 1 
         from cdm.condition_occurrence co 
-        where tr.RecordConnectionIdentifier is not null
-            and co.RecordConnectionIdentifier = tr.RecordConnectionIdentifier
-            and co.condition_concept_id = tr.condition_concept_id
+        where r.RecordConnectionIdentifier is not null
+            and co.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+            and co.condition_concept_id = r.condition_concept_id
     )
     and not exists (
         select 1 
         from cdm.condition_occurrence co 
-        where tr.RecordConnectionIdentifier is null
-            and co.condition_concept_id = tr.condition_concept_id
-            and co.condition_start_date = tr.condition_start_date
+        where r.RecordConnectionIdentifier is null
+            and co.condition_concept_id = r.condition_concept_id
+            and co.condition_start_date = r.condition_start_date
             and co.person_id = p.person_id
     );
 
