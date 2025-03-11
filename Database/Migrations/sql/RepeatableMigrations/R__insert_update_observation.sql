@@ -9,6 +9,7 @@ create procedure cdm.insert_update_observation
 	@DataSource varchar(20)
 as
 begin
+	set nocount on;
 
 	declare @NewRecords as table
 	(
@@ -82,26 +83,23 @@ begin
 	from @rows r
 		inner join cdm.person p
 			on r.nhs_number = p.person_source_value
-	where 
-		not exists (
-			select *
+		where not exists (
+			select 1
 			from cdm.observation o
-			where 
-				(
-					r.RecordConnectionIdentifier is not null and
-					o.person_id = p.person_id and
-					o.observation_date = r.observation_date	and
-					o.observation_concept_id = r.observation_concept_id and
-					o.RecordConnectionIdentifier = r.RecordConnectionIdentifier and
-					(r.HospitalProviderSpellNumber is null or o.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber)
-				)
-				or
-				(
-					r.RecordConnectionIdentifier is null and
-					o.person_id = p.person_id and
-					o.observation_date = r.observation_date	and
-					o.observation_concept_id = r.observation_concept_id
-				)
+			where r.recordconnectionidentifier is not null
+				and o.person_id = p.person_id
+				and o.observation_date = r.observation_date
+				and o.observation_concept_id = r.observation_concept_id
+				and o.recordconnectionidentifier = r.recordconnectionidentifier
+				and (r.hospitalproviderspellnumber is null or o.hospitalproviderspellnumber = r.hospitalproviderspellnumber)
+		)
+		and not exists (
+			select 1
+			from cdm.observation o
+			where r.recordconnectionidentifier is null
+				and o.person_id = p.person_id
+				and o.observation_date = r.observation_date
+				and o.observation_concept_id = r.observation_concept_id
 		);
 
 	declare @columns table (Name varchar(max));
@@ -147,6 +145,6 @@ begin
 		lc.name,
 		@DataSource
 	from @NewRecords rl
-	cross apply (select Name from @columns) lc;
+	cross join (select Name from @columns) lc;
 
 end
