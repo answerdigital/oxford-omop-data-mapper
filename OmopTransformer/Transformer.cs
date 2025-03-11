@@ -38,28 +38,31 @@ internal abstract class Transformer
     {
         await EnsureConceptMapIsRendered(cancellationToken);
 
-        _logger.LogInformation("Transforming {0}.", name);
-
+        var overallStopwatch = Stopwatch.StartNew();
         var getRecordsStopwatch = Stopwatch.StartNew();
 
         var records = await _recordProvider.GetRecords<TSource>(cancellationToken);
 
         getRecordsStopwatch.Stop();
 
-        _logger.LogInformation("Extracted {0} {1} in {2} seconds.", records.Count, name, getRecordsStopwatch.ElapsedMilliseconds / 1000);
-
         var mappedRecords =
             records
                 .Select(record => new TTarget { Source = record })
                 .ToList();
 
-        var stopwatch = Stopwatch.StartNew();
+        var computeStopwatch = Stopwatch.StartNew();
 
         Parallel.ForEach(mappedRecords, record =>
         {
             cancellationToken.ThrowIfCancellationRequested();
             _recordTransformer.Transform(record);
         });
+
+        computeStopwatch.Stop();
+
+        int validRowCount = mappedRecords.Count(r => r.IsValid);
+
+        var insertRecordsStopwatch = Stopwatch.StartNew();
 
         if (_transformOptions.DryRun == false)
         {
@@ -71,15 +74,28 @@ internal abstract class Transformer
                     runId: runId,
                     tableType: _dataSource,
                     origin: typeof(TTarget).Name,
-                    validCount: mappedRecords.Count(r => r.IsValid),
+                    validCount: validRowCount,
                     invalidCount: mappedRecords.Count(r => r.IsValid == false),
                     cancellationToken);
         }
 
-        stopwatch.Stop();
+        insertRecordsStopwatch.Stop();
+        overallStopwatch.Stop();
 
-        _logger.LogInformation("Transformation took {0}ms.", stopwatch.ElapsedMilliseconds);
+        string text =
+            "--------------------------------" + Environment.NewLine +
+            $"Transformation: {name}" + Environment.NewLine +
+            $"Valid rows: {validRowCount}" + Environment.NewLine +
+            $"Overall time: {overallStopwatch}. {PerSecond(overallStopwatch, mappedRecords.Count)} per second" + Environment.NewLine +
+            $"Read time: {getRecordsStopwatch}. {PerSecond(getRecordsStopwatch, mappedRecords.Count)} per second" + Environment.NewLine +
+            $"Write time: {insertRecordsStopwatch}. {PerSecond(insertRecordsStopwatch, validRowCount)} per second" + Environment.NewLine +
+            $"CPU time : {computeStopwatch}. {PerSecond(computeStopwatch, mappedRecords.Count)} per second" + Environment.NewLine +
+            "--------------------------------" + Environment.NewLine;
+
+        _logger.LogInformation(text);
     }
+
+    private static string PerSecond(Stopwatch stopwatch, int total) => stopwatch.Elapsed.TotalSeconds == 0 ? "n/a" : ((int)(total / stopwatch.Elapsed.TotalSeconds)).ToString();
 
     private async Task EnsureConceptMapIsRendered(CancellationToken cancellationToken)
     {
