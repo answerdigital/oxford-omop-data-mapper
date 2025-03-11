@@ -9,6 +9,7 @@ create procedure cdm.insert_update_procedure_occurrence
 	@DataSource varchar(20)
 as
 begin
+	set nocount on;
 
 	declare @NewRecords as table
 	(
@@ -54,28 +55,23 @@ begin
 		r.modifier_source_value,
 		r.RecordConnectionIdentifier
 	from @rows r
-		inner join cdm.person p
-			on r.nhs_number = p.person_source_value
-	where 
-		not exists (
-			select	*
+		inner join cdm.person p on r.nhs_number = p.person_source_value
+		where not exists (
+			select 1 
 			from cdm.procedure_occurrence vo
-			where 
-				(
-					r.RecordConnectionIdentifier is not null and
-					vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier and
-					vo.procedure_date = r.procedure_date and
-					vo.procedure_concept_id = r.procedure_concept_id
-				)
-				or
-				(
-					r.RecordConnectionIdentifier is null and
-					vo.procedure_date = r.procedure_date and
-					vo.procedure_concept_id = r.procedure_concept_id and
-					vo.person_id = p.person_id
-				)
+			where r.RecordConnectionIdentifier is not null
+				and co.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+				and vo.procedure_date = r.procedure_date
+				and vo.procedure_concept_id = r.procedure_concept_id
+		)
+		and not exists (
+			select 1 
+			from cdm.procedure_occurrence vo
+			where r.RecordConnectionIdentifier is null
+				and vo.procedure_concept_id = r.procedure_concept_id
+				and vo.procedure_date = r.procedure_date
+				and vo.person_id = p.person_id
 		);
-
 
 	declare @columns table (Name varchar(max));
 
@@ -114,6 +110,6 @@ begin
 		lc.name,
 		@DataSource
 	from @NewRecords rl
-	cross apply (select Name from @columns) lc;
+	cross join (select Name from @columns) lc;
 
 end
