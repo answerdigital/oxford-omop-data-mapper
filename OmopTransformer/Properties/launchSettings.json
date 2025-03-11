@@ -2,7 +2,7 @@
   "profiles": {
     "OmopTransformer": {
         "commandName": "Project",
-        "commandLineArgs": "transform --type cosd"
+        "commandLineArgs": "transform --type sus-apc"
         //"commandLineArgs": "docs ."
         //"commandLineArgs": "staging clear --type cosd"
     }

@@ -14,6 +14,10 @@ has_toc: false
 * Constant value set to `32834`. EHR outpatient note
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20Outpatient%20Carer%20Support%20Indicator%20Observation%20mapping){: .btn }
+### Sus CCMDS High Cost Drugs
+* Constant value set to `38000280`. Observation recorded from EHR
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20Sus%20CCMDS%20High%20Cost%20Drugs%20mapping){: .btn }
 ### SUS Inpatient Total Previous Pregnancies Observation
 * Constant value set to `32818`. EHR administration record
 

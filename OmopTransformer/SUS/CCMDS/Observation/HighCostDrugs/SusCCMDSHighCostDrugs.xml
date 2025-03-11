@@ -1,0 +1,36 @@
+﻿<Query>
+    <Sql>
+		select distinct
+			apc.NHSNumber,
+			apc.HospitalProviderSpellNumber,
+			cc.CriticalCareStartDate as ObservationDate,
+			coalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,
+			d.CriticalCareHighCostDrugs as ObservationSourceValue
+		from [omop_staging].[sus_CCMDS_CriticalCareHighCostDrugs] d
+		inner join [omop_staging].[sus_CCMDS] cc on d.MessageId = cc.MessageId
+		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="HospitalProviderSpellNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="ObservationDate">
+			<Description>Start date of the visit</Description>
+			<Origin>CRITICAL CARE START DATE</Origin>
+		</Explanation>
+		<Explanation columnName="ObservationDateTime">
+			<Description>Start time of the visit, if exists, else midnight.</Description>
+			<Origin>CRITICAL CARE START TIME</Origin>
+		</Explanation>
+		<Explanation columnName="ObservationSourceValue">
+			<Description>High cost drugs.</Description>
+			<Origin>HIGH COST DRUGS (OPCS)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

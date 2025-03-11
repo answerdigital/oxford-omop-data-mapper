@@ -421,6 +421,9 @@
     <None Update="SUS\CCMDS\VisitDetails\SusCCMDSVisitDetails.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SUS\CCMDS\Observation\HighCostDrugs\SusCCMDSHighCostDrugs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' != 'Release_no_docs'">
 		<ItemGroup>
