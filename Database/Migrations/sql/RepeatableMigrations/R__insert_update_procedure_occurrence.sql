@@ -58,19 +58,19 @@ begin
 		inner join cdm.person p on r.nhs_number = p.person_source_value
 		where not exists (
 			select 1 
-			from cdm.procedure_occurrence vo
+			from cdm.procedure_occurrence po
 			where r.RecordConnectionIdentifier is not null
 				and co.RecordConnectionIdentifier = r.RecordConnectionIdentifier
-				and vo.procedure_date = r.procedure_date
-				and vo.procedure_concept_id = r.procedure_concept_id
+				and po.procedure_date = r.procedure_date
+				and po.procedure_concept_id = r.procedure_concept_id
 		)
 		and not exists (
 			select 1 
-			from cdm.procedure_occurrence vo
+			from cdm.procedure_occurrence po
 			where r.RecordConnectionIdentifier is null
-				and vo.procedure_concept_id = r.procedure_concept_id
-				and vo.procedure_date = r.procedure_date
-				and vo.person_id = p.person_id
+				and po.procedure_concept_id = r.procedure_concept_id
+				and po.procedure_date = r.procedure_date
+				and po.person_id = p.person_id
 		);
 
 	declare @columns table (Name varchar(max));
