@@ -73,7 +73,7 @@ internal abstract class Transformer
                 .InsertRunAnalysis(
                     runId: runId,
                     tableType: _dataSource,
-                    origin: typeof(TTarget).Name,
+                    origin: $"{typeof(TTarget).Name}:{name}",
                     validCount: validRowCount,
                     invalidCount: mappedRecords.Count(r => r.IsValid == false),
                     cancellationToken);
