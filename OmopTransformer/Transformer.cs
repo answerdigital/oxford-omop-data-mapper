@@ -66,7 +66,7 @@ internal abstract class Transformer
 
         if (_transformOptions.DryRun == false)
         {
-            await insertRecord(mappedRecords, _dataSource, cancellationToken);
+            await insertRecord(mappedRecords, $"{_dataSource}:{name}", cancellationToken);
 
             await 
                 _runAnalysisRecorder
