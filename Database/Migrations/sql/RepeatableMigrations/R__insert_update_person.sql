@@ -9,6 +9,7 @@ create procedure cdm.insert_update_person
 	@DataSource varchar(20)
 as
 begin
+	set nocount on;
 
 declare @NewPerson table
 (
@@ -57,7 +58,7 @@ select
     ethnicity_source_value,
     ethnicity_source_concept_id
 from @rows up
-where not exists (select * from cdm.person p where p.person_source_value = up.person_source_value);
+where not exists (select 1 from cdm.person p with (nolock) where p.person_source_value = up.person_source_value);
 
 declare @ColumnList table ([name] varchar(max));
 
