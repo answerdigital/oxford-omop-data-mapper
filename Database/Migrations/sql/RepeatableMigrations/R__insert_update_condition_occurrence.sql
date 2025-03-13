@@ -11,6 +11,7 @@ create procedure cdm.insert_update_condition_occurrence
 as
 
 begin
+	set nocount on;
 
 	declare @NewConditions table
 	(
@@ -56,25 +57,22 @@ begin
 		r.condition_status_source_value,
 		r.RecordConnectionIdentifier
 	from @rows r
-		inner join cdm.person p
-			on r.nhs_number = p.person_source_value
-	where not exists (
-		select * 
-		from cdm.condition_occurrence co 
-		where 
-			(
-				r.RecordConnectionIdentifier is not null and
-				co.RecordConnectionIdentifier = r.RecordConnectionIdentifier and
-				co.condition_concept_id = r.condition_concept_id
-			)
-			or
-			(
-				r.RecordConnectionIdentifier is null and
-				co.condition_concept_id = r.condition_concept_id and
-				co.condition_start_date = r.condition_start_date and
-				co.person_id = p.person_id
-			)
-		);
+    inner join cdm.person p on r.nhs_number = p.person_source_value
+    where not exists (
+        select 1 
+        from cdm.condition_occurrence co 
+        where r.RecordConnectionIdentifier is not null
+            and co.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+            and co.condition_concept_id = r.condition_concept_id
+    )
+    and not exists (
+        select 1 
+        from cdm.condition_occurrence co 
+        where r.RecordConnectionIdentifier is null
+            and co.condition_concept_id = r.condition_concept_id
+            and co.condition_start_date = r.condition_start_date
+            and co.person_id = p.person_id
+    );
 
 	declare @columns table (Name varchar(max));
 
@@ -111,6 +109,6 @@ begin
 		lc.name,
 		@DataSource
 	from @NewConditions rl
-	cross apply (select Name from @columns) lc;
+	cross join (select Name from @columns) lc;
 
 end
