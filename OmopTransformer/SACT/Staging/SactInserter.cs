@@ -30,7 +30,7 @@ internal class SactInserter : ISactInserter
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = sactRows.Batch(1000);
+        var batches = sactRows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();

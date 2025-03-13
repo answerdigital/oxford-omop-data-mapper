@@ -93,7 +93,7 @@ internal class CdsInserter : ICdsInserter
         _logger.LogTrace("Inserting rows took {0}ms.", stopwatch.ElapsedMilliseconds);
     }
 
-    private static async Task InsertDiagnoses(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertDiagnoses(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var diagnoses =
             rows
@@ -109,7 +109,7 @@ internal class CdsInserter : ICdsInserter
                             .Concat(new[] { new { row.MessageId, IsPrimaryDiagnosis = true, Diagnosis = line02.PrimaryDiagnosis } })))
             .Where(diagnosis => diagnosis.Diagnosis != null);
 
-        var batches = diagnoses.Batch(1000);
+        var batches = diagnoses.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -143,7 +143,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertOverseasVisitors(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertOverseasVisitors(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var overseasVisitors =
             rows
@@ -157,7 +157,7 @@ internal class CdsInserter : ICdsInserter
                             .OverseasVisitors
                             .Select(overseasVisitor => new { row.MessageId, OverseasVisitors = overseasVisitor })));
 
-        var batches = overseasVisitors.Batch(1000);
+        var batches = overseasVisitors.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -191,7 +191,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertSecondaryInvestigations(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertSecondaryInvestigations(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var secondaryInvestigations =
             rows
@@ -205,7 +205,7 @@ internal class CdsInserter : ICdsInserter
                             .SecondaryInvestigations
                             .Select(code => new { row.MessageId, code })));
 
-        var batches = secondaryInvestigations.Batch(1000);
+        var batches = secondaryInvestigations.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -235,7 +235,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertHighCostDrugs(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertHighCostDrugs(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var highCostDrugs =
             rows
@@ -249,7 +249,7 @@ internal class CdsInserter : ICdsInserter
                             .HighCostDrugsOPCSCodes
                             .Select(code => new { row.MessageId, code })));
 
-        var batches = highCostDrugs.Batch(1000);
+        var batches = highCostDrugs.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -279,7 +279,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertCriticalCareActivities(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertCriticalCareActivities(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var careActivities =
             rows
@@ -293,7 +293,7 @@ internal class CdsInserter : ICdsInserter
                             .CriticalCareActivityCodes
                             .Select(code => new { row.MessageId, code })));
 
-        var batches = careActivities.Batch(1000);
+        var batches = careActivities.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -323,7 +323,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertBirthDetails(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertBirthDetails(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var birthDetails = 
             rows
@@ -337,7 +337,7 @@ internal class CdsInserter : ICdsInserter
                             .BirthDetails
                             .Select(birthDetail => new { row.MessageId, birthDetail })));
 
-        var batches = birthDetails.Batch(1000);
+        var batches = birthDetails.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -403,7 +403,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertProcedures(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertProcedures(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var line03s =
             rows
@@ -413,7 +413,7 @@ internal class CdsInserter : ICdsInserter
                     .Line03
                     .Select(line03 => new { row.MessageId, line03 }));
 
-        var batches = line03s.Batch(500);
+        var batches = line03s.Batch(_configuration.BatchSize!.Value);
         
         foreach (var batch in batches)
         {
@@ -475,9 +475,9 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertLine01(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertLine01(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(1000);
+        var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -663,7 +663,7 @@ internal class CdsInserter : ICdsInserter
         }
 
     }
-    private static async Task InsertLine02(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertLine02(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var line02s =
             rows
@@ -673,7 +673,7 @@ internal class CdsInserter : ICdsInserter
                     .Line02
                     .Select(line02 => new { row.MessageId, line02 }));
 
-        var batches = line02s.Batch(1000);
+        var batches = line02s.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -709,7 +709,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertLine03(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertLine03(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var line03s =
             rows
@@ -719,7 +719,7 @@ internal class CdsInserter : ICdsInserter
                     .Line03
                     .Select(line03 => new { row.MessageId, line03 }));
 
-        var batches = line03s.Batch(1000);
+        var batches = line03s.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -755,7 +755,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertLine04(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertLine04(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var line04s =
             rows
@@ -765,7 +765,7 @@ internal class CdsInserter : ICdsInserter
                     .Line04
                     .Select(line04 => new { row.MessageId, line04 = line04 }));
 
-        var batches = line04s.Batch(1000);
+        var batches = line04s.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -831,7 +831,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertLine05(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertLine05(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var line05s =
             rows
@@ -841,7 +841,7 @@ internal class CdsInserter : ICdsInserter
                     .Line05
                     .Select(line05 => new { row.MessageId, line05 }));
 
-        var batches = line05s.Batch(1000);
+        var batches = line05s.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -959,7 +959,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertLine06(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertLine06(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var line06s =
             rows
@@ -969,7 +969,7 @@ internal class CdsInserter : ICdsInserter
                     .Line06
                     .Select(line06 => new { row.MessageId, line06 }));
 
-        var batches = line06s.Batch(1000);
+        var batches = line06s.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -1061,7 +1061,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertLine07(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertLine07(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var line07s =
             rows
@@ -1071,7 +1071,7 @@ internal class CdsInserter : ICdsInserter
                     .Line07
                     .Select(line07 => new { row.MessageId, line07 }));
 
-        var batches = line07s.Batch(1000);
+        var batches = line07s.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -1111,7 +1111,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertLine08(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertLine08(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var line08s =
             rows
@@ -1121,7 +1121,7 @@ internal class CdsInserter : ICdsInserter
                     .Line08
                     .Select(line08 => new { row.MessageId, line08 }));
 
-        var batches = line08s.Batch(1000);
+        var batches = line08s.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -1215,7 +1215,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertLine09(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertLine09(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var line09s =
             rows
@@ -1225,7 +1225,7 @@ internal class CdsInserter : ICdsInserter
                     .Line09
                     .Select(line09 => new { row.MessageId, line09 }));
 
-        var batches = line09s.Batch(1000);
+        var batches = line09s.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -1301,7 +1301,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertLine10(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertLine10(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var line10s =
             rows
@@ -1311,7 +1311,7 @@ internal class CdsInserter : ICdsInserter
                     .Line10
                     .Select(line10 => new { row.MessageId, line10 }));
 
-        var batches = line10s.Batch(1000);
+        var batches = line10s.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -1385,7 +1385,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertLine11(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertLine11(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var line11s =
             rows
@@ -1395,7 +1395,7 @@ internal class CdsInserter : ICdsInserter
                     .Line11
                     .Select(line11 => new { row.MessageId, line11 }));
 
-        var batches = line11s.Batch(1000);
+        var batches = line11s.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -1473,7 +1473,7 @@ internal class CdsInserter : ICdsInserter
         }
     }
 
-    private static async Task InsertLine12(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertLine12(IReadOnlyCollection<Message> rows, IDbConnection connection, CancellationToken cancellationToken)
     {
         var line12s =
             rows
@@ -1483,7 +1483,7 @@ internal class CdsInserter : ICdsInserter
                     .Line12
                     .Select(line12 => new { row.MessageId, line12 }));
 
-        var batches = line12s.Batch(1000);
+        var batches = line12s.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
