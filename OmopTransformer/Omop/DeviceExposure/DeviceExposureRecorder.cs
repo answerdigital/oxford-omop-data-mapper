@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using Dapper;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.DeviceExposure;
@@ -9,11 +8,9 @@ namespace OmopTransformer.Omop.DeviceExposure;
 internal class DeviceExposureRecorder : IDeviceExposureRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<DeviceExposureRecorder> _logger;
 
-    public DeviceExposureRecorder(IOptions<Configuration> configuration, ILogger<DeviceExposureRecorder> logger)
+    public DeviceExposureRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +18,11 @@ internal class DeviceExposureRecorder : IDeviceExposureRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} Device Exposure(s).", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<DeviceExposureRecorder>(_configuration.BatchSize!.Value, records.Count, "device exposure", _logger);
-
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(_configuration.BatchSize.Value);
+        var batches = records.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -91,11 +83,6 @@ internal class DeviceExposureRecorder : IDeviceExposureRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_device_exposure", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
         }
-
-        batchLogger.LogSummary();
-
     }
 }

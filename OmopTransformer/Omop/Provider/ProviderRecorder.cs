@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.Provider;
@@ -9,11 +8,9 @@ namespace OmopTransformer.Omop.Provider;
 internal class ProviderRecorder : IProviderRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<ProviderRecorder> _logger;
 
-    public ProviderRecorder(IOptions<Configuration> configuration, ILogger<ProviderRecorder> logger)
+    public ProviderRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +18,11 @@ internal class ProviderRecorder : IProviderRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} providers.", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<ProviderRecorder>(_configuration.BatchSize!.Value, records.Count, "care sites", _logger);
-
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(_configuration.BatchSize.Value);
+        var batches = records.Batch(_configuration.BatchSize!.Value);
 
         foreach (var batch in batches)
         {
@@ -76,11 +68,6 @@ internal class ProviderRecorder : IProviderRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_provider", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
-
         }
-
-        batchLogger.LogSummary();
     }
 }

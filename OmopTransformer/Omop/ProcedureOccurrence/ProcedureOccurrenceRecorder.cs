@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using Dapper;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.ProcedureOccurrence;
@@ -9,11 +8,9 @@ namespace OmopTransformer.Omop.ProcedureOccurrence;
 internal class ProcedureOccurrenceRecorder : IProcedureOccurrenceRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<ProcedureOccurrenceRecorder> _logger;
 
-    public ProcedureOccurrenceRecorder(IOptions<Configuration> configuration, ILogger<ProcedureOccurrenceRecorder> logger)
+    public ProcedureOccurrenceRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +18,11 @@ internal class ProcedureOccurrenceRecorder : IProcedureOccurrenceRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} procedure occurrences.", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<ProcedureOccurrenceRecorder>(_configuration.BatchSize!.Value, records.Count, "procedure occurrences", _logger);
-
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(_configuration.BatchSize.Value);
+        var batches = records.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -83,10 +75,6 @@ internal class ProcedureOccurrenceRecorder : IProcedureOccurrenceRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_procedure_occurrence", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
         }
-
-        batchLogger.LogSummary();
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using Dapper;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.VisitOccurrence;
@@ -9,11 +8,9 @@ namespace OmopTransformer.Omop.VisitOccurrence;
 internal class VisitOccurrenceRecorder : IVisitOccurrenceRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<VisitOccurrenceRecorder> _logger;
 
-    public VisitOccurrenceRecorder(IOptions<Configuration> configuration, ILogger<VisitOccurrenceRecorder> logger)
+    public VisitOccurrenceRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +18,11 @@ internal class VisitOccurrenceRecorder : IVisitOccurrenceRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} visit occurrences.", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<VisitOccurrenceRecorder>(_configuration.BatchSize!.Value, records.Count, "visit occurrences", _logger);
-
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(_configuration.BatchSize.Value);
+        var batches = records.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -85,10 +77,6 @@ internal class VisitOccurrenceRecorder : IVisitOccurrenceRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_visit_occurrence", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
         }
-
-        batchLogger.LogSummary();
     }
 }

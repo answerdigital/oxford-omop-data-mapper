@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using Dapper;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.Observation;
@@ -9,11 +8,9 @@ namespace OmopTransformer.Omop.Observation;
 internal class ObservationRecorder : IObservationRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<ObservationRecorder> _logger;
 
-    public ObservationRecorder(IOptions<Configuration> configuration, ILogger<ObservationRecorder> logger)
+    public ObservationRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +18,11 @@ internal class ObservationRecorder : IObservationRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} observation.", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<ObservationRecorder>(_configuration.BatchSize!.Value, records.Count, "observation", _logger);
-
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(_configuration.BatchSize.Value);
+        var batches = records.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -91,10 +83,6 @@ internal class ObservationRecorder : IObservationRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_observation", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
         }
-
-        batchLogger.LogSummary();
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.CareSite;
@@ -9,11 +8,8 @@ namespace OmopTransformer.Omop.CareSite;
 internal class CareSiteRecorder : ICareSiteRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<CareSiteRecorder> _logger;
-
-    public CareSiteRecorder(IOptions<Configuration> configuration, ILogger<CareSiteRecorder> logger)
+    public CareSiteRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +17,11 @@ internal class CareSiteRecorder : ICareSiteRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} care sites.", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<CareSiteRecorder>(_configuration.BatchSize!.Value, records.Count, "care sites", _logger);
-
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(_configuration.BatchSize.Value);
+        var batches = records.Batch(_configuration.BatchSize!.Value);
 
         foreach (var batch in batches)
         {
@@ -62,11 +53,6 @@ internal class CareSiteRecorder : ICareSiteRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_care_site", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
-
         }
-
-        batchLogger.LogSummary();
     }
 }
