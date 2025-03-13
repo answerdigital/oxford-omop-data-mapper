@@ -23,7 +23,7 @@ internal class SusApcInserter : ISusAPCInserter
 
         _logger.LogInformation("Recording SUS rows.");
 
-        var batches = rows.Batch(50000);
+        var batches = rows.Batch(_configuration.BatchSize!.Value);
         int batchNumber = 1;
 
         await using var connection = new SqlConnection(_configuration.ConnectionString);

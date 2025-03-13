@@ -53,7 +53,7 @@ internal class RtdsInserter : IRtdsInserter
     
     private async Task InsertRTDS_1_Demographics(IReadOnlyCollection<Rtds1Demographics> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(1000);
+        var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -115,7 +115,7 @@ internal class RtdsInserter : IRtdsInserter
 
     private async Task InsertRTDS_2a_Attendances(IReadOnlyCollection<Rtds2AAttendances> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(1000);
+        var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -169,7 +169,7 @@ internal class RtdsInserter : IRtdsInserter
 
     private async Task InsertRTDS_2b_Plan(IReadOnlyCollection<Rtds2BPlan> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(1000);
+        var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -223,7 +223,7 @@ internal class RtdsInserter : IRtdsInserter
     
     private async Task InsertRTDS_3_Prescription(IReadOnlyCollection<Rtds3Prescription> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(1000);
+        var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -279,7 +279,7 @@ internal class RtdsInserter : IRtdsInserter
 
     private async Task InsertRTDS_4_Exposures(IReadOnlyCollection<Rtds4Exposures> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(1000);
+        var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -335,7 +335,7 @@ internal class RtdsInserter : IRtdsInserter
 
     private async Task InsertRTDS_5_Diagnosis_Course(IReadOnlyCollection<Rtds5DiagnosisCourse> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(1000);
+        var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -381,7 +381,7 @@ internal class RtdsInserter : IRtdsInserter
 
     private async Task InsertRTDS_PASDATA(IReadOnlyCollection<RtdsPasData> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(1000);
+        var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             cancellationToken.ThrowIfCancellationRequested();
