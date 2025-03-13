@@ -49,6 +49,21 @@ public class TimeParserTest
     }
 
     [TestMethod]
+    public void GetValue_ValidColonSeparatedTime_ReturnsTime()
+    {
+        // Arrange
+        var timeParser = new TimeParser("12:22:33");
+
+        // Act
+        var result = timeParser.GetAsTime();
+
+        // Assert
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOfType(result, typeof(TimeSpan));
+        Assert.AreEqual(new TimeSpan(12, 22, 33), result);
+    }
+
+    [TestMethod]
     public void GetValue_InvalidDate_ReturnsNull()
     {
         // Arrange

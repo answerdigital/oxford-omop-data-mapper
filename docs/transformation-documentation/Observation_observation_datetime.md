@@ -51,6 +51,30 @@ group by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_datetime%20field%20SUS%20Outpatient%20Carer%20Support%20Indicator%20Observation%20mapping){: .btn }
+### Sus CCMDS High Cost Drugs
+Source columns  `ObservationDate`, `ObservationDateTime`.
+Combines a date with a time of day.
+
+* `ObservationDate` Start date of the visit [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
+
+* `ObservationDateTime` Start time of the visit, if exists, else midnight. [CRITICAL CARE START TIME](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_time.html)
+
+```sql
+		select distinct
+			apc.NHSNumber,
+			apc.HospitalProviderSpellNumber,
+			cc.CriticalCareStartDate as ObservationDate,
+			coalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,
+			d.CriticalCareHighCostDrugs as ObservationSourceValue
+		from [omop_staging].[sus_CCMDS_CriticalCareHighCostDrugs] d
+		inner join [omop_staging].[sus_CCMDS] cc on d.MessageId = cc.MessageId
+		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_datetime%20field%20Sus%20CCMDS%20High%20Cost%20Drugs%20mapping){: .btn }
 ### SUS Inpatient Total Previous Pregnancies Observation
 Source column  `observation_date`.
 Converts text to dates.

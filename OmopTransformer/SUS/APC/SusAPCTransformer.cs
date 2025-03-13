@@ -30,6 +30,8 @@ using OmopTransformer.Omop.Provider;
 using OmopTransformer.Transformation;
 using OmopTransformer.Omop;
 using OmopTransformer.SUS.CCMDS.VisitDetails;
+using OmopTransformer.SUS.CCMDS.Observation.HighCostDrugs;
+using OmopTransformer.SUS.CCMDS.Observation.HighCostDrugs.SusCCMDSHighCostDrugs;
 
 namespace OmopTransformer.SUS.APC;
 
@@ -205,6 +207,12 @@ internal class SusAPCTransformer : Transformer
         await Transform<SusCCMDSVisitDetailsRecord, SusCCMDSVisitDetail>(
             _visitDetailRecorder.InsertUpdateVisitDetail,
             "SUS CCMDS VisitDetail",
+            runId,
+            cancellationToken);
+
+        await Transform<SusCCMDSHighCostDrugsRecord, SusCCMDSHighCostDrugs>(
+          _observationRecorder.InsertUpdateObservations,
+            "SUS CCMDS Observation High Cost Drugs",
             runId,
             cancellationToken);
 

@@ -6,6 +6,27 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # HospitalProviderSpellNumber
+### Sus CCMDS High Cost Drugs
+* Value copied from `HospitalProviderSpellNumber`
+
+* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
+
+```sql
+		select distinct
+			apc.NHSNumber,
+			apc.HospitalProviderSpellNumber,
+			cc.CriticalCareStartDate as ObservationDate,
+			coalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,
+			d.CriticalCareHighCostDrugs as ObservationSourceValue
+		from [omop_staging].[sus_CCMDS_CriticalCareHighCostDrugs] d
+		inner join [omop_staging].[sus_CCMDS] cc on d.MessageId = cc.MessageId
+		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20HospitalProviderSpellNumber%20field%20Sus%20CCMDS%20High%20Cost%20Drugs%20mapping){: .btn }
 ### SUS Inpatient Total Previous Pregnancies Observation
 * Value copied from `HospitalProviderSpellNumber`
 
