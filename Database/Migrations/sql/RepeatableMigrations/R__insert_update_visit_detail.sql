@@ -9,7 +9,6 @@ create procedure cdm.insert_update_visit_detail
 	@DataSource varchar(20)
 as
 begin
-	set nocount on;
 
 	declare @NewRecords as table
 	(
@@ -151,6 +150,6 @@ begin
 		lc.name,
 		@DataSource
 	from @NewRecords rl
-	cross join (select Name from @columns) lc;
+	cross apply (select Name from @columns) lc;
 
 end

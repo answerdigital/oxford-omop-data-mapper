@@ -9,7 +9,6 @@ create procedure cdm.insert_update_visit_occurrence
 	@DataSource varchar(20)
 as
 begin
-	set nocount on;
 
 	declare @NewRecords as table
 	(
@@ -57,20 +56,27 @@ begin
 		r.HospitalProviderSpellNumber,
 		r.RecordConnectionIdentifier
 	from @rows r
-		inner join cdm.person p ON r.nhs_number = p.person_source_value
-		where not exists (
-			select 1
-			from cdm.visit_occurrence vo
-			where r.RecordConnectionIdentifier is not null
-				and vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
-				and vo.person_id = p.person_id
+		inner join cdm.person p
+			on r.nhs_number = p.person_source_value
+	where 
+		(
+			r.RecordConnectionIdentifier is not null 
+			and not exists (
+				select	*
+				from cdm.visit_occurrence vo
+				where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+					and vo.person_id = p.person_id
+				)
 		)
-		and not exists (
-			select 1
-			from cdm.visit_occurrence vo
-			where r.HospitalProviderSpellNumber is not null
-				and vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
-				and vo.person_id = p.person_id
+		or
+		(
+			r.HospitalProviderSpellNumber is not null 
+			and not exists (
+				select	*
+				from cdm.visit_occurrence vo
+				where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+					and vo.person_id = p.person_id
+			)
 		);
 
 	declare @columns table (Name varchar(max));
@@ -111,6 +117,6 @@ begin
 		lc.name,
 		@DataSource
 	from @NewRecords rl
-	cross join (select Name from @columns) lc;
+	cross apply (select Name from @columns) lc;
 
 end
