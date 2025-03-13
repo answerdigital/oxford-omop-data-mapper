@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.ConditionOccurrence;
@@ -9,11 +8,9 @@ namespace OmopTransformer.Omop.ConditionOccurrence;
 internal class ConditionOccurrenceRecorder : IConditionOccurrenceRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<ConditionOccurrenceRecorder> _logger;
 
-    public ConditionOccurrenceRecorder(IOptions<Configuration> configuration, ILogger<ConditionOccurrenceRecorder> logger)
+    public ConditionOccurrenceRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +18,11 @@ internal class ConditionOccurrenceRecorder : IConditionOccurrenceRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} condition occurrences.", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<ConditionOccurrenceRecorder>(_configuration.BatchSize!.Value, records.Count, "condition occurrences", _logger);
-
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(_configuration.BatchSize.Value);
+        var batches = records.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -83,10 +75,6 @@ internal class ConditionOccurrenceRecorder : IConditionOccurrenceRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_condition_occurrence", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
         }
-
-        batchLogger.LogSummary();
     }
 }

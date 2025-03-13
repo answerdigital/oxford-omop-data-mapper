@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.Location;
@@ -9,11 +8,9 @@ namespace OmopTransformer.Omop.Location;
 internal class LocationRecorder : ILocationRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<LocationRecorder> _logger;
 
-    public LocationRecorder(IOptions<Configuration> configuration, ILogger<LocationRecorder> logger)
+    public LocationRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +18,11 @@ internal class LocationRecorder : ILocationRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} locations.", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<LocationRecorder>(_configuration.BatchSize!.Value, records.Count, "locations", _logger);
-
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(_configuration.BatchSize.Value);
+        var batches = records.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -75,10 +67,6 @@ internal class LocationRecorder : ILocationRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.InsertUpdateLocation", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
         }
-
-        batchLogger.LogSummary();
     }
 }

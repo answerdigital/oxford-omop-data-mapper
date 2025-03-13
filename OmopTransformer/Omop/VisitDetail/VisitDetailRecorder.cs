@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using Dapper;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.VisitDetail;
@@ -9,11 +8,9 @@ namespace OmopTransformer.Omop.VisitDetail;
 internal class VisitDetailRecorder : IVisitDetailRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<VisitDetailRecorder> _logger;
 
-    public VisitDetailRecorder(IOptions<Configuration> configuration, ILogger<VisitDetailRecorder> logger)
+    public VisitDetailRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +18,11 @@ internal class VisitDetailRecorder : IVisitDetailRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} visit details.", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<VisitDetailRecorder>(_configuration.BatchSize!.Value, records.Count, "visit details", _logger);
-
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        foreach (var batch in records.Batch(_configuration.BatchSize.Value))
+        foreach (var batch in records.Batch(_configuration.BatchSize!.Value))
         {
             var dataTable = new DataTable();
 
@@ -84,11 +76,6 @@ internal class VisitDetailRecorder : IVisitDetailRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_visit_detail", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
         }
-
-        batchLogger.LogSummary();
-
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.Measurement;
@@ -9,11 +8,9 @@ namespace OmopTransformer.Omop.Measurement;
 internal class MeasurementRecorder : IMeasurementRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<MeasurementRecorder> _logger;
 
-    public MeasurementRecorder(IOptions<Configuration> configuration, ILogger<MeasurementRecorder> logger)
+    public MeasurementRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +18,11 @@ internal class MeasurementRecorder : IMeasurementRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} Measurements.", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<MeasurementRecorder>(_configuration.BatchSize!.Value, records.Count, "Measurements", _logger);
-
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(_configuration.BatchSize.Value);
+        var batches = records.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -91,10 +83,6 @@ internal class MeasurementRecorder : IMeasurementRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_measurement", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
         }
-
-        batchLogger.LogSummary();
     }
 }

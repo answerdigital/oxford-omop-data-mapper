@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.Person;
@@ -9,11 +8,9 @@ namespace OmopTransformer.Omop.Person;
 internal class PersonRecorder : IPersonRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<PersonRecorder> _logger;
 
-    public PersonRecorder(IOptions<Configuration> configuration, ILogger<PersonRecorder> logger)
+    public PersonRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +18,11 @@ internal class PersonRecorder : IPersonRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} persons.", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<PersonRecorder>(_configuration.BatchSize!.Value, records.Count, "procedure occurrences", _logger);
-
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
+        await using var connection = new SqlConnection(_configuration!.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(_configuration.BatchSize.Value);
+        var batches = records.Batch(_configuration.BatchSize!.Value);
 
         foreach (var batch in batches)
         {
@@ -84,11 +76,6 @@ internal class PersonRecorder : IPersonRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_person", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
-
         }
-
-        batchLogger.LogSummary();
     }
 }

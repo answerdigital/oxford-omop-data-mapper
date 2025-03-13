@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using Dapper;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.Death;
@@ -9,11 +8,9 @@ namespace OmopTransformer.Omop.Death;
 internal class DeathRecorder : IDeathRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<DeathRecorder> _logger;
 
-    public DeathRecorder(IOptions<Configuration> configuration, ILogger<DeathRecorder> logger)
+    public DeathRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +18,11 @@ internal class DeathRecorder : IDeathRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} Deaths.", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<DeathRecorder>(_configuration.BatchSize!.Value, records.Count, "deaths", _logger);
-
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(_configuration.BatchSize.Value);
+        var batches = records.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -65,11 +57,6 @@ internal class DeathRecorder : IDeathRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_death", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
         }
-
-        batchLogger.LogSummary();
-
     }
 }

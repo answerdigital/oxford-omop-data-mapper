@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using Dapper;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer.Omop.DrugExposure;
@@ -9,11 +8,9 @@ namespace OmopTransformer.Omop.DrugExposure;
 internal class DrugExposureRecorder : IDrugExposureRecorder
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<DrugExposureRecorder> _logger;
 
-    public DrugExposureRecorder(IOptions<Configuration> configuration, ILogger<DrugExposureRecorder> logger)
+    public DrugExposureRecorder(IOptions<Configuration> configuration)
     {
-        _logger = logger;
         _configuration = configuration.Value;
     }
 
@@ -21,16 +18,11 @@ internal class DrugExposureRecorder : IDrugExposureRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        _logger.LogInformation("Recording {0} Drug Exposure.", records.Count);
-        Logger.LogNonValid(_logger, records);
-
-        var batchLogger = new BatchTimingLogger<DrugExposureRecorder>(_configuration.BatchSize!.Value, records.Count, "drug exposure", _logger);
-
         await using var connection = new SqlConnection(_configuration.ConnectionString);
 
         await connection.OpenAsync(cancellationToken);
 
-        var batches = records.Batch(_configuration.BatchSize.Value);
+        var batches = records.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
         {
             var dataTable = new DataTable();
@@ -93,11 +85,6 @@ internal class DrugExposureRecorder : IDrugExposureRecorder
             };
 
             await connection.ExecuteLongTimeoutAsync("cdm.insert_update_drug_exposure", parameter, commandType: CommandType.StoredProcedure);
-
-            batchLogger.LogNext();
         }
-
-        batchLogger.LogSummary();
-
     }
 }
