@@ -96,7 +96,7 @@ internal class SusAPCTransformer : Transformer
 
         await Transform<SusAPCPersonRecord, SusAPCPerson>(
           _personRecorder.InsertUpdatePersons,
-          "Sus Apc Person",
+          "SUS APC Person",
           runId,
           cancellationToken);
 
@@ -114,7 +114,7 @@ internal class SusAPCTransformer : Transformer
 
         await Transform<SusAPCConditionOccurrenceRecord, SusAPCConditionOccurrence>(
           _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
-          "SUS APC Conditon Occurrence",
+          "SUS APC Condition Occurrence",
           runId,
           cancellationToken);
 
