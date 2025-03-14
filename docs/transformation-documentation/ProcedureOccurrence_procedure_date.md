@@ -29,6 +29,32 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_date%20field%20SUS%20Outpatient%20Procedure%20Occurrence%20mapping){: .btn }
+### SUS CCMDS Procedure Occurrence
+Source column  `ProcedureOccurrenceStartDate`.
+Converts text to dates.
+
+* `ProcedureOccurrenceStartDate` Start date of the Procedure [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
+
+```sql
+		select distinct
+				apc.NHSNumber,
+				apc.GeneratedRecordIdentifier,
+				cc.CriticalCareStartDate as ProcedureOccurrenceStartDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as ProcedureOccurrenceStartTime,
+				coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as ProcedureOccurrenceEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as ProcedureOccurrenceEndTime,
+				d.CriticalCareActivityCode as ProcedureSourceValue
+		from omop_staging.sus_CCMDS_CriticalCareActivityCode d
+		inner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+		and d.CriticalCareActivityCode != '99'  -- No Defined Critical Care Activity
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_date%20field%20SUS%20CCMDS%20Procedure%20Occurrence%20mapping){: .btn }
 ### SUS APC Procedure Occurrence
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
