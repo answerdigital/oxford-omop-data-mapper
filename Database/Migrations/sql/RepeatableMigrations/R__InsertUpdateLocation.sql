@@ -7,7 +7,7 @@ go
 
 create procedure cdm.InsertUpdateLocation
 	@Locations cdm.[Location] readonly,
-	@DataSource varchar(20)
+	@DataSource varchar(100)
 as
 begin
 	

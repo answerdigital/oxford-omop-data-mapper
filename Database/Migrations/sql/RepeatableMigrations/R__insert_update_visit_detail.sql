@@ -6,7 +6,7 @@ go
 
 create procedure cdm.insert_update_visit_detail
 	@rows cdm.visit_detail_row readonly,
-	@DataSource varchar(20)
+	@DataSource varchar(100)
 as
 begin
 

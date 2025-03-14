@@ -6,7 +6,7 @@ go
 
 create procedure cdm.insert_update_procedure_occurrence
 	@rows cdm.procedure_occurrence_row readonly,
-	@DataSource varchar(20)
+	@DataSource varchar(100)
 as
 begin
 

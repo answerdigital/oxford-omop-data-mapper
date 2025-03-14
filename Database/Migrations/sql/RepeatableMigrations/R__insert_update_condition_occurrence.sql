@@ -7,7 +7,7 @@ go
 
 create procedure cdm.insert_update_condition_occurrence
 	@rows cdm.condition_occurrence_row readonly,
-	@DataSource varchar(20)
+	@DataSource varchar(100)
 as
 
 begin

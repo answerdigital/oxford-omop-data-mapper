@@ -6,7 +6,7 @@ go
 
 create procedure cdm.insert_update_provider
 	@rows cdm.provider_row readonly,
-	@DataSource varchar(20)
+	@DataSource varchar(100)
 as
 begin
 
