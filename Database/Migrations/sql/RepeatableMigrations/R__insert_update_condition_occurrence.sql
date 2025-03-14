@@ -62,6 +62,7 @@ begin
         select 1 
         from cdm.condition_occurrence co 
         where r.RecordConnectionIdentifier is not null
+			and co.person_id = p.person_id
             and co.RecordConnectionIdentifier = r.RecordConnectionIdentifier
             and co.condition_concept_id = r.condition_concept_id
     )
