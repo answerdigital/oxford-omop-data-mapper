@@ -83,6 +83,7 @@ begin
 			select	*
 			from cdm.device_exposure vo
 			where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+				and vo.person_id = p.person_id
 				and vo.device_concept_id = r.device_concept_id
 		);
 
