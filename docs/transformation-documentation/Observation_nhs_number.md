@@ -47,6 +47,27 @@ group by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20SUS%20Outpatient%20Carer%20Support%20Indicator%20Observation%20mapping){: .btn }
+### Sus CCMDS High Cost Drugs
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+		select distinct
+			apc.NHSNumber,
+			apc.HospitalProviderSpellNumber,
+			cc.CriticalCareStartDate as ObservationDate,
+			coalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,
+			d.CriticalCareHighCostDrugs as ObservationSourceValue
+		from [omop_staging].[sus_CCMDS_CriticalCareHighCostDrugs] d
+		inner join [omop_staging].[sus_CCMDS] cc on d.MessageId = cc.MessageId
+		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20Sus%20CCMDS%20High%20Cost%20Drugs%20mapping){: .btn }
 ### SUS Inpatient Total Previous Pregnancies Observation
 * Value copied from `NHSNumber`
 
