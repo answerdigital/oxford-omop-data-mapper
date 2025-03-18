@@ -162,7 +162,23 @@ into @UpdatedPatients
 from cdm.person p
 	inner join @rows up
 		on p.person_source_value = up.person_source_value
-
+where
+	(up.gender_concept_id  is not null and (p.gender_concept_id is null or p.gender_concept_id <> up.gender_concept_id)) or
+	(up.year_of_birth  is not null and (p.year_of_birth is null or p.year_of_birth <> up.year_of_birth)) or
+	(up.month_of_birth  is not null and (p.month_of_birth is null or p.month_of_birth <> up.month_of_birth)) or
+	(up.day_of_birth  is not null and (p.day_of_birth is null or p.day_of_birth <> up.day_of_birth)) or
+	(up.birth_datetime  is not null and (p.birth_datetime is null or p.birth_datetime <> up.birth_datetime)) or
+	(up.race_concept_id  is not null and (p.race_concept_id is null or p.race_concept_id <> up.race_concept_id)) or
+	(up.ethnicity_concept_id  is not null and (p.ethnicity_concept_id is null or p.ethnicity_concept_id <> up.ethnicity_concept_id)) or
+	(up.provider_id  is not null and (p.provider_id is null or p.provider_id <> up.provider_id)) or
+	(up.care_site_id  is not null and (p.care_site_id is null or p.care_site_id <> up.care_site_id)) or
+	(up.person_source_value  is not null and (p.person_source_value is null or p.person_source_value <> up.person_source_value)) or
+	(up.gender_source_value  is not null and (p.gender_source_value is null or p.gender_source_value <> up.gender_source_value)) or
+	(up.gender_source_concept_id  is not null and (p.gender_source_concept_id is null or p.gender_source_concept_id <> up.gender_source_concept_id)) or
+	(up.race_source_value  is not null and (p.race_source_value is null or p.race_source_value <> up.race_source_value)) or
+	(up.race_source_concept_id  is not null and (p.race_source_concept_id is null or p.race_source_concept_id <> up.race_source_concept_id)) or
+	(up.ethnicity_source_value  is not null and (p.ethnicity_source_value is null or p.ethnicity_source_value <> up.ethnicity_source_value)) or
+	(up.ethnicity_source_concept_id  is not null and (p.ethnicity_source_concept_id is null or p.ethnicity_source_concept_id <> up.ethnicity_source_concept_id));
 
 ;with ProvenanceData as ( 
 	select 'gender_concept_id' as column_name, person_id from @UpdatedPatients where gender_concept_id = 1 union
@@ -188,6 +204,7 @@ set data_source = @DataSource
 from provenance p
 	inner join ProvenanceData pd
 		on p.table_key = pd.person_id
-		and p.column_name = pd.column_name;
+		and p.column_name = pd.column_name
+where data_source <> @DataSource
 
 end
