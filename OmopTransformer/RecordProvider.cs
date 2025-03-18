@@ -24,12 +24,12 @@ internal class RecordProvider : IRecordProvider
 
         await connection.OpenAsync(cancellationToken);
 
-        const int oneHourInSeconds = 60 * 60;
+        const int twoHoursInSeconds = 120 * 60;
 
         var results =
             await connection.QueryAsync<T>(
                 sql: query,
-                commandTimeout: oneHourInSeconds);
+                commandTimeout: twoHoursInSeconds);
 
         return results.ToList();
     }
