@@ -76,7 +76,29 @@ begin
 				and m.measurement_date = r.measurement_date
 				and m.measurement_concept_id = r.measurement_concept_id
 				and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
-		);
+				and r.RecordConnectionIdentifier is null
+				and r.HospitalProviderSpellNumber is null
+		)
+		and not exists (
+			select *
+			from cdm.measurement m
+			where m.person_id = p.person_id 
+				and m.measurement_date = r.measurement_date
+				and m.measurement_concept_id = r.measurement_concept_id
+				and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
+				and r.RecordConnectionIdentifier is not null
+				and m.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+		)
+		and not exists (
+			select *
+			from cdm.measurement m
+			where m.person_id = p.person_id 
+				and m.measurement_date = r.measurement_date
+				and m.measurement_concept_id = r.measurement_concept_id
+				and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
+				and r.HospitalProviderSpellNumber is not null
+				and m.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+		)
 
 	declare @columns table (Name varchar(max));
 
