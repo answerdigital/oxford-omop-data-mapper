@@ -58,21 +58,21 @@ CCMDS Critical Care Activity Code Concept IDs
 |24|4263536|Tube-fed (PATIENT being tube-fed)|
 |25|618552|Barrier nursed (PATIENT being barrier nursed)|
 |26|4151902|Phototherapy (PATIENT receiving phototherapy)|
-|27|4061929|Special monitoring|
+|27|4301936|Special monitoring|
 |28|4033847|Observations at regular intervals|
 |29|4303434|Intravenous medication|
 |50|4141651|Continuous electrocardiogram monitoring|
 |51|37157166|Invasive ventilation via endotracheal tube|
 |52|4337047|Invasive ventilation via tracheostomy tube|
 |53|44791135|Non-invasive ventilatory support|
-|55|182692007|Nasopharyngeal airway|
+|55|4082245|Nasopharyngeal airway|
 |56|4074666|Advanced ventilatory support (Jet or Oscillatory ventilation)|
 |57|4061066|Upper airway obstruction requiring nebulised Epinephrine/ Adrenaline|
 |58|4122478|Apnoea requiring intervention|
 |59|46272934|Acute severe asthma requiring intravenous bronchodilator therapy or continuous nebuliser|
 |60|4213288|Arterial line monitoring|
 |61|4049990|Cardiac pacing via an external box (pacing wires or external pads or oesophageal pacing)|
-|62|4313586|Central venous pressure monitoring|
+|62|4322479|Central venous pressure monitoring|
 |63|4161519|Bolus intravenous fluids (> 80 ml/kg/day) in addition to maintenance intravenous fluids|
 |64|4232320|Cardio-pulmonary resuscitation (CPR)|
 |65|4336747|Extracorporeal membrane oxygenation (ECMO) or Ventricular Assist Device (VAD) or aortic balloon pump|
@@ -83,7 +83,7 @@ CCMDS Critical Care Activity Code Concept IDs
 |70|4080110|Diabetic ketoacidosis (DKA) requiring continuous infusion of insulin|
 |71|4144062|Intravenous infusion of thrombolytic agent (limited to tissue plasminogen activator [tPA] and streptokinase)|
 |72|44805305|Extracorporeal liver support using Molecular Absorbent Liver Recirculating System (MARS)|
-|73|4098046|Continuous pulse oximetry|
+|73|2314049|Continuous pulse oximetry|
 |74|4222885|Patient nursed in single occupancy cubicle|
 |80|37158406|Heated Humidified High Flow Therapy (HHHFT)|
 |81|4051310|Presence of an umbilical venous line|
