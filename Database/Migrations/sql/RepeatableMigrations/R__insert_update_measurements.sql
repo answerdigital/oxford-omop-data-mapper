@@ -36,7 +36,9 @@ begin
 		unit_source_concept_id,
 		value_source_value,
 		measurement_event_id,
-		meas_event_field_concept_id
+		meas_event_field_concept_id,
+		RecordConnectionIdentifier,
+		HospitalProviderSpellNumber
 	)
 	output inserted.measurement_id
 	into @NewRecords (measurement_id)
@@ -60,7 +62,9 @@ begin
 		r.unit_source_concept_id,
 		r.value_source_value,
 		r.measurement_event_id,
-		r.meas_event_field_concept_id
+		r.meas_event_field_concept_id,
+		r.RecordConnectionIdentifier,
+		r.HospitalProviderSpellNumber
 	from @rows r
 		inner join cdm.person p
 			on r.nhs_number = p.person_source_value

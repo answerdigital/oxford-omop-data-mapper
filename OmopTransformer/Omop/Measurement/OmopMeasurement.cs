@@ -22,6 +22,8 @@ internal abstract class OmopMeasurement<T> : IOmopRecord<T>
     public virtual string? value_source_value { get; set; }
     public virtual int? measurement_event_id { get; set; }
     public virtual int? meas_event_field_concept_id { get; set; }
+    public virtual string? HospitalProviderSpellNumber { get; set; }
+    public virtual string? RecordConnectionIdentifier { get; set; }
     public string OmopTargetTypeDescription => "Measurement";
     public T? Source { get; set; }
 
