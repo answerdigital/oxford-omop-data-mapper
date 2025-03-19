@@ -424,6 +424,12 @@
     <None Update="SUS\CCMDS\Observation\HighCostDrugs\SusCCMDSHighCostDrugs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SUS\CCMDS\Measurements\GestationLengthAtDelivery\SusCCMDSMeasurementGestationLength.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\CCMDS\Measurements\BodyWeight\SusCCMDSMeasurementPersonWeight.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' != 'Release_no_docs'">
 		<ItemGroup>

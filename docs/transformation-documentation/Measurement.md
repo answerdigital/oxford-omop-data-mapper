@@ -16,6 +16,7 @@ has_toc: false
 * [measurement_concept_id]({% link docs/transformation-documentation/Measurement_measurement_concept_id.md %})
 * [operator_concept_id]({% link docs/transformation-documentation/Measurement_operator_concept_id.md %})
 * [value_as_number]({% link docs/transformation-documentation/Measurement_value_as_number.md %})
+* [unit_concept_id]({% link docs/transformation-documentation/Measurement_unit_concept_id.md %})
 * [measurement_source_value]({% link docs/transformation-documentation/Measurement_measurement_source_value.md %})
 * [unit_source_value]({% link docs/transformation-documentation/Measurement_unit_source_value.md %})
 
@@ -23,6 +24,14 @@ has_toc: false
 <a href="SusOPMeasurement.svg" target="_blank"><img src="SusOPMeasurement.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPMeasurement%20mapping){: .btn }
+## SusCCMDSMeasurementGestationLength
+<a href="SusCCMDSMeasurementGestationLength.svg" target="_blank"><img src="SusCCMDSMeasurementGestationLength.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusCCMDSMeasurementGestationLength%20mapping){: .btn }
+## SusCCMDSMeasurementPersonWeight
+<a href="SusCCMDSMeasurementPersonWeight.svg" target="_blank"><img src="SusCCMDSMeasurementPersonWeight.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusCCMDSMeasurementPersonWeight%20mapping){: .btn }
 ## SusAPCMeasurement
 <a href="SusAPCMeasurement.svg" target="_blank"><img src="SusAPCMeasurement.svg" /></a>
 

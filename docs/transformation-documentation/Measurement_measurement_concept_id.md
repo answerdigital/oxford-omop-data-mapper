@@ -11,6 +11,14 @@ Source column  `measurement_source_concept_id`.
 Maps concepts to standard valid concepts in the `measurement` domain.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20Sus%20OP%20%20Measurement%20mapping){: .btn }
+### Sus CCMDS Measurement - Gestation Length at Delivery
+* Constant value set to `4260747`. Length of gestation at birth
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20Sus%20CCMDS%20Measurement%20-%20Gestation%20Length%20at%20Delivery%20mapping){: .btn }
+### Sus CCMDS Measurement - Person Weight
+* Constant value set to `4099154`. Body Weight
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20Sus%20CCMDS%20Measurement%20-%20Person%20Weight%20mapping){: .btn }
 ### Sus APC  Measurement
 Source column  `measurement_source_concept_id`.
 Maps concepts to standard valid concepts in the `measurement` domain.
