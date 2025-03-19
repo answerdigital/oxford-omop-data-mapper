@@ -93,14 +93,16 @@ begin
 					o.observation_date = r.observation_date	and
 					o.observation_concept_id = r.observation_concept_id and
 					o.RecordConnectionIdentifier = r.RecordConnectionIdentifier and
-					(r.HospitalProviderSpellNumber is null or o.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber)
+					(r.HospitalProviderSpellNumber is null or o.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber) and
+					(r.observation_source_concept_id  is null or o.observation_source_concept_id = r.observation_source_concept_id)
 				)
 				or
 				(
 					r.RecordConnectionIdentifier is null and
 					o.person_id = p.person_id and
 					o.observation_date = r.observation_date	and
-					o.observation_concept_id = r.observation_concept_id
+					o.observation_concept_id = r.observation_concept_id and
+					o.observation_source_concept_id = r.observation_source_concept_id
 				)
 		);
 

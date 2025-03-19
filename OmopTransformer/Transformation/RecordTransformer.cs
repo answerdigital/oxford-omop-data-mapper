@@ -191,7 +191,14 @@ internal class RecordTransformer : IRecordTransformer
                 .Concat(firstConstructorTypes.Any(type => type == typeof(MeasurementMapsToValueResolver)) ? new[] { _relationshipResolver } : new List<object>())
                 .ToArray();
 
-        var selector = (ISelector)Activator.CreateInstance(transformAttribute.Type, arguments)!;
+        ISelector? selector;
+        try{
+            selector = (ISelector)Activator.CreateInstance(transformAttribute.Type, arguments)!;
+        }
+        catch (MissingMethodException missingMethod)
+        {
+            throw new InvalidOperationException("Please ensure the type for the concept ID matches the constructor", missingMethod);
+        }
 
         object? value = selector.GetValue();
 

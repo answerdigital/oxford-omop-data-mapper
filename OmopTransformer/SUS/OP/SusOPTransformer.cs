@@ -117,7 +117,7 @@ internal class SusOPTransformer : Transformer
 
         await Transform<SusOPConditionOccurrenceRecord, SusOPConditionOccurrence>(
            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
-           "SUS OP Conditon Occurrence",
+           "SUS OP Condition Occurrence",
            runId,
            cancellationToken);
 

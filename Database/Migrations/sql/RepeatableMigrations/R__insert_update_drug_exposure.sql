@@ -89,6 +89,7 @@ begin
 			select	*
 			from cdm.drug_exposure vo
 			where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+				and vo.person_id = p.person_id
 				and vo.drug_concept_id = r.drug_concept_id
 		);
 

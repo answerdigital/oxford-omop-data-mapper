@@ -17,6 +17,7 @@ has_toc: false
 * [HospitalProviderSpellNumber]({% link docs/transformation-documentation/Observation_HospitalProviderSpellNumber.md %})
 * [value_as_number]({% link docs/transformation-documentation/Observation_value_as_number.md %})
 * [unit_concept_id]({% link docs/transformation-documentation/Observation_unit_concept_id.md %})
+* [observation_source_value]({% link docs/transformation-documentation/Observation_observation_source_value.md %})
 * [observation_source_concept_id]({% link docs/transformation-documentation/Observation_observation_source_concept_id.md %})
 
 ## SusOPSourceOfReferralForOutpatients
@@ -47,6 +48,10 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPCarerSupportIndicator%20mapping){: .btn }
+## SusCCMDSHighCostDrugs
+<a href="SusCCMDSHighCostDrugs.svg" target="_blank"><img src="SusCCMDSHighCostDrugs.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusCCMDSHighCostDrugs%20mapping){: .btn }
 ## SusAPCTotalPreviousPregnancies
 <a href="SusAPCTotalPreviousPregnancies.svg" target="_blank"><img src="SusAPCTotalPreviousPregnancies.svg" /></a>
 
