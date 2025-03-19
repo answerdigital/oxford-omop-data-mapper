@@ -82,6 +82,7 @@ internal abstract class Transformer
         insertRecordsStopwatch.Stop();
         overallStopwatch.Stop();
 
+
         string text =
             "--------------------------------" + Environment.NewLine +
             $"Transformation: {name}" + Environment.NewLine +
@@ -95,7 +96,15 @@ internal abstract class Transformer
         _logger.LogInformation(text);
     }
 
-    private static string PerSecond(Stopwatch stopwatch, int total) => stopwatch.Elapsed.TotalSeconds == 0 ? "n/a" : ((int)(total / stopwatch.Elapsed.TotalSeconds)).ToString();
+    private static string PerSecond(Stopwatch stopwatch, int total)
+    {
+        const int lowSampleThreshold = 20000;
+
+        if (stopwatch.Elapsed.TotalSeconds == 0 || total < lowSampleThreshold)
+            return "n/a";
+        
+        return ((int)(total / stopwatch.Elapsed.TotalSeconds)).ToString();
+    }
 
     private async Task EnsureConceptMapIsRendered(CancellationToken cancellationToken)
     {
