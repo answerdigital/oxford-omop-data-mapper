@@ -36,7 +36,9 @@ begin
 		unit_source_concept_id,
 		value_source_value,
 		measurement_event_id,
-		meas_event_field_concept_id
+		meas_event_field_concept_id,
+		RecordConnectionIdentifier,
+		HospitalProviderSpellNumber
 	)
 	output inserted.measurement_id
 	into @NewRecords (measurement_id)
@@ -60,7 +62,9 @@ begin
 		r.unit_source_concept_id,
 		r.value_source_value,
 		r.measurement_event_id,
-		r.meas_event_field_concept_id
+		r.meas_event_field_concept_id,
+		r.RecordConnectionIdentifier,
+		r.HospitalProviderSpellNumber
 	from @rows r
 		inner join cdm.person p
 			on r.nhs_number = p.person_source_value
@@ -72,7 +76,29 @@ begin
 				and m.measurement_date = r.measurement_date
 				and m.measurement_concept_id = r.measurement_concept_id
 				and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
-		);
+				and r.RecordConnectionIdentifier is null
+				and r.HospitalProviderSpellNumber is null
+		)
+		and not exists (
+			select *
+			from cdm.measurement m
+			where m.person_id = p.person_id 
+				and m.measurement_date = r.measurement_date
+				and m.measurement_concept_id = r.measurement_concept_id
+				and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
+				and r.RecordConnectionIdentifier is not null
+				and m.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+		)
+		and not exists (
+			select *
+			from cdm.measurement m
+			where m.person_id = p.person_id 
+				and m.measurement_date = r.measurement_date
+				and m.measurement_concept_id = r.measurement_concept_id
+				and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
+				and r.HospitalProviderSpellNumber is not null
+				and m.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+		)
 
 	declare @columns table (Name varchar(max));
 
