@@ -47,6 +47,8 @@ internal class MeasurementRecorder : IMeasurementRecorder
             dataTable.Columns.Add("value_source_value", typeof(string));
             dataTable.Columns.Add("measurement_event_id", typeof(int));
             dataTable.Columns.Add("meas_event_field_concept_id", typeof(int));
+            dataTable.Columns.Add("HospitalProviderSpellNumber", typeof(string));
+            dataTable.Columns.Add("RecordConnectionIdentifier", typeof(string));
 
             foreach (var record in batch)
             {
@@ -73,7 +75,9 @@ internal class MeasurementRecorder : IMeasurementRecorder
                     record.unit_source_concept_id,
                     record.value_source_value,
                     record.measurement_event_id,
-                    record.meas_event_field_concept_id);
+                    record.meas_event_field_concept_id,
+                    record.HospitalProviderSpellNumber,
+                    record.RecordConnectionIdentifier);
             }
 
             var parameter = new
