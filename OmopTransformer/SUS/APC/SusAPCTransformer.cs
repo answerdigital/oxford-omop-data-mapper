@@ -30,6 +30,7 @@ using OmopTransformer.Omop.Provider;
 using OmopTransformer.Transformation;
 using OmopTransformer.Omop;
 using OmopTransformer.SUS.CCMDS.VisitDetails;
+using OmopTransformer.SUS.CCMDS.ProcedureOccurrence;
 using OmopTransformer.SUS.CCMDS.Observation.HighCostDrugs;
 using OmopTransformer.SUS.CCMDS.Observation.HighCostDrugs.SusCCMDSHighCostDrugs;
 
@@ -210,17 +211,17 @@ internal class SusAPCTransformer : Transformer
             runId,
             cancellationToken);
 
+        await Transform<SusCCMDSProcedureOccurrenceRecord, SusCCMDSProcedureOccurrence>(
+          _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+          "SUS CCMDS Procedure Occurrence",
+          runId,
+          cancellationToken);
+          
         await Transform<SusCCMDSHighCostDrugsRecord, SusCCMDSHighCostDrugs>(
           _observationRecorder.InsertUpdateObservations,
             "SUS CCMDS Observation High Cost Drugs",
             runId,
             cancellationToken);
-
-        // await Transform<SusCCMDSProcedureOccurrenceRecord, SusCCMDSProcedureOccurrence>(
-        //   _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
-        //   "SUS CCMDS Procedure Occurrence",
-        //   runId,
-        //   cancellationToken);
 
         // await Transform<SusCCMDSMeasurementRecord, SusCCMDSMeasurement>(
         //     _measurementRecorder.InsertUpdateMeasurements,
