@@ -27,5 +27,5 @@ internal class SusCCMDSMeasurementPersonWeight : OmopMeasurement<SusCCMDSMeasure
     [ConstantValue(4099154, "Body Weight")]
     public override int? measurement_concept_id { get; set; }
 
-    public override bool IsValid => base.IsValid && value_source_value != null;
+    public override bool IsValid => base.IsValid && value_as_number != null;
 }
