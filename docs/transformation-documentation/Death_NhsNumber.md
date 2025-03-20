@@ -48,15 +48,8 @@ from omop_staging.sus_APC apc
 where
 	apc.NHSNumber is not null and
 	apc.DischargeDateFromHospitalProviderSpell is not null and
-	(
-		apc.DischargeMethodHospitalProviderSpell = '4' -- "Patient died"
-		or
-		(
-			apc.DischargeDestinationHospitalProviderSpell = '79' -- Not applicable - PATIENT died or stillbirth
-			and
-			apc.DischargeMethodHospitalProviderSpell != '5' -- not stillbirth
-		)
-)
+	apc.DischargeMethodHospitalProviderSpell = '4' -- "Patient died"
+
 group by apc.NHSNumber
 	
 ```

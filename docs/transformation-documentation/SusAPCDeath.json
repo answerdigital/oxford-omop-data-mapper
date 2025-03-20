@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n;with primarydiagnosis as (\n\tselect *\n\tfrom omop_staging.sus_ICDDiagnosis\n\twhere IsPrimaryDiagnosis = 1\n)\n\nselect\n\tapc.NHSNumber as nhs_number,\n\tmax(apc.DischargeDateFromHospitalProviderSpell) as death_date,\n\tmax(apc.DischargeTimeHospitalProviderSpell) as death_time,\n\tmax(d.DiagnosisICD) as DiagnosisICD\nfrom omop_staging.sus_APC apc\n\tleft join primarydiagnosis d\n\t\ton apc.MessageId = d.MessageId\nwhere\n\tapc.NHSNumber is not null and\n\tapc.DischargeDateFromHospitalProviderSpell is not null and\n\t(\n\t\tapc.DischargeMethodHospitalProviderSpell = '4' -- \"Patient died\"\n\t\tor\n\t\t(\n\t\t\tapc.DischargeDestinationHospitalProviderSpell = '79' -- Not applicable - PATIENT died or stillbirth\n\t\t\tand\n\t\t\tapc.DischargeMethodHospitalProviderSpell != '5' -- not stillbirth\n\t\t)\n)\ngroup by apc.NHSNumber\n\t",
+      "query": "\n;with primarydiagnosis as (\n\tselect *\n\tfrom omop_staging.sus_ICDDiagnosis\n\twhere IsPrimaryDiagnosis = 1\n)\n\nselect\n\tapc.NHSNumber as nhs_number,\n\tmax(apc.DischargeDateFromHospitalProviderSpell) as death_date,\n\tmax(apc.DischargeTimeHospitalProviderSpell) as death_time,\n\tmax(d.DiagnosisICD) as DiagnosisICD\nfrom omop_staging.sus_APC apc\n\tleft join primarydiagnosis d\n\t\ton apc.MessageId = d.MessageId\nwhere\n\tapc.NHSNumber is not null and\n\tapc.DischargeDateFromHospitalProviderSpell is not null and\n\tapc.DischargeMethodHospitalProviderSpell = '4' -- \"Patient died\"\n\ngroup by apc.NHSNumber\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n;with primarydiagnosis as (\n\tselect *\n\tfrom omop_staging.sus_ICDDiagnosis\n\twhere IsPrimaryDiagnosis = 1\n)\n\nselect\n\tapc.NHSNumber as nhs_number,\n\tmax(apc.DischargeDateFromHospitalProviderSpell) as death_date,\n\tmax(apc.DischargeTimeHospitalProviderSpell) as death_time,\n\tmax(d.DiagnosisICD) as DiagnosisICD\nfrom omop_staging.sus_APC apc\n\tleft join primarydiagnosis d\n\t\ton apc.MessageId = d.MessageId\nwhere\n\tapc.NHSNumber is not null and\n\tapc.DischargeDateFromHospitalProviderSpell is not null and\n\t(\n\t\tapc.DischargeMethodHospitalProviderSpell = '4' -- \"Patient died\"\n\t\tor\n\t\t(\n\t\t\tapc.DischargeDestinationHospitalProviderSpell = '79' -- Not applicable - PATIENT died or stillbirth\n\t\t\tand\n\t\t\tapc.DischargeMethodHospitalProviderSpell != '5' -- not stillbirth\n\t\t)\n)\ngroup by apc.NHSNumber\n\t",
+      "query": "\n;with primarydiagnosis as (\n\tselect *\n\tfrom omop_staging.sus_ICDDiagnosis\n\twhere IsPrimaryDiagnosis = 1\n)\n\nselect\n\tapc.NHSNumber as nhs_number,\n\tmax(apc.DischargeDateFromHospitalProviderSpell) as death_date,\n\tmax(apc.DischargeTimeHospitalProviderSpell) as death_time,\n\tmax(d.DiagnosisICD) as DiagnosisICD\nfrom omop_staging.sus_APC apc\n\tleft join primarydiagnosis d\n\t\ton apc.MessageId = d.MessageId\nwhere\n\tapc.NHSNumber is not null and\n\tapc.DischargeDateFromHospitalProviderSpell is not null and\n\tapc.DischargeMethodHospitalProviderSpell = '4' -- \"Patient died\"\n\ngroup by apc.NHSNumber\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -63,7 +63,7 @@
           ]
         }
       ],
-      "query": "\n;with primarydiagnosis as (\n\tselect *\n\tfrom omop_staging.sus_ICDDiagnosis\n\twhere IsPrimaryDiagnosis = 1\n)\n\nselect\n\tapc.NHSNumber as nhs_number,\n\tmax(apc.DischargeDateFromHospitalProviderSpell) as death_date,\n\tmax(apc.DischargeTimeHospitalProviderSpell) as death_time,\n\tmax(d.DiagnosisICD) as DiagnosisICD\nfrom omop_staging.sus_APC apc\n\tleft join primarydiagnosis d\n\t\ton apc.MessageId = d.MessageId\nwhere\n\tapc.NHSNumber is not null and\n\tapc.DischargeDateFromHospitalProviderSpell is not null and\n\t(\n\t\tapc.DischargeMethodHospitalProviderSpell = '4' -- \"Patient died\"\n\t\tor\n\t\t(\n\t\t\tapc.DischargeDestinationHospitalProviderSpell = '79' -- Not applicable - PATIENT died or stillbirth\n\t\t\tand\n\t\t\tapc.DischargeMethodHospitalProviderSpell != '5' -- not stillbirth\n\t\t)\n)\ngroup by apc.NHSNumber\n\t",
+      "query": "\n;with primarydiagnosis as (\n\tselect *\n\tfrom omop_staging.sus_ICDDiagnosis\n\twhere IsPrimaryDiagnosis = 1\n)\n\nselect\n\tapc.NHSNumber as nhs_number,\n\tmax(apc.DischargeDateFromHospitalProviderSpell) as death_date,\n\tmax(apc.DischargeTimeHospitalProviderSpell) as death_time,\n\tmax(d.DiagnosisICD) as DiagnosisICD\nfrom omop_staging.sus_APC apc\n\tleft join primarydiagnosis d\n\t\ton apc.MessageId = d.MessageId\nwhere\n\tapc.NHSNumber is not null and\n\tapc.DischargeDateFromHospitalProviderSpell is not null and\n\tapc.DischargeMethodHospitalProviderSpell = '4' -- \"Patient died\"\n\ngroup by apc.NHSNumber\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -81,7 +81,7 @@
           ]
         }
       ],
-      "query": "\n;with primarydiagnosis as (\n\tselect *\n\tfrom omop_staging.sus_ICDDiagnosis\n\twhere IsPrimaryDiagnosis = 1\n)\n\nselect\n\tapc.NHSNumber as nhs_number,\n\tmax(apc.DischargeDateFromHospitalProviderSpell) as death_date,\n\tmax(apc.DischargeTimeHospitalProviderSpell) as death_time,\n\tmax(d.DiagnosisICD) as DiagnosisICD\nfrom omop_staging.sus_APC apc\n\tleft join primarydiagnosis d\n\t\ton apc.MessageId = d.MessageId\nwhere\n\tapc.NHSNumber is not null and\n\tapc.DischargeDateFromHospitalProviderSpell is not null and\n\t(\n\t\tapc.DischargeMethodHospitalProviderSpell = '4' -- \"Patient died\"\n\t\tor\n\t\t(\n\t\t\tapc.DischargeDestinationHospitalProviderSpell = '79' -- Not applicable - PATIENT died or stillbirth\n\t\t\tand\n\t\t\tapc.DischargeMethodHospitalProviderSpell != '5' -- not stillbirth\n\t\t)\n)\ngroup by apc.NHSNumber\n\t",
+      "query": "\n;with primarydiagnosis as (\n\tselect *\n\tfrom omop_staging.sus_ICDDiagnosis\n\twhere IsPrimaryDiagnosis = 1\n)\n\nselect\n\tapc.NHSNumber as nhs_number,\n\tmax(apc.DischargeDateFromHospitalProviderSpell) as death_date,\n\tmax(apc.DischargeTimeHospitalProviderSpell) as death_time,\n\tmax(d.DiagnosisICD) as DiagnosisICD\nfrom omop_staging.sus_APC apc\n\tleft join primarydiagnosis d\n\t\ton apc.MessageId = d.MessageId\nwhere\n\tapc.NHSNumber is not null and\n\tapc.DischargeDateFromHospitalProviderSpell is not null and\n\tapc.DischargeMethodHospitalProviderSpell = '4' -- \"Patient died\"\n\ngroup by apc.NHSNumber\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -99,7 +99,7 @@
           ]
         }
       ],
-      "query": "\n;with primarydiagnosis as (\n\tselect *\n\tfrom omop_staging.sus_ICDDiagnosis\n\twhere IsPrimaryDiagnosis = 1\n)\n\nselect\n\tapc.NHSNumber as nhs_number,\n\tmax(apc.DischargeDateFromHospitalProviderSpell) as death_date,\n\tmax(apc.DischargeTimeHospitalProviderSpell) as death_time,\n\tmax(d.DiagnosisICD) as DiagnosisICD\nfrom omop_staging.sus_APC apc\n\tleft join primarydiagnosis d\n\t\ton apc.MessageId = d.MessageId\nwhere\n\tapc.NHSNumber is not null and\n\tapc.DischargeDateFromHospitalProviderSpell is not null and\n\t(\n\t\tapc.DischargeMethodHospitalProviderSpell = '4' -- \"Patient died\"\n\t\tor\n\t\t(\n\t\t\tapc.DischargeDestinationHospitalProviderSpell = '79' -- Not applicable - PATIENT died or stillbirth\n\t\t\tand\n\t\t\tapc.DischargeMethodHospitalProviderSpell != '5' -- not stillbirth\n\t\t)\n)\ngroup by apc.NHSNumber\n\t",
+      "query": "\n;with primarydiagnosis as (\n\tselect *\n\tfrom omop_staging.sus_ICDDiagnosis\n\twhere IsPrimaryDiagnosis = 1\n)\n\nselect\n\tapc.NHSNumber as nhs_number,\n\tmax(apc.DischargeDateFromHospitalProviderSpell) as death_date,\n\tmax(apc.DischargeTimeHospitalProviderSpell) as death_time,\n\tmax(d.DiagnosisICD) as DiagnosisICD\nfrom omop_staging.sus_APC apc\n\tleft join primarydiagnosis d\n\t\ton apc.MessageId = d.MessageId\nwhere\n\tapc.NHSNumber is not null and\n\tapc.DischargeDateFromHospitalProviderSpell is not null and\n\tapc.DischargeMethodHospitalProviderSpell = '4' -- \"Patient died\"\n\ngroup by apc.NHSNumber\n\t",
       "lookup_table_markdown": null
     }
   ]
