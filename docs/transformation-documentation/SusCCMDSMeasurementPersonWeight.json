@@ -82,7 +82,7 @@
     },
     {
       "name": "value_as_number",
-      "operation_description": "Value copied from `ValueAsNumber`",
+      "operation_description": "Converts text to integers.",
       "dataSource": [
         {
           "name": "ValueAsNumber",

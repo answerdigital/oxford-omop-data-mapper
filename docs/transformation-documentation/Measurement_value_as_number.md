@@ -7,7 +7,8 @@ has_toc: false
 ---
 # value_as_number
 ### Sus CCMDS Measurement - Gestation Length at Delivery
-* Value copied from `ValueAsNumber`
+Source column  `ValueAsNumber`.
+Converts text to integers.
 
 * `ValueAsNumber` Value of the Length of Gestation at Delivery [GESTATION LENGTH (AT DELIVERY)](https://www.datadictionary.nhs.uk/data_elements/gestation_length__at_delivery_.html)
 
@@ -28,7 +29,8 @@ has_toc: false
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20value_as_number%20field%20Sus%20CCMDS%20Measurement%20-%20Gestation%20Length%20at%20Delivery%20mapping){: .btn }
 ### Sus CCMDS Measurement - Person Weight
-* Value copied from `ValueAsNumber`
+Source column  `ValueAsNumber`.
+Converts text to integers.
 
 * `ValueAsNumber` Value of the Person weight [PERSON WEIGHT](https://www.datadictionary.nhs.uk/data_elements/person_weight.html)
 
