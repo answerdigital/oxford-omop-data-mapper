@@ -18,7 +18,7 @@ internal class SusCCMDSMeasurementPersonWeight : OmopMeasurement<SusCCMDSMeasure
     [ConstantValue(32828, "EHR episode record")]
     public override int? measurement_type_concept_id { get; set; }
 
-    [CopyValue(nameof(Source.ValueAsNumber))]
+    [Transform(typeof(NumberParser), nameof(Source.ValueAsNumber))]
     public override int? value_as_number { get; set; }
 
     [ConstantValue(9529, "Kg")]
