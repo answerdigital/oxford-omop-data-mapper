@@ -32,6 +32,6 @@ internal class SusAPCNumberOfBabies : OmopObservation<SusAPCNumberOfBabiesRecord
     [ConstantValue(38000280, "Observation recorded from EHR")]
     public override int? observation_type_concept_id { get; set; }
 
-    [Transform(typeof(NumberParser), nameof(Source.NumberofBabies))]
-    public override int? value_as_number { get; set; }
+    [Transform(typeof(DoubleParser), nameof(Source.NumberofBabies))]
+    public override double? value_as_number { get; set; }
 }

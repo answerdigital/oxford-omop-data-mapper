@@ -19,6 +19,7 @@ has_toc: false
 * [unit_concept_id]({% link docs/transformation-documentation/Measurement_unit_concept_id.md %})
 * [measurement_source_value]({% link docs/transformation-documentation/Measurement_measurement_source_value.md %})
 * [unit_source_value]({% link docs/transformation-documentation/Measurement_unit_source_value.md %})
+* [RecordConnectionIdentifier]({% link docs/transformation-documentation/Measurement_RecordConnectionIdentifier.md %})
 
 ## SusOPMeasurement
 <a href="SusOPMeasurement.svg" target="_blank"><img src="SusOPMeasurement.svg" /></a>

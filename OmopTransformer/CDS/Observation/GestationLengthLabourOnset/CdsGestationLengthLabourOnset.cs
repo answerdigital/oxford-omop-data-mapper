@@ -32,8 +32,8 @@ internal class CdsGestationLengthLabourOnset : OmopObservation<CdsGestationLengt
     [ConstantValue(38000280, "Observation recorded from EHR")]
     public override int? observation_type_concept_id { get; set; }
 
-    [Transform(typeof(NumberParser), nameof(Source.GestationLengthLabourOnset))]
-    public override int? value_as_number { get; set; }
+    [Transform(typeof(DoubleParser), nameof(Source.GestationLengthLabourOnset))]
+    public override double? value_as_number { get; set; }
 
     [ConstantValue(8511, "week")]
     public override int? unit_concept_id { get; set; }

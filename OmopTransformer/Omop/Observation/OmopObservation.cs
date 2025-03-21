@@ -9,7 +9,7 @@ internal abstract class OmopObservation<T> : IOmopRecord<T>
     public virtual DateTime? observation_date { get; set; }
     public virtual DateTime? observation_datetime { get; set; }
     public virtual int? observation_type_concept_id { get; set; }
-    public virtual int? value_as_number { get; set; }
+    public virtual double? value_as_number { get; set; }
     public virtual string? value_as_string { get; set; }
     public virtual int? value_as_concept_id { get; set; }
     public virtual int? qualifier_concept_id { get; set; }

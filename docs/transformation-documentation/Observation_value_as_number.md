@@ -8,7 +8,7 @@ has_toc: false
 # value_as_number
 ### SUS Inpatient Total Previous Pregnancies Observation
 Source column  `TotalPreviousPregnancies`.
-Converts text to integers.
+Converts text to number.
 
 * `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES](https://www.datadictionary.nhs.uk/data_elements/pregnancy_total_previous_pregnancies.html)
 
@@ -36,7 +36,7 @@ group by
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
 ### SUS Inpatient NumberofBabies Observation
 Source column  `NumberofBabies`.
-Converts text to integers.
+Converts text to number.
 
 * `NumberofBabies` The number of REGISTRABLE BIRTHS (live or still born at a particular delivery). [NUMBER OF BABIES INDICATION CODE](https://www.datadictionary.nhs.uk/data_elements/number_of_babies_indication_code.html)
 
@@ -64,7 +64,7 @@ group by
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20NumberofBabies%20Observation%20mapping){: .btn }
 ### SUS Inpatient Gestation Length Labour Onset Observation
 Source column  `GestationLengthLabourOnset`.
-Converts text to integers.
+Converts text to number.
 
 * `GestationLengthLabourOnset` GESTATION LENGTH (LABOUR ONSET) records a period of between 10 to 49 weeks in completed weeks at the onset of Labour. [GESTATION LENGTH (LABOUR ONSET)](https://www.datadictionary.nhs.uk/data_elements/gestation_length__labour_onset_.html)
 
@@ -92,7 +92,7 @@ group by
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20Gestation%20Length%20Labour%20Onset%20Observation%20mapping){: .btn }
 ### CosdV9TobaccoSmokingStatus
 Source column  `TobaccoSmokingStatus`.
-Converts text to integers.
+Converts text to number.
 
 * `TobaccoSmokingStatus` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/smoking_status__cancer_.html)
 
@@ -159,7 +159,7 @@ where o.TobaccoSmokingStatus is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9TobaccoSmokingStatus%20mapping){: .btn }
 ### CosdV9TobaccoSmokingCessation
 Source column  `TobaccoSmokingCessation`.
-Converts text to integers.
+Converts text to number.
 
 * `TobaccoSmokingCessation` An indication of whether treatment was given to the PATIENT for tobacco smoking cessation. [TOBACCO SMOKING CESSATION TREATMENT INDICATION CODE](https://www.datadictionary.nhs.uk/data_elements/tobacco_smoking_cessation_treatment_indication_code.html)
 
@@ -226,7 +226,7 @@ where o.TobaccoSmokingCessation is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9TobaccoSmokingCessation%20mapping){: .btn }
 ### CosdV9PerformanceStatusAdult
 Source column  `PerformanceStatusAdult`.
-Converts text to integers.
+Converts text to number.
 
 * `PerformanceStatusAdult` A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY. [PERFORMANCE STATUS (ADULT)](https://www.datadictionary.nhs.uk/data_elements/performance_status__adult_.html)
 
@@ -293,7 +293,7 @@ where o.PerformanceStatusAdult is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9PerformanceStatusAdult%20mapping){: .btn }
 ### CosdV9MenopausalStatus
 Source column  `MenopausalStatus`.
-Converts text to integers.
+Converts text to number.
 
 * `MenopausalStatus` MENOPAUSAL STATUS (AT DIAGNOSIS) is the MENOPAUSAL STATUS of a PATIENT at PATIENT DIAGNOSIS. [MENOPAUSAL STATUS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/menopausal_status__at_diagnosis_.html)
 
@@ -348,7 +348,7 @@ where o.MenopausalStatus is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9MenopausalStatus%20mapping){: .btn }
 ### CosdV9AsaScore
 Source column  `AsaScore`.
-Converts text to integers.
+Converts text to number.
 
 * `AsaScore` The physical status of the PATIENT as recorded by an anaesthetist for the operative procedure. [ASA PHYSICAL STATUS CLASSIFICATION SYSTEM CODE](https://www.datadictionary.nhs.uk/data_elements/asa_physical_status_classification_system_code.html)
 
@@ -415,7 +415,7 @@ where o.AsaScore is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9AsaScore%20mapping){: .btn }
 ### CosdV9AdultComorbidityEvaluation
 Source column  `AdultComorbidityEvaluation`.
-Converts text to integers.
+Converts text to number.
 
 * `AdultComorbidityEvaluation` The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'. [ADULT COMORBIDITY EVALUATION - 27 SCORE](https://www.datadictionary.nhs.uk/data_elements/adult_comorbidity_evaluation_-_27_score.html)
 
@@ -482,7 +482,7 @@ where o.AdultComorbidityEvaluation is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9AdultComorbidityEvaluation%20mapping){: .btn }
 ### CosdV8SmokingStatusCode
 Source column  `SmokingStatusCode`.
-Converts text to integers.
+Converts text to number.
 
 * `SmokingStatusCode` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/smoking_status__cancer_.html)
 
@@ -549,7 +549,7 @@ where o.SmokingStatusCode is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV8SmokingStatusCode%20mapping){: .btn }
 ### CosdV8AdultPerformanceStatus
 Source column  `AdultPerformanceStatus`.
-Converts text to integers.
+Converts text to number.
 
 * `AdultPerformanceStatus` A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY. [PERFORMANCE STATUS (ADULT)](https://www.datadictionary.nhs.uk/data_elements/performance_status__adult_.html)
 
@@ -616,7 +616,7 @@ where o.AdultPerformanceStatus is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV8AdultPerformanceStatus%20mapping){: .btn }
 ### CosdV8AdultComorbidityEvaluation
 Source column  `AdultComorbidityEvaluation`.
-Converts text to integers.
+Converts text to number.
 
 * `AdultComorbidityEvaluation` The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'. [ADULT COMORBIDITY EVALUATION - 27 SCORE](https://www.datadictionary.nhs.uk/data_elements/adult_comorbidity_evaluation_-_27_score.html)
 
@@ -683,7 +683,7 @@ where o.AdultComorbidityEvaluation is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV8AdultComorbidityEvaluation%20mapping){: .btn }
 ### Cds Total Previous Pregnancies Observation
 Source column  `TotalPreviousPregnancies`.
-Converts text to integers.
+Converts text to number.
 
 * `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES](https://www.datadictionary.nhs.uk/data_elements/pregnancy_total_previous_pregnancies.html)
 
@@ -713,7 +713,7 @@ group by
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20Cds%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
 ### Cds Person Weight Observation
 Source column  `PersonWeight`.
-Converts text to integers.
+Converts text to number.
 
 * `PersonWeight` PERSON WEIGHT is the result of the Clinical Investigation which measures the PATIENT's Weight, where the UNIT OF MEASUREMENT is 'Kilograms (kg)'. [PERSON WEIGHT](https://www.datadictionary.nhs.uk/data_elements/person_weight.html)
 
@@ -744,7 +744,7 @@ group by
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20Cds%20Person%20Weight%20Observation%20mapping){: .btn }
 ### Cds NumberofBabies Observation
 Source column  `NumberofBabies`.
-Converts text to integers.
+Converts text to number.
 
 * `NumberofBabies` The number of REGISTRABLE BIRTHS (live or still born at a particular delivery). [NUMBER OF BABIES INDICATION CODE](https://www.datadictionary.nhs.uk/data_elements/number_of_babies_indication_code.html)
 
@@ -777,7 +777,7 @@ group by
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20Cds%20NumberofBabies%20Observation%20mapping){: .btn }
 ### Cds Gestation Length Labour Onset Observation
 Source column  `GestationLengthLabourOnset`.
-Converts text to integers.
+Converts text to number.
 
 * `GestationLengthLabourOnset` GESTATION LENGTH (LABOUR ONSET) records a period of between 10 to 49 weeks in completed weeks at the onset of Labour. [GESTATION LENGTH (LABOUR ONSET)](https://www.datadictionary.nhs.uk/data_elements/gestation_length__labour_onset_.html)
 

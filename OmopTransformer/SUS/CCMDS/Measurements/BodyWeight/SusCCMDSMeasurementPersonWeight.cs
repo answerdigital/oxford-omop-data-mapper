@@ -9,6 +9,9 @@ internal class SusCCMDSMeasurementPersonWeight : OmopMeasurement<SusCCMDSMeasure
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? nhs_number { get; set; }
 
+    [CopyValue(nameof(Source.GeneratedRecordIdentifier))]
+    public override string? RecordConnectionIdentifier {get;set;}
+
     [Transform(typeof(DateConverter), nameof(Source.MeasurementDate))]
     public override DateTime? measurement_date { get; set; }
 
@@ -18,8 +21,11 @@ internal class SusCCMDSMeasurementPersonWeight : OmopMeasurement<SusCCMDSMeasure
     [ConstantValue(32828, "EHR episode record")]
     public override int? measurement_type_concept_id { get; set; }
 
-    [Transform(typeof(NumberParser), nameof(Source.ValueAsNumber))]
-    public override int? value_as_number { get; set; }
+    [Transform(typeof(DoubleParser), nameof(Source.ValueAsNumber))]
+    public override double? value_as_number { get; set; }
+
+    [CopyValue(nameof(Source.ValueAsNumber))]
+    public override string? value_source_value { get; set; }
 
     [ConstantValue(9529, "Kg")]
     public override int? unit_concept_id { get; set; }
