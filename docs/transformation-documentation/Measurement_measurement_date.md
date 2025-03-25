@@ -28,6 +28,50 @@ where op.NHSNumber is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_date%20field%20Sus%20OP%20%20Measurement%20mapping){: .btn }
+### Sus CCMDS Measurement - Gestation Length at Delivery
+Source column  `MeasurementDate`.
+Converts text to dates.
+
+* `MeasurementDate` Start date of the Measurement [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
+
+```sql
+		select distinct
+				apc.NHSNumber,
+				apc.GeneratedRecordIdentifier,
+				cc.CriticalCareStartDate as MeasurementDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,
+				cc.GestationLengthAtDelivery as ValueAsNumber
+		from [omop_staging].[sus_CCMDS] cc 
+		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+		and cc.GestationLengthAtDelivery is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_date%20field%20Sus%20CCMDS%20Measurement%20-%20Gestation%20Length%20at%20Delivery%20mapping){: .btn }
+### Sus CCMDS Measurement - Person Weight
+Source column  `MeasurementDate`.
+Converts text to dates.
+
+* `MeasurementDate` Start date of the Measurement [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
+
+```sql
+		select distinct
+				apc.NHSNumber,
+				apc.GeneratedRecordIdentifier,
+				cc.CriticalCareStartDate as MeasurementDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,
+				cc.PersonWeight as ValueAsNumber
+		from [omop_staging].[sus_CCMDS] cc 
+		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+		and cc.PersonWeight is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_date%20field%20Sus%20CCMDS%20Measurement%20-%20Person%20Weight%20mapping){: .btn }
 ### Sus APC  Measurement
 Source column  `CDSActivityDate`.
 Converts text to dates.

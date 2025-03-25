@@ -33,7 +33,8 @@ using OmopTransformer.SUS.CCMDS.VisitDetails;
 using OmopTransformer.SUS.CCMDS.ProcedureOccurrence;
 using OmopTransformer.SUS.CCMDS.Observation.HighCostDrugs;
 using OmopTransformer.SUS.CCMDS.Observation.HighCostDrugs.SusCCMDSHighCostDrugs;
-
+using OmopTransformer.SUS.CCMDS.Measurements.GestationLengthAtDelivery;
+using OmopTransformer.SUS.CCMDS.Measurements.PersonWeight;
 namespace OmopTransformer.SUS.APC;
 
 internal class SusAPCTransformer : Transformer
@@ -223,10 +224,17 @@ internal class SusAPCTransformer : Transformer
             runId,
             cancellationToken);
 
-        // await Transform<SusCCMDSMeasurementRecord, SusCCMDSMeasurement>(
-        //     _measurementRecorder.InsertUpdateMeasurements,
-        //     "SUS CCMDS Measurements",
-        //     cancellationToken);
+        await Transform<SusCCMDSMeasurementGestationLengthRecord, SusCCMDSMeasurementGestationLength>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "SUS CCMDS Measurements Gestation Length at Delivery",
+            runId,
+            cancellationToken);
+
+        await Transform<SusCCMDSMeasurementPersonWeightRecord, SusCCMDSMeasurementPersonWeight>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "SUS CCMDS Measurements Person Weight",
+            runId,
+            cancellationToken);
 
         _conceptResolver.PrintErrors();
     }

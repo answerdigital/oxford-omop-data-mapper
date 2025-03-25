@@ -34,11 +34,11 @@ internal class MeasurementRecorder : IMeasurementRecorder
             dataTable.Columns.Add("measurement_time", typeof(DateTime));
             dataTable.Columns.Add("measurement_type_concept_id", typeof(int));
             dataTable.Columns.Add("operator_concept_id", typeof(int));
-            dataTable.Columns.Add("value_as_number", typeof(int));
+            dataTable.Columns.Add("value_as_number", typeof(double));
             dataTable.Columns.Add("value_as_concept_id", typeof(int));
             dataTable.Columns.Add("unit_concept_id", typeof(int));
-            dataTable.Columns.Add("range_low", typeof(float));
-            dataTable.Columns.Add("range_high", typeof(float));
+            dataTable.Columns.Add("range_low", typeof(double));
+            dataTable.Columns.Add("range_high", typeof(double));
             dataTable.Columns.Add("provider_id", typeof(int));
             dataTable.Columns.Add("measurement_source_value", typeof(string));
             dataTable.Columns.Add("measurement_source_concept_id", typeof(int));
@@ -47,8 +47,8 @@ internal class MeasurementRecorder : IMeasurementRecorder
             dataTable.Columns.Add("value_source_value", typeof(string));
             dataTable.Columns.Add("measurement_event_id", typeof(int));
             dataTable.Columns.Add("meas_event_field_concept_id", typeof(int));
-            dataTable.Columns.Add("HospitalProviderSpellNumber", typeof(string));
             dataTable.Columns.Add("RecordConnectionIdentifier", typeof(string));
+            dataTable.Columns.Add("HospitalProviderSpellNumber", typeof(string));
 
             foreach (var record in batch)
             {
@@ -76,8 +76,8 @@ internal class MeasurementRecorder : IMeasurementRecorder
                     record.value_source_value,
                     record.measurement_event_id,
                     record.meas_event_field_concept_id,
-                    record.HospitalProviderSpellNumber,
-                    record.RecordConnectionIdentifier);
+                    record.RecordConnectionIdentifier,
+                    record.HospitalProviderSpellNumber);
             }
 
             var parameter = new

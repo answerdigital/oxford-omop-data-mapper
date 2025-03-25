@@ -79,7 +79,7 @@
     },
     {
       "name": "value_as_number",
-      "operation_description": "Converts text to integers.",
+      "operation_description": "Converts text to number.",
       "dataSource": [
         {
           "name": "TumourHeightAboveAnalVerge",
