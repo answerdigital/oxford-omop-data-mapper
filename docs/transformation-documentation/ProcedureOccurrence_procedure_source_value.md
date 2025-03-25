@@ -28,6 +28,31 @@ has_toc: false
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_value%20field%20SUS%20Outpatient%20Procedure%20Occurrence%20mapping){: .btn }
+### SUS CCMDS Procedure Occurrence
+* Value copied from `ProcedureSourceValue`
+
+* `ProcedureSourceValue` Used to look up the Procedure code. [CRITICAL CARE ACTIVITY CODE](https://www.datadictionary.nhs.uk/data_elements/critical_care_activity_code.html)
+
+```sql
+		select distinct
+				apc.NHSNumber,
+				apc.GeneratedRecordIdentifier,
+				cc.CriticalCareStartDate as ProcedureOccurrenceStartDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as ProcedureOccurrenceStartTime,
+				coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as ProcedureOccurrenceEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as ProcedureOccurrenceEndTime,
+				d.CriticalCareActivityCode as ProcedureSourceValue
+		from omop_staging.sus_CCMDS_CriticalCareActivityCode d
+		inner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+		and d.CriticalCareActivityCode != '99'  -- No Defined Critical Care Activity
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_value%20field%20SUS%20CCMDS%20Procedure%20Occurrence%20mapping){: .btn }
 ### SUS APC Procedure Occurrence
 * Value copied from `PrimaryProcedure`
 

@@ -31,6 +31,34 @@ Combines a date with a time of day.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_end_datetime%20field%20SUS%20Outpatient%20Procedure%20Occurrence%20mapping){: .btn }
+### SUS CCMDS Procedure Occurrence
+Source columns  `ProcedureOccurrenceEndDate`, `ProcedureOccurrenceEndTime`.
+Combines a date with a time of day.
+
+* `ProcedureOccurrenceEndDate` End date of the Procedure, if exists, else the event date [CRITICAL CARE PERIOD DISCHARGE DATE](), [EVENT DATE]()
+
+* `ProcedureOccurrenceEndTime` End time of the Procedure, if exists, else midnight. [CRITICAL CARE PERIOD DISCHARGE TIME]()
+
+```sql
+		select distinct
+				apc.NHSNumber,
+				apc.GeneratedRecordIdentifier,
+				cc.CriticalCareStartDate as ProcedureOccurrenceStartDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as ProcedureOccurrenceStartTime,
+				coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as ProcedureOccurrenceEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as ProcedureOccurrenceEndTime,
+				d.CriticalCareActivityCode as ProcedureSourceValue
+		from omop_staging.sus_CCMDS_CriticalCareActivityCode d
+		inner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+		and d.CriticalCareActivityCode != '99'  -- No Defined Critical Care Activity
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_end_datetime%20field%20SUS%20CCMDS%20Procedure%20Occurrence%20mapping){: .btn }
 ### SUS APC Procedure Occurrence
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.

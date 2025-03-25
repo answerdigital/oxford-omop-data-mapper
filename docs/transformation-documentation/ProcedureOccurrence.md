@@ -23,6 +23,10 @@ has_toc: false
 <a href="SusOPProcedureOccurrence.svg" target="_blank"><img src="SusOPProcedureOccurrence.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPProcedureOccurrence%20mapping){: .btn }
+## SusCCMDSProcedureOccurrence
+<a href="SusCCMDSProcedureOccurrence.svg" target="_blank"><img src="SusCCMDSProcedureOccurrence.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusCCMDSProcedureOccurrence%20mapping){: .btn }
 ## SusAPCProcedureOccurrence
 <a href="SusAPCProcedureOccurrence.svg" target="_blank"><img src="SusAPCProcedureOccurrence.svg" /></a>
 

@@ -1,0 +1,54 @@
+﻿<Query>
+    <Sql>
+
+		select distinct
+				apc.NHSNumber,
+				apc.GeneratedRecordIdentifier,
+				cc.CriticalCareStartDate as ProcedureOccurrenceStartDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as ProcedureOccurrenceStartTime,
+				coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as ProcedureOccurrenceEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as ProcedureOccurrenceEndTime,
+				d.CriticalCareActivityCode as ProcedureSourceValue
+		from omop_staging.sus_CCMDS_CriticalCareActivityCode d
+		inner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+		and d.CriticalCareActivityCode != '99'  -- No Defined Critical Care Activity
+
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="ProcedureOccurrenceStartDate">
+			<Description>Start date of the Procedure</Description>
+			<Origin>CRITICAL CARE START DATE</Origin>
+		</Explanation>
+
+		<Explanation columnName="ProcedureOccurrenceStartTime">
+			<Description>Start time of the Procedure, if exists, else midnight.</Description>
+			<Origin>CRITICAL CARE START TIME</Origin>
+		</Explanation>
+
+		<Explanation columnName="ProcedureOccurrenceEndDate">
+			<Description>End date of the Procedure, if exists, else the event date</Description>
+			<Origin>CRITICAL CARE PERIOD DISCHARGE DATE</Origin>
+			<Origin>EVENT DATE</Origin>
+		</Explanation>
+		<Explanation columnName="ProcedureOccurrenceEndTime">
+			<Description>End time of the Procedure, if exists, else midnight.</Description>
+			<Origin>CRITICAL CARE PERIOD DISCHARGE TIME</Origin>
+		</Explanation>	
+
+		<Explanation columnName="ProcedureSourceValue">
+			<Description>Used to look up the Procedure code.</Description>
+			<Origin>CRITICAL CARE ACTIVITY CODE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
