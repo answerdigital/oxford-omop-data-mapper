@@ -14,11 +14,23 @@ rank_provenance_counts as (
     where [rank] = 1
     group by origin
 ),
-latest_run as (
-    select top 1
-        run_id
-    from dbo.run_analysis
-    order by datetime_utc desc
+latest_runs as (
+    select
+        processed_origin,
+        run_id,
+        datetime_utc
+    from (
+        select 
+            substring(origin, charindex(':', origin) + 1, len(origin)) as processed_origin,
+            run_id,
+            datetime_utc,
+            row_number() over (
+                partition by substring(origin, charindex(':', origin) + 1, len(origin))
+                order by datetime_utc desc
+            ) as rn
+        from dbo.run_analysis
+    ) ranked
+    where rn = 1
 )
 select 
     ra.run_id,
@@ -27,13 +39,12 @@ select
     substring(ra.origin, charindex(':', ra.origin) + 1, len(ra.origin)) as origin,
     ra.valid_count + ra.invalid_count as source_count,
     ra.valid_count as validated_count,
-    case 
-        when mc.output_count is null then 0
-        else mc.output_count
-    end as output_count
+    coalesce(mc.output_count, 0) as output_count
 from dbo.run_analysis ra
-inner join latest_run lr on ra.run_id = lr.run_id
+inner join latest_runs lr 
+    on ra.run_id = lr.run_id
+    and substring(ra.origin, charindex(':', ra.origin) + 1, len(ra.origin)) = lr.processed_origin
 left join rank_provenance_counts mc 
-    on lower(replace(substring(ra.origin, charindex(':', ra.origin) + 1, len(ra.origin)), ' ', '')) = lower(replace(mc.origin, ' ', ''));
+    on lower(replace(lr.processed_origin, ' ', '')) = lower(replace(mc.origin, ' ', ''));
 
 go
