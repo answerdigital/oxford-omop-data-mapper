@@ -16,7 +16,7 @@ cdmSourceName <- "cdm source"
 cdmVersion <- "5.4"
 
 # Set the number of threads for parallel processing
-numThreads <- 1
+numThreads <- 10
 
 # Specify whether to execute queries or just generate SQL scripts
 sqlOnly <- FALSE
