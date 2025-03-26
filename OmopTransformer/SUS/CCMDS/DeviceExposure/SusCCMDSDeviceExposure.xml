@@ -1,0 +1,51 @@
+﻿<Query>
+    <Sql>
+
+		select distinct
+				apc.NHSNumber,
+				apc.HospitalProviderSpellNumber,
+				cc.CriticalCareStartDate as DeviceExposureStartDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as DeviceExposureStartTime,
+				coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as DeviceExposureEndDate,
+				coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as DeviceExposureEndTime,
+				d.CriticalCareActivityCode as CriticalCareActivityCode
+		from omop_staging.sus_CCMDS_CriticalCareActivityCode d
+		inner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+		and d.CriticalCareActivityCode not in('3','4','6','8','10','12','15','21','22','23','24','25','27','28','29','50','57','58','64','65','66','67','68','69','70','71','72','74','82','83','87','99')
+
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="HospitalProviderSpellNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="DeviceExposureStartDate">
+			<Description>Start date of the Device</Description>
+			<Origin>CRITICAL CARE START DATE</Origin>
+		</Explanation>
+		<Explanation columnName="DeviceExposureStartTime">
+			<Description>Start time of the Device, if exists, else midnight.</Description>
+			<Origin>CRITICAL CARE START TIME</Origin>
+		</Explanation>
+		<Explanation columnName="DeviceExposureEndDate">
+			<Description>End date of the Device, if exists, else the event date</Description>
+			<Origin>CRITICAL CARE PERIOD DISCHARGE DATE</Origin>
+			<Origin>EVENT DATE</Origin>
+		</Explanation>
+		<Explanation columnName="DeviceExposureEndTime">
+			<Description>End time of the Procedure, if exists, else midnight.</Description>
+			<Origin>CRITICAL CARE PERIOD DISCHARGE TIME</Origin>
+		</Explanation>	
+		<Explanation columnName="CriticalCareActivityCode">
+			<Description>Used to look up the Device code.</Description>
+			<Origin>CRITICAL CARE ACTIVITY CODE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

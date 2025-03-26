@@ -166,11 +166,6 @@ internal class SusAETransformer : Transformer
            runId,
            cancellationToken);
 
-        // await Transform<SusAEMeasurementRecord, SusAEMeasurement>(
-        //     _measurementRecorder.InsertUpdateMeasurements,
-        //     "SUS AE Measurements",
-        //     cancellationToken);
-
         _conceptResolver.PrintErrors();
     }
 }
