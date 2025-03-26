@@ -32,8 +32,8 @@ internal class CdsPersonWeight : OmopObservation<CdsPersonWeightRecord>
     [ConstantValue(38000280, "Observation recorded from EHR")]
     public override int? observation_type_concept_id { get; set; }
 
-    [Transform(typeof(NumberParser), nameof(Source.PersonWeight))]
-    public override int? value_as_number { get; set; }
+    [Transform(typeof(DoubleParser), nameof(Source.PersonWeight))]
+    public override double? value_as_number { get; set; }
 
     [ConstantValue(9529, "kilogram")]
     public override int? unit_concept_id { get; set; }

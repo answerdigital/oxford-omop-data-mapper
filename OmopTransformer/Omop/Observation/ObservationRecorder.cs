@@ -34,7 +34,7 @@ internal class ObservationRecorder : IObservationRecorder
             dataTable.Columns.Add("observation_date", typeof(DateTime));
             dataTable.Columns.Add("observation_datetime", typeof(DateTime));
             dataTable.Columns.Add("observation_type_concept_id", typeof(int));
-            dataTable.Columns.Add("value_as_number", typeof(int));
+            dataTable.Columns.Add("value_as_number", typeof(double));
             dataTable.Columns.Add("value_as_string");
             dataTable.Columns.Add("value_as_concept_id", typeof(int));
             dataTable.Columns.Add("qualifier_concept_id", typeof(int));

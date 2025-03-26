@@ -1,0 +1,36 @@
+﻿<Query>
+    <Sql>
+		select distinct
+				apc.NHSNumber,
+				apc.GeneratedRecordIdentifier,
+				cc.CriticalCareStartDate as MeasurementDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,
+				cc.PersonWeight as ValueAsNumber
+		from [omop_staging].[sus_CCMDS] cc 
+		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+		and cc.PersonWeight is not null
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="MeasurementDate">
+			<Description>Start date of the Measurement</Description>
+			<Origin>CRITICAL CARE START DATE</Origin>
+		</Explanation>
+		<Explanation columnName="MeasurementDateTime">
+			<Description>Start time of the Measurement, if exists, else midnight.</Description>
+			<Origin>CRITICAL CARE START TIME</Origin>
+		</Explanation>
+		<Explanation columnName="ValueAsNumber">
+			<Description>Value of the Person weight</Description>
+			<Origin>PERSON WEIGHT</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

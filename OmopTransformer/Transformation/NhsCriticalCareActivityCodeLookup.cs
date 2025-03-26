@@ -10,7 +10,7 @@ internal class NhsCriticalCareActivityCodeLookup : ILookup
         {
             { "1", new ValueWithNote("4161831", "Respiratory support via a tracheal tube (Respiratory support via a tracheal tube provided)") },
             { "2", new ValueWithNote("4165535", "Nasal Continuous Positive Airway Pressure (nCPAP) (PATIENT receiving nCPAP for any part of the day)") },
-            { "3", new ValueWithNote("35918980", "Surgery (PATIENT received surgery)") },
+            { "3", new ValueWithNote("4301351", "Surgery (PATIENT received surgery)") },
             { "4", new ValueWithNote("4193981", "Exchange Transfusion (PATIENT received exchange transfusion)") },
             { "5", new ValueWithNote("4324124", "Peritoneal Dialysis (PATIENT received Peritoneal Dialysis)") },
             { "6", new ValueWithNote("44806352", "Continuous infusion of inotrope, pulmonary vasodilator or prostaglandin (PATIENT received a continuous infusion of an inotrope, vasodilator (includes pulmonary vasodilators) or prostaglandin") },
@@ -55,7 +55,7 @@ internal class NhsCriticalCareActivityCodeLookup : ILookup
             { "70", new ValueWithNote("4080110", "Diabetic ketoacidosis (DKA) requiring continuous infusion of insulin") },
             { "71", new ValueWithNote("4144062", "Intravenous infusion of thrombolytic agent (limited to tissue plasminogen activator [tPA] and streptokinase)") },
             { "72", new ValueWithNote("44805305", "Extracorporeal liver support using Molecular Absorbent Liver Recirculating System (MARS)") },
-            { "73", new ValueWithNote("2314049", "Continuous pulse oximetry") },
+            { "73", new ValueWithNote("4262005", "Continuous pulse oximetry") },
             { "74", new ValueWithNote("4222885", "Patient nursed in single occupancy cubicle") },
             { "80", new ValueWithNote("37158406", "Heated Humidified High Flow Therapy (HHHFT)") },
             { "81", new ValueWithNote("4051310", "Presence of an umbilical venous line") },

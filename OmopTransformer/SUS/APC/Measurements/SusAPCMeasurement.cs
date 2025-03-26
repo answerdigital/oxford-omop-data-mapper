@@ -8,6 +8,9 @@ internal class SusAPCMeasurement : OmopMeasurement<SusAPCMeasurementRecord>
 {
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? nhs_number { get; set; }
+    
+    [CopyValue(nameof(Source.GeneratedRecordIdentifier))]
+    public override string? RecordConnectionIdentifier {get;set;}
 
     [Transform(typeof(DateConverter), nameof(Source.CDSActivityDate))]
     public override DateTime? measurement_date { get; set; }

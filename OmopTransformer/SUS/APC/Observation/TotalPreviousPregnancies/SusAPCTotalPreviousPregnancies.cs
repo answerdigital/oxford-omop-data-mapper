@@ -32,8 +32,8 @@ internal class SusAPCTotalPreviousPregnancies : OmopObservation<SusAPCTotalPrevi
     [ConstantValue(32818, "EHR administration record")]
     public override int? observation_type_concept_id { get; set; }
 
-    [Transform(typeof(NumberParser), nameof(Source.TotalPreviousPregnancies))]
-    public override int? value_as_number { get; set; }
+    [Transform(typeof(DoubleParser), nameof(Source.TotalPreviousPregnancies))]
+    public override double? value_as_number { get; set; }
 
     [CopyValue(nameof(Source.TotalPreviousPregnancies))]
     public override string? value_as_string { get; set; }

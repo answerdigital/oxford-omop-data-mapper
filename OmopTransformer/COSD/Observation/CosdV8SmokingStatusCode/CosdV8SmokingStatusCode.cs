@@ -22,7 +22,7 @@ internal class CosdV8SmokingStatusCode : OmopObservation<CosdV8SmokingStatusCode
     [ConstantValue(32828, "`EHR episode record`")]
     public override int? observation_type_concept_id { get; set; }
 
-    [Transform(typeof(NumberParser), nameof(Source.SmokingStatusCode))]
-    public override int? value_as_number { get; set; }
+    [Transform(typeof(DoubleParser), nameof(Source.SmokingStatusCode))]
+    public override double? value_as_number { get; set; }
 
 }

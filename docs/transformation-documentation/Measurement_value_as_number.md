@@ -6,9 +6,53 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # value_as_number
+### Sus CCMDS Measurement - Gestation Length at Delivery
+Source column  `ValueAsNumber`.
+Converts text to number.
+
+* `ValueAsNumber` Value of the Length of Gestation at Delivery [GESTATION LENGTH (AT DELIVERY)](https://www.datadictionary.nhs.uk/data_elements/gestation_length__at_delivery_.html)
+
+```sql
+		select distinct
+				apc.NHSNumber,
+				apc.GeneratedRecordIdentifier,
+				cc.CriticalCareStartDate as MeasurementDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,
+				cc.GestationLengthAtDelivery as ValueAsNumber
+		from [omop_staging].[sus_CCMDS] cc 
+		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+		and cc.GestationLengthAtDelivery is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20value_as_number%20field%20Sus%20CCMDS%20Measurement%20-%20Gestation%20Length%20at%20Delivery%20mapping){: .btn }
+### Sus CCMDS Measurement - Person Weight
+Source column  `ValueAsNumber`.
+Converts text to number.
+
+* `ValueAsNumber` Value of the Person weight [PERSON WEIGHT](https://www.datadictionary.nhs.uk/data_elements/person_weight.html)
+
+```sql
+		select distinct
+				apc.NHSNumber,
+				apc.GeneratedRecordIdentifier,
+				cc.CriticalCareStartDate as MeasurementDate,
+				coalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,
+				cc.PersonWeight as ValueAsNumber
+		from [omop_staging].[sus_CCMDS] cc 
+		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		where apc.NHSNumber is not null
+		and cc.PersonWeight is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20value_as_number%20field%20Sus%20CCMDS%20Measurement%20-%20Person%20Weight%20mapping){: .btn }
 ### COSD V8 Measurement Tumour Height Above Anal Verge
 Source column  `TumourHeightAboveAnalVerge`.
-Converts text to integers.
+Converts text to number.
 
 * `TumourHeightAboveAnalVerge` Is the approximate height of the lower limit of the Tumour above the anal verge (as measured by a rigid sigmoidoscopy) during a Colorectal Cancer Care Spell, where the UNIT OF MEASUREMENT is 'Centimetres (cm)' [TUMOUR HEIGHT ABOVE ANAL VERGE](https://www.datadictionary.nhs.uk/data_elements/tumour_height_above_anal_verge.html)
 
