@@ -35,6 +35,8 @@ using OmopTransformer.SUS.CCMDS.Observation.HighCostDrugs;
 using OmopTransformer.SUS.CCMDS.Observation.HighCostDrugs.SusCCMDSHighCostDrugs;
 using OmopTransformer.SUS.CCMDS.Measurements.GestationLengthAtDelivery;
 using OmopTransformer.SUS.CCMDS.Measurements.PersonWeight;
+using OmopTransformer.SUS.CCMDS.DeviceExposure;
+using OmopTransformer.Omop.DeviceExposure;
 namespace OmopTransformer.SUS.APC;
 
 internal class SusAPCTransformer : Transformer
@@ -51,6 +53,7 @@ internal class SusAPCTransformer : Transformer
     private readonly ConceptResolver _conceptResolver;
     private readonly ICareSiteRecorder _careSiteRecorder;
     private readonly IProviderRecorder _providerRecorder;
+    private readonly IDeviceExposureRecorder _deviceExposureRecorder;
 
     public SusAPCTransformer(
         ICareSiteRecorder careSiteRecorder,
@@ -68,6 +71,7 @@ internal class SusAPCTransformer : Transformer
         IDeathRecorder deathRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
         ConceptResolver conceptResolver, 
+        IDeviceExposureRecorder deviceExposureRecorder,
         IObservationRecorder observationRecorder,
         IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder) : 
@@ -89,6 +93,7 @@ internal class SusAPCTransformer : Transformer
         _deathRecorder = deathRecorder;
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
         _conceptResolver = conceptResolver;
+        _deviceExposureRecorder = deviceExposureRecorder;
         _observationRecorder = observationRecorder;
         _careSiteRecorder = careSiteRecorder;
         _providerRecorder = providerRecorder;
@@ -233,6 +238,12 @@ internal class SusAPCTransformer : Transformer
         await Transform<SusCCMDSMeasurementPersonWeightRecord, SusCCMDSMeasurementPersonWeight>(
             _measurementRecorder.InsertUpdateMeasurements,
             "SUS CCMDS Measurements Person Weight",
+            runId,
+            cancellationToken);
+
+        await Transform<SusCCMDSDeviceExposureRecord, SusCCMDSDeviceExposure>(
+            _deviceExposureRecorder.InsertUpdateDeviceExposure,
+            "SUS CCMDS Device Exposure",
             runId,
             cancellationToken);
 
