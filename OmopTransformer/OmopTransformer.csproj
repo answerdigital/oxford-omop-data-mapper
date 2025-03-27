@@ -433,6 +433,9 @@
     <None Update="SUS\CCMDS\Measurements\BodyWeight\SusCCMDSMeasurementPersonWeight.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SUS\CCMDS\DeviceExposure\SusCCMDSDeviceExposure.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' != 'Release_no_docs'">
 		<ItemGroup>
