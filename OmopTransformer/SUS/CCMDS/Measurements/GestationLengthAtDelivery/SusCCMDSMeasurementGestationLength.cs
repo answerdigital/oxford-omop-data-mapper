@@ -24,7 +24,7 @@ internal class SusCCMDSMeasurementGestationLength : OmopMeasurement<SusCCMDSMeas
     [Transform(typeof(DoubleParser), nameof(Source.ValueAsNumber))]
     public override double? value_as_number { get; set; }
 
-    [ConstantValue(36308390, "Weeks")]
+    [ConstantValue(8511, "Week")]
     public override int? unit_concept_id { get; set; }
 
     [ConstantValue(4260747, "Length of gestation at birth")]

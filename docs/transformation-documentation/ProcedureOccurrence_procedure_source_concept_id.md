@@ -38,7 +38,7 @@ CCMDS Critical Care Activity Code Concept IDs
 |------|-----|-----|
 |1|4161831|Respiratory support via a tracheal tube (Respiratory support via a tracheal tube provided)|
 |2|4165535|Nasal Continuous Positive Airway Pressure (nCPAP) (PATIENT receiving nCPAP for any part of the day)|
-|3|35918980|Surgery (PATIENT received surgery)|
+|3|4301351|Surgery (PATIENT received surgery)|
 |4|4193981|Exchange Transfusion (PATIENT received exchange transfusion)|
 |5|4324124|Peritoneal Dialysis (PATIENT received Peritoneal Dialysis)|
 |6|44806352|Continuous infusion of inotrope, pulmonary vasodilator or prostaglandin (PATIENT received a continuous infusion of an inotrope, vasodilator (includes pulmonary vasodilators) or prostaglandin|
@@ -83,7 +83,7 @@ CCMDS Critical Care Activity Code Concept IDs
 |70|4080110|Diabetic ketoacidosis (DKA) requiring continuous infusion of insulin|
 |71|4144062|Intravenous infusion of thrombolytic agent (limited to tissue plasminogen activator [tPA] and streptokinase)|
 |72|44805305|Extracorporeal liver support using Molecular Absorbent Liver Recirculating System (MARS)|
-|73|2314049|Continuous pulse oximetry|
+|73|4262005|Continuous pulse oximetry|
 |74|4222885|Patient nursed in single occupancy cubicle|
 |80|37158406|Heated Humidified High Flow Therapy (HHHFT)|
 |81|4051310|Presence of an umbilical venous line|
