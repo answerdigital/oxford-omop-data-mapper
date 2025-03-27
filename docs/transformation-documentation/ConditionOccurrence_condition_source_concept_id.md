@@ -23,6 +23,7 @@ Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be
 		inner join [omop_staging].[sus_OP] op
 			on d.MessageId = op.MessageId
 	where op.NHSNumber is not null
+	and AttendedorDidNotAttend in ('5','6')
 	
 ```
 
@@ -179,12 +180,12 @@ Accident and Emergency Diagnosis to OMOP Condition Concept IDs
 |05507|4096479|Amputation of Mouth, Jaw, Teeth|
 |05517|4096479|Amputation of Digit|
 |06 10|4136228|Sprain of Shoulder|
-|06 13|3171204|Sprain of Elbow|
+|06 13|4138284|Sprain of Elbow|
 |06 15|78272|Sprain of Wrist|
 |06 16|73045|Sprain of Hand|
-|06 17|3171204|Sprain of Digit|
-|06 18|3171204|Sprain of Cervical spine|
-|06 19|3171204|Sprain of Thoracic|
+|06 17|4134309|Sprain of Digit|
+|06 18|36713170|Sprain of Cervical spine|
+|06 19|315947|Sprain of Thoracic|
 |06 28|441701|Sprain of Hip|
 |06 31|4207505|Sprain of Knee|
 |06 33|81151|Sprain of Ankle|
@@ -257,11 +258,11 @@ Accident and Emergency Diagnosis to OMOP Condition Concept IDs
 |22|443784|Other vascular condition|
 |22 19|443784|Other vascular condition of Thoracic|
 |22 24|443784|Other vascular condition of Abdomen|
-|23|40528016|Haematological|
-|24|87536007|Central Nervous System|
+|23|36716893|Haematological|
+|24|373087|Central Nervous System|
 |241|380378|Epilepsy|
-|242|87536007|Other non-epilepsy|
-|24236|87536007|Other non-epilepsy of Multiple Site|
+|242|380378|Other non-epilepsy|
+|24236|380378|Other non-epilepsy of Multiple Site|
 |251|317009|Bronchial asthma|
 |252|320136|Other non-asthma|
 |25222|320136|Other non-asthma of Chest|

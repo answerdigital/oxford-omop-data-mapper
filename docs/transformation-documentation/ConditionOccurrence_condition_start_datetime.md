@@ -23,6 +23,7 @@ Converts text to dates.
 		inner join [omop_staging].[sus_OP] op
 			on d.MessageId = op.MessageId
 	where op.NHSNumber is not null
+	and AttendedorDidNotAttend in ('5','6')
 	
 ```
 

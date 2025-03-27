@@ -27,7 +27,7 @@ has_toc: false
 	from omop_staging.sus_OP op
 	where op.UpdateType = 9
 		and op.NHSNumber is not null
-
+		and AttendedorDidNotAttend in ('5','6')
 	
 ```
 
