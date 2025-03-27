@@ -24,9 +24,7 @@ internal abstract class OmopPerson<T> : IOmopRecord<T>
     public string OmopTargetTypeDescription => "Person";
 
     public virtual bool IsValid =>
-        gender_concept_id != null &&
         year_of_birth != null &&
         person_source_value != null &&
-        race_concept_id != null &&
-        ethnicity_concept_id != null;
+        race_concept_id != null;
 }
