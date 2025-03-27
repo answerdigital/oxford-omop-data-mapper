@@ -28,5 +28,9 @@ internal class OmopFinaliser
         _logger.LogInformation("Rebuilding era tables.");
 
         await connection.ExecuteLongTimeoutAsync("cdm.build_era");
+
+        _logger.LogInformation("Apply data fixes.");
+
+        await connection.ExecuteLongTimeoutAsync("cdm.dqd_corrections");
     }
 }
