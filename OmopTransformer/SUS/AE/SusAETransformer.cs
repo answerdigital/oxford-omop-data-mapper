@@ -156,7 +156,7 @@ internal class SusAETransformer : Transformer
 
         await Transform<SusAEDeviceExposureRecord, SusAEDeviceExposure>(
            _deviceExposureRecorder.InsertUpdateDeviceExposure,
-           "SUS AE DeviceExposure",
+           "SUS AE Device Exposure",
            runId,
            cancellationToken);
 
