@@ -135,12 +135,6 @@ internal class CosdTransformer : Transformer
             runId,
             cancellationToken);
 
-        await Transform<CosdDemographics, CosdLocation>(
-            _locationRecorder.InsertUpdateLocations,
-            "COSD Location",
-            runId,
-            cancellationToken);
-
         await Transform<CosdV8DeathRecord, CosdV8Death>(
             _deathRecorder.InsertUpdateDeaths,
             "COSD V8 Death",
