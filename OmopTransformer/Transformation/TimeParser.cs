@@ -12,8 +12,11 @@ internal class TimeParser (string? text)
         if (TimeSpan.TryParseExact(text, "hhmmss", CultureInfo.InvariantCulture, out var time))
             return time;
 
-        if (TimeSpan.TryParseExact(text, @"hh\:mm\:ss", CultureInfo.InvariantCulture, out var timeWithColons))
+        if (TimeSpan.TryParseExact(text, @"hh\:mm", CultureInfo.InvariantCulture, out var timeWithColons))
             return timeWithColons;
+
+        if (TimeSpan.TryParseExact(text, @"hh\:mm\:ss", CultureInfo.InvariantCulture, out var timeWithColonsIncSeconds))
+            return timeWithColonsIncSeconds;
 
         return null;
     }
