@@ -1,0 +1,35 @@
+﻿<Query>
+    <Sql>
+	select
+		op.NHSNumber, 
+		op.AppointmentDate,
+		op.AppointmentTime,
+		op.ReferralRequestReceivedDate,
+		op.GeneratedRecordIdentifier
+	from omop_staging.sus_OP op
+	where ReferralRequestReceivedDate is not null
+	and op.NHSNumber is not null
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="AppointmentDate">
+			<Description>Event date</Description>
+			<Origin>APPOINTMENT DATE</Origin>
+		</Explanation>
+		<Explanation columnName="AppointmentTime">
+			<Description>The time, advised to a PATIENT for when they can expect to see a relevant CARE PROFESSIONAL at an Out-Patient Clinic.</Description>
+			<Origin>APPOINTMENT TIME</Origin>
+		</Explanation>
+		<Explanation columnName="ReferralRequestReceivedDate">
+			<Description>The date the Referral request was received by the Health Care Provider.</Description>
+			<Origin>REFERRAL REQUEST RECEIVED DATE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
