@@ -47,4 +47,87 @@ FROM cdm.CONDITION_OCCURRENCE cdmTable
 WHERE cdmTable.CONDITION_CONCEPT_ID = 79758
 	AND p.gender_concept_id <> 8507 
 
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id
+WHERE cdmTable.CONDITION_CONCEPT_ID = 4194652
+	AND p.gender_concept_id <> 8532 
+
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id
+WHERE cdmTable.CONDITION_CONCEPT_ID = 437501
+	AND p.gender_concept_id <> 8532 
+		
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id		
+WHERE cdmTable.CONDITION_CONCEPT_ID = 201817
+	AND p.gender_concept_id <> 8532 
+		
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id	
+WHERE cdmTable.CONDITION_CONCEPT_ID = 201238
+	AND p.gender_concept_id <> 8532 
+		
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id	
+WHERE cdmTable.CONDITION_CONCEPT_ID = 195500
+	AND p.gender_concept_id <> 8532 
+		
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id	
+WHERE cdmTable.CONDITION_CONCEPT_ID = 195197
+	AND p.gender_concept_id <> 8532 
+
+
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id
+WHERE cdmTable.CONDITION_CONCEPT_ID = 437501
+	AND p.gender_concept_id <> 8532 
+
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id
+WHERE cdmTable.CONDITION_CONCEPT_ID = 201817
+	AND p.gender_concept_id <> 8532 
+
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id
+WHERE cdmTable.CONDITION_CONCEPT_ID = 201238
+	AND p.gender_concept_id <> 8532 
+
+
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id
+			
+WHERE cdmTable.CONDITION_CONCEPT_ID = 195500
+	AND p.gender_concept_id <> 8532 
+
 end
