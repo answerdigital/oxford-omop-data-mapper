@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tAppointmentDate,\n\tAppointmentTime,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nfrom [omop_staging].[sus_OP]\n\t",
+      "query": "\nselect\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tAppointmentDate,\n\tAppointmentTime,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nfrom [omop_staging].[sus_OP]\n\twhere ReferrerCode is not null\n\tand op.NHSNumber is not null\n\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tAppointmentDate,\n\tAppointmentTime,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nfrom [omop_staging].[sus_OP]\n\t",
+      "query": "\nselect\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tAppointmentDate,\n\tAppointmentTime,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nfrom [omop_staging].[sus_OP]\n\twhere ReferrerCode is not null\n\tand op.NHSNumber is not null\n\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tAppointmentDate,\n\tAppointmentTime,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nfrom [omop_staging].[sus_OP]\n\t",
+      "query": "\nselect\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tAppointmentDate,\n\tAppointmentTime,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nfrom [omop_staging].[sus_OP]\n\twhere ReferrerCode is not null\n\tand op.NHSNumber is not null\n\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -88,7 +88,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tAppointmentDate,\n\tAppointmentTime,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nfrom [omop_staging].[sus_OP]\n\t",
+      "query": "\nselect\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tAppointmentDate,\n\tAppointmentTime,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nfrom [omop_staging].[sus_OP]\n\twhere ReferrerCode is not null\n\tand op.NHSNumber is not null\n\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -113,7 +113,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tAppointmentDate,\n\tAppointmentTime,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nfrom [omop_staging].[sus_OP]\n\t",
+      "query": "\nselect\n\tNHSNumber,\n\tGeneratedRecordIdentifier,\n\tAppointmentDate,\n\tAppointmentTime,\n\tReferrerCode   -- Referrer code is the code of the person making the referral request\nfrom [omop_staging].[sus_OP]\n\twhere ReferrerCode is not null\n\tand op.NHSNumber is not null\n\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     }
   ]

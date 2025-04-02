@@ -19,6 +19,9 @@ select
 	AppointmentTime,
 	ReferrerCode   -- Referrer code is the code of the person making the referral request
 from [omop_staging].[sus_OP]
+	where ReferrerCode is not null
+	and op.NHSNumber is not null
+	and AttendedorDidNotAttend in ('5','6')
 	
 ```
 
@@ -38,7 +41,8 @@ from [omop_staging].[sus_OP]
 		op.GeneratedRecordIdentifier
 	from omop_staging.sus_OP op
 	where ReferralRequestReceivedDate is not null
-	and op.NHSNumber is not null
+		and op.NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
 	
 ```
 
@@ -58,6 +62,7 @@ select
 from omop_staging.sus_OP op
 where op.CarerSupportIndicator is not null
 	and op.NHSNumber is not null
+	and AttendedorDidNotAttend in ('5','6')
 group by
 	op.NHSNumber, 
 	op.CarerSupportIndicator,

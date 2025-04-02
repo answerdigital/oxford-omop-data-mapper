@@ -13,17 +13,18 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 * `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
-		select
+	select
 		distinct
 		op.GeneratedRecordIdentifier,
 		op.NHSNumber,
 		op.AppointmentDate,
 		op.AppointmentTime,
 		p.ProcedureOPCS as PrimaryProcedure
-		from omop_staging.sus_OP op
+	from omop_staging.sus_OP op
 		inner join omop_staging.sus_OP_OPCSProcedure p
 		on op.MessageId = p.MessageId
-		where NHSNumber is not null
+	where NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
 	
 ```
 

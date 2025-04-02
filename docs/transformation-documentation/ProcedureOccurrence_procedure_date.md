@@ -13,17 +13,18 @@ Converts text to dates.
 * `AppointmentDate` Appointment Date. [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
 
 ```sql
-		select
+	select
 		distinct
 		op.GeneratedRecordIdentifier,
 		op.NHSNumber,
 		op.AppointmentDate,
 		op.AppointmentTime,
 		p.ProcedureOPCS as PrimaryProcedure
-		from omop_staging.sus_OP op
+	from omop_staging.sus_OP op
 		inner join omop_staging.sus_OP_OPCSProcedure p
 		on op.MessageId = p.MessageId
-		where NHSNumber is not null
+	where NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
 	
 ```
 
