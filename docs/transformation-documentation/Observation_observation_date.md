@@ -25,6 +25,27 @@ from [omop_staging].[sus_OP]
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20SUS%20OP%20Source%20Of%20Referral%20For%20Outpatients%20mapping){: .btn }
+### SUS OP Referral Received Date For Outpatients
+Source column  `AppointmentDate`.
+Converts text to dates.
+
+* `AppointmentDate` Event date [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
+
+```sql
+	select
+		op.NHSNumber, 
+		op.AppointmentDate,
+		op.AppointmentTime,
+		op.ReferralRequestReceivedDate,
+		op.GeneratedRecordIdentifier
+	from omop_staging.sus_OP op
+	where ReferralRequestReceivedDate is not null
+	and op.NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20SUS%20OP%20Referral%20Received%20Date%20For%20Outpatients%20mapping){: .btn }
 ### SUS Outpatient Carer Support Indicator Observation
 Source column  `CDSActivityDate`.
 Converts text to dates.

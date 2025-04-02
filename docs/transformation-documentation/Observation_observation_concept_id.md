@@ -10,6 +10,10 @@ has_toc: false
 * Constant value set to `4258129`. Referral by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20OP%20Source%20Of%20Referral%20For%20Outpatients%20mapping){: .btn }
+### SUS OP Referral Received Date For Outpatients
+* Constant value set to `40760321`. Date of Referral
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20OP%20Referral%20Received%20Date%20For%20Outpatients%20mapping){: .btn }
 ### SUS Outpatient Carer Support Indicator Observation
 * Constant value set to `4224770`. Social support status
 

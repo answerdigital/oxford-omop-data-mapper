@@ -242,9 +242,9 @@ Accident and Emergency Treatment to OMOP Procedure Concept IDs
 |519|4075356|Medication - topical skin cream|
 |52|4261887|OT|
 |521|4261887|OT - OT functional assessment|
-|522|4236269|OT - OT activities of daily living equipment provision|
+|522|4013690|OT - OT activities of daily living equipment provision|
 |53|4083010|Walking Aid Loan|
-|54|4204655|Social Work|
+|54|44791868|Social Work|
 |55|4148277|Eye|
 |551|4148277|Eye - orthoptic exercises|
 |552|4162096|Eye - laser of retina/iris or posterior capsule|

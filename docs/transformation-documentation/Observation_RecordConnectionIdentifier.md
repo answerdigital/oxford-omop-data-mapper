@@ -24,6 +24,26 @@ from [omop_staging].[sus_OP]
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20RecordConnectionIdentifier%20field%20SUS%20OP%20Source%20Of%20Referral%20For%20Outpatients%20mapping){: .btn }
+### SUS OP Referral Received Date For Outpatients
+* Value copied from `GeneratedRecordIdentifier`
+
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
+
+```sql
+	select
+		op.NHSNumber, 
+		op.AppointmentDate,
+		op.AppointmentTime,
+		op.ReferralRequestReceivedDate,
+		op.GeneratedRecordIdentifier
+	from omop_staging.sus_OP op
+	where ReferralRequestReceivedDate is not null
+	and op.NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20RecordConnectionIdentifier%20field%20SUS%20OP%20Referral%20Received%20Date%20For%20Outpatients%20mapping){: .btn }
 ### SUS Outpatient Carer Support Indicator Observation
 * Value copied from `GeneratedRecordIdentifier`
 
