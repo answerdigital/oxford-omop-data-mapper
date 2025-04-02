@@ -8,7 +8,8 @@
 		op.GeneratedRecordIdentifier
 	from omop_staging.sus_OP op
 	where ReferralRequestReceivedDate is not null
-	and op.NHSNumber is not null
+		and op.NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
 	</Sql>
 	<Explanations>
 		<Explanation columnName="NHSNumber">
