@@ -30,6 +30,7 @@ Combines a date with a time of day.
 	from omop_staging.sus_OP op
 	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
 		and op.NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
 
 	
 ```

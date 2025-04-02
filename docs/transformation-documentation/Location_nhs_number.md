@@ -19,7 +19,8 @@ has_toc: false
 			NHSNumber
 	from [omop_staging].[sus_OP]
 	where NHSNumber is not null
-	and Postcode is not null
+		and Postcode is not null
+		and AttendedorDidNotAttend in ('5','6')
 	
 ```
 

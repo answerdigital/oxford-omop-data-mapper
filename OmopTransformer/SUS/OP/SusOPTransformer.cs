@@ -8,6 +8,7 @@ using OmopTransformer.SUS.OP.VisitOccurrenceWithSpell;
 using OmopTransformer.SUS.OP.VisitDetails;
 using OmopTransformer.SUS.OP.Observation.CarerSupportIndicator;
 using OmopTransformer.SUS.OP.Observation.SourceOfReferralForOutpatients;
+using OmopTransformer.SUS.OP.Observation.ReferralReceivedDateForOutpatients;
 using OmopTransformer.SUS.OP.CareSite;
 using OmopTransformer.SUS.OP.Provider;
 using OmopTransformer.Omop.Measurement;
@@ -87,7 +88,7 @@ internal class SusOPTransformer : Transformer
 
         await Transform<SusOPPersonRecord, SusOPPerson>(
            _personRecorder.InsertUpdatePersons,
-           "Sus OP Person",
+           "SUS OP Person",
            runId,
            cancellationToken);
 
@@ -142,6 +143,12 @@ internal class SusOPTransformer : Transformer
         await Transform<SusOPSourceOfReferralForOutpatientsRecord, SusOPSourceOfReferralForOutpatients>(
            _observationRecorder.InsertUpdateObservations,
            "SUS OP SourceOfReferralForOutpatients",
+           runId,
+           cancellationToken);
+
+        await Transform<SusOPReferralReceivedDateForOutpatientsRecord, SusOPReferralReceivedDateForOutpatients>(
+           _observationRecorder.InsertUpdateObservations,
+           "SUS OP ReferralReceivedDateForOutpatients",
            runId,
            cancellationToken);
 

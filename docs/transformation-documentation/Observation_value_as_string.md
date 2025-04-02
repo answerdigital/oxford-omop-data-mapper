@@ -19,11 +19,35 @@ select
 	AppointmentTime,
 	ReferrerCode   -- Referrer code is the code of the person making the referral request
 from [omop_staging].[sus_OP]
+	where ReferrerCode is not null
+	and op.NHSNumber is not null
+	and AttendedorDidNotAttend in ('5','6')
 	
 ```
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20SUS%20OP%20Source%20Of%20Referral%20For%20Outpatients%20mapping){: .btn }
+### SUS OP Referral Received Date For Outpatients
+* Value copied from `ReferralRequestReceivedDate`
+
+* `ReferralRequestReceivedDate` The date the Referral request was received by the Health Care Provider. [REFERRAL REQUEST RECEIVED DATE](https://www.datadictionary.nhs.uk/data_elements/referral_request_received_date.html)
+
+```sql
+	select
+		op.NHSNumber, 
+		op.AppointmentDate,
+		op.AppointmentTime,
+		op.ReferralRequestReceivedDate,
+		op.GeneratedRecordIdentifier
+	from omop_staging.sus_OP op
+	where ReferralRequestReceivedDate is not null
+		and op.NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20SUS%20OP%20Referral%20Received%20Date%20For%20Outpatients%20mapping){: .btn }
 ### SUS Outpatient Carer Support Indicator Observation
 * Value copied from `CarerSupportIndicator`
 
@@ -38,6 +62,7 @@ select
 from omop_staging.sus_OP op
 where op.CarerSupportIndicator is not null
 	and op.NHSNumber is not null
+	and AttendedorDidNotAttend in ('5','6')
 group by
 	op.NHSNumber, 
 	op.CarerSupportIndicator,

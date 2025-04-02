@@ -8,6 +8,7 @@ select
 from omop_staging.sus_OP op
 where op.CarerSupportIndicator is not null
 	and op.NHSNumber is not null
+	and AttendedorDidNotAttend in ('5','6')
 group by
 	op.NHSNumber, 
 	op.CarerSupportIndicator,
