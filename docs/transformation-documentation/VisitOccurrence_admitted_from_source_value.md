@@ -6,33 +6,6 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # admitted_from_source_value
-### SUS OP VisitOccurrenceWithSpell
-* Value copied from `SourceofAdmissionCode`
-
-* `SourceofAdmissionCode` Admission Source. [ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)
-
-```sql
-	select
-		distinct
-		op.NHSNumber,
-		op.SUSgeneratedspellID,
-
-		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
-		coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
-		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
-		null as VisitEndTime,
-
-		op.SourceofReferralForOutpatients as SourceofAdmissionCode
-
-	from omop_staging.sus_OP op
-	where op.UpdateType = 9
-		and op.NHSNumber is not null
-		and AttendedorDidNotAttend in ('5','6')
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20admitted_from_source_value%20field%20SUS%20OP%20VisitOccurrenceWithSpell%20mapping){: .btn }
 ### SUS APC VisitOccurrenceWithSpell
 * Value copied from `SourceofAdmissionCode`
 

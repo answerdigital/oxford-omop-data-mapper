@@ -191,24 +191,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "admitted_from_source_value",
-      "operation_description": "Value copied from `SourceofAdmissionCode`",
-      "dataSource": [
-        {
-          "name": "SourceofAdmissionCode",
-          "description": "Admission Source.",
-          "origins": [
-            {
-              "origin": "ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html"
-            }
-          ]
-        }
-      ],
-      "query": "\nselect\n\tl1.NHSNumber,\n\tl5.HospitalProviderSpellNumber,\n\tmin (l5.EpisodeStartDate) as EpisodeStartDate,\n\tcoalesce \n\t(\n\t\tmin (l5.EpisodeStartTime), \n\t\t'000000'\n\t) as EpisodeStartTime,\n\tcoalesce \n\t(\n\t\tmax (l5.EpisodeEndDate), \n\t\tmax (l1.CDSActivityDate)\n\t) as EpisodeEndDate,\n\tcoalesce \n\t(\n\t\tmax (l5.EpisodeEndTime), \n\t\t'000000'\n\t) as EpisodeEndTime,\n\tcase \n\t\twhen max(l5.AdmissionMethodCode) in ('21','24') and max(l5.PatientClassification) = 1 then 262\n        when max(l5.AdmissionMethodCode) in ('21','24') then 9203\n        when max(l5.PatientClassification) in (1) then 9201\n        when max(l4.LocationClass) in ('02') then 581476\n\t\telse 9202\n\tend as VisitOccurrenceConceptId,    -- \"visit_concept_id\"\n\tcase \n\t\twhen max(l5.EpisodeEndDate) is null and max(l5.DischargeDateHospitalProviderSpell) is null then 32220\n        else 32818\n\tend as VisitTypeConceptId,\n\tmax (l5.SourceofAdmissionCode) as SourceofAdmissionCode,\n\tmax (l5.DischargeDestinationCode) as DischargeDestinationCode\nfrom omop_staging.cds_line01 l1\n\tleft join omop_staging.cds_line04 l4 \n\t\ton l1.MessageId = l4.MessageId -- Location Details \n\tleft join omop_staging.cds_line05 l5 \n\t\ton l1.MessageId = l5.MessageId  -- Hospital Provider Spell\n\tinner join dbo.Code c \n\t\ton c.Code = l1.ActivityTreatmentFunctionCode\nwhere l1.CDSUpdateType = 9   -- New/Modification     (1 = Delete)\n\tand l1.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand l5.HospitalProviderSpellNumber is not null\ngroup by \n\tl1.NHSNumber, \n\tl5.HospitalProviderSpellNumber;\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "admitted_from_concept_id",
       "operation_description": "Lookup admission source concept.",
       "dataSource": [
@@ -225,6 +207,24 @@
       ],
       "query": "\nselect\n\tl1.NHSNumber,\n\tl5.HospitalProviderSpellNumber,\n\tmin (l5.EpisodeStartDate) as EpisodeStartDate,\n\tcoalesce \n\t(\n\t\tmin (l5.EpisodeStartTime), \n\t\t'000000'\n\t) as EpisodeStartTime,\n\tcoalesce \n\t(\n\t\tmax (l5.EpisodeEndDate), \n\t\tmax (l1.CDSActivityDate)\n\t) as EpisodeEndDate,\n\tcoalesce \n\t(\n\t\tmax (l5.EpisodeEndTime), \n\t\t'000000'\n\t) as EpisodeEndTime,\n\tcase \n\t\twhen max(l5.AdmissionMethodCode) in ('21','24') and max(l5.PatientClassification) = 1 then 262\n        when max(l5.AdmissionMethodCode) in ('21','24') then 9203\n        when max(l5.PatientClassification) in (1) then 9201\n        when max(l4.LocationClass) in ('02') then 581476\n\t\telse 9202\n\tend as VisitOccurrenceConceptId,    -- \"visit_concept_id\"\n\tcase \n\t\twhen max(l5.EpisodeEndDate) is null and max(l5.DischargeDateHospitalProviderSpell) is null then 32220\n        else 32818\n\tend as VisitTypeConceptId,\n\tmax (l5.SourceofAdmissionCode) as SourceofAdmissionCode,\n\tmax (l5.DischargeDestinationCode) as DischargeDestinationCode\nfrom omop_staging.cds_line01 l1\n\tleft join omop_staging.cds_line04 l4 \n\t\ton l1.MessageId = l4.MessageId -- Location Details \n\tleft join omop_staging.cds_line05 l5 \n\t\ton l1.MessageId = l5.MessageId  -- Hospital Provider Spell\n\tinner join dbo.Code c \n\t\ton c.Code = l1.ActivityTreatmentFunctionCode\nwhere l1.CDSUpdateType = 9   -- New/Modification     (1 = Delete)\n\tand l1.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand l5.HospitalProviderSpellNumber is not null\ngroup by \n\tl1.NHSNumber, \n\tl5.HospitalProviderSpellNumber;\n\t",
       "lookup_table_markdown": "\r\n\r\n|SourceofAdmissionCode|admitted_from_concept_id|notes|\r\n|------|-----|-----|\r\n|1|38004353|Ambulance|\r\n|2||No mapping possible|\r\n|19|581476|Home Visit|\r\n|29|8602|Temporary Lodging|\r\n|37|38003619|Prison / Correctional Facility|\r\n|40|38003619|Prison / Correctional Facility|\r\n|42|38003619|Prison / Correctional Facility|\r\n|49|38004284|Psychiatric Hospital|\r\n|51|8717|Inpatient Hospital|\r\n|52|8650|Birthing Center|\r\n|53|8976|Psychiatric Residential Treatment Center|\r\n|55|8863|Skilled Nursing Facility|\r\n|56|38004306|Custodial Care Facility|\r\n|66|38004205|Foster Care Agency|\r\n|79|8650|Birthing Center|\r\n|87|8717|Inpatient Hospital|\r\n|88|8546|Hospice|\r\n|98||No mapping possible|\r\n|99||No mapping possible|\r\n\r\nNotes\r\n* [Admission Source](https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html)\r\n* [Admission Source A&E](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/attributes/accident_and_emergency_arrival_mode.html)\r\n"
+    },
+    {
+      "name": "admitted_from_source_value",
+      "operation_description": "Value copied from `SourceofAdmissionCode`",
+      "dataSource": [
+        {
+          "name": "SourceofAdmissionCode",
+          "description": "Admission Source.",
+          "origins": [
+            {
+              "origin": "ADMISSION SOURCE (HOSPITAL PROVIDER SPELL)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/admission_source__hospital_provider_spell_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tl1.NHSNumber,\n\tl5.HospitalProviderSpellNumber,\n\tmin (l5.EpisodeStartDate) as EpisodeStartDate,\n\tcoalesce \n\t(\n\t\tmin (l5.EpisodeStartTime), \n\t\t'000000'\n\t) as EpisodeStartTime,\n\tcoalesce \n\t(\n\t\tmax (l5.EpisodeEndDate), \n\t\tmax (l1.CDSActivityDate)\n\t) as EpisodeEndDate,\n\tcoalesce \n\t(\n\t\tmax (l5.EpisodeEndTime), \n\t\t'000000'\n\t) as EpisodeEndTime,\n\tcase \n\t\twhen max(l5.AdmissionMethodCode) in ('21','24') and max(l5.PatientClassification) = 1 then 262\n        when max(l5.AdmissionMethodCode) in ('21','24') then 9203\n        when max(l5.PatientClassification) in (1) then 9201\n        when max(l4.LocationClass) in ('02') then 581476\n\t\telse 9202\n\tend as VisitOccurrenceConceptId,    -- \"visit_concept_id\"\n\tcase \n\t\twhen max(l5.EpisodeEndDate) is null and max(l5.DischargeDateHospitalProviderSpell) is null then 32220\n        else 32818\n\tend as VisitTypeConceptId,\n\tmax (l5.SourceofAdmissionCode) as SourceofAdmissionCode,\n\tmax (l5.DischargeDestinationCode) as DischargeDestinationCode\nfrom omop_staging.cds_line01 l1\n\tleft join omop_staging.cds_line04 l4 \n\t\ton l1.MessageId = l4.MessageId -- Location Details \n\tleft join omop_staging.cds_line05 l5 \n\t\ton l1.MessageId = l5.MessageId  -- Hospital Provider Spell\n\tinner join dbo.Code c \n\t\ton c.Code = l1.ActivityTreatmentFunctionCode\nwhere l1.CDSUpdateType = 9   -- New/Modification     (1 = Delete)\n\tand l1.NHSNumber is not null\n\tand c.CodeTypeId = 2 -- activity_treatment_function_code\n\tand l5.HospitalProviderSpellNumber is not null\ngroup by \n\tl1.NHSNumber, \n\tl5.HospitalProviderSpellNumber;\n\t",
+      "lookup_table_markdown": null
     },
     {
       "name": "discharged_to_concept_id",

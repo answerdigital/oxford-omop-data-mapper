@@ -36,7 +36,4 @@ internal class SusOPVisitOccurrenceWithSpell : OmopVisitOccurrence<SusOPVisitOcc
     [ConstantValue(32818, "`EHR administration record`")]
     public override int? visit_type_concept_id { get; set; }
 
-    [CopyValue(nameof(Source.SourceofAdmissionCode))]
-    public override string? admitted_from_source_value { get; set; }
-
 }

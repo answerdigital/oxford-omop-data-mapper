@@ -19,13 +19,11 @@ Combines a date with a time of day.
 		distinct
 		op.NHSNumber,
 		op.SUSgeneratedspellID,
-
+		
 		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
 		coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
 		coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
-		null as VisitEndTime,
-
-		op.SourceofReferralForOutpatients as SourceofAdmissionCode
+		null as VisitEndTime
 
 	from omop_staging.sus_OP op
 	where op.UpdateType = 9
