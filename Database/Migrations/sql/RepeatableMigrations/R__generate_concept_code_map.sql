@@ -32,6 +32,7 @@ begin transaction
  				and c.standard_concept is not null
  				and c.standard_concept = 'S'
  				and @date between c.valid_start_date and c.valid_end_date
+			order by c.concept_id desc
  		) as target_concept_id
  	from cdm.concept c1
  	where not
