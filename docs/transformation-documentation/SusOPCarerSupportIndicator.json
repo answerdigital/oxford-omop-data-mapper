@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nselect \n\top.NHSNumber, \n\tmax(op.CDSActivityDate) as CDSActivityDate, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier\nfrom omop_staging.sus_OP op\nwhere op.CarerSupportIndicator is not null\n\tand op.NHSNumber is not null\ngroup by\n\top.NHSNumber, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier;\n\t",
+      "query": "\nselect \n\top.NHSNumber, \n\tmax(op.CDSActivityDate) as CDSActivityDate, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier\nfrom omop_staging.sus_OP op\nwhere op.CarerSupportIndicator is not null\n\tand op.NHSNumber is not null\n\tand AttendedorDidNotAttend in ('5','6')\ngroup by\n\top.NHSNumber, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\nselect \n\top.NHSNumber, \n\tmax(op.CDSActivityDate) as CDSActivityDate, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier\nfrom omop_staging.sus_OP op\nwhere op.CarerSupportIndicator is not null\n\tand op.NHSNumber is not null\ngroup by\n\top.NHSNumber, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier;\n\t",
+      "query": "\nselect \n\top.NHSNumber, \n\tmax(op.CDSActivityDate) as CDSActivityDate, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier\nfrom omop_staging.sus_OP op\nwhere op.CarerSupportIndicator is not null\n\tand op.NHSNumber is not null\n\tand AttendedorDidNotAttend in ('5','6')\ngroup by\n\top.NHSNumber, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\nselect \n\top.NHSNumber, \n\tmax(op.CDSActivityDate) as CDSActivityDate, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier\nfrom omop_staging.sus_OP op\nwhere op.CarerSupportIndicator is not null\n\tand op.NHSNumber is not null\ngroup by\n\top.NHSNumber, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier;\n\t",
+      "query": "\nselect \n\top.NHSNumber, \n\tmax(op.CDSActivityDate) as CDSActivityDate, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier\nfrom omop_staging.sus_OP op\nwhere op.CarerSupportIndicator is not null\n\tand op.NHSNumber is not null\n\tand AttendedorDidNotAttend in ('5','6')\ngroup by\n\top.NHSNumber, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,7 +78,7 @@
           ]
         }
       ],
-      "query": "\nselect \n\top.NHSNumber, \n\tmax(op.CDSActivityDate) as CDSActivityDate, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier\nfrom omop_staging.sus_OP op\nwhere op.CarerSupportIndicator is not null\n\tand op.NHSNumber is not null\ngroup by\n\top.NHSNumber, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier;\n\t",
+      "query": "\nselect \n\top.NHSNumber, \n\tmax(op.CDSActivityDate) as CDSActivityDate, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier\nfrom omop_staging.sus_OP op\nwhere op.CarerSupportIndicator is not null\n\tand op.NHSNumber is not null\n\tand AttendedorDidNotAttend in ('5','6')\ngroup by\n\top.NHSNumber, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -103,7 +103,7 @@
           ]
         }
       ],
-      "query": "\nselect \n\top.NHSNumber, \n\tmax(op.CDSActivityDate) as CDSActivityDate, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier\nfrom omop_staging.sus_OP op\nwhere op.CarerSupportIndicator is not null\n\tand op.NHSNumber is not null\ngroup by\n\top.NHSNumber, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier;\n\t",
+      "query": "\nselect \n\top.NHSNumber, \n\tmax(op.CDSActivityDate) as CDSActivityDate, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier\nfrom omop_staging.sus_OP op\nwhere op.CarerSupportIndicator is not null\n\tand op.NHSNumber is not null\n\tand AttendedorDidNotAttend in ('5','6')\ngroup by\n\top.NHSNumber, \n\top.CarerSupportIndicator,\n\top.GeneratedRecordIdentifier;\n\t",
       "lookup_table_markdown": null
     }
   ]

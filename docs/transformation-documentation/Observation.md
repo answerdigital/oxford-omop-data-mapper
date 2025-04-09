@@ -34,6 +34,20 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPSourceOfReferralForOutpatients%20mapping){: .btn }
+## SusOPReferralReceivedDateForOutpatients
+<a href="SusOPReferralReceivedDateForOutpatients.svg" target="_blank"><img src="SusOPReferralReceivedDateForOutpatients.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observations do not require a standardized test or other activity to generate clinical fact. Typical observations are medical history, family history, lifestyle choices, healthcare utilization patterns, social circumstances etc
+>
+> Valid Observation Concepts are not enforced to be from any domain.  They should still be standard concepts and typically belong to the Observation or Measurement domain.
+>
+> Observations can be stored as attribute value pairs, with the attribute as the Observation Concept and the value representing the clinical fact. This fact can be stored as a Concept (value_as_concept), a numerical value (value_as_number) or a verbatim string (value_as_string)
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPReferralReceivedDateForOutpatients%20mapping){: .btn }
 ## SusOPCarerSupportIndicator
 <a href="SusOPCarerSupportIndicator.svg" target="_blank"><img src="SusOPCarerSupportIndicator.svg" /></a>
 
