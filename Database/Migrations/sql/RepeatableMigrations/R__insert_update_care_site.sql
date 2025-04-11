@@ -35,16 +35,6 @@ select
 from @rows up
 where not exists (select * from cdm.care_site p where p.care_site_name = up.care_site_name);
 
-declare @ColumnList table ([name] varchar(max));
-
-insert into @ColumnList ([name])
-values
-('care_site_name'),
-('place_of_service_concept_id'),
-('location_id'),
-('care_site_source_value'),
-('place_of_service_source_value');
-
 insert into provenance
 (
 	table_type_id,
@@ -55,9 +45,8 @@ insert into provenance
 select
 	1, -- Care Site,
 	np.care_site_id,
-	cl.name,
+	'#row#',
 	@DataSource
 from @NewCareSite np
-cross apply (select Name from @ColumnList) cl;
 
 end

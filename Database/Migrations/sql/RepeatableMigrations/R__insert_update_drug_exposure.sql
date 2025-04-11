@@ -93,37 +93,6 @@ begin
 				and vo.drug_concept_id = r.drug_concept_id
 		);
 
-	declare @columns table (Name varchar(max));
-
-	insert into @columns
-	(
-		Name
-	)
-	values
-	('person_id'),
-	('drug_concept_id'),
-	('drug_exposure_start_date'),
-	('drug_exposure_start_datetime'),
-	('drug_exposure_end_date'),
-	('drug_exposure_end_datetime'),
-	('verbatim_end_date'),
-	('drug_type_concept_id'),
-	('stop_reason'),
-	('refills'),
-	('quantity'),
-	('days_supply'),
-	('sig'),
-	('route_concept_id'),
-	('lot_number'),
-	('provider_id'),
-	('visit_occurrence_id'),
-	('visit_detail_id'),
-	('drug_source_value'),
-	('drug_source_concept_id'),
-	('route_source_value'),
-	('dose_unit_source_value'),
-	('RecordConnectionIdentifier');
-
 	insert into provenance
 	(
 		table_type_id,
@@ -134,9 +103,8 @@ begin
 	select
 		18, --	drug_exposure
 		drug_exposure_id,
-		lc.name,
+		'#row#',
 		@DataSource
 	from @NewRecords rl
-	cross apply (select Name from @columns) lc;
 
 end

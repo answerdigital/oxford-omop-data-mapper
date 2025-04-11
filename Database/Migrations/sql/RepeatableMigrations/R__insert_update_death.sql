@@ -45,21 +45,6 @@ begin
 			where d.person_id = p.person_id
 		);
 
-
-	declare @columns table (Name varchar(max));
-
-	insert into @columns
-	(
-		Name
-	)
-	values
-	('death_date'),
-	('death_datetime'),
-	('death_type_concept_id'),
-	('cause_concept_id'),
-	('cause_source_value'),
-	('cause_source_concept_id');
-
 	insert into provenance
 	(
 		table_type_id,
@@ -71,9 +56,8 @@ begin
 		distinct
 			13, --	death
 			person_id,
-			lc.name,
+			'#row#',
 			@DataSource
 	from @NewRecords rl
-	cross apply (select Name from @columns) lc;
 
 end

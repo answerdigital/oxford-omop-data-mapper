@@ -75,28 +75,6 @@ begin
             and co.person_id = p.person_id
     );
 
-	declare @columns table (Name varchar(max));
-
-	insert into @columns
-	(
-		Name
-	)
-	values
-	('condition_concept_id'),
-	('condition_start_date'),
-	('condition_start_datetime'),
-	('condition_end_date'),
-	('condition_end_datetime'),
-	('condition_type_concept_id'),
-	('condition_status_concept_id'),
-	('stop_reason'),
-	('provider_id'),
-	('visit_occurrence_id'),
-	('visit_detail_id'),
-	('condition_source_value'),
-	('condition_source_concept_id'),
-	('condition_status_source_value');
-
 	insert into provenance
 	(
 		table_type_id,
@@ -107,9 +85,9 @@ begin
 	select
 		11,	-- condition_occurrence
 		condition_occurrence_id,
-		lc.name,
+		'#row#',
 		@DataSource
 	from @NewConditions rl
-	cross join (select Name from @columns) lc;
+
 
 end
