@@ -90,6 +90,10 @@ Merging logic depends upon the data source.
 |-----------|-----|
 | CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `HospitalProviderSpellNumber` and `person_id`. |
 
+### Remarks
+
+If a record already exists for one of the following keys `RecordConnectionIdentifier`, `HospitalProviderSpellNumber` for a particular patient then use the earliest start date amd the latest end date of the record pair.
+
 ## Visit Detail
 
 Merging logic depends upon the data source.
