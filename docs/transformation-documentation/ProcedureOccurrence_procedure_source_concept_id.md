@@ -13,17 +13,18 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 * `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
-		select
+	select
 		distinct
 		op.GeneratedRecordIdentifier,
 		op.NHSNumber,
 		op.AppointmentDate,
 		op.AppointmentTime,
 		p.ProcedureOPCS as PrimaryProcedure
-		from omop_staging.sus_OP op
+	from omop_staging.sus_OP op
 		inner join omop_staging.sus_OP_OPCSProcedure p
 		on op.MessageId = p.MessageId
-		where NHSNumber is not null
+	where NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
 	
 ```
 
@@ -242,9 +243,9 @@ Accident and Emergency Treatment to OMOP Procedure Concept IDs
 |519|4075356|Medication - topical skin cream|
 |52|4261887|OT|
 |521|4261887|OT - OT functional assessment|
-|522|4236269|OT - OT activities of daily living equipment provision|
+|522|4013690|OT - OT activities of daily living equipment provision|
 |53|4083010|Walking Aid Loan|
-|54|4204655|Social Work|
+|54|44791868|Social Work|
 |55|4148277|Eye|
 |551|4148277|Eye - orthoptic exercises|
 |552|4162096|Eye - laser of retina/iris or posterior capsule|

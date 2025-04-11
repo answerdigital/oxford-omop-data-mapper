@@ -12,17 +12,18 @@ has_toc: false
 * `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
-		select
+	select
 		distinct
 		op.GeneratedRecordIdentifier,
 		op.NHSNumber,
 		op.AppointmentDate,
 		op.AppointmentTime,
 		p.ProcedureOPCS as PrimaryProcedure
-		from omop_staging.sus_OP op
+	from omop_staging.sus_OP op
 		inner join omop_staging.sus_OP_OPCSProcedure p
 		on op.MessageId = p.MessageId
-		where NHSNumber is not null
+	where NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
 	
 ```
 
