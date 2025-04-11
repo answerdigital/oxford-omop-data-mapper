@@ -20,7 +20,7 @@ select
 	ReferrerCode   -- Referrer code is the code of the person making the referral request
 from [omop_staging].[sus_OP]
 	where ReferrerCode is not null
-	and op.NHSNumber is not null
+	and NHSNumber is not null
 	and AttendedorDidNotAttend in ('5','6')
 	
 ```
