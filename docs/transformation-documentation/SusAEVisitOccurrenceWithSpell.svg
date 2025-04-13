@@ -141,7 +141,8 @@
     <line x1="3585" y1="420" x2="3585" y2="615" stroke="white" stroke-width="2" />
     <line x1="3575" y1="605" x2="3585" y2="615" stroke="white" stroke-width="2" />
     <line x1="3595" y1="605" x2="3585" y2="615" stroke="white" stroke-width="2" />
-    <text x="3460" y="728" fill="white" font-size="1em" font-family="Helvetica">Lookup discharge destination concept.</text>
+    <text x="3460" y="728" fill="white" font-size="1em" font-family="Helvetica">Lookup discharge destination concept for</text>
+    <text x="3460" y="746" fill="white" font-size="1em" font-family="Helvetica">A&amp;E.</text>
   </g>
   <g>
     <rect x="3385" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />

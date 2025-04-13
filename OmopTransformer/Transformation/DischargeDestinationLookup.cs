@@ -8,19 +8,7 @@ internal class DischargeDestinationLookup : ILookup
     public Dictionary<string, ValueWithNote> Mappings { get; } =
         new()
         {
-            { "01", new ValueWithNote("8717", "In Patient Hospital") },
-            { "02", new ValueWithNote("581476", "Home Visit") },
-            { "03", new ValueWithNote("38004693", "Clinic or Group Practice") },
-            { "04", new ValueWithNote("8870", "Emergency Room - Hospital") },
-            { "05", new ValueWithNote("8870", "Emergency Room - Hospital") },
-            { "06", new ValueWithNote("8756", "Out Patient Hospital") },
-            { "07", new ValueWithNote("",     "No mapping possible") },
-            { "10", new ValueWithNote("",     "No mapping possible") },
-            { "11", new ValueWithNote("",     "No mapping possible") },
-            { "12", new ValueWithNote("",     "No mapping possible") },
-            { "13", new ValueWithNote("",     "No mapping possible") },
-            { "14", new ValueWithNote("",     "No mapping possible") },
-            { "19", new ValueWithNote("581476", "Home Visit") },
+            { "19", new ValueWithNote("32759", "Home Isolation") },
             { "29", new ValueWithNote("8602",   "Temporary Lodging") },
             { "30", new ValueWithNote("38004284",   "Psychiatric Hospital") },
             { "37", new ValueWithNote("38003619", "Prison / Correctional Facility") },
@@ -34,7 +22,7 @@ internal class DischargeDestinationLookup : ILookup
             { "54", new ValueWithNote("8676",   "Nursing Facility") },
             { "65", new ValueWithNote("8676",   "Nursing Facility") },
             { "66", new ValueWithNote("38004205",   "Foster Care Agency") },
-            { "79", new ValueWithNote("",   "No mapping possible") },
+            { "79", new ValueWithNote("8650",   "Birthing Center") },
             { "84", new ValueWithNote("8971",   "Inpatient Psychiatric Facility") },
             { "85", new ValueWithNote("8676",   "Nursing Facility") },
             { "87", new ValueWithNote("8717",   "Inpatient Hospital") },
@@ -46,6 +34,6 @@ internal class DischargeDestinationLookup : ILookup
     public string[] ColumnNotes =>
     [
         "[Discharge Destination](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)",
-        "[Discharge Destination A&E](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/data_elements/accident_and_emergency_attendance_disposal_code.html)"
+        "[Discharge Destination](https://archive.datadictionary.nhs.uk/DD%20Release%20July%202024/attributes/discharge_destination.html)"
     ];
 }

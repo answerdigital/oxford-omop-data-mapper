@@ -39,7 +39,7 @@ internal class SusAEVisitDetail : OmopVisitDetail<SusAEVisitDetailsRecord>
     [CopyValue(nameof(Source.SourceofAdmissionCode))]
     public override string? admitted_from_source_value { get; set; }
 
-    [Transform(typeof(DischargeDestinationLookup), nameof(Source.DischargeDestinationCode))]
+    [Transform(typeof(AccidentAndEmergencyDischargeDestinationLookup), nameof(Source.DischargeDestinationCode))]
     public override int? discharged_to_concept_id { get; set; }
 
     [CopyValue(nameof(Source.DischargeDestinationCode))]

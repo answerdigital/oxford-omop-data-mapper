@@ -15,9 +15,9 @@ has_toc: false
 * [visit_detail_end_datetime]({% link docs/transformation-documentation/VisitDetail_visit_detail_end_datetime.md %})
 * [visit_detail_concept_id]({% link docs/transformation-documentation/VisitDetail_visit_detail_concept_id.md %})
 * [visit_detail_type_concept_id]({% link docs/transformation-documentation/VisitDetail_visit_detail_type_concept_id.md %})
-* [admitted_from_source_value]({% link docs/transformation-documentation/VisitDetail_admitted_from_source_value.md %})
 * [RecordConnectionIdentifier]({% link docs/transformation-documentation/VisitDetail_RecordConnectionIdentifier.md %})
 * [admitted_from_concept_id]({% link docs/transformation-documentation/VisitDetail_admitted_from_concept_id.md %})
+* [admitted_from_source_value]({% link docs/transformation-documentation/VisitDetail_admitted_from_source_value.md %})
 * [discharged_to_source_value]({% link docs/transformation-documentation/VisitDetail_discharged_to_source_value.md %})
 * [discharged_to_concept_id]({% link docs/transformation-documentation/VisitDetail_discharged_to_concept_id.md %})
 
