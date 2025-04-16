@@ -433,7 +433,7 @@ Lookup MetastasisSite concepts.
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
-|07|35226309|Metastasis to the Unknown Site|
+|07|36769180|Metastasis to the Unknown Site|
 |08|35225673|Metastasis to skin|
 |09|36769243|Distant spread to lymph node|
 |10|36769301|Metastasis to bone|
@@ -492,7 +492,7 @@ Lookup MetastasisSite concepts.
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
-|07|35226309|Metastasis to the Unknown Site|
+|07|36769180|Metastasis to the Unknown Site|
 |08|35225673|Metastasis to skin|
 |09|36769243|Distant spread to lymph node|
 |10|36769301|Metastasis to bone|
@@ -551,7 +551,7 @@ Lookup MetastasisSite concepts.
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
-|07|35226309|Metastasis to the Unknown Site|
+|07|36769180|Metastasis to the Unknown Site|
 |08|35225673|Metastasis to skin|
 |09|36769243|Distant spread to lymph node|
 |10|36769301|Metastasis to bone|
@@ -839,7 +839,7 @@ Lookup GradeDifferentiation concepts.
 
 |GradeOfDifferentiationAtDiagnosis|measurement_concept_id|notes|
 |------|-----|-----|
-|GX|4054711|GX grade|
+|GX||GX grade|
 |G1|36768162|Grade 1: Well differentiated|
 |G2|36770626|Grade 2: Moderately differentiated|
 |G3|36769666|Grade 3: Poorly differentiated|
@@ -1297,7 +1297,7 @@ Lookup MetastasisSite concepts.
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
-|07|35226309|Metastasis to the Unknown Site|
+|07|36769180|Metastasis to the Unknown Site|
 |08|35225673|Metastasis to skin|
 |09|36769243|Distant spread to lymph node|
 |10|36769301|Metastasis to bone|
@@ -1356,7 +1356,7 @@ Lookup MetastasisSite concepts.
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
-|07|35226309|Metastasis to the Unknown Site|
+|07|36769180|Metastasis to the Unknown Site|
 |08|35225673|Metastasis to skin|
 |09|36769243|Distant spread to lymph node|
 |10|36769301|Metastasis to bone|
@@ -1644,7 +1644,7 @@ Lookup GradeDifferentiation concepts.
 
 |GradeOfDifferentiationAtDiagnosis|measurement_concept_id|notes|
 |------|-----|-----|
-|GX|4054711|GX grade|
+|GX||GX grade|
 |G1|36768162|Grade 1: Well differentiated|
 |G2|36770626|Grade 2: Moderately differentiated|
 |G3|36769666|Grade 3: Poorly differentiated|

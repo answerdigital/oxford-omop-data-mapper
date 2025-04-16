@@ -11,7 +11,7 @@ internal class MetastasisSiteLookup : ILookup
             { "02",   new ValueWithNote("36768862",     "Metastasis to brain") },
             { "03",   new ValueWithNote("36770544",     "Metastasis to liver") },
             { "04",   new ValueWithNote("36770283",     "Metastasis to lung") },
-            { "07",   new ValueWithNote("35226309",     "Metastasis to the Unknown Site") },
+            { "07",   new ValueWithNote("36769180",     "Metastasis to the Unknown Site") },
             { "08",   new ValueWithNote("35225673",     "Metastasis to skin") },
             { "09",   new ValueWithNote("36769243",     "Distant spread to lymph node") },
             { "10",   new ValueWithNote("36769301",     "Metastasis to bone") },
