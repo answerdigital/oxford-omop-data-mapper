@@ -839,7 +839,7 @@ Lookup GradeDifferentiation concepts.
 
 |GradeOfDifferentiationAtDiagnosis|measurement_concept_id|notes|
 |------|-----|-----|
-|GX|0|GX grade|
+|GX||GX grade|
 |G1|36768162|Grade 1: Well differentiated|
 |G2|36770626|Grade 2: Moderately differentiated|
 |G3|36769666|Grade 3: Poorly differentiated|
@@ -1644,7 +1644,7 @@ Lookup GradeDifferentiation concepts.
 
 |GradeOfDifferentiationAtDiagnosis|measurement_concept_id|notes|
 |------|-----|-----|
-|GX|0|GX grade|
+|GX||GX grade|
 |G1|36768162|Grade 1: Well differentiated|
 |G2|36770626|Grade 2: Moderately differentiated|
 |G3|36769666|Grade 3: Poorly differentiated|
