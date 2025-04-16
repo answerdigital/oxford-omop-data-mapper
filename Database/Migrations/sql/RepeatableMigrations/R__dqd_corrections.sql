@@ -130,4 +130,364 @@ FROM cdm.CONDITION_OCCURRENCE cdmTable
 WHERE cdmTable.CONDITION_CONCEPT_ID = 195500
 	AND p.gender_concept_id <> 8532 
 
+
+declare @deleteddeaths table
+(
+	person_id int not null
+);
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.DEVICE_EXPOSURE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.DEVICE_EXPOSURE_END_DATE AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.DEVICE_EXPOSURE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.DEVICE_EXPOSURE_END_DATETIME AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.DEVICE_EXPOSURE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.DEVICE_EXPOSURE_START_DATE AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.DEVICE_EXPOSURE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.DEVICE_EXPOSURE_START_DATETIME AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.PROCEDURE_OCCURRENCE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.PROCEDURE_DATE AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.PROCEDURE_OCCURRENCE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.PROCEDURE_DATETIME AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.PROCEDURE_OCCURRENCE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.PROCEDURE_END_DATE AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.PROCEDURE_OCCURRENCE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.PROCEDURE_END_DATETIME AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_DETAIL cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.VISIT_DETAIL_END_DATE AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_DETAIL cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.VISIT_DETAIL_START_DATE AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_DETAIL cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.VISIT_DETAIL_START_DATETIME AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_OCCURRENCE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.VISIT_END_DATE AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_OCCURRENCE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.VISIT_START_DATE AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_OCCURRENCE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.VISIT_START_DATETIME AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.CONDITION_ERA cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.CONDITION_ERA_END_DATE IS NOT NULL 
+    AND CAST(cdmTable.CONDITION_ERA_END_DATE AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.DEVICE_EXPOSURE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.DEVICE_EXPOSURE_END_DATE IS NOT NULL 
+    AND CAST(cdmTable.DEVICE_EXPOSURE_END_DATE AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.DEVICE_EXPOSURE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.DEVICE_EXPOSURE_END_DATETIME IS NOT NULL 
+    AND CAST(cdmTable.DEVICE_EXPOSURE_END_DATETIME AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.DEVICE_EXPOSURE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.DEVICE_EXPOSURE_START_DATE IS NOT NULL 
+    AND CAST(cdmTable.DEVICE_EXPOSURE_START_DATE AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.DEVICE_EXPOSURE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.DEVICE_EXPOSURE_START_DATETIME IS NOT NULL 
+    AND CAST(cdmTable.DEVICE_EXPOSURE_START_DATETIME AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.OBSERVATION cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.OBSERVATION_DATE IS NOT NULL 
+    AND CAST(cdmTable.OBSERVATION_DATE AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.OBSERVATION cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.OBSERVATION_DATETIME IS NOT NULL 
+    AND CAST(cdmTable.OBSERVATION_DATETIME AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.PROCEDURE_OCCURRENCE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.PROCEDURE_DATE IS NOT NULL 
+    AND CAST(cdmTable.PROCEDURE_DATE AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.PROCEDURE_OCCURRENCE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.PROCEDURE_DATETIME IS NOT NULL 
+    AND CAST(cdmTable.PROCEDURE_DATETIME AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.PROCEDURE_OCCURRENCE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.PROCEDURE_END_DATE IS NOT NULL 
+    AND CAST(cdmTable.PROCEDURE_END_DATE AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.PROCEDURE_OCCURRENCE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.PROCEDURE_END_DATETIME IS NOT NULL 
+    AND CAST(cdmTable.PROCEDURE_END_DATETIME AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_DETAIL cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.VISIT_DETAIL_END_DATE IS NOT NULL 
+    AND CAST(cdmTable.VISIT_DETAIL_END_DATE AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_DETAIL cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.VISIT_DETAIL_END_DATETIME IS NOT NULL 
+    AND CAST(cdmTable.VISIT_DETAIL_END_DATETIME AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_DETAIL cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.VISIT_DETAIL_START_DATE IS NOT NULL 
+    AND CAST(cdmTable.VISIT_DETAIL_START_DATE AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_DETAIL cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.VISIT_DETAIL_START_DATETIME IS NOT NULL 
+    AND CAST(cdmTable.VISIT_DETAIL_START_DATETIME AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_OCCURRENCE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.VISIT_END_DATE IS NOT NULL 
+    AND CAST(cdmTable.VISIT_END_DATE AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_OCCURRENCE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.VISIT_END_DATETIME IS NOT NULL 
+    AND CAST(cdmTable.VISIT_END_DATETIME AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_OCCURRENCE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.VISIT_START_DATE IS NOT NULL 
+    AND CAST(cdmTable.VISIT_START_DATE AS DATE) > DATEADD(day, 60, de.death_date)
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.VISIT_OCCURRENCE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE cdmTable.VISIT_START_DATETIME IS NOT NULL 
+    AND CAST(cdmTable.VISIT_START_DATETIME AS DATE) > DATEADD(day, 60, de.death_date)
+	
+delete p
+from provenance p
+	inner join @deleteddeaths d
+		on p.table_key = d.person_id
+where p.table_type_id = 13 -- death
+
 end
