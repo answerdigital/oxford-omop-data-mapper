@@ -3,9 +3,9 @@ using Microsoft.Extensions.Options;
 
 namespace OmopTransformer;
 
-internal class Icd10NonStandardResolver : Icd10Resolver
+internal class Icd10NonStandardResolver : Icd10ConceptLookup
 {
-    public Icd10NonStandardResolver(IOptions<Configuration> configuration, ILogger<Icd10Resolver> logger) : base(configuration, logger)
+    public Icd10NonStandardResolver(IOptions<Configuration> configuration, ILogger<ConceptLookup> logger) : base(configuration, logger)
     {
     }
 

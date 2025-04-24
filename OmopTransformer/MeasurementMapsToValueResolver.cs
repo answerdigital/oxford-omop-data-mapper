@@ -2,15 +2,14 @@
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer;
-
-internal class MeasurementMapsToValueResolver : Icd10Resolver
+internal class MeasurementMapsToValueResolver : Icd10ConceptLookup
 {
-    public MeasurementMapsToValueResolver(IOptions<Configuration> configuration, ILogger<Icd10Resolver> logger) : base(configuration, logger)
+    public MeasurementMapsToValueResolver(IOptions<Configuration> configuration, ILogger<ConceptLookup> logger) : base(configuration, logger)
     {
     }
 
     public override string Query =>
-          @"select
+        @"select
                   replace(c.concept_code, '.', '') as Code,
                   cr.concept_id_2 as concept_id
           from cdm.concept c
