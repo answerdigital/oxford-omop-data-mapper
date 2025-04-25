@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.HospitalSpellProviderNumber,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -42,12 +42,12 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.HospitalSpellProviderNumber,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "device_exposure_start_datetime",
-      "operation_description": "Combines a date with a time of day.",
+      "operation_description": "Converts text to dates.",
       "dataSource": [
         {
           "name": "PrimaryProcedureDate",
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.HospitalSpellProviderNumber,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,12 +78,12 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.HospitalSpellProviderNumber,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "device_exposure_end_datetime",
-      "operation_description": "Combines a date with a time of day.",
+      "operation_description": "Converts text to dates.",
       "dataSource": [
         {
           "name": "PrimaryProcedureDate",
@@ -96,7 +96,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.HospitalSpellProviderNumber,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -121,7 +121,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.HospitalSpellProviderNumber,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -139,14 +139,14 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.HospitalSpellProviderNumber,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "HospitalProviderSpellNumber",
       "operation_description": "Value copied from `HospitalSpellProviderNumber`",
       "dataSource": [],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.HospitalSpellProviderNumber,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     }
   ]

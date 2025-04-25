@@ -97,7 +97,6 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 select
 	distinct
 		apc.GeneratedRecordIdentifier,
-		apc.HospitalSpellProviderNumber,
 		apc.NHSNumber,
 		p.ProcedureDateOPCS as PrimaryProcedureDate,
 		p.ProcedureOPCS as PrimaryProcedure

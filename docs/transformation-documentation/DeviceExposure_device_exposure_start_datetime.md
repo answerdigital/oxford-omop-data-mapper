@@ -62,7 +62,7 @@ Combines a date with a time of day.
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_exposure_start_datetime%20field%20SUS%20CCMDS%20Device%20Exposure%20mapping){: .btn }
 ### SUS APC Procedure Occurrence
 Source column  `PrimaryProcedureDate`.
-Combines a date with a time of day.
+Converts text to dates.
 
 * `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
@@ -70,7 +70,6 @@ Combines a date with a time of day.
 select
 	distinct
 		apc.GeneratedRecordIdentifier,
-		apc.HospitalSpellProviderNumber,
 		apc.NHSNumber,
 		p.ProcedureDateOPCS as PrimaryProcedureDate,
 		p.ProcedureOPCS as PrimaryProcedure
@@ -85,7 +84,7 @@ where NHSNumber is not null
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_exposure_start_datetime%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
 ### SUS AE Procedure Device Exposure
 Source column  `PrimaryProcedureDate`.
-Combines a date with a time of day.
+Converts text to dates.
 
 * `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 

@@ -66,7 +66,6 @@ Converts text to dates.
 select
 	distinct
 		apc.GeneratedRecordIdentifier,
-		apc.HospitalSpellProviderNumber,
 		apc.NHSNumber,
 		p.ProcedureDateOPCS as PrimaryProcedureDate,
 		p.ProcedureOPCS as PrimaryProcedure

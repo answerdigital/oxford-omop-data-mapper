@@ -48,10 +48,10 @@ internal class ConceptResolver
 
         return
             connection
-                .Query<ConceptRelationshipRow>(sql: 
+                .Query<ConceptRelationshipRow>(sql:
                     @"select
 	                    cm.source_concept_id as concept_id,
-	                    device.device_concept_id
+	                    device.concept_id as device_concept_id
                     from omop_staging.concept_code_map cm
 	                    inner join cdm.concept_relationship cr
 		                    on cm.target_concept_id = cr.concept_id_1

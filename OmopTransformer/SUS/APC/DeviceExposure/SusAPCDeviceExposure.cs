@@ -15,13 +15,13 @@ internal class SusAPCDeviceExposure : OmopDeviceExposure<SusAPCDeviceExposureRec
     [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
     public override DateTime? device_exposure_start_date { get; set; }
 
-    [Transform(typeof(DateAndTimeCombiner), nameof(Source.PrimaryProcedureDate))]
+    [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
     public override DateTime? device_exposure_start_datetime { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
     public override DateTime? device_exposure_end_date { get; set; }
 
-    [Transform(typeof(DateAndTimeCombiner), nameof(Source.PrimaryProcedureDate))]
+    [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
     public override DateTime? device_exposure_end_datetime { get; set; }
 
     [ConstantValue(32818, "`EHR administration record`")]

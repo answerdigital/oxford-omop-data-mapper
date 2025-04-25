@@ -47,7 +47,7 @@
     },
     {
       "name": "device_exposure_start_datetime",
-      "operation_description": "Combines a date with a time of day.",
+      "operation_description": "Converts text to dates.",
       "dataSource": [
         {
           "name": "PrimaryProcedureDate",
@@ -83,7 +83,7 @@
     },
     {
       "name": "device_exposure_end_datetime",
-      "operation_description": "Combines a date with a time of day.",
+      "operation_description": "Converts text to dates.",
       "dataSource": [
         {
           "name": "PrimaryProcedureDate",
