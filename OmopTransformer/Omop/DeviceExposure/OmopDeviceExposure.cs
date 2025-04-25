@@ -3,7 +3,7 @@
 internal abstract class OmopDeviceExposure<T> : IOmopRecord<T>
 {
     public virtual string? nhs_number { get; set; }
-    public virtual int? device_concept_id { get; set; }
+    public virtual int[]? device_concept_id { get; set; }
     public virtual DateTime? device_exposure_start_date { get; set; }
     public virtual DateTime? device_exposure_start_datetime { get; set; }
     public virtual DateTime? device_exposure_end_date { get; set; }
@@ -27,6 +27,7 @@ internal abstract class OmopDeviceExposure<T> : IOmopRecord<T>
 
     public virtual bool IsValid =>
         device_concept_id != null &&
+        device_concept_id.Any() &&
         device_exposure_start_date.HasValue &&
         device_type_concept_id.HasValue &&
         nhs_number != null;
