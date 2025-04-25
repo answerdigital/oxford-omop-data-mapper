@@ -11,7 +11,7 @@ internal class ConceptResolver
     private readonly ILogger<ConceptResolver> _logger;
 
     private Dictionary<int, Row>? _mappings;
-    private Dictionary<int, IReadOnlyCollection<int>> _devicesByConceptId;
+    private Dictionary<int, IReadOnlyCollection<int>>? _devicesByConceptId;
 
     private readonly object _loadingLock = new();
 
@@ -110,7 +110,7 @@ internal class ConceptResolver
     {
         EnsureMapping();
 
-        if (_devicesByConceptId.TryGetValue(conceptId, out var devices))
+        if (_devicesByConceptId!.TryGetValue(conceptId, out var devices))
         {
             return devices.ToArray();
         }

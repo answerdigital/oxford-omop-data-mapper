@@ -9,8 +9,8 @@ internal class SusOPDeviceExposure : OmopDeviceExposure<SusOPDeviceExposureRecor
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? nhs_number { get; set; }
 
-    [Transform(typeof(StandardDeviceConceptSelector), useOmopTypeAsSource: true, nameof(device_source_concept_id))]
-    public override int? device_concept_id { get; set; }
+    [Transform(typeof(ConceptDeviceSelector), useOmopTypeAsSource: true, nameof(device_source_concept_id))]
+    public override int[]? device_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.AppointmentDate))]
     public override DateTime? device_exposure_start_date { get; set; }
@@ -27,11 +27,11 @@ internal class SusOPDeviceExposure : OmopDeviceExposure<SusOPDeviceExposureRecor
     [ConstantValue(32818, "`EHR administration record`")]
     public override int? device_type_concept_id { get; set; }
 
-    // [Transform(typeof(AccidentAndEmergencyInvestigationLookup), nameof(Source.AccidentAndEmergencyProcedure))]
-    // public override int? device_source_concept_id { get; set; }
+    [Transform(typeof(Opcs4Selector), nameof(Source.PrimaryProcedure))]
+    public override int? device_source_concept_id { get; set; }
 
-    // [CopyValue(nameof(Source.AccidentAndEmergencyProcedure))]
-    // public override string? device_source_value { get; set; }
+    [CopyValue(nameof(Source.PrimaryProcedure))]
+    public override string? device_source_value { get; set; }
 
     [CopyValue(nameof(Source.HospitalSpellProviderNumber))]
     public override string? HospitalProviderSpellNumber { get; set; }

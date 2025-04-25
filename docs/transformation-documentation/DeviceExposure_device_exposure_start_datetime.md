@@ -6,6 +6,32 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # device_exposure_start_datetime
+### SUS OP Device Exposure
+Source columns  `AppointmentDate`, `AppointmentTime`.
+Combines a date with a time of day.
+
+* `AppointmentDate` Appointment Date. [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
+
+* `AppointmentTime` Appointment Time. [APPOINTMENT TIME](https://www.datadictionary.nhs.uk/data_elements/appointment_time.html)
+
+```sql
+	select
+		distinct
+		op.GeneratedRecordIdentifier,
+		op.NHSNumber,
+		op.AppointmentDate,
+		op.AppointmentTime,
+		p.ProcedureOPCS as PrimaryProcedure
+	from omop_staging.sus_OP op
+		inner join omop_staging.sus_OP_OPCSProcedure p
+		on op.MessageId = p.MessageId
+	where NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_exposure_start_datetime%20field%20SUS%20OP%20Device%20Exposure%20mapping){: .btn }
 ### SUS CCMDS Device Exposure
 Source columns  `DeviceExposureStartDate`, `DeviceExposureStartTime`.
 Combines a date with a time of day.
@@ -34,7 +60,52 @@ Combines a date with a time of day.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_exposure_start_datetime%20field%20SUS%20CCMDS%20Device%20Exposure%20mapping){: .btn }
-### SUS AE Device Exposure
+### SUS APC Procedure Occurrence
+Source column  `PrimaryProcedureDate`.
+Combines a date with a time of day.
+
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+
+```sql
+select
+	distinct
+		apc.GeneratedRecordIdentifier,
+		apc.HospitalSpellProviderNumber,
+		apc.NHSNumber,
+		p.ProcedureDateOPCS as PrimaryProcedureDate,
+		p.ProcedureOPCS as PrimaryProcedure
+from omop_staging.sus_APC apc
+	inner join omop_staging.sus_OPCSProcedure p
+		on apc.MessageId = p.MessageId
+where NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_exposure_start_datetime%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
+### SUS AE Procedure Device Exposure
+Source column  `PrimaryProcedureDate`.
+Combines a date with a time of day.
+
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+
+```sql
+	select
+		distinct
+			ae.GeneratedRecordIdentifier,
+			ae.NHSNumber,
+			ae.CDSActivityDate as PrimaryProcedureDate,
+			p.AccidentAndEmergencyTreatment as PrimaryProcedure
+	from omop_staging.sus_AE ae
+		inner join omop_staging.sus_AE_treatment p
+			on AE.MessageId = p.MessageId
+	where NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_exposure_start_datetime%20field%20SUS%20AE%20Procedure%20Device%20Exposure%20mapping){: .btn }
+### SUS AE Investigation Device Exposure
 Source columns  `StartDate`, `StartTime`.
 Combines a date with a time of day.
 
@@ -44,6 +115,7 @@ Combines a date with a time of day.
 
 ```sql
 	select
+		distinct
 		ae.AEAttendanceNumber,
 		ae.NHSNumber,
 		coalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,
@@ -60,4 +132,4 @@ Combines a date with a time of day.
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_exposure_start_datetime%20field%20SUS%20AE%20Device%20Exposure%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_exposure_start_datetime%20field%20SUS%20AE%20Investigation%20Device%20Exposure%20mapping){: .btn }

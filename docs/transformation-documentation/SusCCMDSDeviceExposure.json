@@ -21,24 +21,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "HospitalProviderSpellNumber",
-      "operation_description": "Value copied from `HospitalProviderSpellNumber`",
-      "dataSource": [
-        {
-          "name": "HospitalProviderSpellNumber",
-          "description": "CDS specific hospital spell number that binds many episodes together.",
-          "origins": [
-            {
-              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
-            }
-          ]
-        }
-      ],
-      "query": "\n\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\t\tcc.CriticalCareStartDate as DeviceExposureStartDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as DeviceExposureStartTime,\n\t\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as DeviceExposureEndDate,\n\t\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as DeviceExposureEndTime,\n\t\t\t\td.CriticalCareActivityCode as CriticalCareActivityCode\n\t\tfrom omop_staging.sus_CCMDS_CriticalCareActivityCode d\n\t\tinner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId\n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand d.CriticalCareActivityCode not in('3','4','6','8','10','12','15','21','22','23','24','25','27','28','29','50','57','58','64','65','66','67','68','69','70','71','72','74','82','83','87','99')\n\n\t",
-      "lookup_table_markdown": null
-    },
-    {
       "name": "device_concept_id",
       "operation_description": "Maps concepts to standard valid concepts in the `device` domain.",
       "dataSource": null,
@@ -181,6 +163,24 @@
             {
               "origin": "CRITICAL CARE ACTIVITY CODE",
               "url": "https://www.datadictionary.nhs.uk/data_elements/critical_care_activity_code.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\t\tcc.CriticalCareStartDate as DeviceExposureStartDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as DeviceExposureStartTime,\n\t\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as DeviceExposureEndDate,\n\t\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as DeviceExposureEndTime,\n\t\t\t\td.CriticalCareActivityCode as CriticalCareActivityCode\n\t\tfrom omop_staging.sus_CCMDS_CriticalCareActivityCode d\n\t\tinner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId\n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand d.CriticalCareActivityCode not in('3','4','6','8','10','12','15','21','22','23','24','25','27','28','29','50','57','58','64','65','66','67','68','69','70','71','72','74','82','83','87','99')\n\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "HospitalProviderSpellNumber",
+      "operation_description": "Value copied from `HospitalProviderSpellNumber`",
+      "dataSource": [
+        {
+          "name": "HospitalProviderSpellNumber",
+          "description": "CDS specific hospital spell number that binds many episodes together.",
+          "origins": [
+            {
+              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
             }
           ]
         }

@@ -26,6 +26,8 @@ using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Omop.Provider;
 using OmopTransformer.Transformation;
 using OmopTransformer.Omop;
+using OmopTransformer.SUS.AE.DeviceExposure.ProcedureDevice;
+using OmopTransformer.SUS.AE.DeviceExposure.InvestigationDevice;
 
 namespace OmopTransformer.SUS.AE;
 
@@ -154,11 +156,17 @@ internal class SusAETransformer : Transformer
           runId,
           cancellationToken);
 
-        await Transform<SusAEDeviceExposureRecord, SusAEDeviceExposure>(
+        await Transform<SusAEInvestigationDeviceRecord, SusAEInvestigationDevice>(
            _deviceExposureRecorder.InsertUpdateDeviceExposure,
            "SUS AE Device Exposure",
            runId,
            cancellationToken);
+
+        await Transform<SusAEProcedureDeviceRecord, SusAEProcedureDevice>(
+            _deviceExposureRecorder.InsertUpdateDeviceExposure,
+            "Sus AE Procedure Device",
+            runId,
+            cancellationToken);
 
         await Transform<SusAECareSiteRecord, SusAECareSite>(
            _careSiteRecorder.InsertUpdateCareSite,

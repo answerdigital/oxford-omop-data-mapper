@@ -25,6 +25,7 @@ using OmopTransformer.Omop.Provider;
 using OmopTransformer.Omop.DeviceExposure;
 using OmopTransformer.Transformation;
 using OmopTransformer.Omop;
+using OmopTransformer.SUS.OP.DeviceExposure;
 
 namespace OmopTransformer.SUS.OP;
 

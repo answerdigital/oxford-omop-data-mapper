@@ -37,6 +37,7 @@ using OmopTransformer.SUS.CCMDS.Measurements.GestationLengthAtDelivery;
 using OmopTransformer.SUS.CCMDS.Measurements.PersonWeight;
 using OmopTransformer.SUS.CCMDS.DeviceExposure;
 using OmopTransformer.Omop.DeviceExposure;
+using OmopTransformer.SUS.APC.DeviceExposure;
 namespace OmopTransformer.SUS.APC;
 
 internal class SusAPCTransformer : Transformer
@@ -120,6 +121,12 @@ internal class SusAPCTransformer : Transformer
           "SUS APC Procedure Occurrence",
           runId,
           cancellationToken);
+
+        await Transform<SusAPCDeviceExposureRecord, SusAPCDeviceExposure>(
+            _deviceExposureRecorder.InsertUpdateDeviceExposure,
+            "SUS CCMDS Procedure Device Exposure",
+            runId,
+            cancellationToken);
 
         await Transform<SusAPCConditionOccurrenceRecord, SusAPCConditionOccurrence>(
           _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
@@ -246,7 +253,7 @@ internal class SusAPCTransformer : Transformer
             "SUS CCMDS Device Exposure",
             runId,
             cancellationToken);
-
+        
         _conceptResolver.PrintErrors();
     }
 }
