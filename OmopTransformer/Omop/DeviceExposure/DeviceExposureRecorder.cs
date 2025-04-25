@@ -53,27 +53,30 @@ internal class DeviceExposureRecorder : IDeviceExposureRecorder
                 if (record.IsValid == false)
                     continue;
 
-                dataTable.Rows.Add(
-                    record.nhs_number,
-                    record.device_concept_id,
-                    record.device_exposure_start_date,
-                    record.device_exposure_start_datetime,
-                    record.device_exposure_end_date,
-                    record.device_exposure_end_datetime,
-                    record.device_type_concept_id,
-                    record.unique_device_id,
-                    record.production_id,
-                    record.quantity,
-                    record.provider_id,
-                    record.visit_occurrence_id,
-                    record.visit_detail_id,
-                    record.device_source_value,
-                    record.device_source_concept_id,
-                    record.unit_concept_id,
-                    record.unit_source_value,
-                    record.unit_source_concept_id,
-                    record.RecordConnectionIdentifier,
-                    record.HospitalProviderSpellNumber);
+                foreach (var deviceConceptId in record.device_concept_id!)
+                {
+                    dataTable.Rows.Add(
+                        record.nhs_number,
+                        deviceConceptId,
+                        record.device_exposure_start_date,
+                        record.device_exposure_start_datetime,
+                        record.device_exposure_end_date,
+                        record.device_exposure_end_datetime,
+                        record.device_type_concept_id,
+                        record.unique_device_id,
+                        record.production_id,
+                        record.quantity,
+                        record.provider_id,
+                        record.visit_occurrence_id,
+                        record.visit_detail_id,
+                        record.device_source_value,
+                        record.device_source_concept_id,
+                        record.unit_concept_id,
+                        record.unit_source_value,
+                        record.unit_source_concept_id,
+                        record.RecordConnectionIdentifier,
+                        record.HospitalProviderSpellNumber);
+                }
             }
 
             var parameter = new

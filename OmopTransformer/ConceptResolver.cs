@@ -11,6 +11,8 @@ internal class ConceptResolver
     private readonly ILogger<ConceptResolver> _logger;
 
     private Dictionary<int, Row>? _mappings;
+    private Dictionary<int, IReadOnlyCollection<int>> _devicesByConceptId;
+
     private readonly object _loadingLock = new();
 
     private readonly Dictionary<int, int> _unableToMapByFrequency = new();
@@ -36,19 +38,52 @@ internal class ConceptResolver
                 .ToDictionary(row => row.source_concept_id!);
     }
 
-    public int? GetConcept(int conceptId, string? domain)
+    private Dictionary<int, IReadOnlyCollection<int>> GetDevices()
+    {
+        _logger.LogInformation("Loading concept device relationships.");
+
+        var connection = new SqlConnection(_configuration.ConnectionString);
+
+        connection.Open();
+
+        return
+            connection
+                .Query<ConceptRelationshipRow>(sql: 
+                    @"select
+	                    cm.source_concept_id as concept_id,
+	                    device.device_concept_id
+                    from omop_staging.concept_code_map cm
+	                    inner join cdm.concept_relationship cr
+		                    on cm.target_concept_id = cr.concept_id_1
+	                    inner join cdm.concept device
+		                    on cr.concept_id_2 = device.concept_id
+                    where device.standard_concept = 'S'
+	                    and cr.relationship_id like '%device%'")
+                .GroupBy(group => group.concept_id)
+                .ToDictionary(
+                    row => row.Key,
+                    row => (IReadOnlyCollection<int>)row.Select(map => map.device_concept_id).ToList());
+    }
+
+    private void EnsureMapping()
     {
         lock (_loadingLock)
         {
             _mappings ??= GetMappings();
+            _devicesByConceptId ??= GetDevices();
 
             if (_mappings.Count == 0)
             {
                 throw new InvalidOperationException("concept_code_map table is empty. Call stored procedure omop_staging.generate_concept_code_map first.");
             }
         }
+    }
 
-        if (_mappings.TryGetValue(conceptId, out var value))
+    public int? GetConcept(int conceptId, string? domain)
+    {
+        EnsureMapping();
+
+        if (_mappings!.TryGetValue(conceptId, out var value))
         {
             if (domain == null || value.domain_id!.Equals(domain, StringComparison.OrdinalIgnoreCase))
                 return value.target_concept_id;
@@ -69,6 +104,18 @@ internal class ConceptResolver
         }
 
         return null;
+    }
+
+    public IReadOnlyCollection<int> GetConceptDevices(int conceptId)
+    {
+        EnsureMapping();
+
+        if (_devicesByConceptId.TryGetValue(conceptId, out var devices))
+        {
+            return devices.ToArray();
+        }
+
+        return new int[] { };
     }
 
     public void ResetErrors()
@@ -97,5 +144,11 @@ internal class ConceptResolver
         public int target_concept_id { get; init; }
         public string? domain_id { get; init; }
         public bool mapped_from_standard { get; init; }
+    }
+
+    private class ConceptRelationshipRow
+    {
+        public int concept_id { get; init; }
+        public int device_concept_id { get; init; }
     }
 }
