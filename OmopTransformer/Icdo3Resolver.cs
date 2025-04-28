@@ -5,58 +5,8 @@ using Microsoft.Extensions.Options;
 
 namespace OmopTransformer;
 
-internal class Icdo3Resolver
+internal class Icdo3Resolver : ConceptLookup
 {
-    private readonly Configuration _configuration;
-    private readonly ILogger<Icdo3Resolver> _logger;
-
-    private Dictionary<string, int>? _mappings;
-    private readonly object _loadingLock = new();
-
-    public Icdo3Resolver(IOptions<Configuration> configuration, ILogger<Icdo3Resolver> logger)
-    {
-        _logger = logger;
-        _configuration = configuration.Value;
-    }
-
-    private Dictionary<string, int> GetIcdo3Codes()
-    {
-        _logger.LogInformation("Loading IDC-O-3 codes.");
-
-        var connection = new SqlConnection(_configuration.ConnectionString);
-
-        connection.Open();
-
-        return
-            connection
-                .Query<Row>(sql: "select concept_id, concept_code as Code from cdm.concept where vocabulary_id = 'ICDO3'")
-                .ToDictionary(
-                    row => row.Code!,
-                    row => row.concept_id);
-    }
-
-    public int? GetConceptCode(string? histology, string? topography)
-    {
-        lock (_loadingLock)
-        {
-            _mappings ??= GetIcdo3Codes();
-        }
-
-        var code = CovertHistologyTopographyToICDO3(histology, topography);
-
-        if (code == null)
-        {
-            return null;
-        }
-
-        if (_mappings.TryGetValue(code, out var value))
-        {
-            return value;
-        }
-
-        return null;
-    }
-
     public static string? CovertHistologyTopographyToICDO3(string? histology, string? topography)
     {
         if (histology == null || topography == null)
@@ -73,10 +23,10 @@ internal class Icdo3Resolver
         return histology;
     }
 
-    private class Row
+    public Icdo3Resolver(IOptions<Configuration> configuration, ILogger<ConceptLookup> logger) : base(configuration, logger)
     {
-        public int concept_id { get; init; }
-
-        public string? Code { get; init; }
     }
+
+    public override string Query => "select concept_id, concept_code as Code from cdm.concept where vocabulary_id = 'ICDO3'";
+    public override string LoadingLoggerMessage => "Loading IDC-O-3 codes.";
 }
