@@ -2,15 +2,15 @@
 using OmopTransformer.Omop.DeviceExposure;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.SUS.AE.DeviceExposure;
+namespace OmopTransformer.SUS.AE.DeviceExposure.InvestigationDevice;
 
-internal class SusAEDeviceExposure : OmopDeviceExposure<SusAEDeviceExposureRecord>
+internal class SusAEInvestigationDevice : OmopDeviceExposure<SusAEInvestigationDeviceRecord>
 {
     [CopyValue(nameof(Source.NHSNumber))]
     public override string? nhs_number { get; set; }
 
     [Transform(typeof(StandardDeviceConceptSelector), useOmopTypeAsSource: true, nameof(device_source_concept_id))]
-    public override int? device_concept_id { get; set; }
+    public override int[]? device_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.StartDate))]
     public override DateTime? device_exposure_start_date { get; set; }

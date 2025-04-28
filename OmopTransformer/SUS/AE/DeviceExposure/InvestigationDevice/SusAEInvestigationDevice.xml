@@ -1,6 +1,7 @@
 ﻿<Query>
     <Sql>
 	select
+		distinct
 		ae.AEAttendanceNumber,
 		ae.NHSNumber,
 		coalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,

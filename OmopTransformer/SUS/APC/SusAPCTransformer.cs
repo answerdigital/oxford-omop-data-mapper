@@ -37,6 +37,7 @@ using OmopTransformer.SUS.CCMDS.Measurements.GestationLengthAtDelivery;
 using OmopTransformer.SUS.CCMDS.Measurements.PersonWeight;
 using OmopTransformer.SUS.CCMDS.DeviceExposure;
 using OmopTransformer.Omop.DeviceExposure;
+using OmopTransformer.SUS.APC.DeviceExposure;
 namespace OmopTransformer.SUS.APC;
 
 internal class SusAPCTransformer : Transformer
@@ -69,12 +70,12 @@ internal class SusAPCTransformer : Transformer
         IVisitOccurrenceRecorder visitOccurrenceRecorder,
         IVisitDetailRecorder visitDetailRecorder,
         IDeathRecorder deathRecorder,
-        IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
-        ConceptResolver conceptResolver, 
+        IProcedureOccurrenceRecorder procedureOccurrenceRecorder,
+        ConceptResolver conceptResolver,
         IDeviceExposureRecorder deviceExposureRecorder,
         IObservationRecorder observationRecorder,
         IConceptMapper conceptMapper,
-        IRunAnalysisRecorder runAnalysisRecorder) : 
+        IRunAnalysisRecorder runAnalysisRecorder) :
         base(
             recordTransformer,
             logger,
@@ -120,6 +121,12 @@ internal class SusAPCTransformer : Transformer
           "SUS APC Procedure Occurrence",
           runId,
           cancellationToken);
+
+        await Transform<SusAPCDeviceExposureRecord, SusAPCDeviceExposure>(
+            _deviceExposureRecorder.InsertUpdateDeviceExposure,
+            "SUS CCMDS Procedure Device Exposure",
+            runId,
+            cancellationToken);
 
         await Transform<SusAPCConditionOccurrenceRecord, SusAPCConditionOccurrence>(
           _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
@@ -222,7 +229,7 @@ internal class SusAPCTransformer : Transformer
           "SUS CCMDS Procedure Occurrence",
           runId,
           cancellationToken);
-          
+
         await Transform<SusCCMDSHighCostDrugsRecord, SusCCMDSHighCostDrugs>(
           _observationRecorder.InsertUpdateObservations,
             "SUS CCMDS Observation High Cost Drugs",

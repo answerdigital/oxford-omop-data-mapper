@@ -6,6 +6,30 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # device_source_concept_id
+### SUS OP Device Exposure
+Source column  `PrimaryProcedure`.
+Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+
+```sql
+	select
+		distinct
+		op.GeneratedRecordIdentifier,
+		op.NHSNumber,
+		op.AppointmentDate,
+		op.AppointmentTime,
+		p.ProcedureOPCS as PrimaryProcedure
+	from omop_staging.sus_OP op
+		inner join omop_staging.sus_OP_OPCSProcedure p
+		on op.MessageId = p.MessageId
+	where NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_source_concept_id%20field%20SUS%20OP%20Device%20Exposure%20mapping){: .btn }
 ### SUS CCMDS Device Exposure
 Source column  `CriticalCareActivityCode`.
 CCMDS Critical Care Activity Code Device Concept IDs
@@ -63,7 +87,69 @@ Notes
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_source_concept_id%20field%20SUS%20CCMDS%20Device%20Exposure%20mapping){: .btn }
-### SUS AE Device Exposure
+### SUS APC Procedure Occurrence
+Source column  `PrimaryProcedure`.
+Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+
+```sql
+select
+	distinct
+		apc.GeneratedRecordIdentifier,
+		apc.NHSNumber,
+		p.ProcedureDateOPCS as PrimaryProcedureDate,
+		p.ProcedureOPCS as PrimaryProcedure
+from omop_staging.sus_APC apc
+	inner join omop_staging.sus_OPCSProcedure p
+		on apc.MessageId = p.MessageId
+where NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_source_concept_id%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
+### SUS AE Procedure Device Exposure
+Source column  `PrimaryProcedure`.
+Lookup discharge destination concept.
+
+
+|PrimaryProcedure|device_source_concept_id|notes|
+|------|-----|-----|
+|01|45768233|X-ray|
+|02|45768113|Electrocardiograph|
+|08|45768357|Microscope (histology)|
+|10|45768281|Ultrasound|
+|11|4234381|Magnetic Resonance Imaging (MRI)|
+|12|45762714|Computerised Tomography (CT)|
+|09|45762714|Computerised Tomography (CT)|
+|19|618883|Blood culture bottle|
+
+
+* `PrimaryProcedure` 
+			ACCIDENT AND EMERGENCY TREATMENT is a six character code, comprising:
+				Condition	n2 (see Treatment Table below)
+				Sub-Analysis	n1 (see Sub-analysis Table below)
+				Local use	up to an3
+			 [ACCIDENT and EMERGENCY CLINICAL CODES]()
+
+```sql
+	select
+		distinct
+			ae.GeneratedRecordIdentifier,
+			ae.NHSNumber,
+			ae.CDSActivityDate as PrimaryProcedureDate,
+			p.AccidentAndEmergencyTreatment as PrimaryProcedure
+	from omop_staging.sus_AE ae
+		inner join omop_staging.sus_AE_treatment p
+			on AE.MessageId = p.MessageId
+	where NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_source_concept_id%20field%20SUS%20AE%20Procedure%20Device%20Exposure%20mapping){: .btn }
+### SUS AE Investigation Device Exposure
 Source column  `AccidentAndEmergencyInvestigation`.
 Lookup discharge destination concept.
 
@@ -84,6 +170,7 @@ Lookup discharge destination concept.
 
 ```sql
 	select
+		distinct
 		ae.AEAttendanceNumber,
 		ae.NHSNumber,
 		coalesce(ae.ArrivalDate, ae.CDSActivityDate) as StartDate,
@@ -100,4 +187,4 @@ Lookup discharge destination concept.
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_source_concept_id%20field%20SUS%20AE%20Device%20Exposure%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_source_concept_id%20field%20SUS%20AE%20Investigation%20Device%20Exposure%20mapping){: .btn }

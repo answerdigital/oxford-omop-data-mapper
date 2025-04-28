@@ -292,6 +292,15 @@
     <None Update="SACT\Sact.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SUS\AE\DeviceExposure\InvestigationDevice\SusAEInvestigationDevice.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\AE\DeviceExposure\ProcedureDevice\SusAEProcedureDevice.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SUS\APC\DeviceExposure\SusAPCDeviceExposure.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SUS\APC\Observation\AnaestheticDuringLabourDelivery\SusAPCAnaestheticDuringLabourDelivery.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -350,6 +359,9 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	  <None Update="SUS\OP\Death\SusOPDeath.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="SUS\OP\DeviceExposure\SusOPDeviceExposure.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	  <None Update="SUS\OP\Location\SusOPLocation.xml">

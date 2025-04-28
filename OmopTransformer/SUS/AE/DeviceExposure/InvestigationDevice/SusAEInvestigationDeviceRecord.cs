@@ -1,11 +1,11 @@
 ﻿using OmopTransformer.Annotations;
 
-namespace OmopTransformer.SUS.AE.DeviceExposure;
+namespace OmopTransformer.SUS.AE.DeviceExposure.InvestigationDevice;
 
 [DataOrigin("SUS")]
-[Description("SUS AE Device Exposure")]
-[SourceQuery("SusAEDeviceExposure.xml")]
-internal class SusAEDeviceExposureRecord
+[Description("SUS AE Investigation Device Exposure")]
+[SourceQuery("SusAEInvestigationDevice.xml")]
+internal class SusAEInvestigationDeviceRecord
 {
     public string? AEAttendanceNumber { get; set; }
     public string? NHSNumber { get; set; }

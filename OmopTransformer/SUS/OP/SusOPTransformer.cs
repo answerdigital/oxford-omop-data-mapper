@@ -22,8 +22,10 @@ using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Omop.Provider;
+using OmopTransformer.Omop.DeviceExposure;
 using OmopTransformer.Transformation;
 using OmopTransformer.Omop;
+using OmopTransformer.SUS.OP.DeviceExposure;
 
 namespace OmopTransformer.SUS.OP;
 
@@ -41,6 +43,7 @@ internal class SusOPTransformer : Transformer
     private readonly ConceptResolver _conceptResolver;
     private readonly ICareSiteRecorder _careSiteRecorder;
     private readonly IProviderRecorder _providerRecorder;
+    private readonly IDeviceExposureRecorder _deviceExposureRecorder;
 
     public SusOPTransformer(
         ICareSiteRecorder careSiteRecorder,
@@ -59,6 +62,7 @@ internal class SusOPTransformer : Transformer
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
         ConceptResolver conceptResolver, 
         IObservationRecorder observationRecorder,
+        IDeviceExposureRecorder deviceExposureRecorder,
         IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder) : base(recordTransformer,
         logger,
@@ -78,6 +82,7 @@ internal class SusOPTransformer : Transformer
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
         _conceptResolver = conceptResolver;
         _observationRecorder = observationRecorder;
+        _deviceExposureRecorder = deviceExposureRecorder;
         _careSiteRecorder = careSiteRecorder;
         _providerRecorder = providerRecorder;
     }
@@ -161,6 +166,12 @@ internal class SusOPTransformer : Transformer
         await Transform<SusOPProviderRecord, SusOPProvider>(
            _providerRecorder.InsertUpdateProvider,
            "SUS OP Provider",
+           runId,
+           cancellationToken);
+
+        await Transform<SusOPDeviceExposureRecord, SusOPDeviceExposure>(
+           _deviceExposureRecorder.InsertUpdateDeviceExposure,
+           "SUS OP DeviceExposure",
            runId,
            cancellationToken);
 

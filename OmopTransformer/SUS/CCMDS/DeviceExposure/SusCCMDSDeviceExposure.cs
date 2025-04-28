@@ -13,7 +13,7 @@ internal class SusCCMDSDeviceExposure : OmopDeviceExposure<SusCCMDSDeviceExposur
     public override string? HospitalProviderSpellNumber { get; set; }
 
     [Transform(typeof(StandardDeviceConceptSelector), useOmopTypeAsSource: true, nameof(device_source_concept_id))]
-    public override int? device_concept_id { get; set; }
+    public override int[]? device_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.DeviceExposureStartDate))]
     public override DateTime? device_exposure_start_date { get; set; }
