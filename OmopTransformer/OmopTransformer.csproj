@@ -25,69 +25,6 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="CDS\DrugExposure\CdsDrugExposure.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Observation\SourceOfReferralForOutpatients\CdsSourceOfReferralForOutpatients.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Observation\PersonWeight\CdsPersonWeight.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Observation\BirthWeight\CdsBirthWeight.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Observation\GestationLengthLabourOnset\CdsGestationLengthLabourOnset.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Observation\TotalPreviousPregnancies\CdsTotalPreviousPregnancies.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Observation\NumberOfBabies\CdsNumberOfBabies.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Observation\AnaestheticGivenPostLabourDelivery\CdsAnaestheticGivenPostLabourDelivery.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Observation\AnaestheticDuringLabourDelivery\CdsAnaestheticDuringLabourDelivery.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Observation\CarerSupportIndicator\CdsCarerSupportIndicator.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\ProcedureOccurrence\CdsProcedureOccurrence.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\ConditionOccurrence\CdsConditionOccurrence.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Death\CdsDeath.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\InpatientDemographics\v_CDS_Inpatient_Demographics.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\ObservationPeriod\CDSObservationPeriod.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\Person\CdsPerson.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\StructuredAddress\CdsStructuredAddress.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\UnstructuredAddress\CdsUnstructuredAddress.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\VisitDetails\CdsVisitDetails.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\VisitOccurrenceWithoutSpell\CdsVisitOccurrenceWithoutSpell.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="CDS\VisitOccurrenceWithSpell\CdsVisitOccurrenceWithSpell.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="COSD\ConditionOccurrence\CosdConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdV9ConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

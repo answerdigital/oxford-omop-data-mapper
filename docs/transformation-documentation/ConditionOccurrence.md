@@ -98,15 +98,3 @@ has_toc: false
 > * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdConditionOccurrencePrimaryDiagnosisHistologyTopography%20mapping){: .btn }
-## CdsConditionOccurrence
-<a href="CdsConditionOccurrence.svg" target="_blank"><img src="CdsConditionOccurrence.svg" /></a>
-
-{: .important-title }
-> Duplicates
->
-> CDS data contains numerous duplicated records for cds_diagnosis.DiagnosisCode (condition_concept_id), cds_line01.cdsActivityDate (condition_start_date) and cds_line01.NHSNumber (person_id).
->
-> In order to avoid true duplicates occurring in the data, we have included distinct records for  cds_diagnosis.DiagnosisCode (condition_concept_id), cds_line01.cdsActivityDate (condition_start_date) , cds_line01.NHSNumber (person_id) and cds_line01.RecordConnectionIdentifier and excluded all duplicates.
->
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsConditionOccurrence%20mapping){: .btn }

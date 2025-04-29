@@ -39,11 +39,3 @@ has_toc: false
 <a href="CosdLocation.svg" target="_blank"><img src="CosdLocation.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdLocation%20mapping){: .btn }
-## CdsStructuredLocation
-<a href="CdsStructuredLocation.svg" target="_blank"><img src="CdsStructuredLocation.svg" /></a>
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsStructuredLocation%20mapping){: .btn }
-## CdsUnstructuredLocation
-<a href="CdsUnstructuredLocation.svg" target="_blank"><img src="CdsUnstructuredLocation.svg" /></a>
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsUnstructuredLocation%20mapping){: .btn }
