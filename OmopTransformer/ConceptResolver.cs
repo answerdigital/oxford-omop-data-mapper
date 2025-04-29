@@ -58,7 +58,8 @@ internal class ConceptResolver
 	                    inner join cdm.concept device
 		                    on cr.concept_id_2 = device.concept_id
                     where device.standard_concept = 'S'
-	                    and cr.relationship_id like '%device%'")
+	                    and cr.relationship_id like '%device%'
+	                    and device.domain_id = 'Device'")
                 .GroupBy(group => group.concept_id)
                 .ToDictionary(
                     row => row.Key,
