@@ -44,7 +44,7 @@ Each OMOP field has a document that describes how each field is mapped from all 
 ```
 {
   "omopTable": "Observation",
-  "origin": "CDS",
+  "origin": "SUS-APC",
   "omopColumns": [
     {
       "name": "nhs_number",

@@ -50,7 +50,7 @@ Merging logic depends upon the data source.
 
 |Data source|Logic|
 |-----------|-----|
-| CDS | Record the record if it does not already exist using the following columns as keys `person_id`, `RecordConnectionIdentifier` and `condition_concept_id`. |
+| SUS | Record the record if it does not already exist using the following columns as keys `person_id`, `RecordConnectionIdentifier` and `condition_concept_id`. |
 | COSD | Record the record if it does not already exist using the following columns as keys `person_id`, `condition_concept_id` and `condition_start_date`. |
 
 ## Death
@@ -63,7 +63,7 @@ Merging logic depends upon the data source.
 
 |Data source|Logic|
 |-----------|-----|
-| CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier` and `drug_concept_id`. |
+| SUS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier` and `drug_concept_id`. |
 
 ## Observation
 
@@ -71,7 +71,7 @@ Merging logic depends upon the data source.
 
 |Data source|Logic|
 |-----------|-----|
-| CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `HospitalProviderSpellNumber`, `observation_date` and `observation_concept_id`. |
+| SUS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `HospitalProviderSpellNumber`, `observation_date` and `observation_concept_id`. |
 
 ## Procedure Occurrence
 
@@ -79,7 +79,7 @@ Merging logic depends upon the data source.
 
 |Data source|Logic|
 |-----------|-----|
-| CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `procedure_date` and `procedure_concept_id`. |
+| SUS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `procedure_date` and `procedure_concept_id`. |
 | COSD | Record the record if it does not already exist using the following columns as keys `procedure_date` and `procedure_concept_id`. |
 
 ## Visit Occurrence
@@ -88,7 +88,7 @@ Merging logic depends upon the data source.
 
 |Data source|Logic|
 |-----------|-----|
-| CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `HospitalProviderSpellNumber` and `person_id`. |
+| SUS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `HospitalProviderSpellNumber` and `person_id`. |
 
 ### Remarks
 
@@ -100,7 +100,7 @@ Merging logic depends upon the data source.
 
 |Data source|Logic|
 |-----------|-----|
-| CDS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `HospitalProviderSpellNumber` and `person_id`. |
+| SUS | Record the record if it does not already exist using the following columns as keys `RecordConnectionIdentifier`, `HospitalProviderSpellNumber` and `person_id`. |
 
 ## Measurements
 
