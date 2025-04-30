@@ -355,6 +355,9 @@
 	  <None Update="SUS\APC\Provider\SusAPCProvider.xml">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+    <None Update="SUS\APC\Observation\ReferralReceivedDateForOutpatients\SusAPCReferralReceivedDateForOutpatients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
 	  <None Update="SUS\OP\ConditionOccurrence\SusOPConditionOccurrence.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>

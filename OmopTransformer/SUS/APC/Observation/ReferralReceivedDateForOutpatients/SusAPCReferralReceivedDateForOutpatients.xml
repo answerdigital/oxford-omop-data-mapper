@@ -1,0 +1,35 @@
+﻿<Query>
+    <Sql>
+	select
+		apc.NHSNumber, 
+		apc.StartDateHospitalProviderSpell,
+		apc.StartTimeHospitalProviderSpell,
+		apc.ReferralToTreatmentPeriodStartDate,
+		apc.GeneratedRecordIdentifier
+	from omop_staging.sus_APC apc
+	where ReferralToTreatmentPeriodStartDate is not null
+		and apc.NHSNumber is not null
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="StartDateHospitalProviderSpell">
+			<Description>START DATE (HOSPITAL PROVIDER SPELL) is the Start Date of the Hospital Provider Spell.</Description>
+			<Origin>START DATE (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+		<Explanation columnName="StartTimeHospitalProviderSpell">
+			<Description>START TIME (HOSPITAL PROVIDER SPELL)  is the Start Time  of the Hospital Provider Spell .</Description>
+			<Origin>START TIME (HOSPITAL PROVIDER SPELL)</Origin>
+		</Explanation>
+		<Explanation columnName="ReferralToTreatmentPeriodStartDate">
+			<Description>The start date of a REFERRAL TO TREATMENT PERIOD .</Description>
+			<Origin>REFERRAL TO TREATMENT PERIOD START DATE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

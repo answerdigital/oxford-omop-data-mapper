@@ -13,6 +13,7 @@ using OmopTransformer.SUS.APC.Observation.GestationLengthLabourOnset;
 using OmopTransformer.SUS.APC.Observation.NumberOfBabies;
 using OmopTransformer.SUS.APC.Observation.TotalPreviousPregnancies;
 using OmopTransformer.SUS.APC.Observation.SourceOfReferralForOutpatients;
+using OmopTransformer.SUS.APC.Observation.ReferralReceivedDateForOutpatients;
 using OmopTransformer.SUS.APC.VisitDetails;
 using OmopTransformer.SUS.APC.CareSite;
 using OmopTransformer.SUS.APC.Provider;
@@ -253,6 +254,12 @@ internal class SusAPCTransformer : Transformer
             "SUS CCMDS Device Exposure",
             runId,
             cancellationToken);
+
+        await Transform<SusAPCReferralReceivedDateForOutpatientsRecord, SusAPCReferralReceivedDateForOutpatients>(
+           _observationRecorder.InsertUpdateObservations,
+           "SUS APC ReferralReceivedDateForOutpatients",
+           runId,
+           cancellationToken);
 
         _conceptResolver.PrintErrors();
     }
