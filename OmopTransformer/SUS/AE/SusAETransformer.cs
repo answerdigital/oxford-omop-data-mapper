@@ -7,7 +7,7 @@ using OmopTransformer.SUS.AE.ProcedureOccurrence;
 using OmopTransformer.SUS.AE.VisitOccurrenceWithSpell;
 using OmopTransformer.SUS.AE.Observation.AsthmaticPatient;
 using OmopTransformer.SUS.AE.Observation.DiabeticPatient;
-using OmopTransformer.SUS.AE.Observation.SourceOfReferralForOutpatients;
+using OmopTransformer.SUS.AE.Observation.SourceOfReferralForAE;
 using OmopTransformer.SUS.AE.VisitDetails;
 using OmopTransformer.SUS.AE.CareSite;
 using OmopTransformer.SUS.AE.DeviceExposure;
@@ -144,9 +144,9 @@ internal class SusAETransformer : Transformer
           runId, 
           cancellationToken);
 
-        await Transform<SusAESourceOfReferralForOutpatientsRecord, SusAESourceOfReferralForOutpatients>(
+        await Transform<SusAESourceOfReferralForAERecord, SusAESourceOfReferralForAE>(
           _observationRecorder.InsertUpdateObservations,
-          "SUS AE SourceOfReferralForOutpatients",
+          "SUS AE SourceOfReferralForAE",
           runId,
           cancellationToken);
 
