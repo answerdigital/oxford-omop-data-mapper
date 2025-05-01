@@ -12,7 +12,8 @@ using OmopTransformer.SUS.APC.Observation.CarerSupportIndicator;
 using OmopTransformer.SUS.APC.Observation.GestationLengthLabourOnset;
 using OmopTransformer.SUS.APC.Observation.NumberOfBabies;
 using OmopTransformer.SUS.APC.Observation.TotalPreviousPregnancies;
-using OmopTransformer.SUS.APC.Observation.SourceOfReferralForOutpatients;
+using OmopTransformer.SUS.APC.Observation.SourceOfReferralForInpatients;
+using OmopTransformer.SUS.APC.Observation.ReferralReceivedDateForInpatients;
 using OmopTransformer.SUS.APC.VisitDetails;
 using OmopTransformer.SUS.APC.CareSite;
 using OmopTransformer.SUS.APC.Provider;
@@ -188,9 +189,9 @@ internal class SusAPCTransformer : Transformer
           runId,
           cancellationToken);
 
-        await Transform<SusAPCSourceOfReferralForOutpatientsRecord, SusAPCSourceOfReferralForOutpatients>(
+        await Transform<SusAPCSourceOfReferralForInpatientsRecord, SusAPCSourceOfReferralForInpatients>(
           _observationRecorder.InsertUpdateObservations,
-          "SUS APC SourceOfReferralForOutpatients",
+          "SUS APC SourceOfReferralForInpatients",
           runId,
           cancellationToken);
 
@@ -253,6 +254,12 @@ internal class SusAPCTransformer : Transformer
             "SUS CCMDS Device Exposure",
             runId,
             cancellationToken);
+
+        await Transform<SusAPCReferralReceivedDateForInpatientsRecord, SusAPCReferralReceivedDateForInpatients>(
+           _observationRecorder.InsertUpdateObservations,
+           "SUS APC ReferralReceivedDateForInpatients",
+           runId,
+           cancellationToken);
 
         _conceptResolver.PrintErrors();
     }

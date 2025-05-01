@@ -99,7 +99,7 @@ group by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20RecordConnectionIdentifier%20field%20SUS%20Inpatient%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
-### SUS APC Source Of Referral For Outpatients
+### SUS APC Source Of Referral For Inpatients
 * Value copied from `GeneratedRecordIdentifier`
 
 * `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
@@ -117,7 +117,27 @@ where NHSNumber is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20RecordConnectionIdentifier%20field%20SUS%20APC%20Source%20Of%20Referral%20For%20Outpatients%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20RecordConnectionIdentifier%20field%20SUS%20APC%20Source%20Of%20Referral%20For%20Inpatients%20mapping){: .btn }
+### SUS APC Referral Received Date For Inpatients
+* Value copied from `GeneratedRecordIdentifier`
+
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
+
+```sql
+	select
+		apc.NHSNumber, 
+		apc.StartDateHospitalProviderSpell,
+		apc.StartTimeHospitalProviderSpell,
+		apc.ReferralToTreatmentPeriodStartDate,
+		apc.GeneratedRecordIdentifier
+	from omop_staging.sus_APC apc
+	where ReferralToTreatmentPeriodStartDate is not null
+		and apc.NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20RecordConnectionIdentifier%20field%20SUS%20APC%20Referral%20Received%20Date%20For%20Inpatients%20mapping){: .btn }
 ### SUS Inpatient NumberofBabies Observation
 * Value copied from `GeneratedRecordIdentifier`
 
@@ -278,7 +298,7 @@ group by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20RecordConnectionIdentifier%20field%20SUS%20APC%20Anaesthetic%20During%20Labour%20Delivery%20Observation%20mapping){: .btn }
-### SUS AE Source Of Referral For Outpatients
+### SUS AE Source Of Referral For AE
 * Value copied from `GeneratedRecordIdentifier`
 
 * `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
@@ -296,7 +316,7 @@ where SourceofReferralForAE is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20RecordConnectionIdentifier%20field%20SUS%20AE%20Source%20Of%20Referral%20For%20Outpatients%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20RecordConnectionIdentifier%20field%20SUS%20AE%20Source%20Of%20Referral%20For%20AE%20mapping){: .btn }
 ### SUS AE Diabetic Patient
 * Value copied from `GeneratedRecordIdentifier`
 

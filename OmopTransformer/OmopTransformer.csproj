@@ -259,7 +259,7 @@
     <None Update="SUS\APC\Observation\TotalPreviousPregnancies\SusAPCTotalPreviousPregnancies.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SUS\APC\Observation\SourceOfReferralForOutpatients\SusAPCSourceOfReferralForOutpatients.xml">
+    <None Update="SUS\APC\Observation\SourceOfReferralForInpatients\SusAPCSourceOfReferralForInpatients.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SUS\APC\Person\SusAPCPerson.xml">
@@ -292,6 +292,9 @@
 	  <None Update="SUS\APC\Provider\SusAPCProvider.xml">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+    <None Update="SUS\APC\Observation\ReferralReceivedDateForInpatients\SusAPCReferralReceivedDateForInpatients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
 	  <None Update="SUS\OP\ConditionOccurrence\SusOPConditionOccurrence.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
@@ -358,7 +361,7 @@
     <None Update="SUS\AE\VisitOccurrenceWithSpell\SusAEVisitOccurrenceWithSpell.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SUS\AE\Observation\SourceOfReferralForOutpatients\SusAESourceOfReferralForOutpatients.xml">
+    <None Update="SUS\AE\Observation\SourceOfReferralForAE\SusAESourceOfReferralForAE.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SUS\AE\Observation\DiabeticPatient\SusAEDiabeticPatient.xml">

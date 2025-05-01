@@ -1,11 +1,11 @@
 ﻿using OmopTransformer.Annotations;
 
-namespace OmopTransformer.SUS.APC.Observation.SourceOfReferralForOutpatients;
+namespace OmopTransformer.SUS.APC.Observation.SourceOfReferralForInpatients;
 
 [DataOrigin("SUS")]
-[Description("SUS APC Source Of Referral For Outpatients")]
-[SourceQuery("SusAPCSourceOfReferralForOutpatients.xml")]
-internal class SusAPCSourceOfReferralForOutpatientsRecord
+[Description("SUS APC Source Of Referral For Inpatients")]
+[SourceQuery("SusAPCSourceOfReferralForInpatients.xml")]
+internal class SusAPCSourceOfReferralForInpatientsRecord
 {
     public string? NHSNumber { get; set; }
     public string? GeneratedRecordIdentifier { get; set; }
