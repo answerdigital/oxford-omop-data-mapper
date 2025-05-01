@@ -24,9 +24,13 @@ internal class DataOptOut : IDataOptOut
     {
         if (_allowedList != null) 
             return;
-        
+
         if (string.IsNullOrEmpty(_options.AllowedListNhsNumber))
+        {
+            _logger.LogInformation("Allowed patient list not supplied. Allowing all patients.");
+
             _allowedList = AllowedListInternal.CreateAllowAll();
+        }
         else
         {
             var stopwatch = Stopwatch.StartNew();
