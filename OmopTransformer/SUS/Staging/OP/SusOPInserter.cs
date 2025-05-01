@@ -10,10 +10,12 @@ internal class SusOPInserter : ISusOPInserter
 {
     private readonly Configuration _configuration;
     private readonly ILogger<SusOPInserter> _logger;
+    private readonly DataOptOut _dataOptOut;
 
-    public SusOPInserter(IOptions<Configuration> configuration, ILogger<SusOPInserter> logger)
+    public SusOPInserter(IOptions<Configuration> configuration, ILogger<SusOPInserter> logger, DataOptOut dataOptOut)
     {
         _logger = logger;
+        _dataOptOut = dataOptOut;
         _configuration = configuration.Value;
     }
 
@@ -70,6 +72,8 @@ internal class SusOPInserter : ISusOPInserter
         await InsertIcdDiagnosis(rowsList.SelectMany(row => row.IcdDiagnoses).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
+        
+        _dataOptOut.PrintStats();
     }
 
     private async Task InsertOP(IReadOnlyCollection<OPRow> rows, IDbConnection connection)
@@ -227,6 +231,9 @@ internal class SusOPInserter : ISusOPInserter
 
         foreach (var row in rows)
         {
+            if (_dataOptOut.PatientAllowed(row.NHSNumber) == false)
+                continue;
+
             dataTable.Rows.Add(
                 row.MessageId,
                     row.GeneratedRecordIdentifier,

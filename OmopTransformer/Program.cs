@@ -74,6 +74,7 @@ internal class Program
 
         if (result.Value is StagingOptions stagingOptions)
         {
+            builder.Services.AddSingleton<IDataOptOut, DataOptOut>();
             builder.Services.AddTransient(_ => stagingOptions);
 
             if (string.Equals(stagingOptions.Type, "cosd", StringComparison.OrdinalIgnoreCase))
@@ -334,6 +335,9 @@ public class StagingOptions
 
     [Option("ccmds", Required = false, HelpText = "CCMDS filename for sus-apc transforms.")]
     public string? CCMDSFileName { get; set; }
+
+    [Option("allowed_nhs_number_list_path", Required = false, HelpText = "File that contains a list of allowed patient NHSNumbers. If specified this argument prevents data for patients that are outside of this list from being staged and transformed.")]
+    public string? AllowedListNhsNumber { get; set; }
 }
 
 [Verb("transform", HelpText = "Handles transformation operations.")]

@@ -10,10 +10,12 @@ internal class SusAEInserter : ISusAEInserter
 {
     private readonly Configuration _configuration;
     private readonly ILogger<SusAEInserter> _logger;
+    private readonly DataOptOut _dataOptOut;
 
-    public SusAEInserter(IOptions<Configuration> configuration, ILogger<SusAEInserter> logger)
+    public SusAEInserter(IOptions<Configuration> configuration, ILogger<SusAEInserter> logger, DataOptOut dataOptOut)
     {
         _logger = logger;
+        _dataOptOut = dataOptOut;
         _configuration = configuration.Value;
     }
 
@@ -65,6 +67,8 @@ internal class SusAEInserter : ISusAEInserter
         await InsertTreatment(rowsList.SelectMany(row => row.SusAETreatment).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
+
+        _dataOptOut.PrintStats();
     }
 
     private async Task InsertAE(IReadOnlyCollection<AERow> rows, IDbConnection connection)
@@ -208,6 +212,9 @@ internal class SusAEInserter : ISusAEInserter
 
         foreach (var row in rows)
         {
+            if (_dataOptOut.PatientAllowed(row.NHSNumber) == false)
+                continue;
+
             dataTable.Rows.Add(
                 row.MessageId,
                 row.GeneratedRecordIdentifier,
