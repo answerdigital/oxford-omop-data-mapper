@@ -3,7 +3,7 @@
 namespace OmopTransformer.SUS.APC.Observation.ReferralReceivedDateForInpatients;
 
 [DataOrigin("SUS")]
-[Description("SUS APC Referral Received Date For Outpatients")]
+[Description("SUS APC Referral Received Date For Inpatients")]
 [SourceQuery("SusAPCReferralReceivedDateForInpatients.xml")]
 internal class SusAPCReferralReceivedDateForInpatientsRecord
 {
