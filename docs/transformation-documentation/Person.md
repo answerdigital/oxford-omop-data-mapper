@@ -43,7 +43,3 @@ has_toc: false
 <a href="CosdPerson.svg" target="_blank"><img src="CosdPerson.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdPerson%20mapping){: .btn }
-## CdsPerson
-<a href="CdsPerson.svg" target="_blank"><img src="CdsPerson.svg" /></a>
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsPerson%20mapping){: .btn }

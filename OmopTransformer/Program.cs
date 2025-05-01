@@ -3,9 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using CommandLine;
-using OmopTransformer.CDS;
-using OmopTransformer.CDS.Parser;
-using OmopTransformer.CDS.Staging;
 using OmopTransformer.Documentation;
 using OmopTransformer.COSD;
 using OmopTransformer.Transformation;
@@ -118,30 +115,6 @@ internal class Program
                         break;
                     case "clear":
                         builder.Services.AddHostedService<SactClearStagingHostedService>();
-                        break;
-                    default:
-                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
-                        return;
-                }
-            }
-            else if (string.Equals(stagingOptions.Type, "cds", StringComparison.OrdinalIgnoreCase))
-            {
-                if (stagingOptions.Action == null)
-                {
-                    await ActionMustBeSpecifiedError();
-                    return;
-                }
-
-                switch (stagingOptions.Action.ToLower())
-                {
-                    case "load":
-                        builder.Services.AddTransient<ICdsNhs62Parser, CdsNhs62Parser>();
-                        builder.Services.AddTransient<ICdsInserter, CdsInserter>();
-                        builder.Services.AddTransient<ICdsStaging, CdsStaging>();
-                        builder.Services.AddHostedService<CdsLoadStagingHostedService>();
-                        break;
-                    case "clear":
-                        builder.Services.AddHostedService<CdsClearStagingHostedService>();
                         break;
                     default:
                         await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
@@ -284,11 +257,6 @@ internal class Program
                 builder.Services.AddTransient<SactTransformer>();
                 builder.Services.AddHostedService<SactTransformHostedService>();
             }
-            else if (string.Equals(transformOptions.Type, "cds", StringComparison.OrdinalIgnoreCase))
-            {
-                builder.Services.AddTransient<CdsTransformer>();
-                builder.Services.AddHostedService<CdsTransformHostedService>();
-            }
             else if (string.Equals(transformOptions.Type, "rtds", StringComparison.OrdinalIgnoreCase))
             {
                 builder.Services.AddTransient<RtdsTransformer>();
@@ -326,7 +294,6 @@ internal class Program
         builder.Services.AddTransient<IRecordProvider, RecordProvider>();
         builder.Services.AddTransient<ICosdStagingSchema, CosdStagingSchema>();
         builder.Services.AddTransient<ISactStagingSchema, SactStagingSchema>();
-        builder.Services.AddTransient<ICdsStagingSchema, CdsStagingSchema>();
         builder.Services.AddTransient<IRtdsStagingSchema, RtdsStagingSchema>();
         builder.Services.AddTransient<ISusInpatientStagingSchema, SusInpatientStagingSchema>();
         builder.Services.AddTransient<ISusOPStagingSchema, SusOPStagingSchema>();

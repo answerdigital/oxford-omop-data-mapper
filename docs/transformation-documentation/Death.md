@@ -39,7 +39,3 @@ has_toc: false
 <a href="CosdV8Death.svg" target="_blank"><img src="CosdV8Death.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8Death%20mapping){: .btn }
-## CdsDeath
-<a href="CdsDeath.svg" target="_blank"><img src="CdsDeath.svg" /></a>
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsDeath%20mapping){: .btn }

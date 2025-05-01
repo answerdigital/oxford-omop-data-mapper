@@ -158,34 +158,3 @@ group by NhsNumber
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20COSD%20Demographics%20mapping){: .btn }
-### CDS Structured Address
-* Value copied from `NhsNumber`
-
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
-
-```sql
-select
-	distinct
-		PatientAddressStructured1,
-		PatientAddressStructured2,
-		PatientAddressStructured3,
-		PatientAddressStructured4,
-		PatientAddressStructured5,
-		Postcode,
-		NHSNumber
-from omop_staging.cds_line01
-where PatientAddressType = '02'
-	and
-	(
-		PatientAddressStructured1 is not null or
-		PatientAddressStructured2 is not null or
-		PatientAddressStructured3 is not null or
-		PatientAddressStructured4 is not null or
-		PatientAddressStructured5 is not null or
-		Postcode is not null
-	);
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20CDS%20Structured%20Address%20mapping){: .btn }

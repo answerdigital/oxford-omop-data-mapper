@@ -166,23 +166,3 @@ group by NhsNumber
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20year_of_birth%20field%20COSD%20Demographics%20mapping){: .btn }
-### CDS Person
-Source column  `DateOfBirth`.
-Selects the year from a date or null of the date is null.
-
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
-
-```sql
-select
-	NHSNumber,
-	max(DateofBirth) as DateOfBirth,
-	max(EthnicCategory) as EthnicCategory,
-	max(PersonCurrentGenderCode) as PersonCurrentGenderCode
-from omop_staging.cds_line01
-where NHSNumber is not null
-group by NHSNumber
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20year_of_birth%20field%20CDS%20Person%20mapping){: .btn }

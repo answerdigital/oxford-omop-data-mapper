@@ -83,7 +83,3 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8ProcedureOccurrencePrimaryProcedureOpcs%20mapping){: .btn }
-## CdsProcedureOccurrence
-<a href="CdsProcedureOccurrence.svg" target="_blank"><img src="CdsProcedureOccurrence.svg" /></a>
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CdsProcedureOccurrence%20mapping){: .btn }

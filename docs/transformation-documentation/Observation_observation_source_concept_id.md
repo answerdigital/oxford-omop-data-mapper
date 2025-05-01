@@ -64,11 +64,3 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 * Constant value set to `2000500004`. History Of Alcohol (Past)
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20CosdV8AlcoholHistoryCancerBeforeLastThreeMonths%20mapping){: .btn }
-### Cds Anaesthetic Given Post Labour Delivery Observation
-* Constant value set to `2000500002`. ANAESTHETIC GIVEN POST LABOUR OR DELIVERY CODE
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20Cds%20Anaesthetic%20Given%20Post%20Labour%20Delivery%20Observation%20mapping){: .btn }
-### Cds Anaesthetic During Labour Delivery Observation
-* Constant value set to `2000500001`. ANAESTHETIC GIVEN DURING LABOUR OR DELIVERY CODE
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20Cds%20Anaesthetic%20During%20Labour%20Delivery%20Observation%20mapping){: .btn }
