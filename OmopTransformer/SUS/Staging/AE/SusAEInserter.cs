@@ -10,9 +10,9 @@ internal class SusAEInserter : ISusAEInserter
 {
     private readonly Configuration _configuration;
     private readonly ILogger<SusAEInserter> _logger;
-    private readonly DataOptOut _dataOptOut;
+    private readonly IDataOptOut _dataOptOut;
 
-    public SusAEInserter(IOptions<Configuration> configuration, ILogger<SusAEInserter> logger, DataOptOut dataOptOut)
+    public SusAEInserter(IOptions<Configuration> configuration, ILogger<SusAEInserter> logger, IDataOptOut dataOptOut)
     {
         _logger = logger;
         _dataOptOut = dataOptOut;

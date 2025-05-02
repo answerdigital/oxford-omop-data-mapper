@@ -10,9 +10,9 @@ internal class SusApcInserter : ISusAPCInserter
 {
     private readonly Configuration _configuration;
     private readonly ILogger<SusApcInserter> _logger;
-    private readonly DataOptOut _dataOptOut;
+    private readonly IDataOptOut _dataOptOut;
 
-    public SusApcInserter(IOptions<Configuration> configuration, ILogger<SusApcInserter> logger, DataOptOut dataOptOut)
+    public SusApcInserter(IOptions<Configuration> configuration, ILogger<SusApcInserter> logger, IDataOptOut dataOptOut)
     {
         _logger = logger;
         _dataOptOut = dataOptOut;
