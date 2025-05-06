@@ -2,7 +2,7 @@
     <Sql>
 select
 	distinct
-		apc.GeneratedRecordIdentifier,
+		apc.HospitalProviderSpellNumber,
 		apc.NHSNumber,
 		p.ProcedureDateOPCS as PrimaryProcedureDate,
 		p.ProcedureOPCS as PrimaryProcedure
@@ -12,9 +12,9 @@ from omop_staging.sus_APC apc
 where NHSNumber is not null
 	</Sql>
 	<Explanations>
-		<Explanation columnName="GeneratedRecordIdentifier">
-			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
-			<Origin>CDS RECORD IDENTIFIER</Origin>
+		<Explanation columnName="HospitalProviderSpellNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
 		</Explanation>
 		<Explanation columnName="NHSNumber">
 			<Description>Patient NHS Number</Description>

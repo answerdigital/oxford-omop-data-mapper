@@ -7,7 +7,6 @@ namespace OmopTransformer.SUS.OP.DeviceExposure;
 [SourceQuery("SusOPDeviceExposure.xml")]
 internal class SusOPDeviceExposureRecord
 {
-    public string? GeneratedRecordIdentifier { get; set; }
     public string? HospitalSpellProviderNumber { get; set; }
     public string? NHSNumber { get; set; }
     public string? AppointmentDate { get; set; }

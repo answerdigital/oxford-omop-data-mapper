@@ -8,7 +8,6 @@ namespace OmopTransformer.SUS.AE.DeviceExposure.ProcedureDevice;
 internal class SusAEProcedureDeviceRecord
 {
     public string? AEAttendanceNumber { get; set; }
-    public string? GeneratedRecordIdentifier { get; set; }
     public string? NHSNumber { get; set; }
     public string? PrimaryProcedureDate { get; set; }
     public string? PrimaryProcedure { get; set; }
