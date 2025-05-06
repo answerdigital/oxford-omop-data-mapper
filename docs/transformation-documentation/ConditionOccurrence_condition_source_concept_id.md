@@ -46,6 +46,11 @@ Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be
 			inner join omop_staging.sus_APC apc
 				on d.MessageId = apc.MessageId
 		where apc.NHSNumber is not null
+		order by 
+			d.DiagnosisICD, 
+			apc.GeneratedRecordIdentifier,
+			apc.NHSNumber,
+			apc.CDSActivityDate
 	
 ```
 

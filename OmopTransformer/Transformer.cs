@@ -39,58 +39,70 @@ internal abstract class Transformer
         await EnsureConceptMapIsRendered(cancellationToken);
 
         var overallStopwatch = Stopwatch.StartNew();
+        var computeStopwatch = new Stopwatch();
         var getRecordsStopwatch = Stopwatch.StartNew();
+        var insertRecordsStopwatch = new Stopwatch();
 
-        var records = await _recordProvider.GetRecords<TSource>(cancellationToken);
+        int validRowCount = 0;
+        int invalidRowCount = 0;
+        int mappedRecordsCount = 0;
 
-        getRecordsStopwatch.Stop();
-
-        var mappedRecords =
-            records
-                .Select(record => new TTarget { Source = record })
-                .ToList();
-
-        var computeStopwatch = Stopwatch.StartNew();
-
-        Parallel.ForEach(mappedRecords, record =>
+        await foreach (var records in _recordProvider.GetRecordsBatched<TSource>(cancellationToken))
         {
-            cancellationToken.ThrowIfCancellationRequested();
-            _recordTransformer.Transform(record);
-        });
+            getRecordsStopwatch.Stop();
 
-        computeStopwatch.Stop();
+            var mappedRecords =
+                records
+                    .Select(record => new TTarget { Source = record })
+                    .ToList();
 
-        int validRowCount = mappedRecords.Count(r => r.IsValid);
+            computeStopwatch.Start();
 
-        var insertRecordsStopwatch = Stopwatch.StartNew();
+            Parallel.ForEach(mappedRecords, record =>
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                _recordTransformer.Transform(record);
+            });
 
-        if (_transformOptions.DryRun == false)
-        {
-            await insertRecord(mappedRecords, $"{_dataSource}:{name}", cancellationToken);
+            computeStopwatch.Stop();
 
-            await 
-                _runAnalysisRecorder
-                .InsertRunAnalysis(
-                    runId: runId,
-                    tableType: _dataSource,
-                    origin: $"{typeof(TTarget).Name}:{name}",
-                    validCount: validRowCount,
-                    invalidCount: mappedRecords.Count(r => r.IsValid == false),
-                    cancellationToken);
+            validRowCount += mappedRecords.Count(r => r.IsValid);
+            invalidRowCount += mappedRecords.Count(r => r.IsValid == false);
+
+            insertRecordsStopwatch.Start();
+
+            if (_transformOptions.DryRun == false)
+            {
+                await insertRecord(mappedRecords, $"{_dataSource}:{name}", cancellationToken);
+
+                await
+                    _runAnalysisRecorder
+                        .InsertRunAnalysis(
+                            runId: runId,
+                            tableType: _dataSource,
+                            origin: $"{typeof(TTarget).Name}:{name}",
+                            validCount: validRowCount,
+                            invalidCount: mappedRecords.Count(r => r.IsValid == false),
+                            cancellationToken);
+            }
+
+            mappedRecordsCount += mappedRecords.Count;
+
+            insertRecordsStopwatch.Stop();
+            getRecordsStopwatch.Start();
         }
 
-        insertRecordsStopwatch.Stop();
         overallStopwatch.Stop();
-
 
         string text =
             "--------------------------------" + Environment.NewLine +
             $"Transformation: {name}" + Environment.NewLine +
             $"Valid rows: {validRowCount}" + Environment.NewLine +
-            $"Overall time: {overallStopwatch}. {PerSecond(overallStopwatch, mappedRecords.Count)} per second" + Environment.NewLine +
-            $"Read time: {getRecordsStopwatch}. {PerSecond(getRecordsStopwatch, mappedRecords.Count)} per second" + Environment.NewLine +
+            $"Invalid rows: {invalidRowCount}" + Environment.NewLine +
+            $"Overall time: {overallStopwatch}. {PerSecond(overallStopwatch, mappedRecordsCount)} per second" + Environment.NewLine +
+            $"Read time: {getRecordsStopwatch}. {PerSecond(getRecordsStopwatch, mappedRecordsCount)} per second" + Environment.NewLine +
             $"Write time: {insertRecordsStopwatch}. {PerSecond(insertRecordsStopwatch, validRowCount)} per second" + Environment.NewLine +
-            $"CPU time : {computeStopwatch}. {PerSecond(computeStopwatch, mappedRecords.Count)} per second" + Environment.NewLine +
+            $"CPU time : {computeStopwatch}. {PerSecond(computeStopwatch, mappedRecordsCount)} per second" + Environment.NewLine +
             "--------------------------------" + Environment.NewLine;
 
         _logger.LogInformation(text);
