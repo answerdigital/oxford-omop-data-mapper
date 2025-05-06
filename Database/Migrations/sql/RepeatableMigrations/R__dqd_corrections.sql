@@ -131,6 +131,26 @@ WHERE cdmTable.CONDITION_CONCEPT_ID = 195500
 	AND p.gender_concept_id <> 8532 
 
 
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id
+WHERE cdmTable.CONDITION_CONCEPT_ID = 197236
+  	AND p.gender_concept_id <> 8532 
+
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id
+WHERE cdmTable.CONDITION_CONCEPT_ID = 199764
+  	AND p.gender_concept_id <> 8532 
+
+
+
+
+
 declare @deleteddeaths table
 (
 	person_id int not null
