@@ -29,7 +29,7 @@ internal class ObservationRecorder : IObservationRecorder
 
             dataTable.Columns.Add("nhs_number");
             dataTable.Columns.Add("RecordConnectionIdentifier");
-            dataTable.Columns.Add("HospitalProviderSpellNumber", typeof(int));
+            dataTable.Columns.Add("HospitalProviderSpellNumber", typeof(string));
             dataTable.Columns.Add("observation_concept_id", typeof(int));
             dataTable.Columns.Add("observation_date", typeof(DateTime));
             dataTable.Columns.Add("observation_datetime", typeof(DateTime));
