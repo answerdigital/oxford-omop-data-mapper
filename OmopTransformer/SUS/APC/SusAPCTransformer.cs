@@ -125,7 +125,7 @@ internal class SusAPCTransformer : Transformer
 
         await Transform<SusAPCDeviceExposureRecord, SusAPCDeviceExposure>(
             _deviceExposureRecorder.InsertUpdateDeviceExposure,
-            "SUS CCMDS Procedure Device Exposure",
+            "SUS APC Device Exposure",
             runId,
             cancellationToken);
 

@@ -158,13 +158,13 @@ internal class SusAETransformer : Transformer
 
         await Transform<SusAEInvestigationDeviceRecord, SusAEInvestigationDevice>(
            _deviceExposureRecorder.InsertUpdateDeviceExposure,
-           "SUS AE Device Exposure",
+           "SUS AE Investigation Device Exposure",
            runId,
            cancellationToken);
 
         await Transform<SusAEProcedureDeviceRecord, SusAEProcedureDevice>(
             _deviceExposureRecorder.InsertUpdateDeviceExposure,
-            "Sus AE Procedure Device",
+            "Sus AE Procedure Device Exposure",
             runId,
             cancellationToken);
 
