@@ -74,22 +74,25 @@ internal abstract class Transformer
             if (_transformOptions.DryRun == false)
             {
                 await insertRecord(mappedRecords, $"{_dataSource}:{name}", cancellationToken);
-
-                await
-                    _runAnalysisRecorder
-                        .InsertRunAnalysis(
-                            runId: runId,
-                            tableType: _dataSource,
-                            origin: $"{typeof(TTarget).Name}:{name}",
-                            validCount: validRowCount,
-                            invalidCount: mappedRecords.Count(r => r.IsValid == false),
-                            cancellationToken);
             }
 
             mappedRecordsCount += mappedRecords.Count;
 
             insertRecordsStopwatch.Stop();
             getRecordsStopwatch.Start();
+        }
+
+        if (_transformOptions.DryRun == false)
+        {
+            await
+                _runAnalysisRecorder
+                    .InsertRunAnalysis(
+                        runId: runId,
+                        tableType: _dataSource,
+                        origin: $"{typeof(TTarget).Name}:{name}",
+                        validCount: validRowCount,
+                        invalidCount: invalidRowCount,
+                        cancellationToken);
         }
 
         overallStopwatch.Stop();
