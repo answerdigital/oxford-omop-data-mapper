@@ -2,7 +2,7 @@
     <Sql>
 	select
 		distinct
-		op.HospitalProviderSpellNumber,
+		op.SUSgeneratedspellID,
 		op.NHSNumber,
 		op.AppointmentDate,
 		op.AppointmentTime,
@@ -18,9 +18,9 @@
 	</Explanation>
 
 	<Explanations>
-		<Explanation columnName="HospitalProviderSpellNumber">
-			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
-			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
+		<Explanation columnName="SUSgeneratedspellID">
+			<Description>System generated value spell id, this id is consistent across all records belonging to the same spell.</Description>
+			<Origin></Origin>
 		</Explanation>
 		<Explanation columnName="NHSNumber">
 			<Description>Patient NHS Number</Description>
