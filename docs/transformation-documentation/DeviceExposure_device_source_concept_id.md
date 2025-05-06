@@ -15,7 +15,7 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 ```sql
 	select
 		distinct
-		op.GeneratedRecordIdentifier,
+		op.HospitalProviderSpellNumber,
 		op.NHSNumber,
 		op.AppointmentDate,
 		op.AppointmentTime,
@@ -96,7 +96,7 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 ```sql
 select
 	distinct
-		apc.GeneratedRecordIdentifier,
+		apc.HospitalProviderSpellNumber,
 		apc.NHSNumber,
 		p.ProcedureDateOPCS as PrimaryProcedureDate,
 		p.ProcedureOPCS as PrimaryProcedure
@@ -136,7 +136,7 @@ Lookup discharge destination concept.
 ```sql
 	select
 		distinct
-			ae.GeneratedRecordIdentifier,
+			ae.AEAttendanceNumber,
 			ae.NHSNumber,
 			ae.CDSActivityDate as PrimaryProcedureDate,
 			p.AccidentAndEmergencyTreatment as PrimaryProcedure

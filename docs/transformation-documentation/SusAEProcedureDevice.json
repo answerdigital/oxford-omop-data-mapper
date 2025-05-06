@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.AEAttendanceNumber,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -42,7 +42,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.AEAttendanceNumber,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.AEAttendanceNumber,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,7 +78,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.AEAttendanceNumber,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -96,7 +96,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.AEAttendanceNumber,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -121,7 +121,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.AEAttendanceNumber,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": "\r\n\r\n|PrimaryProcedure|device_source_concept_id|notes|\r\n|------|-----|-----|\r\n|01|45768233|X-ray|\r\n|02|45768113|Electrocardiograph|\r\n|08|45768357|Microscope (histology)|\r\n|10|45768281|Ultrasound|\r\n|11|4234381|Magnetic Resonance Imaging (MRI)|\r\n|12|45762714|Computerised Tomography (CT)|\r\n|09|45762714|Computerised Tomography (CT)|\r\n|19|618883|Blood culture bottle|\r\n\r\n"
     },
     {
@@ -139,14 +139,25 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.AEAttendanceNumber,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "HospitalProviderSpellNumber",
       "operation_description": "Value copied from `AEAttendanceNumber`",
-      "dataSource": [],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.GeneratedRecordIdentifier,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
+      "dataSource": [
+        {
+          "name": "AEAttendanceNumber",
+          "description": "CDS specific hospital spell number that binds many episodes together.",
+          "origins": [
+            {
+              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\t\tae.AEAttendanceNumber,\n\t\t\tae.NHSNumber,\n\t\t\tae.CDSActivityDate as PrimaryProcedureDate,\n\t\t\tp.AccidentAndEmergencyTreatment as PrimaryProcedure\n\tfrom omop_staging.sus_AE ae\n\t\tinner join omop_staging.sus_AE_treatment p\n\t\t\ton AE.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     }
   ]

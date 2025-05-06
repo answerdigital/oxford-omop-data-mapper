@@ -12,7 +12,7 @@ has_toc: false
 ```sql
 	select
 		distinct
-		op.GeneratedRecordIdentifier,
+		op.HospitalProviderSpellNumber,
 		op.NHSNumber,
 		op.AppointmentDate,
 		op.AppointmentTime,
@@ -58,7 +58,7 @@ has_toc: false
 ```sql
 select
 	distinct
-		apc.GeneratedRecordIdentifier,
+		apc.HospitalProviderSpellNumber,
 		apc.NHSNumber,
 		p.ProcedureDateOPCS as PrimaryProcedureDate,
 		p.ProcedureOPCS as PrimaryProcedure
@@ -74,10 +74,12 @@ where NHSNumber is not null
 ### SUS AE Procedure Device Exposure
 * Value copied from `AEAttendanceNumber`
 
+* `AEAttendanceNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
+
 ```sql
 	select
 		distinct
-			ae.GeneratedRecordIdentifier,
+			ae.AEAttendanceNumber,
 			ae.NHSNumber,
 			ae.CDSActivityDate as PrimaryProcedureDate,
 			p.AccidentAndEmergencyTreatment as PrimaryProcedure

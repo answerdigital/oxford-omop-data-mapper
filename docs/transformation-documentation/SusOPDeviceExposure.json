@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\top.HospitalProviderSpellNumber,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -42,7 +42,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\top.HospitalProviderSpellNumber,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -70,7 +70,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\top.HospitalProviderSpellNumber,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -88,7 +88,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\top.HospitalProviderSpellNumber,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -116,7 +116,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\top.HospitalProviderSpellNumber,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -141,7 +141,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\top.HospitalProviderSpellNumber,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -159,14 +159,14 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\top.HospitalProviderSpellNumber,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "HospitalProviderSpellNumber",
       "operation_description": "Value copied from `HospitalSpellProviderNumber`",
       "dataSource": [],
-      "query": "\n\tselect\n\t\tdistinct\n\t\top.GeneratedRecordIdentifier,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
+      "query": "\n\tselect\n\t\tdistinct\n\t\top.HospitalProviderSpellNumber,\n\t\top.NHSNumber,\n\t\top.AppointmentDate,\n\t\top.AppointmentTime,\n\t\tp.ProcedureOPCS as PrimaryProcedure\n\tfrom omop_staging.sus_OP op\n\t\tinner join omop_staging.sus_OP_OPCSProcedure p\n\t\ton op.MessageId = p.MessageId\n\twhere NHSNumber is not null\n\t\tand AttendedorDidNotAttend in ('5','6')\n\t",
       "lookup_table_markdown": null
     }
   ]

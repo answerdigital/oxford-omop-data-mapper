@@ -18,10 +18,6 @@
 	</Explanation>
 
 	<Explanations>
-		<Explanation columnName="GeneratedRecordIdentifier">
-			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
-			<Origin>CDS RECORD IDENTIFIER</Origin>
-		</Explanation>
 		<Explanation columnName="HospitalProviderSpellNumber">
 			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
 			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
