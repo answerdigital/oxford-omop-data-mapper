@@ -14,7 +14,7 @@ has_toc: false
 ```sql
 	select
 		distinct
-		op.HospitalProviderSpellNumber,
+		op.SUSgeneratedspellID,
 		op.NHSNumber,
 		op.AppointmentDate,
 		op.AppointmentTime,

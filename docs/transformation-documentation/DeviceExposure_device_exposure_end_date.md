@@ -15,7 +15,7 @@ Converts text to dates.
 ```sql
 	select
 		distinct
-		op.HospitalProviderSpellNumber,
+		op.SUSgeneratedspellID,
 		op.NHSNumber,
 		op.AppointmentDate,
 		op.AppointmentTime,

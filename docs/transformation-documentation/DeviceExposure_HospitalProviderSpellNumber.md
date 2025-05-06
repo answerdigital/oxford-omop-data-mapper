@@ -7,12 +7,14 @@ has_toc: false
 ---
 # HospitalProviderSpellNumber
 ### SUS OP Device Exposure
-* Value copied from `HospitalSpellProviderNumber`
+* Value copied from `SUSgeneratedspellID`
+
+* `SUSgeneratedspellID` System generated value spell id, this id is consistent across all records belonging to the same spell. []()
 
 ```sql
 	select
 		distinct
-		op.HospitalProviderSpellNumber,
+		op.SUSgeneratedspellID,
 		op.NHSNumber,
 		op.AppointmentDate,
 		op.AppointmentTime,

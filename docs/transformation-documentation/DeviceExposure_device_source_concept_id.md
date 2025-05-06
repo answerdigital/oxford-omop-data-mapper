@@ -15,7 +15,7 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 ```sql
 	select
 		distinct
-		op.HospitalProviderSpellNumber,
+		op.SUSgeneratedspellID,
 		op.NHSNumber,
 		op.AppointmentDate,
 		op.AppointmentTime,
