@@ -59,7 +59,7 @@ internal class RecordProvider : IRecordProvider
 
                 var resultsList = batchResults.ToList();
 
-                if (resultsList.Count == 0)
+                if (resultsList.Count is 0 or < batchSize)
                 {
                     hasMoreResults = false;
                 }
