@@ -51,27 +51,6 @@ internal class Program
 
     private static async Task Main(string[] args)
     {
-        foreach (var VARIABLE in Directory.GetDirectories("/"))
-        {
-            Console.WriteLine(VARIABLE);
-        }
-
-        Console.WriteLine("----------");
-
-        foreach (var VARIABLE in Directory.GetDirectories("/app"))
-        {
-            Console.WriteLine(VARIABLE);
-        }
-
-        Console.WriteLine("----------");
-
-        foreach (var VARIABLE in Directory.GetDirectories("/app/opt_out"))
-        {
-            Console.WriteLine(VARIABLE);
-        }
-
-        Console.WriteLine("----------");
-
         var builder = Host.CreateApplicationBuilder(args);
 
         var result = Parser.Default.ParseArguments<StagingOptions, DocumentationOptions, TransformOptions, FinaliseOptions>(args);
@@ -109,6 +88,9 @@ internal class Program
                 switch (stagingOptions.Action.ToLower())
                 {
                     case "load":
+                        Console.WriteLine("opt out length", File.ReadAllText(stagingOptions.AllowedListNhsNumber));
+                        return;
+
                         builder.Services.AddTransient<ICosdStaging, CosdStaging>();
                         builder.Services.AddHostedService<CosdLoadStagingHostedService>();
 
