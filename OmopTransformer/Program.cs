@@ -89,7 +89,6 @@ internal class Program
                 {
                     case "load":
                         Console.WriteLine("opt out length", File.ReadAllText(stagingOptions.AllowedListNhsNumber));
-                        return;
 
                         builder.Services.AddTransient<ICosdStaging, CosdStaging>();
                         builder.Services.AddHostedService<CosdLoadStagingHostedService>();
