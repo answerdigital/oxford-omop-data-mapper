@@ -88,10 +88,10 @@ internal class Program
                 switch (stagingOptions.Action.ToLower())
                 {
                     case "load":
+                        Console.WriteLine("opt out length", File.ReadAllText(stagingOptions.AllowedListNhsNumber));
+
                         builder.Services.AddTransient<ICosdStaging, CosdStaging>();
                         builder.Services.AddHostedService<CosdLoadStagingHostedService>();
-
-                        Console.WriteLine("opt out length", File.ReadAllText(stagingOptions.AllowedListNhsNumber));
 
                         break;
                     case "clear":
