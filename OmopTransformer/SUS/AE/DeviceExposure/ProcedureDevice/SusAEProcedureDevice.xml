@@ -2,7 +2,7 @@
     <Sql>
 	select
 		distinct
-			ae.GeneratedRecordIdentifier,
+			ae.AEAttendanceNumber,
 			ae.NHSNumber,
 			ae.CDSActivityDate as PrimaryProcedureDate,
 			p.AccidentAndEmergencyTreatment as PrimaryProcedure
@@ -12,9 +12,9 @@
 	where NHSNumber is not null
 	</Sql>
 	<Explanations>
-		<Explanation columnName="GeneratedRecordIdentifier">
-			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
-			<Origin>CDS RECORD IDENTIFIER</Origin>
+		<Explanation columnName="AEAttendanceNumber">
+			<Description>CDS specific hospital spell number that binds many episodes together.</Description>
+			<Origin>HOSPITAL PROVIDER SPELL NUMBER</Origin>
 		</Explanation>
 		<Explanation columnName="NHSNumber">
 			<Description>Patient NHS Number</Description>

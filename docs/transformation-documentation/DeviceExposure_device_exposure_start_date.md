@@ -15,7 +15,7 @@ Converts text to dates.
 ```sql
 	select
 		distinct
-		op.GeneratedRecordIdentifier,
+		op.SUSgeneratedspellID,
 		op.NHSNumber,
 		op.AppointmentDate,
 		op.AppointmentTime,
@@ -65,7 +65,7 @@ Converts text to dates.
 ```sql
 select
 	distinct
-		apc.GeneratedRecordIdentifier,
+		apc.HospitalProviderSpellNumber,
 		apc.NHSNumber,
 		p.ProcedureDateOPCS as PrimaryProcedureDate,
 		p.ProcedureOPCS as PrimaryProcedure
@@ -87,7 +87,7 @@ Converts text to dates.
 ```sql
 	select
 		distinct
-			ae.GeneratedRecordIdentifier,
+			ae.AEAttendanceNumber,
 			ae.NHSNumber,
 			ae.CDSActivityDate as PrimaryProcedureDate,
 			p.AccidentAndEmergencyTreatment as PrimaryProcedure
