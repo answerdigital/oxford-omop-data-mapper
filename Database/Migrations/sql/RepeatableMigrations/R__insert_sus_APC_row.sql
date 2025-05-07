@@ -12,6 +12,6 @@ begin
 
 insert into omop_staging.sus_APC
 select *
-from @rows;
+from @rows r
 
 end

@@ -12,6 +12,7 @@ begin
 
 insert into omop_staging.sus_AE_diagnosis
 select *
-from @rows;
+from @rows r
+where exists (select * from omop_staging.sus_AE where MessageId = r.MessageId)
 
 end

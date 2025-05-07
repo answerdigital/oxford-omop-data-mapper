@@ -12,7 +12,7 @@ begin
 
 insert into omop_staging.sus_OP_OPCSProcedure
 select *
-from @rows;
-
+from @rows r
+where exists (select * from omop_staging.sus_OP where MessageId = r.MessageId)
 
 end
