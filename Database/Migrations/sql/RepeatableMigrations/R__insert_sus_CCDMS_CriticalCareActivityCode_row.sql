@@ -12,6 +12,7 @@ begin
 
 insert into omop_staging.sus_CCMDS_CriticalCareActivityCode
 select *
-from @rows;
+from @rows r
+where exists (select * from omop_staging.sus_CCMDS where MessageId = r.MessageId)
 
 end
