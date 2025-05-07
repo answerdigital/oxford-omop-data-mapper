@@ -90,9 +90,6 @@ internal class Program
                     case "load":
                         builder.Services.AddTransient<ICosdStaging, CosdStaging>();
                         builder.Services.AddHostedService<CosdLoadStagingHostedService>();
-
-                        Console.WriteLine("opt out length", File.ReadAllText(stagingOptions.AllowedListNhsNumber));
-
                         break;
                     case "clear":
                         builder.Services.AddHostedService<CosdClearStagingHostedService>();
