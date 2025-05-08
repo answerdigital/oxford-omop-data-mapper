@@ -23,7 +23,12 @@ Converts text to dates.
 		inner join [omop_staging].[sus_OP] op
 			on d.MessageId = op.MessageId
 	where op.NHSNumber is not null
-	and AttendedorDidNotAttend in ('5','6')
+		and AttendedorDidNotAttend in ('5','6')
+	order by
+		d.DiagnosisICD,
+		op.GeneratedRecordIdentifier,
+		op.NHSNumber,
+		op.CDSActivityDate
 	
 ```
 
@@ -46,6 +51,11 @@ Converts text to dates.
 			inner join omop_staging.sus_APC apc
 				on d.MessageId = apc.MessageId
 		where apc.NHSNumber is not null
+		order by 
+			d.DiagnosisICD, 
+			apc.GeneratedRecordIdentifier,
+			apc.NHSNumber,
+			apc.CDSActivityDate
 	
 ```
 
@@ -68,6 +78,11 @@ Converts text to dates.
 		inner join omop_staging.sus_AE ae
 			on d.MessageId = ae.MessageId
 	where ae.NHSNumber is not null
+	order by
+		d.AccidentAndEmergencyDiagnosis,
+		ae.GeneratedRecordIdentifier,
+		ae.NHSNumber,
+		ae.CDSActivityDate
 	
 ```
 

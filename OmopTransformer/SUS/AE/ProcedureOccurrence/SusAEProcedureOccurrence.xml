@@ -1,15 +1,20 @@
 ﻿<Query>
     <Sql>
-	select
-		distinct
+		select
+			distinct
+				ae.GeneratedRecordIdentifier,
+				ae.NHSNumber,
+				ae.CDSActivityDate as PrimaryProcedureDate,
+				p.AccidentAndEmergencyTreatment as PrimaryProcedure
+		from omop_staging.sus_AE ae
+			inner join omop_staging.sus_AE_treatment p
+				on AE.MessageId = p.MessageId
+		where NHSNumber is not null
+		order by
 			ae.GeneratedRecordIdentifier,
 			ae.NHSNumber,
-			ae.CDSActivityDate as PrimaryProcedureDate,
-			p.AccidentAndEmergencyTreatment as PrimaryProcedure
-	from omop_staging.sus_AE ae
-		inner join omop_staging.sus_AE_treatment p
-			on AE.MessageId = p.MessageId
-	where NHSNumber is not null
+			ae.CDSActivityDate,
+			p.AccidentAndEmergencyTreatment
 	</Sql>
 	<Explanations>
 		<Explanation columnName="GeneratedRecordIdentifier">

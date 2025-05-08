@@ -1,19 +1,31 @@
 ﻿<Query>
     <Sql>
 
-		select distinct
-				apc.NHSNumber,
-				apc.GeneratedRecordIdentifier,
-				cc.CriticalCareStartDate as ProcedureOccurrenceStartDate,
-				coalesce(cc.CriticalCareStartTime, '00:00:00') as ProcedureOccurrenceStartTime,
-				coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as ProcedureOccurrenceEndDate,
-				coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as ProcedureOccurrenceEndTime,
-				d.CriticalCareActivityCode as ProcedureSourceValue
-		from omop_staging.sus_CCMDS_CriticalCareActivityCode d
-		inner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId
-		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
-		where apc.NHSNumber is not null
+	select 
+		distinct
+			apc.NHSNumber,
+			apc.GeneratedRecordIdentifier,
+			cc.CriticalCareStartDate as ProcedureOccurrenceStartDate,
+			coalesce(cc.CriticalCareStartTime, '00:00:00') as ProcedureOccurrenceStartTime,
+			coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as ProcedureOccurrenceEndDate,
+			coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as ProcedureOccurrenceEndTime,
+			d.CriticalCareActivityCode as ProcedureSourceValue
+	from omop_staging.sus_CCMDS_CriticalCareActivityCode d
+		inner join omop_staging.sus_CCMDS cc 
+			on d.MessageId = cc.MessageId
+		inner join omop_staging.sus_APC apc 
+			on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+	where apc.NHSNumber is not null
 		and d.CriticalCareActivityCode != '99'  -- No Defined Critical Care Activity
+	order by 
+		apc.NHSNumber,
+		apc.GeneratedRecordIdentifier,
+		cc.CriticalCareStartDate,
+		cc.CriticalCareStartTime,
+		cc.CriticalCarePeriodDischargeDate, 
+		cc.EventDate,
+		cc.CriticalCarePeriodDischargeTime, 
+		d.CriticalCareActivityCode
 
 	</Sql>
 
