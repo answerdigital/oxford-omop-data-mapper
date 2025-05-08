@@ -10,6 +10,11 @@
 		inner join omop_staging.sus_AE ae
 			on d.MessageId = ae.MessageId
 	where ae.NHSNumber is not null
+	order by
+		d.AccidentAndEmergencyDiagnosis,
+		ae.GeneratedRecordIdentifier,
+		ae.NHSNumber,
+		ae.CDSActivityDate
 	</Sql>
     <Explanations>
 		<Explanation columnName="AccidentAndEmergencyDiagnosis">

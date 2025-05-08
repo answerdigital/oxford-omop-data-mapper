@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\norder by\n\tapc.GeneratedRecordIdentifier,\n\tapc.NHSNumber,\n\tp.ProcedureDateOPCS,\n\tp.ProcedureOPCS\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -42,7 +42,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\norder by\n\tapc.GeneratedRecordIdentifier,\n\tapc.NHSNumber,\n\tp.ProcedureDateOPCS,\n\tp.ProcedureOPCS\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\norder by\n\tapc.GeneratedRecordIdentifier,\n\tapc.NHSNumber,\n\tp.ProcedureDateOPCS,\n\tp.ProcedureOPCS\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,7 +78,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\norder by\n\tapc.GeneratedRecordIdentifier,\n\tapc.NHSNumber,\n\tp.ProcedureDateOPCS,\n\tp.ProcedureOPCS\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -96,7 +96,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\norder by\n\tapc.GeneratedRecordIdentifier,\n\tapc.NHSNumber,\n\tp.ProcedureDateOPCS,\n\tp.ProcedureOPCS\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -121,7 +121,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\norder by\n\tapc.GeneratedRecordIdentifier,\n\tapc.NHSNumber,\n\tp.ProcedureDateOPCS,\n\tp.ProcedureOPCS\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -139,7 +139,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\norder by\n\tapc.GeneratedRecordIdentifier,\n\tapc.NHSNumber,\n\tp.ProcedureDateOPCS,\n\tp.ProcedureOPCS\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -157,7 +157,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\norder by\n\tapc.GeneratedRecordIdentifier,\n\tapc.NHSNumber,\n\tp.ProcedureDateOPCS,\n\tp.ProcedureOPCS\n\t",
       "lookup_table_markdown": null
     }
   ]

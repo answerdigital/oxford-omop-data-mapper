@@ -15,16 +15,22 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 ```sql
 	select
 		distinct
-		op.GeneratedRecordIdentifier,
-		op.NHSNumber,
-		op.AppointmentDate,
-		op.AppointmentTime,
-		p.ProcedureOPCS as PrimaryProcedure
+			op.GeneratedRecordIdentifier,
+			op.NHSNumber,
+			op.AppointmentDate,
+			op.AppointmentTime,
+			p.ProcedureOPCS as PrimaryProcedure
 	from omop_staging.sus_OP op
 		inner join omop_staging.sus_OP_OPCSProcedure p
 		on op.MessageId = p.MessageId
 	where NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
+	order by 
+		op.GeneratedRecordIdentifier,
+		op.NHSNumber,
+		op.AppointmentDate,
+		op.AppointmentTime,
+		p.ProcedureOPCS
 	
 ```
 
@@ -100,19 +106,31 @@ Notes
 * `ProcedureSourceValue` Used to look up the Procedure code. [CRITICAL CARE ACTIVITY CODE](https://www.datadictionary.nhs.uk/data_elements/critical_care_activity_code.html)
 
 ```sql
-		select distinct
-				apc.NHSNumber,
-				apc.GeneratedRecordIdentifier,
-				cc.CriticalCareStartDate as ProcedureOccurrenceStartDate,
-				coalesce(cc.CriticalCareStartTime, '00:00:00') as ProcedureOccurrenceStartTime,
-				coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as ProcedureOccurrenceEndDate,
-				coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as ProcedureOccurrenceEndTime,
-				d.CriticalCareActivityCode as ProcedureSourceValue
-		from omop_staging.sus_CCMDS_CriticalCareActivityCode d
-		inner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId
-		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
-		where apc.NHSNumber is not null
+	select 
+		distinct
+			apc.NHSNumber,
+			apc.GeneratedRecordIdentifier,
+			cc.CriticalCareStartDate as ProcedureOccurrenceStartDate,
+			coalesce(cc.CriticalCareStartTime, '00:00:00') as ProcedureOccurrenceStartTime,
+			coalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as ProcedureOccurrenceEndDate,
+			coalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as ProcedureOccurrenceEndTime,
+			d.CriticalCareActivityCode as ProcedureSourceValue
+	from omop_staging.sus_CCMDS_CriticalCareActivityCode d
+		inner join omop_staging.sus_CCMDS cc 
+			on d.MessageId = cc.MessageId
+		inner join omop_staging.sus_APC apc 
+			on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+	where apc.NHSNumber is not null
 		and d.CriticalCareActivityCode != '99'  -- No Defined Critical Care Activity
+	order by 
+		apc.NHSNumber,
+		apc.GeneratedRecordIdentifier,
+		cc.CriticalCareStartDate,
+		cc.CriticalCareStartTime,
+		cc.CriticalCarePeriodDischargeDate, 
+		cc.EventDate,
+		cc.CriticalCarePeriodDischargeTime, 
+		d.CriticalCareActivityCode
 
 	
 ```
@@ -136,6 +154,11 @@ from omop_staging.sus_APC apc
 	inner join omop_staging.sus_OPCSProcedure p
 		on apc.MessageId = p.MessageId
 where NHSNumber is not null
+order by
+	apc.GeneratedRecordIdentifier,
+	apc.NHSNumber,
+	p.ProcedureDateOPCS,
+	p.ProcedureOPCS
 	
 ```
 
@@ -269,16 +292,21 @@ Notes
 			 [ACCIDENT and EMERGENCY CLINICAL CODES]()
 
 ```sql
-	select
-		distinct
+		select
+			distinct
+				ae.GeneratedRecordIdentifier,
+				ae.NHSNumber,
+				ae.CDSActivityDate as PrimaryProcedureDate,
+				p.AccidentAndEmergencyTreatment as PrimaryProcedure
+		from omop_staging.sus_AE ae
+			inner join omop_staging.sus_AE_treatment p
+				on AE.MessageId = p.MessageId
+		where NHSNumber is not null
+		order by
 			ae.GeneratedRecordIdentifier,
 			ae.NHSNumber,
-			ae.CDSActivityDate as PrimaryProcedureDate,
-			p.AccidentAndEmergencyTreatment as PrimaryProcedure
-	from omop_staging.sus_AE ae
-		inner join omop_staging.sus_AE_treatment p
-			on AE.MessageId = p.MessageId
-	where NHSNumber is not null
+			ae.CDSActivityDate,
+			p.AccidentAndEmergencyTreatment
 	
 ```
 

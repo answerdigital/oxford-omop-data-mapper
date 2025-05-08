@@ -23,7 +23,12 @@ Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be
 		inner join [omop_staging].[sus_OP] op
 			on d.MessageId = op.MessageId
 	where op.NHSNumber is not null
-	and AttendedorDidNotAttend in ('5','6')
+		and AttendedorDidNotAttend in ('5','6')
+	order by
+		d.DiagnosisICD,
+		op.GeneratedRecordIdentifier,
+		op.NHSNumber,
+		op.CDSActivityDate
 	
 ```
 
@@ -325,6 +330,11 @@ Notes
 		inner join omop_staging.sus_AE ae
 			on d.MessageId = ae.MessageId
 	where ae.NHSNumber is not null
+	order by
+		d.AccidentAndEmergencyDiagnosis,
+		ae.GeneratedRecordIdentifier,
+		ae.NHSNumber,
+		ae.CDSActivityDate
 	
 ```
 

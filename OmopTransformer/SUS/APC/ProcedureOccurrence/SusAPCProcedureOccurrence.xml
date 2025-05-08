@@ -10,6 +10,11 @@ from omop_staging.sus_APC apc
 	inner join omop_staging.sus_OPCSProcedure p
 		on apc.MessageId = p.MessageId
 where NHSNumber is not null
+order by
+	apc.GeneratedRecordIdentifier,
+	apc.NHSNumber,
+	p.ProcedureDateOPCS,
+	p.ProcedureOPCS
 	</Sql>
 	<Explanations>
 		<Explanation columnName="GeneratedRecordIdentifier">

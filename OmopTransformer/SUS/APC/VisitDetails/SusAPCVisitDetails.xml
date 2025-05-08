@@ -1,20 +1,33 @@
 ﻿<Query>
     <Sql>
 
-	select
-		apc.NHSNumber,
-		apc.HospitalProviderSpellNumber,
-
-		coalesce(apc.StartDateConsultantEpisode, apc.StartDateHospitalProviderSpell, apc.CDSActivityDate) as VisitStartDate,
-		coalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,
-		coalesce(apc.EndDateConsultantEpisode, apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate) as VisitEndDate,
-		coalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,
-
-		apc.SourceOfAdmissionHospitalProviderSpell as SourceofAdmissionCode,
-		apc.DischargeDestinationHospitalProviderSpell as DischargeDestinationCode
-
-	from omop_staging.sus_APC apc
-	where apc.NHSNumber is not null
+		with records as (
+			select
+				apc.NHSNumber,
+				apc.HospitalProviderSpellNumber,
+		
+				coalesce(apc.StartDateConsultantEpisode, apc.StartDateHospitalProviderSpell, apc.CDSActivityDate) as VisitStartDate,
+				coalesce(apc.StartTimeEpisode, apc.StartTimeHospitalProviderSpell, '000000') as VisitStartTime,
+				coalesce(apc.EndDateConsultantEpisode, apc.DischargeDateFromHospitalProviderSpell, apc.CDSActivityDate) as VisitEndDate,
+				coalesce(apc.EndTimeEpisode, apc.DischargeTimeHospitalProviderSpell, '000000') as VisitEndTime,
+		
+				apc.SourceOfAdmissionHospitalProviderSpell as SourceofAdmissionCode,
+				apc.DischargeDestinationHospitalProviderSpell as DischargeDestinationCode
+		
+			from omop_staging.sus_APC apc
+			where apc.NHSNumber is not null
+		)
+		select *
+		from records
+		order by 
+			NHSNumber, 
+			HospitalProviderSpellNumber, 
+			VisitStartDate, 
+			VisitStartTime, 
+			VisitEndDate, 
+			VisitEndTime, 
+			SourceofAdmissionCode, 
+			DischargeDestinationCode
 
 	</Sql>
 
