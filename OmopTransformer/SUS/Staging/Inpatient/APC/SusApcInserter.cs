@@ -10,10 +10,12 @@ internal class SusApcInserter : ISusAPCInserter
 {
     private readonly Configuration _configuration;
     private readonly ILogger<SusApcInserter> _logger;
+    private readonly IDataOptOut _dataOptOut;
 
-    public SusApcInserter(IOptions<Configuration> configuration, ILogger<SusApcInserter> logger)
+    public SusApcInserter(IOptions<Configuration> configuration, ILogger<SusApcInserter> logger, IDataOptOut dataOptOut)
     {
         _logger = logger;
+        _dataOptOut = dataOptOut;
         _configuration = configuration.Value;
     }
 
@@ -89,6 +91,8 @@ internal class SusApcInserter : ISusAPCInserter
         await InsertOverseasVisitor(rowsList.SelectMany(row => row.OverseasVisitors).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
+
+        _dataOptOut.PrintStats();
     }
 
     private async Task InsertAPC(IReadOnlyCollection<APCRow> rows, IDbConnection connection)
@@ -312,6 +316,9 @@ internal class SusApcInserter : ISusAPCInserter
 
         foreach (var row in rows)
         {
+            if (_dataOptOut.PatientAllowed(row.NHSNumber) == false)
+                continue;
+
             dataTable.Rows.Add(
                 row.MessageId,
                 row.GeneratedRecordIdentifier,

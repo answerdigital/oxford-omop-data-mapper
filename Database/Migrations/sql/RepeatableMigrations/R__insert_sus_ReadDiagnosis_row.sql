@@ -12,6 +12,7 @@ begin
 
 insert into omop_staging.sus_ReadDiagnosis
 select *
-from @rows;
+from @rows r
+where exists (select * from omop_staging.sus_APC where MessageId = r.MessageId)
 
 end
