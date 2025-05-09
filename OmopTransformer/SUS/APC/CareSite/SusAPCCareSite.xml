@@ -1,35 +1,34 @@
 ﻿<Query>
     <Sql>
-	with 
-	counts as ( 
-		select 
+with counts as 
+( 
+	select 
 		SiteCodeOfTreatmentAtEpisodeStartDate, 
 		MainSpecialtyCode, 
 		count(*) as cnt 
-		from omop_staging.sus_APC 
-		where SiteCodeOfTreatmentAtEpisodeStartDate is not null 
+	from omop_staging.sus_APC 
+	where SiteCodeOfTreatmentAtEpisodeStartDate is not null 
 		and MainSpecialtyCode is not null 
-		group by 
+	group by 
 		SiteCodeOfTreatmentAtEpisodeStartDate, 
 		MainSpecialtyCode 
-	), 
-
-	ranked as ( 
-		select 
+), ranked as ( 
+	select 
 		SiteCodeOfTreatmentAtEpisodeStartDate, 
 		MainSpecialtyCode, 
 		cnt, 
-		row_number() over ( 
-		partition by SiteCodeOfTreatmentAtEpisodeStartDate 
-		order by cnt desc, MainSpecialtyCode 
-		) as rnk 
-		from counts 
-	)
-	select 
-		SiteCodeOfTreatmentAtEpisodeStartDate, 
-		MainSpecialtyCode 
-	from ranked 
-	where rnk = 1;
+		row_number() over (partition by SiteCodeOfTreatmentAtEpisodeStartDate order by cnt desc, MainSpecialtyCode 
+	) as rnk 
+	from counts 
+)
+select 
+	SiteCodeOfTreatmentAtEpisodeStartDate, 
+	MainSpecialtyCode 
+from ranked 
+where rnk = 1
+order by 
+	SiteCodeOfTreatmentAtEpisodeStartDate, 
+	MainSpecialtyCode 
 	</Sql>
     <Explanations>
 		<Explanation columnName="SiteCodeOfTreatmentAtEpisodeStartDate">

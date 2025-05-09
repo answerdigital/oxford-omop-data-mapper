@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nwith \ncounts as ( \n\tselect \n\tSiteCodeofTreatment, \n\tMainSpecialtyCode, \n\tcount(*) as cnt \n\tfrom omop_staging.sus_OP \n\twhere SiteCodeofTreatment is not null \n\tand MainSpecialtyCode is not null \n\tgroup by \n\tSiteCodeofTreatment, \n\tMainSpecialtyCode \n), \n\nranked as ( \n\tselect \n\tSiteCodeofTreatment, \n\tMainSpecialtyCode, \n\tcnt, \n\trow_number() over ( \n\tpartition by SiteCodeofTreatment \n\torder by cnt desc, MainSpecialtyCode \n\t) as rnk \n\tfrom counts \n)\nselect \n\tSiteCodeofTreatment, \n\tMainSpecialtyCode \nfrom ranked \nwhere rnk = 1;\n\t",
+      "query": "\nwith counts as ( \n\tselect \n\t\tSiteCodeofTreatment, \n\t\tMainSpecialtyCode, \n\t\tcount(*) as cnt \n\tfrom omop_staging.sus_OP \n\twhere SiteCodeofTreatment is not null \n\t\tand MainSpecialtyCode is not null \n\tgroup by \n\t\tSiteCodeofTreatment, \n\t\tMainSpecialtyCode \n),  ranked as ( \n\tselect \n\t\tSiteCodeofTreatment, \n\t\tMainSpecialtyCode, \n\t\tcnt, \n\t\trow_number() over (partition by SiteCodeofTreatment order by cnt desc, MainSpecialtyCode \n\t) as rnk \n\tfrom counts \n)\nselect \n\tSiteCodeofTreatment, \n\tMainSpecialtyCode \nfrom ranked \nwhere rnk = 1\norder by \n\tSiteCodeofTreatment, \n\tMainSpecialtyCode \n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\nwith \ncounts as ( \n\tselect \n\tSiteCodeofTreatment, \n\tMainSpecialtyCode, \n\tcount(*) as cnt \n\tfrom omop_staging.sus_OP \n\twhere SiteCodeofTreatment is not null \n\tand MainSpecialtyCode is not null \n\tgroup by \n\tSiteCodeofTreatment, \n\tMainSpecialtyCode \n), \n\nranked as ( \n\tselect \n\tSiteCodeofTreatment, \n\tMainSpecialtyCode, \n\tcnt, \n\trow_number() over ( \n\tpartition by SiteCodeofTreatment \n\torder by cnt desc, MainSpecialtyCode \n\t) as rnk \n\tfrom counts \n)\nselect \n\tSiteCodeofTreatment, \n\tMainSpecialtyCode \nfrom ranked \nwhere rnk = 1;\n\t",
+      "query": "\nwith counts as ( \n\tselect \n\t\tSiteCodeofTreatment, \n\t\tMainSpecialtyCode, \n\t\tcount(*) as cnt \n\tfrom omop_staging.sus_OP \n\twhere SiteCodeofTreatment is not null \n\t\tand MainSpecialtyCode is not null \n\tgroup by \n\t\tSiteCodeofTreatment, \n\t\tMainSpecialtyCode \n),  ranked as ( \n\tselect \n\t\tSiteCodeofTreatment, \n\t\tMainSpecialtyCode, \n\t\tcnt, \n\t\trow_number() over (partition by SiteCodeofTreatment order by cnt desc, MainSpecialtyCode \n\t) as rnk \n\tfrom counts \n)\nselect \n\tSiteCodeofTreatment, \n\tMainSpecialtyCode \nfrom ranked \nwhere rnk = 1\norder by \n\tSiteCodeofTreatment, \n\tMainSpecialtyCode \n\t",
       "lookup_table_markdown": null
     },
     {

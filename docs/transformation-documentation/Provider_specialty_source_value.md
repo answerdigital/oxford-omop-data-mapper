@@ -14,12 +14,10 @@ has_toc: false
 ```sql
 with counts as (
 	select 
-	ConsultantCode,
-	MainSpecialtyCode,
-	count(*) as SpecialtyFrequency,
-	row_number() over (
-	partition by ConsultantCode 
-	order by count(*) desc, MainSpecialtyCode
+		ConsultantCode,
+		MainSpecialtyCode,
+		count(*) as SpecialtyFrequency,
+		row_number() over (partition by ConsultantCode order by count(*) desc, MainSpecialtyCode
 ) rnk
 from (
 	select
@@ -34,8 +32,11 @@ from (
 select 
 	ConsultantCode,
 	MainSpecialtyCode
-	from counts
-	where rnk = 1;
+from counts
+where rnk = 1
+order by
+	ConsultantCode,
+	MainSpecialtyCode
 	
 ```
 
@@ -49,28 +50,32 @@ select
 ```sql
 with counts as (
 	select 
-	ConsultantCode,
-	MainSpecialtyCode,
-	count(*) as SpecialtyFrequency,
-	row_number() over (
-	partition by ConsultantCode 
-	order by count(*) desc, MainSpecialtyCode
-) rnk
-from (
+		ConsultantCode,
+		MainSpecialtyCode,
+		count(*) as SpecialtyFrequency,
+		row_number() over (partition by ConsultantCode order by count(*) desc, 
+		MainSpecialtyCode
+) 
+rnk
+from 
+(
 	select
-	ConsultantCode,
-	MainSpecialtyCode
+		ConsultantCode,
+		MainSpecialtyCode
 	from [omop_staging].[sus_APC]
 	where MainSpecialtyCode is not null
-	and ConsultantCode is not null
+		and ConsultantCode is not null
 ) grouped
 	group by ConsultantCode, MainSpecialtyCode
 )
 select 
 	ConsultantCode,
 	MainSpecialtyCode
-	from counts
-	where rnk = 1;
+from counts
+where rnk = 1
+order by 
+	ConsultantCode,
+	MainSpecialtyCode
 	
 ```
 

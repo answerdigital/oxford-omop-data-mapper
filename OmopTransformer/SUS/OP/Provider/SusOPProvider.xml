@@ -2,12 +2,10 @@
     <Sql>
 with counts as (
 	select 
-	ConsultantCode,
-	MainSpecialtyCode,
-	count(*) as SpecialtyFrequency,
-	row_number() over (
-	partition by ConsultantCode 
-	order by count(*) desc, MainSpecialtyCode
+		ConsultantCode,
+		MainSpecialtyCode,
+		count(*) as SpecialtyFrequency,
+		row_number() over (partition by ConsultantCode order by count(*) desc, MainSpecialtyCode
 ) rnk
 from (
 	select
@@ -22,8 +20,11 @@ from (
 select 
 	ConsultantCode,
 	MainSpecialtyCode
-	from counts
-	where rnk = 1;
+from counts
+where rnk = 1
+order by
+	ConsultantCode,
+	MainSpecialtyCode
 	</Sql>
     <Explanations>
 		<Explanation columnName="ConsultantCode">

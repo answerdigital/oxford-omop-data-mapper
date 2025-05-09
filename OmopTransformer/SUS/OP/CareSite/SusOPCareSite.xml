@@ -1,27 +1,22 @@
 ﻿<Query>
     <Sql>
-with 
-counts as ( 
+with counts as ( 
 	select 
-	SiteCodeofTreatment, 
-	MainSpecialtyCode, 
-	count(*) as cnt 
+		SiteCodeofTreatment, 
+		MainSpecialtyCode, 
+		count(*) as cnt 
 	from omop_staging.sus_OP 
 	where SiteCodeofTreatment is not null 
-	and MainSpecialtyCode is not null 
+		and MainSpecialtyCode is not null 
 	group by 
-	SiteCodeofTreatment, 
-	MainSpecialtyCode 
-), 
-
-ranked as ( 
+		SiteCodeofTreatment, 
+		MainSpecialtyCode 
+),  ranked as ( 
 	select 
-	SiteCodeofTreatment, 
-	MainSpecialtyCode, 
-	cnt, 
-	row_number() over ( 
-	partition by SiteCodeofTreatment 
-	order by cnt desc, MainSpecialtyCode 
+		SiteCodeofTreatment, 
+		MainSpecialtyCode, 
+		cnt, 
+		row_number() over (partition by SiteCodeofTreatment order by cnt desc, MainSpecialtyCode 
 	) as rnk 
 	from counts 
 )
@@ -29,7 +24,10 @@ select
 	SiteCodeofTreatment, 
 	MainSpecialtyCode 
 from ranked 
-where rnk = 1;
+where rnk = 1
+order by 
+	SiteCodeofTreatment, 
+	MainSpecialtyCode 
 	</Sql>
     <Explanations>
 		<Explanation columnName="SiteCodeofTreatment">

@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\twith \n\tcounts as ( \n\t\tselect \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode, \n\t\tcount(*) as cnt \n\t\tfrom omop_staging.sus_APC \n\t\twhere SiteCodeOfTreatmentAtEpisodeStartDate is not null \n\t\tand MainSpecialtyCode is not null \n\t\tgroup by \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode \n\t), \n\n\tranked as ( \n\t\tselect \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode, \n\t\tcnt, \n\t\trow_number() over ( \n\t\tpartition by SiteCodeOfTreatmentAtEpisodeStartDate \n\t\torder by cnt desc, MainSpecialtyCode \n\t\t) as rnk \n\t\tfrom counts \n\t)\n\tselect \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode \n\tfrom ranked \n\twhere rnk = 1;\n\t",
+      "query": "\nwith counts as \n( \n\tselect \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode, \n\t\tcount(*) as cnt \n\tfrom omop_staging.sus_APC \n\twhere SiteCodeOfTreatmentAtEpisodeStartDate is not null \n\t\tand MainSpecialtyCode is not null \n\tgroup by \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode \n), ranked as ( \n\tselect \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode, \n\t\tcnt, \n\t\trow_number() over (partition by SiteCodeOfTreatmentAtEpisodeStartDate order by cnt desc, MainSpecialtyCode \n\t) as rnk \n\tfrom counts \n)\nselect \n\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\tMainSpecialtyCode \nfrom ranked \nwhere rnk = 1\norder by \n\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\tMainSpecialtyCode \n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\twith \n\tcounts as ( \n\t\tselect \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode, \n\t\tcount(*) as cnt \n\t\tfrom omop_staging.sus_APC \n\t\twhere SiteCodeOfTreatmentAtEpisodeStartDate is not null \n\t\tand MainSpecialtyCode is not null \n\t\tgroup by \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode \n\t), \n\n\tranked as ( \n\t\tselect \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode, \n\t\tcnt, \n\t\trow_number() over ( \n\t\tpartition by SiteCodeOfTreatmentAtEpisodeStartDate \n\t\torder by cnt desc, MainSpecialtyCode \n\t\t) as rnk \n\t\tfrom counts \n\t)\n\tselect \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode \n\tfrom ranked \n\twhere rnk = 1;\n\t",
+      "query": "\nwith counts as \n( \n\tselect \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode, \n\t\tcount(*) as cnt \n\tfrom omop_staging.sus_APC \n\twhere SiteCodeOfTreatmentAtEpisodeStartDate is not null \n\t\tand MainSpecialtyCode is not null \n\tgroup by \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode \n), ranked as ( \n\tselect \n\t\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\t\tMainSpecialtyCode, \n\t\tcnt, \n\t\trow_number() over (partition by SiteCodeOfTreatmentAtEpisodeStartDate order by cnt desc, MainSpecialtyCode \n\t) as rnk \n\tfrom counts \n)\nselect \n\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\tMainSpecialtyCode \nfrom ranked \nwhere rnk = 1\norder by \n\tSiteCodeOfTreatmentAtEpisodeStartDate, \n\tMainSpecialtyCode \n\t",
       "lookup_table_markdown": null
     },
     {

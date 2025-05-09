@@ -12,28 +12,23 @@ has_toc: false
 * `SiteCodeofTreatment` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [SITE CODE (OF TREATMENT)](https://www.datadictionary.nhs.uk/data_elements/site_code__of_treatment_.html)
 
 ```sql
-with 
-counts as ( 
+with counts as ( 
 	select 
-	SiteCodeofTreatment, 
-	MainSpecialtyCode, 
-	count(*) as cnt 
+		SiteCodeofTreatment, 
+		MainSpecialtyCode, 
+		count(*) as cnt 
 	from omop_staging.sus_OP 
 	where SiteCodeofTreatment is not null 
-	and MainSpecialtyCode is not null 
+		and MainSpecialtyCode is not null 
 	group by 
-	SiteCodeofTreatment, 
-	MainSpecialtyCode 
-), 
-
-ranked as ( 
+		SiteCodeofTreatment, 
+		MainSpecialtyCode 
+),  ranked as ( 
 	select 
-	SiteCodeofTreatment, 
-	MainSpecialtyCode, 
-	cnt, 
-	row_number() over ( 
-	partition by SiteCodeofTreatment 
-	order by cnt desc, MainSpecialtyCode 
+		SiteCodeofTreatment, 
+		MainSpecialtyCode, 
+		cnt, 
+		row_number() over (partition by SiteCodeofTreatment order by cnt desc, MainSpecialtyCode 
 	) as rnk 
 	from counts 
 )
@@ -41,7 +36,10 @@ select
 	SiteCodeofTreatment, 
 	MainSpecialtyCode 
 from ranked 
-where rnk = 1;
+where rnk = 1
+order by 
+	SiteCodeofTreatment, 
+	MainSpecialtyCode 
 	
 ```
 
@@ -53,36 +51,35 @@ where rnk = 1;
 * `SiteCodeOfTreatmentAtEpisodeStartDate` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [SITE CODE (OF TREATMENT)](https://www.datadictionary.nhs.uk/data_elements/site_code__of_treatment_.html)
 
 ```sql
-	with 
-	counts as ( 
-		select 
+with counts as 
+( 
+	select 
 		SiteCodeOfTreatmentAtEpisodeStartDate, 
 		MainSpecialtyCode, 
 		count(*) as cnt 
-		from omop_staging.sus_APC 
-		where SiteCodeOfTreatmentAtEpisodeStartDate is not null 
+	from omop_staging.sus_APC 
+	where SiteCodeOfTreatmentAtEpisodeStartDate is not null 
 		and MainSpecialtyCode is not null 
-		group by 
+	group by 
 		SiteCodeOfTreatmentAtEpisodeStartDate, 
 		MainSpecialtyCode 
-	), 
-
-	ranked as ( 
-		select 
+), ranked as ( 
+	select 
 		SiteCodeOfTreatmentAtEpisodeStartDate, 
 		MainSpecialtyCode, 
 		cnt, 
-		row_number() over ( 
-		partition by SiteCodeOfTreatmentAtEpisodeStartDate 
-		order by cnt desc, MainSpecialtyCode 
-		) as rnk 
-		from counts 
-	)
-	select 
-		SiteCodeOfTreatmentAtEpisodeStartDate, 
-		MainSpecialtyCode 
-	from ranked 
-	where rnk = 1;
+		row_number() over (partition by SiteCodeOfTreatmentAtEpisodeStartDate order by cnt desc, MainSpecialtyCode 
+	) as rnk 
+	from counts 
+)
+select 
+	SiteCodeOfTreatmentAtEpisodeStartDate, 
+	MainSpecialtyCode 
+from ranked 
+where rnk = 1
+order by 
+	SiteCodeOfTreatmentAtEpisodeStartDate, 
+	MainSpecialtyCode 
 	
 ```
 
