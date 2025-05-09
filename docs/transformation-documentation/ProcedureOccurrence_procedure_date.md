@@ -13,6 +13,8 @@ Converts text to dates.
 * `AppointmentDate` Appointment Date. [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
 
 ```sql
+with results as
+(
 	select
 		distinct
 			op.GeneratedRecordIdentifier,
@@ -25,12 +27,15 @@ Converts text to dates.
 		on op.MessageId = p.MessageId
 	where NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
-	order by 
-		op.GeneratedRecordIdentifier,
-		op.NHSNumber,
-		op.AppointmentDate,
-		op.AppointmentTime,
-		p.ProcedureOPCS
+)
+select *
+from results
+order by 
+	GeneratedRecordIdentifier,
+	NHSNumber,
+	AppointmentDate, 
+	AppointmentTime,
+	PrimaryProcedure
 	
 ```
 
@@ -43,6 +48,8 @@ Converts text to dates.
 * `ProcedureOccurrenceStartDate` Start date of the Procedure [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
 
 ```sql
+with results as
+(
 	select 
 		distinct
 			apc.NHSNumber,
@@ -59,15 +66,17 @@ Converts text to dates.
 			on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 	where apc.NHSNumber is not null
 		and d.CriticalCareActivityCode != '99'  -- No Defined Critical Care Activity
-	order by 
-		apc.NHSNumber,
-		apc.GeneratedRecordIdentifier,
-		cc.CriticalCareStartDate,
-		cc.CriticalCareStartTime,
-		cc.CriticalCarePeriodDischargeDate, 
-		cc.EventDate,
-		cc.CriticalCarePeriodDischargeTime, 
-		d.CriticalCareActivityCode
+)
+select *
+from results
+order by 
+	NHSNumber,
+	GeneratedRecordIdentifier,
+	ProcedureOccurrenceStartDate, 
+	ProcedureOccurrenceStartTime,
+	ProcedureOccurrenceEndDate,
+	ProcedureOccurrenceEndTime,
+	ProcedureSourceValue
 
 	
 ```

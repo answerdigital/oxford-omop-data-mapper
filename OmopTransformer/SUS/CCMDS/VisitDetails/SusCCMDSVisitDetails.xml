@@ -1,5 +1,6 @@
 ﻿<Query>
     <Sql>
+with results as (
 	select
 		distinct
 			apc.NHSNumber,
@@ -11,13 +12,16 @@
 	from omop_staging.sus_CCMDS cc
 	inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 	where apc.NHSNumber is not null
-	order by
-		apc.NHSNumber,
-		apc.HospitalProviderSpellNumber,
-		cc.CriticalCareStartDate,
-		cc.CriticalCareStartTime,
-		cc.CriticalCarePeriodDischargeDate,
-		cc.CriticalCarePeriodDischargeTime
+)
+select *
+from results
+order by
+	NHSNumber,
+	HospitalProviderSpellNumber,
+	VisitStartDate,
+	VisitStartTime,
+	VisitEndDate,
+	VisitEndTime
 
 	</Sql>
 

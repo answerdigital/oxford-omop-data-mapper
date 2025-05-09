@@ -15,6 +15,8 @@ Combines a date with a time of day.
 * `AppointmentTime` Appointment Time. [APPOINTMENT TIME](https://www.datadictionary.nhs.uk/data_elements/appointment_time.html)
 
 ```sql
+with results as
+(
 	select
 		distinct
 			op.GeneratedRecordIdentifier,
@@ -27,12 +29,15 @@ Combines a date with a time of day.
 		on op.MessageId = p.MessageId
 	where NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
-	order by 
-		op.GeneratedRecordIdentifier,
-		op.NHSNumber,
-		op.AppointmentDate,
-		op.AppointmentTime,
-		p.ProcedureOPCS
+)
+select *
+from results
+order by 
+	GeneratedRecordIdentifier,
+	NHSNumber,
+	AppointmentDate, 
+	AppointmentTime,
+	PrimaryProcedure
 	
 ```
 
@@ -47,6 +52,8 @@ Combines a date with a time of day.
 * `ProcedureOccurrenceStartTime` Start time of the Procedure, if exists, else midnight. [CRITICAL CARE START TIME](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_time.html)
 
 ```sql
+with results as
+(
 	select 
 		distinct
 			apc.NHSNumber,
@@ -63,15 +70,17 @@ Combines a date with a time of day.
 			on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 	where apc.NHSNumber is not null
 		and d.CriticalCareActivityCode != '99'  -- No Defined Critical Care Activity
-	order by 
-		apc.NHSNumber,
-		apc.GeneratedRecordIdentifier,
-		cc.CriticalCareStartDate,
-		cc.CriticalCareStartTime,
-		cc.CriticalCarePeriodDischargeDate, 
-		cc.EventDate,
-		cc.CriticalCarePeriodDischargeTime, 
-		d.CriticalCareActivityCode
+)
+select *
+from results
+order by 
+	NHSNumber,
+	GeneratedRecordIdentifier,
+	ProcedureOccurrenceStartDate, 
+	ProcedureOccurrenceStartTime,
+	ProcedureOccurrenceEndDate,
+	ProcedureOccurrenceEndTime,
+	ProcedureSourceValue
 
 	
 ```

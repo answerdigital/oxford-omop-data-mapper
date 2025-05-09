@@ -1,5 +1,7 @@
 ﻿<Query>
     <Sql>
+with results as
+(
 	select
 		distinct
 			op.GeneratedRecordIdentifier,
@@ -12,12 +14,15 @@
 		on op.MessageId = p.MessageId
 	where NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
-	order by 
-		op.GeneratedRecordIdentifier,
-		op.NHSNumber,
-		op.AppointmentDate,
-		op.AppointmentTime,
-		p.ProcedureOPCS
+)
+select *
+from results
+order by 
+	GeneratedRecordIdentifier,
+	NHSNumber,
+	AppointmentDate, 
+	AppointmentTime,
+	PrimaryProcedure
 	</Sql>
     <Explanation>
 		<OmopColumnExplanation columnName="PrimaryProcedure"></OmopColumnExplanation>

@@ -15,11 +15,12 @@ Combines a date with a time of day.
 * `VisitEndTime` End time of the episode, if exists, else the spell discharge time, if exists, else the message date. [DISCHARGE TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_time__hospital_provider_spell_.html), [END TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html)
 
 ```sql
+with results as
+(
 	select  
 		distinct
 			op.NHSNumber,
 			op.SUSgeneratedspellID,
-
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
 			coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
@@ -28,12 +29,16 @@ Combines a date with a time of day.
 	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
 		and op.NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
-	order by
-		op.NHSNumber,
-		op.SUSgeneratedspellID,
-		op.AppointmentDate,
-		op.AppointmentTime,
-		op.CDSActivityDate
+)
+select *
+from results
+order by 
+	NHSNumber,
+	SUSgeneratedspellID,
+	VisitStartDate, 
+	VisitStartTime,
+	VisitEndDate,
+	VisitEndTime
 		
 	
 ```
@@ -49,6 +54,7 @@ Combines a date with a time of day.
 * `VisitEndTime` Discharge time of the critical care period, if exists, else midnight. [CRITICAL CARE PERIOD DISCHARGE TIME]()
 
 ```sql
+with results as (
 	select
 		distinct
 			apc.NHSNumber,
@@ -60,13 +66,16 @@ Combines a date with a time of day.
 	from omop_staging.sus_CCMDS cc
 	inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 	where apc.NHSNumber is not null
-	order by
-		apc.NHSNumber,
-		apc.HospitalProviderSpellNumber,
-		cc.CriticalCareStartDate,
-		cc.CriticalCareStartTime,
-		cc.CriticalCarePeriodDischargeDate,
-		cc.CriticalCarePeriodDischargeTime
+)
+select *
+from results
+order by
+	NHSNumber,
+	HospitalProviderSpellNumber,
+	VisitStartDate,
+	VisitStartTime,
+	VisitEndDate,
+	VisitEndTime
 
 	
 ```

@@ -12,11 +12,12 @@ has_toc: false
 * `SUSgeneratedspellID` System generated value spell id, this id is consistent across all records belonging to the same spell. []()
 
 ```sql
+with results as
+(
 	select  
 		distinct
 			op.NHSNumber,
 			op.SUSgeneratedspellID,
-
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
 			coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
@@ -25,12 +26,16 @@ has_toc: false
 	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
 		and op.NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
-	order by
-		op.NHSNumber,
-		op.SUSgeneratedspellID,
-		op.AppointmentDate,
-		op.AppointmentTime,
-		op.CDSActivityDate
+)
+select *
+from results
+order by 
+	NHSNumber,
+	SUSgeneratedspellID,
+	VisitStartDate, 
+	VisitStartTime,
+	VisitEndDate,
+	VisitEndTime
 		
 	
 ```
@@ -43,6 +48,7 @@ has_toc: false
 * `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
 ```sql
+with results as (
 	select
 		distinct
 			apc.NHSNumber,
@@ -54,13 +60,16 @@ has_toc: false
 	from omop_staging.sus_CCMDS cc
 	inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 	where apc.NHSNumber is not null
-	order by
-		apc.NHSNumber,
-		apc.HospitalProviderSpellNumber,
-		cc.CriticalCareStartDate,
-		cc.CriticalCareStartTime,
-		cc.CriticalCarePeriodDischargeDate,
-		cc.CriticalCarePeriodDischargeTime
+)
+select *
+from results
+order by
+	NHSNumber,
+	HospitalProviderSpellNumber,
+	VisitStartDate,
+	VisitStartTime,
+	VisitEndDate,
+	VisitEndTime
 
 	
 ```

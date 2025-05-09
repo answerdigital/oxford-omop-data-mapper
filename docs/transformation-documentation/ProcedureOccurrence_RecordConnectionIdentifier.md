@@ -12,6 +12,8 @@ has_toc: false
 * `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
+with results as
+(
 	select
 		distinct
 			op.GeneratedRecordIdentifier,
@@ -24,12 +26,15 @@ has_toc: false
 		on op.MessageId = p.MessageId
 	where NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
-	order by 
-		op.GeneratedRecordIdentifier,
-		op.NHSNumber,
-		op.AppointmentDate,
-		op.AppointmentTime,
-		p.ProcedureOPCS
+)
+select *
+from results
+order by 
+	GeneratedRecordIdentifier,
+	NHSNumber,
+	AppointmentDate, 
+	AppointmentTime,
+	PrimaryProcedure
 	
 ```
 
@@ -41,6 +46,8 @@ has_toc: false
 * `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
+with results as
+(
 	select 
 		distinct
 			apc.NHSNumber,
@@ -57,15 +64,17 @@ has_toc: false
 			on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 	where apc.NHSNumber is not null
 		and d.CriticalCareActivityCode != '99'  -- No Defined Critical Care Activity
-	order by 
-		apc.NHSNumber,
-		apc.GeneratedRecordIdentifier,
-		cc.CriticalCareStartDate,
-		cc.CriticalCareStartTime,
-		cc.CriticalCarePeriodDischargeDate, 
-		cc.EventDate,
-		cc.CriticalCarePeriodDischargeTime, 
-		d.CriticalCareActivityCode
+)
+select *
+from results
+order by 
+	NHSNumber,
+	GeneratedRecordIdentifier,
+	ProcedureOccurrenceStartDate, 
+	ProcedureOccurrenceStartTime,
+	ProcedureOccurrenceEndDate,
+	ProcedureOccurrenceEndTime,
+	ProcedureSourceValue
 
 	
 ```

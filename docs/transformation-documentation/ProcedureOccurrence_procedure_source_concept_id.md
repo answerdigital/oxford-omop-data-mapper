@@ -13,6 +13,8 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 * `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
+with results as
+(
 	select
 		distinct
 			op.GeneratedRecordIdentifier,
@@ -25,12 +27,15 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 		on op.MessageId = p.MessageId
 	where NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
-	order by 
-		op.GeneratedRecordIdentifier,
-		op.NHSNumber,
-		op.AppointmentDate,
-		op.AppointmentTime,
-		p.ProcedureOPCS
+)
+select *
+from results
+order by 
+	GeneratedRecordIdentifier,
+	NHSNumber,
+	AppointmentDate, 
+	AppointmentTime,
+	PrimaryProcedure
 	
 ```
 
@@ -106,6 +111,8 @@ Notes
 * `ProcedureSourceValue` Used to look up the Procedure code. [CRITICAL CARE ACTIVITY CODE](https://www.datadictionary.nhs.uk/data_elements/critical_care_activity_code.html)
 
 ```sql
+with results as
+(
 	select 
 		distinct
 			apc.NHSNumber,
@@ -122,15 +129,17 @@ Notes
 			on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 	where apc.NHSNumber is not null
 		and d.CriticalCareActivityCode != '99'  -- No Defined Critical Care Activity
-	order by 
-		apc.NHSNumber,
-		apc.GeneratedRecordIdentifier,
-		cc.CriticalCareStartDate,
-		cc.CriticalCareStartTime,
-		cc.CriticalCarePeriodDischargeDate, 
-		cc.EventDate,
-		cc.CriticalCarePeriodDischargeTime, 
-		d.CriticalCareActivityCode
+)
+select *
+from results
+order by 
+	NHSNumber,
+	GeneratedRecordIdentifier,
+	ProcedureOccurrenceStartDate, 
+	ProcedureOccurrenceStartTime,
+	ProcedureOccurrenceEndDate,
+	ProcedureOccurrenceEndTime,
+	ProcedureSourceValue
 
 	
 ```

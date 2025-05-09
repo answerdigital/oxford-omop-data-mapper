@@ -13,6 +13,8 @@ Converts text to dates.
 * `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
 
 ```sql
+with results as
+(
 	select
 		distinct
 			op.NHSNumber,
@@ -25,11 +27,16 @@ Converts text to dates.
 	where op.UpdateType = 9
 		and op.NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
-	order by 
-		op.NHSNumber,
-		op.SUSgeneratedspellID,
-		op.AppointmentDate, 
-		op.CDSActivityDate
+)
+select *
+from results
+order by 
+	NHSNumber,
+	SUSgeneratedspellID,
+	VisitStartDate, 
+	VisitStartTime,
+	VisitEndDate,
+	VisitEndTime
 	
 ```
 

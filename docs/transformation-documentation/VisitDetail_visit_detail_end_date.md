@@ -13,11 +13,12 @@ Converts text to dates.
 * `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
 
 ```sql
+with results as
+(
 	select  
 		distinct
 			op.NHSNumber,
 			op.SUSgeneratedspellID,
-
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitStartDate,  -- visit_start_date
 			coalesce(op.AppointmentTime, '000000') as VisitStartTime,  -- visit_start_time
 			coalesce(op.AppointmentDate, op.CDSActivityDate) as VisitEndDate,
@@ -26,12 +27,16 @@ Converts text to dates.
 	where op.UpdateType = 9   -- New/Modification     (1 = Delete)
 		and op.NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
-	order by
-		op.NHSNumber,
-		op.SUSgeneratedspellID,
-		op.AppointmentDate,
-		op.AppointmentTime,
-		op.CDSActivityDate
+)
+select *
+from results
+order by 
+	NHSNumber,
+	SUSgeneratedspellID,
+	VisitStartDate, 
+	VisitStartTime,
+	VisitEndDate,
+	VisitEndTime
 		
 	
 ```
@@ -45,6 +50,7 @@ Converts text to dates.
 * `VisitEndDate` Discharge date of the critical care period, if exists, else the event date [CRITICAL CARE PERIOD DISCHARGE DATE](), [EVENT DATE]()
 
 ```sql
+with results as (
 	select
 		distinct
 			apc.NHSNumber,
@@ -56,13 +62,16 @@ Converts text to dates.
 	from omop_staging.sus_CCMDS cc
 	inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 	where apc.NHSNumber is not null
-	order by
-		apc.NHSNumber,
-		apc.HospitalProviderSpellNumber,
-		cc.CriticalCareStartDate,
-		cc.CriticalCareStartTime,
-		cc.CriticalCarePeriodDischargeDate,
-		cc.CriticalCarePeriodDischargeTime
+)
+select *
+from results
+order by
+	NHSNumber,
+	HospitalProviderSpellNumber,
+	VisitStartDate,
+	VisitStartTime,
+	VisitEndDate,
+	VisitEndTime
 
 	
 ```

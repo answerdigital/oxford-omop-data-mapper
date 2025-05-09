@@ -12,6 +12,8 @@ has_toc: false
 * `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
+with results as
+(
 	select
 		distinct
 			op.NHSNumber,
@@ -24,11 +26,16 @@ has_toc: false
 	where op.UpdateType = 9
 		and op.NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
-	order by 
-		op.NHSNumber,
-		op.SUSgeneratedspellID,
-		op.AppointmentDate, 
-		op.CDSActivityDate
+)
+select *
+from results
+order by 
+	NHSNumber,
+	SUSgeneratedspellID,
+	VisitStartDate, 
+	VisitStartTime,
+	VisitEndDate,
+	VisitEndTime
 	
 ```
 

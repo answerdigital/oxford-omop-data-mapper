@@ -15,6 +15,8 @@ Combines a date with a time of day.
 * `VisitStartTime` The earliest episode start time for the spell, or midnight if none are specified. [START TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html)
 
 ```sql
+with results as
+(
 	select
 		distinct
 			op.NHSNumber,
@@ -27,11 +29,16 @@ Combines a date with a time of day.
 	where op.UpdateType = 9
 		and op.NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
-	order by 
-		op.NHSNumber,
-		op.SUSgeneratedspellID,
-		op.AppointmentDate, 
-		op.CDSActivityDate
+)
+select *
+from results
+order by 
+	NHSNumber,
+	SUSgeneratedspellID,
+	VisitStartDate, 
+	VisitStartTime,
+	VisitEndDate,
+	VisitEndTime
 	
 ```
 

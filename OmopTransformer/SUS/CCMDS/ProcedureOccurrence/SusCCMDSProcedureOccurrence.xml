@@ -1,6 +1,8 @@
 ﻿<Query>
     <Sql>
 
+with results as
+(
 	select 
 		distinct
 			apc.NHSNumber,
@@ -17,15 +19,17 @@
 			on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 	where apc.NHSNumber is not null
 		and d.CriticalCareActivityCode != '99'  -- No Defined Critical Care Activity
-	order by 
-		apc.NHSNumber,
-		apc.GeneratedRecordIdentifier,
-		cc.CriticalCareStartDate,
-		cc.CriticalCareStartTime,
-		cc.CriticalCarePeriodDischargeDate, 
-		cc.EventDate,
-		cc.CriticalCarePeriodDischargeTime, 
-		d.CriticalCareActivityCode
+)
+select *
+from results
+order by 
+	NHSNumber,
+	GeneratedRecordIdentifier,
+	ProcedureOccurrenceStartDate, 
+	ProcedureOccurrenceStartTime,
+	ProcedureOccurrenceEndDate,
+	ProcedureOccurrenceEndTime,
+	ProcedureSourceValue
 
 	</Sql>
 

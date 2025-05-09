@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as VisitStartDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime\n\tfrom omop_staging.sus_CCMDS cc\n\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\twhere apc.NHSNumber is not null\n\torder by\n\t\tapc.NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\t\tcc.CriticalCareStartDate,\n\t\tcc.CriticalCareStartTime,\n\t\tcc.CriticalCarePeriodDischargeDate,\n\t\tcc.CriticalCarePeriodDischargeTime\n\n\t",
+      "query": "\nwith results as (\n\tselect\n\t\tdistinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as VisitStartDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime\n\tfrom omop_staging.sus_CCMDS cc\n\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\twhere apc.NHSNumber is not null\n)\nselect *\nfrom results\norder by\n\tNHSNumber,\n\tHospitalProviderSpellNumber,\n\tVisitStartDate,\n\tVisitStartTime,\n\tVisitEndDate,\n\tVisitEndTime\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as VisitStartDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime\n\tfrom omop_staging.sus_CCMDS cc\n\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\twhere apc.NHSNumber is not null\n\torder by\n\t\tapc.NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\t\tcc.CriticalCareStartDate,\n\t\tcc.CriticalCareStartTime,\n\t\tcc.CriticalCarePeriodDischargeDate,\n\t\tcc.CriticalCarePeriodDischargeTime\n\n\t",
+      "query": "\nwith results as (\n\tselect\n\t\tdistinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as VisitStartDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime\n\tfrom omop_staging.sus_CCMDS cc\n\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\twhere apc.NHSNumber is not null\n)\nselect *\nfrom results\norder by\n\tNHSNumber,\n\tHospitalProviderSpellNumber,\n\tVisitStartDate,\n\tVisitStartTime,\n\tVisitEndDate,\n\tVisitEndTime\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -53,7 +53,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as VisitStartDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime\n\tfrom omop_staging.sus_CCMDS cc\n\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\twhere apc.NHSNumber is not null\n\torder by\n\t\tapc.NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\t\tcc.CriticalCareStartDate,\n\t\tcc.CriticalCareStartTime,\n\t\tcc.CriticalCarePeriodDischargeDate,\n\t\tcc.CriticalCarePeriodDischargeTime\n\n\t",
+      "query": "\nwith results as (\n\tselect\n\t\tdistinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as VisitStartDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime\n\tfrom omop_staging.sus_CCMDS cc\n\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\twhere apc.NHSNumber is not null\n)\nselect *\nfrom results\norder by\n\tNHSNumber,\n\tHospitalProviderSpellNumber,\n\tVisitStartDate,\n\tVisitStartTime,\n\tVisitEndDate,\n\tVisitEndTime\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -81,7 +81,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as VisitStartDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime\n\tfrom omop_staging.sus_CCMDS cc\n\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\twhere apc.NHSNumber is not null\n\torder by\n\t\tapc.NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\t\tcc.CriticalCareStartDate,\n\t\tcc.CriticalCareStartTime,\n\t\tcc.CriticalCarePeriodDischargeDate,\n\t\tcc.CriticalCarePeriodDischargeTime\n\n\t",
+      "query": "\nwith results as (\n\tselect\n\t\tdistinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as VisitStartDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime\n\tfrom omop_staging.sus_CCMDS cc\n\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\twhere apc.NHSNumber is not null\n)\nselect *\nfrom results\norder by\n\tNHSNumber,\n\tHospitalProviderSpellNumber,\n\tVisitStartDate,\n\tVisitStartTime,\n\tVisitEndDate,\n\tVisitEndTime\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -103,7 +103,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as VisitStartDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime\n\tfrom omop_staging.sus_CCMDS cc\n\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\twhere apc.NHSNumber is not null\n\torder by\n\t\tapc.NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\t\tcc.CriticalCareStartDate,\n\t\tcc.CriticalCareStartTime,\n\t\tcc.CriticalCarePeriodDischargeDate,\n\t\tcc.CriticalCarePeriodDischargeTime\n\n\t",
+      "query": "\nwith results as (\n\tselect\n\t\tdistinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as VisitStartDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime\n\tfrom omop_staging.sus_CCMDS cc\n\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\twhere apc.NHSNumber is not null\n)\nselect *\nfrom results\norder by\n\tNHSNumber,\n\tHospitalProviderSpellNumber,\n\tVisitStartDate,\n\tVisitStartTime,\n\tVisitEndDate,\n\tVisitEndTime\n\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -135,7 +135,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tdistinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as VisitStartDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime\n\tfrom omop_staging.sus_CCMDS cc\n\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\twhere apc.NHSNumber is not null\n\torder by\n\t\tapc.NHSNumber,\n\t\tapc.HospitalProviderSpellNumber,\n\t\tcc.CriticalCareStartDate,\n\t\tcc.CriticalCareStartTime,\n\t\tcc.CriticalCarePeriodDischargeDate,\n\t\tcc.CriticalCarePeriodDischargeTime\n\n\t",
+      "query": "\nwith results as (\n\tselect\n\t\tdistinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as VisitStartDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as VisitStartTime,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as VisitEndDate,\n\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as VisitEndTime\n\tfrom omop_staging.sus_CCMDS cc\n\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\twhere apc.NHSNumber is not null\n)\nselect *\nfrom results\norder by\n\tNHSNumber,\n\tHospitalProviderSpellNumber,\n\tVisitStartDate,\n\tVisitStartTime,\n\tVisitEndDate,\n\tVisitEndTime\n\n\t",
       "lookup_table_markdown": null
     },
     {
