@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\n\t",
+      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\norder by\n\td.DiagnosisICD,\n    apc.GeneratedRecordIdentifier,\n    apc.NHSNumber,\n    apc.CDSActivityDate\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\n\t",
+      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\norder by\n\td.DiagnosisICD,\n    apc.GeneratedRecordIdentifier,\n    apc.NHSNumber,\n    apc.CDSActivityDate\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -53,7 +53,7 @@
           ]
         }
       ],
-      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\n\t",
+      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\norder by\n\td.DiagnosisICD,\n    apc.GeneratedRecordIdentifier,\n    apc.NHSNumber,\n    apc.CDSActivityDate\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,7 +78,7 @@
           ]
         }
       ],
-      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\n\t",
+      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\norder by\n\td.DiagnosisICD,\n    apc.GeneratedRecordIdentifier,\n    apc.NHSNumber,\n    apc.CDSActivityDate\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -96,7 +96,7 @@
           ]
         }
       ],
-      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\n\t",
+      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\norder by\n\td.DiagnosisICD,\n    apc.GeneratedRecordIdentifier,\n    apc.NHSNumber,\n    apc.CDSActivityDate\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -121,7 +121,7 @@
           ]
         }
       ],
-      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\n\t",
+      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\norder by\n\td.DiagnosisICD,\n    apc.GeneratedRecordIdentifier,\n    apc.NHSNumber,\n    apc.CDSActivityDate\n\t",
       "lookup_table_markdown": null
     }
   ]

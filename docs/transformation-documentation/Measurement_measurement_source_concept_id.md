@@ -46,6 +46,11 @@ from omop_staging.sus_ICDDiagnosis d
     inner join omop_staging.sus_APC apc
         on d.MessageId = apc.MessageId
 where apc.NHSNumber is not null
+order by
+	d.DiagnosisICD,
+    apc.GeneratedRecordIdentifier,
+    apc.NHSNumber,
+    apc.CDSActivityDate
 	
 ```
 
