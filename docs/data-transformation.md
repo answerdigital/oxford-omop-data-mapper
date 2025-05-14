@@ -98,9 +98,13 @@ Supported OMOP classes
 * `OmopConditionOccurrence`
 * `OmopDeath`
 * `OmopDrugExposure`
+* `OmopDeviceExposure`
 * `OmopLocation`
 * `OmopObservation`
 * `OmopPerson`
+* `OmopCareSite`
+* `OmopProvider`
+* `OmopMeasurement`
 * `OmopProcedureOccurrence`
 * `OmopVisitDetail`
 * `OmopVisitOccurrence`
