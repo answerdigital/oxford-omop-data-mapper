@@ -33,6 +33,6 @@ internal class SusAPCDeviceExposure : OmopDeviceExposure<SusAPCDeviceExposureRec
     [CopyValue(nameof(Source.PrimaryProcedure))]
     public override string? device_source_value { get; set; }
 
-    [CopyValue(nameof(Source.HospitalSpellProviderNumber))]
+    [CopyValue(nameof(Source.HospitalProviderSpellNumber))]
     public override string? HospitalProviderSpellNumber { get; set; }
 }
