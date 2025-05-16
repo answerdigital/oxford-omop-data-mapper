@@ -98,9 +98,13 @@ Supported OMOP classes
 * `OmopConditionOccurrence`
 * `OmopDeath`
 * `OmopDrugExposure`
+* `OmopDeviceExposure`
 * `OmopLocation`
 * `OmopObservation`
 * `OmopPerson`
+* `OmopCareSite`
+* `OmopProvider`
+* `OmopMeasurement`
 * `OmopProcedureOccurrence`
 * `OmopVisitDetail`
 * `OmopVisitOccurrence`
@@ -202,116 +206,7 @@ Combines a date with a time of day.
 * Argument 2 - a time, eg `100500`
 ```
 
-##### `DateConverter`
-
-```
-Converts text to dates.
-
-* Argument 1 - a date, eg `20240101`
-```
-
-##### `DayOfMonthSelector`
-
-```
-Selects the day of the month or null if the date is null.
-
-* Argument 1 - a date, eg `20240101`
-```
-
-##### `MonthOfYearSelector`
-
-```
-Selects the month of the year or null if the date is null.
-
-* Argument 1 - a date, eg `20240101`
-```
-
-##### `YearSelector`
-
-```
-Selects the year from a date or null of the date is null.
-
-* Argument 1 - a date, eg `20240101`
-```
-
-##### `NumberParser`
-
-```
-Converts text to integers.
-
-* Argument 1 - a number as text, eg `123`
-```
-
-##### `UppercaseAndTrimWhitespace`
-
-```
-Converts text to uppercase.
-
-* Argument 1 - text, eg `hello world`
-```
-
-##### `TextDeliminator`
-
-```
-Separates text with newlines. Trim whitespace.
-
-* Argument 1 - text, eg `hello`
-* Argument 2 - text, eg `world`
-* etc - unlimited arguments are supported.
-```
-
-##### `PostcodeFormatter`
-
-```
-Uppercase the postcode then insert the space in the correct location, if needed.
-
-* Argument 1 - text, eg `LS11 5DD`
-```
-
-#### Code resolvers
-
-##### `Icd10Selector`
-
-```
-Resolves ICD10 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
-
-* Argument 1 - text, eg `T76`
-```
-
-##### `Opcs4Selector`
-
-```
-Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
-
-* Argument 1 - text, eg `E66.8`
-```
-
-##### `SnomedSelector`
-
-```
-Converts ICD10/OPCS4 concepts to SNOMED concepts.
-
-* Argument 1 - a concept id , eg `911784`
-```
-
-This selector usually uses the result of either the `Icd10Selector` or `Opcs4Selector` selectors.
-
-```csharp
-[Transform(typeof(Icd10Selector), nameof(Source.DiagnosisCode))]
-public override int? condition_source_concept_id { get; set; }
-
-[Transform(typeof(SnomedSelector), useOmopTypeAsSource: true, nameof(condition_source_concept_id))]
-public override int[]? condition_concept_id { get; set; }
-```
-
-##### `Icdo3Selector`
-
-```
-Resolve ICD-o-3 codes to OMOP concepts.
-
-* Argument 1 - histology, eg `M81403`
-* Argument 2- topography, eg `C18.9`
-```
+For a complete list of transformations, please refer to our [data dictionary](https://www.datadictionary.nhs.uk).
 
 #### Lookups
 
@@ -323,21 +218,86 @@ Finds the concept code for a NHS Data Dictionary gender code.
 * Argument 1 - text, eg `1`
 ```
 
-##### `RaceConceptLookup`
+##### `AccidentAndEmergencyDischargeDestinationLookup`
 
 ```
-Finds the concept code for a NHS Data Dictionary ethnicity code.
+Lookup discharge destination concept for A&E.
 
-* Argument 1 - text, eg `A`
-```
-
-##### `RaceSourceConceptLookup`
+* Argument 1 - text code, eg `1` (In Patient Hospital)
 
 ```
-Finds the source concept code for a NHS Data Dictionary ethnicity code.
+Links:
+- [Discharge Destination](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
+- [Discharge Destination A&E](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/data_elements/accident_and_emergency_attendance_disposal_code.html)
 
-* Argument 1 - text, eg `A`
+
+##### `NhsAEDiagnosisLookup`
+
 ```
+Accident and Emergency Diagnosis to OMOP Condition Concept IDs
+
+* Argument 1 - text code, eg `01 02` (Laceration of Head)
+
+```
+Links:
+- [ACCIDENT and EMERGENCY CLINICAL CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/supporting_information/accident_and_emergency_diagnosis_tables.html)
+- [OMOP Conditions](https://athena.ohdsi.org/search-terms/terms?domain=Condition&invalidReason=Valid&standardConcept=Standard&vocabulary=SNOMED&page=1&pageSize=15&query=)
+
+##### `NhsAETreatmentLookup`
+
+```
+Accident and Emergency Treatment to OMOP Procedure Concept IDs
+
+* Argument 1 - text code, eg `01` (Dressing)
+
+```
+Links:
+- [ACCIDENT and EMERGENCY CLINICAL CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/supporting_information/accident_and_emergency_treatment_tables.html)
+- [OMOP Procedures](https://athena.ohdsi.org/search-terms/terms?domain=Procedure&invalidReason=Valid&standardConcept=Standard&vocabulary=SNOMED&page=1&pageSize=15&query=)
+
+##### `NhsMainSpecialityCodeLookup`
+
+```
+Maps NHS Main Speciality Codes to OMOP concepts
+
+* Argument 1 - text code, eg `100` (General Surgery)
+
+```
+Links:
+- [NHS MainSpecialtyCode](https://www.datadictionary.nhs.uk/attributes/main_specialty_code.html#attribute_main_specialty_code.data_elements)
+- [OMOP Providers](https://athena.ohdsi.org/search-terms/terms?domain=Provider&standardConcept=Standard&conceptClass=Physician+Specialty&page=1&pageSize=15&query=General+Dental+Practice&boosts)
+
+##### `RelationshipSelector`
+
+```
+Resolve Measurement domain ICD10 codes to `Maps To Value` concepts.
+
+* Argument 1 - a concept code
+```
+
+##### `NhsCriticalCareActivityDeviceLookup`
+
+```
+CCMDS Critical Care Activity Code Device Concept IDs
+
+* Argument 1 - text code, eg `1` (Respiratory support via a tracheal tube)
+
+```
+Links:
+- [CRITICAL CARE ACTIVITY CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/attributes/critical_care_activity_code.html)
+- [OMOP Devices](https://athena.ohdsi.org/search-terms/terms?domain=Device&invalidReason=Valid&standardConcept=Standard&page=1&pageSize=500&query=)
+
+##### `NhsCriticalCareActivityCodeLookup`
+
+```
+CCMDS Critical Care Activity Code Concept IDs
+
+* Argument 1 - text code, eg `1` (Respiratory support via a tracheal tube)
+
+```
+Links:
+- [CRITICAL CARE ACTIVITY CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/attributes/critical_care_activity_code.html)
+- [OMOP Procedures](https://athena.ohdsi.org/search-terms/terms?domain=Procedure&invalidReason=Valid&standardConcept=Standard&vocabulary=SNOMED&page=1&pageSize=15&query=)
 
 ## Notes
 
