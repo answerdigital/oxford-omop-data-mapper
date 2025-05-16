@@ -225,10 +225,11 @@ Lookup discharge destination concept for A&E.
 
 * Argument 1 - text code, eg `1` (In Patient Hospital)
 
+```
 Links:
 - [Discharge Destination](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
 - [Discharge Destination A&E](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/data_elements/accident_and_emergency_attendance_disposal_code.html)
-```
+
 
 ##### `NhsAEDiagnosisLookup`
 
@@ -237,10 +238,10 @@ Accident and Emergency Diagnosis to OMOP Condition Concept IDs
 
 * Argument 1 - text code, eg `01 02` (Laceration of Head)
 
+```
 Links:
 - [ACCIDENT and EMERGENCY CLINICAL CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/supporting_information/accident_and_emergency_diagnosis_tables.html)
 - [OMOP Conditions](https://athena.ohdsi.org/search-terms/terms?domain=Condition&invalidReason=Valid&standardConcept=Standard&vocabulary=SNOMED&page=1&pageSize=15&query=)
-```
 
 ##### `NhsAETreatmentLookup`
 
@@ -249,10 +250,10 @@ Accident and Emergency Treatment to OMOP Procedure Concept IDs
 
 * Argument 1 - text code, eg `01` (Dressing)
 
+```
 Links:
 - [ACCIDENT and EMERGENCY CLINICAL CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20September%202020/supporting_information/accident_and_emergency_treatment_tables.html)
 - [OMOP Procedures](https://athena.ohdsi.org/search-terms/terms?domain=Procedure&invalidReason=Valid&standardConcept=Standard&vocabulary=SNOMED&page=1&pageSize=15&query=)
-```
 
 ##### `NhsMainSpecialityCodeLookup`
 
@@ -261,10 +262,10 @@ Maps NHS Main Speciality Codes to OMOP concepts
 
 * Argument 1 - text code, eg `100` (General Surgery)
 
+```
 Links:
 - [NHS MainSpecialtyCode](https://www.datadictionary.nhs.uk/attributes/main_specialty_code.html#attribute_main_specialty_code.data_elements)
 - [OMOP Providers](https://athena.ohdsi.org/search-terms/terms?domain=Provider&standardConcept=Standard&conceptClass=Physician+Specialty&page=1&pageSize=15&query=General+Dental+Practice&boosts)
-```
 
 ##### `RelationshipSelector`
 
@@ -281,10 +282,10 @@ CCMDS Critical Care Activity Code Device Concept IDs
 
 * Argument 1 - text code, eg `1` (Respiratory support via a tracheal tube)
 
+```
 Links:
 - [CRITICAL CARE ACTIVITY CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/attributes/critical_care_activity_code.html)
 - [OMOP Devices](https://athena.ohdsi.org/search-terms/terms?domain=Device&invalidReason=Valid&standardConcept=Standard&page=1&pageSize=500&query=)
-```
 
 ##### `NhsCriticalCareActivityCodeLookup`
 
@@ -293,10 +294,10 @@ CCMDS Critical Care Activity Code Concept IDs
 
 * Argument 1 - text code, eg `1` (Respiratory support via a tracheal tube)
 
+```
 Links:
 - [CRITICAL CARE ACTIVITY CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/attributes/critical_care_activity_code.html)
 - [OMOP Procedures](https://athena.ohdsi.org/search-terms/terms?domain=Procedure&invalidReason=Valid&standardConcept=Standard&vocabulary=SNOMED&page=1&pageSize=15&query=)
-```
 
 ## Notes
 
