@@ -66,7 +66,7 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20SUS%20A&E%20Person%20mapping){: .btn }
-### SACT
+### SACT Person
 Source column  `Date_Of_Birth`.
 Converts text to dates.
 
@@ -84,7 +84,7 @@ group by NHS_Number
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20SACT%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20SACT%20Person%20mapping){: .btn }
 ### Rtds Demographics
 Source column  `DateOfBirth`.
 Converts text to dates.

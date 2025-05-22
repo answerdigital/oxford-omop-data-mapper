@@ -85,6 +85,29 @@ has_toc: false
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20nhs_number%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
+### SACT Condition Occurrence
+* Value copied from `NHS_Number`
+
+* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+	select
+		Primary_Diagnosis,
+		NHS_Number,
+		min(Administration_Date) as Administration_Date
+	from omop_staging.sact_staging
+	group by
+		Primary_Diagnosis,
+		NHS_Number
+	order by
+		NHS_Number,
+		Primary_Diagnosis,
+		min(Administration_Date)
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20nhs_number%20field%20SACT%20Condition%20Occurrence%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 * Value copied from `NhsNumber`
 

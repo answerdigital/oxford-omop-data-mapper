@@ -61,7 +61,7 @@ and NHSNumber is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20SUS%20A&E%20Location%20mapping){: .btn }
-### SACT
+### SACT Location
 * Value copied from `NHS_Number`
 
 * `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
@@ -70,15 +70,14 @@ and NHSNumber is not null
 select
 	NHS_Number,
 	max (Patient_Postcode) as Patient_Postcode,
-	max (Date_Of_Birth) as Date_Of_Birth,
-	max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
+	max (Date_Of_Birth) as Date_Of_Birth
 from omop_staging.sact_staging
 group by NHS_Number
 	
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20SACT%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20nhs_number%20field%20SACT%20Location%20mapping){: .btn }
 ### Rtds PAS Location
 * Value copied from `FirstOfNHSNUMBER`
 

@@ -29,5 +29,6 @@
 		<Explanation columnName="Administration_Measurement_Per_Actual_Dose">
 			<Description>The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle.</Description>
 			<Origin>UNIT OF MEASUREMENT (SYSTEMIC ANTI-CANCER THERAPY)</Origin>
+		</Explanation>
 	</Explanations>
 </Query>

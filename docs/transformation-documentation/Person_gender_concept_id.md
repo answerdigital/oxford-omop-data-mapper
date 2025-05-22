@@ -102,7 +102,7 @@ Notes
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20gender_concept_id%20field%20SUS%20A&E%20Person%20mapping){: .btn }
-### SACT
+### SACT Person
 Source column  `Person_Stated_Gender_Code`.
 Lookup gender concept.
 
@@ -132,7 +132,7 @@ group by NHS_Number
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20gender_concept_id%20field%20SACT%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20gender_concept_id%20field%20SACT%20Person%20mapping){: .btn }
 ### Rtds Demographics
 Source column  `Sex`.
 Lookup gender concept.

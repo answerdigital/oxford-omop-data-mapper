@@ -32,6 +32,10 @@ has_toc: false
 <a href="SusAEConditionOccurrence.svg" target="_blank"><img src="SusAEConditionOccurrence.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAEConditionOccurrence%20mapping){: .btn }
+## SactConditionOccurrence
+<a href="SactConditionOccurrence.svg" target="_blank"><img src="SactConditionOccurrence.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactConditionOccurrence%20mapping){: .btn }
 ## CosdV8ConditionOccurrencePrimaryDiagnosis
 <a href="CosdV8ConditionOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdV8ConditionOccurrencePrimaryDiagnosis.svg" /></a>
 

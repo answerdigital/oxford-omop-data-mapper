@@ -2,5 +2,5 @@
 
 internal interface ISactInserter
 {
-    Task Insert(IReadOnlyCollection<Sact> sactRows, CancellationToken cancellationToken);
+    Task Insert(IReadOnlyCollection<SactCsvRow> sactRows, CancellationToken cancellationToken);
 }

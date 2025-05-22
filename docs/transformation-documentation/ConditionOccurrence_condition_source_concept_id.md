@@ -340,6 +340,30 @@ Notes
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
+### SACT Condition Occurrence
+Source column  `Primary_Diagnosis`.
+Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* `Primary_Diagnosis` PRIMARY DIAGNOSIS (ICD AT START SYSTEMIC ANTI-CANCER THERAPY) is the PRIMARY DIAGNOSIS (ICD) at the start of the Systemic Anti-Cancer Therapy. [PRIMARY DIAGNOSIS (ICD AT START SYSTEMIC ANTI-CANCER THERAPY)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_at_start_systemic_anti-cancer_therapy_.html)
+
+```sql
+	select
+		Primary_Diagnosis,
+		NHS_Number,
+		min(Administration_Date) as Administration_Date
+	from omop_staging.sact_staging
+	group by
+		Primary_Diagnosis,
+		NHS_Number
+	order by
+		NHS_Number,
+		Primary_Diagnosis,
+		min(Administration_Date)
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20SACT%20Condition%20Occurrence%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 Source column  `CancerDiagnosis`.
 Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.

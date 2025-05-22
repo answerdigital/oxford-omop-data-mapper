@@ -64,7 +64,7 @@ and NHSNumber is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20SUS%20A&E%20Location%20mapping){: .btn }
-### SACT
+### SACT Location
 Source column  `Patient_Postcode`.
 Uppercase the postcode then insert the space in the correct location, if needed.
 
@@ -74,15 +74,14 @@ Uppercase the postcode then insert the space in the correct location, if needed.
 select
 	NHS_Number,
 	max (Patient_Postcode) as Patient_Postcode,
-	max (Date_Of_Birth) as Date_Of_Birth,
-	max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
+	max (Date_Of_Birth) as Date_Of_Birth
 from omop_staging.sact_staging
 group by NHS_Number
 	
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20SACT%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20zip%20field%20SACT%20Location%20mapping){: .btn }
 ### Rtds PAS Location
 Source column  `FirstOfPOSTCODE`.
 Uppercase the postcode then insert the space in the correct location, if needed.

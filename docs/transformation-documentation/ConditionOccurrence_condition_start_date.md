@@ -88,6 +88,30 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_start_date%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
+### SACT Condition Occurrence
+Source column  `Administration_Date`.
+Converts text to dates.
+
+* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
+
+```sql
+	select
+		Primary_Diagnosis,
+		NHS_Number,
+		min(Administration_Date) as Administration_Date
+	from omop_staging.sact_staging
+	group by
+		Primary_Diagnosis,
+		NHS_Number
+	order by
+		NHS_Number,
+		Primary_Diagnosis,
+		min(Administration_Date)
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_start_date%20field%20SACT%20Condition%20Occurrence%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 Source column  `DiagnosisDate`.
 Converts text to dates.
