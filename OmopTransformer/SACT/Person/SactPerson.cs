@@ -2,9 +2,9 @@
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.SACT;
+namespace OmopTransformer.SACT.Person;
 
-internal class SactPerson : OmopPerson<Sact>
+internal class SactPerson : OmopPerson<SactPersonRecord>
 {
     [CopyValue(nameof(Source.NHS_Number))]
     public override string? person_source_value { get; set; }

@@ -1,0 +1,33 @@
+﻿<Query>
+    <Sql>
+	select
+		NHS_Number,
+		Regimen,
+		Drug_Name,
+		Actual_Dose_Per_Administration,
+		Administration_Measurement_Per_Actual_Dose,
+		Administration_Date
+	from omop_staging.sact_staging
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="Drug_Name">
+			<Description>The name of the Systemic Anti-Cancer Therapy drug given to a PATIENT during an Systemic Anti-Cancer Therapy Drug Regimen.</Description>
+			<Origin>SYSTEMIC ANTI-CANCER THERAPY DRUG NAME</Origin>
+		</Explanation>
+		<Explanation columnName="Administration_Date">
+			<Description>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT.</Description>
+			<Origin>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE</Origin>
+		</Explanation>
+		<Explanation columnName="Actual_Dose_Per_Administration">
+			<Description>The actual Systemic Anti-Cancer Therapy dose given in each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle.</Description>
+			<Origin>SYSTEMIC ANTI-CANCER THERAPY ACTUAL DOSE</Origin>
+		</Explanation>
+		<Explanation columnName="Administration_Measurement_Per_Actual_Dose">
+			<Description>The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle.</Description>
+			<Origin>UNIT OF MEASUREMENT (SYSTEMIC ANTI-CANCER THERAPY)</Origin>
+	</Explanations>
+</Query>

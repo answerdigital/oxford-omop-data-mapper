@@ -1,0 +1,30 @@
+﻿<Query>
+    <Sql>
+	select
+		Primary_Diagnosis,
+		NHS_Number,
+		min(Administration_Date) as Administration_Date
+	from omop_staging.sact_staging
+	group by
+		Primary_Diagnosis,
+		NHS_Number
+	order by
+		NHS_Number,
+		Primary_Diagnosis,
+		min(Administration_Date)
+	</Sql>
+    <Explanations>
+		<Explanation columnName="Primary_Diagnosis">
+			<Description>PRIMARY DIAGNOSIS (ICD AT START SYSTEMIC ANTI-CANCER THERAPY) is the PRIMARY DIAGNOSIS (ICD) at the start of the Systemic Anti-Cancer Therapy.</Description>
+			<Origin>PRIMARY DIAGNOSIS (ICD AT START SYSTEMIC ANTI-CANCER THERAPY)</Origin>
+		</Explanation>
+		<Explanation columnName="NHS_Number">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="Administration_Date">
+			<Description>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT.</Description>
+			<Origin>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

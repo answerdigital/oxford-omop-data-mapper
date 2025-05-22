@@ -77,4 +77,19 @@ public class DateConverterTest
         Assert.IsInstanceOfType(result, typeof(DateTime));
         Assert.AreEqual(new DateTime(2022, 1, 1), result);
     }
+
+    [TestMethod]
+    public void GetValue_DateInDDMMYYYYFormat_ReturnsDateTime()
+    {
+        // Arrange
+        var dateConverter = new DateConverter("23/05/2023");
+
+        // Act
+        var result = dateConverter.GetValue();
+
+        // Assert
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOfType(result, typeof(DateTime));
+        Assert.AreEqual(new DateTime(2023, 5, 23), result);
+    }
 }

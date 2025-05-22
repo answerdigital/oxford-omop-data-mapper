@@ -8,7 +8,6 @@ select
 from omop_staging.sact_staging
 group by NHS_Number
 	</Sql>
-
 	<Explanations>
 		<Explanation columnName="NHS_Number">
 			<Description>Patient NHS Number</Description>
