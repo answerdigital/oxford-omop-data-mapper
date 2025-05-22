@@ -15,7 +15,7 @@ This data is held in the `provenance` table that is defined by the following col
 | `table_type_id`    |  Table type, eg `21` for Location or `31` for Person.           |
 | `table_key`   |  Key of the reference table, eg `123` from the `location_id` table.           |
 | `column_name`   | Name of the tracked column, eg `address_1`.            |
-| `data_source`   |   Explanation of the data origin, eg `CDS`          |
+| `data_source`   |   Explanation of the data origin, eg `SUSAPC`          |
 
 ## Example usage - Persons report
 
