@@ -31,6 +31,7 @@ Lookup race concept.
 |S|0|Other Ethnic Groups - Any other ethnic group|
 |Z|0|Not stated|
 |99|0|Not known|
+||0|No data|
 
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
@@ -78,6 +79,7 @@ Lookup race concept.
 |S|0|Other Ethnic Groups - Any other ethnic group|
 |Z|0|Not stated|
 |99|0|Not known|
+||0|No data|
 
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
@@ -125,6 +127,7 @@ Lookup race concept.
 |S|0|Other Ethnic Groups - Any other ethnic group|
 |Z|0|Not stated|
 |99|0|Not known|
+||0|No data|
 
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
@@ -172,6 +175,7 @@ Lookup race concept.
 |S|0|Other Ethnic Groups - Any other ethnic group|
 |Z|0|Not stated|
 |99|0|Not known|
+||0|No data|
 
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
