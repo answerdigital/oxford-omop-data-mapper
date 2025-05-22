@@ -1,1 +1,0 @@
-DataQualityDashboard::viewDqDashboard("C:\\path\\to\\results.json")
