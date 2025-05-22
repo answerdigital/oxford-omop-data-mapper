@@ -49,7 +49,7 @@ internal class ConceptResolver
         return
             connection
                 .Query<ConceptRelationshipRow>(sql:
-                    @"select
+                    @"select distinct
 	                    cm.source_concept_id as concept_id,
 	                    device.concept_id as device_concept_id
                     from omop_staging.concept_code_map cm

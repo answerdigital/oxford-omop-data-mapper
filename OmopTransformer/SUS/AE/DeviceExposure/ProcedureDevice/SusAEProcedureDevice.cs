@@ -27,7 +27,7 @@ internal class SusAEProcedureDevice : OmopDeviceExposure<SusAEProcedureDeviceRec
     [ConstantValue(32818, "`EHR administration record`")]
     public override int? device_type_concept_id { get; set; }
 
-    [Transform(typeof(AccidentAndEmergencyInvestigationLookup), nameof(Source.PrimaryProcedure))]
+    [Transform(typeof(NhsAETreatmentLookup), nameof(Source.PrimaryProcedure))]
     public override int? device_source_concept_id { get; set; }
 
     [CopyValue(nameof(Source.PrimaryProcedure))]
