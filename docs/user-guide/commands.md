@@ -76,6 +76,14 @@ Loads staging data from a filesystem.
 
 ### Example
 
+#### Stage a SUS APC file
+
+```
+omop stage load --type sus-apc "SUS_DATA\APC\April 2022 Submission.zip"
+```
+
+When staging a `sus-apc` file, you can also pass the corrosponding ccmds file for the same xtract, using `--ccmds` followed by the filepath.
+
 #### Stage a COSD file
 
 ```
@@ -94,19 +102,13 @@ omop stage load --type sact "SACT_v3-20200101-20200131.csv"
 omop stage load --type rtds "Rtds.zip"
 ```
 
-#### Stage a CDS file
-
-```
-omop stage load --type cds BNC62_1_20231020232835673
-```
-
 ### Remarks
 
 Supported data formats include
-* CDS - EMIS Infoflex 6.2 fixed width multiline text format
-* COSD - v8-1 and v9-0-1 xml formats
+* [SUS+ SEM CSV Extracts](https://digital.nhs.uk/services/secondary-uses-service-sus/secondary-uses-services-sus-guidance)
+* [COSD - v8-1 and v9-0-1 xml formats](https://digital.nhs.uk/ndrs/data/data-sets/cosd)
 * [SACT - v3.0](https://digital.nhs.uk/data-and-information/information-standards/information-standards-and-data-collections-including-extractions/publications-and-notifications/standards-and-collections/dcb1533-systemic-anti-cancer-therapy-data-set)
-* RTDS
+* [RTDS](https://digital.nhs.uk/ndrs/data/data-sets/rtds)
 
 Staged data is appended to existing staging tables. If the staging tables need to be cleared run the [`clear staging command`](#clear-staging-command) first.
 
@@ -119,12 +121,12 @@ Clears the staging tables.
 ### Example
 
 ```
-omop stage clear --type cds
+omop stage clear --type sus-apc
 ```
 
 ### Remarks
 
-Supported type flags are `cds`, `rtds`, `cosd` and `sact`.
+Supported type flags are `sus-apc`, `sus-ae`, `sus-op`, `rtds`, `cosd` and `sact`.
 
 ---
 
@@ -135,12 +137,12 @@ Transforms and inserts the staged data and its origin to the OMOP database.
 ### Example 
 
 ```
-omop transform --type cds
+omop transform --type sus-apc
 ```
 
 ### Remarks
 
-Supported type flags are `cds`, `rtds`, `cosd` and `sact`.
+Supported type flags are `sus-apc`, `sus-ae`, `sus-op`, `rtds`, `cosd` and `sact`.
 
 The OMOP data provenance is recorded as each data set is transformed. [See data provenance.]({% link docs/data-provenance.md %}#data-provenance)
 
