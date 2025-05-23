@@ -21,7 +21,7 @@ internal class SactDrugExposure : OmopDrugExposure<SactDrugExposureRecord>
     [ConstantValue(32818, "`EHR administration record`")]
     public override int? drug_type_concept_id { get; set; }
 
-    [Transform(typeof(StandardDrugConceptSelector), useOmopTypeAsSource: true, nameof(drug_source_value))]
+    [Transform(typeof(SactDrugLookup), useOmopTypeAsSource: true, nameof(drug_source_value))]
     public override int? drug_source_concept_id { get; set; }
 
     [CopyValue(nameof(Source.Drug_Name))]
