@@ -6,7 +6,7 @@ namespace OmopTransformer.SACT.DrugExposure;
 
 internal class SactDrugExposure : OmopDrugExposure<SactDrugExposureRecord>
 {
-    [CopyValue(nameof(Source.NHSNumber))]
+    [CopyValue(nameof(Source.NHS_Number))]
     public override string? nhs_number { get; set; }
 
     [Transform(typeof(StandardDrugConceptSelector), useOmopTypeAsSource: true, nameof(drug_source_concept_id))]

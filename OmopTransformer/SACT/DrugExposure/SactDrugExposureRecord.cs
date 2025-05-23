@@ -7,7 +7,7 @@ namespace OmopTransformer.SACT.DrugExposure;
 [SourceQuery("SactDrugExposure.xml")]
 internal class SactDrugExposureRecord
 {
-    public string? NHSNumber { get; set; }
+    public string? NHS_Number { get; set; }
     public string? Drug_Name { get; set; }
     public string? Administration_Date { get; set; }
     public string? Actual_Dose_Per_Administration { get; set; }
