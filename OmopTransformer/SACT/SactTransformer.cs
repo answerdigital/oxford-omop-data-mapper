@@ -60,16 +60,16 @@ internal class SactTransformer : Transformer
             newId,
             cancellationToken);
 
-        // await Transform<SactDrugExposureRecord, SactDrugExposure>(
-        //     _drugExposureRecorder.InsertUpdateDrugExposure,
-        //     "SACT Drug Exposure",
-        //     newId,
-        //     cancellationToken);
-
-        await Transform<SactConditionOccurrenceRecord, SactConditionOccurrence>(
-            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
-            "SACT Condition Occurrence",
+        await Transform<SactDrugExposureRecord, SactDrugExposure>(
+            _drugExposureRecorder.InsertUpdateDrugExposure,
+            "SACT Drug Exposure",
             newId,
             cancellationToken);
+
+        // await Transform<SactConditionOccurrenceRecord, SactConditionOccurrence>(
+        //     _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+        //     "SACT Condition Occurrence",
+        //     newId,
+        //     cancellationToken);
     }
 }
