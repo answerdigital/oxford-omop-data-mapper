@@ -122,10 +122,7 @@ internal class RecordTransformer : IRecordTransformer
             throw new InvalidOperationException("Lookup transform must have one argument specified.");
         }
 
-        string? argument = GetLookupKey(arguments);
-
-        if (argument == null)
-            return;
+        string argument = GetLookupKey(arguments) ?? "";
         
         if (lookup.Mappings.TryGetValue(argument, out var value))
         {

@@ -25,7 +25,8 @@ internal class RaceConceptLookup : ILookup
             { "R", new ValueWithNote("38003579",    "Other Ethnic Groups - Chinese") },
             { "S", new ValueWithNote("0",   "Other Ethnic Groups - Any other ethnic group") },
             { "Z", new ValueWithNote("0",   "Not stated") },
-            { "99", new ValueWithNote("0",  "Not known") }
+            { "99", new ValueWithNote("0",  "Not known") },
+            { "", new ValueWithNote("0", "No data") }
         };
 
     public string[] ColumnNotes =>
@@ -58,9 +59,10 @@ internal class RaceSourceConceptLookup : ILookup
             { "N", new ValueWithNote("700367", "Black or Black British - African") },
             { "P", new ValueWithNote("700368", "Black or Black British - Any other Black background") },
             { "R", new ValueWithNote("700369", "Other Ethnic Groups - Chinese") },
-            { "S", new ValueWithNote("", "Other Ethnic Groups - Any other ethnic group") },
-            { "Z", new ValueWithNote("", "Not stated") },
-            { "99", new ValueWithNote("", "Not known") },
+            { "S", new ValueWithNote("0", "Other Ethnic Groups - Any other ethnic group") },
+            { "Z", new ValueWithNote("0", "Not stated") },
+            { "99", new ValueWithNote("0", "Not known") },
+            { "", new ValueWithNote("0", "No data") }
         };
 
     public string[] ColumnNotes =>
