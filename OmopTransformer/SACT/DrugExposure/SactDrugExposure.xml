@@ -1,7 +1,7 @@
 ﻿<Query>
     <Sql>
 	select
-		NHS_Number,
+		replace(NHS_Number, ' ', '') as NHS_Number,
 		Regimen,
 		Drug_Name,
 		Actual_Dose_Per_Administration,
@@ -10,7 +10,7 @@
 	from omop_staging.sact_staging
 	</Sql>
 	<Explanations>
-		<Explanation columnName="NHSNumber">
+		<Explanation columnName="NHS_Number">
 			<Description>Patient NHS Number</Description>
 			<Origin>NHS NUMBER</Origin>
 		</Explanation>

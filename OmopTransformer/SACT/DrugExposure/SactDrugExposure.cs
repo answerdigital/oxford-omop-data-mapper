@@ -6,7 +6,7 @@ namespace OmopTransformer.SACT.DrugExposure;
 
 internal class SactDrugExposure : OmopDrugExposure<SactDrugExposureRecord>
 {
-    [CopyValue(nameof(Source.NHSNumber))]
+    [CopyValue(nameof(Source.NHS_Number))]
     public override string? nhs_number { get; set; }
 
     [Transform(typeof(StandardDrugConceptSelector), useOmopTypeAsSource: true, nameof(drug_source_concept_id))]
@@ -21,7 +21,7 @@ internal class SactDrugExposure : OmopDrugExposure<SactDrugExposureRecord>
     [ConstantValue(32818, "`EHR administration record`")]
     public override int? drug_type_concept_id { get; set; }
 
-    [Transform(typeof(StandardDrugConceptSelector), useOmopTypeAsSource: true, nameof(drug_source_value))]
+    [Transform(typeof(SactDrugLookup), useOmopTypeAsSource: true, nameof(drug_source_value))]
     public override int? drug_source_concept_id { get; set; }
 
     [CopyValue(nameof(Source.Drug_Name))]
