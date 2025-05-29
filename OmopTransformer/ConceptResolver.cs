@@ -131,9 +131,16 @@ internal class ConceptResolver
     {
         lock (_unableToMapByFrequencyLock)
         {
-            foreach (var error in _unableToMapByFrequency)
+            if (_unableToMapByFrequency.Any())
             {
-                _logger.LogInformation($"Concept code {error.Key} mapped to 0 codes. Results may be excluded from OMOP database. Error count: {error.Value}.");
+                string log = "Top 10 unmappable concept codes. Unmappble concepts cannot be recorded." + Environment.NewLine;
+
+                foreach (var error in _unableToMapByFrequency.OrderByDescending(map => map.Value).Take(10))
+                {
+                    log += $"- concept id: {error.Key}. error count: {error.Value}." + Environment.NewLine;
+                }
+
+                _logger.LogWarning(log);
             }
         }
     }
