@@ -97,7 +97,7 @@ Converts text to dates.
 ```sql
 	select
 		Primary_Diagnosis,
-		NHS_Number,
+		replace(NHS_Number, ' ', '') as NHS_Number,
 		min(Administration_Date) as Administration_Date
 	from omop_staging.sact_staging
 	group by

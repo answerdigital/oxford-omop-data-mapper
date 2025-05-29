@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number,\n\t\tmin(Administration_Date) as Administration_Date\n\tfrom omop_staging.sact_staging\n\tgroup by\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number\n\torder by\n\t\tNHS_Number,\n\t\tPrimary_Diagnosis,\n\t\tmin(Administration_Date)\n\t",
+      "query": "\n\tselect\n\t\tPrimary_Diagnosis,\n\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n\t\tmin(Administration_Date) as Administration_Date\n\tfrom omop_staging.sact_staging\n\tgroup by\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number\n\torder by\n\t\tNHS_Number,\n\t\tPrimary_Diagnosis,\n\t\tmin(Administration_Date)\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number,\n\t\tmin(Administration_Date) as Administration_Date\n\tfrom omop_staging.sact_staging\n\tgroup by\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number\n\torder by\n\t\tNHS_Number,\n\t\tPrimary_Diagnosis,\n\t\tmin(Administration_Date)\n\t",
+      "query": "\n\tselect\n\t\tPrimary_Diagnosis,\n\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n\t\tmin(Administration_Date) as Administration_Date\n\tfrom omop_staging.sact_staging\n\tgroup by\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number\n\torder by\n\t\tNHS_Number,\n\t\tPrimary_Diagnosis,\n\t\tmin(Administration_Date)\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number,\n\t\tmin(Administration_Date) as Administration_Date\n\tfrom omop_staging.sact_staging\n\tgroup by\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number\n\torder by\n\t\tNHS_Number,\n\t\tPrimary_Diagnosis,\n\t\tmin(Administration_Date)\n\t",
+      "query": "\n\tselect\n\t\tPrimary_Diagnosis,\n\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n\t\tmin(Administration_Date) as Administration_Date\n\tfrom omop_staging.sact_staging\n\tgroup by\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number\n\torder by\n\t\tNHS_Number,\n\t\tPrimary_Diagnosis,\n\t\tmin(Administration_Date)\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,7 +78,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number,\n\t\tmin(Administration_Date) as Administration_Date\n\tfrom omop_staging.sact_staging\n\tgroup by\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number\n\torder by\n\t\tNHS_Number,\n\t\tPrimary_Diagnosis,\n\t\tmin(Administration_Date)\n\t",
+      "query": "\n\tselect\n\t\tPrimary_Diagnosis,\n\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n\t\tmin(Administration_Date) as Administration_Date\n\tfrom omop_staging.sact_staging\n\tgroup by\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number\n\torder by\n\t\tNHS_Number,\n\t\tPrimary_Diagnosis,\n\t\tmin(Administration_Date)\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -96,7 +96,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number,\n\t\tmin(Administration_Date) as Administration_Date\n\tfrom omop_staging.sact_staging\n\tgroup by\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number\n\torder by\n\t\tNHS_Number,\n\t\tPrimary_Diagnosis,\n\t\tmin(Administration_Date)\n\t",
+      "query": "\n\tselect\n\t\tPrimary_Diagnosis,\n\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n\t\tmin(Administration_Date) as Administration_Date\n\tfrom omop_staging.sact_staging\n\tgroup by\n\t\tPrimary_Diagnosis,\n\t\tNHS_Number\n\torder by\n\t\tNHS_Number,\n\t\tPrimary_Diagnosis,\n\t\tmin(Administration_Date)\n\t",
       "lookup_table_markdown": null
     },
     {

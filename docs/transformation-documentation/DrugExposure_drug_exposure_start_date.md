@@ -14,7 +14,7 @@ Converts text to dates.
 
 ```sql
 	select
-		NHS_Number,
+		replace(NHS_Number, ' ', '') as NHS_Number,
 		Regimen,
 		Drug_Name,
 		Actual_Dose_Per_Administration,

@@ -7,13 +7,13 @@ has_toc: false
 ---
 # nhs_number
 ### SACT Drug Exposure
-* Value copied from `NHSNumber`
+* Value copied from `NHS_Number`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 	select
-		NHS_Number,
+		replace(NHS_Number, ' ', '') as NHS_Number,
 		Regimen,
 		Drug_Name,
 		Actual_Dose_Per_Administration,
