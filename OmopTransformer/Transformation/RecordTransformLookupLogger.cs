@@ -60,7 +60,12 @@ internal class RecordTransformLookupLogger
 
             string logText = "Missed lookups" + Environment.NewLine;
 
-            foreach (var countByLookup in _missCountByLookup.OrderByDescending(count => count.Value.MissCount))
+            var missedLookupCounters =
+                _missCountByLookup
+                    .Where(counter => counter.Value.MissCount > 0)
+                    .OrderByDescending(count => count.Value.MissCount);
+
+            foreach (var countByLookup in missedLookupCounters)
             {
                 logText += $"Lookup name: {countByLookup.Key} {Environment.NewLine}";
 
@@ -72,6 +77,9 @@ internal class RecordTransformLookupLogger
 
                 foreach (var missCount in countByLookup.Value.MissCountByValue.OrderByDescending(count => count.Value))
                 {
+                    if (missCount.Value == 0)
+                        continue;
+
                     logText += $"  - \"{missCount.Key}\" misses: {missCount.Value}{Environment.NewLine}";
                 }
 
