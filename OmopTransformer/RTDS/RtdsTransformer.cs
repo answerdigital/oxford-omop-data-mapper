@@ -14,21 +14,21 @@ internal class RtdsTransformer : Transformer
     
     public RtdsTransformer(
         IRecordTransformer recordTransformer, 
-        ILogger<IRecordTransformer> logger, 
         TransformOptions transformOptions, 
         IRecordProvider recordProvider, 
         ILocationRecorder locationRecorder, 
         IPersonRecorder personRecorder, 
         IConceptMapper conceptMapper,
-        IRunAnalysisRecorder runAnalysisRecorder) 
+        IRunAnalysisRecorder runAnalysisRecorder,
+        ILoggerFactory loggerFactory) 
         : base(
             recordTransformer, 
-            logger, 
             transformOptions, 
             recordProvider, 
             "RTDS",
             conceptMapper,
-            runAnalysisRecorder)
+            runAnalysisRecorder,
+            loggerFactory)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
