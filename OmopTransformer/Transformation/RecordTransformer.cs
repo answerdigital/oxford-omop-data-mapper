@@ -168,8 +168,10 @@ internal class RecordTransformer : IRecordTransformer
                 }
             }
         }
-
-        _recordTransformLookupLogger.Miss(lookup, argument);
+        else
+        {
+            _recordTransformLookupLogger.Miss(lookup, argument);
+        }
     }
     
     private void TransformSelector<T>(IOmopRecord<T> record, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType, bool sourceTypeAsOrigin)
