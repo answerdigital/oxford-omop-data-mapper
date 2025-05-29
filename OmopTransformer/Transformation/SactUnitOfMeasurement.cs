@@ -8,6 +8,8 @@ internal class SactUnitOfMeasurement : ILookup
     public Dictionary<string, ValueWithNote> Mappings { get; } =
         new()
         {
+            { "1", new ValueWithNote("Milligrams (mg)", "") },
+            { "2", new ValueWithNote("Micrograms (Mcg)", "") },
             { "01", new ValueWithNote("Milligrams (mg)", "") },
             { "02", new ValueWithNote("Micrograms (Mcg)", "") },
             { "03", new ValueWithNote("Grams (g)", "") },
@@ -15,6 +17,7 @@ internal class SactUnitOfMeasurement : ILookup
             { "05", new ValueWithNote("Cells", "") },
             { "06", new ValueWithNote("Plaque Forming Units (PFU) (one million) (x10^6)", "") },
             { "07", new ValueWithNote("Plaque Forming Units (PFU) (one hundred million) (x10^8)", "") },
+            { "98" , new ValueWithNote("Other (not listed)", "") },
         };
 
     public string[] ColumnNotes => new string[] {};
