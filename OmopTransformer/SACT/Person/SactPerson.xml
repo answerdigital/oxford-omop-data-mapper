@@ -1,24 +1,17 @@
 ﻿<Query>
     <Sql>
-select
-	NHS_Number,
-	max (Patient_Postcode) as Patient_Postcode,
-	max (Date_Of_Birth) as Date_Of_Birth,
-	max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
-from omop_staging.sact_staging
-group by NHS_Number
+	select
+		NHS_Number,
+		max (Date_Of_Birth) as Date_Of_Birth,
+		max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
+	from omop_staging.sact_staging
+	group by NHS_Number
 	</Sql>
 	<Explanations>
 		<Explanation columnName="NHS_Number">
 			<Description>Patient NHS Number</Description>
 			<Origin>NHS NUMBER</Origin>
 		</Explanation>
-
-		<Explanation columnName="Patient_Postcode">
-			<Description>Patient's Postcode.</Description>
-			<Origin>POSTCODE</Origin>
-		</Explanation>
-
 		<Explanation columnName="Date_Of_Birth">
 			<Description>Patient's date of birth.</Description>
 			<Origin>PERSON BIRTH DATE</Origin>

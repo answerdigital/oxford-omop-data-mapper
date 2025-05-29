@@ -25,6 +25,9 @@ internal class SactPerson : OmopPerson<SactPersonRecord>
     [ConstantValue(0, "Unknown concept")]
     public override int? ethnicity_concept_id { get; set; }
 
+    [ConstantValue(0, "Unknown concept")]
+    public override int? race_concept_id { get; set; }
+
     [Transform(typeof(NhsGenderLookup), nameof(Source.Person_Stated_Gender_Code))]
     public override int? gender_concept_id { get; set; }
 
