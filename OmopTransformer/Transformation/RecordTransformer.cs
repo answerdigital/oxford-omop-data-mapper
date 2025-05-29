@@ -142,7 +142,7 @@ internal class RecordTransformer : IRecordTransformer
                     if (int.TryParse(value.Value, out int number))
                     {
                         property.SetValue(record, number);
-                        _recordTransformLookupLogger.Hit(nameof(lookup));
+                        _recordTransformLookupLogger.Hit(lookup);
                     }
                 }
                 else
@@ -155,12 +155,12 @@ internal class RecordTransformer : IRecordTransformer
                 if (property.PropertyType == typeof(string))
                 {
                     property.SetValue(record, value.Value);
-                    _recordTransformLookupLogger.Hit(nameof(lookup));
+                    _recordTransformLookupLogger.Hit(lookup);
                 }
                 else if (property.PropertyType == typeof(int))
                 {
                     property.SetValue(record, int.Parse(value.Value));
-                    _recordTransformLookupLogger.Hit(nameof(lookup));
+                    _recordTransformLookupLogger.Hit(lookup);
                 }
                 else
                 {
@@ -169,7 +169,7 @@ internal class RecordTransformer : IRecordTransformer
             }
         }
 
-        _recordTransformLookupLogger.Miss(nameof(lookup), argument);
+        _recordTransformLookupLogger.Miss(lookup, argument);
     }
     
     private void TransformSelector<T>(IOmopRecord<T> record, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType, bool sourceTypeAsOrigin)

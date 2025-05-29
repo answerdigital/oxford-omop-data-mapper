@@ -15,21 +15,21 @@ internal class RecordTransformLookupLogger
         }
     }
 
-    public void Hit(string lookupName)
+    public void Hit(ILookup lookup)
     {
         lock (_lock)
         {
-            var counter = GetOrCreateMissCount(lookupName);
+            var counter = GetOrCreateMissCount(lookup.GetType().Name);
 
             counter.Hit();
         }
     }
 
-    public void Miss(string lookupName, string value)
+    public void Miss(ILookup lookup, string value)
     {
         lock (_lock)
         {
-            var counter = GetOrCreateMissCount(lookupName);
+            var counter = GetOrCreateMissCount(lookup.GetType().Name);
 
             counter.Miss(value);
         }
@@ -58,34 +58,29 @@ internal class RecordTransformLookupLogger
             if (ShouldPrintLog(_missCountByLookup) == false)
                 return;
 
-            var logger = loggerFactory.CreateLogger("LookupTransformer");
-
-            logger.LogWarning("Missed lookups");
+            string logText = "Missed lookups" + Environment.NewLine;
 
             foreach (var countByLookup in _missCountByLookup.OrderByDescending(count => count.Value.MissCount))
             {
-                logger.LogWarning(" {0}", countByLookup.Key);
+                logText += $"Lookup name: {countByLookup.Key} {Environment.NewLine}";
 
                 var missRatePercentage = (countByLookup.Value.MissCount * 100d) / (countByLookup.Value.MissCount + countByLookup.Value.HitCount);
 
-                logger
-                    .LogWarning(
-                        "     Total miss rate {0}% ({1} hits, {2} misses)",
-                        Math.Round(missRatePercentage, 2),
-                        countByLookup.Value.HitCount,
-                        countByLookup.Value.MissCount);
+                logText += $"  Total miss rate {Math.Round(missRatePercentage, 2)}% ({countByLookup.Value.HitCount} hits, {countByLookup.Value.MissCount} misses){Environment.NewLine}";
 
-                logger.LogWarning("       Misses");
+                logText += "  Misses" + Environment.NewLine;
 
                 foreach (var missCount in countByLookup.Value.MissCountByValue.OrderByDescending(count => count.Value))
                 {
-                    logger
-                        .LogWarning(
-                            "       - \"{0}\" misses: {1}",
-                            missCount.Key,
-                            missCount.Value);
+                    logText += $"  - \"{missCount.Key}\" misses: {missCount.Value}{Environment.NewLine}";
                 }
+
+                logText += Environment.NewLine;
             }
+
+            var logger = loggerFactory.CreateLogger("LookupTransformer");
+
+            logger.LogWarning(logText);
         }
     }
 
