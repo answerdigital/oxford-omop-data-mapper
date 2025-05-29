@@ -66,10 +66,10 @@ internal class SactTransformer : Transformer
             newId,
             cancellationToken);
 
-        // await Transform<SactConditionOccurrenceRecord, SactConditionOccurrence>(
-        //     _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
-        //     "SACT Condition Occurrence",
-        //     newId,
-        //     cancellationToken);
+        await Transform<SactConditionOccurrenceRecord, SactConditionOccurrence>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "SACT Condition Occurrence",
+            newId,
+            cancellationToken);
     }
 }
