@@ -31,7 +31,6 @@ internal class SactTransformer : Transformer
         ILoggerFactory loggerFactory)
         : base(
             recordTransformer,
-            logger,
             transformOptions,
             recordProvider,
             "SACT",
