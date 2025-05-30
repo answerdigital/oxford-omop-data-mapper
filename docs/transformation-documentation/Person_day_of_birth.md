@@ -66,25 +66,24 @@ Selects the day of the month or null if the date is null.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20day_of_birth%20field%20SUS%20A&E%20Person%20mapping){: .btn }
-### SACT
+### SACT Person
 Source column  `Date_Of_Birth`.
 Selects the day of the month or null if the date is null.
 
 * `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
-select
-	NHS_Number,
-	max (Patient_Postcode) as Patient_Postcode,
-	max (Date_Of_Birth) as Date_Of_Birth,
-	max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
-from omop_staging.sact_staging
-group by NHS_Number
+	select
+		NHS_Number,
+		max (Date_Of_Birth) as Date_Of_Birth,
+		max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
+	from omop_staging.sact_staging
+	group by NHS_Number
 	
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20day_of_birth%20field%20SACT%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20day_of_birth%20field%20SACT%20Person%20mapping){: .btn }
 ### Rtds Demographics
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.

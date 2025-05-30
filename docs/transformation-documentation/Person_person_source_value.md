@@ -63,24 +63,23 @@ has_toc: false
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20SUS%20A&E%20Person%20mapping){: .btn }
-### SACT
+### SACT Person
 * Value copied from `NHS_Number`
 
 * `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
-select
-	NHS_Number,
-	max (Patient_Postcode) as Patient_Postcode,
-	max (Date_Of_Birth) as Date_Of_Birth,
-	max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
-from omop_staging.sact_staging
-group by NHS_Number
+	select
+		NHS_Number,
+		max (Date_Of_Birth) as Date_Of_Birth,
+		max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
+	from omop_staging.sact_staging
+	group by NHS_Number
 	
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20SACT%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20SACT%20Person%20mapping){: .btn }
 ### Rtds Demographics
 * Value copied from `PatientId`
 

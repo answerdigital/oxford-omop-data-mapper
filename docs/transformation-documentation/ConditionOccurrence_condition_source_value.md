@@ -59,6 +59,29 @@ has_toc: false
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_value%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
+### SACT Condition Occurrence
+* Value copied from `Primary_Diagnosis`
+
+* `Primary_Diagnosis` PRIMARY DIAGNOSIS (ICD AT START SYSTEMIC ANTI-CANCER THERAPY) is the PRIMARY DIAGNOSIS (ICD) at the start of the Systemic Anti-Cancer Therapy. [PRIMARY DIAGNOSIS (ICD AT START SYSTEMIC ANTI-CANCER THERAPY)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_at_start_systemic_anti-cancer_therapy_.html)
+
+```sql
+	select
+		Primary_Diagnosis,
+		replace(NHS_Number, ' ', '') as NHS_Number,
+		min(Administration_Date) as Administration_Date
+	from omop_staging.sact_staging
+	group by
+		Primary_Diagnosis,
+		NHS_Number
+	order by
+		NHS_Number,
+		Primary_Diagnosis,
+		min(Administration_Date)
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_value%20field%20SACT%20Condition%20Occurrence%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 * Value copied from `CancerDiagnosis`
 

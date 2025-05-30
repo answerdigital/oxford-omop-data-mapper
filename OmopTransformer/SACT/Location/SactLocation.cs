@@ -2,9 +2,9 @@
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.SACT;
+namespace OmopTransformer.SACT.Location;
 
-internal class SactLocation: OmopLocation<Sact>
+internal class SactLocation: OmopLocation<SactLocationRecord>
 {
     [Transform(typeof(PostcodeFormatter), (nameof(Source.Patient_Postcode)))]
     public override string? zip { get; set; }

@@ -18,7 +18,7 @@ internal class SactInserter : ISactInserter
         _configuration = configuration.Value;
     }
 
-    public async Task Insert(IReadOnlyCollection<Sact> sactRows, CancellationToken cancellationToken)
+    public async Task Insert(IReadOnlyCollection<SactCsvRow> sactRows, CancellationToken cancellationToken)
     {
         if (sactRows == null) throw new ArgumentNullException(nameof(sactRows));
 

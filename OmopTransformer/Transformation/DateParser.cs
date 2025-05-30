@@ -9,7 +9,7 @@ internal class DateParser (string? text)
         if (string.IsNullOrEmpty(text))
             return null;
         
-        if (DateTime.TryParse(text, out DateTime parsedDate))
+        if (DateTime.TryParse(text, CultureInfo.GetCultureInfo("en-GB"), out DateTime parsedDate))
         {
             return parsedDate;
         }

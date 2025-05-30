@@ -35,12 +35,12 @@ internal class SactStaging : ISactStaging
 
         using var reader = new StreamReader(_options.FileName);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-        var records = new List<Sact>();
+        var records = new List<SactCsvRow>();
         await csv.ReadAsync();
         csv.ReadHeader();
         while (await csv.ReadAsync())
         {
-            var record = new Sact
+            var record = new SactCsvRow
             {
                 NHS_Number = csv.GetField("NHS_Number"),
                 Local_Patient_Identifier = csv.GetField("Local_Patient_Identifier"),

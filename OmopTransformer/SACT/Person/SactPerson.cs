@@ -2,9 +2,9 @@
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.SACT;
+namespace OmopTransformer.SACT.Person;
 
-internal class SactPerson : OmopPerson<Sact>
+internal class SactPerson : OmopPerson<SactPersonRecord>
 {
     [CopyValue(nameof(Source.NHS_Number))]
     public override string? person_source_value { get; set; }
@@ -24,6 +24,9 @@ internal class SactPerson : OmopPerson<Sact>
     [Description("Note: This is specific to US-based data mappings and is in regards to being “Hispanic “ and “Not Hispanic”. All our data is UK-based.")]
     [ConstantValue(0, "Unknown concept")]
     public override int? ethnicity_concept_id { get; set; }
+
+    [ConstantValue(0, "Unknown concept")]
+    public override int? race_concept_id { get; set; }
 
     [Transform(typeof(NhsGenderLookup), nameof(Source.Person_Stated_Gender_Code))]
     public override int? gender_concept_id { get; set; }

@@ -1,11 +1,6 @@
-﻿using OmopTransformer.Annotations;
+﻿namespace OmopTransformer.SACT.Staging;
 
-namespace OmopTransformer.SACT;
-
-[DataOrigin("SACT")]
-[Description("SACT")]
-[SourceQuery("Sact.xml")]
-internal class Sact
+internal class SactCsvRow
 {
     public string? NHS_Number { get; init; }
     public string? Local_Patient_Identifier { get; init; }

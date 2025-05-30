@@ -1,0 +1,146 @@
+{
+  "omopTable": "DrugExposure",
+  "origin": "SACT",
+  "omopColumns": [
+    {
+      "name": "nhs_number",
+      "operation_description": "Value copied from `NHS_Number`",
+      "dataSource": [
+        {
+          "name": "NHS_Number",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n\t\tRegimen,\n\t\tDrug_Name,\n\t\tActual_Dose_Per_Administration,\n\t\tAdministration_Measurement_Per_Actual_Dose,\n\t\tAdministration_Date\n\tfrom omop_staging.sact_staging\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "drug_concept_id",
+      "operation_description": "Maps concepts to standard valid concepts in the `drug` domain.",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "drug_exposure_start_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "Administration_Date",
+          "description": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT.",
+          "origins": [
+            {
+              "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n\t\tRegimen,\n\t\tDrug_Name,\n\t\tActual_Dose_Per_Administration,\n\t\tAdministration_Measurement_Per_Actual_Dose,\n\t\tAdministration_Date\n\tfrom omop_staging.sact_staging\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "drug_exposure_end_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "Administration_Date",
+          "description": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT.",
+          "origins": [
+            {
+              "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n\t\tRegimen,\n\t\tDrug_Name,\n\t\tActual_Dose_Per_Administration,\n\t\tAdministration_Measurement_Per_Actual_Dose,\n\t\tAdministration_Date\n\tfrom omop_staging.sact_staging\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "drug_type_concept_id",
+      "operation_description": "Constant value set to `32818`. `EHR administration record`",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "drug_source_concept_id",
+      "operation_description": "SACT Drug lookup",
+      "dataSource": [
+        {
+          "name": "Drug_Name",
+          "description": "The name of the Systemic Anti-Cancer Therapy drug given to a PATIENT during an Systemic Anti-Cancer Therapy Drug Regimen.",
+          "origins": [
+            {
+              "origin": "SYSTEMIC ANTI-CANCER THERAPY DRUG NAME",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_name.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n\t\tRegimen,\n\t\tDrug_Name,\n\t\tActual_Dose_Per_Administration,\n\t\tAdministration_Measurement_Per_Actual_Dose,\n\t\tAdministration_Date\n\tfrom omop_staging.sact_staging\n\t",
+      "lookup_table_markdown": "\r\n\r\n|Drug_Name|drug_source_concept_id|notes|\r\n|------|-----|-----|\r\n|ABEMACICLIB|792649|abemaciclib|\r\n|ABIRATERONE ACETATE|46274231|abiraterone acetate|\r\n|Abiraterone|40239056|abiraterone|\r\n|ACALABRUTINIB|792764|acalabrutinib|\r\n|ACICLOVIR|42907410|VACICLOVIR|\r\n|ACP-196|792764|acalabrutinib|\r\n|AG-946|1254285|Tebapivat|\r\n|ALECTINIB|35604657|alectinib|\r\n|ALEMTUZUMAB|1312706|alemtuzumab|\r\n|ALLOPURINOL|1167322|allopurinol|\r\n|ALPELISIB|1396423|alpelisib|\r\n|AMPHOTERICIN ENCAPSULATED IN LIPOSO|0||\r\n|ANTITHYMOCYTE IMMUNOGLOBULIN (RABBI|19136207|lymphocyte immune globulin, anti-thymocyte globulin|\r\n|APALUTAMIDE|963987|apalutamide|\r\n|APREPITANT|936748|aprepitant|\r\n|Aromatase inhibitor reminder - pres|0||\r\n|ARSENIC TRIOXIDE|1333379|arsenic trioxide|\r\n|Asciminib|702133|asciminib|\r\n|Aspirin 100mg/ 300mg/Placebo|||\r\n|ASTX727 (cedazuridine 100 mg  decit|1146672|cedazuridine / decitabine Oral Tablet|\r\n|ATEZOLIZUMAB|42629079|atezolizumab|\r\n|ATROPINE SULPHATE|19018119|atropine sulfate|\r\n|AVAPRITINIB|37498468|avapritinib|\r\n|AVELUMAB|1593273|avelumab|\r\n|AXICABTAGENE CILOLEUCEL|792844|axicabtagene ciloleucel|\r\n|AXITINIB|42709322|axitinib|\r\n|Azacitidine / Placebo|0||\r\n|AZACITIDINE|1314865|azacitidine|\r\n|AZD4573|36856884|AZD-4573|\r\n|AZD7789|1253377|Sabestomig|\r\n|Belantamab mafodotin|37002419|belantamab mafodotin|\r\n|BENDAMUSTINE|19015523|bendamustine|\r\n|BEVACIZUMAB|1397141|bevacizumab|\r\n|BEXAROTENE|1389888|bexarotene|\r\n|BI 1703880|0||\r\n|BI 836845|36863086|XENTUZUMAB|\r\n|BI-1607|36855886|BD-1067|\r\n|BINIMETINIB|1559930|binimetinib|\r\n|BLEOMYCIN SULPHATE|19018330|bleomycin sulfate|\r\n|Blinatumomab 100mcg infusion bag (2|45892531|blinatumomab|\r\n|Blinatumomab 133.75mcg infusion bag|45892531|blinatumomab|\r\n|Blinatumomab 31.25mcg infusion bag |45892531|blinatumomab|\r\n|Blinatumomab 41.25mcg infusion bag |45892531|blinatumomab|\r\n|BLINATUMOMAB|45892531|blinatumomab|\r\n|BLUETEQ registration requirements -|0||\r\n|BMS-986213 / Nivolumab|779243|nivolumab / relatlimab Injection|\r\n|Bone Marrow/Stem Cell|0||\r\n|BORTEZOMIB|1336825|bortezomib|\r\n|Bosutinib|42900401|bosutinib|\r\n|BRENTUXIMAB VEDOTIN|40241969|brentuximab vedotin|\r\n|BRIGATINIB|1594187|brigatinib|\r\n|BSA calculation for SACT|0||\r\n|BSA for SACT and renal calculations|0||\r\n|BUSULFAN|1333357|busulfan|\r\n|CABAZITAXEL|40222431|cabazitaxel|\r\n|CABOZANTINIB|43012292|cabozantinib|\r\n|CALCIUM CARBONATE              WITH|0||\r\n|CALCIUM FOLINATE|36878754|Disodium folinate|\r\n|CALCIUM LEVOFOLINATE|36256127|Calcium levofolinate|\r\n|CAPECITABINE|1337620|capecitabine|\r\n|CARBOPLATIN|1344905|carboplatin|\r\n|CARFILZOMIB|42873638|carfilzomib|\r\n|CARMUSTINE|1350066|carmustine|\r\n|CC-95251|1253409|Anzurstobart|\r\n|Cediranib|36859905|CEDIRANIB|\r\n|CEMIPLIMAB|35200783|cemiplimab|\r\n|Ceralasertib|36854241|CERALASERTIB|\r\n|CETIRIZINE|1149196|cetirizine|\r\n|CETUXIMAB|1315411|cetuximab|\r\n|CHLORAMBUCIL|1390051|chlorambucil|\r\n|CHLORPHENAMINE|19049707|chlorphenoxamine|\r\n|CISPLATIN|1397599|cisplatin|\r\n|CLADRIBINE|19054825|cladribine|\r\n|CMV, HSV & VZV Prophylaxis|0||\r\n|Cord Cell Infusion|0||\r\n|CO-TRIMOXAZOLE|21018085|Co-trimoxazole|\r\n|CRIZANLIZUMAB|37497670|crizanlizumab|\r\n|CYCLIZINE LACTATE|19135874|cyclizine lactate|\r\n|CYCLIZINE|909358|cyclizine|\r\n|CYCLOPHOSPHAMIDE|1310317|cyclophosphamide|\r\n|CYTARABINE|1311078|cytarabine|\r\n|Dabrafenib|43532299|dabrafenib|\r\n|DACARBAZINE|1311409|dacarbazine|\r\n|DAPSONE|1711759|dapsone|\r\n|DARATUMUMAB|35605744|daratumumab|\r\n|DARBEPOETIN ALFA|1304643|darbepoetin alfa|\r\n|DAROLUTAMIDE|1361291|darolutamide|\r\n|DASATINIB|1358436|dasatinib|\r\n|Datopotamab deruxtecan|36857648|DATOPOTAMAB DERUXTECAN|\r\n|DAUNORUBICIN|1311799|daunorubicin|\r\n|DENOSUMAB|40222444|denosumab|\r\n|DEXAMETHASONE|1518254|dexamethasone|\r\n|DEXRAZOXANE|1353011|dexrazoxane|\r\n|DIFFLAM|40033209|Difflam|\r\n|DOCETAXEL|1315942|docetaxel|\r\n|Domvanalimab|36851459|DOMVANALIMAB|\r\n|DOXORUBICIN PEGYLATED LIPOSOMAL|902725|Doxorubicin pegylated liposomal|\r\n|DOXORUBICIN|1338512|doxorubicin|\r\n|Durvalumab / Placebo|0||\r\n|DURVALUMAB|1594034|durvalumab|\r\n|E45|40756336|E45|\r\n|Elranatamab|746391|elranatamab|\r\n|ENCORAFENIB|1559914|encorafenib|\r\n|Enfortumab vedotin|37498707|enfortumab vedotin|\r\n|ENZALUTAMIDE|42900250|enzalutamide|\r\n|EPIRUBICIN HYDROCHLORIDE|19026849|epirubicin hydrochloride|\r\n|EPOETIN ZETA|21014076|Epoetin zeta|\r\n|ERIBULIN|40230712|eribulin|\r\n|ETOPOSIDE|1350504|etoposide|\r\n|EVEROLIMUS|19011440|everolimus|\r\n|EXEMESTANE|1398399|exemestane|\r\n|Ezabenlimab|36852576|EZABENLIMAB|\r\n|FAMOTIDINE|953076|famotidine|\r\n|FEDRATINIB|1361614|fedratinib|\r\n|FENOFIBRATE|1551803|fenofibrate|\r\n|FERINJECT|21017287|Ferinject|\r\n|FILGRASTIM|1304850|filgrastim|\r\n|FLUCONAZOLE|1754994|fluconazole|\r\n|FLUDARABINE|1395557|fludarabine|\r\n|FLUOROURACIL|955632|fluorouracil|\r\n|FOSAPREPITANT|35605594|fosaprepitant|\r\n|FULVESTRANT|1304044|fulvestrant|\r\n|FUROSEMIDE|956874|furosemide|\r\n|Gastric protection-prescribe using |0||\r\n|GEMCITABINE|1314924|gemcitabine|\r\n|GEMTUZUMAB OZOGAMICIN|42799711|gemtuzumab ozogamicin|\r\n|Glofitamab|1201501|glofitamab|\r\n|GLUCOSE|1560524|glucose|\r\n|GOSERELIN|1366310|goserelin|\r\n|H2 antagonist - prescribe using sup|0||\r\n|HMBD-001|1254204|Nezutatug|\r\n|HYDROCORTISONE (AS SODIUM SUCCINATE|19055140|hydrocortisone sodium succinate|\r\n|HYDROCORTISONE NA SUCCINATE|975125|hydrocortisone|\r\n|HYDROXOCOBALAMIN|1377023|hydroxocobalamin|\r\n|HYDROXYCARBAMIDE|1377141|hydroxyurea|\r\n|Iberdomide|36854679|IBERDOMIDE|\r\n|IBRUTINIB|44507848|ibrutinib|\r\n|IBUPROFEN|1177480|ibuprofen|\r\n|IDARUBICIN HYDROCHLORIDE|19132979|idarubicin hydrochloride|\r\n|Idelalisib|45776944|idelalisib|\r\n|IFOSFAMIDE|19078187|ifosfamide|\r\n|IMATINIB|1304107|imatinib|\r\n|IMC-F106C|1253676|brenetafusp|\r\n|Imetelstat Sodium|1734582|imetelstat sodium|\r\n|IMGN632|36859012|PIVEKIMAB SUNIRINE|\r\n|IMM60|0||\r\n|INCMGA00012 / placebo|0||\r\n|INOTUZUMAB OZOGAMICIN|794068|inotuzumab ozogamicin|\r\n|IPILIMUMAB|40238188|ipilimumab|\r\n|IRINOTECAN HYDROCHLORIDE|19017121|irinotecan hydrochloride|\r\n|Irradiated blood products required|0||\r\n|ISATUXIMAB|37498969|isatuximab|\r\n|ISAVUCONAZOLE|35606695|isavuconazole|\r\n|ISIS 702843|36838992|SAPABLURSEN|\r\n|IXAZOMIB|35606214|ixazomib|\r\n|JNJ-75276617|0||\r\n|KY1044|36823338|ALOMFILIMAB|\r\n|LAMIVUDINE|1704183|lamivudine|\r\n|LENALIDOMIDE|19026972|lenalidomide|\r\n|LENOGRASTIM|19009705|lenograstim|\r\n|LENVATINIB|46221433|lenvatinib|\r\n|Lenzilumab|36858275|LENZILUMAB|\r\n|LETROZOLE|1315946|letrozole|\r\n|LEVOFLOXACIN|1742253|levofloxacin|\r\n|LOMUSTINE|1391846|lomustine|\r\n|LOPERAMIDE|991876|loperamide|\r\n|LORATADINE|1107830|loratadine|\r\n|LORAZEPAM|791967|lorazepam|\r\n|LORLATINIB|35201733|lorlatinib|\r\n|LOXO-305|36829506|PIRTOBRUTINIB|\r\n|Lutetium 177|963949|lutetium Lu 177 dotatate|\r\n|MACROGOL COMPOUND|40750519|bicarbonate ion / POLYETHYLENE GLYCOL 3350 / Potassium / Sodium Oral Powder|\r\n|MAGNESIUM SULFATE|19093848|magnesium sulfate|\r\n|MAGNESIUM SULPHATE|19093848|magnesium sulfate|\r\n|Magrolimab / placebo|0||\r\n|MANNITOL|994058|mannitol|\r\n|MDX-124|0||\r\n|MELPHALAN|1301267|melphalan|\r\n|MERCAPTOPURINE|1436650|mercaptopurine|\r\n|MESNA|1354698|mesna|\r\n|METHOTREXATE|1305058|methotrexate|\r\n|METHYLPREDNISOLONE SODIUM SUCC|19026798|methylprednisolone sodium succinate|\r\n|METHYLPREDNISOLONE|1506270|methylprednisolone|\r\n|METHYLTHIONINIUM CHLORIDE|905518|methylene blue|\r\n|METOCLOPRAMIDE|906780|metoclopramide|\r\n|MIDOSTAURIN|1594003|midostaurin|\r\n|MIFAMURTIDE|21014035|Mifamurtide|\r\n|MITOMYCIN|1389036|mitomycin|\r\n|MITOTANE|1309161|mitotane|\r\n|MOBOCERTINIB|701915|mobocertinib|\r\n|MOGAMULIZUMAB|35200202|mogamulizumab|\r\n|Momelotinib|746600|momelotinib|\r\n|MONTELUKAST|1154161|montelukast|\r\n|Mosunetuzumab|1301307|mosunetuzumab|\r\n|must be ordered with methotrexate i|0||\r\n|MYCOPHENOLATE MOFETIL|19003999|mycophenolate mofetil|\r\n|Navitoclax|36863201|NAVITOCLAX|\r\n|Navitoclax/Placebo|0||\r\n|Nemvaleukin Alfa|36854062|NEMVALEUKIN ALFA|\r\n|NG-350A|0|NG-350A is a next-generation blood-stable adenoviral vector|\r\n|NILOTINIB|1394023|nilotinib|\r\n|NIRAPARIB|1593861|niraparib|\r\n|NIS793 / placebo|0||\r\n|NIS793|36862643|NIS-793|\r\n|NIVOLUMAB|45892628|nivolumab|\r\n|NUC-7738|1254555|Cordycepin 5'-monophosphate|\r\n|NX-5948|1253305|NX-5948 free base|\r\n|OBINUTUZUMAB|44507676|obinutuzumab|\r\n|OLAPARIB|45892579|olaparib|\r\n|OMEPRAZOLE|923645|omeprazole|\r\n|ONDANSETRON|1000560|ondansetron|\r\n|Oral cryotherapy|0||\r\n|Oral hydration|0||\r\n|OSIMERTINIB|35605522|osimertinib|\r\n|OXALIPLATIN|1318011|oxaliplatin|\r\n|OXYTETRACYCLINE|925952|oxytetracycline|\r\n|PACLITAXEL ALBUMIN BOUND|902729|Paclitaxel protein-bound|\r\n|PACLITAXEL|1378382|paclitaxel|\r\n|PALBOCICLIB|45892075|palbociclib|\r\n|PAMIDRONATE DISODIUM|19007069|pamidronate disodium|\r\n|PANITUMUMAB|19100985|panitumumab|\r\n|PANOBINOSTAT|46221435|panobinostat|\r\n|PARACETAMOL|40814161|Paracetamol L|\r\n|PAZOPANIB|40167554|pazopanib|\r\n|Peg-asparaginase|1326481|pegaspargase|\r\n|PEMBROLIZUMAB|45775965|pembrolizumab|\r\n|PEMETREXED|1304919|pemetrexed|\r\n|PENTAMIDINE ISETIONATE|19130479|pentamidine isethionate|\r\n|Pertuzumab / Trastuzumab|0||\r\n|Pertuzumab|42801287|pertuzumab|\r\n|Pirtobrutinib|1301683|pirtobrutinib|\r\n|PLERIXAFOR|19017581|plerixafor|\r\n|PLX2853|0||\r\n|POLATUZUMAB VEDOTIN|1396729|polatuzumab vedotin|\r\n|POMALIDOMIDE|43014237|pomalidomide|\r\n|PONATINIB|43013182|ponatinib|\r\n|POTASSIUM CHLORIDE|19049105|potassium chloride|\r\n|PREDNISOLONE|1550557|prednisolone|\r\n|Prednisone|1551099|prednisone|\r\n|PROCARBAZINE|1351779|procarbazine|\r\n|PROCHLORPERAZINE|752061|prochlorperazine|\r\n|Proton pump inhibitor|0||\r\n|Radium 223 (Xofigo)|45775578|radium|\r\n|RALTITREXED|19038536|raltitrexed|\r\n|RAMUCIRUMAB|44818489|ramucirumab|\r\n|RANITIDINE|961047|ranitidine|\r\n|RASBURICASE|1304565|rasburicase|\r\n|Red Cell Phenotype/Genotype ï¿½ pre t|0||\r\n|Red Cell Phenotype/Genotype â€“ pre t|0||\r\n|REGORAFENIB|42903460|regorafenib|\r\n|RIBOCICLIB|1592911|ribociclib|\r\n|RITUXIMAB|1314273|rituximab|\r\n|Romidepsin|40168385|romidepsin|\r\n|ROPEGINTERFERON ALFA-2B|702407|ropeginterferon alfa-2b|\r\n|Roxadustat / placebo|0||\r\n|RP2|0||\r\n|RP3|0||\r\n|RSO-021|0||\r\n|RUCAPARIB|1718850|rucaparib|\r\n|Runimotamab|36857285|RUNIMOTAMAB|\r\n|RUXOLITINIB|40244464|ruxolitinib|\r\n|SACITUZUMAB GOVITECAN|1145485|sacituzumab govitecan|\r\n|Samuraciclib|36851482|SAMURACICLIB|\r\n|SCIB1|0||\r\n|SELPERCATINIB|1145791|selpercatinib|\r\n|SILTUXIMAB|44818461|siltuximab|\r\n|SODIUM BICARBONATE|939506|sodium bicarbonate|\r\n|SODIUM CHLORIDE|967823|sodium chloride|\r\n|SonoTran particles|0||\r\n|SORAFENIB|1363387|sorafenib|\r\n|SOTORASIB|1536963|sotorasib|\r\n|Spartalizumab|36860836|SPARTALIZUMAB|\r\n|ST101|36853978|ST-101|\r\n|Stem cell infusion|0||\r\n|STP938|0||\r\n|STREPTOZOCIN|19136210|streptozocin|\r\n|SUNITINIB MALATE|19123411|sunitinib malate|\r\n|TALIMOGENE LAHERPAREPVEC|35605133|talimogene laherparepvec|\r\n|Trametinib|43532497|trametinib|\r\n|Trastuzumab deruxtecan|37498192|trastuzumab deruxtecan|\r\n|Trastuzumab Emtansine (Kadcyla)|1387104|trastuzumab|\r\n|TRASTUZUMAB EMTANSINE|43525787|ado-trastuzumab emtansine|\r\n|TRASTUZUMAB|1387104|trastuzumab|\r\n|TRETINOIN|903643|tretinoin|\r\n|TRIFLURIDINE WITH TIPIRACIL|36248234|tipiracil / trifluridine Oral Product|\r\n|TUCATINIB|1145571|tucatinib|\r\n|UCB6114|36852947|GINISORTAMAB|\r\n|Venetoclax|35604205|venetoclax|\r\n|Vimseltinib|36860563|VIMSELTINIB|\r\n|VINBLASTINE SULPHATE|19010966|vinblastine sulfate|\r\n|VINCRISTINE SULPHATE|19010967|vincristine sulfate|\r\n|VINORELBINE|1343346|vinorelbine|\r\n|Xentuzumab|36863086|XENTUZUMAB|\r\n|Zanubrutinib|37497691|zanubrutinib|\r\n|Zimberelimab|36863769|ZIMBERELIMAB|\r\n|ZOLEDRONIC ACID|1524674|zoledronic acid|\r\n\r\nNotes\r\n* [Athena Drug Concepts](https://athena.ohdsi.org/search-terms/terms?standardConcept=Standard&domain=Drug&vocabulary=RxNorm&vocabulary=RxNorm+Extension&invalidReason=Valid&page=1&pageSize=15&query=)\r\n"
+    },
+    {
+      "name": "quantity",
+      "operation_description": "Converts text to floating-point numbers.",
+      "dataSource": [
+        {
+          "name": "Actual_Dose_Per_Administration",
+          "description": "The actual Systemic Anti-Cancer Therapy dose given in each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle.",
+          "origins": [
+            {
+              "origin": "SYSTEMIC ANTI-CANCER THERAPY ACTUAL DOSE",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_actual_dose.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n\t\tRegimen,\n\t\tDrug_Name,\n\t\tActual_Dose_Per_Administration,\n\t\tAdministration_Measurement_Per_Actual_Dose,\n\t\tAdministration_Date\n\tfrom omop_staging.sact_staging\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "drug_source_value",
+      "operation_description": "Value copied from `Drug_Name`",
+      "dataSource": [
+        {
+          "name": "Drug_Name",
+          "description": "The name of the Systemic Anti-Cancer Therapy drug given to a PATIENT during an Systemic Anti-Cancer Therapy Drug Regimen.",
+          "origins": [
+            {
+              "origin": "SYSTEMIC ANTI-CANCER THERAPY DRUG NAME",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_name.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n\t\tRegimen,\n\t\tDrug_Name,\n\t\tActual_Dose_Per_Administration,\n\t\tAdministration_Measurement_Per_Actual_Dose,\n\t\tAdministration_Date\n\tfrom omop_staging.sact_staging\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "dose_unit_source_value",
+      "operation_description": "The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle.",
+      "dataSource": [
+        {
+          "name": "Administration_Measurement_Per_Actual_Dose",
+          "description": "The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle.",
+          "origins": [
+            {
+              "origin": "UNIT OF MEASUREMENT (SYSTEMIC ANTI-CANCER THERAPY)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/unit_of_measurement__systemic_anti-cancer_therapy_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\tselect\n\t\tdistinct\n\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n\t\tRegimen,\n\t\tDrug_Name,\n\t\tActual_Dose_Per_Administration,\n\t\tAdministration_Measurement_Per_Actual_Dose,\n\t\tAdministration_Date\n\tfrom omop_staging.sact_staging\n\t",
+      "lookup_table_markdown": "\r\n\r\n|Administration_Measurement_Per_Actual_Dose|dose_unit_source_value|notes|\r\n|------|-----|-----|\r\n|1|Milligrams (mg)||\r\n|2|Micrograms (Mcg)||\r\n|01|Milligrams (mg)||\r\n|02|Micrograms (Mcg)||\r\n|03|Grams (g)||\r\n|04|Units||\r\n|05|Cells||\r\n|06|Plaque Forming Units (PFU) (one million) (x10^6)||\r\n|07|Plaque Forming Units (PFU) (one hundred million) (x10^8)||\r\n|98|Other (not listed)||\r\n\r\n"
+    }
+  ]
+}

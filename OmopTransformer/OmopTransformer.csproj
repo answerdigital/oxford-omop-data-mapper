@@ -226,7 +226,16 @@
     <None Update="RTDS\Demographics\RtdsDemographics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SACT\Sact.xml">
+    <None Update="SACT\Person\SactPerson.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SACT\Location\SactLocation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SACT\DrugExposure\SactDrugExposure.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SACT\ConditionOccurrence\SactConditionOccurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SUS\AE\DeviceExposure\InvestigationDevice\SusAEInvestigationDevice.xml">
