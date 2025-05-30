@@ -69,13 +69,12 @@ has_toc: false
 * `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
-select
-	NHS_Number,
-	max (Patient_Postcode) as Patient_Postcode,
-	max (Date_Of_Birth) as Date_Of_Birth,
-	max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
-from omop_staging.sact_staging
-group by NHS_Number
+	select
+		NHS_Number,
+		max (Date_Of_Birth) as Date_Of_Birth,
+		max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
+	from omop_staging.sact_staging
+	group by NHS_Number
 	
 ```
 

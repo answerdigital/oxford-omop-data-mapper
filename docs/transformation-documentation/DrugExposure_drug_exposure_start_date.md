@@ -14,6 +14,7 @@ Converts text to dates.
 
 ```sql
 	select
+		distinct
 		replace(NHS_Number, ' ', '') as NHS_Number,
 		Regimen,
 		Drug_Name,

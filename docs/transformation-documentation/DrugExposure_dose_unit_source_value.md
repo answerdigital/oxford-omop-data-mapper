@@ -13,6 +13,8 @@ The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administ
 
 |Administration_Measurement_Per_Actual_Dose|dose_unit_source_value|notes|
 |------|-----|-----|
+|1|Milligrams (mg)||
+|2|Micrograms (Mcg)||
 |01|Milligrams (mg)||
 |02|Micrograms (Mcg)||
 |03|Grams (g)||
@@ -20,12 +22,14 @@ The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administ
 |05|Cells||
 |06|Plaque Forming Units (PFU) (one million) (x10^6)||
 |07|Plaque Forming Units (PFU) (one hundred million) (x10^8)||
+|98|Other (not listed)||
 
 
 * `Administration_Measurement_Per_Actual_Dose` The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle. [UNIT OF MEASUREMENT (SYSTEMIC ANTI-CANCER THERAPY)](https://www.datadictionary.nhs.uk/data_elements/unit_of_measurement__systemic_anti-cancer_therapy_.html)
 
 ```sql
 	select
+		distinct
 		replace(NHS_Number, ' ', '') as NHS_Number,
 		Regimen,
 		Drug_Name,

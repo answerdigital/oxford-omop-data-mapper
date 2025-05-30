@@ -13,6 +13,7 @@ has_toc: false
 
 ```sql
 	select
+		distinct
 		replace(NHS_Number, ' ', '') as NHS_Number,
 		Regimen,
 		Drug_Name,

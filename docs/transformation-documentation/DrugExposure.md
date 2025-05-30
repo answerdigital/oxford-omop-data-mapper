@@ -13,6 +13,7 @@ has_toc: false
 * [drug_exposure_end_date]({% link docs/transformation-documentation/DrugExposure_drug_exposure_end_date.md %})
 * [drug_type_concept_id]({% link docs/transformation-documentation/DrugExposure_drug_type_concept_id.md %})
 * [drug_source_concept_id]({% link docs/transformation-documentation/DrugExposure_drug_source_concept_id.md %})
+* [quantity]({% link docs/transformation-documentation/DrugExposure_quantity.md %})
 * [drug_source_value]({% link docs/transformation-documentation/DrugExposure_drug_source_value.md %})
 * [dose_unit_source_value]({% link docs/transformation-documentation/DrugExposure_dose_unit_source_value.md %})
 

@@ -73,13 +73,12 @@ Selects the day of the month or null if the date is null.
 * `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
-select
-	NHS_Number,
-	max (Patient_Postcode) as Patient_Postcode,
-	max (Date_Of_Birth) as Date_Of_Birth,
-	max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
-from omop_staging.sact_staging
-group by NHS_Number
+	select
+		NHS_Number,
+		max (Date_Of_Birth) as Date_Of_Birth,
+		max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
+	from omop_staging.sact_staging
+	group by NHS_Number
 	
 ```
 
