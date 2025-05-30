@@ -37,6 +37,28 @@ public class TransformationTests
         
         CollectionAssert.AreEqual(new[] { 123 }, testConcept.NumberArray);
     }
+
+    [TestMethod]
+    public void TestNullValueLookup()
+    {
+        var sourceClass =
+            new SourceClass
+            {
+                Number = 123,
+                Text = "hello world",
+                Line1 = "line 1",
+                Line2 = "line 2",
+                ColourName = null
+            };
+
+        var testConcept = new TestConcept(sourceClass);
+
+        var logger = Substitute.For<ILogger<RecordTransformer>>();
+
+        new RecordTransformer(logger, null!, null!, null!, null!, null!, null!).Transform(testConcept);
+
+        Assert.AreEqual(0, testConcept.ColourId);
+    }
 }
 
 internal class SourceClass
@@ -80,6 +102,7 @@ internal class ColourIdTransformer : ILookup
         {
             { "blue", new ValueWithNote("1", "") },
             { "red", new ValueWithNote("2", "") },
+            { "", new ValueWithNote("0", "") }
         };
 
     public string[] ColumnNotes { get; } = ["colours"];

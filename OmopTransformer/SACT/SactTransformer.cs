@@ -20,7 +20,6 @@ internal class SactTransformer : Transformer
 
     public SactTransformer(
         IRecordTransformer recordTransformer,
-        ILogger<IRecordTransformer> logger,
         TransformOptions transformOptions,
         IRecordProvider recordProvider,
         ILocationRecorder locationRecorder,
@@ -28,7 +27,8 @@ internal class SactTransformer : Transformer
         IDrugExposureRecorder drugExposureRecorder,
         IConditionOccurrenceRecorder conditionOccurrenceRecorder,
         IConceptMapper conceptMapper,
-        IRunAnalysisRecorder runAnalysisRecorder)
+        IRunAnalysisRecorder runAnalysisRecorder,
+        ILoggerFactory loggerFactory)
         : base(
             recordTransformer,
             logger,
@@ -36,7 +36,8 @@ internal class SactTransformer : Transformer
             recordProvider,
             "SACT",
             conceptMapper,
-            runAnalysisRecorder)
+            runAnalysisRecorder,
+            loggerFactory)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;

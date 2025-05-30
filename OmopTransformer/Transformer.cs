@@ -13,20 +13,22 @@ internal abstract class Transformer
     private readonly IRecordProvider _recordProvider;
     private readonly IConceptMapper _conceptMapper;
     private readonly IRunAnalysisRecorder _runAnalysisRecorder;
+    private readonly ILoggerFactory _loggerFactory;
 
     private bool _isConceptMapRendered = false;
 
     private readonly string _dataSource;
 
-    protected Transformer(IRecordTransformer recordTransformer, ILogger<IRecordTransformer> logger, TransformOptions transformOptions, IRecordProvider recordProvider, string dataSource, IConceptMapper conceptMapper, IRunAnalysisRecorder runAnalysisRecorder)
+    protected Transformer(IRecordTransformer recordTransformer, TransformOptions transformOptions, IRecordProvider recordProvider, string dataSource, IConceptMapper conceptMapper, IRunAnalysisRecorder runAnalysisRecorder, ILoggerFactory loggerFactory)
     {
         _recordTransformer = recordTransformer;
-        _logger = logger;
+        _logger = loggerFactory.CreateLogger<IRecordTransformer>();
         _transformOptions = transformOptions;
         _recordProvider = recordProvider;
         _dataSource = dataSource;
         _conceptMapper = conceptMapper;
         _runAnalysisRecorder = runAnalysisRecorder;
+        _loggerFactory = loggerFactory;
     }
 
     public async Task Transform<TSource, TTarget>(
@@ -109,6 +111,8 @@ internal abstract class Transformer
             "--------------------------------" + Environment.NewLine;
 
         _logger.LogInformation(text);
+
+        _recordTransformer.PrintLogsAndResetLogger(_loggerFactory);
     }
 
     private static string PerSecond(Stopwatch stopwatch, int total)

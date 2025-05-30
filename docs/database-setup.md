@@ -43,6 +43,7 @@ We use Flyway to patch our database. This script should be run if new database p
 > |14     |   CDM 5   | CMS Place of Service | CMS Place of Service |
 > |13		|	CDM 5	| Race	| Race and Ethnicity Code Set (USBC)|
 > |12		|	CDM 5	| Gender|	OMOP Gender|
+> |8        |  CDM 5   | RxNorm | RxNorm (NLM) |
 > |6	    | CDM 5     |  LOINC |	Logical Observation Identifiers Names and Codes (Regenstrief Institute) |
 > |3	    |	CDM 5	| ICD9Proc |	International Classification of Diseases, Ninth Revision, Clinical Modification, Volume 3 (NCHS) |
 > |2      |	CDM 5	| ICD9CM	| International Classification of Diseases, Ninth Revision, Clinical Modification, Volume 1 and 2 (NCHS) |

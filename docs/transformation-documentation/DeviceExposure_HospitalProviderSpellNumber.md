@@ -55,7 +55,9 @@ has_toc: false
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20HospitalProviderSpellNumber%20field%20SUS%20CCMDS%20Device%20Exposure%20mapping){: .btn }
 ### SUS APC Procedure Occurrence
-* Value copied from `HospitalSpellProviderNumber`
+* Value copied from `HospitalProviderSpellNumber`
+
+* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
 
 ```sql
 select

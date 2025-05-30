@@ -1,2 +1,0 @@
-table_measurepersoncompleteness_observation
-table_measurepersoncompleteness_measurement

@@ -88,7 +88,6 @@ internal class CosdTransformer : Transformer
 
     public CosdTransformer(
         IRecordTransformer recordTransformer, 
-        ILogger<IRecordTransformer> logger, 
         TransformOptions transformOptions, 
         IRecordProvider recordProvider, 
         ILocationRecorder locationRecorder, 
@@ -99,16 +98,17 @@ internal class CosdTransformer : Transformer
         IObservationRecorder observationRecorder, 
         IMeasurementRecorder measurementRecorder,
         IConceptMapper conceptMapper,
-        IRunAnalysisRecorder runAnalysisRecorder) 
+        IRunAnalysisRecorder runAnalysisRecorder,
+        ILoggerFactory loggerFactory) 
         : 
         base(
             recordTransformer, 
-            logger, 
             transformOptions, 
             recordProvider, 
             "COSD",
             conceptMapper,
-            runAnalysisRecorder)
+            runAnalysisRecorder,
+            loggerFactory)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;

@@ -14,6 +14,7 @@ internal class RecordTransformer : IRecordTransformer
     private readonly MeasurementMapsToValueResolver _relationshipResolver;
     private readonly Icd10NonStandardResolver _icd10NonStandardResolver;
     private readonly Icd10StandardResolver _icd10StandardResolver;
+    private readonly RecordTransformLookupLogger _recordTransformLookupLogger = new();
 
     public RecordTransformer(
         ILogger<RecordTransformer> logger, 
@@ -45,6 +46,12 @@ internal class RecordTransformer : IRecordTransformer
 
         TransformProperties(record, properties, sourceType, sourceTypeAsOrigin: false); // First run the transformations that refer to the source data from the database.
         TransformProperties(record, properties, sourceType, sourceTypeAsOrigin: true); // Then run transforms that use the results of the previous transformations, by referring to the content of the partially transformed record rather than the incoming database record.
+    }
+
+    public void PrintLogsAndResetLogger(ILoggerFactory loggerFactory)
+    {
+        _recordTransformLookupLogger.PrintLog(loggerFactory);
+        _recordTransformLookupLogger.Reset();
     }
 
     private void TransformProperties<T>(IOmopRecord<T> record, PropertyInfo[] properties, Type sourceType, bool sourceTypeAsOrigin)
@@ -122,10 +129,7 @@ internal class RecordTransformer : IRecordTransformer
             throw new InvalidOperationException("Lookup transform must have one argument specified.");
         }
 
-        string? argument = GetLookupKey(arguments);
-
-        if (argument == null)
-            return;
+        string argument = GetLookupKey(arguments) ?? "";
         
         if (lookup.Mappings.TryGetValue(argument, out var value))
         {
@@ -138,6 +142,7 @@ internal class RecordTransformer : IRecordTransformer
                     if (int.TryParse(value.Value, out int number))
                     {
                         property.SetValue(record, number);
+                        _recordTransformLookupLogger.Hit(lookup);
                     }
                 }
                 else
@@ -150,16 +155,22 @@ internal class RecordTransformer : IRecordTransformer
                 if (property.PropertyType == typeof(string))
                 {
                     property.SetValue(record, value.Value);
+                    _recordTransformLookupLogger.Hit(lookup);
                 }
                 else if (property.PropertyType == typeof(int))
                 {
                     property.SetValue(record, int.Parse(value.Value));
+                    _recordTransformLookupLogger.Hit(lookup);
                 }
                 else
                 {
                     throw new NotSupportedException("Unknown nullable mapping type");
                 }
             }
+        }
+        else
+        {
+            _recordTransformLookupLogger.Miss(lookup, argument);
         }
     }
     

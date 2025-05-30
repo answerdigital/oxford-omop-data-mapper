@@ -28,9 +28,10 @@ Lookup race source concept.
 |N|700367|Black or Black British - African|
 |P|700368|Black or Black British - Any other Black background|
 |R|700369|Other Ethnic Groups - Chinese|
-|S||Other Ethnic Groups - Any other ethnic group|
-|Z||Not stated|
-|99||Not known|
+|S|0|Other Ethnic Groups - Any other ethnic group|
+|Z|0|Not stated|
+|99|0|Not known|
+||0|No data|
 
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
@@ -74,9 +75,10 @@ Lookup race source concept.
 |N|700367|Black or Black British - African|
 |P|700368|Black or Black British - Any other Black background|
 |R|700369|Other Ethnic Groups - Chinese|
-|S||Other Ethnic Groups - Any other ethnic group|
-|Z||Not stated|
-|99||Not known|
+|S|0|Other Ethnic Groups - Any other ethnic group|
+|Z|0|Not stated|
+|99|0|Not known|
+||0|No data|
 
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
@@ -120,9 +122,10 @@ Lookup race source concept.
 |N|700367|Black or Black British - African|
 |P|700368|Black or Black British - Any other Black background|
 |R|700369|Other Ethnic Groups - Chinese|
-|S||Other Ethnic Groups - Any other ethnic group|
-|Z||Not stated|
-|99||Not known|
+|S|0|Other Ethnic Groups - Any other ethnic group|
+|Z|0|Not stated|
+|99|0|Not known|
+||0|No data|
 
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)
@@ -166,9 +169,10 @@ Lookup race source concept.
 |N|700367|Black or Black British - African|
 |P|700368|Black or Black British - Any other Black background|
 |R|700369|Other Ethnic Groups - Chinese|
-|S||Other Ethnic Groups - Any other ethnic group|
-|Z||Not stated|
-|99||Not known|
+|S|0|Other Ethnic Groups - Any other ethnic group|
+|Z|0|Not stated|
+|99|0|Not known|
+||0|No data|
 
 Notes
 * [NHS Race (i.e.Ethnicity)](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html)

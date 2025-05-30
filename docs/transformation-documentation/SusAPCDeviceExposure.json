@@ -144,8 +144,19 @@
     },
     {
       "name": "HospitalProviderSpellNumber",
-      "operation_description": "Value copied from `HospitalSpellProviderNumber`",
-      "dataSource": [],
+      "operation_description": "Value copied from `HospitalProviderSpellNumber`",
+      "dataSource": [
+        {
+          "name": "HospitalProviderSpellNumber",
+          "description": "CDS specific hospital spell number that binds many episodes together.",
+          "origins": [
+            {
+              "origin": "HOSPITAL PROVIDER SPELL NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
+            }
+          ]
+        }
+      ],
       "query": "\nselect\n\tdistinct\n\t\tapc.HospitalProviderSpellNumber,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     }

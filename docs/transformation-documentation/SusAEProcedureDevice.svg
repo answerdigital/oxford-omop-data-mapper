@@ -79,7 +79,8 @@
     <line x1="2325" y1="420" x2="2325" y2="615" stroke="white" stroke-width="2" />
     <line x1="2315" y1="605" x2="2325" y2="615" stroke="white" stroke-width="2" />
     <line x1="2335" y1="605" x2="2325" y2="615" stroke="white" stroke-width="2" />
-    <text x="2200" y="728" fill="white" font-size="1em" font-family="Helvetica">Lookup discharge destination concept.</text>
+    <text x="2200" y="728" fill="white" font-size="1em" font-family="Helvetica">Accident and Emergency Treatment to</text>
+    <text x="2200" y="746" fill="white" font-size="1em" font-family="Helvetica">OMOP Procedure Concept IDs</text>
   </g>
   <g>
     <rect x="2125" y="620" width="400" height="80" fill="white" stroke="white" stroke-width="2" rx="10" />
