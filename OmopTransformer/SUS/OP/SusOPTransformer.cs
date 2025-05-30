@@ -50,7 +50,6 @@ internal class SusOPTransformer : Transformer
         IProviderRecorder providerRecorder,
         IMeasurementRecorder measurementRecorder,
         IRecordTransformer recordTransformer,
-        ILogger<IRecordTransformer> logger,
         TransformOptions transformOptions,
         IRecordProvider recordProvider,
         ILocationRecorder locationRecorder,
@@ -64,13 +63,14 @@ internal class SusOPTransformer : Transformer
         IObservationRecorder observationRecorder,
         IDeviceExposureRecorder deviceExposureRecorder,
         IConceptMapper conceptMapper,
-        IRunAnalysisRecorder runAnalysisRecorder) : base(recordTransformer,
-        logger,
+        IRunAnalysisRecorder runAnalysisRecorder,
+        ILoggerFactory loggerFactory) : base(recordTransformer,
         transformOptions,
         recordProvider,
         "SUSOP",
         conceptMapper, 
-        runAnalysisRecorder)
+        runAnalysisRecorder,
+        loggerFactory)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;

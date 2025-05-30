@@ -13,21 +13,21 @@ internal class SactTransformer : Transformer
     
     public SactTransformer(
         IRecordTransformer recordTransformer, 
-        ILogger<IRecordTransformer> logger, 
         TransformOptions transformOptions, 
         IRecordProvider recordProvider, 
         ILocationRecorder locationRecorder, 
         IPersonRecorder personRecorder, 
         IConceptMapper conceptMapper, 
-        IRunAnalysisRecorder runAnalysisRecorder) 
+        IRunAnalysisRecorder runAnalysisRecorder,
+        ILoggerFactory loggerFactory) 
         : base(
             recordTransformer, 
-            logger, 
             transformOptions, 
             recordProvider, 
             "SACT", 
             conceptMapper,
-            runAnalysisRecorder)
+            runAnalysisRecorder,
+            loggerFactory)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;

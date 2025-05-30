@@ -53,7 +53,6 @@ internal class SusAETransformer : Transformer
         IProviderRecorder providerRecorder,
         IMeasurementRecorder measurementRecorder,
         IRecordTransformer recordTransformer,
-        ILogger<IRecordTransformer> logger,
         TransformOptions transformOptions,
         IRecordProvider recordProvider,
         ILocationRecorder locationRecorder,
@@ -68,13 +67,14 @@ internal class SusAETransformer : Transformer
         IDeviceExposureRecorder deviceExposureRecorder,
         IObservationRecorder observationRecorder,
         IConceptMapper conceptMapper,
-        IRunAnalysisRecorder runAnalysisRecorder) : base(recordTransformer,
-        logger,
+        IRunAnalysisRecorder runAnalysisRecorder,
+        ILoggerFactory loggerFactory) : base(recordTransformer,
         transformOptions,
         recordProvider,
         "SUSAE",
         conceptMapper,
-        runAnalysisRecorder)
+        runAnalysisRecorder,
+        loggerFactory)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;

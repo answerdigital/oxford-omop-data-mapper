@@ -62,7 +62,6 @@ internal class SusAPCTransformer : Transformer
         IProviderRecorder providerRecorder,
         IMeasurementRecorder measurementRecorder,
         IRecordTransformer recordTransformer,
-        ILogger<IRecordTransformer> logger,
         TransformOptions transformOptions,
         IRecordProvider recordProvider,
         ILocationRecorder locationRecorder,
@@ -76,15 +75,16 @@ internal class SusAPCTransformer : Transformer
         IDeviceExposureRecorder deviceExposureRecorder,
         IObservationRecorder observationRecorder,
         IConceptMapper conceptMapper,
-        IRunAnalysisRecorder runAnalysisRecorder) :
+        IRunAnalysisRecorder runAnalysisRecorder,
+        ILoggerFactory loggerFactory) :
         base(
             recordTransformer,
-            logger,
             transformOptions,
             recordProvider,
             "SUSAPC",
             conceptMapper,
-            runAnalysisRecorder)
+            runAnalysisRecorder,
+            loggerFactory)
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
