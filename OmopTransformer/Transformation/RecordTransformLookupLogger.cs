@@ -27,6 +27,9 @@ internal class RecordTransformLookupLogger
 
     public void Miss(ILookup lookup, string value)
     {
+        if (string.IsNullOrEmpty(value))
+            return;
+
         lock (_lock)
         {
             var counter = GetOrCreateMissCount(lookup.GetType().Name);
