@@ -18,14 +18,8 @@ internal class SactConditionOccurrence : OmopConditionOccurrence<SactConditionOc
     [Transform(typeof(DateConverter), nameof(Source.Administration_Date))]
     public override DateTime? condition_start_date { get; set; }
 
-    // [Transform(typeof(DateConverter), nameof(Source.Administration_Date))]
-    // public override DateTime? condition_start_datetime { get; set; }
-
     [Transform(typeof(DateConverter), nameof(Source.Administration_Date))]
     public override DateTime? condition_end_date { get; set; }
-
-    // [Transform(typeof(DateConverter), nameof(Source.Administration_Date))]
-    // public override DateTime? condition_end_datetime { get; set; }
 
     [CopyValue(nameof(Source.Primary_Diagnosis))]
     public override string? condition_source_value { get; set; }
