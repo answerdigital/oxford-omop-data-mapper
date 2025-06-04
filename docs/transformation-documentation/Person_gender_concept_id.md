@@ -139,10 +139,10 @@ Lookup gender concept.
 
 |Sex|gender_concept_id|notes|
 |------|-----|-----|
-|Male|8507||
-|Female|8532||
-|Unknown|8551||
-|Not Stated|8551||
+|Male|8507|Male|
+|Female|8532|Female|
+|Unknown|0|Indeterminate (unable to be classified as either male or female)|
+|Not Stated|0|Unknown|
 
 Notes
 * [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
