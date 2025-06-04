@@ -36,7 +36,7 @@
         }
       ],
       "query": "\nselect\n\tPatientId,\n\tmax (DateOfBirth) as DateOfBirth,\n\tmax (Sex) as Sex\nfrom omop_staging.RTDS_1_Demographics d\nwhere PatientId is not null\ngroup by PatientId\n\t",
-      "lookup_table_markdown": "\r\n\r\n|Sex|gender_concept_id|notes|\r\n|------|-----|-----|\r\n|Male|8507||\r\n|Female|8532||\r\n|Unknown|8551||\r\n|Not Stated|8551||\r\n\r\nNotes\r\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\r\n"
+      "lookup_table_markdown": "\r\n\r\n|Sex|gender_concept_id|notes|\r\n|------|-----|-----|\r\n|Male|8507|Male|\r\n|Female|8532|Female|\r\n|Unknown|0|Indeterminate (unable to be classified as either male or female)|\r\n|Not Stated|0|Unknown|\r\n\r\nNotes\r\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\r\n"
     },
     {
       "name": "year_of_birth",
