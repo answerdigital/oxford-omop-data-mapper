@@ -39,6 +39,8 @@ using OmopTransformer.SUS.Staging.Inpatient.Clearing;
 using OmopTransformer.SUS.Staging.Inpatient;
 using OmopTransformer.SUS.Staging.Inpatient.CCMDS;
 using OmopTransformer.Omop;
+using OmopTransformer.OxfordPrescribing.Staging;
+using OmopTransformer.OxfordPrescribing.Staging.Clearing;
 
 [assembly: InternalsVisibleTo("OmopTransformerTests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2, PublicKey=0024000004800000940000000602000000240000525341310004000001000100c547cac37abd99c8db225ef2f6c8a3602f3b3606cc9891605d02baa56104f4cfc0734aa39b93bf7852f7d9266654753cc297e7d2edfe0bac1cdcf9f717241550e0a7b191195b7667bb4f64bcb8e2121380fd1d9d46ad2d92d2d15605093924cceaf74c4861eff62abf69b9291ed0a340e113be11e6a7d3113e92484cf7045cc7")]
@@ -216,6 +218,30 @@ internal class Program
                         break;
                     case "clear":
                         builder.Services.AddHostedService<SusAEClearStagingHostedService>();
+                        break;
+                    default:
+                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
+                        return;
+                }
+            }
+            else if (string.Equals(stagingOptions.Type, "oxford-prescribing", StringComparison.OrdinalIgnoreCase))
+            {
+                if (stagingOptions.Action == null)
+                {
+                    await ActionMustBeSpecifiedError();
+                    return;
+                }
+
+                switch (stagingOptions.Action.ToLower())
+                {
+                    case "load":
+                        builder.Services.AddTransient<IOxfordPrescribingRecordInserter, OxfordPrescribingRecordInserter>();
+                        builder.Services.AddTransient<IOxfordPrescribingRecordParser, OxfordPrescribingRecordParser>();
+                        builder.Services.AddTransient<IOxfordPrescribingStaging, OxfordPrescribingStaging>();
+                        builder.Services.AddHostedService<OxfordPrescribingLoadStagingHostedService>();
+                        break;
+                    case "clear":
+                        builder.Services.AddHostedService<OxfordPrescribingClearStagingHostedService>();
                         break;
                     default:
                         await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
