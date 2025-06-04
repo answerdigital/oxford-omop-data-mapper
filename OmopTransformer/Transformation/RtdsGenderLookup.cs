@@ -9,16 +9,16 @@ internal class RtdsGenderLookup : ILookup
         new()
         {
             {
-                "Male", new ValueWithNote("8507", "")
+                "Male", new ValueWithNote("8507", "Male")
             },
             {
-                "Female", new ValueWithNote("8532", "")
+                "Female", new ValueWithNote("8532", "Female")
             },
             {
-                "Unknown", new ValueWithNote("8551", "")
+                "Unknown", new ValueWithNote("0", "Indeterminate (unable to be classified as either male or female)")
             },
             {
-                "Not Stated", new ValueWithNote("8551", "")
+                "Not Stated", new ValueWithNote("0", "Unknown")
             }
         };
 
