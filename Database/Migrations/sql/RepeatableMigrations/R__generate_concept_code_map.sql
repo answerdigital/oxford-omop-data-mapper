@@ -72,7 +72,7 @@ begin transaction
  		target_concept_id,
  		domain_id,
  		mapped_from_standard,
- 		row_number() over (partition by source_concept_code collate SQL_Latin1_General_CP1_CS_AS, domain_id order by mapped_from_standard desc) as [rank]
+ 		row_number() over (partition by source_concept_id order by mapped_from_standard desc) as [rank]
  	from Mapped
  )
  insert into omop_staging.concept_code_map
