@@ -1,7 +1,7 @@
 CREATE TABLE omop_staging.oxford_gp_appointment
 (
-    GPAppointmentsPrimaryKey varchar(max)
-    PatientIdentifier varchar(max) null,
+    GPAppointmentsPrimaryKey varchar(max),
+    PatientIdentifier varchar(20) not null,
     AppointmentDate varchar(max) null,
     AppointmentStatus varchar(max) null,
     AppointmentBookedDate varchar(max) null,
@@ -41,12 +41,12 @@ CREATE TABLE omop_staging.oxford_gp_appointment
     SlotEndDateTime varchar(max) null
 );
 
-create index IDX_oxford_gp_appointment_GPAppointmentsPrimaryKey on omop_staging.oxford_gp_appointment (GPAppointmentsPrimaryKey);
+create index IDX_oxford_gp_appointment_GPAppointmentsPrimaryKey on omop_staging.oxford_gp_appointment (PatientIdentifier);
 
 CREATE type omop_staging.oxford_gp_appointment_row as table
 (
-    GPAppointmentsPrimaryKey varchar(max)
-    PatientIdentifier varchar(max) null,
+    GPAppointmentsPrimaryKey varchar(max),
+    PatientIdentifier varchar(20) not null,
     AppointmentDate varchar(max) null,
     AppointmentStatus varchar(max) null,
     AppointmentBookedDate varchar(max) null,
@@ -88,7 +88,7 @@ CREATE type omop_staging.oxford_gp_appointment_row as table
 
 CREATE TABLE omop_staging.oxford_gp_demographic
 (
-    PatientIdentifier varchar(max) null,
+    PatientIdentifier varchar(20) not null,
     NHSNumber varchar(max) null,
     Forename varchar(max) null,
     Surname varchar(max) null,
@@ -99,9 +99,9 @@ CREATE TABLE omop_staging.oxford_gp_demographic
 
 create index IDX_oxford_gp_demographic_PatientIdentifier on omop_staging.oxford_gp_demographic (PatientIdentifier);
 
-CREATE type omop_staging.oxford_gp_demographic_row table
+CREATE type omop_staging.oxford_gp_demographic_row as table
 (
-    PatientIdentifier varchar(max) null,
+    PatientIdentifier varchar(20) not null,
     NHSNumber varchar(max) null,
     Forename varchar(max) null,
     Surname varchar(max) null,
@@ -113,7 +113,7 @@ CREATE type omop_staging.oxford_gp_demographic_row table
 CREATE TABLE omop_staging.oxford_gp_event
 (
     GPEventsPrimaryKey varchar(max) null,
-    PatientIdentifier varchar(max) null,
+    PatientIdentifier varchar(20) not null,
     GeneralPractitionerCode varchar(max) null,
     RegisteredGP varchar(max) null,
     GPPracticeCode varchar(max) null,
@@ -134,10 +134,10 @@ CREATE TABLE omop_staging.oxford_gp_event
 
 create index IDX_oxford_gp_event_PatientIdentifier on omop_staging.oxford_gp_event (PatientIdentifier);
 
-CREATE type omop_staging.oxford_gp_event_row table
+CREATE type omop_staging.oxford_gp_event_row as table
 (
     GPEventsPrimaryKey varchar(max) null,
-    PatientIdentifier varchar(max) null,
+    PatientIdentifier varchar(20) not null,
     GeneralPractitionerCode varchar(max) null,
     RegisteredGP varchar(max) null,
     GPPracticeCode varchar(max) null,
@@ -160,7 +160,7 @@ CREATE type omop_staging.oxford_gp_event_row table
 CREATE TABLE omop_staging.oxford_gp_medication
 (
     GPMedicationsPrimaryKey varchar(max) null,
-    PatientIdentifier varchar(max) null,
+    PatientIdentifier varchar(20) not null,
     GeneralPracticeCode varchar(max) null,
     RegisteredGP varchar(max) null,
     GPPracticeCode varchar(max) null,
@@ -184,10 +184,10 @@ CREATE TABLE omop_staging.oxford_gp_medication
 
 create index IDX_oxford_gp_medication_PatientIdentifier on omop_staging.oxford_gp_medication (PatientIdentifier);
 
-CREATE type omop_staging.oxford_gp_medication_row table
+CREATE type omop_staging.oxford_gp_medication_row as table
 (
     GPMedicationsPrimaryKey varchar(max) null,
-    PatientIdentifier varchar(max) null,
+    PatientIdentifier varchar(20) not null,
     GeneralPracticeCode varchar(max) null,
     RegisteredGP varchar(max) null,
     GPPracticeCode varchar(max) null,
