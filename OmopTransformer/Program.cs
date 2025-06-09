@@ -39,6 +39,10 @@ using OmopTransformer.SUS.Staging.Inpatient.Clearing;
 using OmopTransformer.SUS.Staging.Inpatient;
 using OmopTransformer.SUS.Staging.Inpatient.CCMDS;
 using OmopTransformer.Omop;
+using OmopTransformer.OxfordGP.Staging;
+using OmopTransformer.OxfordGP.Staging.Clearing;
+using OmopTransformer.OxfordPrescribing.Staging;
+using OmopTransformer.OxfordPrescribing.Staging.Clearing;
 
 [assembly: InternalsVisibleTo("OmopTransformerTests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2, PublicKey=0024000004800000940000000602000000240000525341310004000001000100c547cac37abd99c8db225ef2f6c8a3602f3b3606cc9891605d02baa56104f4cfc0734aa39b93bf7852f7d9266654753cc297e7d2edfe0bac1cdcf9f717241550e0a7b191195b7667bb4f64bcb8e2121380fd1d9d46ad2d92d2d15605093924cceaf74c4861eff62abf69b9291ed0a340e113be11e6a7d3113e92484cf7045cc7")]
@@ -222,6 +226,54 @@ internal class Program
                         return;
                 }
             }
+            else if (string.Equals(stagingOptions.Type, "oxford-prescribing", StringComparison.OrdinalIgnoreCase))
+            {
+                if (stagingOptions.Action == null)
+                {
+                    await ActionMustBeSpecifiedError();
+                    return;
+                }
+
+                switch (stagingOptions.Action.ToLower())
+                {
+                    case "load":
+                        builder.Services.AddTransient<IOxfordPrescribingRecordInserter, OxfordPrescribingRecordInserter>();
+                        builder.Services.AddTransient<IOxfordPrescribingRecordParser, OxfordPrescribingRecordParser>();
+                        builder.Services.AddTransient<IOxfordPrescribingStaging, OxfordPrescribingStaging>();
+                        builder.Services.AddHostedService<OxfordPrescribingLoadStagingHostedService>();
+                        break;
+                    case "clear":
+                        builder.Services.AddHostedService<OxfordPrescribingClearStagingHostedService>();
+                        break;
+                    default:
+                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
+                        return;
+                }
+            }
+            else if (string.Equals(stagingOptions.Type, "oxford-gp", StringComparison.OrdinalIgnoreCase))
+            {
+                if (stagingOptions.Action == null)
+                {
+                    await ActionMustBeSpecifiedError();
+                    return;
+                }
+
+                switch (stagingOptions.Action.ToLower())
+                {
+                    case "load":
+                        builder.Services.AddTransient<IOxfordGPRecordInserter, OxfordGPRecordInserter>();
+                        builder.Services.AddTransient<IOxfordGPParser, OxfordGPParser>();
+                        builder.Services.AddTransient<IOxfordGPStaging, OxfordGPStaging>();
+                        builder.Services.AddHostedService<OxfordGPLoadStagingHostedService>();
+                        break;
+                    case "clear":
+                        builder.Services.AddHostedService<OxfordGPClearStagingHostedService>();
+                        break;
+                    default:
+                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
+                        return;
+                }
+            }
             else
             {
                 await Console.Error.WriteLineAsync($"Unknown staging type {stagingOptions.Type}.");
@@ -338,6 +390,19 @@ public class StagingOptions
 
     [Option("allowed_nhs_number_list_path", Required = false, HelpText = "File that contains a list of allowed patient NHSNumbers. If specified this argument prevents data for patients that are outside of this list from being staged and transformed.")]
     public string? AllowedListNhsNumber { get; set; }
+
+    [Option("demographics", Required = false, HelpText = "Path to demographics CSV file (required when type is oxford-gp).")]
+    public string? Demographics { get; set; }
+
+    [Option("appointments", Required = false, HelpText = "Path to appointments CSV file (required when type is oxford-gp).")]
+    public string? Appointments { get; set; }
+
+    [Option("events", Required = false, HelpText = "Path to events CSV file (required when type is oxford-gp).")]
+    public string? Events { get; set; }
+
+    [Option("medications", Required = false, HelpText = "Path to medications CSV file (required when type is oxford-gp).")]
+    public string? Medications { get; set; }
+
 }
 
 [Verb("transform", HelpText = "Handles transformation operations.")]
