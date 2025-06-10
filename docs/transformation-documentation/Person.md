@@ -39,6 +39,10 @@ has_toc: false
 <a href="RtdsPerson.svg" target="_blank"><img src="RtdsPerson.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsPerson%20mapping){: .btn }
+## OxfordGPPerson
+<a href="OxfordGPPerson.svg" target="_blank"><img src="OxfordGPPerson.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordGPPerson%20mapping){: .btn }
 ## CosdPerson
 <a href="CosdPerson.svg" target="_blank"><img src="CosdPerson.svg" /></a>
 

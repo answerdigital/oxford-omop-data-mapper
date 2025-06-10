@@ -103,6 +103,26 @@ group by PatientId
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20day_of_birth%20field%20Rtds%20Demographics%20mapping){: .btn }
+### Oxford GP Person
+Source column  `DOB`.
+Selects the day of the month or null if the date is null.
+
+* `DOB` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DOB
+from omop_staging.oxford_gp_demographic
+order by
+	NHSNumber,
+	DOB
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20day_of_birth%20field%20Oxford%20GP%20Person%20mapping){: .btn }
 ### COSD Demographics
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.

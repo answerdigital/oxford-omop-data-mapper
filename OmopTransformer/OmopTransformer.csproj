@@ -220,6 +220,15 @@
     <None Update="COSD\ProcedureOccurrence\CosdV9ProcedureOccurrenceProcedureOpcs\CosdV9ProcedureOccurrenceProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="OxfordGP\Death\OxfordGPDeath.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="OxfordGP\Location\OxfordGPLocation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="OxfordGP\Person\OxfordGPPerson.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="RTDS\Demographics\RtdsLocation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -412,5 +421,6 @@
 		<MakeDir Directories="@(DocumentationDirectory)" />
 		<Exec Command="dotnet &quot;$(TargetPath)&quot; docs @(DocumentationDirectory)" />
 	</Target>
+	<ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="https://json.schemastore.org/lsdlschema.json" /></VisualStudio></ProjectExtensions>
 
 </Project>

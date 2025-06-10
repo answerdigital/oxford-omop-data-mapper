@@ -39,6 +39,7 @@ using OmopTransformer.SUS.Staging.Inpatient.Clearing;
 using OmopTransformer.SUS.Staging.Inpatient;
 using OmopTransformer.SUS.Staging.Inpatient.CCMDS;
 using OmopTransformer.Omop;
+using OmopTransformer.OxfordGP;
 using OmopTransformer.OxfordGP.Staging;
 using OmopTransformer.OxfordGP.Staging.Clearing;
 using OmopTransformer.OxfordPrescribing.Staging;
@@ -329,6 +330,11 @@ internal class Program
             {
                 builder.Services.AddTransient<SusAETransformer>();
                 builder.Services.AddHostedService<SusAETransformHostedService>();
+            }
+            else if (string.Equals(transformOptions.Type, "oxford-gp", StringComparison.OrdinalIgnoreCase))
+            {
+                builder.Services.AddTransient<OxfordGPTransformer>();
+                builder.Services.AddHostedService<OxfordGPTransformHostedService>();
             }
             else
             {

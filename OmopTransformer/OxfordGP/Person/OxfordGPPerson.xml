@@ -1,0 +1,23 @@
+﻿<Query>
+    <Sql>
+select
+	distinct
+		NHSNumber,
+		DOB
+from omop_staging.oxford_gp_demographic
+order by
+	NHSNumber,
+	DOB
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="DOB">
+			<Description>Patient's date of birth.</Description>
+			<Origin>PERSON BIRTH DATE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
