@@ -19,6 +19,7 @@ has_toc: false
 * [admitted_from_source_value]({% link docs/transformation-documentation/VisitOccurrence_admitted_from_source_value.md %})
 * [discharged_to_concept_id]({% link docs/transformation-documentation/VisitOccurrence_discharged_to_concept_id.md %})
 * [discharged_to_source_value]({% link docs/transformation-documentation/VisitOccurrence_discharged_to_source_value.md %})
+* [RecordConnectionIdentifier]({% link docs/transformation-documentation/VisitOccurrence_RecordConnectionIdentifier.md %})
 
 ## SusOPVisitOccurrenceWithSpell
 <a href="SusOPVisitOccurrenceWithSpell.svg" target="_blank"><img src="SusOPVisitOccurrenceWithSpell.svg" /></a>
@@ -53,3 +54,7 @@ has_toc: false
 > * `Emergency` covers a visit to A&E within the given Hospital Provider, and hence covers Admission Code 21 and 24 only
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAEVisitOccurrenceWithSpell%20mapping){: .btn }
+## OxfordGPVisitOccurrence
+<a href="OxfordGPVisitOccurrence.svg" target="_blank"><img src="OxfordGPVisitOccurrence.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordGPVisitOccurrence%20mapping){: .btn }

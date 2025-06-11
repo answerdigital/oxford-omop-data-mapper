@@ -361,6 +361,7 @@ internal class Program
         builder.Services.AddSingleton<Icd10StandardResolver>();
         builder.Services.AddSingleton<Opcs4Resolver>();
         builder.Services.AddSingleton<Icdo3Resolver>();
+        builder.Services.AddSingleton<SnomedResolver>();
         builder.Services.AddSingleton<ConceptResolver>();
         builder.Services.AddSingleton<MeasurementMapsToValueResolver>();
 

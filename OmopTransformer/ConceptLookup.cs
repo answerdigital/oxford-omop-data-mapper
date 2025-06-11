@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using CsvHelper.Configuration.Attributes;
+using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -19,7 +20,7 @@ internal abstract class ConceptLookup
         _configuration = configuration.Value;
     }
 
-    private Dictionary<string, int> GetIcd10Codes()
+    private Dictionary<string, int> GetCodes()
     {
         _logger.LogInformation(LoadingLoggerMessage);
 
@@ -38,13 +39,15 @@ internal abstract class ConceptLookup
     public abstract string Query { get; }
     public abstract string LoadingLoggerMessage { get; }
 
+    public virtual bool TryParentCode => true;
+
     public virtual string FormatCode(string code) => code;
 
     public int? GetConceptCode(string? code)
     {
         lock (_loadingLock)
         {
-            _mappings ??= GetIcd10Codes();
+            _mappings ??= GetCodes();
         }
 
         if (code == null)
@@ -59,11 +62,14 @@ internal abstract class ConceptLookup
             return value;
         }
 
-        var parentCode = formatCode[..^1];
-
-        if (_mappings.TryGetValue(parentCode, out var parentValue))
+        if (TryParentCode)
         {
-            return parentValue;
+            var parentCode = formatCode[..^1];
+
+            if (_mappings.TryGetValue(parentCode, out var parentValue))
+            {
+                return parentValue;
+            }
         }
 
         return null;

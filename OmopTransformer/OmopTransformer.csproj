@@ -9,6 +9,10 @@
 	  <Configurations>Debug;Release;Release_no_docs</Configurations>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="OxfordGP\VisitDetail\OxfordGPVisitDetail.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
@@ -220,6 +224,9 @@
     <None Update="COSD\ProcedureOccurrence\CosdV9ProcedureOccurrenceProcedureOpcs\CosdV9ProcedureOccurrenceProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="OxfordGP\ConditionOccurrence\OxfordGPConditionOccurrence.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="OxfordGP\Death\OxfordGPDeath.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -227,6 +234,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="OxfordGP\Person\OxfordGPPerson.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="OxfordGP\ProcedureOccurrence\OxfordGPProcedureOccurrence.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="OxfordGP\VisitDetail\OxfordGPVisitDetail.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="OxfordGP\VisitOccurrence\OxfordGPVisitOccurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="RTDS\Demographics\RtdsLocation.xml">
