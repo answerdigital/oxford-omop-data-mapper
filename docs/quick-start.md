@@ -7,169 +7,184 @@ has_children: true
 
 # Quick Start Guide
 
-In this guide we will clone and build the product, and then use it to transform a COSD 9.0.1 archive to OMOP.
+In this guide we will transform a SUS outpatient CSV file to OMOP.
 
 ## Prerequisites
-* Git [Install guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* .NET 8 [.NET download page](https://dotnet.microsoft.com/en-us/download)
+* Docker [Quick start](https://www.docker.com/get-started/) (or .NET if run natively)
 * The OMOP database [Database Setup Guide]({% link docs/database-setup.md %})
 
-## Build
-
-Clone the repository.
+## Stage the data
 
 ```
-git clone https://github.com/answerdigital/oxford-omop-data-mapper.git
+docker run \
+      -e ConnectionString="Server=localhost;Database=omop;User Id=user;Password=password;" \
+      -e BatchSize=500000 \
+      --rm \
+      -v /path/to/your/data:/data \
+      ghcr.io/answerdigital/oxford-omop-data-mapper:latest \
+      stage load --type sus-op /data/OS_SEM_1234_Outpatient_Q1_12345678_aaaaaaaa.csv --allowed_nhs_number_list_path /data/allowed_patients.txt
 ```
 
-Build the product targeting the windows-x64 platform to the `publish` directory. Include .NET runtime with the product. (Avoding the need to install the runtime on the location where the tool is used) 
+In this example `/path/to/your/data` should be the path to the directory where the data is stored. This directory will be mounted into the Docker container.
 
-### Build for Windows x64
+An optional `--allowed_nhs_number_list_path` can be specified. This is a list of allowed patients (those who have not opted out of data processing). This file is used to exclude opt-out  patient records during the staging process. If it is not specified then we will stage all patients.
 
-```
-dotnet publish -r win-x64 --self-contained true -o ./publish
-```
-
-### Build for other platforms
+Typically this command would be run once per file until all of the available SUS data was staged into the database.
 
 ```
-dotnet publish -r PLATFORMRID --self-contained true -o ./publish
-```
-
-Replace `PLATFORMRID` with a platform RID, e.g `linux-x64`. [See full list of supported RIDs](https://learn.microsoft.com/en-us/dotnet/core/rid-catalog#known-rids)
-
-## Configure the tool
-
-Update the connection string in `appsettings.json` to point to your OMOP database. [See ConnectionString examples](https://www.connectionstrings.com/sql-server/).
-
-## Transform a COSD 9.0.1 archive.
-
-Stage the COSD submission file `December 2020 Submission.zip`.
-
-```
-.\omop.exe stage --type cosd load "COSD\December 2020 Submission.zip"
-```
-
-Output
-
-```
+info: OmopTransformer.SUS.Staging.OP.SusOPStaging[0]
+      Staging OP SUS data.
 info: Microsoft.Hosting.Lifetime[0]
       Application started. Press Ctrl+C to shut down.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD data.
+info: OmopTransformer.SUS.Staging.OP.SusOPStaging[0]
+      Reading /data/OS_SEM_1234_Outpatient_Q1_12345678_aaaaaaaa.csv
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Production
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: C:\Code\oxford-omop-transformer\publish
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Found 14 entries.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(BA)_RTH_2020-12-01_2020-12-31_2021-02-05T09_54_21.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(BR)_RTH_2020-12-01_2020-12-31_2021-02-05T10_03_55.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(CO)_RTH_2020-12-01_2020-12-31_2021-02-05T10_08_09.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(CT)_RTH_2020-12-01_2020-12-31_2021-02-05T10_13_49.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(GY)_RTH_2020-12-01_2020-12-31_2021-02-05T10_19_30.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(HA)_RTH_2020-12-01_2020-12-31_2021-02-05T10_23_37.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(HN)_RTH_2020-12-01_2020-12-31_2021-02-05T10_25_33.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(LU)_RTH_2020-12-01_2020-12-31_2021-02-05T10_27_26.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(LV)_RTH_2020-12-01_2020-12-31_2021-02-05T10_30_19.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(SA)_RTH_2020-12-01_2020-12-31_2021-02-05T10_32_06.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(SK)_RTH_2020-12-01_2020-12-31_2021-02-05T10_33_11.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(UG)_RTH_2020-12-01_2020-12-31_2021-02-05T10_36_24.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(UR)_RTH_2020-12-01_2020-12-31_2021-02-05T10_38_39.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
-      Staging COSD_INFOFLEX(CR)_RTH_2020-12-01_2020-12-31_2021-02-05T10_10_53.xml.
-info: OmopTransformer.COSD.Staging.CosdStaging[0]
+      Content root path: /app
+info: OmopTransformer.SUS.Staging.OP.SusOPStaging[0]
+      Streaming records...
+info: OmopTransformer.SUS.Staging.OP.SusOPInserter[0]
+      Recording SUS rows.
+info: OmopTransformer.SUS.Staging.OP.SusOPInserter[0]
+      Batch 1.
+info: OmopTransformer.SUS.Staging.OP.SusOPInserter[0]
+      Inserting OPRow.
+info: OmopTransformer.DataOptOut[0]
+      Loading allowed patient list took 2.1704667 seconds. 3954569 entries loaded.
+info: OmopTransformer.SUS.Staging.OP.SusOPInserter[0]
+      Inserting OPRow ReadProcedure.
+info: OmopTransformer.SUS.Staging.OP.SusOPInserter[0]
+      Inserting OPRow OpcdProcedure.
+info: OmopTransformer.SUS.Staging.OP.SusOPInserter[0]
+      Inserting APCRow ReadDiagnoses.
+info: OmopTransformer.SUS.Staging.OP.SusOPInserter[0]
+      Inserting OPRow IcdDiagnoses.
+info: OmopTransformer.DataOptOut[0]
+      National Data Opt Out
+info: OmopTransformer.DataOptOut[0]
+      Allowed count: 93282
+info: OmopTransformer.DataOptOut[0]
+      Opt out count: 6606
+info: OmopTransformer.SUS.Staging.OP.SusOPInserter[0]
+      Batch 2.
+
+.....
+
       Staging complete.
 info: Microsoft.Hosting.Lifetime[0]
       Application is shutting down...
 ```
 
-Transform the staged data.
+Staged data can be cleared using the following command `stage load --type sus-op`.
+
+## Transform the data
 
 ```
-.\omop.exe transform --type cosd
+docker run \
+      -e ConnectionString="Server=localhost;Database=omop;User Id=user;Password=password;" \
+      -e BatchSize=500000 \
+      --rm \
+      ghcr.io/answerdigital/oxford-omop-data-mapper:latest \
+      transform --type sus-op
 ```
 
-Output
+Transform any staged `sus-op` data.
+
+Typically this command would be run once per staged data type. In the case of SUS it would be `sus-apc`, `sus-op` then `sus-ae`.
+
+```
+
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /app
+info: OmopTransformer.ConceptMapper[0]
+      Rendering non standard to standard concept map.
+info: OmopTransformer.RecordProvider[0]
+      Running query. Pagination disabled (order by clause missing).
+info: OmopTransformer.Transformation.IRecordTransformer[0]
+      --------------------------------
+      Transformation: SUS OP Person
+      Valid rows: 802868
+      Invalid rows: 0
+      Overall time: 00:09:09.5125040. 1461 per second
+      Read time: 00:01:35.2888341. 8425 per second
+      Write time: 00:07:07.9566161. 1876 per second
+      CPU time : 00:00:25.8439175. 31066 per second
+      --------------------------------
+      
+warn: LookupTransformer[0]
+      Missed lookups
+      Lookup name: NhsGenderLookup 
+        Total miss rate 0% (802858 hits, 10 misses)
+        Misses
+        - "0" misses: 10
+      
+      
+info: OmopTransformer.RecordProvider[0]
+      Running query. Pagination disabled (order by clause missing).
+info: OmopTransformer.Transformation.IRecordTransformer[0]
+      --------------------------------
+      Transformation: SUS OP Location
+      Valid rows: 914219
+      Invalid rows: 0
+      Overall time: 00:08:08.7426475. 1870 per second
+      Read time: 00:04:37.7117916. 3291 per second
+      Write time: 00:03:22.0637290. 4524 per second
+      CPU time : 00:00:08.7078859. 104987 per second
+      --------------------------------
+      
+info: OmopTransformer.RecordProvider[0]
+      Running query. Pagination disabled (order by clause missing).
+info: OmopTransformer.Transformation.IRecordTransformer[0]
+      --------------------------------
+      Transformation: SUS OP Death
+      Valid rows: 145
+      Invalid rows: 0
+      Overall time: 00:01:33.6415508. n/a per second
+      Read time: 00:01:33.3080972. n/a per second
+      Write time: 00:00:00.3303688. n/a per second
+      CPU time : 00:00:00.0023031. n/a per second
+      --------------------------------
+....
+```
+
+## Finalise data
+
+This step removes invalid records, unused locations and builds the following tables
+* `drug_era`
+* `condition_era`
+
+```
+docker run \
+      -e ConnectionString="Server=localhost;Database=omop;User Id=user;Password=password;" \
+      -e BatchSize=500000 \
+      --rm \
+      ghcr.io/answerdigital/oxford-omop-data-mapper:latest \
+      finalise
+```
+
+
 
 ```
 info: Microsoft.Hosting.Lifetime[0]
       Application started. Press Ctrl+C to shut down.
+info: OmopTransformer.Omop.Prune.OmopFinaliser[0]
+      Clearing incomplete omop records.
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Production
-info: OmopTransformer.Transformation.IRecordTransformer[0]
-      Transforming COSD Person.
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: C:\Code\oxford-omop-transformer\publish
-info: OmopTransformer.RecordProvider[0]
-      Querying OmopTransformer.COSD.Demographics.CosdDemographics
-info: OmopTransformer.Transformation.IRecordTransformer[0]
-      Extracted 3849 COSD Person in 1 seconds.
-info: OmopTransformer.Omop.Person.PersonRecorder[0]
-      Recording 3849 persons.
-info: OmopTransformer.Omop.Person.PersonRecorder[0]
-      Batch 1 of 1 completed in 2717ms.
-info: OmopTransformer.Omop.Person.PersonRecorder[0]
-      procedure occurrences completed in 2.7180059 seconds.
-info: OmopTransformer.Transformation.IRecordTransformer[0]
-      Transformation took 2922ms.
-info: OmopTransformer.Transformation.IRecordTransformer[0]
-      Transforming COSD Location.
-info: OmopTransformer.RecordProvider[0]
-      Querying OmopTransformer.COSD.Demographics.CosdDemographics
-info: OmopTransformer.Transformation.IRecordTransformer[0]
-      Extracted 3849 COSD Location in 1 seconds.
-info: OmopTransformer.Omop.Location.LocationRecorder[0]
-      Recording 3849 locations.
-info: OmopTransformer.Omop.Location.LocationRecorder[0]
-      Batch 1 of 1 completed in 690ms.
-info: OmopTransformer.Omop.Location.LocationRecorder[0]
-      locations completed in 0.6902594 seconds.
-info: OmopTransformer.Transformation.IRecordTransformer[0]
-      Transformation took 869ms.
+      Content root path: /app
+info: OmopTransformer.Omop.Prune.OmopFinaliser[0]
+      Rebuilding era tables.
+info: OmopTransformer.Omop.Prune.OmopFinaliser[0]
+      Apply data fixes.
 info: Microsoft.Hosting.Lifetime[0]
       Application is shutting down...
 ```
 
-Then clear the staging tables.
+## Next Steps
 
-```
-.\omop.exe stage clear --type cosd
-```
+At this point the OMOP database is ready for consumption.
 
-Output 
-
-```
-info: Microsoft.Hosting.Lifetime[0]
-      Application started. Press Ctrl+C to shut down.
-info: Microsoft.Hosting.Lifetime[0]
-      Hosting environment: Production
-info: Microsoft.Hosting.Lifetime[0]
-      Content root path: C:\Code\oxford-omop-transformer\publish
-info: OmopTransformer.COSD.Staging.CosdStagingSchema[0]
-      Clearing staging tables.
-info: Microsoft.Hosting.Lifetime[0]
-      Application is shutting down...
-```
-
-View the transformed patients and their locations.
-
-```sql
-select *
-from cdm.person p
-	inner join cdm.location l
-		on p.location_id = l.location_id;
-```
+If the `observation_period` table is required for your use case (eg for Atlas), the [OHDSI OmopConstructor R package](https://github.com/OHDSI/OmopConstructor) can be used to populate this table.
