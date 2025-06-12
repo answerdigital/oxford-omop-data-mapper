@@ -19,8 +19,8 @@ The process to setup the database has two steps
 
 We use Flyway to patch our database. This script should be run if new database patches are issued, or repeatable migrations are added/eddited (eg new stored procedures).
 
-1. Alter the `Database/Migrations/migrate.ps1` script to configure your database address, database name, username and password.
-2. Run `Database/Migrations/migrate.ps1`. This script will patch the database using [Flyway](https://flywaydb.org/) to the latest version. It can be run many times.
+1. Clone the repository `git clone https://github.com/answerdigital/oxford-omop-data-mapper.git`
+2. Patch the database using the following guide [https://github.com/answerdigital/oxford-omop-data-mapper/tree/main/Database/Migrations](https://github.com/answerdigital/oxford-omop-data-mapper/tree/main/Database/Migrations)
 
 ## Vocabulary Import
 

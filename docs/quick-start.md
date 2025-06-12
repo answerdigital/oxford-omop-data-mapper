@@ -9,9 +9,13 @@ has_children: true
 
 In this guide we will transform a SUS outpatient CSV file to OMOP.
 
+This tool supports the following format [SUS_SEM_Extract_Specification](https://digital.nhs.uk/binaries/content/assets/website-assets/services/sus/sus-guidance/sem_extract_specification-v-1.3.xlsx).
+
+This data can be requested in bulk for your trust via the [SUS+ Portal](https://digital.nhs.uk/services/secondary-uses-service-sus/sus-portal-user-guide).
+
 ## Prerequisites
+* OMOP Database [Setup guide]({% link docs/database-setup.md %})
 * Docker [Quick start](https://www.docker.com/get-started/) (or .NET if run natively)
-* The OMOP database [Database Setup Guide]({% link docs/database-setup.md %})
 
 ## Stage the data
 
