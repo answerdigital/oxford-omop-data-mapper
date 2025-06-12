@@ -1,0 +1,76 @@
+# This workflow is used to tag an existing container image with a semver version
+# and create a GitHub Release
+name: Publish a Versioned Release
+
+on:
+  push:
+    tags:
+      - v*
+
+env:
+  image-name: oxford-omop-data-mapper
+  repo-owner: ${{ github.repository_owner }}
+  registry: ghcr.io
+
+jobs:
+  version-tag:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write # container images
+      contents: write # releases
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      # some docker actions need all lowercase, but our org name is mixed case 😠
+      - name: downcase repo-owner
+        run: |
+          echo "REPO_OWNER_LOWER=${GITHUB_REPOSITORY_OWNER,,}" >>${GITHUB_ENV}
+
+      # check image exists for commit
+      - uses: tyriis/docker-image-tag-exists@71a750a41aa78e4efb0842f538140c5df5b8166f # v2.1.0
+        with:
+          registry: ${{ env.registry }}
+          repository: ${{ env.REPO_OWNER_LOWER }}/${{ env.image-name }}
+          tag: ${{ github.sha }}
+
+      # standard login to the container registry
+      - name: Docker Login
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+        with:
+          registry: ${{ env.registry }}
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+
+      # We still use the metadata action to help build out our tags from the Workflow Run
+      - name: Docker Metadata action
+        id: meta
+        uses: docker/metadata-action@902fa8ec7d6ecbf8d84d538b9b233a880e428804 # v5.7.0
+        with:
+          images: ${{ env.registry }}/${{ env.repo-owner }}/${{ env.image-name }}
+          tags: | # new tags only
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}
+            type=semver,pattern={{major}}.{{minor}}
+
+      # Create Github Release
+      - uses: ncipollo/release-action@440c8c1cb0ed28b9f43e4d1d670870f059653174 # v1.16.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body: |
+            # Oxford OMOP data mapper ${{ github.ref_name }}
+
+            [Tagged Container images](https://github.com/answerdigital/oxford-omop-data-mapper/pkgs/container/oxford-omop-data-mapper)
+          generateReleaseNotes: true
+          prerelease: ${{ steps.version.outputs.prerelease != '' }}
+          makeLatest: true
+
+      # apply the new tags to the existing images
+      - name: Push updated image tags
+        uses: akhilerm/tag-push-action@f35ff2cb99d407368b5c727adbcc14a2ed81d509 # v2.2.0
+        with:
+          src: ${{ env.registry }}/${{ env.REPO_OWNER_LOWER }}/${{ env.image-name }}:${{ github.sha }}
+          dst: |
+            ${{ steps.meta.outputs.tags }}
