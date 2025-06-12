@@ -27,6 +27,10 @@ jobs:
         run: |
           echo "REPO_OWNER_LOWER=${GITHUB_REPOSITORY_OWNER,,}" >>${GITHUB_ENV}
 
+      - name: Parse version from tag
+        id: version
+        uses: release-kit/semver@97491c46500b6e758ced599794164a234b8aa08c # v2.0.7
+
       # check image exists for commit
       - uses: tyriis/docker-image-tag-exists@71a750a41aa78e4efb0842f538140c5df5b8166f # v2.1.0
         with:
