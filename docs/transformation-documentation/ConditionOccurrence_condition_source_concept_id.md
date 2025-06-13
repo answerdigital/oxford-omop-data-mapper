@@ -364,6 +364,30 @@ Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20SACT%20Condition%20Occurrence%20mapping){: .btn }
+### Oxford Condition Occurrence
+Source column  `SuppliedCode`.
+Resolve Snomed codes to OMOP concepts.
+
+* `SuppliedCode`  
+
+```sql
+select
+	distinct
+		d.NHSNumber,
+		e.EventDate,
+		e.SuppliedCode
+from omop_staging.oxford_gp_event e
+	inner join omop_staging.oxford_gp_demographic d
+		on e.PatientIdentifier = d.PatientIdentifier
+order by
+	d.NHSNumber,
+	e.EventDate,
+	e.SuppliedCode
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20Oxford%20Condition%20Occurrence%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 Source column  `CancerDiagnosis`.
 Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.

@@ -96,6 +96,26 @@ where p.FirstOfPOSTCODE is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20location_source_value%20field%20Rtds%20PAS%20Location%20mapping){: .btn }
+### Oxford GP Location
+* Value copied from `Postcode`
+
+* `Postcode` Patient Postcode [POSTCODE](https://www.datadictionary.nhs.uk/data_elements/postcode.html)
+
+```sql
+select
+	distinct
+		NHSNumber,
+		Postcode
+from omop_staging.oxford_gp_demographic
+where Postcode is not null
+order by
+	NHSNumber,
+	Postcode
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Location%20table%20location_source_value%20field%20Oxford%20GP%20Location%20mapping){: .btn }
 ### COSD Demographics
 Source columns  `StreetAddressLine1`, `StreetAddressLine2`, `StreetAddressLine3`, `StreetAddressLine4`, `Postcode`.
 Separates text with newlines. Trim whitespace.

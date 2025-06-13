@@ -18,3 +18,7 @@ has_toc: false
 * Constant value set to `32818`. `EHR administration record`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_type_concept_id%20field%20SUS%20AE%20VisitOccurrenceWithSpell%20mapping){: .btn }
+### Oxford Visit Occurrence
+* Constant value set to `32818`. `EHR administration record`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_type_concept_id%20field%20Oxford%20Visit%20Occurrence%20mapping){: .btn }

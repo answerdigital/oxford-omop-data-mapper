@@ -16,6 +16,7 @@ internal class RecordTransformer : IRecordTransformer
     private readonly Icd10NonStandardResolver _icd10NonStandardResolver;
     private readonly Icd10StandardResolver _icd10StandardResolver;
     private readonly RecordTransformLookupLogger _recordTransformLookupLogger = new();
+    private readonly SnomedResolver _snomedResolver;
 
     public RecordTransformer(
         ILogger<RecordTransformer> logger, 
@@ -24,7 +25,7 @@ internal class RecordTransformer : IRecordTransformer
         Icdo3Resolver icdo3Resolver,
         MeasurementMapsToValueResolver relationshipResolver, 
         Icd10NonStandardResolver icd10NonStandardResolver,
-        Icd10StandardResolver icd10StandardResolver)
+        Icd10StandardResolver icd10StandardResolver, SnomedResolver snomedResolver)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _resolver = resolver;
@@ -33,6 +34,7 @@ internal class RecordTransformer : IRecordTransformer
         _relationshipResolver = relationshipResolver;
         _icd10NonStandardResolver = icd10NonStandardResolver;
         _icd10StandardResolver = icd10StandardResolver;
+        _snomedResolver = snomedResolver;
     }
 
     public void Transform<T>(IOmopRecord<T> record)
@@ -167,6 +169,7 @@ internal class RecordTransformer : IRecordTransformer
                 .Select(argumentName => originType.GetProperty(argumentName)!.GetValue(originData))
                 .Concat(firstConstructorTypes.Any(type => type == typeof(Opcs4Resolver)) ? new[] { _opcs4Resolver } : new List<object>())
                 .Concat(firstConstructorTypes.Any(type => type == typeof(Icdo3Resolver)) ? new[] { _icdo3Resolver } : new List<object>())
+                .Concat(firstConstructorTypes.Any(type => type == typeof(SnomedResolver)) ? new[] { _snomedResolver } : new List<object>())
                 .Concat(firstConstructorTypes.Any(type => type == typeof(ConceptResolver)) ? new[] { _resolver } : new List<object>())
                 .Concat(firstConstructorTypes.Any(type => type == typeof(Icd10NonStandardResolver)) ? new [] { _icd10NonStandardResolver } :  new List<object>())
                 .Concat(firstConstructorTypes.Any(type => type == typeof(Icd10StandardResolver)) ? new[] { _icd10StandardResolver } :  new List<object>())

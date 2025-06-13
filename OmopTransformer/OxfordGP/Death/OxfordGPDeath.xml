@@ -1,0 +1,23 @@
+﻿<Query>
+    <Sql>
+select
+	distinct
+		NHSNumber,
+		DateofDeath
+from omop_staging.oxford_gp_demographic
+where DateofDeath is not null
+order by
+	NHSNumber,
+	DateofDeath
+	</Sql>
+
+	<Explanations>
+		<Explanation columnName="DateofDeath">
+			<Description>Date of death.</Description>
+		</Explanation>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

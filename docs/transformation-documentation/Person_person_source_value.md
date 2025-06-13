@@ -98,6 +98,25 @@ group by PatientId
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20Rtds%20Demographics%20mapping){: .btn }
+### Oxford GP Person
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DOB
+from omop_staging.oxford_gp_demographic
+order by
+	NHSNumber,
+	DOB
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20Oxford%20GP%20Person%20mapping){: .btn }
 ### COSD Demographics
 * Value copied from `NhsNumber`
 
