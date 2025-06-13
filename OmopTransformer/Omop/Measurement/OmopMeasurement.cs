@@ -3,7 +3,7 @@
 internal abstract class OmopMeasurement<T> : IOmopRecord<T>
 {
     public virtual string? nhs_number { get; set; }
-    public virtual int? measurement_concept_id { get; set; }
+    public virtual int[]? measurement_concept_id { get; set; }
     public virtual DateTime? measurement_date { get; set; }
     public virtual DateTime? measurement_datetime { get; set; }
     public virtual DateTime? measurement_time { get; set; }

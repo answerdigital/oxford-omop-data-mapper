@@ -1,7 +1,8 @@
-﻿using System.Reflection;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using OmopTransformer.Annotations;
 using OmopTransformer.Omop;
+using System.Linq;
+using System.Reflection;
 
 namespace OmopTransformer.Transformation;
 
@@ -133,40 +134,9 @@ internal class RecordTransformer : IRecordTransformer
         
         if (lookup.Mappings.TryGetValue(argument, out var value))
         {
-            if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
-            {
-                var type = property.PropertyType.GetGenericArguments()[0];
+            SetValue(record, property, value.Value);
 
-                if (type == typeof(int))
-                {
-                    if (int.TryParse(value.Value, out int number))
-                    {
-                        property.SetValue(record, number);
-                        _recordTransformLookupLogger.Hit(lookup);
-                    }
-                }
-                else
-                {
-                    throw new NotSupportedException("Unknown nullable mapping type");
-                }
-            }
-            else
-            {
-                if (property.PropertyType == typeof(string))
-                {
-                    property.SetValue(record, value.Value);
-                    _recordTransformLookupLogger.Hit(lookup);
-                }
-                else if (property.PropertyType == typeof(int))
-                {
-                    property.SetValue(record, int.Parse(value.Value));
-                    _recordTransformLookupLogger.Hit(lookup);
-                }
-                else
-                {
-                    throw new NotSupportedException("Unknown nullable mapping type");
-                }
-            }
+            _recordTransformLookupLogger.Hit(lookup);
         }
         else
         {
@@ -203,7 +173,8 @@ internal class RecordTransformer : IRecordTransformer
                 .ToArray();
 
         ISelector? selector;
-        try{
+        try
+        {
             selector = (ISelector)Activator.CreateInstance(transformAttribute.Type, arguments)!;
         }
         catch (MissingMethodException missingMethod)
@@ -213,31 +184,7 @@ internal class RecordTransformer : IRecordTransformer
 
         object? value = selector.GetValue();
 
-        if (value != null)
-        {
-            if (property.PropertyType == value.GetType() || Nullable.GetUnderlyingType(property.PropertyType) == value.GetType())
-            {
-                property.SetValue(record, value);
-            }
-            else
-            {
-                if (property.PropertyType.IsArray)
-                {
-                    if (property.PropertyType.GetElementType() == typeof(int))
-                    {
-                        property.SetValue(record, new int[] { (int)value });
-                    }
-                }
-                else if (property.PropertyType == typeof(string) && value is int)
-                {
-                    property.SetValue(record, value.ToString());
-                }
-                else
-                {
-                    throw new NotSupportedException($"Cannot set value of type {value.GetType()} to property of type {property.PropertyType}");
-                }
-            }
-        }
+        SetValue(record, property, value);
     }
 
     private void TransformCopyValue<T>(IOmopRecord<T> record, PropertyInfo property, Type sourceType, CopyValueAttribute copyValueAttribute)
@@ -246,49 +193,60 @@ internal class RecordTransformer : IRecordTransformer
 
         object? value = sourceType.GetProperty(copyValueAttribute.Value)!.GetValue(record.Source);
 
-        if (value == null)
-            return;
-
-        if (property.PropertyType == typeof(string))
-        {
-            if (value is string)
-            {
-                property.SetValue(record, value);
-                return;
-            }
-
-            if (value is int)
-            {
-                property.SetValue(record, value.ToString());
-                return;
-            }
-        }
-
-        if (property.PropertyType == typeof(int) || property.PropertyType == typeof(int?))
-        {
-            if (value is int)
-            {
-                property.SetValue(record, value);
-                return;
-            }
-        }
-
-        if (property.PropertyType == typeof(DateTime) || property.PropertyType == typeof(DateTime?))
-        {
-            if (value is DateTime)
-            {
-                property.SetValue(record, value);
-                return;
-            }
-        }
-
-        throw new NotSupportedException($"Cannot set value of type {value.GetType()} to property of type {property.PropertyType}");
+        SetValue(record, property, value);
     }
 
     private void TransformConstantValue<T>(IOmopRecord<T> record, PropertyInfo property, ConstantValueAttribute constantValueAttribute)
     {
         _logger.LogTrace("Setting constant value. {0} found on property {1}", nameof(ConstantValueAttribute), property.Name);
 
-        property.SetValue(record, constantValueAttribute.Value);
+        SetValue(record, property, constantValueAttribute.Value);
+    }
+
+    private static void SetValue<T>(IOmopRecord<T> record, PropertyInfo property, object? value)
+    {
+        if (value == null)
+            return;
+
+        // If the types match, just copy the value.
+        if (property.PropertyType == value.GetType() || Nullable.GetUnderlyingType(property.PropertyType) == value.GetType())
+        {
+            property.SetValue(record, value);
+        }
+        else
+        {
+            // If the target type is a collection, create an array of one item.
+            if (property.PropertyType.IsArray)
+            {
+                if (property.PropertyType.GetElementType() == typeof(int))
+                {
+                    property.SetValue(record, new int[] { (int)value });
+                }
+            }
+            else
+            {
+                if (property.PropertyType == typeof(string))
+                {
+                    // Convert our int to a string and set the property.
+                    if (value is int)
+                    {
+                        property.SetValue(record, value.ToString());
+                        return;
+                    }
+                }
+
+                if (property.PropertyType == typeof(int) || property.PropertyType == typeof(int?))
+                {
+                    // Convert our string to a int and set the property.
+                    if (value is string s)
+                    {
+                        property.SetValue(record, int.Parse(s));
+                        return;
+                    }
+                }
+            }
+        }
+
+        throw new NotSupportedException($"Cannot set value of type {value.GetType()} to property of type {property.PropertyType}");
     }
 }
