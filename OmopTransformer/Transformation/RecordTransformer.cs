@@ -221,8 +221,17 @@ internal class RecordTransformer : IRecordTransformer
         {
             if (property.PropertyType.GetElementType() == typeof(int))
             {
-                property.SetValue(record, new int[] { (int)value });
-                return;
+                if (value is int i)
+                {
+                    property.SetValue(record, new int[] { i });
+                    return;
+                }
+
+                if (value is string s)
+                {
+                    property.SetValue(record, new int[] { int.Parse(s) });
+                    return;
+                }
             }
         }
         else
