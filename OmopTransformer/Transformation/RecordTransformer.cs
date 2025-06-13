@@ -134,7 +134,8 @@ internal class RecordTransformer : IRecordTransformer
         
         if (lookup.Mappings.TryGetValue(argument, out var value))
         {
-            SetValue(record, property, value.Value);
+            if (value.Value != "")
+                SetValue(record, property, value.Value);
 
             _recordTransformLookupLogger.Hit(lookup);
         }
