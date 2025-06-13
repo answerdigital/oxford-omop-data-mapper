@@ -18,7 +18,7 @@ internal class SusAEAsthmaticPatient : OmopObservation<SusAEAsthmaticPatientReco
     public override string? RecordConnectionIdentifier { get; set; }
 
     [ConstantValue(4233784, "Asthmatic bronchitis (disorder)")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.ArrivalDate))]
     public override DateTime? observation_date { get; set; }

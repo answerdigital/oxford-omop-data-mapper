@@ -22,5 +22,5 @@ internal class CosdV8MeasurementTumourLaterality : OmopMeasurement<CosdV8Measure
     public override string? measurement_source_value { get; set; }
 
     [Transform(typeof(TumourLateralityLookup), nameof(Source.TumourLaterality))]
-    public override int? measurement_concept_id { get; set; }
+    public override int[]? measurement_concept_id { get; set; }
 }

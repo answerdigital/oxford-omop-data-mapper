@@ -22,7 +22,7 @@ internal class CosdV8MeasurementTumourHeightAboveAnalVerge : OmopMeasurement<Cos
     public override string? measurement_source_value { get; set; }
 
     [ConstantValue(3029142, "`Distance from anal verge`")]
-    public override int? measurement_concept_id { get; set; }
+    public override int[]? measurement_concept_id { get; set; }
 
     [ConstantValue(4172703, "`-`")]
     public override int? operator_concept_id { get; set; }

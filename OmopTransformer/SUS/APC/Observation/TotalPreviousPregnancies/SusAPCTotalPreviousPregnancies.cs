@@ -21,7 +21,7 @@ internal class SusAPCTotalPreviousPregnancies : OmopObservation<SusAPCTotalPrevi
     public override string? HospitalProviderSpellNumber { get; set; }
 
     [ConstantValue(4078008, "Number of previous pregnancies")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.observation_date))]
     public override DateTime? observation_date { get; set; }

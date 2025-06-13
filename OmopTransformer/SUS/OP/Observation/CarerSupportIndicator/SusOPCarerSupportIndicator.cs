@@ -18,7 +18,7 @@ internal class SusOPCarerSupportIndicator : OmopObservation<SusOPCarerSupportInd
     public override string? RecordConnectionIdentifier { get; set; }
 
     [ConstantValue(4224770, "Social support status")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.CDSActivityDate))]
     public override DateTime? observation_date { get; set; }

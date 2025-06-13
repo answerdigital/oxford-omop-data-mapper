@@ -10,7 +10,7 @@ internal class OxfordGPProcedureOccurrence : OmopProcedureOccurrence<OxfordGPPro
     public override string? nhs_number { get; set; }
 
     [Transform(typeof(StandardProcedureConceptSelector), useOmopTypeAsSource: true, nameof(procedure_source_concept_id))]
-    public override int? procedure_concept_id { get; set; }
+    public override int[]? procedure_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.EventDate))]
     public override DateTime? procedure_date { get; set; }

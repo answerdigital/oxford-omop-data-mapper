@@ -11,6 +11,6 @@ internal class StandardConditionConceptSelector(int? conceptId, ConceptResolver 
         if (conceptId.HasValue == false)
             return null;
 
-        return resolver.GetConcept(conceptId.Value, "Condition");
+        return resolver.GetConcepts(conceptId.Value, "Condition");
     }
 }

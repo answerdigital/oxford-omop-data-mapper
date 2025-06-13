@@ -5,7 +5,7 @@ internal abstract class OmopObservation<T> : IOmopRecord<T>
     public virtual string? nhs_number { get; set; }
     public virtual string? RecordConnectionIdentifier { get; set; }
     public virtual string? HospitalProviderSpellNumber { get; set; }
-    public virtual int? observation_concept_id { get; set; }
+    public virtual int[]? observation_concept_id { get; set; }
     public virtual DateTime? observation_date { get; set; }
     public virtual DateTime? observation_datetime { get; set; }
     public virtual int? observation_type_concept_id { get; set; }
@@ -27,6 +27,7 @@ internal abstract class OmopObservation<T> : IOmopRecord<T>
 
     public virtual bool IsValid =>
         observation_concept_id != null &&
+        observation_concept_id.Any() &&
         observation_date.HasValue &&
         nhs_number != null &&
         observation_type_concept_id != null;

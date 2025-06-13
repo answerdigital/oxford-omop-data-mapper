@@ -22,7 +22,7 @@ internal class CosdV9MeasurementTNMcategoryIntegratedStage : OmopMeasurement<Cos
     public override string? measurement_source_value { get; set; }
 
     [Transform(typeof(TNMCategoryLookup), nameof(Source.TnmStageGroupingIntegrated))]
-    public override int? measurement_concept_id { get; set; }
+    public override int[]? measurement_concept_id { get; set; }
 
     [ConstantValue(2000500013, "TNMCategoryIntegratedStage")]
     public override int? measurement_source_concept_id { get; set; }

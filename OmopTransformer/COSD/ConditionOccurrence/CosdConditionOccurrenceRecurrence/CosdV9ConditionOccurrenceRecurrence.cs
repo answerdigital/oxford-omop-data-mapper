@@ -23,7 +23,7 @@ internal class CosdV9ConditionOccurrenceRecurrence : OmopConditionOccurrence<Cos
     public override int? condition_source_concept_id { get; set; }
 
     [Transform(typeof(StandardConditionConceptSelector), useOmopTypeAsSource: true, nameof(condition_source_concept_id))]
-    public override int? condition_concept_id { get; set; }
+    public override int[]? condition_concept_id { get; set; }
 
     [CopyValue(nameof(Source.NonPrimaryRecurrenceOriginalDiagnosis))]
     public override string? condition_source_value { get; set; }

@@ -3,7 +3,7 @@
 internal abstract class OmopDrugExposure<T> : IOmopRecord<T>
 {
     public virtual string? nhs_number { get; set; }
-    public virtual int? drug_concept_id { get; set; }
+    public virtual int[]? drug_concept_id { get; set; }
     public virtual DateTime? drug_exposure_start_date { get; set; }
     public virtual DateTime? drug_exposure_start_datetime { get; set; }
     public virtual DateTime? drug_exposure_end_date { get; set; }
@@ -28,6 +28,7 @@ internal abstract class OmopDrugExposure<T> : IOmopRecord<T>
 
     public virtual bool IsValid =>
         drug_concept_id != null &&
+        drug_concept_id.Any() &&
         drug_exposure_end_date.HasValue &&
         drug_exposure_start_date.HasValue &&
         drug_type_concept_id != null &&

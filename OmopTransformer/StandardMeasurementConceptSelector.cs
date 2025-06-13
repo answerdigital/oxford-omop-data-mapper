@@ -11,6 +11,6 @@ internal class StandardMeasurementConceptSelector(int? conceptId, ConceptResolve
         if (conceptId.HasValue == false)
             return null;
 
-        return resolver.GetConcept(conceptId.Value, "Measurement");
+        return resolver.GetConcepts(conceptId.Value, "Measurement");
     }
 }

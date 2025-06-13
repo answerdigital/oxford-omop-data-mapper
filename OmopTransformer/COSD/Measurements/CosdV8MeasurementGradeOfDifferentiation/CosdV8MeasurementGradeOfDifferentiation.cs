@@ -22,5 +22,5 @@ internal class CosdV8MeasurementGradeOfDifferentiation : OmopMeasurement<CosdV8M
     public override string? measurement_source_value { get; set; }
 
     [Transform(typeof(GradeDifferentiationLookup), nameof(Source.GradeOfDifferentiationAtDiagnosis))]
-    public override int? measurement_concept_id { get; set; }
+    public override int[]? measurement_concept_id { get; set; }
 }

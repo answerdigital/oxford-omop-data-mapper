@@ -22,5 +22,5 @@ internal class CosdV9MeasurementSynchronousTumourIndicator : OmopMeasurement<Cos
     public override string? measurement_source_value { get; set; }
 
     [Transform(typeof(SynchronousTumourLookup), nameof(Source.SynchronousTumourIndicator))]
-    public override int? measurement_concept_id { get; set; }
+    public override int[]? measurement_concept_id { get; set; }
 }

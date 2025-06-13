@@ -55,29 +55,32 @@ internal class MeasurementRecorder : IMeasurementRecorder
                 if (record.IsValid == false)
                     continue;
 
-                dataTable.Rows.Add(
-                    record.nhs_number,
-                    record.measurement_concept_id,
-                    record.measurement_date,
-                    record.measurement_datetime,
-                    record.measurement_time,
-                    record.measurement_type_concept_id,
-                    record.operator_concept_id,
-                    record.value_as_number,
-                    record.value_as_concept_id,
-                    record.unit_concept_id,
-                    record.range_low,
-                    record.range_high,
-                    record.provider_id,
-                    record.measurement_source_value,
-                    record.measurement_source_concept_id,
-                    record.unit_source_value,
-                    record.unit_source_concept_id,
-                    record.value_source_value,
-                    record.measurement_event_id,
-                    record.meas_event_field_concept_id,
-                    record.RecordConnectionIdentifier,
-                    record.HospitalProviderSpellNumber);
+                foreach (var conceptId in record.measurement_concept_id!)
+                {
+                    dataTable.Rows.Add(
+                        record.nhs_number,
+                        conceptId,
+                        record.measurement_date,
+                        record.measurement_datetime,
+                        record.measurement_time,
+                        record.measurement_type_concept_id,
+                        record.operator_concept_id,
+                        record.value_as_number,
+                        record.value_as_concept_id,
+                        record.unit_concept_id,
+                        record.range_low,
+                        record.range_high,
+                        record.provider_id,
+                        record.measurement_source_value,
+                        record.measurement_source_concept_id,
+                        record.unit_source_value,
+                        record.unit_source_concept_id,
+                        record.value_source_value,
+                        record.measurement_event_id,
+                        record.meas_event_field_concept_id,
+                        record.RecordConnectionIdentifier,
+                        record.HospitalProviderSpellNumber);
+                }
             }
 
             var parameter = new

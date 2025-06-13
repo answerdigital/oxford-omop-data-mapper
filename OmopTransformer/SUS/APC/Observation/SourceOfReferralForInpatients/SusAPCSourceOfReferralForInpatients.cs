@@ -18,7 +18,7 @@ internal class SusAPCSourceOfReferralForInpatients : OmopObservation<SusAPCSourc
     public override string? RecordConnectionIdentifier { get; set; }
 
     [ConstantValue(4258129, "Referral by")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.StartDateHospitalProviderSpell))]
     public override DateTime? observation_date { get; set; }

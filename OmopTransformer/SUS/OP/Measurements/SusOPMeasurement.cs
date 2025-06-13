@@ -25,7 +25,7 @@ internal class SusOPMeasurement : OmopMeasurement<SusOPMeasurementRecord>
     public override string? value_source_value { get; set; }
 
     [Transform(typeof(StandardMeasurementConceptSelector), useOmopTypeAsSource: true, nameof(measurement_source_concept_id))]
-    public override int? measurement_concept_id { get; set; }
+    public override int[]? measurement_concept_id { get; set; }
 
     public override bool IsValid => base.IsValid && value_source_value != null;
 }

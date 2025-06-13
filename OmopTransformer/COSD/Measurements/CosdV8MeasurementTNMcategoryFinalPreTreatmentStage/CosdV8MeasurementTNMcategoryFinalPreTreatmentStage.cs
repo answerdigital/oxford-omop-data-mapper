@@ -22,7 +22,7 @@ internal class CosdV8MeasurementTNMcategoryFinalPreTreatmentStage : OmopMeasurem
     public override string? measurement_source_value { get; set; }
 
     [Transform(typeof(TNMCategoryLookup), nameof(Source.TnmStageGroupingFinalPretreatment))]
-    public override int? measurement_concept_id { get; set; }
+    public override int[]? measurement_concept_id { get; set; }
 
     [ConstantValue(2000500017, "TNMCategoryFinalPreTreatmentStage")]
     public override int? measurement_source_concept_id { get; set; }

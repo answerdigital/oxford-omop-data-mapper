@@ -13,7 +13,7 @@ internal class SusCCMDSHighCostDrugs : OmopObservation<SusCCMDSHighCostDrugsReco
     public override string? HospitalProviderSpellNumber { get; set; }
 
     [Transform(typeof(StandardConceptSelector), useOmopTypeAsSource: true, nameof(observation_source_concept_id))]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.ObservationDate))]
     public override DateTime? observation_date { get; set; }

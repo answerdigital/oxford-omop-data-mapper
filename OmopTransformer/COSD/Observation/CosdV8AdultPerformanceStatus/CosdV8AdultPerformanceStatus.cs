@@ -11,7 +11,7 @@ internal class CosdV8AdultPerformanceStatus : OmopObservation<CosdV8AdultPerform
     public override string? nhs_number { get; set; }
 
     [ConstantValue(4309681, "General physical performance status")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.Date))]
     public override DateTime? observation_date { get; set; }

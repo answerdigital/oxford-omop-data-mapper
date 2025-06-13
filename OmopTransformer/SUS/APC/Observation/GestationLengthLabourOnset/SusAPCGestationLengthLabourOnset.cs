@@ -21,7 +21,7 @@ internal class SusAPCGestationLengthLabourOnset : OmopObservation<SusAPCGestatio
     public override string? HospitalProviderSpellNumber { get; set; }
 
     [ConstantValue(40493181, "Length of gestation at time of procedure")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.observation_date))]
     public override DateTime? observation_date { get; set; }

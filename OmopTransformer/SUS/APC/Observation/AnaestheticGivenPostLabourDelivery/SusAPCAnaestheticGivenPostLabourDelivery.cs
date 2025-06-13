@@ -21,7 +21,7 @@ internal class SusAPCAnaestheticGivenPostLabourDelivery : OmopObservation<SusAPC
     public override string? HospitalProviderSpellNumber { get; set; }
 
     [ConstantValue(4163264, "Type of anesthetic")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.observation_date))]
     public override DateTime? observation_date { get; set; }

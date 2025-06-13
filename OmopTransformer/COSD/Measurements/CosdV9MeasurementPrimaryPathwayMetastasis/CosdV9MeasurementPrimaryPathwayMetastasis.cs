@@ -22,7 +22,7 @@ internal class CosdV9MeasurementPrimaryPathwayMetastasis : OmopMeasurement<CosdV
     public override string? measurement_source_value { get; set; }
 
     [Transform(typeof(MetastasisSiteLookup), nameof(Source.MetastaticSite))]
-    public override int? measurement_concept_id { get; set; }
+    public override int[]? measurement_concept_id { get; set; }
 
     [ConstantValue(2000500007, "PrimaryPathwayMetastasis")]
     public override int? measurement_source_concept_id { get; set; }

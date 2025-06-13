@@ -4,7 +4,7 @@ internal abstract class OmopConditionOccurrence<T> : IOmopRecord<T>
 {
     public virtual string? nhs_number { get; set; }
     public virtual string? RecordConnectionIdentifier { get; set; }
-    public virtual int? condition_concept_id { get; set; }
+    public virtual int[]? condition_concept_id { get; set; }
     public virtual DateTime? condition_start_date { get; set; }
     public virtual DateTime? condition_start_datetime { get; set; }
     public virtual DateTime? condition_end_date { get; set; }
@@ -24,6 +24,7 @@ internal abstract class OmopConditionOccurrence<T> : IOmopRecord<T>
 
     public virtual bool IsValid =>
         condition_concept_id != null &&
+        condition_concept_id.Any() &&
         condition_start_date.HasValue &&
         condition_type_concept_id != null &&
         nhs_number != null;

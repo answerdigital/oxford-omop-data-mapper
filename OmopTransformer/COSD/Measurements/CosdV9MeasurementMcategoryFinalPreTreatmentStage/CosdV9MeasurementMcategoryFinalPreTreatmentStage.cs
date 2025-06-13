@@ -22,7 +22,7 @@ internal class CosdV9MeasurementMcategoryFinalPreTreatmentStage : OmopMeasuremen
     public override string? measurement_source_value { get; set; }
 
     [Transform(typeof(MCategoryLookup), nameof(Source.McategoryFinalPreTreatment))]
-    public override int? measurement_concept_id { get; set; }
+    public override int[]? measurement_concept_id { get; set; }
 
     [ConstantValue(2000500014, "MCategoryFinalPreTreatmentStage")]
     public override int? measurement_source_concept_id { get; set; }
