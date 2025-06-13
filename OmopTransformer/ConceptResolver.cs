@@ -89,7 +89,7 @@ internal class ConceptResolver
         {
             return
                 value
-                    .Where(row => row.domain_id == null || row.domain_id!.Equals(domain, StringComparison.OrdinalIgnoreCase))
+                    .Where(row => domain == null || row.domain_id!.Equals(domain, StringComparison.OrdinalIgnoreCase))
                     .Select(row => row.target_concept_id)
                     .ToArray();
         }
