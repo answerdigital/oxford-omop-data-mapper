@@ -212,37 +212,37 @@ internal class RecordTransformer : IRecordTransformer
         if (property.PropertyType == value.GetType() || Nullable.GetUnderlyingType(property.PropertyType) == value.GetType())
         {
             property.SetValue(record, value);
+            return;
+        }
+
+        // If the target type is a collection, create an array of one item.
+        if (property.PropertyType.IsArray)
+        {
+            if (property.PropertyType.GetElementType() == typeof(int))
+            {
+                property.SetValue(record, new int[] { (int)value });
+                return;
+            }
         }
         else
         {
-            // If the target type is a collection, create an array of one item.
-            if (property.PropertyType.IsArray)
+            if (property.PropertyType == typeof(string))
             {
-                if (property.PropertyType.GetElementType() == typeof(int))
+                // Convert our int to a string and set the property.
+                if (value is int)
                 {
-                    property.SetValue(record, new int[] { (int)value });
+                    property.SetValue(record, value.ToString());
+                    return;
                 }
             }
-            else
-            {
-                if (property.PropertyType == typeof(string))
-                {
-                    // Convert our int to a string and set the property.
-                    if (value is int)
-                    {
-                        property.SetValue(record, value.ToString());
-                        return;
-                    }
-                }
 
-                if (property.PropertyType == typeof(int) || property.PropertyType == typeof(int?))
+            if (property.PropertyType == typeof(int) || property.PropertyType == typeof(int?))
+            {
+                // Convert our string to a int and set the property.
+                if (value is string s)
                 {
-                    // Convert our string to a int and set the property.
-                    if (value is string s)
-                    {
-                        property.SetValue(record, int.Parse(s));
-                        return;
-                    }
+                    property.SetValue(record, int.Parse(s));
+                    return;
                 }
             }
         }
