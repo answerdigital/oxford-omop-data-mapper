@@ -39,6 +39,9 @@ using OmopTransformer.SUS.Staging.Inpatient.Clearing;
 using OmopTransformer.SUS.Staging.Inpatient;
 using OmopTransformer.SUS.Staging.Inpatient.CCMDS;
 using OmopTransformer.Omop;
+using OmopTransformer.OxfordGP;
+using OmopTransformer.OxfordGP.Staging;
+using OmopTransformer.OxfordGP.Staging.Clearing;
 using OmopTransformer.OxfordPrescribing.Staging;
 using OmopTransformer.OxfordPrescribing.Staging.Clearing;
 
@@ -248,6 +251,30 @@ internal class Program
                         return;
                 }
             }
+            else if (string.Equals(stagingOptions.Type, "oxford-gp", StringComparison.OrdinalIgnoreCase))
+            {
+                if (stagingOptions.Action == null)
+                {
+                    await ActionMustBeSpecifiedError();
+                    return;
+                }
+
+                switch (stagingOptions.Action.ToLower())
+                {
+                    case "load":
+                        builder.Services.AddTransient<IOxfordGPRecordInserter, OxfordGPRecordInserter>();
+                        builder.Services.AddTransient<IOxfordGPParser, OxfordGPParser>();
+                        builder.Services.AddTransient<IOxfordGPStaging, OxfordGPStaging>();
+                        builder.Services.AddHostedService<OxfordGPLoadStagingHostedService>();
+                        break;
+                    case "clear":
+                        builder.Services.AddHostedService<OxfordGPClearStagingHostedService>();
+                        break;
+                    default:
+                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
+                        return;
+                }
+            }
             else
             {
                 await Console.Error.WriteLineAsync($"Unknown staging type {stagingOptions.Type}.");
@@ -304,6 +331,11 @@ internal class Program
                 builder.Services.AddTransient<SusAETransformer>();
                 builder.Services.AddHostedService<SusAETransformHostedService>();
             }
+            else if (string.Equals(transformOptions.Type, "oxford-gp", StringComparison.OrdinalIgnoreCase))
+            {
+                builder.Services.AddTransient<OxfordGPTransformer>();
+                builder.Services.AddHostedService<OxfordGPTransformHostedService>();
+            }
             else
             {
                 await Console.Error.WriteLineAsync($"Unknown transform type {transformOptions.Type}.");
@@ -329,6 +361,7 @@ internal class Program
         builder.Services.AddSingleton<Icd10StandardResolver>();
         builder.Services.AddSingleton<Opcs4Resolver>();
         builder.Services.AddSingleton<Icdo3Resolver>();
+        builder.Services.AddSingleton<SnomedResolver>();
         builder.Services.AddSingleton<ConceptResolver>();
         builder.Services.AddSingleton<MeasurementMapsToValueResolver>();
 
@@ -364,6 +397,19 @@ public class StagingOptions
 
     [Option("allowed_nhs_number_list_path", Required = false, HelpText = "File that contains a list of allowed patient NHSNumbers. If specified this argument prevents data for patients that are outside of this list from being staged and transformed.")]
     public string? AllowedListNhsNumber { get; set; }
+
+    [Option("demographics", Required = false, HelpText = "Path to demographics CSV file (required when type is oxford-gp).")]
+    public string? Demographics { get; set; }
+
+    [Option("appointments", Required = false, HelpText = "Path to appointments CSV file (required when type is oxford-gp).")]
+    public string? Appointments { get; set; }
+
+    [Option("events", Required = false, HelpText = "Path to events CSV file (required when type is oxford-gp).")]
+    public string? Events { get; set; }
+
+    [Option("medications", Required = false, HelpText = "Path to medications CSV file (required when type is oxford-gp).")]
+    public string? Medications { get; set; }
+
 }
 
 [Verb("transform", HelpText = "Handles transformation operations.")]

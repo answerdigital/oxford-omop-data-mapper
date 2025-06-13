@@ -25,6 +25,5 @@ internal abstract class OmopPerson<T> : IOmopRecord<T>
 
     public virtual bool IsValid =>
         year_of_birth != null &&
-        person_source_value != null &&
-        race_concept_id != null;
+        person_source_value != null;
 }

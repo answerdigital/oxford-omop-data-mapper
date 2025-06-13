@@ -1,0 +1,23 @@
+﻿<Query>
+    <Sql>
+select
+	GPEventsPrimaryKey,
+	d.NHSNumber,
+	e.EventDate
+from omop_staging.oxford_gp_event e
+	inner join omop_staging.oxford_gp_demographic d
+		on e.PatientIdentifier = d.PatientIdentifier
+order by
+	d.NHSNumber,
+	e.EventDate
+    </Sql>
+    <Explanations>
+	    <Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="EventDate">
+			<Description>Event date</Description>
+		</Explanation>
+	</Explanations>
+</Query>

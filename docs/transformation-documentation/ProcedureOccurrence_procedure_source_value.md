@@ -138,6 +138,29 @@ order by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_value%20field%20SUS%20AE%20Procedure%20Occurrence%20mapping){: .btn }
+### Oxford Procedure Occurrence
+* Value copied from `SuppliedCode`
+
+* `SuppliedCode`  
+
+```sql
+select
+	distinct
+		d.NHSNumber,
+		e.EventDate,
+		e.SuppliedCode
+from omop_staging.oxford_gp_event e
+	inner join omop_staging.oxford_gp_demographic d
+		on e.PatientIdentifier = d.PatientIdentifier
+order by
+	d.NHSNumber,
+	e.EventDate,
+	e.SuppliedCode
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_value%20field%20Oxford%20Procedure%20Occurrence%20mapping){: .btn }
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 * Value copied from `ProcedureOpcsCode`
 

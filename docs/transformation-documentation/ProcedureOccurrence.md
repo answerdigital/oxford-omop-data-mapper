@@ -35,6 +35,10 @@ has_toc: false
 <a href="SusAEProcedureOccurrence.svg" target="_blank"><img src="SusAEProcedureOccurrence.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAEProcedureOccurrence%20mapping){: .btn }
+## OxfordGPProcedureOccurrence
+<a href="OxfordGPProcedureOccurrence.svg" target="_blank"><img src="OxfordGPProcedureOccurrence.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordGPProcedureOccurrence%20mapping){: .btn }
 ## CosdV9ProcedureOccurrenceProcedureOpcs
 <a href="CosdV9ProcedureOccurrenceProcedureOpcs.svg" target="_blank"><img src="CosdV9ProcedureOccurrenceProcedureOpcs.svg" /></a>
 

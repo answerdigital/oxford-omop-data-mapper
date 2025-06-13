@@ -77,6 +77,26 @@ group by NHSNumber
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Death%20table%20NhsNumber%20field%20SUS%20A&E%20Death%20mapping){: .btn }
+### Oxford GP Death
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+select
+	distinct
+		NHSNumber,
+		DateofDeath
+from omop_staging.oxford_gp_demographic
+where DateofDeath is not null
+order by
+	NHSNumber,
+	DateofDeath
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Death%20table%20NhsNumber%20field%20Oxford%20GP%20Death%20mapping){: .btn }
 ### COSD v9 DeathDischargeDestination
 * Value copied from `NhsNumber`
 

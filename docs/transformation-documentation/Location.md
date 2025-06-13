@@ -35,6 +35,10 @@ has_toc: false
 <a href="RtdsLocation.svg" target="_blank"><img src="RtdsLocation.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsLocation%20mapping){: .btn }
+## OxfordGPLocation
+<a href="OxfordGPLocation.svg" target="_blank"><img src="OxfordGPLocation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordGPLocation%20mapping){: .btn }
 ## CosdLocation
 <a href="CosdLocation.svg" target="_blank"><img src="CosdLocation.svg" /></a>
 
