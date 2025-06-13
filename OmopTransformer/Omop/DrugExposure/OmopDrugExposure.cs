@@ -28,6 +28,7 @@ internal abstract class OmopDrugExposure<T> : IOmopRecord<T>
 
     public virtual bool IsValid =>
         drug_concept_id != null &&
+        drug_concept_id.Any() &&
         drug_exposure_end_date.HasValue &&
         drug_exposure_start_date.HasValue &&
         drug_type_concept_id != null &&

@@ -27,6 +27,7 @@ internal abstract class OmopObservation<T> : IOmopRecord<T>
 
     public virtual bool IsValid =>
         observation_concept_id != null &&
+        observation_concept_id.Any() &&
         observation_date.HasValue &&
         nhs_number != null &&
         observation_type_concept_id != null;
