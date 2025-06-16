@@ -10,6 +10,7 @@ create procedure cdm.insert_update_drug_exposure
 as
 begin
 
+
 	declare @NewRecords as table
 	(
 		drug_exposure_id int
