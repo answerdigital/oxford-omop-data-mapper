@@ -4,9 +4,9 @@ select
 	patient_identifier_Value,
 	beg_dt_tm,
 	end_dt_tm,
-	order_mnemonic,
+	lower(order_mnemonic) as order_mnemonic,
 	order_detail_display_line,
-	rxroute,
+	lower(rxroute) as rxroute,
 	strengthdoseunit,
 	strengthdose
 from omop_staging.oxford_prescribing

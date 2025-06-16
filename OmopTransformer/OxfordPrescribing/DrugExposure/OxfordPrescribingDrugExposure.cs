@@ -35,7 +35,7 @@ internal class OxfordPrescribingDrugExposure : OmopDrugExposure<OxfordPrescribin
 
     [CopyValue(nameof(Source.order_detail_display_line))]
     public override string? drug_source_value { get; set; }
-    
+
     [CopyValue(nameof(Source.strengthdoseunit))]
     public override string? dose_unit_source_value { get; set; }
 

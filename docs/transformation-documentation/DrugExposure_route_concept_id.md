@@ -13,83 +13,83 @@ Prescribing Drug Routes to OMOP Condition Concept IDs
 
 |rxroute|route_concept_id|notes|
 |------|-----|-----|
-|affected eye(s)|40549429|Ocular|
-|anal|4290759|Rectal|
-|bath|4263689|Topical|
-|both ears|4023156|Otic|
-|both eyes|40549429|Ocular|
-|buccal|4181897|Buccal|
-|caudal|4220455|Caudal|
-|chewed|4132161|Oral|
-|dental|4163765|Dental|
-|endotracheal|40491832|Transtracheal|
-|enteral feed|4167540|Enteral|
-|epidural|4225555|Epidural|
+|affected eye(s)|40549429|ocular|
+|anal|4290759|rectal|
+|bath|4263689|topical|
+|both ears|4023156|otic|
+|both eyes|40549429|ocular|
+|buccal|4181897|buccal|
+|caudal|4220455|caudal|
+|chewed|4132161|oral|
+|dental|4163765|dental|
+|endotracheal|40491832|transtracheal|
+|enteral feed|4167540|enteral|
+|epidural|4225555|epidural|
 |flush|||
-|gastrojejunostomy|4133177|Jejunostomy|
-|gastrostomy|4132254|Gastrostomy|
-|gingival|4156704|Gingival|
-|handihaler|40486069|Respiratory tract|
-|inhalation|40486069|Respiratory tract|
-|intraArterial|4240824|Intra-arterial|
-|intraArticular|4006860|Intra-articular|
-|intraBiliary|4223965|Intrabiliary|
-|intraCameral|4303409|Intracameral|
-|intraCardiac|4156705|Intracardiac|
-|intraCavernosal|37174549|Intracorporus cavernosum|
-|intraDermal|4156706|Intradermal|
-|intraDISCal|4163769|Intradiscal|
-|intraLesional|4157758|Intralesional|
-|intraLymphatic|4157759|Intralymphatic|
-|intraMuscular|4302612|Intramuscular|
-|intraMyometrial|4168038|Intramyometrial|
-|intraOcular|4157760|Intraocular|
-|intraOsseous|4213522|Intraosseous|
-|intraPeritoneal|4243022|Intraperitoneal|
-|intraPleural|4156707|Intrapleural|
-|intraThecal|4217202|Intrathecal|
-|intraTracheal|4229543|Intratracheal|
-|intraUrethral|4305382|Transurethral|
-|intraUterine|4269621|Intrauterine|
-|intraVenous|4171047|Intravenous|
-|intraVenous (central)|4170113|Intravenous central|
-|intraVentricular|4222259|Intraventricular route - cardiac|
-|intraVesical|4186838|Intravesical|
-|intravITeal|4302785|intraVitreal|
-|intraVitreal|4302785|Intravitreal|
+|gastrojejunostomy|4133177|jejunostomy|
+|gastrostomy|4132254|gastrostomy|
+|gingival|4156704|gingival|
+|handihaler|40486069|respiratory tract|
+|inhalation|40486069|respiratory tract|
+|intraarterial|4240824|intra-arterial|
+|intraarticular|4006860|intra-articular|
+|intrabiliary|4223965|intrabiliary|
+|intracameral|4303409|intracameral|
+|intracardiac|4156705|intracardiac|
+|intracavernosal|37174549|intracorporus cavernosum|
+|intradermal|4156706|intradermal|
+|intradiscal|4163769|intradiscal|
+|intralesional|4157758|intralesional|
+|intralymphatic|4157759|intralymphatic|
+|intramuscular|4302612|intramuscular|
+|intramyometrial|4168038|intramyometrial|
+|intraocular|4157760|intraocular|
+|intraosseous|4213522|intraosseous|
+|intraperitoneal|4243022|intraperitoneal|
+|intrapleural|4156707|intrapleural|
+|intrathecal|4217202|intrathecal|
+|intratracheal|4229543|intratracheal|
+|intraurethral|4305382|transurethral|
+|intrauterine|4269621|intrauterine|
+|intravenous|4171047|intravenous|
+|intravenous (central)|4170113|intravenous central|
+|intraventricular|4222259|intraventricular route - cardiac|
+|intravesical|4186838|intravesical|
+|intraviteal|4302785|intravitreal|
+|intravitreal|4302785|intravitreal|
 |irrigation|||
-|jejunostomy|4133177|Jejunostomy|
-|left ear|4023156|Otic|
-|left eye|40549429|Ocular|
+|jejunostomy|4133177|jejunostomy|
+|left ear|4023156|otic|
+|left eye|40549429|ocular|
 |line lock|||
-|local infiltration|37397638|Infiltrationr|
-|nasal|4262914|Nasal|
-|nasogastric|4132711|Nasogastric|
-|nasojejunal|4305834|Nasojejunal|
-|nebulised inhalation|40486069|Respiratory tract|
-|oral|4132161|Oral|
-|orogastric|4303795|Orogastric|
+|local infiltration|37397638|infiltrationr|
+|nasal|4262914|nasal|
+|nasogastric|4132711|nasogastric|
+|nasojejunal|4305834|nasojejunal|
+|nebulised inhalation|40486069|respiratory tract|
+|oral|4132161|oral|
+|orogastric|4303795|orogastric|
 |orojejunal|4133177|jejunostomy|
-|oromucosal|4186839|Oromucosal|
-|paravertebral|4170267|Paravertebral|
-|patient-controlled epidural analgesia|4225555|Epidural|
-|patient-controlled intravenous analgesia|4171047|Intravenous|
-|per rectum|4290759|Rectal|
+|oromucosal|4186839|oromucosal|
+|paravertebral|4170267|paravertebral|
+|patient-controlled epidural analgesia|4225555|epidural|
+|patient-controlled intravenous analgesia|4171047|intravenous|
+|per rectum|4290759|rectal|
 |regional analgesia|||
-|right ear|4023156|Otic|
-|right eye|40549429|Ocular|
-|rinse|4263689|Topical|
-|soak|4263689|Topical|
-|soap|4263689|Topical|
-|subconjunctival|4163770|Subconjunctival|
-|subcutaneous|4142048|Subcutaneous|
-|subdermal|4142048|Subcutaneous|
-|sublingual|4292110|Sublingual|
-|topical|4263689|Topical|
-|transdermal|4262099|Transdermal|
-|transUrethral|4305382|Transurethral|
-|vaginal|4057765|Vaginal|
-|via CVVHD|||
+|right ear|4023156|otic|
+|right eye|40549429|ocular|
+|rinse|4263689|topical|
+|soak|4263689|topical|
+|soap|4263689|topical|
+|subconjunctival|4163770|subconjunctival|
+|subcutaneous|4142048|subcutaneous|
+|subdermal|4142048|subcutaneous|
+|sublingual|4292110|sublingual|
+|topical|4263689|topical|
+|transdermal|4262099|transdermal|
+|transurethral|4305382|transurethral|
+|vaginal|4057765|vaginal|
+|via cvvhd|||
 
 Notes
 * [OMOP Routes](https://athena.ohdsi.org/search-terms/terms?domain=Route&standardConcept=Standard&page=1&pageSize=500&query=&boosts
@@ -101,9 +101,9 @@ select
 	patient_identifier_Value,
 	beg_dt_tm,
 	end_dt_tm,
-	order_mnemonic,
+	lower(order_mnemonic) as order_mnemonic,
 	order_detail_display_line,
-	rxroute,
+	lower(rxroute) as rxroute,
 	strengthdoseunit,
 	strengthdose
 from omop_staging.oxford_prescribing

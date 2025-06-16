@@ -338,32 +338,32 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |order_mnemonic|drug_source_concept_id|notes|
 |------|-----|-----|
 |ajmaline|19105879|ajmaline|
-|albumin human|1344143|albumin human, USP|
-|ALFentanil|19059528|alfentanil|
+|albumin human|1344143|albumin human, usp|
+|alfentanil|19059528|alfentanil|
 |acamprosate|19043959|acamprosate|
 |acarbose|1529331|acarbose|
 |amitriptyline|710062|amitriptyline|
-|amphotericin B liposomal|19056402|amphotericin B liposomal|
-|acetarsol|44012478|Acetarsol|
-|acetaZOLamide|929435|acetazolamide|
-|antithymocyte immunoglobulin (rabbit)|19003472|rabbit anti-human T-lymphocyte globulin|
+|amphotericin b liposomal|19056402|amphotericin b liposomal|
+|acetarsol|44012478|acetarsol|
+|acetazolamide|929435|acetazolamide|
+|antithymocyte immunoglobulin (rabbit)|19003472|rabbit anti-human t-lymphocyte globulin|
 |aceclofenac|19029393|aceclofenac|
 |abatacept|1186087|abatacept|
 |acebutolol|1319998|acebutolol|
 |adenosine|1309204|adenosine|
 |abacavir|1736971|abacavir|
-|abacavir/dolutegravir/lamiVUDine|36029673|abacavir / dolutegravir / lamivudine|
+|abacavir/dolutegravir/lamivudine|36029673|abacavir / dolutegravir / lamivudine|
 |apomorphine|837027|apomorphine|
 |aprepitant|936748|aprepitant|
 |adapalene|981774|adapalene|
 |aliskiren|1317967|aliskiren|
-|AMIODarone|1309944|amiodarone|
+|amiodarone|1309944|amiodarone|
 |amikacin|1790868|amikacin|
 |aminophylline|1105775|aminophylline|
 |atomoxetine|742185|atomoxetine|
 |acitretin|929638|acitretin|
 |acrivastine|1140123|acrivastine|
-|Albutrepenonacog alfa|35606573|albutrepenonacog alfa|
+|albutrepenonacog alfa|35606573|albutrepenonacog alfa|
 |alginate|43013872|alginate|
 |alimemazine|19005570|trimeprazine|
 |alverine|19030751|alverine|
@@ -371,15 +371,15 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |alfuzosin|930021|alfuzosin|
 |amisulpride|19057607|amisulpride|
 |apalutamide|963987|apalutamide|
-|Almitrine|19113052|almitrine|
+|almitrine|19113052|almitrine|
 |alogliptin|43013884|alogliptin|
 |atazanavir|1727223|atazanavir|
 |anastrozole|1348265|anastrozole|
 |artesunate|19018511|artesunate|
 |aminolevulinic acid|904351|aminolevulinic acid|
-|AXitinib|42709322|axitinib|
+|axitinib|42709322|axitinib|
 |alitretinoin|941052|alitretinoin|
-|ALLOPurinol|1167322|allopurinol|
+|allopurinol|1167322|allopurinol|
 |amorolfine|19032619|amorolfine|
 |amoxicillin|1713332|amoxicillin|
 |aztreonam|1715117|aztreonam|
@@ -387,8 +387,8 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |alirocumab|46275447|alirocumab|
 |atenolol|1314002|atenolol|
 |aluminium hydroxide|985247|aluminum hydroxide|
-|amlitelimab|1254461|Amlitelimab|
-|Arachis oil|19033278|peanut oil|
+|amlitelimab|1254461|amlitelimab|
+|arachis oil|19033278|peanut oil|
 |almotriptan|1103552|almotriptan|
 |aluminium chloride|957393|aluminum chloride|
 |anagrelide|1381253|anagrelide|
@@ -397,31 +397,30 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |avacopan|702027|avacopan|
 |atorvastatin|1545958|atorvastatin|
 |atropine|914335|atropine|
-|BARICitinib|1510627|baricitinib|
-|azaTHIOprine|19014878|azathioprine|
+|baricitinib|1510627|baricitinib|
+|azathioprine|19014878|azathioprine|
 |baclofen|715233|baclofen|
 |calcitonin|42900359|calcitonin|
-|calcium gluconate|19037038|calcium gluconate|
 |barium|42898624|barium|
 |bedaquiline|43012518|bedaquiline|
-|cefaLEXin|1786621|cephalexin|
+|cefalexin|1786621|cephalexin|
 |cefepime|1748975|cefepime|
 |belumosudil|701423|belumosudil|
 |benzoyl peroxide|918172|benzoyl peroxide|
 |betahistine|19020124|betahistine|
-|cefOTAXime|1774470|cefotaxime|
-|cefUROXime|1778162|cefuroxime|
+|cefotaxime|1774470|cefotaxime|
+|cefuroxime|1778162|cefuroxime|
 |bicalutamide|1344381|bicalutamide|
 |amantadine|19087090|amantadine|
 |amidotrizoate|19022596|diatrizoate|
 |chlorothiazide|992590|chlorothiazide|
 |bezafibrate|19022956|bezafibrate|
-|bisoPROLOL|1338005|bisoprolol|
+|bisoprolol|1338005|bisoprolol|
 |abiraterone|40239056|abiraterone|
 |acenocoumarol|19024063|acenocoumarol|
-|Bleomycin|1329241|bleomycin|
-|botulinum toxin type A|729855|botulinum toxin type A|
-|aMILoride|991382|amiloride|
+|bleomycin|1329241|bleomycin|
+|botulinum toxin type a|729855|botulinum toxin type a|
+|amiloride|991382|amiloride|
 |amobarbital|712757|amobarbital|
 |bromocriptine|730548|bromocriptine|
 |bambuterol|19034275|bambuterol|
@@ -430,7 +429,7 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |anakinra|1114375|anakinra|
 |arginine|19006410|arginine|
 |avatrombopag|1510483|avatrombopag|
-|ARIPiprazole|757688|aripiprazole|
+|aripiprazole|757688|aripiprazole|
 |belimumab|40236987|belimumab|
 |benzalkonium chloride|19011436|benzalkonium chloride|
 |azithromycin|1734104|azithromycin|
@@ -440,10 +439,10 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |calcium carbonate|19035704|calcium carbonate|
 |balsalazide|934262|balsalazide|
 |captopril|1340128|captopril|
-|Casirivimab|37003288|casirivimab|
+|casirivimab|37003288|casirivimab|
 |cisatracurium|19015726|cisatracurium|
-|ceFIXime|1796435|cefixime|
-|cefTAZIDime|1776684|ceftazidime|
+|cefixime|1796435|cefixime|
+|ceftazidime|1776684|ceftazidime|
 |benzbromarone|19016754|benzbromarone|
 |axatilimab|1735157|axatilimab|
 |azilsartan|40235485|azilsartan|
@@ -452,7 +451,7 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |bendroflumethiazide|1316354|bendroflumethiazide|
 |bevacizumab|1397141|bevacizumab|
 |biotin|19024770|biotin|
-|cloNIDine|1398937|clonidine|
+|clonidine|1398937|clonidine|
 |brivaracetam|35604901|brivaracetam|
 |benzydamine|19019620|benzydamine|
 |chorionic gonadotrophin|1563600|chorionic gonadotropin|
@@ -462,30 +461,29 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |calcitriol|19035631|calcitriol|
 |caffeine|1134439|caffeine|
 |basiliximab|19038440|basiliximab|
-|bisaCODYL|924939|bisacodyl|
+|bisacodyl|924939|bisacodyl|
 |benralizumab|792993|benralizumab|
 |calcium lactate|19058896|calcium lactate|
-|caNAKinumab|40161669|canakinumab|
-|benzathine benzylpenicillin|19130393|penicillin G benzathine|
+|canakinumab|40161669|canakinumab|
+|benzathine benzylpenicillin|19130393|penicillin g benzathine|
 |betamethasone|920458|betamethasone|
-|BUPivacaine|732893|bupivacaine|
+|bupivacaine|732893|bupivacaine|
 |cabergoline|1558471|cabergoline|
 |cannabidiol|1510417|cannabidiol|
 |capecitabine|1337620|capecitabine|
 |carbidopa/entacapone/levodopa|36030184|carbidopa / entacapone / levodopa|
 |carbocisteine|19041843|carbocysteine|
 |carglumic acid|19102150|carglumic acid|
-|cefTRIAXONE|1777806|ceftriaxone|
+|ceftriaxone|1777806|ceftriaxone|
 |bumetanide|932745|bumetanide|
-|buPROPion|750982|bupropion|
-|clindamycin|997881|clindamycin|
+|bupropion|750982|bupropion|
 |clobetasol|998415|clobetasol|
-|busPIRone|733301|buspirone|
+|buspirone|733301|buspirone|
 |calamine|902616|calamine|
-|caPLAcizumab|1366428|caplacizumab|
-|carBIMazole|19040606|carbimazole|
+|caplacizumab|1366428|caplacizumab|
+|carbimazole|19040606|carbimazole|
 |buprenorphine|1133201|buprenorphine|
-|C1 esterase inhibitor|45892906|C1 esterase inhibitor|
+|c1 esterase inhibitor|45892906|c1 esterase inhibitor|
 |calcipotriol|908921|calcipotriene|
 |coal tar|1000995|coal tar|
 |cefazolin|1771162|cefazolin|
@@ -497,21 +495,21 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |caspofungin|1718054|caspofungin|
 |calcium acetate|951469|calcium acetate|
 |calcium chloride|19036781|calcium chloride|
-|CANagliflozin|43526465|canagliflozin|
+|canagliflozin|43526465|canagliflozin|
 |cefiderocol|37498010|cefiderocol|
 |cenobamate|37497998|cenobamate|
-|clomiFENE|1598819|clomiphene|
-|clomiPRAMINE|798834|clomipramine|
+|clomifene|1598819|clomiphene|
+|clomipramine|798834|clomipramine|
 |cangrelor|46275677|cangrelor|
 |capsaicin|939881|capsaicin|
 |certolizumab pegol|912263|certolizumab pegol|
 |chloral hydrate|19054996|chloral hydrate|
-|carBAMazepine|740275|carbamazepine|
+|carbamazepine|740275|carbamazepine|
 |cefoxitin|1775741|cefoxitin|
-|clonazePAM|798874|clonazepam|
+|clonazepam|798874|clonazepam|
 |clopidogrel|1322184|clopidogrel|
-|Cilazapril|19050216|cilazapril|
-|cycloSERINE|1710446|cycloserine|
+|cilazapril|19050216|cilazapril|
+|cycloserine|1710446|cycloserine|
 |colchicine|1101554|colchicine|
 |colestyramine|19095309|cholestyramine resin|
 |celiprolol|19049145|celiprolol|
@@ -519,14 +517,14 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |cyproterone|19010792|cyproterone|
 |dabrafenib|43532299|dabrafenib|
 |chlorambucil|1390051|chlorambucil|
-|cloZAPine|800878|clozapine|
-|CRIZotinib|40242675|crizotinib|
-|claRITHromycin|1750500|clarithromycin|
-|CLINDAmycin|997881|clindamycin|
-|chlordiazePOXIDE|990678|chlordiazepoxide|
+|clozapine|800878|clozapine|
+|crizotinib|40242675|crizotinib|
+|clarithromycin|1750500|clarithromycin|
+|clindamycin|997881|clindamycin|
+|chlordiazepoxide|990678|chlordiazepoxide|
 |colistimethate sodium|19112658|colistimethate sodium|
-|chlorproMAZINE|794852|chlorpromazine|
-|DApagliflozin|44785829|dapagliflozin|
+|chlorpromazine|794852|chlorpromazine|
+|dapagliflozin|44785829|dapagliflozin|
 |dapsone|1711759|dapsone|
 |clotrimazole|1000632|clotrimazole|
 |dabigatran|45775372|dabigatran|
@@ -537,18 +535,18 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |cyclizine|909358|cyclizine|
 |crizanlizumab|37497670|crizanlizumab|
 |colesevelam|1518148|colesevelam|
-|DAPTOmycin|1786617|daptomycin|
+|daptomycin|1786617|daptomycin|
 |darifenacin|916230|darifenacin|
 |choline salicylate|19042282|choline salicylate|
 |ciclesonide|902938|ciclesonide|
-|CM-101|1254269|CM-101|
+|cm-101|1254269|cm-101|
 |darbepoetin alfa|1304643|darbepoetin alfa|
 |darunavir|1756831|darunavir|
 |cyproheptadine|1110727|cyproheptadine|
 |dequalinium|19016063|dequalinium|
 |dalteparin|1301065|dalteparin|
 |dexamfetamine|719311|dextroamphetamine|
-|cicloSPORIN|19010482|cyclosporine|
+|ciclosporin|19010482|cyclosporine|
 |deferiprone|19011091|deferiprone|
 |desloratadine|1103006|desloratadine|
 |desogestrel|1588000|desogestrel|
@@ -558,8 +556,8 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |dinoprostone|1329415|dinoprostone|
 |cidofovir|1745072|cidofovir|
 |dexamethasone|1518254|dexamethasone|
-|DIAmorphine|19022417|heroin|
-|Clemastine|1197677|clemastine|
+|diamorphine|19022417|heroin|
+|clemastine|1197677|clemastine|
 |clobetasone|19005129|clobetasone|
 |diazepam|723013|diazepam|
 |diazoxide|1523280|diazoxide|
@@ -568,14 +566,14 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |dolutegravir|43560385|dolutegravir|
 |doxapram|738152|doxapram|
 |doxepin|738156|doxepin|
-|Eftrenonacog alfa|44818493|coagulation factor IX recombinant immunoglobulin G1 fusion protein|
+|eftrenonacog alfa|44818493|coagulation factor ix recombinant immunoglobulin g1 fusion protein|
 |elexacaftor/ivacaftor/tezacaftor|779006|elexacaftor / ivacaftor / tezacaftor|
 |diethylamine salicylate|19029278|diethylamine salicylate|
 |colestipol|1501617|colestipol|
-|EMpagliflozin|45774751|empagliflozin|
+|empagliflozin|45774751|empagliflozin|
 |dulaglutide|45774435|dulaglutide|
-|Efgartigimod alfa|702468|efgartigimod alfa|
-|cyanocobalamin|1308738|vitamin B12|
+|efgartigimod alfa|702468|efgartigimod alfa|
+|cyanocobalamin|1308738|vitamin b12|
 |danaparoid|19026343|danaparoid|
 |eltrombopag|19012346|eltrombopag|
 |dantrolene|711714|dantrolene|
@@ -592,14 +590,14 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |defibrotide|42898933|defibrotide|
 |eprosartan|1346686|eprosartan|
 |eptacog alfa|19065771|eptacog alfa activated|
-|DISOPyramide|1335606|disopyramide|
+|disopyramide|1335606|disopyramide|
 |etomidate|19050488|etomidate|
 |ferrous fumarate|1595799|ferrous fumarate|
 |delafloxacin|1592954|delafloxacin|
 |delandistrogene moxeparvovec|746024|delandistrogene moxeparvovec|
 |difelikefalin|701764|difelikefalin|
 |denosumab|40222444|denosumab|
-|diPYRIDamole|1331270|dipyridamole|
+|dipyridamole|1331270|dipyridamole|
 |docusate|941258|docusate|
 |etonogestrel|1519936|etonogestrel|
 |etoposide|1350504|etoposide|
@@ -617,10 +615,10 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |epoetin alfa|1301125|epoetin alfa|
 |ferrous gluconate|1396012|ferrous gluconate|
 |etoricoxib|19011355|etoricoxib|
-|factor IX|1351935|factor IX|
+|factor ix|1351935|factor ix|
 |ergocalciferol|19045045|ergocalciferol|
 |fidaxomicin|40239985|fidaxomicin|
-|filgotinib|35891916|Filgotinib|
+|filgotinib|35891916|filgotinib|
 |edoxaban|45892847|edoxaban|
 |esomeprazole|904453|esomeprazole|
 |fingolimod|40226579|fingolimod|
@@ -629,7 +627,7 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |eflornithine|978236|eflornithine|
 |flurbiprofen|1156378|flurbiprofen|
 |flutamide|1356461|flutamide|
-|Efmoroctocog alfa|45776421|efmoroctocog alfa|
+|efmoroctocog alfa|45776421|efmoroctocog alfa|
 |eletriptan|1189697|eletriptan|
 |diethylstilbestrol|1525866|diethylstilbestrol|
 |glimepiride|1597756|glimepiride|
@@ -637,7 +635,7 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |dimethyl fumarate|43526424|dimethyl fumarate|
 |disulfiram|735850|disulfiram|
 |fluvastatin|1549686|fluvastatin|
-|fluvoxaMINE|751412|fluvoxamine|
+|fluvoxamine|751412|fluvoxamine|
 |droperidol|739323|droperidol|
 |eculizumab|19080458|eculizumab|
 |formoterol|1196677|formoterol|
@@ -648,16 +646,16 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |donepezil|715997|donepezil|
 |dornase alfa|1125443|dornase alfa|
 |epoetin beta|19001311|epoetin beta|
-|epoetin zeta|21014076|Epoetin zeta|
-|fentaNYL|1154029|fentanyl|
+|epoetin zeta|21014076|epoetin zeta|
+|fentanyl|1154029|fentanyl|
 |finasteride|996416|finasteride|
 |etodolac|1195492|etodolac|
 |ezetimibe|1526475|ezetimibe|
 |ertapenem|1717963|ertapenem|
 |eslicarbazepine|44507780|eslicarbazepine|
-|flavoxATE|954853|flavoxate|
+|flavoxate|954853|flavoxate|
 |flecainide|1354860|flecainide|
-|factor XIII|19106100|factor XIII|
+|factor xiii|19106100|factor xiii|
 |ferric derisomaltose|37498615|ferric derisomaltose|
 |ethanol|955372|ethanol|
 |ethinylestradiol|1549786|ethinyl estradiol|
@@ -671,9 +669,9 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |finerenone|1537451|finerenone|
 |flucytosine|1755112|flucytosine|
 |isoniazid|1782521|isoniazid|
-|FELOdipine|1353776|felodipine|
+|felodipine|1353776|felodipine|
 |hydrocortisone|975125|hydrocortisone|
-|hydrOXYzine|777221|hydroxyzine|
+|hydroxyzine|777221|hydroxyzine|
 |fluorescein|996625|fluorescein|
 |etanercept|1151789|etanercept|
 |evolocumab|46287466|evolocumab|
@@ -682,37 +680,36 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |ibuprofen|1177480|ibuprofen|
 |fludroxycortide|956266|flurandrenolide|
 |flurazepam|756349|flurazepam|
-|isosorbide MONOnitrate|19069136|isosorbide mononitrate|
+|isosorbide mononitrate|19069136|isosorbide mononitrate|
 |ivabradine|46234437|ivabradine|
 |inclisiran|1758562|inclisiran|
 |fosaprepitant|35605594|fosaprepitant|
 |ergometrine|1345205|ergonovine|
-|erythromycin|1746940|erythromycin|
 |indocyanine green|19078612|indocyanine green|
 |indometacin|1178663|indomethacin|
 |fluticasone|1149380|fluticasone|
 |fomepizole|19022479|fomepizole|
-|factor VIII|1352213|factor VIII|
-|factor VIII inhibitor bypassing fraction|19080406|anti-inhibitor coagulant complex|
+|factor viii|1352213|factor viii|
+|factor viii inhibitor bypassing fraction|19080406|anti-inhibitor coagulant complex|
 |fludrocortisone|1555120|fludrocortisone|
 |fluorouracil|955632|fluorouracil|
 |foscarnet|1724700|foscarnet|
 |folic acid|19111620|folic acid|
 |frovatriptan|1189458|frovatriptan|
 |glatiramer|751889|glatiramer|
-|glipiZIDE|1560171|glipizide|
+|glipizide|1560171|glipizide|
 |famciclovir|1703603|famciclovir|
 |famotidine|953076|famotidine|
 |ketamine|785649|ketamine|
 |ketotifen|986117|ketotifen|
-|GEFitinib|1319193|gefitinib|
-|Inebilizumab|1146077|inebilizumab|
+|gefitinib|1319193|gefitinib|
+|inebilizumab|1146077|inebilizumab|
 |escitalopram|715939|escitalopram|
 |estradiol|1548195|estradiol|
 |fexofenadine|1153428|fexofenadine|
 |hemin|19067303|hemin|
 |heparin|1367571|heparin|
-|gliCLAzide|19059796|gliclazide|
+|gliclazide|19059796|gliclazide|
 |fibrinogen|19054702|fibrinogen|
 |interferon beta-1a|722424|interferon beta-1a|
 |estriol|19049038|estriol|
@@ -722,21 +719,20 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |ethosuximide|750119|ethosuximide|
 |exenatide|1583722|exenatide|
 |fenofibrate|1551803|fenofibrate|
-|FLUoxetine|755695|fluoxetine|
+|fluoxetine|755695|fluoxetine|
 |fondaparinux|1315865|fondaparinux|
 |iron dextran|1381661|iron-dextran complex|
-|ISOtretinoin|984232|isotretinoin|
+|isotretinoin|984232|isotretinoin|
 |letermovir|792929|letermovir|
 |furosemide|956874|furosemide|
 |linaclotide|42900505|linaclotide|
 |levofloxacin|1742253|levofloxacin|
 |linagliptin|40239216|linagliptin|
-|fusidic acid|19112521|fusidic acid|
 |gabapentin|797399|gabapentin|
 |golimumab|19041065|golimumab|
 |hydroxychloroquine|1777087|hydroxychloroquine|
 |idarucizumab|35602981|idarucizumab|
-|imlifidase|35894914|Imlifidase|
+|imlifidase|35894914|imlifidase|
 |lomustine|1391846|lomustine|
 |gelatin|19058092|gelatin|
 |granisetron|1000772|granisetron|
@@ -744,11 +740,11 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |menadiol|19009057|menadiol|
 |lofepramine|19091830|lofepramine|
 |ferric carboxymaltose|43560392|ferric carboxymaltose|
-|glycine irrigation|40046876|glycine Irrigation Solution|
+|glycine irrigation|40046876|glycine irrigation solution|
 |goserelin|1366310|goserelin|
 |melphalan|1301267|melphalan|
-|fluCONAZole|1754994|fluconazole|
-|metroNIDAZOLE|1707164|metronidazole|
+|fluconazole|1754994|fluconazole|
+|metronidazole|1707164|metronidazole|
 |minocycline|1708880|minocycline|
 |fluticasone/umeclidinium/vilanterol|778971|fluticasone / umeclidinium / vilanterol|
 |hexaminolevulinate|43532423|hexyl 5-aminolevulinate|
@@ -756,17 +752,17 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |galantamine|757627|galantamine|
 |nabilone|913440|nabilone|
 |nicotinamide|19018419|niacinamide|
-|Human cytomegalovirus immunoglobulin|963762|cytomegalovirus immune globulin, human|
-|Mepacrine|19060400|quinacrine|
+|human cytomegalovirus immunoglobulin|963762|cytomegalovirus immune globulin, human|
+|mepacrine|19060400|quinacrine|
 |nilotinib|1394023|nilotinib|
 |nintedanib|45775396|nintedanib|
 |hydrochlorothiazide|974166|hydrochlorothiazide|
 |ganciclovir|1757803|ganciclovir|
-|ginkgo|1391889|Ginkgo biloba extract|
+|ginkgo|1391889|ginkgo biloba extract|
 |haloperidol|766529|haloperidol|
-|Honey|19071840|honey preparation|
+|honey|19071840|honey preparation|
 |lenograstim|19009705|lenograstim|
-|LERCANidipine|19015802|lercanidipine|
+|lercanidipine|19015802|lercanidipine|
 |methenamine|904356|methenamine|
 |letrozole|1315946|letrozole|
 |methylphenidate|705944|methylphenidate|
@@ -789,19 +785,19 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |oxytocin|1326115|oxytocin|
 |icatibant|40242044|icatibant|
 |imipramine|778268|imipramine|
-|hepatitis B immunoglobulin|501343|hepatitis B immune globulin|
+|hepatitis b immunoglobulin|501343|hepatitis b immune globulin|
 |naftidrofuryl|19014035|nafronyl|
 |indoramin|19078808|indoramin|
 |insulin degludec|35602717|insulin degludec|
 |hexetidine|19068839|hexetidine|
-|HYDROmorphone|1126658|hydromorphone|
+|hydromorphone|1126658|hydromorphone|
 |loratadine|1107830|loratadine|
 |losartan|1367500|losartan|
 |isoprenaline|1183554|isoproterenol|
 |magnesium aspartate|19019131|magnesium aspartate|
-|hydrALAZINE|1373928|hydralazine|
+|hydralazine|1373928|hydralazine|
 |lactulose|987245|lactulose|
-|Imdevimab|37003293|imdevimab|
+|imdevimab|37003293|imdevimab|
 |medium chain triglycerides|42899398|medium chain triglycerides|
 |insulin aspart|1567198|insulin aspart, human|
 |insulin glargine|1502905|insulin glargine|
@@ -817,9 +813,9 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |octreotide|1522957|octreotide|
 |plerixafor|19017581|plerixafor|
 |insulin lispro|1550023|insulin lispro|
-|LEFlunomide|1101898|leflunomide|
+|leflunomide|1101898|leflunomide|
 |levonorgestrel|1589505|levonorgestrel|
-|OLANZapine|785788|olanzapine|
+|olanzapine|785788|olanzapine|
 |posaconazole|1704139|posaconazole|
 |linezolid|1736887|linezolid|
 |olmesartan|40226742|olmesartan|
@@ -829,17 +825,17 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |ivermectin|1784444|ivermectin|
 |labetalol|1386957|labetalol|
 |ketoprofen|1185922|ketoprofen|
-|LACIdipine|19004539|lacidipine|
+|lacidipine|19004539|lacidipine|
 |lanolin|19087317|lanolin|
 |pravastatin|1551860|pravastatin|
 |prazosin|1350489|prazosin|
-|IMatinib|1304107|imatinib|
+|imatinib|1304107|imatinib|
 |imiquimod|981691|imiquimod|
 |lanreotide|1503501|lanreotide|
 |lenalidomide|19026972|lenalidomide|
 |primaquine|1751310|primaquine|
 |lithium|19124477|lithium|
-|LEVObupivacaine|19098741|levobupivacaine|
+|levobupivacaine|19098741|levobupivacaine|
 |propylthiouracil|1554072|propylthiouracil|
 |pyrazinamide|1759455|pyrazinamide|
 |magnesium oxide|993631|magnesium oxide|
@@ -847,10 +843,10 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |loprazolam|19042550|triazulenone|
 |lymecycline|19092353|lymecycline|
 |pyridostigmine|759740|pyridostigmine|
-|RABEprazole|911735|rabeprazole|
+|rabeprazole|911735|rabeprazole|
 |melatonin|1301152|melatonin|
 |mesna|1354698|mesna|
-|lamoTRIgine|705103|lamotrigine|
+|lamotrigine|705103|lamotrigine|
 |paracetamol|1125315|acetaminophen|
 |insulin glulisine|1544838|insulin glulisine, human|
 |irbesartan|1347384|irbesartan|
@@ -860,15 +856,15 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |remdesivir|37499271|remdesivir|
 |methyl salicylate|909440|methyl salicylate|
 |miconazole|907879|miconazole|
-|levoMEPromazine|19005147|methotrimeprazine|
+|levomepromazine|19005147|methotrimeprazine|
 |lidocaine|989878|lidocaine|
 |ribavirin|1762711|ribavirin|
-|rifaMPICIN|1763204|rifampin|
+|rifampicin|1763204|rifampin|
 |methocarbamol|704943|methocarbamol|
 |methylnaltrexone|909841|methylnaltrexone|
 |paricalcitol|1517740|paricalcitol|
 |perindopril|1373225|perindopril|
-|isosorbide Dinitrate|1383925|isosorbide dinitrate|
+|isosorbide dinitrate|1383925|isosorbide dinitrate|
 |ispaghula|19132967|ispaghula extract|
 |mirtazapine|725131|mirtazapine|
 |misoprostol|1150871|misoprostol|
@@ -878,7 +874,7 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |micafungin|19018013|micafungin|
 |lixisenatide|44506754|lixisenatide|
 |loperamide|991876|loperamide|
-|LORazepam|791967|lorazepam|
+|lorazepam|791967|lorazepam|
 |lormetazepam|19007977|lormetazepam|
 |rocuronium|19003953|rocuronium|
 |ivacaftor|42709323|ivacaftor|
@@ -892,18 +888,18 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |lansoprazole|929887|lansoprazole|
 |lanthanum carbonate|990028|lanthanum carbonate|
 |malathion|993979|malathion|
-|medroxyPROGESTERone|1500211|medroxyprogesterone|
+|medroxyprogesterone|1500211|medroxyprogesterone|
 |megestrol|1300978|megestrol|
 |menthol|901656|menthol|
 |mepolizumab|35606631|mepolizumab|
 |metaraminol|19003303|metaraminol|
-|salMETerol|1137529|salmeterol|
+|salmeterol|1137529|salmeterol|
 |neomycin|915981|neomycin|
-|Nirsevimab|746155|nirsevimab|
+|nirsevimab|746155|nirsevimab|
 |nusinersen|1593031|nusinersen|
 |methadone|1103640|methadone|
 |plasma protein fraction|19025693|plasma protein fraction|
-|OXcarbazepine|718122|oxcarbazepine|
+|oxcarbazepine|718122|oxcarbazepine|
 |methotrexate|1305058|methotrexate|
 |omeprazole|923645|omeprazole|
 |methoxyflurane|19005257|methoxyflurane|
@@ -925,35 +921,35 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |naratriptan|1118117|naratriptan|
 |sodium dihydrogen phosphate|990499|sodium phosphate, monobasic|
 |sodium feredetate|19001131|sodium ironedetate|
-|meningococcal group B vaccine|45775636|meningococcal group B vaccine|
+|meningococcal group b vaccine|45775636|meningococcal group b vaccine|
 |mitotane|1309161|mitotane|
 |moxonidine|19011021|moxonidine|
 |pancreatin|926487|pancreatin|
-|PARoxetine|722031|paroxetine|
+|paroxetine|722031|paroxetine|
 |potassium citrate|976545|potassium citrate|
 |pristinamycin|19125201|pristinamycin|
-|mercaptOPURine|1436650|mercaptopurine|
-|metFORMIN|1503297|metformin|
+|mercaptopurine|1436650|mercaptopurine|
+|metformin|1503297|metformin|
 |nadolol|1313200|nadolol|
 |nitrofurantoin|920293|nitrofurantoin|
 |neostigmine|717136|neostigmine|
 |sugammadex|35604506|sugammadex|
-|SUMAtriptan|1140643|sumatriptan|
+|sumatriptan|1140643|sumatriptan|
 |pegfilgrastim|1325608|pegfilgrastim|
 |perampanel|42904177|perampanel|
 |nizatidine|950696|nizatidine|
-|norTRIPtyline|721724|nortriptyline|
+|nortriptyline|721724|nortriptyline|
 |pasireotide|43012417|pasireotide|
 |pentosan polysulfate sodium|19011333|pentosan polysulphate sodium|
 |promazine|19052903|promazine|
 |propiverine|19077093|propiverine|
 |methyldopa|1305447|methyldopa|
-|methylPREDNISolone|1506270|methylprednisolone|
-|niCARdipine|1318137|nicardipine|
-|niMOdipine|1319133|nimodipine|
+|methylprednisolone|1506270|methylprednisolone|
+|nicardipine|1318137|nicardipine|
+|nimodipine|1319133|nimodipine|
 |phenobarbital|734275|phenobarbital|
 |pioglitazone|1525215|pioglitazone|
-|Olive oil|42900448|olive oil|
+|olive oil|42900448|olive oil|
 |orphenadrine|724394|orphenadrine|
 |pyrimethamine|1760039|pyrimethamine|
 |quinapril|1331235|quinapril|
@@ -983,7 +979,7 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |rasagiline|715710|rasagiline|
 |telmisartan|1317640|telmisartan|
 |temocillin|19100438|temocillin|
-|Mirikizumab|746977|mirikizumab|
+|mirikizumab|746977|mirikizumab|
 |potassium canrenoate|19019629|canrenoate potassium|
 |moxifloxacin|1716903|moxifloxacin|
 |rivaroxaban|40241331|rivaroxaban|
@@ -996,14 +992,14 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |pivmecillinam|19088223|amdinocillin pivoxil|
 |pizotifen|19047076|pizotyline|
 |mycophenolate mofetil|19003999|mycophenolate mofetil|
-|TERIFlunomide|42900584|teriflunomide|
+|teriflunomide|42900584|teriflunomide|
 |terlipressin|19119253|terlipressin|
 |potassium iodide|19049909|potassium iodide|
 |propafenone|1353256|propafenone|
 |palonosetron|911354|palonosetron|
 |pseudoephedrine|1154332|pseudoephedrine|
 |raltegravir|1712889|raltegravir|
-|peniciLLAMINE|19028050|penicillamine|
+|penicillamine|19028050|penicillamine|
 |pentazocine|1130585|pentazocine|
 |selegiline|766209|selegiline|
 |semaglutide|793143|semaglutide|
@@ -1011,32 +1007,32 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |naltrexone|1714319|naltrexone|
 |sevelamer|952004|sevelamer|
 |sildenafil|1316262|sildenafil|
-|procaine benzylpenicillin|19130403|penicillin G procaine|
+|procaine benzylpenicillin|19130403|penicillin g procaine|
 |protamine|19054245|protamines|
 |phenindione|19033934|phenindione|
-|silver sulfADIAZINE|966956|silver sulfadiazine|
+|silver sulfadiazine|966956|silver sulfadiazine|
 |sodium benzoate|19116573|sodium benzoate|
 |prucalopride|1356018|prucalopride|
-|quiNINE|1760616|quinine|
+|quinine|1760616|quinine|
 |secukinumab|45892883|secukinumab|
 |tetanus immunoglobulin|35604680|tetanus immune globulin|
 |tigecycline|1742432|tigecycline|
 |prilocaine|951279|prilocaine|
 |probenecid|1151422|probenecid|
-|phytomenadione|19044727|vitamin K1|
+|phytomenadione|19044727|vitamin k1|
 |pilocarpine|945286|pilocarpine|
 |tiotropium|1106776|tiotropium|
 |simvastatin|1539403|simvastatin|
 |sodium chloride|967823|sodium chloride|
 |potassium chloride|19049105|potassium chloride|
-|TOLBUTamide|1502855|tolbutamide|
+|tolbutamide|1502855|tolbutamide|
 |tranylcypromine|703470|tranylcypromine|
 |promethazine|1153013|promethazine|
 |propranolol|1353766|propranolol|
 |nicorandil|19014977|nicorandil|
 |ofloxacin|923081|ofloxacin|
 |raloxifene|1513103|raloxifene|
-|quiNIDine|1360421|quinidine|
+|quinidine|1360421|quinidine|
 |sodium bicarbonate|939506|sodium bicarbonate|
 |ritonavir|1748921|ritonavir|
 |rizatriptan|1154077|rizatriptan|
@@ -1045,19 +1041,19 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |reslizumab|35603983|reslizumab|
 |upadacitinib|1361580|upadacitinib|
 |urea|906914|urea|
-|rOPINIRole|713823|ropinirole|
+|ropinirole|713823|ropinirole|
 |ropivacaine|1136487|ropivacaine|
 |prochlorperazine|752061|prochlorperazine|
 |procyclidine|752276|procyclidine|
-|rifaBUTIN|1777417|rifabutin|
-|rifaXIMIN|1735947|rifaximin|
+|rifabutin|1777417|rifabutin|
+|rifaximin|1735947|rifaximin|
 |sodium picosulfate|19025115|picosulfate sodium|
 |omega-3 fatty acids|19106973|omega-3 fatty acids|
-|Rozanolixizumab|746106|rozanolixizumab|
+|rozanolixizumab|746106|rozanolixizumab|
 |propofol|753626|propofol|
 |pyridoxine|19005046|pyridoxine|
 |riluzole|735951|riluzole|
-|riTUXimab|1314273|rituximab|
+|rituximab|1314273|rituximab|
 |oxandrolone|1524769|oxandrolone|
 |oxazepam|724816|oxazepam|
 |urokinase|1307515|urokinase|
@@ -1074,7 +1070,7 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |sodium tetradecyl sulfate|19070012|sodium tetradecyl sulfate|
 |somatropin|1584910|somatropin|
 |peppermint oil|19086712|peppermint oil|
-|vitamin E|19009540|vitamin E|
+|vitamin e|19009540|vitamin e|
 |risedronate sodium|19122562|risedronate sodium|
 |roflumilast|40236897|roflumilast|
 |sarilumab|1594587|sarilumab|
@@ -1082,17 +1078,17 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |zinc sulfate|19044522|zinc sulfate|
 |zolpidem|744740|zolpidem|
 |stiripentol|35200286|stiripentol|
-|sulfaSALAzine|964339|sulfasalazine|
+|sulfasalazine|964339|sulfasalazine|
 |temozolomide|1341149|temozolomide|
 |terbinafine|1741309|terbinafine|
 |sofosbuvir/velpatasvir/voxilaprevir|778968|sofosbuvir / velpatasvir / voxilaprevir|
-|Erythromycin injection|35603399|erythromycin Injection|
-|ROtigoTine|786426|rotigotine|
+|erythromycin injection|35603399|erythromycin injection|
+|rotigotine|786426|rotigotine|
 |povidone iodine|1750087|povidone-iodine|
 |praziquantel|1750461|praziquantel|
 |solifenacin|916005|solifenacin|
 |sterile water|19009608|sterile water|
-|sulfADIAZINE|1836391|sulfadiazine|
+|sulfadiazine|1836391|sulfadiazine|
 |thalidomide|19137042|thalidomide|
 |theophylline|1237049|theophylline|
 |siponimod|1510913|siponimod|
@@ -1100,21 +1096,20 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |tadalafil|1336926|tadalafil|
 |thiopental|700253|thiopental|
 |tinzaparin|1308473|tinzaparin|
-|Follitropin alfa|1542948|follitropin alfa|
-|Haloperidol decanoate|19068898|haloperidol decanoate|
+|follitropin alfa|1542948|follitropin alfa|
+|haloperidol decanoate|19068898|haloperidol decanoate|
 |terazosin|1341238|terazosin|
 |teriparatide|1521987|teriparatide|
 |sertraline|739138|sertraline|
-|Simoctocog alfa|35604968|simoctocog alfa|
+|simoctocog alfa|35604968|simoctocog alfa|
 |tetracycline|1836948|tetracycline|
 |thyrotropin alpha|19063297|thyrotropin alfa|
 |sirolimus|19034726|sirolimus|
 |tezepelumab|702498|tezepelumab|
 |tiopronin|903031|tiopronin|
 |sodium polystyrene sulfonate|19078126|sodium polystyrene sulfonate|
-|SORAfenib|1363387|sorafenib|
-|Lanolin|19087317|lanolin|
-|pregABALIN|734354|pregabalin|
+|sorafenib|1363387|sorafenib|
+|pregabalin|734354|pregabalin|
 |procarbazine|1351779|procarbazine|
 |sotalol|1370109|sotalol|
 |sulpiride|19136626|sulpiride|
@@ -1123,23 +1118,23 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |tacrolimus|950637|tacrolimus|
 |tolvaptan|19036797|tolvaptan|
 |trandolapril|1342439|trandolapril|
-|Promethazine hydrochloride|19012193|promethazine hydrochloride|
+|promethazine hydrochloride|19012193|promethazine hydrochloride|
 |propantheline|953391|propantheline|
 |sodium glycerophosphate|45892326|sodium glycerophosphate|
 |sodium phenylbutyrate|19048721|sodium phenylbutyrate|
-|Potassium phosphate|19027362|potassium phosphate|
+|potassium phosphate|19027362|potassium phosphate|
 |ravulizumab|1356009|ravulizumab|
 |torasemide|942350|torsemide|
-|Turoctocog alfa|35604313|turoctocog alfa|
+|turoctocog alfa|35604313|turoctocog alfa|
 |tretinoin|903643|tretinoin|
 |trimipramine|705755|trimipramine|
 |tryptophan|19006186|tryptophan|
 |riboflavin|19062817|riboflavin|
 |risankizumab|1511348|risankizumab|
-|Trisodium citrate|19065826|trisodium citrate|
+|trisodium citrate|19065826|trisodium citrate|
 |tapentadol|19026459|tapentadol|
-|varicella vaccine|42800027|varicella-zoster virus vaccine live (Oka-Merck) strain|
-|salBUTamol|1154343|albuterol|
+|varicella vaccine|42800027|varicella-zoster virus vaccine live (oka-merck) strain|
+|salbutamol|1154343|albuterol|
 |terbutaline|1236744|terbutaline|
 |zanamivir|1708748|zanamivir|
 |zoledronic acid|1524674|zoledronic acid|
@@ -1149,114 +1144,109 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |ursodeoxycholic acid|19010877|ursodiol|
 |tetracosactide|19008009|cosyntropin|
 |tobramycin|902722|tobramycin|
-|vitamin A|19008339|vitamin A|
+|vitamin a|19008339|vitamin a|
 |vortioxetine|44507700|vortioxetine|
-|Voxelotor|37497986|voxelotor|
+|voxelotor|37497986|voxelotor|
 |valproate|745466|valproate|
-|Vonicog alfa|1718111|vonicog alfa|
-|Fusidic acid|19112521|fusidic acid|
+|vonicog alfa|1718111|vonicog alfa|
+|fusidic acid|19112521|fusidic acid|
 |sodium thiosulfate|940004|sodium thiosulfate|
 |sotrovimab|1536976|sotrovimab|
 |zopiclone|19044883|zopiclone|
 |tacalcitol|19008361|tacalcitol|
 |tamsulosin|924566|tamsulosin|
 |tocilizumab|40171288|tocilizumab|
-|TOFACitinib|42904205|tofacitinib|
+|tofacitinib|42904205|tofacitinib|
 |temazepam|836715|temazepam|
 |tenecteplase|19098548|tenecteplase|
-|traMADol|1103314|tramadol|
-|traZODone|703547|trazodone|
+|tramadol|1103314|tramadol|
+|trazodone|703547|trazodone|
 |sucralfate|1036228|sucralfate|
 |sucroferric oxyhydroxide|44785066|sucroferric oxyhydroxide|
 |tetracaine|1036884|tetracaine|
 |thiamine|19137312|thiamine|
 |trihexyphenidyl|705178|trihexyphenidyl|
 |tuberculin purified protein derivative|19058274|purified protein derivative of tuberculin|
-|Sucrose|19136247|sucrose|
-|SUNitinib|1336539|sunitinib|
-|tiaGABine|715458|tiagabine|
+|sucrose|19136247|sucrose|
+|sunitinib|1336539|sunitinib|
+|tiagabine|715458|tiagabine|
 |tiaprofenic acid|19100755|tiaprofenic acid|
-|Pirfenidone|45775206|pirfenidone|
+|pirfenidone|45775206|pirfenidone|
 |ticagrelor|40241186|ticagrelor|
 |zinc oxide|911064|zinc oxide|
 |ustekinumab|40161532|ustekinumab|
 |verapamil|1307863|verapamil|
-|sulfADIAZINE silver|966956|silver sulfadiazine|
-|Triamcinolone hexacetonide|19101172|triamcinolone hexacetonide|
-|Tinidazole|1702559|tinidazole|
-|tiZANidine|778474|tizanidine|
-|Calcium gluconate|19037038|calcium gluconate|
+|sulfadiazine silver|966956|silver sulfadiazine|
+|triamcinolone hexacetonide|19101172|triamcinolone hexacetonide|
+|tinidazole|1702559|tinidazole|
+|tizanidine|778474|tizanidine|
+|calcium gluconate|19037038|calcium gluconate|
 |tolcapone|715727|tolcapone|
 |triptorelin|1343039|triptorelin|
-|Valproic acid|19010963|valproic acid|
-|trospium|991825|trospium|
 |valproic acid|19010963|valproic acid|
+|trospium|991825|trospium|
 |tranexamic acid|1303425|tranexamic acid|
 |triamcinolone|903963|triamcinolone|
 |vedolizumab|45774639|vedolizumab|
 |vigabatrin|19020002|vigabatrin|
-|Clotrimazole|1000632|clotrimazole|
-|Erythromycin|1746940|erythromycin|
-|Allantoin|966376|allantoin|
-|Interferon alfa-2a|1379969|interferon alfa-2a|
-|Liquid paraffin|908523|mineral oil|
-|Cetylpyridinium|989301|cetylpyridinium|
+|erythromycin|1746940|erythromycin|
+|allantoin|966376|allantoin|
+|interferon alfa-2a|1379969|interferon alfa-2a|
+|liquid paraffin|908523|mineral oil|
+|cetylpyridinium|989301|cetylpyridinium|
 |ulipristal|40225722|ulipristal|
 |umeclidinium|44785907|umeclidinium|
-|Varenicline|780442|varenicline|
+|varenicline|780442|varenicline|
 |warfarin|1310149|warfarin|
-|Lithium citrate|767410|lithium citrate|
+|lithium citrate|767410|lithium citrate|
 |zinc acetate|979096|zinc acetate|
-|methylPREDNISolone sodium succinate|19026798|methylprednisolone sodium succinate|
-|Carbomer 980|42898572|carbomer homopolymer type c|
-|Glucosamine|1360332|glucosamine|
-|Nonacog alfa|46274289|nonacog alfa|
-|Polyvinyl alcohol|948856|polyvinyl alcohol|
-|Urea|906914|urea|
-|Sirolimus|19034726|sirolimus|
-|OLANZapine embonate|46274261|olanzapine pamoate|
+|methylprednisolone sodium succinate|19026798|methylprednisolone sodium succinate|
+|carbomer 980|42898572|carbomer homopolymer type c|
+|glucosamine|1360332|glucosamine|
+|nonacog alfa|46274289|nonacog alfa|
+|polyvinyl alcohol|948856|polyvinyl alcohol|
+|olanzapine embonate|46274261|olanzapine pamoate|
 |acetylcysteine|1139042|acetylcysteine|
 |aclidinium|42873639|aclidinium|
 |adalimumab|1119119|adalimumab|
-|Hydrocortisone butyrate|19002396|hydrocortisone butyrate|
-|Testosterone propionate|19002851|testosterone propionate|
+|hydrocortisone butyrate|19002396|hydrocortisone butyrate|
+|testosterone propionate|19002851|testosterone propionate|
 |alemtuzumab|1312706|alemtuzumab|
 |alfacalcidol|19014202|alfacalcidol|
 |alteplase|1347450|alteplase|
 |alum|19115033|aluminum potassium sulfate|
 |ambrisentan|1337068|ambrisentan|
-|amLODIPine|1332418|amlodipine|
+|amlodipine|1332418|amlodipine|
 |atracurium|19014341|atracurium|
-|Phenytoin|740910|phenytoin|
 |azelaic acid|19018514|azelaic acid|
 |belatacept|40239665|belatacept|
 |benzocaine|917006|benzocaine|
 |bexarotene|1389888|bexarotene|
 |bivalirudin|19084670|bivalirudin|
 |bosentan|1321636|bosentan|
-|Botulinum B toxin|729959|botulinum toxin type B|
+|botulinum b toxin|729959|botulinum toxin type b|
 |candesartan|1351557|candesartan|
 |carboprost|19049150|carboprost|
-|cefRADINE|1786842|cephradine|
-|cefTAROLine fosamil|46274210|ceftaroline fosamil|
+|cefradine|1786842|cephradine|
+|ceftaroline fosamil|46274210|ceftaroline fosamil|
 |cetirizine|1149196|cetirizine|
-|chloramPHENICOL|990069|chloramphenicol|
+|chloramphenicol|990069|chloramphenicol|
 |chlorhexidine|1790812|chlorhexidine|
 |cinacalcet|1548111|cinacalcet|
 |codeine|1201620|codeine|
 |cyclophosphamide|1310317|cyclophosphamide|
 |danazol|1511449|danazol|
-|DASatinib|1358436|dasatinib|
+|dasatinib|1358436|dasatinib|
 |dexpanthenol|988294|dexpanthenol|
 |diclofenac|1124300|diclofenac|
 |digoxin|1326303|digoxin|
 |dihydrocodeine|1189596|dihydrocodeine|
 |domperidone|19037833|domperidone|
-|DULoxetine|715259|duloxetine|
+|duloxetine|715259|duloxetine|
 |dupilumab|1593467|dupilumab|
 |emtricitabine|1703069|emtricitabine|
 |enzalutamide|42900250|enzalutamide|
-|ERLotinib|1325363|erlotinib|
+|erlotinib|1325363|erlotinib|
 |ethambutol|1749301|ethambutol|
 |ethyl chloride|950316|ethyl chloride|
 |etravirine|1758536|etravirine|
@@ -1265,18 +1255,17 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |febuxostat|19017742|febuxostat|
 |fesoterodine|19027958|fesoterodine|
 |filgrastim|1304850|filgrastim|
-|fluPHENAZine|756018|fluphenazine|
+|fluphenazine|756018|fluphenazine|
 |glucagon|1560278|glucagon|
-|glucosamine|1360332|glucosamine|
 |hyaluronidase|19073699|hyaluronidase|
 |hydroxycarbamide|1377141|hydroxyurea|
 |indacaterol|40240664|indacaterol|
-|inFLIXimab|937368|infliximab|
+|infliximab|937368|infliximab|
 |ipratropium|1112921|ipratropium|
 |iron sucrose|1395773|iron sucrose|
 |itraconazole|1703653|itraconazole|
-|lamiVUDine|1704183|lamivudine|
-|levETIRAcetam|711584|levetiracetam|
+|lamivudine|1704183|lamivudine|
+|levetiracetam|711584|levetiracetam|
 |levocetirizine|1136422|levocetirizine|
 |magnesium chloride|19092849|magnesium chloride|
 |magnesium hydroxide|992956|magnesium hydroxide|
@@ -1292,7 +1281,7 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |nebivolol|1314577|nebivolol|
 |nefopam|19015602|nefopam|
 |nevirapine|1769389|nevirapine|
-|niFEDipine|1318853|nifedipine|
+|nifedipine|1318853|nifedipine|
 |nitazoxanide|1715315|nitazoxanide|
 |octenidine|1366603|octenidine|
 |oseltamivir|1799139|oseltamivir|
@@ -1300,22 +1289,22 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |pamidronate disodium|19007069|pamidronate disodium|
 |potassium permanganate|19135788|potassium permanganate|
 |prasugrel|40163718|prasugrel|
-|prednisoLONE|1550557|prednisolone|
+|prednisolone|1550557|prednisolone|
 |primidone|751347|primidone|
 |progesterone|1552310|progesterone|
-|QUEtiapine|766814|quetiapine|
+|quetiapine|766814|quetiapine|
 |ranolazine|1337107|ranolazine|
 |repaglinide|1516766|repaglinide|
-|rFVIIa|19065771|eptacog alfa activated|
+|rfviia|19065771|eptacog alfa activated|
 |rimegepant|37498993|rimegepant|
-|risperiDONE|735979|risperidone|
+|risperidone|735979|risperidone|
 |roxadustat|35834902|roxadustat|
 |selenium|966282|selenium|
-|senna|938268|sennosides, USP|
+|senna|938268|sennosides, usp|
 |silver nitrate|966913|silver nitrate|
-|sitaGLIPtin|1580747|sitagliptin|
+|sitagliptin|1580747|sitagliptin|
 |sultiame|19000921|sulthiame|
-|Talc|1036667|talc|
+|talc|1036667|talc|
 |tenofovir|19011093|tenofovir|
 |testosterone|1636780|testosterone|
 |tetrabenazine|836877|tetrabenazine|
@@ -1324,30 +1313,29 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |tirzepatide|779705|tirzepatide|
 |tolterodine|913782|tolterodine|
 |topiramate|742267|topiramate|
-|tozorakimab|36860143|TOZORAKIMAB|
+|tozorakimab|36860143|tozorakimab|
 |trimethoprim|1705674|trimethoprim|
-|valGANciclovir|1703063|valganciclovir|
+|valganciclovir|1703063|valganciclovir|
 |vancomycin|1707687|vancomycin|
 |venlafaxine|743670|venlafaxine|
 |voriconazole|1714277|voriconazole|
 |zidovudine|1710612|zidovudine|
-|ZOLMitriptan|1116031|zolmitriptan|
+|zolmitriptan|1116031|zolmitriptan|
 |zuclopenthixol|19010886|zuclopenthixol|
-|Coal tar|1000995|coal tar|
-|Cod liver oil|19101604|cod liver oil|
-|Moroctocog alfa|46274287|antihemophilic factor, human recombinant residues 743-1636 deleted|
-|Nateglinide|1502826|nateglinide|
-|Phenelzine|733896|phenelzine|
-|Testosterone undecanoate|19100455|testosterone undecanoate|
-|anti-D (RHO) immunoglobulin|535714|Rho(D) immune globulin|
-|conjugated oestrogens|1549080|estrogens, conjugated (USP)|
-|White soft paraffin|19033354|petrolatum|
+|cod liver oil|19101604|cod liver oil|
+|moroctocog alfa|46274287|antihemophilic factor, human recombinant residues 743-1636 deleted|
+|nateglinide|1502826|nateglinide|
+|phenelzine|733896|phenelzine|
+|testosterone undecanoate|19100455|testosterone undecanoate|
+|anti-d (rho) immunoglobulin|535714|rho(d) immune globulin|
+|conjugated oestrogens|1549080|estrogens, conjugated (usp)|
+|white soft paraffin|19033354|petrolatum|
 |charcoal, activated|1701928|activated charcoal|
-|Tenofovir alafenamide + Emtricitabine|778947|emtricitabine / tenofovir alafenamide|
+|tenofovir alafenamide + emtricitabine|778947|emtricitabine / tenofovir alafenamide|
 |sodium biphosphate-sodium phosphate|36028653|sodium phosphate / sodium phosphate, monobasic|
-|Factor VIII + von Willebrand factor|36030083|factor VIII / von Willebrand factor|
-|Calcium carbonate + Ergocalciferol|36028357|calcium carbonate / ergocalciferol|
-|isoniazid/pyrazinamide/rifaMPICIN|36030016|isoniazid / pyrazinamide / rifampin|
+|factor viii + von willebrand factor|36030083|factor viii / von willebrand factor|
+|calcium carbonate + ergocalciferol|36028357|calcium carbonate / ergocalciferol|
+|isoniazid/pyrazinamide/rifampicin|36030016|isoniazid / pyrazinamide / rifampin|
 |hydrochlorothiazide-telmisartan|36030113|hydrochlorothiazide / telmisartan|
 |hydrochlorothiazide-olmesartan|36030964|hydrochlorothiazide / olmesartan|
 |hydrochlorothiazide-lisinopril|36030000|hydrochlorothiazide / lisinopril|
@@ -1358,173 +1346,171 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |colecalciferol|19095164|cholecalciferol|
 |hydrochlorothiazide-quinapril|36030100|hydrochlorothiazide / quinapril|
 |hydrochlorothiazide-valsartan|36030008|hydrochlorothiazide / valsartan|
-|Chlorhexidine + Chlorobutanol|36030287|chlorhexidine / chlorobutanol|
+|chlorhexidine + chlorobutanol|36030287|chlorhexidine / chlorobutanol|
 |benzoyl peroxide-clindamycin|36030343|benzoyl peroxide / clindamycin|
 |hydrochlorothiazide-losartan|36030001|hydrochlorothiazide / losartan|
-|aMILoride + Cyclopenthiazide|36030291|amiloride / cyclopenthiazide|
+|amiloride + cyclopenthiazide|36030291|amiloride / cyclopenthiazide|
 |beclometasone|1115572|beclomethasone|
 |ferrous fumarate-folic acid|36028638|ferrous fumarate / folic acid|
 |immunoglobulin intravenous|551749|immunoglobulins, intravenous|
-|.TERIFlunomide|42900584|teriflunomide|
-|Chlorhexidine + Tetracaine|36030325|chlorhexidine / tetracaine|
+|.teriflunomide|42900584|teriflunomide|
+|chlorhexidine + tetracaine|36030325|chlorhexidine / tetracaine|
 |betamethasone-clotrimazole|36029270|betamethasone / clotrimazole|
 |ferrous sulfate-folic acid|36028169|ferrous sulfate / folic acid|
 |adapalene-benzoyl peroxide|36031106|adapalene / benzoyl peroxide|
-|Iodine + Potassium iodide|36030121|iodine / potassium iodide|
-|Hypromellose + Dextran 70|36030364|dextran 70 / hypromellose|
+|iodine + potassium iodide|36030121|iodine / potassium iodide|
+|hypromellose + dextran 70|36030364|dextran 70 / hypromellose|
 |dolutegravir-rilpivirine|36029814|dolutegravir / rilpivirine|
 |estradiol-levonorgestrel|36030367|estradiol / levonorgestrel|
 |hydrocortisone-lidocaine|36029276|hydrocortisone / lidocaine|
 |glecaprevir-pibrentasvir|778969|glecaprevir / pibrentasvir|
-|Benzocaine + Tyrothricin|36030792|benzocaine / tyrothricin|
+|benzocaine + tyrothricin|36030792|benzocaine / tyrothricin|
 |artemether-lumefantrine|778783|artemether / lumefantrine|
-|coal tar-salicylic acid|36030531|coal tar / salicylic acid|
-|dolutegravir-lamiVUDine|36029861|dolutegravir / lamivudine|
+|dolutegravir-lamivudine|36029861|dolutegravir / lamivudine|
 |umeclidinium-vilanterol|778926|umeclidinium / vilanterol|
-|Calcium phosphate + Colecalciferol|36030284|calcium phosphate / cholecalciferol|
-|Coal tar-salicylic acid|36030531|coal tar / salicylic acid|
+|calcium phosphate + colecalciferol|36030284|calcium phosphate / cholecalciferol|
+|coal tar-salicylic acid|36030531|coal tar / salicylic acid|
 |buprenorphine-naloxone|36030126|buprenorphine / naloxone|
 |ceftolozane-tazobactam|778933|ceftolozane / tazobactam|
 |diclofenac-misoprostol|36029967|diclofenac / misoprostol|
-|fluticasone-saLMETerol|778784|fluticasone / salmeterol|
+|fluticasone-salmeterol|778784|fluticasone / salmeterol|
 |dutasteride-tamsulosin|36027018|dutasteride / tamsulosin|
-|metFORMIN-pioglitazone|36030280|metformin / pioglitazone|
+|metformin-pioglitazone|36030280|metformin / pioglitazone|
 |sofosbuvir-velpatasvir|778954|sofosbuvir / velpatasvir|
 |fluticasone-vilanterol|778919|fluticasone / vilanterol|
 |tipiracil-trifluridine|36029751|tipiracil / trifluridine|
 |aclidinium-formoterol|779005|aclidinium / formoterol|
-|avibactam-cefTAZIDime|36029713|avibactam / ceftazidime|
-|amLODIPine-olmesartan|36029071|amlodipine / olmesartan|
+|avibactam-ceftazidime|36029713|avibactam / ceftazidime|
+|amlodipine-olmesartan|36029071|amlodipine / olmesartan|
 |budesonide-formoterol|36030143|budesonide / formoterol|
 |dimeticone|916662|dimethicone|
 |esomeprazole-naproxen|36031122|esomeprazole / naproxen|
 |ezetimibe-simvastatin|36030246|ezetimibe / simvastatin|
 |meropenem-vaborbactam|36029808|meropenem / vaborbactam|
 |heparinoid|19113045|heparinoids|
-|lamiVUDine-zidovudine|36030019|lamivudine / zidovudine|
+|lamivudine-zidovudine|36030019|lamivudine / zidovudine|
 |simeticone|966991|simethicone|
-|metFORMIN-sitaGLIPtin|36030770|metformin / sitagliptin|
+|metformin-sitagliptin|36030770|metformin / sitagliptin|
 |olodaterol-tiotropium|778944|olodaterol / tiotropium|
 |ledipasvir-sofosbuvir|778931|ledipasvir / sofosbuvir|
-|.apreMILast|44816294|apremilast|
-|Wasp venom|19011001|wasp venoms|
-|Urea + Lauromacrogols|36030315|lauromacrogols / urea|
-|Atenolol + niFEDipine|36030155|atenolol / nifedipine|
-|Caffeine + Ergotamine|36029919|caffeine / ergotamine|
+|.apremilast|44816294|apremilast|
+|wasp venom|19011001|wasp venoms|
+|urea + lauromacrogols|36030315|lauromacrogols / urea|
+|atenolol + nifedipine|36030155|atenolol / nifedipine|
+|caffeine + ergotamine|36029919|caffeine / ergotamine|
 |atovaquone-proguanil|36030109|atovaquone / proguanil|
 |ivacaftor-lumacaftor|778938|ivacaftor / lumacaftor|
 |ivacaftor-tezacaftor|778976|ivacaftor / tezacaftor|
 |sacubitril-valsartan|778939|sacubitril / valsartan|
-|amLODIPine-valsartan|36030761|amlodipine / valsartan|
+|amlodipine-valsartan|36030761|amlodipine / valsartan|
 |cobicistat-darunavir|778934|cobicistat / darunavir|
 |lidocaine-prilocaine|36029745|lidocaine / prilocaine|
-|abacavir-lamiVUDine|36030299|abacavir / lamivudine|
-|adrenaline|44814295|Adrenalin|
+|abacavir-lamivudine|36030299|abacavir / lamivudine|
+|adrenaline|44814295|adrenalin|
 |fibrinogen-thrombin|36030145|fibrinogen / thrombin|
 |lopinavir-ritonavir|36030114|lopinavir / ritonavir|
 |rabies immunoglobulin, human|19135830|rabies immune globulin, human|
-|Coal tar + Lecithin|36030357|coal tar / lecithin|
-|factor VIII-von Willebrand factor|36030083|factor VIII / von Willebrand factor|
-|Ethinylestradiol + norETHISTerone|36030139|ethinyl estradiol / norethindrone|
-|L-acetylcarnitine|19037596|acetylcarnitine|
+|coal tar + lecithin|36030357|coal tar / lecithin|
+|factor viii-von willebrand factor|36030083|factor viii / von willebrand factor|
+|ethinylestradiol + norethisterone|36030139|ethinyl estradiol / norethindrone|
+|l-acetylcarnitine|19037596|acetylcarnitine|
 |chlorphenamine|19049707|chlorphenoxamine|
-|estradiol-medroxyPROGESTERone|36030310|estradiol / medroxyprogesterone|
+|estradiol-medroxyprogesterone|36030310|estradiol / medroxyprogesterone|
 |betamethasone-salicylic acid|36027016|betamethasone / salicylic acid|
 |calcium carbonate-prasterone|36028330|calcium carbonate / prasterone|
-|lidocaine-methylPREDNISolone|36029284|lidocaine / methylprednisolone|
+|lidocaine-methylprednisolone|36029284|lidocaine / methylprednisolone|
 |loperamide-simeticone|36030021|loperamide / simethicone|
 |bendroflumethiazide-timolol|36030341|bendroflumethiazide / timolol|
 |clotrimazole-hydrocortisone|36030105|clotrimazole / hydrocortisone|
 |glycopyrronium-neostigmine|36028189|glycopyrronium / neostigmine|
-|estradiol/norETHISTerone/relugolix|779054|estradiol / norethindrone / relugolix|
+|estradiol/norethisterone/relugolix|779054|estradiol / norethindrone / relugolix|
 |crotamiton-hydrocortisone|36029273|crotamiton / hydrocortisone|
 |erythromycin-zinc acetate|36030166|erythromycin / zinc acetate|
 |formoterol-glycopyrronium|36029773|formoterol / glycopyrronium|
 |hydrocortisone-miconazole|36029277|hydrocortisone / miconazole|
-|hypromellose ophthalmic|40056206|hypromellose Ophthalmic Gel|
+|hypromellose ophthalmic|40056206|hypromellose ophthalmic gel|
 |betamethasone-clioquinol|36027015|betamethasone / clioquinol|
 |dydrogesterone-estradiol|36030766|dydrogesterone / estradiol|
 |cetrimide-chlorhexidine|36029297|cetrimide / chlorhexidine|
 |chlorhexidine-lidocaine|36029292|chlorhexidine / lidocaine|
-|ganciclovir ophthalmic|40047166|ganciclovir Ophthalmic Gel|
-|Ethinylestradiol + norETHISTerone ace|36030139|ethinyl estradiol / norethindrone|
-|ubidecarenone-vitamin E|36029194|ubidecarenone / vitamin E|
-|valACiclovir|1717704|valacyclovir|
-|quiNINE bisulphate|19135856|quinine bisulfate|
+|ganciclovir ophthalmic|40047166|ganciclovir ophthalmic gel|
+|ethinylestradiol + norethisterone ace|36030139|ethinyl estradiol / norethindrone|
+|ubidecarenone-vitamin e|36029194|ubidecarenone / vitamin e|
+|valaciclovir|1717704|valacyclovir|
+|quinine bisulphate|19135856|quinine bisulfate|
 |chlorhexidine-neomycin|36031065|chlorhexidine / neomycin|
 |indapamide-perindopril|36030141|indapamide / perindopril|
-|sodium chloride nasal|40080074|sodium chloride Nasal Gel|
+|sodium chloride nasal|40080074|sodium chloride nasal gel|
 |ethinylestradiol-norelgestromin|36030133|ethinyl estradiol / norelgestromin|
 |ethinylestradiol-levonorgestrel|36029985|ethinyl estradiol / levonorgestrel|
-|Ethinylestradiol-levonorgestrel|36029985|ethinyl estradiol / levonorgestrel|
 |heparinoid-salicylic acid|36028188|heparinoids / salicylic acid|
-|aMILoride-bumetanide|36030337|amiloride / bumetanide|
-|oxymetazoline nasal|739543|oxymetazoline Nasal Gel|
+|amiloride-bumetanide|36030337|amiloride / bumetanide|
+|oxymetazoline nasal|739543|oxymetazoline nasal gel|
 |ethinylestradiol-norgestimate|36029986|ethinyl estradiol / norgestimate|
 |drospirenone-ethinylestradiol|36031101|drospirenone / ethinyl estradiol|
 |mefenamic acid|19125097|meclofenamic acid|
-|Mucin + Xylitol|36030769|mucins / xylitol|
+|mucin + xylitol|36030769|mucins / xylitol|
 |allantoin-lidocaine|36030317|allantoin / lidocaine|
 |desogestrel-ethinylestradiol|36030123|desogestrel / ethinyl estradiol|
-|FELOdipine-ramipril|36030144|felodipine / ramipril|
+|felodipine-ramipril|36030144|felodipine / ramipril|
 |mesalazine|968426|mesalamine|
-|timolol ophthalmic|40087909|timolol Ophthalmic Gel|
+|timolol ophthalmic|40087909|timolol ophthalmic gel|
 |urea hydrogen peroxide otic|958999|carbamide peroxide|
 |budesonide/formoterol/glycopyrronium|779032|budesonide / formoterol / glycopyrronium|
 |naloxone-oxycodone|36029671|naloxone / oxycodone|
-|cefTORALine fosamil|46274210|ceftaroline fosamil|
+|ceftoraline fosamil|46274210|ceftaroline fosamil|
 |ethinylestradiol-gestodene|36030295|ethinyl estradiol / gestodene|
 |aciclovir|1703687|acyclovir|
 |immunoglobulin normal intramuscular|505117|intramuscular immunoglobulin|
 |cetrimide-dimeticone|36027191|cetrimide / dimethicone|
 |flucloxacillin|1800835|cloxacillin|
-|foliNic acid|19129642|oxolinic acid|
-|norETHISTerone|19050090|ethisterone|
+|folinic acid|19129642|oxolinic acid|
+|norethisterone|19050090|ethisterone|
 |calcium polystyrene sulfonate|19112563|calcium polystyrene sulfonate product|
-|Insulin isophane biphasic porcine|19053996|Hypurin Porcine Biphasic Isophane|
-|methylPREDNISolone oral|1506270|methylprednisolone|
+|insulin isophane biphasic porcine|19053996|hypurin porcine biphasic isophane|
+|methylprednisolone oral|1506270|methylprednisolone|
 |varicella immunoglobulin|543291|varicella-zoster immune globulin|
-|xylometazoline nasal|40101014|xylometazoline Nasal Spray|
-|chloramPHENICOL ophthalmic|36216751|chloramphenicol Ophthalmic Product|
-|fluorometholone ophthalmic|36224796|fluorometholone Ophthalmic Product|
-|Sodium chloride ophthalmic|36227316|sodium chloride Ophthalmic Product|
-|isoniazid-rifaMPICIN|36029269|isoniazid / rifampin|
-|paracetamol-traMADol|36030125|acetaminophen / tramadol|
-|triamcinolone nasal|40085508|triamcinolone Nasal Spray|
-|sodium citrate ophthalmic|36218153|citrate Ophthalmic Product|
-|acetylcysteine ophthalmic|36216795|acetylcysteine Ophthalmic Product|
-|cyclopentolate ophthalmic|36213819|cyclopentolate Ophthalmic Product|
-|sodium citrate irrigation|36224415|sodium citrate Irrigation Product|
-|apraclonidine ophthalmic|36215199|apraclonidine Ophthalmic Product|
-|betamethasone ophthalmic|36212153|betamethasone Ophthalmic Product|
-|ciprofloxacin ophthalmic|36217289|ciprofloxacin Ophthalmic Product|
-|dexamethasone ophthalmic|36215259|dexamethasone Ophthalmic Product|
-|phenylephrine ophthalmic|36223312|phenylephrine Ophthalmic Product|
-|brinZOLamide ophthalmic|36219538|brinzolamide Ophthalmic Product|
-|levofloxacin ophthalmic|36221026|levofloxacin Ophthalmic Product|
-|sodium bicarbonate otic|36227308|sodium bicarbonate Otic Product|
-|moxifloxacin ophthalmic|36213853|moxifloxacin Ophthalmic Product|
-|prednisoLONE ophthalmic|36220910|prednisolone Ophthalmic Product|
-|Taurolock|2901073|Taurolock|
-|hepatitis A vaccine|40047409|Hepatitis A Vaccines|
-|calcium-vitamin D|43126501|CALCIUM/VITAMINE D|
-|dibotermin alfa|43126075|Alfa dibotermin|
-|co-trimoxazole|21018085|Co-trimoxazole|
-|co-danthrusate|21015003|Co-danthrusate|
-|co-amilofruse|21014899|Co-amilofruse|
-|co-danthramer|21014474|Co-danthramer|
-|co-cyprindiol|21014586|Co-cyprindiol|
-|Grass pollen|36879220|Grass pollen|
-|co-magaldrox|21018430|Co-magaldrox|
-|co-amilozide|21018645|Co-amilozide|
-|co-careldopa|21017760|Co-careldopa|
-|co-amoxiclav|21015284|Co-amoxiclav|
-|co-beneldopa|21014753|Co-beneldopa|
-|rotavirus vaccine|19018193|Rotavirus Vaccines|
-|agomelatine|21014017|Agomelatine|
-|co-dydramol|21016567|Co-dydramol|
-|co-tenidone|21015431|Co-tenidone|
-|rupatadine|21014003|Rupatadine|
+|xylometazoline nasal|40101014|xylometazoline nasal spray|
+|chloramphenicol ophthalmic|36216751|chloramphenicol ophthalmic product|
+|fluorometholone ophthalmic|36224796|fluorometholone ophthalmic product|
+|sodium chloride ophthalmic|36227316|sodium chloride ophthalmic product|
+|isoniazid-rifampicin|36029269|isoniazid / rifampin|
+|paracetamol-tramadol|36030125|acetaminophen / tramadol|
+|triamcinolone nasal|40085508|triamcinolone nasal spray|
+|sodium citrate ophthalmic|36218153|citrate ophthalmic product|
+|acetylcysteine ophthalmic|36216795|acetylcysteine ophthalmic product|
+|cyclopentolate ophthalmic|36213819|cyclopentolate ophthalmic product|
+|sodium citrate irrigation|36224415|sodium citrate irrigation product|
+|apraclonidine ophthalmic|36215199|apraclonidine ophthalmic product|
+|betamethasone ophthalmic|36212153|betamethasone ophthalmic product|
+|ciprofloxacin ophthalmic|36217289|ciprofloxacin ophthalmic product|
+|dexamethasone ophthalmic|36215259|dexamethasone ophthalmic product|
+|phenylephrine ophthalmic|36223312|phenylephrine ophthalmic product|
+|brinzolamide ophthalmic|36219538|brinzolamide ophthalmic product|
+|levofloxacin ophthalmic|36221026|levofloxacin ophthalmic product|
+|sodium bicarbonate otic|36227308|sodium bicarbonate otic product|
+|moxifloxacin ophthalmic|36213853|moxifloxacin ophthalmic product|
+|prednisolone ophthalmic|36220910|prednisolone ophthalmic product|
+|taurolock|2901073|taurolock|
+|hepatitis a vaccine|40047409|hepatitis a vaccines|
+|calcium-vitamin d|43126501|calcium/vitamine d|
+|dibotermin alfa|43126075|alfa dibotermin|
+|co-trimoxazole|21018085|co-trimoxazole|
+|co-danthrusate|21015003|co-danthrusate|
+|co-amilofruse|21014899|co-amilofruse|
+|co-danthramer|21014474|co-danthramer|
+|co-cyprindiol|21014586|co-cyprindiol|
+|grass pollen|36879220|grass pollen|
+|co-magaldrox|21018430|co-magaldrox|
+|co-amilozide|21018645|co-amilozide|
+|co-careldopa|21017760|co-careldopa|
+|co-amoxiclav|21015284|co-amoxiclav|
+|co-beneldopa|21014753|co-beneldopa|
+|rotavirus vaccine|19018193|rotavirus vaccines|
+|agomelatine|21014017|agomelatine|
+|co-dydramol|21016567|co-dydramol|
+|co-tenidone|21015431|co-tenidone|
+|rupatadine|21014003|rupatadine|
 |zonisamide|744798|zonisamide|
 
 Notes
@@ -1541,9 +1527,9 @@ select
 	patient_identifier_Value,
 	beg_dt_tm,
 	end_dt_tm,
-	order_mnemonic,
+	lower(order_mnemonic) as order_mnemonic,
 	order_detail_display_line,
-	rxroute,
+	lower(rxroute) as rxroute,
 	strengthdoseunit,
 	strengthdose
 from omop_staging.oxford_prescribing
