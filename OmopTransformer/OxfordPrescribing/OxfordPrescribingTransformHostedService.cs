@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using OmopTransformer.OxfordPrescribing;
 
-namespace OmopTransformer.OxfordGP;
+namespace OmopTransformer.OxfordPrescribing;
 
 internal class OxfordPrescribingTransformHostedService : FinalHostedService
 {

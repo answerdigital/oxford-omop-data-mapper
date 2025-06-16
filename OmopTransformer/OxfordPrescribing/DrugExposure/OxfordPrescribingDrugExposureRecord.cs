@@ -7,12 +7,12 @@ namespace OmopTransformer.OxfordPrescribing.DrugExposure;
 [SourceQuery("OxfordPrescribingDrugExposure.xml")]
 internal class OxfordPrescribingDrugExposureRecord
 {
-    public string? NHS_Number { get; set; }
-    public string? Order_Mnemonic { get; set; }
-    public string? Begin_Date { get; set; }
-    public string? End_Date { get; set; }
-    public string? Order_Detail_Display_Line { get; set; }
-    public string? Rxroute { get; set; }
-    public string? Quantity { get; set; }
-    public string? Strengthdoseunit { get; set; }
+    public string? patient_identifier_Value { get; set; }
+    public string? beg_dt_tm { get; set; }
+    public string? end_dt_tm { get; set; }
+    public string? order_mnemonic { get; set; }
+    public string? order_detail_display_line { get; set; }
+    public string? rxroute { get; set; }
+    public string? strengthdoseunit { get; set; }
+    public string? strengthdose { get; set; }
 }

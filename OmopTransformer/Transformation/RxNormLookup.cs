@@ -2344,337 +2344,337 @@ internal class RxNormLookup : ILookup
 //             { "moxifloxacin ophthalmic", new ValueWithNote("36213853", "moxifloxacin Ophthalmic Product") }, // Confidence: 85.2%, OMOP Match: 100.0%
             { "prednisoLONE ophthalmic", new ValueWithNote("36220910", "prednisolone Ophthalmic Product") },
 //             { "prednisoLONE ophthalmic", new ValueWithNote("36220910", "prednisolone Ophthalmic Product") }, // Confidence: 85.2%, OMOP Match: 100.0%
-            { "briMONidine-brinZOLamide ophthalmic", new ValueWithNote(null, null) },
-//             { "briMONidine-brinZOLamide ophthalmic", new ValueWithNote("36246176", "brimonidine / brinzolamide Ophthalmic Product") }, // Confidence: 85.0%, OMOP Match: 100.0%
-            { "ipratropium nasal", new ValueWithNote(null, null) },
-//             { "ipratropium nasal", new ValueWithNote("40049465", "ipratropium Nasal Spray") }, // Confidence: 85.0%, OMOP Match: 100.0%
-            { "briMONidine ophthalmic", new ValueWithNote(null, null) },
-//             { "briMONidine ophthalmic", new ValueWithNote("36219537", "brimonidine Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
-            { "biMAToprost ophthalmic", new ValueWithNote(null, null) },
-//             { "biMAToprost ophthalmic", new ValueWithNote("36226260", "bimatoprost Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
-            { "DORzolamide ophthalmic", new ValueWithNote(null, null) },
-//             { "DORzolamide ophthalmic", new ValueWithNote("36224178", "dorzolamide Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
-            { "latanoprost ophthalmic", new ValueWithNote(null, null) },
-//             { "latanoprost ophthalmic", new ValueWithNote("36226918", "latanoprost Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
-            { "levobunolol ophthalmic", new ValueWithNote(null, null) },
-//             { "levobunolol ophthalmic", new ValueWithNote("36221015", "levobunolol Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
-            { "propamidine ophthalmic", new ValueWithNote(null, null) },
-//             { "propamidine ophthalmic", new ValueWithNote("36211817", "propamidine Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
-            { "olopatadine ophthalmic", new ValueWithNote(null, null) },
-//             { "olopatadine ophthalmic", new ValueWithNote("36223879", "olopatadine Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
-            { "tropicamide ophthalmic", new ValueWithNote(null, null) },
-//             { "tropicamide ophthalmic", new ValueWithNote("36227351", "tropicamide Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
-            { "Witch hazel ophthalmic", new ValueWithNote(null, null) },
-//             { "Witch hazel ophthalmic", new ValueWithNote("36227261", "witch hazel Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
-            { "beclometasone nasal", new ValueWithNote(null, null) },
-//             { "beclometasone nasal", new ValueWithNote("40010699", "beclomethasone Nasal Spray") }, // Confidence: 84.4%, OMOP Match: 100.0%
-            { "betamethasone-neomycin ophthalmic", new ValueWithNote(null, null) },
-//             { "betamethasone-neomycin ophthalmic", new ValueWithNote("36212136", "betamethasone / neomycin Ophthalmic Product") }, // Confidence: 84.2%, OMOP Match: 100.0%
-            { "azelastine nasal", new ValueWithNote(null, null) },
-//             { "azelastine nasal", new ValueWithNote("40133581", "azelastine Nasal Spray") }, // Confidence: 84.2%, OMOP Match: 100.0%
-            { "gentamicin-hydrocortisone otic", new ValueWithNote(null, null) },
-//             { "gentamicin-hydrocortisone otic", new ValueWithNote("36029279", "gentamicin / hydrocortisone") }, // Confidence: 84.2%, OMOP Match: 100.0%
-            { "mometasone nasal", new ValueWithNote(null, null) },
-//             { "mometasone nasal", new ValueWithNote("40066277", "mometasone Nasal Spray") }, // Confidence: 84.2%, OMOP Match: 100.0%
-            { "budesonide nasal", new ValueWithNote(null, null) },
-//             { "budesonide nasal", new ValueWithNote("40020313", "budesonide Nasal Spray") }, // Confidence: 84.2%, OMOP Match: 100.0%
-            { "azelastine-fluticasone nasal", new ValueWithNote(null, null) },
-//             { "azelastine-fluticasone nasal", new ValueWithNote("778911", "azelastine / fluticasone") }, // Confidence: 84.0%, OMOP Match: 100.0%
-            { "azelastine ophthalmic", new ValueWithNote(null, null) },
-//             { "azelastine ophthalmic", new ValueWithNote("36225520", "azelastine Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
-            { "cefUROXime ophthalmic", new ValueWithNote(null, null) },
-//             { "cefUROXime ophthalmic", new ValueWithNote("36217283", "cefuroxime Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
-            { "diclofenac ophthalmic", new ValueWithNote(null, null) },
-//             { "diclofenac ophthalmic", new ValueWithNote("36217233", "diclofenac Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
-            { "epinastine ophthalmic", new ValueWithNote(null, null) },
-//             { "epinastine ophthalmic", new ValueWithNote("36225777", "epinastine Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
-            { "gentamicin ophthalmic", new ValueWithNote(null, null) },
-//             { "gentamicin ophthalmic", new ValueWithNote("1594375", "gentamicin Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
-            { "lodoxamide ophthalmic", new ValueWithNote(null, null) },
-//             { "lodoxamide ophthalmic", new ValueWithNote("36221142", "lodoxamide Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
-            { "tetracaine ophthalmic", new ValueWithNote(null, null) },
-//             { "tetracaine ophthalmic", new ValueWithNote("36221743", "tetracaine Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
-            { "traVOprost ophthalmic", new ValueWithNote(null, null) },
-//             { "traVOprost ophthalmic", new ValueWithNote("36225495", "travoprost Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
-            { "taFLuprost ophthalmic", new ValueWithNote(null, null) },
-//             { "taFLuprost ophthalmic", new ValueWithNote("36238005", "tafluprost Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
-            { "bromfenac ophthalmic", new ValueWithNote(null, null) },
-//             { "bromfenac ophthalmic", new ValueWithNote("36219545", "bromfenac Ophthalmic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
-            { "chloramPHENICOL otic", new ValueWithNote(null, null) },
-//             { "chloramPHENICOL otic", new ValueWithNote("36216754", "chloramphenicol Otic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
-            { "dicycloverine", new ValueWithNote(null, null) },
-//             { "dicycloverine", new ValueWithNote("1710446", "cycloserine") }, // Confidence: 83.3%, OMOP Match: 100.0%
-            { "ephedrine nasal", new ValueWithNote(null, null) },
-//             { "ephedrine nasal", new ValueWithNote("40037821", "ephedrine Nasal Spray") }, // Confidence: 83.3%, OMOP Match: 100.0%
-            { "ketorolac ophthalmic", new ValueWithNote(null, null) },
-//             { "ketorolac ophthalmic", new ValueWithNote("36225366", "ketorolac Ophthalmic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
-            { "nepafenac ophthalmic", new ValueWithNote(null, null) },
-//             { "nepafenac ophthalmic", new ValueWithNote("36223788", "nepafenac Ophthalmic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
-            { "ofloxacin ophthalmic", new ValueWithNote(null, null) },
-//             { "ofloxacin ophthalmic", new ValueWithNote("36227393", "ofloxacin Ophthalmic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
-            { "betaxolol ophthalmic", new ValueWithNote(null, null) },
-//             { "betaxolol ophthalmic", new ValueWithNote("36212161", "betaxolol Ophthalmic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
-            { "ketotifen ophthalmic", new ValueWithNote(null, null) },
-//             { "ketotifen ophthalmic", new ValueWithNote("36225372", "ketotifen Ophthalmic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
-            { "atropine ophthalmic", new ValueWithNote(null, null) },
-//             { "atropine ophthalmic", new ValueWithNote("36212940", "atropine Ophthalmic Product") }, // Confidence: 82.6%, OMOP Match: 100.0%
-            { "Insulin isophane bovine", new ValueWithNote(null, null) },
-//             { "Insulin isophane bovine", new ValueWithNote("46221581", "insulin isophane") }, // Confidence: 82.1%, OMOP Match: 100.0%
-            { "ciprofloxacin otic", new ValueWithNote(null, null) },
-//             { "ciprofloxacin otic", new ValueWithNote("36217292", "ciprofloxacin Otic Product") }, // Confidence: 81.8%, OMOP Match: 100.0%
-            { "citric acid/Mg oxide/Na picosulfate", new ValueWithNote(null, null) },
-//             { "citric acid/Mg oxide/Na picosulfate", new ValueWithNote("36029516", "citric acid / magnesium oxide / picosulfurate") }, // Confidence: 81.5%, OMOP Match: 100.0%
-            { "lidocaine-phenylephrine nasal", new ValueWithNote(null, null) },
-//             { "lidocaine-phenylephrine nasal", new ValueWithNote("36030085", "lidocaine / phenylephrine") }, // Confidence: 81.5%, OMOP Match: 100.0%
-            { "Zuclopenthixol acetate injection", new ValueWithNote(null, null) },
-//             { "Zuclopenthixol acetate injection", new ValueWithNote("19121994", "zuclopenthixol acetate") }, // Confidence: 81.5%, OMOP Match: 100.0%
-            { "amylmetacresol-dichlorobenzyl alc top", new ValueWithNote(null, null) },
-//             { "amylmetacresol-dichlorobenzyl alc top", new ValueWithNote("36028603", "amylmetacresol / dichlorobenzyl alcohol / menthol") }, // Confidence: 81.4%, OMOP Match: 100.0%
-            { "timolol-traVOprost ophthalmic", new ValueWithNote(null, null) },
-//             { "timolol-traVOprost ophthalmic", new ValueWithNote("40099457", "travoprost Ophthalmic Solution") }, // Confidence: 81.4%, OMOP Match: 100.0%
-            { "fluticasone nasal", new ValueWithNote(null, null) },
-//             { "fluticasone nasal", new ValueWithNote("36220588", "fluticasone Nasal Product") }, // Confidence: 81.0%, OMOP Match: 100.0%
-            { "Convalescent Plasma", new ValueWithNote(null, null) },
-//             { "Convalescent Plasma", new ValueWithNote("33000", "COVID-19 convalescent plasma") }, // Confidence: 80.9%, OMOP Match: 100.0%
-            { "clioquinol-flumetasone otic", new ValueWithNote(null, null) },
-//             { "clioquinol-flumetasone otic", new ValueWithNote("36030361", "clioquinol / flumethasone") }, // Confidence: 80.8%, OMOP Match: 100.0%
-            { "Estradiol + norETHISTerone", new ValueWithNote(null, null) },
-//             { "Estradiol + norETHISTerone", new ValueWithNote("36030820", "ethinyl estradiol / ethisterone") }, // Confidence: 80.7%, OMOP Match: 100.0%
-            { "acetic acid otic", new ValueWithNote(null, null) },
-//             { "acetic acid otic", new ValueWithNote("36217021", "acetic acid Otic Product") }, // Confidence: 80.0%, OMOP Match: 100.0%
-            { "benzalkonium chloride-cetrimide", new ValueWithNote(null, null) },
-//             { "benzalkonium chloride-cetrimide", new ValueWithNote("36030307", "benzalkonium / cetrimide") }, // Confidence: 80.0%, OMOP Match: 100.0%
-            { "citric acid-magnesium carbonate", new ValueWithNote(null, null) },
-//             { "citric acid-magnesium carbonate", new ValueWithNote("36030486", "citric acid / magnesium oxide / sodium carbonate") }, // Confidence: 80.0%, OMOP Match: 100.0%
-            { "Digoxin specific antibody", new ValueWithNote(null, null) },
-//             { "Digoxin specific antibody", new ValueWithNote("35603726", "ovine digoxin immune fab") }, // Confidence: 80.0%, OMOP Match: 100.0%
-            { "Urea (13-C)", new ValueWithNote(null, null) },
-//             { "Urea (13-C)", new ValueWithNote("19054337", "urea c-13") }, // Confidence: 80.0%, OMOP Match: 100.0%
-            { "Potassium chloride 20mmol with Glucose 5", new ValueWithNote(null, null) },
-//             { "Potassium chloride 20mmol with Glucose 5", new ValueWithNote("36030057", "glucose / potassium chloride") }, // Confidence: 79.4%, OMOP Match: 100.0%
-            { "Potassium chloride 20mmol with Glucose 2", new ValueWithNote(null, null) },
-//             { "Potassium chloride 20mmol with Glucose 2", new ValueWithNote("36030057", "glucose / potassium chloride") }, // Confidence: 79.4%, OMOP Match: 100.0%
-            { "Potassium chloride 10mmol with Glucose 1", new ValueWithNote(null, null) },
-//             { "Potassium chloride 10mmol with Glucose 1", new ValueWithNote("36030057", "glucose / potassium chloride") }, // Confidence: 79.4%, OMOP Match: 100.0%
-            { "Potassium chloride 10mmol with Glucose 5", new ValueWithNote(null, null) },
-//             { "Potassium chloride 10mmol with Glucose 5", new ValueWithNote("36030057", "glucose / potassium chloride") }, // Confidence: 79.4%, OMOP Match: 100.0%
-            { "Potassium chloride 20mmol with Glucose 1", new ValueWithNote(null, null) },
-//             { "Potassium chloride 20mmol with Glucose 1", new ValueWithNote("36030057", "glucose / potassium chloride") }, // Confidence: 79.4%, OMOP Match: 100.0%
-            { "chlorhexidine-fluoride", new ValueWithNote(null, null) },
-//             { "chlorhexidine-fluoride", new ValueWithNote("36027304", "chlorhexidine / sodium fluoride") }, // Confidence: 79.2%, OMOP Match: 100.0%
-            { "cicloSPORIN ophthalmic", new ValueWithNote(null, null) },
-//             { "cicloSPORIN ophthalmic", new ValueWithNote("36213827", "cyclosporine Ophthalmic Product") }, // Confidence: 79.2%, OMOP Match: 100.0%
-            { "aciclovir ophthalmic", new ValueWithNote(null, null) },
-//             { "aciclovir ophthalmic", new ValueWithNote("36217182", "acyclovir Ophthalmic Product") }, // Confidence: 79.2%, OMOP Match: 100.0%
-            { "amphotericin B (Fungizone)", new ValueWithNote(null, null) },
-//             { "amphotericin B (Fungizone)", new ValueWithNote("19098044", "amphotericin B 30 MG/ML [Fungizone]") }, // Confidence: 78.7%, OMOP Match: 100.0%
-            { "Zuclopenthixol decanoate depot inject", new ValueWithNote(null, null) },
-//             { "Zuclopenthixol decanoate depot inject", new ValueWithNote("19121997", "zuclopenthixol decanoate") }, // Confidence: 78.7%, OMOP Match: 100.0%
-            { "insulin isophane biphasic", new ValueWithNote(null, null) },
-//             { "insulin isophane biphasic", new ValueWithNote("46221581", "insulin isophane") }, // Confidence: 78.0%, OMOP Match: 100.0%
-            { "potassium ascorbate ophthalmic", new ValueWithNote(null, null) },
-//             { "potassium ascorbate ophthalmic", new ValueWithNote("36027699", "calcium ascorbate / potassium") }, // Confidence: 78.0%, OMOP Match: 100.0%
-            { "fentaNYL-LEVObupivacaine", new ValueWithNote(null, null) },
-//             { "fentaNYL-LEVObupivacaine", new ValueWithNote("19098741", "levobupivacaine") }, // Confidence: 76.9%, OMOP Match: 100.0%
-            { "cocaine nasal", new ValueWithNote(null, null) },
-//             { "cocaine nasal", new ValueWithNote("36213696", "cocaine Nasal Product") }, // Confidence: 76.5%, OMOP Match: 100.0%
-            { "estradiol-norETHISTerone", new ValueWithNote(null, null) },
-//             { "estradiol-norETHISTerone", new ValueWithNote("36030820", "ethinyl estradiol / ethisterone") }, // Confidence: 76.4%, OMOP Match: 100.0%
-            { "immunoglobulin subcutaneous", new ValueWithNote(null, null) },
-//             { "immunoglobulin subcutaneous", new ValueWithNote("551749", "immunoglobulins, intravenous") }, // Confidence: 76.4%, OMOP Match: 100.0%
-            { "Liquid paraffin + Magnesium hydroxide", new ValueWithNote(null, null) },
-//             { "Liquid paraffin + Magnesium hydroxide", new ValueWithNote("36215463", "magnesium hydroxide Oral Liquid Product") }, // Confidence: 76.3%, OMOP Match: 100.0%
-            { "antazoline-xylometazoline ophthalmic", new ValueWithNote(null, null) },
-//             { "antazoline-xylometazoline ophthalmic", new ValueWithNote("36030351", "antazoline / xylometazoline") }, // Confidence: 76.2%, OMOP Match: 100.0%
-            { "argipressin (vasopressin)", new ValueWithNote(null, null) },
-//             { "argipressin (vasopressin)", new ValueWithNote("19006871", "argipressin") }, // Confidence: 76.0%, OMOP Match: 100.0%
-            { "betamethasone-fusidic acid", new ValueWithNote(null, null) },
-//             { "betamethasone-fusidic acid", new ValueWithNote("36027464", "betamethasone / fusidate") }, // Confidence: 76.0%, OMOP Match: 100.0%
-            { "Lidocaine + Adrenaline + Tetracaine", new ValueWithNote(null, null) },
-//             { "Lidocaine + Adrenaline + Tetracaine", new ValueWithNote("36028515", "adrenalone / tetracaine") }, // Confidence: 75.9%, OMOP Match: 100.0%
-            { "insulin aspart biphasic", new ValueWithNote(null, null) },
-//             { "insulin aspart biphasic", new ValueWithNote("1567198", "insulin aspart, human") }, // Confidence: 75.7%, OMOP Match: 100.0%
-            { "insulin lispro biphasic", new ValueWithNote(null, null) },
-//             { "insulin lispro biphasic", new ValueWithNote("1550023", "insulin lispro") }, // Confidence: 75.7%, OMOP Match: 100.0%
-            { "Bee venom", new ValueWithNote(null, null) },
-//             { "Bee venom", new ValueWithNote("514834", "honey bee venom") }, // Confidence: 75.0%, OMOP Match: 100.0%
-            { "ispaghula-senna", new ValueWithNote(null, null) },
-//             { "ispaghula-senna", new ValueWithNote("19132967", "ispaghula extract") }, // Confidence: 75.0%, OMOP Match: 100.0%
-            { "Terpin + Codeine", new ValueWithNote(null, null) },
-//             { "Terpin + Codeine", new ValueWithNote("36030564", "codeine / terpin hydrate") }, // Confidence: 75.0%, OMOP Match: 100.0%
-            { "Alpha tocopherol + Selenium", new ValueWithNote(null, null) },
-//             { "Alpha tocopherol + Selenium", new ValueWithNote("19056802", "alpha tocopherol") }, // Confidence: 74.4%, OMOP Match: 100.0%
-            { "brinZOLamide-timolol ophthalmic", new ValueWithNote(null, null) },
-//             { "brinZOLamide-timolol ophthalmic", new ValueWithNote("36219538", "brinzolamide Ophthalmic Product") }, // Confidence: 74.2%, OMOP Match: 100.0%
-            { "phenoxymethylpenicillin potassium", new ValueWithNote(null, null) },
-//             { "phenoxymethylpenicillin potassium", new ValueWithNote("19133859", "penicillin V potassium 50 MG/ML Oral Solution") }, // Confidence: 74.2%, OMOP Match: 100.0%
-            { "Glucose 4% with 0.18% Sodium Chloride in", new ValueWithNote(null, null) },
-//             { "Glucose 4% with 0.18% Sodium Chloride in", new ValueWithNote("36029299", "glucose / sodium chloride") }, // Confidence: 73.8%, OMOP Match: 100.0%
-            { "Glucose 5% with 0.45% Sodium Chloride in", new ValueWithNote(null, null) },
-//             { "Glucose 5% with 0.45% Sodium Chloride in", new ValueWithNote("36029299", "glucose / sodium chloride") }, // Confidence: 73.8%, OMOP Match: 100.0%
-            { "Glucose 5% with 0.9% Sodium Chloride int", new ValueWithNote(null, null) },
-//             { "Glucose 5% with 0.9% Sodium Chloride int", new ValueWithNote("36029299", "glucose / sodium chloride") }, // Confidence: 73.8%, OMOP Match: 100.0%
-            { "Glucose 10% with Sodium Chloride 0.18% i", new ValueWithNote(null, null) },
-//             { "Glucose 10% with Sodium Chloride 0.18% i", new ValueWithNote("36029299", "glucose / sodium chloride") }, // Confidence: 73.8%, OMOP Match: 100.0%
-            { "briMONidine-timolol ophthalmic", new ValueWithNote(null, null) },
-//             { "briMONidine-timolol ophthalmic", new ValueWithNote("36030258", "brimonidine / timolol") }, // Confidence: 73.5%, OMOP Match: 100.0%
-            { "DORzolamide-timolol ophthalmic", new ValueWithNote(null, null) },
-//             { "DORzolamide-timolol ophthalmic", new ValueWithNote("36030344", "dorzolamide / timolol") }, // Confidence: 73.5%, OMOP Match: 100.0%
-            { "biMAToprost-timolol ophthalmic", new ValueWithNote(null, null) },
-//             { "biMAToprost-timolol ophthalmic", new ValueWithNote("36226260", "bimatoprost Ophthalmic Product") }, // Confidence: 73.3%, OMOP Match: 100.0%
-            { "Liquid paraffin ophthalmic", new ValueWithNote(null, null) },
-//             { "Liquid paraffin ophthalmic", new ValueWithNote("908523", "mineral oil") }, // Confidence: 73.2%, OMOP Match: 100.0%
-            { "ichthammol-zinc oxide", new ValueWithNote(null, null) },
-//             { "ichthammol-zinc oxide", new ValueWithNote("36030285", "ichthammol / zinc oxide") }, // Confidence: 72.7%, OMOP Match: 100.0%
-            { "taFLuprost-timolol ophthalmic", new ValueWithNote(null, null) },
-//             { "taFLuprost-timolol ophthalmic", new ValueWithNote("36238005", "tafluprost Ophthalmic Product") }, // Confidence: 72.4%, OMOP Match: 100.0%
-            { "trometamol (THAM))", new ValueWithNote(null, null) },
-//             { "trometamol (THAM))", new ValueWithNote("1511352", "trometamol citrate") }, // Confidence: 72.2%, OMOP Match: 100.0%
-            { "dexamethasone/neomycin/polymyxin B ophth", new ValueWithNote(null, null) },
-//             { "dexamethasone/neomycin/polymyxin B ophth", new ValueWithNote("36213940", "dexamethasone / neomycin / polymyxin B Ophthalmic Product") }, // Confidence: 72.2%, OMOP Match: 100.0%
-            { "piperacillin-tazobactam (Tazocin equival", new ValueWithNote(null, null) },
-//             { "piperacillin-tazobactam (Tazocin equival", new ValueWithNote("46275426", "piperacillin / tazobactam Injection") }, // Confidence: 72.0%, OMOP Match: 100.0%
-            { "proxymetacaine ophthalmic", new ValueWithNote(null, null) },
-//             { "proxymetacaine ophthalmic", new ValueWithNote("929504", "proparacaine") }, // Confidence: 71.8%, OMOP Match: 100.0%
-            { "lidocaine-zinc oxide", new ValueWithNote(null, null) },
-//             { "lidocaine-zinc oxide", new ValueWithNote("36030290", "lidocaine / zinc oxide") }, // Confidence: 71.4%, OMOP Match: 100.0%
-            { "sodium alginate-potassium bicarbonate", new ValueWithNote(null, null) },
-//             { "sodium alginate-potassium bicarbonate", new ValueWithNote("36028316", "alginic acid / sodium bicarbonate") }, // Confidence: 71.4%, OMOP Match: 100.0%
-            { "acetic acid/dexamethasone/neomycin otic", new ValueWithNote(null, null) },
-//             { "acetic acid/dexamethasone/neomycin otic", new ValueWithNote("36213943", "dexamethasone / neomycin Otic Product") }, // Confidence: 71.1%, OMOP Match: 100.0%
-            { "Calcium citrate + Colecalciferol", new ValueWithNote(null, null) },
-//             { "Calcium citrate + Colecalciferol", new ValueWithNote("36027950", "calcium citrate / cholecalciferol") }, // Confidence: 70.8%, OMOP Match: 100.0%
-            { "Al hydroxide/Mg hydroxide/simeticone", new ValueWithNote(null, null) },
-//             { "Al hydroxide/Mg hydroxide/simeticone", new ValueWithNote("36027592", "aluminum hydroxide / simethicone") }, // Confidence: 70.6%, OMOP Match: 100.0%
-            { "latanoprost-timolol ophthalmic", new ValueWithNote(null, null) },
-//             { "latanoprost-timolol ophthalmic", new ValueWithNote("36030140", "latanoprost / timolol") }, // Confidence: 70.6%, OMOP Match: 100.0%
-            { "oxybuprocaine ophthalmic", new ValueWithNote(null, null) },
-//             { "oxybuprocaine ophthalmic", new ValueWithNote("935529", "benoxinate") }, // Confidence: 70.3%, OMOP Match: 100.0%
-            { "Soft paraffin + Wool fat", new ValueWithNote(null, null) },
-//             { "Soft paraffin + Wool fat", new ValueWithNote("19033354", "petrolatum") }, // Confidence: 70.3%, OMOP Match: 100.0%
-            { "Corticotrophin releasing hormone", new ValueWithNote(null, null) },
-//             { "Corticotrophin releasing hormone", new ValueWithNote("19048699", "corticotropin-releasing hormone") }, // Confidence: 69.8%, OMOP Match: 100.0%
-            { "Alginic acid/calcium carbonate/Na bic", new ValueWithNote(null, null) },
-//             { "Alginic acid/calcium carbonate/Na bic", new ValueWithNote("36027575", "alginic acid / calcium carbonate") }, // Confidence: 69.6%, OMOP Match: 100.0%
-            { "calcium acetate-magnesium carbonate", new ValueWithNote(null, null) },
-//             { "calcium acetate-magnesium carbonate", new ValueWithNote("778779", "calcium acetate / magnesium carbonate") }, // Confidence: 69.4%, OMOP Match: 100.0%
-            { "Aluminium acetate", new ValueWithNote(null, null) },
-//             { "Aluminium acetate", new ValueWithNote("42898412", "aluminum") }, // Confidence: 69.2%, OMOP Match: 100.0%
-            { "polihexanide ophthalmic", new ValueWithNote(null, null) },
-//             { "polihexanide ophthalmic", new ValueWithNote("43525903", "polihexanide") }, // Confidence: 68.6%, OMOP Match: 100.0%
-            { "mercaptAMine ophthalmic", new ValueWithNote(null, null) },
-//             { "mercaptAMine ophthalmic", new ValueWithNote("910888", "cysteamine") }, // Confidence: 68.6%, OMOP Match: 100.0%
-            { "Liquid paraffin + Isopropyl myristate", new ValueWithNote(null, null) },
-//             { "Liquid paraffin + Isopropyl myristate", new ValueWithNote("19003568", "isopropyl myristate") }, // Confidence: 67.9%, OMOP Match: 100.0%
-            { "Mg acetate/Mg carbonate/Mg hydroxide", new ValueWithNote(null, null) },
-//             { "Mg acetate/Mg carbonate/Mg hydroxide", new ValueWithNote("43012385", "magnesium carbonate hydroxide") }, // Confidence: 67.7%, OMOP Match: 100.0%
-            { "Continuous epidural infusion", new ValueWithNote(null, null) },
-//             { "Continuous epidural infusion", new ValueWithNote("19100021", "Pranoxen Continus") }, // Confidence: 66.7%, OMOP Match: 100.0%
-            { "dexamethasone-tobramycin ophthalmic", new ValueWithNote(null, null) },
-//             { "dexamethasone-tobramycin ophthalmic", new ValueWithNote("40027456", "dexamethasone / tobramycin Ophthalmic Ointment") }, // Confidence: 66.7%, OMOP Match: 100.0%
-            { "ispaghula-mebeverine", new ValueWithNote(null, null) },
-//             { "ispaghula-mebeverine", new ValueWithNote("19008994", "mebeverine") }, // Confidence: 66.7%, OMOP Match: 100.0%
-            { "White soft paraffin + Liquid paraffin", new ValueWithNote(null, null) },
-//             { "White soft paraffin + Liquid paraffin", new ValueWithNote("19033354", "petrolatum") }, // Confidence: 66.7%, OMOP Match: 100.0%
-            { "potassium acid tartrate-potassium bicarb", new ValueWithNote(null, null) },
-//             { "potassium acid tartrate-potassium bicarb", new ValueWithNote("36027949", "potassium bicarbonate / potassium tartrate") }, // Confidence: 65.9%, OMOP Match: 100.0%
-            { "Glucose 2.5% with 0.45% Sodium Chloride", new ValueWithNote(null, null) },
-//             { "Glucose 2.5% with 0.45% Sodium Chloride", new ValueWithNote("40221365", "50 ML sodium chloride 4.5 MG/ML Injection") }, // Confidence: 65.7%, OMOP Match: 100.0%
-            { "imipenem/cilastatin/relebactam", new ValueWithNote(null, null) },
-//             { "imipenem/cilastatin/relebactam", new ValueWithNote("36030067", "cilastatin / imipenem / relebactam") }, // Confidence: 65.6%, OMOP Match: 100.0%
-            { "haemophilus b-meningococcal conj vaccine", new ValueWithNote(null, null) },
-//             { "haemophilus b-meningococcal conj vaccine", new ValueWithNote("530009", "0.5 ML Haemophilus influenzae b (Ross strain) capsular polysaccharide meningococcal protein conjugate vaccine 0.265 MG/ML Injection") }, // Confidence: 65.5%, OMOP Match: 100.0%
-            { "Glucose 5% to", new ValueWithNote(null, null) },
-//             { "Glucose 5% to", new ValueWithNote("19095012", "glucose 82.5 MG/ML") }, // Confidence: 64.5%, OMOP Match: 100.0%
-            { "calamine-glycerol", new ValueWithNote(null, null) },
-//             { "calamine-glycerol", new ValueWithNote("961145", "glycerin") }, // Confidence: 64.0%, OMOP Match: 100.0%
-            { "fusidic acid ophthalmic", new ValueWithNote(null, null) },
-//             { "fusidic acid ophthalmic", new ValueWithNote("36220424", "fusidate Ophthalmic Product") }, // Confidence: 64.0%, OMOP Match: 100.0%
-            { "calamine-menthol", new ValueWithNote(null, null) },
-//             { "calamine-menthol", new ValueWithNote("36029578", "calamine / menthol / zinc oxide") }, // Confidence: 63.8%, OMOP Match: 100.0%
-            { "Continuous subcutaneous", new ValueWithNote(null, null) },
-//             { "Continuous subcutaneous", new ValueWithNote("19053549", "MST Continus") }, // Confidence: 62.9%, OMOP Match: 100.0%
-            { "Dronabinol + Cannabidiol", new ValueWithNote(null, null) },
-//             { "Dronabinol + Cannabidiol", new ValueWithNote("1510417", "cannabidiol") }, // Confidence: 62.9%, OMOP Match: 100.0%
-            { "hamamelis ophthalmic", new ValueWithNote(null, null) },
-//             { "hamamelis ophthalmic", new ValueWithNote("959196", "witch hazel") }, // Confidence: 62.9%, OMOP Match: 100.0%
-            { "SNG001 (Interferon -ß1a)", new ValueWithNote(null, null) },
-//             { "SNG001 (Interferon -ß1a)", new ValueWithNote("40053881", "Interferons") }, // Confidence: 62.9%, OMOP Match: 100.0%
-            { "adrenaline-lidocaine", new ValueWithNote(null, null) },
-//             { "adrenaline-lidocaine", new ValueWithNote("44814295", "Adrenalin") }, // Confidence: 62.1%, OMOP Match: 100.0%
-            { "alteplase ophthalmic", new ValueWithNote(null, null) },
-//             { "alteplase ophthalmic", new ValueWithNote("1347450", "alteplase") }, // Confidence: 62.1%, OMOP Match: 100.0%
-            { "fusidic acid-hydrocortisone", new ValueWithNote(null, null) },
-//             { "fusidic acid-hydrocortisone", new ValueWithNote("36028432", "fusidate / hydrocortisone") }, // Confidence: 61.5%, OMOP Match: 100.0%
-            { "dexamethasone/framycetin/gramicid ophth", new ValueWithNote(null, null) },
-//             { "dexamethasone/framycetin/gramicid ophth", new ValueWithNote("36027970", "framycetin / gramicidin") }, // Confidence: 61.3%, OMOP Match: 100.0%
-            { "Castor oil + Zinc oxide", new ValueWithNote(null, null) },
-//             { "Castor oil + Zinc oxide", new ValueWithNote("950933", "castor oil") }, // Confidence: 60.6%, OMOP Match: 100.0%
-            { "Meningococcal groups A + C + W135 + Y", new ValueWithNote(null, null) },
-//             { "Meningococcal groups A + C + W135 + Y", new ValueWithNote("514015", "meningococcal polysaccharide vaccine group Y") }, // Confidence: 59.3%, OMOP Match: 100.0%
-            { "Potassium Chloride 0.2% (27 mmol/L) in G", new ValueWithNote(null, null) },
-//             { "Potassium Chloride 0.2% (27 mmol/L) in G", new ValueWithNote("19101198", "potassium 7.7 MMOL") }, // Confidence: 58.6%, OMOP Match: 100.0%
-            { "Potassium Chloride 0.6% (80 mmol/L) in S", new ValueWithNote(null, null) },
-//             { "Potassium Chloride 0.6% (80 mmol/L) in S", new ValueWithNote("19101211", "potassium 8.4 MMOL") }, // Confidence: 58.6%, OMOP Match: 100.0%
-            { "adrenaline-BUPivacaine", new ValueWithNote(null, null) },
-//             { "adrenaline-BUPivacaine", new ValueWithNote("44814295", "Adrenalin") }, // Confidence: 58.1%, OMOP Match: 100.0%
-            { "frangula-sterculia", new ValueWithNote(null, null) },
-//             { "frangula-sterculia", new ValueWithNote("19016537", "Frangula preparation") }, // Confidence: 57.9%, OMOP Match: 100.0%
-            { "Continuous subcutaneous infusion", new ValueWithNote(null, null) },
-//             { "Continuous subcutaneous infusion", new ValueWithNote("19100536", "Nitrocontin Continus") }, // Confidence: 57.7%, OMOP Match: 100.0%
-            { "mercaptAMine (Cysteamine)", new ValueWithNote(null, null) },
-//             { "mercaptAMine (Cysteamine)", new ValueWithNote("910888", "cysteamine") }, // Confidence: 57.1%, OMOP Match: 100.0%
-            { "Potassium Chloride 0.15% (20 mmol/L) in", new ValueWithNote(null, null) },
-//             { "Potassium Chloride 0.15% (20 mmol/L) in", new ValueWithNote("19101200", "potassium 10 MMOL") }, // Confidence: 57.1%, OMOP Match: 100.0%
-            { "Clobetasol/oxytetracycline/nystatin topi", new ValueWithNote(null, null) },
-//             { "Clobetasol/oxytetracycline/nystatin topi", new ValueWithNote("36227369", "nystatin / oxytetracycline Pill") }, // Confidence: 56.3%, OMOP Match: 100.0%
-            { "BUPivacaine + cloNIDine", new ValueWithNote(null, null) },
-//             { "BUPivacaine + cloNIDine", new ValueWithNote("1398937", "clonidine") }, // Confidence: 56.2%, OMOP Match: 100.0%
-            { "Potassium Chloride 0.3% (40 mmol/L) in S", new ValueWithNote(null, null) },
-//             { "Potassium Chloride 0.3% (40 mmol/L) in S", new ValueWithNote("19101200", "potassium 10 MMOL") }, // Confidence: 56.1%, OMOP Match: 100.0%
-            { "Potassium Chloride 0.3% (40 mmol/L) in G", new ValueWithNote(null, null) },
-//             { "Potassium Chloride 0.3% (40 mmol/L) in G", new ValueWithNote("19101200", "potassium 10 MMOL") }, // Confidence: 56.1%, OMOP Match: 100.0%
-            { "Estriol applicator", new ValueWithNote(null, null) },
-//             { "Estriol applicator", new ValueWithNote("19049038", "estriol") }, // Confidence: 56.0%, OMOP Match: 100.0%
-            { "Estradiol-dydrogesterone", new ValueWithNote(null, null) },
-//             { "Estradiol-dydrogesterone", new ValueWithNote("36030766", "dydrogesterone / estradiol") }, // Confidence: 56.0%, OMOP Match: 100.0%
-            { "Emulsifying ointment + Phenoxyethanol", new ValueWithNote(null, null) },
-//             { "Emulsifying ointment + Phenoxyethanol", new ValueWithNote("19058343", "phenoxyethanol") }, // Confidence: 54.9%, OMOP Match: 100.0%
-            { "Insulin isophane porcine", new ValueWithNote(null, null) },
-//             { "Insulin isophane porcine", new ValueWithNote("40052072", "insulin isophane Injectable Suspension [Hypurin Porcine Isophane]") }, // Confidence: 53.9%, OMOP Match: 100.0%
-            { "Retinol + Vitamin D", new ValueWithNote(null, null) },
-//             { "Retinol + Vitamin D", new ValueWithNote("19008339", "vitamin A") }, // Confidence: 53.8%, OMOP Match: 100.0%
-            { "chlorhexidine-nystatin", new ValueWithNote(null, null) },
-//             { "chlorhexidine-nystatin", new ValueWithNote("922570", "nystatin") }, // Confidence: 53.3%, OMOP Match: 100.0%
-            { "Paed 3k 1L (aqueous)", new ValueWithNote(null, null) },
-//             { "Paed 3k 1L (aqueous)", new ValueWithNote("43526318", "potassium triiodide") }, // Confidence: 52.9%, OMOP Match: 100.0%
-            { "Al hydroxide/dicycloverine/MgO/simet", new ValueWithNote(null, null) },
-//             { "Al hydroxide/dicycloverine/MgO/simet", new ValueWithNote("36029063", "magnesium hydroxide / simethicone") }, // Confidence: 52.2%, OMOP Match: 100.0%
-            { "sodium bicarbonate-sodium biphosphate", new ValueWithNote(null, null) },
-//             { "sodium bicarbonate-sodium biphosphate", new ValueWithNote("36029231", "potassium bicarbonate / sodium bicarbonate / sodium citrate") }, // Confidence: 52.1%, OMOP Match: 100.0%
-            { "Neonatal Main (aqueous)", new ValueWithNote(null, null) },
-//             { "Neonatal Main (aqueous)", new ValueWithNote("19053623", "Opticrom Aqueous") }, // Confidence: 51.3%, OMOP Match: 100.0%
-            { "ubidecarenone (ubiquinone)", new ValueWithNote(null, null) },
-//             { "ubidecarenone (ubiquinone)", new ValueWithNote("43526994", "ubiquinone Q2") }, // Confidence: 51.3%, OMOP Match: 100.0%
-            { "benzalkonium/dimeticone/HC/nystatin top", new ValueWithNote(null, null) },
-//             { "benzalkonium/dimeticone/HC/nystatin top", new ValueWithNote("40167927", "benzalkonium Topical Gel [Sentry HC HOTspot]") }, // Confidence: 50.6%, OMOP Match: 100.0%
-            { "Neat", new ValueWithNote(null, null) },
-//             { "Neat", new ValueWithNote("42904273", "neatsfoot oil") }, // Confidence: 47.1%, OMOP Match: 100.0%
-            { "cetylpyridium/chlorocresol/lidocaine top", new ValueWithNote(null, null) },
-//             { "cetylpyridium/chlorocresol/lidocaine top", new ValueWithNote("19037891", "chlorocresol") }, // Confidence: 46.2%, OMOP Match: 100.0%
-            { "PCA", new ValueWithNote(null, null) },
-//             { "PCA", new ValueWithNote("43531981", "lauryl PCA") }, // Confidence: 46.2%, OMOP Match: 100.0%
-            { "imipenem-cilastatin", new ValueWithNote(null, null) },
-//             { "imipenem-cilastatin", new ValueWithNote("36030067", "cilastatin / imipenem / relebactam") }, // Confidence: 44.4%, OMOP Match: 100.0%
-            { "Drug chart reminder", new ValueWithNote(null, null) },
-//             { "Drug chart reminder", new ValueWithNote("40175669", "Stachybotrys chartarum allergenic extract") }, // Confidence: 43.9%, OMOP Match: 100.0%
-            { "guselkumab-golimumab-JNJ78934804", new ValueWithNote(null, null) },
-//             { "guselkumab-golimumab-JNJ78934804", new ValueWithNote("19041065", "golimumab") }, // Confidence: 43.9%, OMOP Match: 100.0%
-            { "amifampridine (3,4 DAP)", new ValueWithNote(null, null) },
-//             { "amifampridine (3,4 DAP)", new ValueWithNote("1355889", "amifampridine") }, // Confidence: 40.0%, OMOP Match: 100.0%
-            { "Additional chemotherapy and/or chemother", new ValueWithNote(null, null) },
-//             { "Additional chemotherapy and/or chemother", new ValueWithNote("36232901", "Baza Cleanse and Protect Medicated Pad or Tape") }, // Confidence: 39.5%, OMOP Match: 100.0%
-            { "BCG", new ValueWithNote(null, null) },
+//            { "briMONidine-brinZOLamide ophthalmic", new ValueWithNote(null, null) },
+////             { "briMONidine-brinZOLamide ophthalmic", new ValueWithNote("36246176", "brimonidine / brinzolamide Ophthalmic Product") }, // Confidence: 85.0%, OMOP Match: 100.0%
+//            { "ipratropium nasal", new ValueWithNote(null, null) },
+////             { "ipratropium nasal", new ValueWithNote("40049465", "ipratropium Nasal Spray") }, // Confidence: 85.0%, OMOP Match: 100.0%
+//            { "briMONidine ophthalmic", new ValueWithNote(null, null) },
+////             { "briMONidine ophthalmic", new ValueWithNote("36219537", "brimonidine Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
+//            { "biMAToprost ophthalmic", new ValueWithNote(null, null) },
+////             { "biMAToprost ophthalmic", new ValueWithNote("36226260", "bimatoprost Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
+//            { "DORzolamide ophthalmic", new ValueWithNote(null, null) },
+////             { "DORzolamide ophthalmic", new ValueWithNote("36224178", "dorzolamide Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
+//            { "latanoprost ophthalmic", new ValueWithNote(null, null) },
+////             { "latanoprost ophthalmic", new ValueWithNote("36226918", "latanoprost Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
+//            { "levobunolol ophthalmic", new ValueWithNote(null, null) },
+////             { "levobunolol ophthalmic", new ValueWithNote("36221015", "levobunolol Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
+//            { "propamidine ophthalmic", new ValueWithNote(null, null) },
+////             { "propamidine ophthalmic", new ValueWithNote("36211817", "propamidine Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
+//            { "olopatadine ophthalmic", new ValueWithNote(null, null) },
+////             { "olopatadine ophthalmic", new ValueWithNote("36223879", "olopatadine Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
+//            { "tropicamide ophthalmic", new ValueWithNote(null, null) },
+////             { "tropicamide ophthalmic", new ValueWithNote("36227351", "tropicamide Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
+//            { "Witch hazel ophthalmic", new ValueWithNote(null, null) },
+////             { "Witch hazel ophthalmic", new ValueWithNote("36227261", "witch hazel Ophthalmic Product") }, // Confidence: 84.6%, OMOP Match: 100.0%
+//            { "beclometasone nasal", new ValueWithNote(null, null) },
+////             { "beclometasone nasal", new ValueWithNote("40010699", "beclomethasone Nasal Spray") }, // Confidence: 84.4%, OMOP Match: 100.0%
+//            { "betamethasone-neomycin ophthalmic", new ValueWithNote(null, null) },
+////             { "betamethasone-neomycin ophthalmic", new ValueWithNote("36212136", "betamethasone / neomycin Ophthalmic Product") }, // Confidence: 84.2%, OMOP Match: 100.0%
+//            { "azelastine nasal", new ValueWithNote(null, null) },
+////             { "azelastine nasal", new ValueWithNote("40133581", "azelastine Nasal Spray") }, // Confidence: 84.2%, OMOP Match: 100.0%
+//            { "gentamicin-hydrocortisone otic", new ValueWithNote(null, null) },
+////             { "gentamicin-hydrocortisone otic", new ValueWithNote("36029279", "gentamicin / hydrocortisone") }, // Confidence: 84.2%, OMOP Match: 100.0%
+//            { "mometasone nasal", new ValueWithNote(null, null) },
+////             { "mometasone nasal", new ValueWithNote("40066277", "mometasone Nasal Spray") }, // Confidence: 84.2%, OMOP Match: 100.0%
+//            { "budesonide nasal", new ValueWithNote(null, null) },
+////             { "budesonide nasal", new ValueWithNote("40020313", "budesonide Nasal Spray") }, // Confidence: 84.2%, OMOP Match: 100.0%
+//            { "azelastine-fluticasone nasal", new ValueWithNote(null, null) },
+////             { "azelastine-fluticasone nasal", new ValueWithNote("778911", "azelastine / fluticasone") }, // Confidence: 84.0%, OMOP Match: 100.0%
+//            { "azelastine ophthalmic", new ValueWithNote(null, null) },
+////             { "azelastine ophthalmic", new ValueWithNote("36225520", "azelastine Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
+//            { "cefUROXime ophthalmic", new ValueWithNote(null, null) },
+////             { "cefUROXime ophthalmic", new ValueWithNote("36217283", "cefuroxime Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
+//            { "diclofenac ophthalmic", new ValueWithNote(null, null) },
+////             { "diclofenac ophthalmic", new ValueWithNote("36217233", "diclofenac Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
+//            { "epinastine ophthalmic", new ValueWithNote(null, null) },
+////             { "epinastine ophthalmic", new ValueWithNote("36225777", "epinastine Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
+//            { "gentamicin ophthalmic", new ValueWithNote(null, null) },
+////             { "gentamicin ophthalmic", new ValueWithNote("1594375", "gentamicin Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
+//            { "lodoxamide ophthalmic", new ValueWithNote(null, null) },
+////             { "lodoxamide ophthalmic", new ValueWithNote("36221142", "lodoxamide Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
+//            { "tetracaine ophthalmic", new ValueWithNote(null, null) },
+////             { "tetracaine ophthalmic", new ValueWithNote("36221743", "tetracaine Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
+//            { "traVOprost ophthalmic", new ValueWithNote(null, null) },
+////             { "traVOprost ophthalmic", new ValueWithNote("36225495", "travoprost Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
+//            { "taFLuprost ophthalmic", new ValueWithNote(null, null) },
+////             { "taFLuprost ophthalmic", new ValueWithNote("36238005", "tafluprost Ophthalmic Product") }, // Confidence: 84.0%, OMOP Match: 100.0%
+//            { "bromfenac ophthalmic", new ValueWithNote(null, null) },
+////             { "bromfenac ophthalmic", new ValueWithNote("36219545", "bromfenac Ophthalmic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
+//            { "chloramPHENICOL otic", new ValueWithNote(null, null) },
+////             { "chloramPHENICOL otic", new ValueWithNote("36216754", "chloramphenicol Otic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
+//            { "dicycloverine", new ValueWithNote(null, null) },
+////             { "dicycloverine", new ValueWithNote("1710446", "cycloserine") }, // Confidence: 83.3%, OMOP Match: 100.0%
+//            { "ephedrine nasal", new ValueWithNote(null, null) },
+////             { "ephedrine nasal", new ValueWithNote("40037821", "ephedrine Nasal Spray") }, // Confidence: 83.3%, OMOP Match: 100.0%
+//            { "ketorolac ophthalmic", new ValueWithNote(null, null) },
+////             { "ketorolac ophthalmic", new ValueWithNote("36225366", "ketorolac Ophthalmic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
+//            { "nepafenac ophthalmic", new ValueWithNote(null, null) },
+////             { "nepafenac ophthalmic", new ValueWithNote("36223788", "nepafenac Ophthalmic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
+//            { "ofloxacin ophthalmic", new ValueWithNote(null, null) },
+////             { "ofloxacin ophthalmic", new ValueWithNote("36227393", "ofloxacin Ophthalmic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
+//            { "betaxolol ophthalmic", new ValueWithNote(null, null) },
+////             { "betaxolol ophthalmic", new ValueWithNote("36212161", "betaxolol Ophthalmic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
+//            { "ketotifen ophthalmic", new ValueWithNote(null, null) },
+////             { "ketotifen ophthalmic", new ValueWithNote("36225372", "ketotifen Ophthalmic Product") }, // Confidence: 83.3%, OMOP Match: 100.0%
+//            { "atropine ophthalmic", new ValueWithNote(null, null) },
+////             { "atropine ophthalmic", new ValueWithNote("36212940", "atropine Ophthalmic Product") }, // Confidence: 82.6%, OMOP Match: 100.0%
+//            { "Insulin isophane bovine", new ValueWithNote(null, null) },
+////             { "Insulin isophane bovine", new ValueWithNote("46221581", "insulin isophane") }, // Confidence: 82.1%, OMOP Match: 100.0%
+//            { "ciprofloxacin otic", new ValueWithNote(null, null) },
+////             { "ciprofloxacin otic", new ValueWithNote("36217292", "ciprofloxacin Otic Product") }, // Confidence: 81.8%, OMOP Match: 100.0%
+//            { "citric acid/Mg oxide/Na picosulfate", new ValueWithNote(null, null) },
+////             { "citric acid/Mg oxide/Na picosulfate", new ValueWithNote("36029516", "citric acid / magnesium oxide / picosulfurate") }, // Confidence: 81.5%, OMOP Match: 100.0%
+//            { "lidocaine-phenylephrine nasal", new ValueWithNote(null, null) },
+////             { "lidocaine-phenylephrine nasal", new ValueWithNote("36030085", "lidocaine / phenylephrine") }, // Confidence: 81.5%, OMOP Match: 100.0%
+//            { "Zuclopenthixol acetate injection", new ValueWithNote(null, null) },
+////             { "Zuclopenthixol acetate injection", new ValueWithNote("19121994", "zuclopenthixol acetate") }, // Confidence: 81.5%, OMOP Match: 100.0%
+//            { "amylmetacresol-dichlorobenzyl alc top", new ValueWithNote(null, null) },
+////             { "amylmetacresol-dichlorobenzyl alc top", new ValueWithNote("36028603", "amylmetacresol / dichlorobenzyl alcohol / menthol") }, // Confidence: 81.4%, OMOP Match: 100.0%
+//            { "timolol-traVOprost ophthalmic", new ValueWithNote(null, null) },
+////             { "timolol-traVOprost ophthalmic", new ValueWithNote("40099457", "travoprost Ophthalmic Solution") }, // Confidence: 81.4%, OMOP Match: 100.0%
+//            { "fluticasone nasal", new ValueWithNote(null, null) },
+////             { "fluticasone nasal", new ValueWithNote("36220588", "fluticasone Nasal Product") }, // Confidence: 81.0%, OMOP Match: 100.0%
+//            { "Convalescent Plasma", new ValueWithNote(null, null) },
+////             { "Convalescent Plasma", new ValueWithNote("33000", "COVID-19 convalescent plasma") }, // Confidence: 80.9%, OMOP Match: 100.0%
+//            { "clioquinol-flumetasone otic", new ValueWithNote(null, null) },
+////             { "clioquinol-flumetasone otic", new ValueWithNote("36030361", "clioquinol / flumethasone") }, // Confidence: 80.8%, OMOP Match: 100.0%
+//            { "Estradiol + norETHISTerone", new ValueWithNote(null, null) },
+////             { "Estradiol + norETHISTerone", new ValueWithNote("36030820", "ethinyl estradiol / ethisterone") }, // Confidence: 80.7%, OMOP Match: 100.0%
+//            { "acetic acid otic", new ValueWithNote(null, null) },
+////             { "acetic acid otic", new ValueWithNote("36217021", "acetic acid Otic Product") }, // Confidence: 80.0%, OMOP Match: 100.0%
+//            { "benzalkonium chloride-cetrimide", new ValueWithNote(null, null) },
+////             { "benzalkonium chloride-cetrimide", new ValueWithNote("36030307", "benzalkonium / cetrimide") }, // Confidence: 80.0%, OMOP Match: 100.0%
+//            { "citric acid-magnesium carbonate", new ValueWithNote(null, null) },
+////             { "citric acid-magnesium carbonate", new ValueWithNote("36030486", "citric acid / magnesium oxide / sodium carbonate") }, // Confidence: 80.0%, OMOP Match: 100.0%
+//            { "Digoxin specific antibody", new ValueWithNote(null, null) },
+////             { "Digoxin specific antibody", new ValueWithNote("35603726", "ovine digoxin immune fab") }, // Confidence: 80.0%, OMOP Match: 100.0%
+//            { "Urea (13-C)", new ValueWithNote(null, null) },
+////             { "Urea (13-C)", new ValueWithNote("19054337", "urea c-13") }, // Confidence: 80.0%, OMOP Match: 100.0%
+//            { "Potassium chloride 20mmol with Glucose 5", new ValueWithNote(null, null) },
+////             { "Potassium chloride 20mmol with Glucose 5", new ValueWithNote("36030057", "glucose / potassium chloride") }, // Confidence: 79.4%, OMOP Match: 100.0%
+//            { "Potassium chloride 20mmol with Glucose 2", new ValueWithNote(null, null) },
+////             { "Potassium chloride 20mmol with Glucose 2", new ValueWithNote("36030057", "glucose / potassium chloride") }, // Confidence: 79.4%, OMOP Match: 100.0%
+//            { "Potassium chloride 10mmol with Glucose 1", new ValueWithNote(null, null) },
+////             { "Potassium chloride 10mmol with Glucose 1", new ValueWithNote("36030057", "glucose / potassium chloride") }, // Confidence: 79.4%, OMOP Match: 100.0%
+//            { "Potassium chloride 10mmol with Glucose 5", new ValueWithNote(null, null) },
+////             { "Potassium chloride 10mmol with Glucose 5", new ValueWithNote("36030057", "glucose / potassium chloride") }, // Confidence: 79.4%, OMOP Match: 100.0%
+//            { "Potassium chloride 20mmol with Glucose 1", new ValueWithNote(null, null) },
+////             { "Potassium chloride 20mmol with Glucose 1", new ValueWithNote("36030057", "glucose / potassium chloride") }, // Confidence: 79.4%, OMOP Match: 100.0%
+//            { "chlorhexidine-fluoride", new ValueWithNote(null, null) },
+////             { "chlorhexidine-fluoride", new ValueWithNote("36027304", "chlorhexidine / sodium fluoride") }, // Confidence: 79.2%, OMOP Match: 100.0%
+//            { "cicloSPORIN ophthalmic", new ValueWithNote(null, null) },
+////             { "cicloSPORIN ophthalmic", new ValueWithNote("36213827", "cyclosporine Ophthalmic Product") }, // Confidence: 79.2%, OMOP Match: 100.0%
+//            { "aciclovir ophthalmic", new ValueWithNote(null, null) },
+////             { "aciclovir ophthalmic", new ValueWithNote("36217182", "acyclovir Ophthalmic Product") }, // Confidence: 79.2%, OMOP Match: 100.0%
+//            { "amphotericin B (Fungizone)", new ValueWithNote(null, null) },
+////             { "amphotericin B (Fungizone)", new ValueWithNote("19098044", "amphotericin B 30 MG/ML [Fungizone]") }, // Confidence: 78.7%, OMOP Match: 100.0%
+//            { "Zuclopenthixol decanoate depot inject", new ValueWithNote(null, null) },
+////             { "Zuclopenthixol decanoate depot inject", new ValueWithNote("19121997", "zuclopenthixol decanoate") }, // Confidence: 78.7%, OMOP Match: 100.0%
+//            { "insulin isophane biphasic", new ValueWithNote(null, null) },
+////             { "insulin isophane biphasic", new ValueWithNote("46221581", "insulin isophane") }, // Confidence: 78.0%, OMOP Match: 100.0%
+//            { "potassium ascorbate ophthalmic", new ValueWithNote(null, null) },
+////             { "potassium ascorbate ophthalmic", new ValueWithNote("36027699", "calcium ascorbate / potassium") }, // Confidence: 78.0%, OMOP Match: 100.0%
+//            { "fentaNYL-LEVObupivacaine", new ValueWithNote(null, null) },
+////             { "fentaNYL-LEVObupivacaine", new ValueWithNote("19098741", "levobupivacaine") }, // Confidence: 76.9%, OMOP Match: 100.0%
+//            { "cocaine nasal", new ValueWithNote(null, null) },
+////             { "cocaine nasal", new ValueWithNote("36213696", "cocaine Nasal Product") }, // Confidence: 76.5%, OMOP Match: 100.0%
+//            { "estradiol-norETHISTerone", new ValueWithNote(null, null) },
+////             { "estradiol-norETHISTerone", new ValueWithNote("36030820", "ethinyl estradiol / ethisterone") }, // Confidence: 76.4%, OMOP Match: 100.0%
+//            { "immunoglobulin subcutaneous", new ValueWithNote(null, null) },
+////             { "immunoglobulin subcutaneous", new ValueWithNote("551749", "immunoglobulins, intravenous") }, // Confidence: 76.4%, OMOP Match: 100.0%
+//            { "Liquid paraffin + Magnesium hydroxide", new ValueWithNote(null, null) },
+////             { "Liquid paraffin + Magnesium hydroxide", new ValueWithNote("36215463", "magnesium hydroxide Oral Liquid Product") }, // Confidence: 76.3%, OMOP Match: 100.0%
+//            { "antazoline-xylometazoline ophthalmic", new ValueWithNote(null, null) },
+////             { "antazoline-xylometazoline ophthalmic", new ValueWithNote("36030351", "antazoline / xylometazoline") }, // Confidence: 76.2%, OMOP Match: 100.0%
+//            { "argipressin (vasopressin)", new ValueWithNote(null, null) },
+////             { "argipressin (vasopressin)", new ValueWithNote("19006871", "argipressin") }, // Confidence: 76.0%, OMOP Match: 100.0%
+//            { "betamethasone-fusidic acid", new ValueWithNote(null, null) },
+////             { "betamethasone-fusidic acid", new ValueWithNote("36027464", "betamethasone / fusidate") }, // Confidence: 76.0%, OMOP Match: 100.0%
+//            { "Lidocaine + Adrenaline + Tetracaine", new ValueWithNote(null, null) },
+////             { "Lidocaine + Adrenaline + Tetracaine", new ValueWithNote("36028515", "adrenalone / tetracaine") }, // Confidence: 75.9%, OMOP Match: 100.0%
+//            { "insulin aspart biphasic", new ValueWithNote(null, null) },
+////             { "insulin aspart biphasic", new ValueWithNote("1567198", "insulin aspart, human") }, // Confidence: 75.7%, OMOP Match: 100.0%
+//            { "insulin lispro biphasic", new ValueWithNote(null, null) },
+////             { "insulin lispro biphasic", new ValueWithNote("1550023", "insulin lispro") }, // Confidence: 75.7%, OMOP Match: 100.0%
+//            { "Bee venom", new ValueWithNote(null, null) },
+////             { "Bee venom", new ValueWithNote("514834", "honey bee venom") }, // Confidence: 75.0%, OMOP Match: 100.0%
+//            { "ispaghula-senna", new ValueWithNote(null, null) },
+////             { "ispaghula-senna", new ValueWithNote("19132967", "ispaghula extract") }, // Confidence: 75.0%, OMOP Match: 100.0%
+//            { "Terpin + Codeine", new ValueWithNote(null, null) },
+////             { "Terpin + Codeine", new ValueWithNote("36030564", "codeine / terpin hydrate") }, // Confidence: 75.0%, OMOP Match: 100.0%
+//            { "Alpha tocopherol + Selenium", new ValueWithNote(null, null) },
+////             { "Alpha tocopherol + Selenium", new ValueWithNote("19056802", "alpha tocopherol") }, // Confidence: 74.4%, OMOP Match: 100.0%
+//            { "brinZOLamide-timolol ophthalmic", new ValueWithNote(null, null) },
+////             { "brinZOLamide-timolol ophthalmic", new ValueWithNote("36219538", "brinzolamide Ophthalmic Product") }, // Confidence: 74.2%, OMOP Match: 100.0%
+//            { "phenoxymethylpenicillin potassium", new ValueWithNote(null, null) },
+////             { "phenoxymethylpenicillin potassium", new ValueWithNote("19133859", "penicillin V potassium 50 MG/ML Oral Solution") }, // Confidence: 74.2%, OMOP Match: 100.0%
+//            { "Glucose 4% with 0.18% Sodium Chloride in", new ValueWithNote(null, null) },
+////             { "Glucose 4% with 0.18% Sodium Chloride in", new ValueWithNote("36029299", "glucose / sodium chloride") }, // Confidence: 73.8%, OMOP Match: 100.0%
+//            { "Glucose 5% with 0.45% Sodium Chloride in", new ValueWithNote(null, null) },
+////             { "Glucose 5% with 0.45% Sodium Chloride in", new ValueWithNote("36029299", "glucose / sodium chloride") }, // Confidence: 73.8%, OMOP Match: 100.0%
+//            { "Glucose 5% with 0.9% Sodium Chloride int", new ValueWithNote(null, null) },
+////             { "Glucose 5% with 0.9% Sodium Chloride int", new ValueWithNote("36029299", "glucose / sodium chloride") }, // Confidence: 73.8%, OMOP Match: 100.0%
+//            { "Glucose 10% with Sodium Chloride 0.18% i", new ValueWithNote(null, null) },
+////             { "Glucose 10% with Sodium Chloride 0.18% i", new ValueWithNote("36029299", "glucose / sodium chloride") }, // Confidence: 73.8%, OMOP Match: 100.0%
+//            { "briMONidine-timolol ophthalmic", new ValueWithNote(null, null) },
+////             { "briMONidine-timolol ophthalmic", new ValueWithNote("36030258", "brimonidine / timolol") }, // Confidence: 73.5%, OMOP Match: 100.0%
+//            { "DORzolamide-timolol ophthalmic", new ValueWithNote(null, null) },
+////             { "DORzolamide-timolol ophthalmic", new ValueWithNote("36030344", "dorzolamide / timolol") }, // Confidence: 73.5%, OMOP Match: 100.0%
+//            { "biMAToprost-timolol ophthalmic", new ValueWithNote(null, null) },
+////             { "biMAToprost-timolol ophthalmic", new ValueWithNote("36226260", "bimatoprost Ophthalmic Product") }, // Confidence: 73.3%, OMOP Match: 100.0%
+//            { "Liquid paraffin ophthalmic", new ValueWithNote(null, null) },
+////             { "Liquid paraffin ophthalmic", new ValueWithNote("908523", "mineral oil") }, // Confidence: 73.2%, OMOP Match: 100.0%
+//            { "ichthammol-zinc oxide", new ValueWithNote(null, null) },
+////             { "ichthammol-zinc oxide", new ValueWithNote("36030285", "ichthammol / zinc oxide") }, // Confidence: 72.7%, OMOP Match: 100.0%
+//            { "taFLuprost-timolol ophthalmic", new ValueWithNote(null, null) },
+////             { "taFLuprost-timolol ophthalmic", new ValueWithNote("36238005", "tafluprost Ophthalmic Product") }, // Confidence: 72.4%, OMOP Match: 100.0%
+//            { "trometamol (THAM))", new ValueWithNote(null, null) },
+////             { "trometamol (THAM))", new ValueWithNote("1511352", "trometamol citrate") }, // Confidence: 72.2%, OMOP Match: 100.0%
+//            { "dexamethasone/neomycin/polymyxin B ophth", new ValueWithNote(null, null) },
+////             { "dexamethasone/neomycin/polymyxin B ophth", new ValueWithNote("36213940", "dexamethasone / neomycin / polymyxin B Ophthalmic Product") }, // Confidence: 72.2%, OMOP Match: 100.0%
+//            { "piperacillin-tazobactam (Tazocin equival", new ValueWithNote(null, null) },
+////             { "piperacillin-tazobactam (Tazocin equival", new ValueWithNote("46275426", "piperacillin / tazobactam Injection") }, // Confidence: 72.0%, OMOP Match: 100.0%
+//            { "proxymetacaine ophthalmic", new ValueWithNote(null, null) },
+////             { "proxymetacaine ophthalmic", new ValueWithNote("929504", "proparacaine") }, // Confidence: 71.8%, OMOP Match: 100.0%
+//            { "lidocaine-zinc oxide", new ValueWithNote(null, null) },
+////             { "lidocaine-zinc oxide", new ValueWithNote("36030290", "lidocaine / zinc oxide") }, // Confidence: 71.4%, OMOP Match: 100.0%
+//            { "sodium alginate-potassium bicarbonate", new ValueWithNote(null, null) },
+////             { "sodium alginate-potassium bicarbonate", new ValueWithNote("36028316", "alginic acid / sodium bicarbonate") }, // Confidence: 71.4%, OMOP Match: 100.0%
+//            { "acetic acid/dexamethasone/neomycin otic", new ValueWithNote(null, null) },
+////             { "acetic acid/dexamethasone/neomycin otic", new ValueWithNote("36213943", "dexamethasone / neomycin Otic Product") }, // Confidence: 71.1%, OMOP Match: 100.0%
+//            { "Calcium citrate + Colecalciferol", new ValueWithNote(null, null) },
+////             { "Calcium citrate + Colecalciferol", new ValueWithNote("36027950", "calcium citrate / cholecalciferol") }, // Confidence: 70.8%, OMOP Match: 100.0%
+//            { "Al hydroxide/Mg hydroxide/simeticone", new ValueWithNote(null, null) },
+////             { "Al hydroxide/Mg hydroxide/simeticone", new ValueWithNote("36027592", "aluminum hydroxide / simethicone") }, // Confidence: 70.6%, OMOP Match: 100.0%
+//            { "latanoprost-timolol ophthalmic", new ValueWithNote(null, null) },
+////             { "latanoprost-timolol ophthalmic", new ValueWithNote("36030140", "latanoprost / timolol") }, // Confidence: 70.6%, OMOP Match: 100.0%
+//            { "oxybuprocaine ophthalmic", new ValueWithNote(null, null) },
+////             { "oxybuprocaine ophthalmic", new ValueWithNote("935529", "benoxinate") }, // Confidence: 70.3%, OMOP Match: 100.0%
+//            { "Soft paraffin + Wool fat", new ValueWithNote(null, null) },
+////             { "Soft paraffin + Wool fat", new ValueWithNote("19033354", "petrolatum") }, // Confidence: 70.3%, OMOP Match: 100.0%
+//            { "Corticotrophin releasing hormone", new ValueWithNote(null, null) },
+////             { "Corticotrophin releasing hormone", new ValueWithNote("19048699", "corticotropin-releasing hormone") }, // Confidence: 69.8%, OMOP Match: 100.0%
+//            { "Alginic acid/calcium carbonate/Na bic", new ValueWithNote(null, null) },
+////             { "Alginic acid/calcium carbonate/Na bic", new ValueWithNote("36027575", "alginic acid / calcium carbonate") }, // Confidence: 69.6%, OMOP Match: 100.0%
+//            { "calcium acetate-magnesium carbonate", new ValueWithNote(null, null) },
+////             { "calcium acetate-magnesium carbonate", new ValueWithNote("778779", "calcium acetate / magnesium carbonate") }, // Confidence: 69.4%, OMOP Match: 100.0%
+//            { "Aluminium acetate", new ValueWithNote(null, null) },
+////             { "Aluminium acetate", new ValueWithNote("42898412", "aluminum") }, // Confidence: 69.2%, OMOP Match: 100.0%
+//            { "polihexanide ophthalmic", new ValueWithNote(null, null) },
+////             { "polihexanide ophthalmic", new ValueWithNote("43525903", "polihexanide") }, // Confidence: 68.6%, OMOP Match: 100.0%
+//            { "mercaptAMine ophthalmic", new ValueWithNote(null, null) },
+////             { "mercaptAMine ophthalmic", new ValueWithNote("910888", "cysteamine") }, // Confidence: 68.6%, OMOP Match: 100.0%
+//            { "Liquid paraffin + Isopropyl myristate", new ValueWithNote(null, null) },
+////             { "Liquid paraffin + Isopropyl myristate", new ValueWithNote("19003568", "isopropyl myristate") }, // Confidence: 67.9%, OMOP Match: 100.0%
+//            { "Mg acetate/Mg carbonate/Mg hydroxide", new ValueWithNote(null, null) },
+////             { "Mg acetate/Mg carbonate/Mg hydroxide", new ValueWithNote("43012385", "magnesium carbonate hydroxide") }, // Confidence: 67.7%, OMOP Match: 100.0%
+//            { "Continuous epidural infusion", new ValueWithNote(null, null) },
+////             { "Continuous epidural infusion", new ValueWithNote("19100021", "Pranoxen Continus") }, // Confidence: 66.7%, OMOP Match: 100.0%
+//            { "dexamethasone-tobramycin ophthalmic", new ValueWithNote(null, null) },
+////             { "dexamethasone-tobramycin ophthalmic", new ValueWithNote("40027456", "dexamethasone / tobramycin Ophthalmic Ointment") }, // Confidence: 66.7%, OMOP Match: 100.0%
+//            { "ispaghula-mebeverine", new ValueWithNote(null, null) },
+////             { "ispaghula-mebeverine", new ValueWithNote("19008994", "mebeverine") }, // Confidence: 66.7%, OMOP Match: 100.0%
+//            { "White soft paraffin + Liquid paraffin", new ValueWithNote(null, null) },
+////             { "White soft paraffin + Liquid paraffin", new ValueWithNote("19033354", "petrolatum") }, // Confidence: 66.7%, OMOP Match: 100.0%
+//            { "potassium acid tartrate-potassium bicarb", new ValueWithNote(null, null) },
+////             { "potassium acid tartrate-potassium bicarb", new ValueWithNote("36027949", "potassium bicarbonate / potassium tartrate") }, // Confidence: 65.9%, OMOP Match: 100.0%
+//            { "Glucose 2.5% with 0.45% Sodium Chloride", new ValueWithNote(null, null) },
+////             { "Glucose 2.5% with 0.45% Sodium Chloride", new ValueWithNote("40221365", "50 ML sodium chloride 4.5 MG/ML Injection") }, // Confidence: 65.7%, OMOP Match: 100.0%
+//            { "imipenem/cilastatin/relebactam", new ValueWithNote(null, null) },
+////             { "imipenem/cilastatin/relebactam", new ValueWithNote("36030067", "cilastatin / imipenem / relebactam") }, // Confidence: 65.6%, OMOP Match: 100.0%
+//            { "haemophilus b-meningococcal conj vaccine", new ValueWithNote(null, null) },
+////             { "haemophilus b-meningococcal conj vaccine", new ValueWithNote("530009", "0.5 ML Haemophilus influenzae b (Ross strain) capsular polysaccharide meningococcal protein conjugate vaccine 0.265 MG/ML Injection") }, // Confidence: 65.5%, OMOP Match: 100.0%
+//            { "Glucose 5% to", new ValueWithNote(null, null) },
+////             { "Glucose 5% to", new ValueWithNote("19095012", "glucose 82.5 MG/ML") }, // Confidence: 64.5%, OMOP Match: 100.0%
+//            { "calamine-glycerol", new ValueWithNote(null, null) },
+////             { "calamine-glycerol", new ValueWithNote("961145", "glycerin") }, // Confidence: 64.0%, OMOP Match: 100.0%
+//            { "fusidic acid ophthalmic", new ValueWithNote(null, null) },
+////             { "fusidic acid ophthalmic", new ValueWithNote("36220424", "fusidate Ophthalmic Product") }, // Confidence: 64.0%, OMOP Match: 100.0%
+//            { "calamine-menthol", new ValueWithNote(null, null) },
+////             { "calamine-menthol", new ValueWithNote("36029578", "calamine / menthol / zinc oxide") }, // Confidence: 63.8%, OMOP Match: 100.0%
+//            { "Continuous subcutaneous", new ValueWithNote(null, null) },
+////             { "Continuous subcutaneous", new ValueWithNote("19053549", "MST Continus") }, // Confidence: 62.9%, OMOP Match: 100.0%
+//            { "Dronabinol + Cannabidiol", new ValueWithNote(null, null) },
+////             { "Dronabinol + Cannabidiol", new ValueWithNote("1510417", "cannabidiol") }, // Confidence: 62.9%, OMOP Match: 100.0%
+//            { "hamamelis ophthalmic", new ValueWithNote(null, null) },
+////             { "hamamelis ophthalmic", new ValueWithNote("959196", "witch hazel") }, // Confidence: 62.9%, OMOP Match: 100.0%
+//            { "SNG001 (Interferon -ß1a)", new ValueWithNote(null, null) },
+////             { "SNG001 (Interferon -ß1a)", new ValueWithNote("40053881", "Interferons") }, // Confidence: 62.9%, OMOP Match: 100.0%
+//            { "adrenaline-lidocaine", new ValueWithNote(null, null) },
+////             { "adrenaline-lidocaine", new ValueWithNote("44814295", "Adrenalin") }, // Confidence: 62.1%, OMOP Match: 100.0%
+//            { "alteplase ophthalmic", new ValueWithNote(null, null) },
+////             { "alteplase ophthalmic", new ValueWithNote("1347450", "alteplase") }, // Confidence: 62.1%, OMOP Match: 100.0%
+//            { "fusidic acid-hydrocortisone", new ValueWithNote(null, null) },
+////             { "fusidic acid-hydrocortisone", new ValueWithNote("36028432", "fusidate / hydrocortisone") }, // Confidence: 61.5%, OMOP Match: 100.0%
+//            { "dexamethasone/framycetin/gramicid ophth", new ValueWithNote(null, null) },
+////             { "dexamethasone/framycetin/gramicid ophth", new ValueWithNote("36027970", "framycetin / gramicidin") }, // Confidence: 61.3%, OMOP Match: 100.0%
+//            { "Castor oil + Zinc oxide", new ValueWithNote(null, null) },
+////             { "Castor oil + Zinc oxide", new ValueWithNote("950933", "castor oil") }, // Confidence: 60.6%, OMOP Match: 100.0%
+//            { "Meningococcal groups A + C + W135 + Y", new ValueWithNote(null, null) },
+////             { "Meningococcal groups A + C + W135 + Y", new ValueWithNote("514015", "meningococcal polysaccharide vaccine group Y") }, // Confidence: 59.3%, OMOP Match: 100.0%
+//            { "Potassium Chloride 0.2% (27 mmol/L) in G", new ValueWithNote(null, null) },
+////             { "Potassium Chloride 0.2% (27 mmol/L) in G", new ValueWithNote("19101198", "potassium 7.7 MMOL") }, // Confidence: 58.6%, OMOP Match: 100.0%
+//            { "Potassium Chloride 0.6% (80 mmol/L) in S", new ValueWithNote(null, null) },
+////             { "Potassium Chloride 0.6% (80 mmol/L) in S", new ValueWithNote("19101211", "potassium 8.4 MMOL") }, // Confidence: 58.6%, OMOP Match: 100.0%
+//            { "adrenaline-BUPivacaine", new ValueWithNote(null, null) },
+////             { "adrenaline-BUPivacaine", new ValueWithNote("44814295", "Adrenalin") }, // Confidence: 58.1%, OMOP Match: 100.0%
+//            { "frangula-sterculia", new ValueWithNote(null, null) },
+////             { "frangula-sterculia", new ValueWithNote("19016537", "Frangula preparation") }, // Confidence: 57.9%, OMOP Match: 100.0%
+//            { "Continuous subcutaneous infusion", new ValueWithNote(null, null) },
+////             { "Continuous subcutaneous infusion", new ValueWithNote("19100536", "Nitrocontin Continus") }, // Confidence: 57.7%, OMOP Match: 100.0%
+//            { "mercaptAMine (Cysteamine)", new ValueWithNote(null, null) },
+////             { "mercaptAMine (Cysteamine)", new ValueWithNote("910888", "cysteamine") }, // Confidence: 57.1%, OMOP Match: 100.0%
+//            { "Potassium Chloride 0.15% (20 mmol/L) in", new ValueWithNote(null, null) },
+////             { "Potassium Chloride 0.15% (20 mmol/L) in", new ValueWithNote("19101200", "potassium 10 MMOL") }, // Confidence: 57.1%, OMOP Match: 100.0%
+//            { "Clobetasol/oxytetracycline/nystatin topi", new ValueWithNote(null, null) },
+////             { "Clobetasol/oxytetracycline/nystatin topi", new ValueWithNote("36227369", "nystatin / oxytetracycline Pill") }, // Confidence: 56.3%, OMOP Match: 100.0%
+//            { "BUPivacaine + cloNIDine", new ValueWithNote(null, null) },
+////             { "BUPivacaine + cloNIDine", new ValueWithNote("1398937", "clonidine") }, // Confidence: 56.2%, OMOP Match: 100.0%
+//            { "Potassium Chloride 0.3% (40 mmol/L) in S", new ValueWithNote(null, null) },
+////             { "Potassium Chloride 0.3% (40 mmol/L) in S", new ValueWithNote("19101200", "potassium 10 MMOL") }, // Confidence: 56.1%, OMOP Match: 100.0%
+//            { "Potassium Chloride 0.3% (40 mmol/L) in G", new ValueWithNote(null, null) },
+////             { "Potassium Chloride 0.3% (40 mmol/L) in G", new ValueWithNote("19101200", "potassium 10 MMOL") }, // Confidence: 56.1%, OMOP Match: 100.0%
+//            { "Estriol applicator", new ValueWithNote(null, null) },
+////             { "Estriol applicator", new ValueWithNote("19049038", "estriol") }, // Confidence: 56.0%, OMOP Match: 100.0%
+//            { "Estradiol-dydrogesterone", new ValueWithNote(null, null) },
+////             { "Estradiol-dydrogesterone", new ValueWithNote("36030766", "dydrogesterone / estradiol") }, // Confidence: 56.0%, OMOP Match: 100.0%
+//            { "Emulsifying ointment + Phenoxyethanol", new ValueWithNote(null, null) },
+////             { "Emulsifying ointment + Phenoxyethanol", new ValueWithNote("19058343", "phenoxyethanol") }, // Confidence: 54.9%, OMOP Match: 100.0%
+//            { "Insulin isophane porcine", new ValueWithNote(null, null) },
+////             { "Insulin isophane porcine", new ValueWithNote("40052072", "insulin isophane Injectable Suspension [Hypurin Porcine Isophane]") }, // Confidence: 53.9%, OMOP Match: 100.0%
+//            { "Retinol + Vitamin D", new ValueWithNote(null, null) },
+////             { "Retinol + Vitamin D", new ValueWithNote("19008339", "vitamin A") }, // Confidence: 53.8%, OMOP Match: 100.0%
+//            { "chlorhexidine-nystatin", new ValueWithNote(null, null) },
+////             { "chlorhexidine-nystatin", new ValueWithNote("922570", "nystatin") }, // Confidence: 53.3%, OMOP Match: 100.0%
+//            { "Paed 3k 1L (aqueous)", new ValueWithNote(null, null) },
+////             { "Paed 3k 1L (aqueous)", new ValueWithNote("43526318", "potassium triiodide") }, // Confidence: 52.9%, OMOP Match: 100.0%
+//            { "Al hydroxide/dicycloverine/MgO/simet", new ValueWithNote(null, null) },
+////             { "Al hydroxide/dicycloverine/MgO/simet", new ValueWithNote("36029063", "magnesium hydroxide / simethicone") }, // Confidence: 52.2%, OMOP Match: 100.0%
+//            { "sodium bicarbonate-sodium biphosphate", new ValueWithNote(null, null) },
+////             { "sodium bicarbonate-sodium biphosphate", new ValueWithNote("36029231", "potassium bicarbonate / sodium bicarbonate / sodium citrate") }, // Confidence: 52.1%, OMOP Match: 100.0%
+//            { "Neonatal Main (aqueous)", new ValueWithNote(null, null) },
+////             { "Neonatal Main (aqueous)", new ValueWithNote("19053623", "Opticrom Aqueous") }, // Confidence: 51.3%, OMOP Match: 100.0%
+//            { "ubidecarenone (ubiquinone)", new ValueWithNote(null, null) },
+////             { "ubidecarenone (ubiquinone)", new ValueWithNote("43526994", "ubiquinone Q2") }, // Confidence: 51.3%, OMOP Match: 100.0%
+//            { "benzalkonium/dimeticone/HC/nystatin top", new ValueWithNote(null, null) },
+////             { "benzalkonium/dimeticone/HC/nystatin top", new ValueWithNote("40167927", "benzalkonium Topical Gel [Sentry HC HOTspot]") }, // Confidence: 50.6%, OMOP Match: 100.0%
+//            { "Neat", new ValueWithNote(null, null) },
+////             { "Neat", new ValueWithNote("42904273", "neatsfoot oil") }, // Confidence: 47.1%, OMOP Match: 100.0%
+//            { "cetylpyridium/chlorocresol/lidocaine top", new ValueWithNote(null, null) },
+////             { "cetylpyridium/chlorocresol/lidocaine top", new ValueWithNote("19037891", "chlorocresol") }, // Confidence: 46.2%, OMOP Match: 100.0%
+//            { "PCA", new ValueWithNote(null, null) },
+////             { "PCA", new ValueWithNote("43531981", "lauryl PCA") }, // Confidence: 46.2%, OMOP Match: 100.0%
+//            { "imipenem-cilastatin", new ValueWithNote(null, null) },
+////             { "imipenem-cilastatin", new ValueWithNote("36030067", "cilastatin / imipenem / relebactam") }, // Confidence: 44.4%, OMOP Match: 100.0%
+//            { "Drug chart reminder", new ValueWithNote(null, null) },
+////             { "Drug chart reminder", new ValueWithNote("40175669", "Stachybotrys chartarum allergenic extract") }, // Confidence: 43.9%, OMOP Match: 100.0%
+//            { "guselkumab-golimumab-JNJ78934804", new ValueWithNote(null, null) },
+////             { "guselkumab-golimumab-JNJ78934804", new ValueWithNote("19041065", "golimumab") }, // Confidence: 43.9%, OMOP Match: 100.0%
+//            { "amifampridine (3,4 DAP)", new ValueWithNote(null, null) },
+////             { "amifampridine (3,4 DAP)", new ValueWithNote("1355889", "amifampridine") }, // Confidence: 40.0%, OMOP Match: 100.0%
+//            { "Additional chemotherapy and/or chemother", new ValueWithNote(null, null) },
+////             { "Additional chemotherapy and/or chemother", new ValueWithNote("36232901", "Baza Cleanse and Protect Medicated Pad or Tape") }, // Confidence: 39.5%, OMOP Match: 100.0%
+            //{ "BCG", new ValueWithNote(null, null) },
 //             { "BCG", new ValueWithNote("36248976", "Tice BCG Topical Product") }, // Confidence: 22.2%, OMOP Match: 100.0%
             { "Taurolock", new ValueWithNote("2901073", "Taurolock") },
 //             { "Taurolock", new ValueWithNote("2901073", "Taurolock") }, // Confidence: 0.0%, OMOP Match: 100.0%
@@ -2718,394 +2718,394 @@ internal class RxNormLookup : ILookup
 //             { "rupatadine", new ValueWithNote("21014003", "Rupatadine") }, // Confidence: 100.0%, OMOP Match: 90.0%
             { "zonisamide", new ValueWithNote("744798", "zonisamide") },
 //             { "zonisamide", new ValueWithNote("744798", "zonisamide") }, // Confidence: 100.0%, OMOP Match: 90.0%
-            { "co-codamol", new ValueWithNote(null, null) },
-//             { "co-codamol", new ValueWithNote("21018553", "Co-codamol") }, // Confidence: 0.0%, OMOP Match: 90.0%
-            { "asundexian", new ValueWithNote(null, null) },
-//             { "asundexian", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "bilastine", new ValueWithNote(null, null) },
-//             { "bilastine", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "bictegravir/emtricitabine/tenofovir", new ValueWithNote(null, null) },
-//             { "bictegravir/emtricitabine/tenofovir", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "ARGX-119", new ValueWithNote(null, null) },
-//             { "ARGX-119", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "COVID-19 vaccine", new ValueWithNote(null, null) },
-//             { "COVID-19 vaccine", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "efavirenz/emtricitabine/tenofovir", new ValueWithNote(null, null) },
-//             { "efavirenz/emtricitabine/tenofovir", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "emtricitabine/rilpivirine/tenofovir", new ValueWithNote(null, null) },
-//             { "emtricitabine/rilpivirine/tenofovir", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "doravirine/lamiVUDine/tenofovir", new ValueWithNote(null, null) },
-//             { "doravirine/lamiVUDine/tenofovir", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "Gelclair", new ValueWithNote(null, null) },
-//             { "Gelclair", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "Enteral nutrition", new ValueWithNote(null, null) },
-//             { "Enteral nutrition", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "GTX-102", new ValueWithNote(null, null) },
-//             { "GTX-102", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "insulin soluble", new ValueWithNote(null, null) },
-//             { "insulin soluble", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "ION582", new ValueWithNote(null, null) },
-//             { "ION582", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "Namilumab", new ValueWithNote(null, null) },
-//             { "Namilumab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "Ianalumab", new ValueWithNote(null, null) },
-//             { "Ianalumab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "pneumococcal 13-valent conjugate vaccine", new ValueWithNote(null, null) },
-//             { "pneumococcal 13-valent conjugate vaccine", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "infant formulas", new ValueWithNote(null, null) },
-//             { "infant formulas", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "obexelimab", new ValueWithNote(null, null) },
-//             { "obexelimab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "smallpox vaccine", new ValueWithNote(null, null) },
-//             { "smallpox vaccine", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "lutikizumab", new ValueWithNote(null, null) },
-//             { "lutikizumab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "probiotic", new ValueWithNote(null, null) },
-//             { "probiotic", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "Turoctocog alfa pegol", new ValueWithNote(null, null) },
-//             { "Turoctocog alfa pegol", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "silicified microcrystalline cellulose", new ValueWithNote(null, null) },
-//             { "silicified microcrystalline cellulose", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "trace elements", new ValueWithNote(null, null) },
-//             { "trace elements", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "Rurioctocog alfa pegol", new ValueWithNote(null, null) },
-//             { "Rurioctocog alfa pegol", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "Volixibat", new ValueWithNote(null, null) },
-//             { "Volixibat", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "XTMAB-16", new ValueWithNote(null, null) },
-//             { "XTMAB-16", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "WVE-N531", new ValueWithNote(null, null) },
-//             { "WVE-N531", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "Yellow soft paraffin", new ValueWithNote(null, null) },
-//             { "Yellow soft paraffin", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "apitegromab", new ValueWithNote(null, null) },
-//             { "apitegromab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "fluoride", new ValueWithNote(null, null) },
-//             { "fluoride", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "Pamrevlumab", new ValueWithNote(null, null) },
-//             { "Pamrevlumab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "Prasinezumab", new ValueWithNote(null, null) },
-//             { "Prasinezumab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "prothrombin complex", new ValueWithNote(null, null) },
-//             { "prothrombin complex", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
-            { "potassium bicarbonate-potassium chloride", new ValueWithNote(null, null) },
-//             { "potassium bicarbonate-potassium chloride", new ValueWithNote(null, null) }, // Confidence: 97.5%, OMOP Match: 0.0%
-            { "potassium phosphate-sodium phosphate", new ValueWithNote(null, null) },
-//             { "potassium phosphate-sodium phosphate", new ValueWithNote(null, null) }, // Confidence: 97.2%, OMOP Match: 0.0%
-            { "meningococcal conjugate vaccine", new ValueWithNote(null, null) },
-//             { "meningococcal conjugate vaccine", new ValueWithNote(null, null) }, // Confidence: 96.9%, OMOP Match: 0.0%
-            { "benzoic acid-salicylic acid", new ValueWithNote(null, null) },
-//             { "benzoic acid-salicylic acid", new ValueWithNote(null, null) }, // Confidence: 96.3%, OMOP Match: 0.0%
-            { "lactic acid-salicylic acid", new ValueWithNote(null, null) },
-//             { "lactic acid-salicylic acid", new ValueWithNote(null, null) }, // Confidence: 96.2%, OMOP Match: 0.0%
-            { "emtricitabine-tenofovir", new ValueWithNote(null, null) },
-//             { "emtricitabine-tenofovir", new ValueWithNote(null, null) }, // Confidence: 95.7%, OMOP Match: 0.0%
-            { "nirmatrelvir-ritonavir", new ValueWithNote(null, null) },
-//             { "nirmatrelvir-ritonavir", new ValueWithNote(null, null) }, // Confidence: 95.5%, OMOP Match: 0.0%
-            { "BUPivacaine-fentaNYL", new ValueWithNote(null, null) },
-//             { "BUPivacaine-fentaNYL", new ValueWithNote(null, null) }, // Confidence: 95.0%, OMOP Match: 0.0%
-            { "lactic acid-urea", new ValueWithNote(null, null) },
-//             { "lactic acid-urea", new ValueWithNote(null, null) }, // Confidence: 93.8%, OMOP Match: 0.0%
-            { "sodium hyaluronate ophthalmic", new ValueWithNote(null, null) },
-//             { "sodium hyaluronate ophthalmic", new ValueWithNote(null, null) }, // Confidence: 93.5%, OMOP Match: 0.0%
-            { "Water for injection to", new ValueWithNote(null, null) },
-//             { "Water for injection to", new ValueWithNote(null, null) }, // Confidence: 92.7%, OMOP Match: 0.0%
-            { "Hydrocortisone + Urea", new ValueWithNote(null, null) },
-//             { "Hydrocortisone + Urea", new ValueWithNote(null, null) }, // Confidence: 90.0%, OMOP Match: 0.0%
-            { "beclometasone-formoterol", new ValueWithNote(null, null) },
-//             { "beclometasone-formoterol", new ValueWithNote(null, null) }, // Confidence: 88.5%, OMOP Match: 0.0%
-            { "ARGX-117", new ValueWithNote(null, null) },
-//             { "ARGX-117", new ValueWithNote(null, null) }, // Confidence: 87.5%, OMOP Match: 0.0%
-            { "fluticasone-formoterol", new ValueWithNote(null, null) },
-//             { "fluticasone-formoterol", new ValueWithNote(null, null) }, // Confidence: 87.5%, OMOP Match: 0.0%
-            { "metFORMIN-vildagliptin", new ValueWithNote(null, null) },
-//             { "metFORMIN-vildagliptin", new ValueWithNote(null, null) }, // Confidence: 87.5%, OMOP Match: 0.0%
-            { "hepatitis B adult vaccine", new ValueWithNote(null, null) },
-//             { "hepatitis B adult vaccine", new ValueWithNote(null, null) }, // Confidence: 86.2%, OMOP Match: 0.0%
-            { "human papillomavirus vaccine", new ValueWithNote(null, null) },
-//             { "human papillomavirus vaccine", new ValueWithNote(null, null) }, // Confidence: 86.2%, OMOP Match: 0.0%
-            { "measles/mumps/rubella vaccine", new ValueWithNote(null, null) },
-//             { "measles/mumps/rubella vaccine", new ValueWithNote(null, null) }, // Confidence: 85.7%, OMOP Match: 0.0%
-            { "gramicid/neomy/nystatin/triamcin otic", new ValueWithNote(null, null) },
-//             { "gramicid/neomy/nystatin/triamcin otic", new ValueWithNote(null, null) }, // Confidence: 83.5%, OMOP Match: 0.0%
-            { "diphtheria/poliomyelitis/tetanus vaccine", new ValueWithNote(null, null) },
-//             { "diphtheria/poliomyelitis/tetanus vaccine", new ValueWithNote(null, null) }, // Confidence: 83.3%, OMOP Match: 0.0%
-            { "Bacillus Calmette-Guérin", new ValueWithNote(null, null) },
-//             { "Bacillus Calmette-Guérin", new ValueWithNote(null, null) }, // Confidence: 82.1%, OMOP Match: 0.0%
-            { "sodium chloride, hypertonic, ophthalmic", new ValueWithNote(null, null) },
-//             { "sodium chloride, hypertonic, ophthalmic", new ValueWithNote(null, null) }, // Confidence: 81.8%, OMOP Match: 0.0%
-            { "hepatitis A-hepatitis B vaccine", new ValueWithNote(null, null) },
-//             { "hepatitis A-hepatitis B vaccine", new ValueWithNote(null, null) }, // Confidence: 81.5%, OMOP Match: 0.0%
-            { "sodium bicarbonate-sodium chloride top", new ValueWithNote(null, null) },
-//             { "sodium bicarbonate-sodium chloride top", new ValueWithNote(null, null) }, // Confidence: 81.5%, OMOP Match: 0.0%
-            { "beclometasone/formoterol/glycopyrronium", new ValueWithNote(null, null) },
-//             { "beclometasone/formoterol/glycopyrronium", new ValueWithNote(null, null) }, // Confidence: 81.3%, OMOP Match: 0.0%
-            { "conjugated estrogens-medroxyPROGESTERone", new ValueWithNote(null, null) },
-//             { "conjugated estrogens-medroxyPROGESTERone", new ValueWithNote(null, null) }, // Confidence: 81.2%, OMOP Match: 0.0%
-            { "other supplements", new ValueWithNote(null, null) },
-//             { "other supplements", new ValueWithNote(null, null) }, // Confidence: 81.0%, OMOP Match: 0.0%
-            { "calamine/coal tar/zinc oxide", new ValueWithNote(null, null) },
-//             { "calamine/coal tar/zinc oxide", new ValueWithNote(null, null) }, // Confidence: 80.9%, OMOP Match: 0.0%
-            { "Estradiol + norETHISTerone acetate", new ValueWithNote(null, null) },
-//             { "Estradiol + norETHISTerone acetate", new ValueWithNote(null, null) }, // Confidence: 77.8%, OMOP Match: 0.0%
-            { "diphth/Hib/pertussis/polio/tetanus vacc", new ValueWithNote(null, null) },
-//             { "diphth/Hib/pertussis/polio/tetanus vacc", new ValueWithNote(null, null) }, // Confidence: 77.6%, OMOP Match: 0.0%
-            { "Darunavir + Cobicistat + Emtricitabine +", new ValueWithNote(null, null) },
-//             { "Darunavir + Cobicistat + Emtricitabine +", new ValueWithNote(null, null) }, // Confidence: 76.2%, OMOP Match: 0.0%
-            { "taldefgrobep alfa (BHV-2000)", new ValueWithNote(null, null) },
-//             { "taldefgrobep alfa (BHV-2000)", new ValueWithNote(null, null) }, // Confidence: 75.6%, OMOP Match: 0.0%
-            { "JNJ-67484703", new ValueWithNote(null, null) },
-//             { "JNJ-67484703", new ValueWithNote(null, null) }, // Confidence: 75.0%, OMOP Match: 0.0%
-            { "oral rehydration salts", new ValueWithNote(null, null) },
-//             { "oral rehydration salts", new ValueWithNote(null, null) }, // Confidence: 75.0%, OMOP Match: 0.0%
-            { "calcium carbonate-Ca lactate gluconate", new ValueWithNote(null, null) },
-//             { "calcium carbonate-Ca lactate gluconate", new ValueWithNote(null, null) }, // Confidence: 74.0%, OMOP Match: 0.0%
-            { "pneumococcal 23-polyvalent vaccine", new ValueWithNote(null, null) },
-//             { "pneumococcal 23-polyvalent vaccine", new ValueWithNote(null, null) }, // Confidence: 73.1%, OMOP Match: 0.0%
-            { "COVID-19 mRNA vaccine (Pfizer / BioNT", new ValueWithNote(null, null) },
-//             { "COVID-19 mRNA vaccine (Pfizer / BioNT", new ValueWithNote(null, null) }, // Confidence: 72.4%, OMOP Match: 0.0%
-            { "Nirmatrelvir (PF-07321332) + Ritonavir", new ValueWithNote(null, null) },
-//             { "Nirmatrelvir (PF-07321332) + Ritonavir", new ValueWithNote(null, null) }, // Confidence: 71.9%, OMOP Match: 0.0%
-            { "sodium cromoglicate ophthalmic", new ValueWithNote(null, null) },
-//             { "sodium cromoglicate ophthalmic", new ValueWithNote(null, null) }, // Confidence: 71.9%, OMOP Match: 0.0%
-            { "sodium cromoglicate", new ValueWithNote(null, null) },
-//             { "sodium cromoglicate", new ValueWithNote(null, null) }, // Confidence: 71.7%, OMOP Match: 0.0%
-            { "alginate/calcium CO3/sodium bicarbonate", new ValueWithNote(null, null) },
-//             { "alginate/calcium CO3/sodium bicarbonate", new ValueWithNote(null, null) }, // Confidence: 71.0%, OMOP Match: 0.0%
-            { "Adult ST8 parenteral nutrition bag", new ValueWithNote(null, null) },
-//             { "Adult ST8 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
-            { "Adult ST4 parenteral nutrition bag", new ValueWithNote(null, null) },
-//             { "Adult ST4 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
-            { "Adult ST3 parenteral nutrition bag", new ValueWithNote(null, null) },
-//             { "Adult ST3 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
-            { "Adult ST6 parenteral nutrition bag", new ValueWithNote(null, null) },
-//             { "Adult ST6 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
-            { "Adult ST5 parenteral nutrition bag", new ValueWithNote(null, null) },
-//             { "Adult ST5 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
-            { "Adult ST7 parenteral nutrition bag", new ValueWithNote(null, null) },
-//             { "Adult ST7 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
-            { "Adult ST9 parenteral nutrition bag", new ValueWithNote(null, null) },
-//             { "Adult ST9 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
-            { "Adult ST2 parenteral nutrition bag", new ValueWithNote(null, null) },
-//             { "Adult ST2 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
-            { "PLX-PAD cells", new ValueWithNote(null, null) },
-//             { "PLX-PAD cells", new ValueWithNote(null, null) }, // Confidence: 70.0%, OMOP Match: 0.0%
-            { "Adult ST7E parenteral nutrition bag", new ValueWithNote(null, null) },
-//             { "Adult ST7E parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 69.6%, OMOP Match: 0.0%
-            { "Adult ST1B parenteral nutrition bag", new ValueWithNote(null, null) },
-//             { "Adult ST1B parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 69.6%, OMOP Match: 0.0%
-            { "Adult ST1A parenteral nutrition bag", new ValueWithNote(null, null) },
-//             { "Adult ST1A parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 69.6%, OMOP Match: 0.0%
-            { "shingles (herpes zoster) vaccine, live", new ValueWithNote(null, null) },
-//             { "shingles (herpes zoster) vaccine, live", new ValueWithNote(null, null) }, // Confidence: 69.0%, OMOP Match: 0.0%
-            { "wound care supplies", new ValueWithNote(null, null) },
-//             { "wound care supplies", new ValueWithNote(null, null) }, // Confidence: 69.0%, OMOP Match: 0.0%
-            { "Platelets", new ValueWithNote(null, null) },
-//             { "Platelets", new ValueWithNote(null, null) }, // Confidence: 66.7%, OMOP Match: 0.0%
-            { "Parenteral Nutrition (Adults)", new ValueWithNote(null, null) },
-//             { "Parenteral Nutrition (Adults)", new ValueWithNote(null, null) }, // Confidence: 66.7%, OMOP Match: 0.0%
-            { "Emulsifying wax + Yellow soft paraffi", new ValueWithNote(null, null) },
-//             { "Emulsifying wax + Yellow soft paraffi", new ValueWithNote(null, null) }, // Confidence: 66.7%, OMOP Match: 0.0%
-            { "Parenteral Nutrition (Paediatric)", new ValueWithNote(null, null) },
-//             { "Parenteral Nutrition (Paediatric)", new ValueWithNote(null, null) }, // Confidence: 65.7%, OMOP Match: 0.0%
-            { "diphtheria/pertussis/tetanus vaccine", new ValueWithNote(null, null) },
-//             { "diphtheria/pertussis/tetanus vaccine", new ValueWithNote(null, null) }, // Confidence: 65.1%, OMOP Match: 0.0%
-            { "fat emulsion, intravenous", new ValueWithNote(null, null) },
-//             { "fat emulsion, intravenous", new ValueWithNote(null, null) }, // Confidence: 64.9%, OMOP Match: 0.0%
-            { "Hyoscine (base)", new ValueWithNote(null, null) },
-//             { "Hyoscine (base)", new ValueWithNote(null, null) }, // Confidence: 64.3%, OMOP Match: 0.0%
-            { "REGN10933 + REGN10987", new ValueWithNote(null, null) },
-//             { "REGN10933 + REGN10987", new ValueWithNote(null, null) }, // Confidence: 63.3%, OMOP Match: 0.0%
-            { "Sodium acid phosphate + Potassium dih", new ValueWithNote(null, null) },
-//             { "Sodium acid phosphate + Potassium dih", new ValueWithNote(null, null) }, // Confidence: 60.3%, OMOP Match: 0.0%
-            { "incontinence supplies", new ValueWithNote(null, null) },
-//             { "incontinence supplies", new ValueWithNote(null, null) }, // Confidence: 60.0%, OMOP Match: 0.0%
-            { "benzyl benzoate/lanolin/zinc oxide top", new ValueWithNote(null, null) },
-//             { "benzyl benzoate/lanolin/zinc oxide top", new ValueWithNote(null, null) }, // Confidence: 59.1%, OMOP Match: 0.0%
-            { "IMC-I109V", new ValueWithNote(null, null) },
-//             { "IMC-I109V", new ValueWithNote(null, null) }, // Confidence: 58.8%, OMOP Match: 0.0%
-            { "Emulsifying wax + Liquid paraffin + W", new ValueWithNote(null, null) },
-//             { "Emulsifying wax + Liquid paraffin + W", new ValueWithNote(null, null) }, // Confidence: 57.7%, OMOP Match: 0.0%
-            { "Dextran 40 with Sodium chloride 0.9% (Rh", new ValueWithNote(null, null) },
-//             { "Dextran 40 with Sodium chloride 0.9% (Rh", new ValueWithNote(null, null) }, // Confidence: 57.6%, OMOP Match: 0.0%
-            { "balsam/benzyl benz/bismuth/HC/ZnO top", new ValueWithNote(null, null) },
-//             { "balsam/benzyl benz/bismuth/HC/ZnO top", new ValueWithNote(null, null) }, // Confidence: 57.5%, OMOP Match: 0.0%
-            { "Diphtheria + Tetanus + Pertussis + Hepat", new ValueWithNote(null, null) },
-//             { "Diphtheria + Tetanus + Pertussis + Hepat", new ValueWithNote(null, null) }, // Confidence: 57.4%, OMOP Match: 0.0%
-            { "dexpanthenol-sodium hyaluronate ophth", new ValueWithNote(null, null) },
-//             { "dexpanthenol-sodium hyaluronate ophth", new ValueWithNote(null, null) }, // Confidence: 57.1%, OMOP Match: 0.0%
-            { "Ready diluted", new ValueWithNote(null, null) },
-//             { "Ready diluted", new ValueWithNote(null, null) }, // Confidence: 57.1%, OMOP Match: 0.0%
-            { "Red cells", new ValueWithNote(null, null) },
-//             { "Red cells", new ValueWithNote(null, null) }, // Confidence: 55.2%, OMOP Match: 0.0%
-            { "SRP", new ValueWithNote(null, null) },
-//             { "SRP", new ValueWithNote(null, null) }, // Confidence: 54.5%, OMOP Match: 0.0%
-            { "clobetasol/neomycin/nystatin", new ValueWithNote(null, null) },
-//             { "clobetasol/neomycin/nystatin", new ValueWithNote(null, null) }, // Confidence: 54.3%, OMOP Match: 0.0%
-            { "dipht/tet/pertussis/hep B/polio/haemoph", new ValueWithNote(null, null) },
-//             { "dipht/tet/pertussis/hep B/polio/haemoph", new ValueWithNote(null, null) }, // Confidence: 52.7%, OMOP Match: 0.0%
-            { "macrogol 3350 with electrolytes", new ValueWithNote(null, null) },
-//             { "macrogol 3350 with electrolytes", new ValueWithNote(null, null) }, // Confidence: 50.0%, OMOP Match: 0.0%
-            { "medical supplies", new ValueWithNote(null, null) },
-//             { "medical supplies", new ValueWithNote(null, null) }, // Confidence: 45.5%, OMOP Match: 0.0%
-            { "SMOF 60 (60mL)", new ValueWithNote(null, null) },
-//             { "SMOF 60 (60mL)", new ValueWithNote(null, null) }, // Confidence: 43.5%, OMOP Match: 0.0%
-            { "Intermittent pneumatic compression (IPC)", new ValueWithNote(null, null) },
-//             { "Intermittent pneumatic compression (IPC)", new ValueWithNote(null, null) }, // Confidence: 37.3%, OMOP Match: 0.0%
-            { "Freetext Medication", new ValueWithNote(null, null) },
-//             { "Freetext Medication", new ValueWithNote(null, null) }, // Confidence: 36.7%, OMOP Match: 0.0%
-            { "Sodium lactate compound (Hartmann's) inf", new ValueWithNote(null, null) },
-//             { "Sodium lactate compound (Hartmann's) inf", new ValueWithNote(null, null) }, // Confidence: 31.6%, OMOP Match: 0.0%
-            { "Hartmanns solution", new ValueWithNote(null, null) },
-//             { "Hartmanns solution", new ValueWithNote(null, null) }, // Confidence: 17.3%, OMOP Match: 0.0%
-            { "GSK3511294", new ValueWithNote(null, null) },
-//             { "GSK3511294", new ValueWithNote(null, null) }, // Confidence: 10.5%, OMOP Match: 0.0%
-            { "NCA", new ValueWithNote(null, null) },
-//             { "NCA", new ValueWithNote(null, null) }, // Confidence: 3.5%, OMOP Match: 0.0%
-            { "Amino Acids (L-lysine 2.5% and L-arginin", new ValueWithNote(null, null) },
-//             { "Amino Acids (L-lysine 2.5% and L-arginin", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "blood glucose monitoring supplies", new ValueWithNote(null, null) },
-//             { "blood glucose monitoring supplies", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "benzylpenicillin sodium", new ValueWithNote(null, null) },
-//             { "benzylpenicillin sodium", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Blood Level Monitoring (Neonatal Unit)", new ValueWithNote(null, null) },
-//             { "Blood Level Monitoring (Neonatal Unit)", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "BE1116", new ValueWithNote(null, null) },
-//             { "BE1116", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "betamethasone-calcipotriol", new ValueWithNote(null, null) },
-//             { "betamethasone-calcipotriol", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Buffered Sodium Chloride 0.9% Sterile IV", new ValueWithNote(null, null) },
-//             { "Buffered Sodium Chloride 0.9% Sterile IV", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Carnoys solution", new ValueWithNote(null, null) },
-//             { "Carnoys solution", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "coagulation factor Xa", new ValueWithNote(null, null) },
-//             { "coagulation factor Xa", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Copper intrauterine contraceptive device", new ValueWithNote(null, null) },
-//             { "Copper intrauterine contraceptive device", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "cinchocaine-prednisoLONE", new ValueWithNote(null, null) },
-//             { "cinchocaine-prednisoLONE", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "cinchocaine-hydrocortisone", new ValueWithNote(null, null) },
-//             { "cinchocaine-hydrocortisone", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "diphth/pertussis,acel/polio/tetanus vacc", new ValueWithNote(null, null) },
-//             { "diphth/pertussis,acel/polio/tetanus vacc", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Cryoprecipitate", new ValueWithNote(null, null) },
-//             { "Cryoprecipitate", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "emollients,", new ValueWithNote(null, null) },
-//             { "emollients,", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Donor Lymphocytes - CD3", new ValueWithNote(null, null) },
-//             { "Donor Lymphocytes - CD3", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Fresh frozen plasma", new ValueWithNote(null, null) },
-//             { "Fresh frozen plasma", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "epoetin beta-methoxy polyethylene glycol", new ValueWithNote(null, null) },
-//             { "epoetin beta-methoxy polyethylene glycol", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "heparin flush", new ValueWithNote(null, null) },
-//             { "heparin flush", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "ergometrine-oxytocin", new ValueWithNote(null, null) },
-//             { "ergometrine-oxytocin", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "fluorescein ophthalmic", new ValueWithNote(null, null) },
-//             { "fluorescein ophthalmic", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Glucose 20% infusion (continuous)", new ValueWithNote(null, null) },
-//             { "Glucose 20% infusion (continuous)", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Glucose 10% infusion", new ValueWithNote(null, null) },
-//             { "Glucose 10% infusion", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Glucose 5% intravenous infusion solution", new ValueWithNote(null, null) },
-//             { "Glucose 5% intravenous infusion solution", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "IDDS", new ValueWithNote(null, null) },
-//             { "IDDS", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "loteprednol ophthalmic", new ValueWithNote(null, null) },
-//             { "loteprednol ophthalmic", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Granulocytes", new ValueWithNote(null, null) },
-//             { "Granulocytes", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "magnesium glycerophosphate", new ValueWithNote(null, null) },
-//             { "magnesium glycerophosphate", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "magnesium carbonate-magnesium sulfate", new ValueWithNote(null, null) },
-//             { "magnesium carbonate-magnesium sulfate", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Glucose 50% intravenous infusion solutio", new ValueWithNote(null, null) },
-//             { "Glucose 50% intravenous infusion solutio", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "nitrous oxide-oxygen", new ValueWithNote(null, null) },
-//             { "nitrous oxide-oxygen", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "ocular lubricant", new ValueWithNote(null, null) },
-//             { "ocular lubricant", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Glucose 12.5% intravenous infusion solut", new ValueWithNote(null, null) },
-//             { "Glucose 12.5% intravenous infusion solut", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "hepatitis B paediatric vaccine", new ValueWithNote(null, null) },
-//             { "hepatitis B paediatric vaccine", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "influenza vaccine, inactivated", new ValueWithNote(null, null) },
-//             { "influenza vaccine, inactivated", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "hyoscine BUTylbromide", new ValueWithNote(null, null) },
-//             { "hyoscine BUTylbromide", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "RO7204239", new ValueWithNote(null, null) },
-//             { "RO7204239", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "RO7234292", new ValueWithNote(null, null) },
-//             { "RO7234292", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "pilocarpine ophthalmic", new ValueWithNote(null, null) },
-//             { "pilocarpine ophthalmic", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Leech therapy", new ValueWithNote(null, null) },
-//             { "Leech therapy", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Parenteral Nutrition (Neonatal Unit)", new ValueWithNote(null, null) },
-//             { "Parenteral Nutrition (Neonatal Unit)", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "NCEA", new ValueWithNote(null, null) },
-//             { "NCEA", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "rabies vaccine, chick embryo cell", new ValueWithNote(null, null) },
-//             { "rabies vaccine, chick embryo cell", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Nutritional supplements", new ValueWithNote(null, null) },
-//             { "Nutritional supplements", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "potassium acid phosphate", new ValueWithNote(null, null) },
-//             { "potassium acid phosphate", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "respiratory therapy supplies", new ValueWithNote(null, null) },
-//             { "respiratory therapy supplies", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Peripheral Nerve Infusion", new ValueWithNote(null, null) },
-//             { "Peripheral Nerve Infusion", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Radio-opaque markers", new ValueWithNote(null, null) },
-//             { "Radio-opaque markers", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Sodium Chloride 2.7% intravenous solutio", new ValueWithNote(null, null) },
-//             { "Sodium Chloride 2.7% intravenous solutio", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Sodium chloride 0.9% infusion", new ValueWithNote(null, null) },
-//             { "Sodium chloride 0.9% infusion", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Sodium Chloride 5% intravenous solution", new ValueWithNote(null, null) },
-//             { "Sodium Chloride 5% intravenous solution", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "RSV vaccine, preF A-preF B, recombinant", new ValueWithNote(null, null) },
-//             { "RSV vaccine, preF A-preF B, recombinant", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "vitamins", new ValueWithNote(null, null) },
-//             { "vitamins", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "saliva substitutes", new ValueWithNote(null, null) },
-//             { "saliva substitutes", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Sodium Chloride 0.45% intravenous soluti", new ValueWithNote(null, null) },
-//             { "Sodium Chloride 0.45% intravenous soluti", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "support devices", new ValueWithNote(null, null) },
-//             { "support devices", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Hyoscine BUTylbromide", new ValueWithNote(null, null) },
-//             { "Hyoscine BUTylbromide", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Insulin soluble porcine", new ValueWithNote(null, null) },
-//             { "Insulin soluble porcine", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Nitrous Oxide + Oxygen", new ValueWithNote(null, null) },
-//             { "Nitrous Oxide + Oxygen", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Stem Cells - CD34", new ValueWithNote(null, null) },
-//             { "Stem Cells - CD34", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Arterial line flush sodium chloride 0", new ValueWithNote(null, null) },
-//             { "Arterial line flush sodium chloride 0", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Ocular lubricant", new ValueWithNote(null, null) },
-//             { "Ocular lubricant", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Sodium acid phosphate", new ValueWithNote(null, null) },
-//             { "Sodium acid phosphate", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Calcium lactate + Calcium phosphate +", new ValueWithNote(null, null) },
-//             { "Calcium lactate + Calcium phosphate +", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Central line flush sodium chloride 0.", new ValueWithNote(null, null) },
-//             { "Central line flush sodium chloride 0.", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Flupentixol decanoate", new ValueWithNote(null, null) },
-//             { "Flupentixol decanoate", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Sodium cromoglicate nasal", new ValueWithNote(null, null) },
-//             { "Sodium cromoglicate nasal", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "FDY-5301", new ValueWithNote(null, null) },
-//             { "FDY-5301", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "fluorouracil-salicylic acid", new ValueWithNote(null, null) },
-//             { "fluorouracil-salicylic acid", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "Haemofiltration fluids", new ValueWithNote(null, null) },
-//             { "Haemofiltration fluids", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "PCEA", new ValueWithNote(null, null) },
-//             { "PCEA", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
-            { "vitamins with minerals", new ValueWithNote(null, null) },
-//             { "vitamins with minerals", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "co-codamol", new ValueWithNote(null, null) },
+////             { "co-codamol", new ValueWithNote("21018553", "Co-codamol") }, // Confidence: 0.0%, OMOP Match: 90.0%
+//            { "asundexian", new ValueWithNote(null, null) },
+////             { "asundexian", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "bilastine", new ValueWithNote(null, null) },
+////             { "bilastine", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "bictegravir/emtricitabine/tenofovir", new ValueWithNote(null, null) },
+////             { "bictegravir/emtricitabine/tenofovir", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "ARGX-119", new ValueWithNote(null, null) },
+////             { "ARGX-119", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "COVID-19 vaccine", new ValueWithNote(null, null) },
+////             { "COVID-19 vaccine", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "efavirenz/emtricitabine/tenofovir", new ValueWithNote(null, null) },
+////             { "efavirenz/emtricitabine/tenofovir", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "emtricitabine/rilpivirine/tenofovir", new ValueWithNote(null, null) },
+////             { "emtricitabine/rilpivirine/tenofovir", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "doravirine/lamiVUDine/tenofovir", new ValueWithNote(null, null) },
+////             { "doravirine/lamiVUDine/tenofovir", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "Gelclair", new ValueWithNote(null, null) },
+////             { "Gelclair", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "Enteral nutrition", new ValueWithNote(null, null) },
+////             { "Enteral nutrition", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "GTX-102", new ValueWithNote(null, null) },
+////             { "GTX-102", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "insulin soluble", new ValueWithNote(null, null) },
+////             { "insulin soluble", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "ION582", new ValueWithNote(null, null) },
+////             { "ION582", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "Namilumab", new ValueWithNote(null, null) },
+////             { "Namilumab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "Ianalumab", new ValueWithNote(null, null) },
+////             { "Ianalumab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "pneumococcal 13-valent conjugate vaccine", new ValueWithNote(null, null) },
+////             { "pneumococcal 13-valent conjugate vaccine", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "infant formulas", new ValueWithNote(null, null) },
+////             { "infant formulas", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "obexelimab", new ValueWithNote(null, null) },
+////             { "obexelimab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "smallpox vaccine", new ValueWithNote(null, null) },
+////             { "smallpox vaccine", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "lutikizumab", new ValueWithNote(null, null) },
+////             { "lutikizumab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "probiotic", new ValueWithNote(null, null) },
+////             { "probiotic", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "Turoctocog alfa pegol", new ValueWithNote(null, null) },
+////             { "Turoctocog alfa pegol", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "silicified microcrystalline cellulose", new ValueWithNote(null, null) },
+////             { "silicified microcrystalline cellulose", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "trace elements", new ValueWithNote(null, null) },
+////             { "trace elements", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "Rurioctocog alfa pegol", new ValueWithNote(null, null) },
+////             { "Rurioctocog alfa pegol", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "Volixibat", new ValueWithNote(null, null) },
+////             { "Volixibat", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "XTMAB-16", new ValueWithNote(null, null) },
+////             { "XTMAB-16", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "WVE-N531", new ValueWithNote(null, null) },
+////             { "WVE-N531", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "Yellow soft paraffin", new ValueWithNote(null, null) },
+////             { "Yellow soft paraffin", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "apitegromab", new ValueWithNote(null, null) },
+////             { "apitegromab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "fluoride", new ValueWithNote(null, null) },
+////             { "fluoride", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "Pamrevlumab", new ValueWithNote(null, null) },
+////             { "Pamrevlumab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "Prasinezumab", new ValueWithNote(null, null) },
+////             { "Prasinezumab", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "prothrombin complex", new ValueWithNote(null, null) },
+////             { "prothrombin complex", new ValueWithNote(null, null) }, // Confidence: 100.0%, OMOP Match: 0.0%
+//            { "potassium bicarbonate-potassium chloride", new ValueWithNote(null, null) },
+////             { "potassium bicarbonate-potassium chloride", new ValueWithNote(null, null) }, // Confidence: 97.5%, OMOP Match: 0.0%
+//            { "potassium phosphate-sodium phosphate", new ValueWithNote(null, null) },
+////             { "potassium phosphate-sodium phosphate", new ValueWithNote(null, null) }, // Confidence: 97.2%, OMOP Match: 0.0%
+//            { "meningococcal conjugate vaccine", new ValueWithNote(null, null) },
+////             { "meningococcal conjugate vaccine", new ValueWithNote(null, null) }, // Confidence: 96.9%, OMOP Match: 0.0%
+//            { "benzoic acid-salicylic acid", new ValueWithNote(null, null) },
+////             { "benzoic acid-salicylic acid", new ValueWithNote(null, null) }, // Confidence: 96.3%, OMOP Match: 0.0%
+//            { "lactic acid-salicylic acid", new ValueWithNote(null, null) },
+////             { "lactic acid-salicylic acid", new ValueWithNote(null, null) }, // Confidence: 96.2%, OMOP Match: 0.0%
+//            { "emtricitabine-tenofovir", new ValueWithNote(null, null) },
+////             { "emtricitabine-tenofovir", new ValueWithNote(null, null) }, // Confidence: 95.7%, OMOP Match: 0.0%
+//            { "nirmatrelvir-ritonavir", new ValueWithNote(null, null) },
+////             { "nirmatrelvir-ritonavir", new ValueWithNote(null, null) }, // Confidence: 95.5%, OMOP Match: 0.0%
+//            { "BUPivacaine-fentaNYL", new ValueWithNote(null, null) },
+////             { "BUPivacaine-fentaNYL", new ValueWithNote(null, null) }, // Confidence: 95.0%, OMOP Match: 0.0%
+//            { "lactic acid-urea", new ValueWithNote(null, null) },
+////             { "lactic acid-urea", new ValueWithNote(null, null) }, // Confidence: 93.8%, OMOP Match: 0.0%
+//            { "sodium hyaluronate ophthalmic", new ValueWithNote(null, null) },
+////             { "sodium hyaluronate ophthalmic", new ValueWithNote(null, null) }, // Confidence: 93.5%, OMOP Match: 0.0%
+//            { "Water for injection to", new ValueWithNote(null, null) },
+////             { "Water for injection to", new ValueWithNote(null, null) }, // Confidence: 92.7%, OMOP Match: 0.0%
+//            { "Hydrocortisone + Urea", new ValueWithNote(null, null) },
+////             { "Hydrocortisone + Urea", new ValueWithNote(null, null) }, // Confidence: 90.0%, OMOP Match: 0.0%
+//            { "beclometasone-formoterol", new ValueWithNote(null, null) },
+////             { "beclometasone-formoterol", new ValueWithNote(null, null) }, // Confidence: 88.5%, OMOP Match: 0.0%
+//            { "ARGX-117", new ValueWithNote(null, null) },
+////             { "ARGX-117", new ValueWithNote(null, null) }, // Confidence: 87.5%, OMOP Match: 0.0%
+//            { "fluticasone-formoterol", new ValueWithNote(null, null) },
+////             { "fluticasone-formoterol", new ValueWithNote(null, null) }, // Confidence: 87.5%, OMOP Match: 0.0%
+//            { "metFORMIN-vildagliptin", new ValueWithNote(null, null) },
+////             { "metFORMIN-vildagliptin", new ValueWithNote(null, null) }, // Confidence: 87.5%, OMOP Match: 0.0%
+//            { "hepatitis B adult vaccine", new ValueWithNote(null, null) },
+////             { "hepatitis B adult vaccine", new ValueWithNote(null, null) }, // Confidence: 86.2%, OMOP Match: 0.0%
+//            { "human papillomavirus vaccine", new ValueWithNote(null, null) },
+////             { "human papillomavirus vaccine", new ValueWithNote(null, null) }, // Confidence: 86.2%, OMOP Match: 0.0%
+//            { "measles/mumps/rubella vaccine", new ValueWithNote(null, null) },
+////             { "measles/mumps/rubella vaccine", new ValueWithNote(null, null) }, // Confidence: 85.7%, OMOP Match: 0.0%
+//            { "gramicid/neomy/nystatin/triamcin otic", new ValueWithNote(null, null) },
+////             { "gramicid/neomy/nystatin/triamcin otic", new ValueWithNote(null, null) }, // Confidence: 83.5%, OMOP Match: 0.0%
+//            { "diphtheria/poliomyelitis/tetanus vaccine", new ValueWithNote(null, null) },
+////             { "diphtheria/poliomyelitis/tetanus vaccine", new ValueWithNote(null, null) }, // Confidence: 83.3%, OMOP Match: 0.0%
+//            { "Bacillus Calmette-Guérin", new ValueWithNote(null, null) },
+////             { "Bacillus Calmette-Guérin", new ValueWithNote(null, null) }, // Confidence: 82.1%, OMOP Match: 0.0%
+//            { "sodium chloride, hypertonic, ophthalmic", new ValueWithNote(null, null) },
+////             { "sodium chloride, hypertonic, ophthalmic", new ValueWithNote(null, null) }, // Confidence: 81.8%, OMOP Match: 0.0%
+//            { "hepatitis A-hepatitis B vaccine", new ValueWithNote(null, null) },
+////             { "hepatitis A-hepatitis B vaccine", new ValueWithNote(null, null) }, // Confidence: 81.5%, OMOP Match: 0.0%
+//            { "sodium bicarbonate-sodium chloride top", new ValueWithNote(null, null) },
+////             { "sodium bicarbonate-sodium chloride top", new ValueWithNote(null, null) }, // Confidence: 81.5%, OMOP Match: 0.0%
+//            { "beclometasone/formoterol/glycopyrronium", new ValueWithNote(null, null) },
+////             { "beclometasone/formoterol/glycopyrronium", new ValueWithNote(null, null) }, // Confidence: 81.3%, OMOP Match: 0.0%
+//            { "conjugated estrogens-medroxyPROGESTERone", new ValueWithNote(null, null) },
+////             { "conjugated estrogens-medroxyPROGESTERone", new ValueWithNote(null, null) }, // Confidence: 81.2%, OMOP Match: 0.0%
+//            { "other supplements", new ValueWithNote(null, null) },
+////             { "other supplements", new ValueWithNote(null, null) }, // Confidence: 81.0%, OMOP Match: 0.0%
+//            { "calamine/coal tar/zinc oxide", new ValueWithNote(null, null) },
+////             { "calamine/coal tar/zinc oxide", new ValueWithNote(null, null) }, // Confidence: 80.9%, OMOP Match: 0.0%
+//            { "Estradiol + norETHISTerone acetate", new ValueWithNote(null, null) },
+////             { "Estradiol + norETHISTerone acetate", new ValueWithNote(null, null) }, // Confidence: 77.8%, OMOP Match: 0.0%
+//            { "diphth/Hib/pertussis/polio/tetanus vacc", new ValueWithNote(null, null) },
+////             { "diphth/Hib/pertussis/polio/tetanus vacc", new ValueWithNote(null, null) }, // Confidence: 77.6%, OMOP Match: 0.0%
+//            { "Darunavir + Cobicistat + Emtricitabine +", new ValueWithNote(null, null) },
+////             { "Darunavir + Cobicistat + Emtricitabine +", new ValueWithNote(null, null) }, // Confidence: 76.2%, OMOP Match: 0.0%
+//            { "taldefgrobep alfa (BHV-2000)", new ValueWithNote(null, null) },
+////             { "taldefgrobep alfa (BHV-2000)", new ValueWithNote(null, null) }, // Confidence: 75.6%, OMOP Match: 0.0%
+//            { "JNJ-67484703", new ValueWithNote(null, null) },
+////             { "JNJ-67484703", new ValueWithNote(null, null) }, // Confidence: 75.0%, OMOP Match: 0.0%
+//            { "oral rehydration salts", new ValueWithNote(null, null) },
+////             { "oral rehydration salts", new ValueWithNote(null, null) }, // Confidence: 75.0%, OMOP Match: 0.0%
+//            { "calcium carbonate-Ca lactate gluconate", new ValueWithNote(null, null) },
+////             { "calcium carbonate-Ca lactate gluconate", new ValueWithNote(null, null) }, // Confidence: 74.0%, OMOP Match: 0.0%
+//            { "pneumococcal 23-polyvalent vaccine", new ValueWithNote(null, null) },
+////             { "pneumococcal 23-polyvalent vaccine", new ValueWithNote(null, null) }, // Confidence: 73.1%, OMOP Match: 0.0%
+//            { "COVID-19 mRNA vaccine (Pfizer / BioNT", new ValueWithNote(null, null) },
+////             { "COVID-19 mRNA vaccine (Pfizer / BioNT", new ValueWithNote(null, null) }, // Confidence: 72.4%, OMOP Match: 0.0%
+//            { "Nirmatrelvir (PF-07321332) + Ritonavir", new ValueWithNote(null, null) },
+////             { "Nirmatrelvir (PF-07321332) + Ritonavir", new ValueWithNote(null, null) }, // Confidence: 71.9%, OMOP Match: 0.0%
+//            { "sodium cromoglicate ophthalmic", new ValueWithNote(null, null) },
+////             { "sodium cromoglicate ophthalmic", new ValueWithNote(null, null) }, // Confidence: 71.9%, OMOP Match: 0.0%
+//            { "sodium cromoglicate", new ValueWithNote(null, null) },
+////             { "sodium cromoglicate", new ValueWithNote(null, null) }, // Confidence: 71.7%, OMOP Match: 0.0%
+//            { "alginate/calcium CO3/sodium bicarbonate", new ValueWithNote(null, null) },
+////             { "alginate/calcium CO3/sodium bicarbonate", new ValueWithNote(null, null) }, // Confidence: 71.0%, OMOP Match: 0.0%
+//            { "Adult ST8 parenteral nutrition bag", new ValueWithNote(null, null) },
+////             { "Adult ST8 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
+//            { "Adult ST4 parenteral nutrition bag", new ValueWithNote(null, null) },
+////             { "Adult ST4 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
+//            { "Adult ST3 parenteral nutrition bag", new ValueWithNote(null, null) },
+////             { "Adult ST3 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
+//            { "Adult ST6 parenteral nutrition bag", new ValueWithNote(null, null) },
+////             { "Adult ST6 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
+//            { "Adult ST5 parenteral nutrition bag", new ValueWithNote(null, null) },
+////             { "Adult ST5 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
+//            { "Adult ST7 parenteral nutrition bag", new ValueWithNote(null, null) },
+////             { "Adult ST7 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
+//            { "Adult ST9 parenteral nutrition bag", new ValueWithNote(null, null) },
+////             { "Adult ST9 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
+//            { "Adult ST2 parenteral nutrition bag", new ValueWithNote(null, null) },
+////             { "Adult ST2 parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 70.6%, OMOP Match: 0.0%
+//            { "PLX-PAD cells", new ValueWithNote(null, null) },
+////             { "PLX-PAD cells", new ValueWithNote(null, null) }, // Confidence: 70.0%, OMOP Match: 0.0%
+//            { "Adult ST7E parenteral nutrition bag", new ValueWithNote(null, null) },
+////             { "Adult ST7E parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 69.6%, OMOP Match: 0.0%
+//            { "Adult ST1B parenteral nutrition bag", new ValueWithNote(null, null) },
+////             { "Adult ST1B parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 69.6%, OMOP Match: 0.0%
+//            { "Adult ST1A parenteral nutrition bag", new ValueWithNote(null, null) },
+////             { "Adult ST1A parenteral nutrition bag", new ValueWithNote(null, null) }, // Confidence: 69.6%, OMOP Match: 0.0%
+//            { "shingles (herpes zoster) vaccine, live", new ValueWithNote(null, null) },
+////             { "shingles (herpes zoster) vaccine, live", new ValueWithNote(null, null) }, // Confidence: 69.0%, OMOP Match: 0.0%
+//            { "wound care supplies", new ValueWithNote(null, null) },
+////             { "wound care supplies", new ValueWithNote(null, null) }, // Confidence: 69.0%, OMOP Match: 0.0%
+//            { "Platelets", new ValueWithNote(null, null) },
+////             { "Platelets", new ValueWithNote(null, null) }, // Confidence: 66.7%, OMOP Match: 0.0%
+//            { "Parenteral Nutrition (Adults)", new ValueWithNote(null, null) },
+////             { "Parenteral Nutrition (Adults)", new ValueWithNote(null, null) }, // Confidence: 66.7%, OMOP Match: 0.0%
+//            { "Emulsifying wax + Yellow soft paraffi", new ValueWithNote(null, null) },
+////             { "Emulsifying wax + Yellow soft paraffi", new ValueWithNote(null, null) }, // Confidence: 66.7%, OMOP Match: 0.0%
+//            { "Parenteral Nutrition (Paediatric)", new ValueWithNote(null, null) },
+////             { "Parenteral Nutrition (Paediatric)", new ValueWithNote(null, null) }, // Confidence: 65.7%, OMOP Match: 0.0%
+//            { "diphtheria/pertussis/tetanus vaccine", new ValueWithNote(null, null) },
+////             { "diphtheria/pertussis/tetanus vaccine", new ValueWithNote(null, null) }, // Confidence: 65.1%, OMOP Match: 0.0%
+//            { "fat emulsion, intravenous", new ValueWithNote(null, null) },
+////             { "fat emulsion, intravenous", new ValueWithNote(null, null) }, // Confidence: 64.9%, OMOP Match: 0.0%
+//            { "Hyoscine (base)", new ValueWithNote(null, null) },
+////             { "Hyoscine (base)", new ValueWithNote(null, null) }, // Confidence: 64.3%, OMOP Match: 0.0%
+//            { "REGN10933 + REGN10987", new ValueWithNote(null, null) },
+////             { "REGN10933 + REGN10987", new ValueWithNote(null, null) }, // Confidence: 63.3%, OMOP Match: 0.0%
+//            { "Sodium acid phosphate + Potassium dih", new ValueWithNote(null, null) },
+////             { "Sodium acid phosphate + Potassium dih", new ValueWithNote(null, null) }, // Confidence: 60.3%, OMOP Match: 0.0%
+//            { "incontinence supplies", new ValueWithNote(null, null) },
+////             { "incontinence supplies", new ValueWithNote(null, null) }, // Confidence: 60.0%, OMOP Match: 0.0%
+//            { "benzyl benzoate/lanolin/zinc oxide top", new ValueWithNote(null, null) },
+////             { "benzyl benzoate/lanolin/zinc oxide top", new ValueWithNote(null, null) }, // Confidence: 59.1%, OMOP Match: 0.0%
+//            { "IMC-I109V", new ValueWithNote(null, null) },
+////             { "IMC-I109V", new ValueWithNote(null, null) }, // Confidence: 58.8%, OMOP Match: 0.0%
+//            { "Emulsifying wax + Liquid paraffin + W", new ValueWithNote(null, null) },
+////             { "Emulsifying wax + Liquid paraffin + W", new ValueWithNote(null, null) }, // Confidence: 57.7%, OMOP Match: 0.0%
+//            { "Dextran 40 with Sodium chloride 0.9% (Rh", new ValueWithNote(null, null) },
+////             { "Dextran 40 with Sodium chloride 0.9% (Rh", new ValueWithNote(null, null) }, // Confidence: 57.6%, OMOP Match: 0.0%
+//            { "balsam/benzyl benz/bismuth/HC/ZnO top", new ValueWithNote(null, null) },
+////             { "balsam/benzyl benz/bismuth/HC/ZnO top", new ValueWithNote(null, null) }, // Confidence: 57.5%, OMOP Match: 0.0%
+//            { "Diphtheria + Tetanus + Pertussis + Hepat", new ValueWithNote(null, null) },
+////             { "Diphtheria + Tetanus + Pertussis + Hepat", new ValueWithNote(null, null) }, // Confidence: 57.4%, OMOP Match: 0.0%
+//            { "dexpanthenol-sodium hyaluronate ophth", new ValueWithNote(null, null) },
+////             { "dexpanthenol-sodium hyaluronate ophth", new ValueWithNote(null, null) }, // Confidence: 57.1%, OMOP Match: 0.0%
+//            { "Ready diluted", new ValueWithNote(null, null) },
+////             { "Ready diluted", new ValueWithNote(null, null) }, // Confidence: 57.1%, OMOP Match: 0.0%
+//            { "Red cells", new ValueWithNote(null, null) },
+////             { "Red cells", new ValueWithNote(null, null) }, // Confidence: 55.2%, OMOP Match: 0.0%
+//            { "SRP", new ValueWithNote(null, null) },
+////             { "SRP", new ValueWithNote(null, null) }, // Confidence: 54.5%, OMOP Match: 0.0%
+//            { "clobetasol/neomycin/nystatin", new ValueWithNote(null, null) },
+////             { "clobetasol/neomycin/nystatin", new ValueWithNote(null, null) }, // Confidence: 54.3%, OMOP Match: 0.0%
+//            { "dipht/tet/pertussis/hep B/polio/haemoph", new ValueWithNote(null, null) },
+////             { "dipht/tet/pertussis/hep B/polio/haemoph", new ValueWithNote(null, null) }, // Confidence: 52.7%, OMOP Match: 0.0%
+//            { "macrogol 3350 with electrolytes", new ValueWithNote(null, null) },
+////             { "macrogol 3350 with electrolytes", new ValueWithNote(null, null) }, // Confidence: 50.0%, OMOP Match: 0.0%
+//            { "medical supplies", new ValueWithNote(null, null) },
+////             { "medical supplies", new ValueWithNote(null, null) }, // Confidence: 45.5%, OMOP Match: 0.0%
+//            { "SMOF 60 (60mL)", new ValueWithNote(null, null) },
+////             { "SMOF 60 (60mL)", new ValueWithNote(null, null) }, // Confidence: 43.5%, OMOP Match: 0.0%
+//            { "Intermittent pneumatic compression (IPC)", new ValueWithNote(null, null) },
+////             { "Intermittent pneumatic compression (IPC)", new ValueWithNote(null, null) }, // Confidence: 37.3%, OMOP Match: 0.0%
+//            { "Freetext Medication", new ValueWithNote(null, null) },
+////             { "Freetext Medication", new ValueWithNote(null, null) }, // Confidence: 36.7%, OMOP Match: 0.0%
+//            { "Sodium lactate compound (Hartmann's) inf", new ValueWithNote(null, null) },
+////             { "Sodium lactate compound (Hartmann's) inf", new ValueWithNote(null, null) }, // Confidence: 31.6%, OMOP Match: 0.0%
+//            { "Hartmanns solution", new ValueWithNote(null, null) },
+////             { "Hartmanns solution", new ValueWithNote(null, null) }, // Confidence: 17.3%, OMOP Match: 0.0%
+//            { "GSK3511294", new ValueWithNote(null, null) },
+////             { "GSK3511294", new ValueWithNote(null, null) }, // Confidence: 10.5%, OMOP Match: 0.0%
+//            { "NCA", new ValueWithNote(null, null) },
+////             { "NCA", new ValueWithNote(null, null) }, // Confidence: 3.5%, OMOP Match: 0.0%
+//            { "Amino Acids (L-lysine 2.5% and L-arginin", new ValueWithNote(null, null) },
+////             { "Amino Acids (L-lysine 2.5% and L-arginin", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "blood glucose monitoring supplies", new ValueWithNote(null, null) },
+////             { "blood glucose monitoring supplies", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "benzylpenicillin sodium", new ValueWithNote(null, null) },
+////             { "benzylpenicillin sodium", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Blood Level Monitoring (Neonatal Unit)", new ValueWithNote(null, null) },
+////             { "Blood Level Monitoring (Neonatal Unit)", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "BE1116", new ValueWithNote(null, null) },
+////             { "BE1116", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "betamethasone-calcipotriol", new ValueWithNote(null, null) },
+////             { "betamethasone-calcipotriol", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Buffered Sodium Chloride 0.9% Sterile IV", new ValueWithNote(null, null) },
+////             { "Buffered Sodium Chloride 0.9% Sterile IV", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Carnoys solution", new ValueWithNote(null, null) },
+////             { "Carnoys solution", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "coagulation factor Xa", new ValueWithNote(null, null) },
+////             { "coagulation factor Xa", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Copper intrauterine contraceptive device", new ValueWithNote(null, null) },
+////             { "Copper intrauterine contraceptive device", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "cinchocaine-prednisoLONE", new ValueWithNote(null, null) },
+////             { "cinchocaine-prednisoLONE", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "cinchocaine-hydrocortisone", new ValueWithNote(null, null) },
+////             { "cinchocaine-hydrocortisone", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "diphth/pertussis,acel/polio/tetanus vacc", new ValueWithNote(null, null) },
+////             { "diphth/pertussis,acel/polio/tetanus vacc", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Cryoprecipitate", new ValueWithNote(null, null) },
+////             { "Cryoprecipitate", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "emollients,", new ValueWithNote(null, null) },
+////             { "emollients,", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Donor Lymphocytes - CD3", new ValueWithNote(null, null) },
+////             { "Donor Lymphocytes - CD3", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Fresh frozen plasma", new ValueWithNote(null, null) },
+////             { "Fresh frozen plasma", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "epoetin beta-methoxy polyethylene glycol", new ValueWithNote(null, null) },
+////             { "epoetin beta-methoxy polyethylene glycol", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "heparin flush", new ValueWithNote(null, null) },
+////             { "heparin flush", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "ergometrine-oxytocin", new ValueWithNote(null, null) },
+////             { "ergometrine-oxytocin", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "fluorescein ophthalmic", new ValueWithNote(null, null) },
+////             { "fluorescein ophthalmic", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Glucose 20% infusion (continuous)", new ValueWithNote(null, null) },
+////             { "Glucose 20% infusion (continuous)", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Glucose 10% infusion", new ValueWithNote(null, null) },
+////             { "Glucose 10% infusion", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Glucose 5% intravenous infusion solution", new ValueWithNote(null, null) },
+////             { "Glucose 5% intravenous infusion solution", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "IDDS", new ValueWithNote(null, null) },
+////             { "IDDS", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "loteprednol ophthalmic", new ValueWithNote(null, null) },
+////             { "loteprednol ophthalmic", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Granulocytes", new ValueWithNote(null, null) },
+////             { "Granulocytes", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "magnesium glycerophosphate", new ValueWithNote(null, null) },
+////             { "magnesium glycerophosphate", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "magnesium carbonate-magnesium sulfate", new ValueWithNote(null, null) },
+////             { "magnesium carbonate-magnesium sulfate", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Glucose 50% intravenous infusion solutio", new ValueWithNote(null, null) },
+////             { "Glucose 50% intravenous infusion solutio", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "nitrous oxide-oxygen", new ValueWithNote(null, null) },
+////             { "nitrous oxide-oxygen", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "ocular lubricant", new ValueWithNote(null, null) },
+////             { "ocular lubricant", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Glucose 12.5% intravenous infusion solut", new ValueWithNote(null, null) },
+////             { "Glucose 12.5% intravenous infusion solut", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "hepatitis B paediatric vaccine", new ValueWithNote(null, null) },
+////             { "hepatitis B paediatric vaccine", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "influenza vaccine, inactivated", new ValueWithNote(null, null) },
+////             { "influenza vaccine, inactivated", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "hyoscine BUTylbromide", new ValueWithNote(null, null) },
+////             { "hyoscine BUTylbromide", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "RO7204239", new ValueWithNote(null, null) },
+////             { "RO7204239", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "RO7234292", new ValueWithNote(null, null) },
+////             { "RO7234292", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "pilocarpine ophthalmic", new ValueWithNote(null, null) },
+////             { "pilocarpine ophthalmic", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Leech therapy", new ValueWithNote(null, null) },
+////             { "Leech therapy", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Parenteral Nutrition (Neonatal Unit)", new ValueWithNote(null, null) },
+////             { "Parenteral Nutrition (Neonatal Unit)", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "NCEA", new ValueWithNote(null, null) },
+////             { "NCEA", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "rabies vaccine, chick embryo cell", new ValueWithNote(null, null) },
+////             { "rabies vaccine, chick embryo cell", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Nutritional supplements", new ValueWithNote(null, null) },
+////             { "Nutritional supplements", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "potassium acid phosphate", new ValueWithNote(null, null) },
+////             { "potassium acid phosphate", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "respiratory therapy supplies", new ValueWithNote(null, null) },
+////             { "respiratory therapy supplies", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Peripheral Nerve Infusion", new ValueWithNote(null, null) },
+////             { "Peripheral Nerve Infusion", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Radio-opaque markers", new ValueWithNote(null, null) },
+////             { "Radio-opaque markers", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Sodium Chloride 2.7% intravenous solutio", new ValueWithNote(null, null) },
+////             { "Sodium Chloride 2.7% intravenous solutio", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Sodium chloride 0.9% infusion", new ValueWithNote(null, null) },
+////             { "Sodium chloride 0.9% infusion", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Sodium Chloride 5% intravenous solution", new ValueWithNote(null, null) },
+////             { "Sodium Chloride 5% intravenous solution", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "RSV vaccine, preF A-preF B, recombinant", new ValueWithNote(null, null) },
+////             { "RSV vaccine, preF A-preF B, recombinant", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "vitamins", new ValueWithNote(null, null) },
+////             { "vitamins", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "saliva substitutes", new ValueWithNote(null, null) },
+////             { "saliva substitutes", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Sodium Chloride 0.45% intravenous soluti", new ValueWithNote(null, null) },
+////             { "Sodium Chloride 0.45% intravenous soluti", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "support devices", new ValueWithNote(null, null) },
+////             { "support devices", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Hyoscine BUTylbromide", new ValueWithNote(null, null) },
+////             { "Hyoscine BUTylbromide", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Insulin soluble porcine", new ValueWithNote(null, null) },
+////             { "Insulin soluble porcine", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Nitrous Oxide + Oxygen", new ValueWithNote(null, null) },
+////             { "Nitrous Oxide + Oxygen", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Stem Cells - CD34", new ValueWithNote(null, null) },
+////             { "Stem Cells - CD34", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Arterial line flush sodium chloride 0", new ValueWithNote(null, null) },
+////             { "Arterial line flush sodium chloride 0", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Ocular lubricant", new ValueWithNote(null, null) },
+////             { "Ocular lubricant", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Sodium acid phosphate", new ValueWithNote(null, null) },
+////             { "Sodium acid phosphate", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Calcium lactate + Calcium phosphate +", new ValueWithNote(null, null) },
+////             { "Calcium lactate + Calcium phosphate +", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Central line flush sodium chloride 0.", new ValueWithNote(null, null) },
+////             { "Central line flush sodium chloride 0.", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Flupentixol decanoate", new ValueWithNote(null, null) },
+////             { "Flupentixol decanoate", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Sodium cromoglicate nasal", new ValueWithNote(null, null) },
+////             { "Sodium cromoglicate nasal", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "FDY-5301", new ValueWithNote(null, null) },
+////             { "FDY-5301", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "fluorouracil-salicylic acid", new ValueWithNote(null, null) },
+////             { "fluorouracil-salicylic acid", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "Haemofiltration fluids", new ValueWithNote(null, null) },
+////             { "Haemofiltration fluids", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "PCEA", new ValueWithNote(null, null) },
+////             { "PCEA", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
+//            { "vitamins with minerals", new ValueWithNote(null, null) },
+////             { "vitamins with minerals", new ValueWithNote(null, null) }, // Confidence: 0.0%, OMOP Match: 0.0%
         };
 
 

@@ -42,3 +42,33 @@ The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administ
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20dose_unit_source_value%20field%20SACT%20Drug%20Exposure%20mapping){: .btn }
+### Oxford Prescribing Drug Exposure
+* Value copied from `strengthdoseunit`
+
+* `strengthdoseunit` The unit of the drug dose 
+
+```sql
+select
+	patient_identifier_Value,
+	beg_dt_tm,
+	end_dt_tm,
+	order_mnemonic,
+	order_detail_display_line,
+	rxroute,
+	strengthdoseunit,
+	strengthdose
+from omop_staging.oxford_prescribing
+order by
+	patient_identifier_Value,
+	beg_dt_tm,
+	end_dt_tm,
+	order_mnemonic,
+	order_detail_display_line,
+	rxroute,
+	strengthdoseunit,
+	strengthdose
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20dose_unit_source_value%20field%20Oxford%20Prescribing%20Drug%20Exposure%20mapping){: .btn }

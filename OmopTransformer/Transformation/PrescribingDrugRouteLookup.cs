@@ -26,7 +26,6 @@ internal class PrescribingDrugRouteLookup : ILookup
             { "gingival", new ValueWithNote("4156704", "Gingival") },
             { "handihaler", new ValueWithNote("40486069", "Respiratory tract") },
             { "inhalation", new ValueWithNote("40486069", "Respiratory tract") },
-            { "flush", new ValueWithNote("", "") },
             { "intraArterial", new ValueWithNote("4240824", "Intra-arterial") },
             { "intraArticular", new ValueWithNote("4006860", "Intra-articular") },
             { "intraBiliary", new ValueWithNote("4223965", "Intrabiliary") },
@@ -83,7 +82,7 @@ internal class PrescribingDrugRouteLookup : ILookup
             { "sublingual", new ValueWithNote("4292110", "Sublingual") },
             { "topical", new ValueWithNote("4263689", "Topical") },
             { "transdermal", new ValueWithNote("4262099", "Transdermal") },
-            { "subdermal", new ValueWithNote("4186839", "Oromucosal") },
+            //{ "subdermal", new ValueWithNote("4186839", "Oromucosal") },
             { "transUrethral", new ValueWithNote("4305382", "Transurethral") },
             { "vaginal", new ValueWithNote("4057765", "Vaginal") },
             { "via CVVHD", new ValueWithNote("", "") }
