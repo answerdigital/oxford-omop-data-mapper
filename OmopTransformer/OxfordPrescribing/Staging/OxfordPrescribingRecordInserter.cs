@@ -111,7 +111,11 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
                 row.CATALOG,
                 row.ORDER_MNEMONIC,
                 row.ORDER_DETAIL_DISPLAY_LINE,
-                row.DEPT_MISC_LINE);
+                row.DEPT_MISC_LINE,
+                row.concept_identifier,
+                row.concept_name,
+                row.CONCEPT_CKI,
+                row.cki);
         }
 
         var parameter = new
