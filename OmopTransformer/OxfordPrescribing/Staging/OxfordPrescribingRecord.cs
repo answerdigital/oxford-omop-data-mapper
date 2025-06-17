@@ -32,4 +32,8 @@ internal class OxfordPrescribingRecord
     public string? ORDER_MNEMONIC { get; init; }
     public string? ORDER_DETAIL_DISPLAY_LINE { get; init; }
     public string? DEPT_MISC_LINE { get; init; }
+    public string? concept_identifier { get; init; }
+    public string? concept_name { get; init; }
+    public string? CONCEPT_CKI { get; init; }
+    public string? cki { get; init; }
 }
