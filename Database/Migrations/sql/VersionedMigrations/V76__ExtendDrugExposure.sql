@@ -1,4 +1,4 @@
-drop procedure cdm.insert_update_drug_exposure
+drop procedure if exists cdm.insert_update_drug_exposure
 
 drop type [cdm].[drug_exposure_row] ;
 
