@@ -74,6 +74,10 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
         dataTable.Columns.Add("ORDER_MNEMONIC");
         dataTable.Columns.Add("ORDER_DETAIL_DISPLAY_LINE");
         dataTable.Columns.Add("DEPT_MISC_LINE");
+        dataTable.Columns.Add("concept_identifier");
+        dataTable.Columns.Add("concept_name");
+        dataTable.Columns.Add("CONCEPT_CKI");
+        dataTable.Columns.Add("cki");
 
         foreach (var row in rows)
         {
@@ -107,7 +111,11 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
                 row.CATALOG,
                 row.ORDER_MNEMONIC,
                 row.ORDER_DETAIL_DISPLAY_LINE,
-                row.DEPT_MISC_LINE);
+                row.DEPT_MISC_LINE,
+                row.concept_identifier,
+                row.concept_name,
+                row.CONCEPT_CKI,
+                row.cki);
         }
 
         var parameter = new
