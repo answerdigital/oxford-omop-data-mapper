@@ -48,6 +48,10 @@ internal class OxfordPrescribingRecordParser : IOxfordPrescribingRecordParser
                 ORDER_MNEMONIC = csv.GetField<string>("ORDER_MNEMONIC").GetTrimmedValueOrNull(),
                 ORDER_DETAIL_DISPLAY_LINE = csv.GetField<string>("ORDER_DETAIL_DISPLAY_LINE").GetTrimmedValueOrNull(),
                 DEPT_MISC_LINE = csv.GetField<string>("DEPT_MISC_LINE").GetTrimmedValueOrNull(),
+                concept_identifier = csv.GetField<string>("concept_identifier").GetTrimmedValueOrNull(),
+                concept_name = csv.GetField<string>("concept_name").GetTrimmedValueOrNull(),
+                CONCEPT_CKI = csv.GetField<string>("CONCEPT_CKI").GetTrimmedValueOrNull(),
+                cki = csv.GetField<string>("cki").GetTrimmedValueOrNull()
             };
         }
     }
