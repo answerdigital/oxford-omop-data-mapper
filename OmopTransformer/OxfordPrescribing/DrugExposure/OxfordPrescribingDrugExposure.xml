@@ -4,7 +4,7 @@ select
 	patient_identifier_Value,
 	beg_dt_tm,
 	end_dt_tm,
-	lower(order_mnemonic) as order_mnemonic,
+	lower(replace(catalog, 'zzz', '')) as catalog,
 	order_detail_display_line,
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
@@ -14,7 +14,7 @@ order by
 	patient_identifier_Value,
 	beg_dt_tm,
 	end_dt_tm,
-	order_mnemonic,
+	catalog,
 	order_detail_display_line,
 	rxroute,
 	strengthdoseunit,
@@ -24,7 +24,7 @@ order by
 		<Explanation columnName="patient_identifier_Value">
 			<Description>Patient NHS Number</Description>
 		</Explanation>
-		<Explanation columnName="Order_Mnemonic">
+		<Explanation columnName="catalog">
 			<Description>The prescribed drug item as showing in the order screen as selected by the clinician</Description>
 		</Explanation>
 		<Explanation columnName="beg_dt_tm">
