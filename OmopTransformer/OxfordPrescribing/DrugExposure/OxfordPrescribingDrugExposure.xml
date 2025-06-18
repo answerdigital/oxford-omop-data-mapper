@@ -5,6 +5,7 @@ select
 	beg_dt_tm,
 	end_dt_tm,
 	lower(replace(catalog, 'zzz', '')) as catalog,
+	lower(order_mnemonic) as order_mnemonic,
 	order_detail_display_line,
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
@@ -16,6 +17,7 @@ order by
 	beg_dt_tm,
 	end_dt_tm,
 	catalog,
+	order_mnemonic,
 	order_detail_display_line,
 	rxroute,
 	strengthdoseunit,
@@ -27,6 +29,9 @@ order by
 		</Explanation>
 		<Explanation columnName="catalog">
 			<Description>The prescribed drug item as showing in the order screen as selected by the clinician</Description>
+		</Explanation>
+		<Explanation columnName="order_mnemonic">
+			<Description>The mnemonic of the prescribed drug item as showing in the order screen as selected by the clinician</Description>
 		</Explanation>
 		<Explanation columnName="beg_dt_tm">
 			<Description>The begin date of the Drug that was initially dispensed to the PATIENT.</Description>

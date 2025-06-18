@@ -33,7 +33,7 @@ internal class OxfordPrescribingDrugExposure : OmopDrugExposure<OxfordPrescribin
     [Transform(typeof(RxNormLookup), nameof(Source.catalog))]
     public override int? drug_source_concept_id { get; set; }
 
-    [CopyValue(nameof(Source.order_detail_display_line))]
+    [CopyValue(nameof(Source.order_mnemonic))]
     public override string? drug_source_value { get; set; }
 
     [CopyValue(nameof(Source.strengthdoseunit))]
