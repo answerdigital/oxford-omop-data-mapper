@@ -5,6 +5,9 @@ namespace OmopTransformer;
 
 internal class Icd10NonStandardResolver : Icd10ConceptLookup
 {
+    public override string LoadingLoggerMessage => "Loading ICD10 codes. (Icd10NonStandardResolver)";
+
+
     public Icd10NonStandardResolver(IOptions<Configuration> configuration, ILogger<ConceptLookup> logger) : base(configuration, logger)
     {
     }

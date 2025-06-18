@@ -10,7 +10,7 @@ internal class ConceptResolver
     private readonly Configuration _configuration;
     private readonly ILogger<ConceptResolver> _logger;
 
-    private Dictionary<int, Row>? _mappings;
+    private Dictionary<int, IGrouping<int, Row>>? _mappings;
     private Dictionary<int, IReadOnlyCollection<int>>? _devicesByConceptId;
 
     private readonly object _loadingLock = new();
@@ -24,7 +24,7 @@ internal class ConceptResolver
         _configuration = configuration.Value;
     }
 
-    private Dictionary<int, Row> GetMappings()
+    private Dictionary<int, IGrouping<int, Row>> GetMappings()
     {
         _logger.LogInformation("Loading mappings codes.");
 
@@ -35,7 +35,8 @@ internal class ConceptResolver
         return
             connection
                 .Query<Row>(sql: "select * from omop_staging.concept_code_map")
-                .ToDictionary(row => row.source_concept_id!);
+                .GroupBy(row => row.source_concept_id!)
+                .ToDictionary(row => row.Key!);
     }
 
     private Dictionary<int, IReadOnlyCollection<int>> GetDevices()
@@ -80,16 +81,17 @@ internal class ConceptResolver
         }
     }
 
-    public int? GetConcept(int conceptId, string? domain)
+    public int[] GetConcepts(int conceptId, string? domain)
     {
         EnsureMapping();
 
         if (_mappings!.TryGetValue(conceptId, out var value))
         {
-            if (domain == null || value.domain_id!.Equals(domain, StringComparison.OrdinalIgnoreCase))
-                return value.target_concept_id;
-
-            return null;
+            return
+                value
+                    .Where(row => domain == null || row.domain_id!.Equals(domain, StringComparison.OrdinalIgnoreCase))
+                    .Select(row => row.target_concept_id)
+                    .ToArray();
         }
 
         lock (_unableToMapByFrequencyLock)
@@ -104,7 +106,7 @@ internal class ConceptResolver
             }
         }
 
-        return null;
+        return new int[] { };
     }
 
     public IReadOnlyCollection<int> GetConceptDevices(int conceptId)

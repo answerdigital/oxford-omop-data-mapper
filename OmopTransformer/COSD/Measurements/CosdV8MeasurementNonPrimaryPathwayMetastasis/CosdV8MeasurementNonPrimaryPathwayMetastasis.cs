@@ -22,5 +22,5 @@ internal class CosdV8MeasurementNonPrimaryPathwayMetastasis : OmopMeasurement<Co
     public override string? measurement_source_value { get; set; }
 
     [Transform(typeof(MetastasisSiteLookup), nameof(Source.MetastaticSite))]
-    public override int? measurement_concept_id { get; set; }
+    public override int[]? measurement_concept_id { get; set; }
 }

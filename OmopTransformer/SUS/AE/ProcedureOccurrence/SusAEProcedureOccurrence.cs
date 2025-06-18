@@ -10,7 +10,7 @@ internal class SusAEProcedureOccurrence : OmopProcedureOccurrence<SusAEProcedure
     public override string? nhs_number { get; set; }
 
     [Transform(typeof(StandardProcedureConceptSelector), useOmopTypeAsSource: true, nameof(procedure_source_concept_id))]
-    public override int? procedure_concept_id { get; set; }
+    public override int[]? procedure_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.PrimaryProcedureDate))]
     public override DateTime? procedure_date { get; set; }

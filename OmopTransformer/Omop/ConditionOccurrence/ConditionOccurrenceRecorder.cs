@@ -49,23 +49,26 @@ internal class ConditionOccurrenceRecorder : IConditionOccurrenceRecorder
                 if (record.IsValid == false)
                     continue;
 
-                dataTable.Rows.Add(
-                    record.nhs_number,
-                    record.RecordConnectionIdentifier,
-                    record.condition_concept_id,
-                    record.condition_start_date,
-                    record.condition_start_datetime,
-                    record.condition_end_date,
-                    record.condition_end_datetime,
-                    record.condition_type_concept_id,
-                    record.condition_status_concept_id,
-                    record.stop_reason,
-                    record.provider_id,
-                    record.visit_occurrence_id,
-                    record.visit_detail_id,
-                    record.condition_source_value,
-                    record.condition_source_concept_id,
-                    record.condition_status_source_value);
+                foreach (var conceptId in record.condition_concept_id!)
+                {
+                    dataTable.Rows.Add(
+                        record.nhs_number,
+                        record.RecordConnectionIdentifier,
+                        conceptId,
+                        record.condition_start_date,
+                        record.condition_start_datetime,
+                        record.condition_end_date,
+                        record.condition_end_datetime,
+                        record.condition_type_concept_id,
+                        record.condition_status_concept_id,
+                        record.stop_reason,
+                        record.provider_id,
+                        record.visit_occurrence_id,
+                        record.visit_detail_id,
+                        record.condition_source_value,
+                        record.condition_source_concept_id,
+                        record.condition_status_source_value);
+                }
             }
 
             var parameter = new

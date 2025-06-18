@@ -11,7 +11,7 @@ internal class CosdV9HistoryOfAlcoholPast : OmopObservation<CosdV9HistoryOfAlcoh
     public override string? nhs_number { get; set; }
 
     [ConstantValue(35609491, "Alcohol units consumed per week")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.Date))]
     public override DateTime? observation_date { get; set; }

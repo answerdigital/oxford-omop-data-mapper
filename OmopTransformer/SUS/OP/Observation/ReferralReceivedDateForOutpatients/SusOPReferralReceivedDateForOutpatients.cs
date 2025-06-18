@@ -18,7 +18,7 @@ internal class SusOPReferralReceivedDateForOutpatients : OmopObservation<SusOPRe
     public override string? RecordConnectionIdentifier { get; set; }
 
     [ConstantValue(40760321, "Date of Referral")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.AppointmentDate))]
     public override DateTime? observation_date { get; set; }

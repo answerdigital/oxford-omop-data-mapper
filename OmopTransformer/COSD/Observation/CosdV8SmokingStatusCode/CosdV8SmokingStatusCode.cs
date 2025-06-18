@@ -11,7 +11,7 @@ internal class CosdV8SmokingStatusCode : OmopObservation<CosdV8SmokingStatusCode
     public override string? nhs_number { get; set; }
 
     [ConstantValue(4275495, "Tobacco smoking behavior - finding")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.Date))]
     public override DateTime? observation_date { get; set; }

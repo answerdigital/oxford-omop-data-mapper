@@ -4,6 +4,8 @@ using Microsoft.Extensions.Options;
 namespace OmopTransformer;
 internal class MeasurementMapsToValueResolver : Icd10ConceptLookup
 {
+    public override string LoadingLoggerMessage => "Loading ICD10 codes. (MeasurementMapsToValueResolver)";
+
     public MeasurementMapsToValueResolver(IOptions<Configuration> configuration, ILogger<ConceptLookup> logger) : base(configuration, logger)
     {
     }

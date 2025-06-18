@@ -22,7 +22,7 @@ internal class CosdV9MeasurementNonPrimaryPathwayRecurrenceMetastasis : OmopMeas
     public override string? measurement_source_value { get; set; }
 
     [Transform(typeof(MetastasisSiteLookup), nameof(Source.MetastaticSite))]
-    public override int? measurement_concept_id { get; set; }
+    public override int[]? measurement_concept_id { get; set; }
 
     [ConstantValue(2000500008, "NonPrimaryPathwayRecurrenceMetastasis")]
     public override int? measurement_source_concept_id { get; set; }
