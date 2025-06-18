@@ -46,6 +46,7 @@ internal class PrescribingDrugRouteLookup : ILookup
             { "intratracheal", new ValueWithNote("4229543", "intratracheal") },
             { "intraurethral", new ValueWithNote("4305382", "transurethral") },
             { "intrauterine", new ValueWithNote("4269621", "intrauterine") },
+            { "intra", new ValueWithNote("4171047", "intra") },
             { "intravenous", new ValueWithNote("4171047", "intravenous") },
             { "intravenous (central)", new ValueWithNote("4170113", "intravenous central") },
             { "intraventricular", new ValueWithNote("4222259", "intraventricular route - cardiac") },
@@ -85,7 +86,9 @@ internal class PrescribingDrugRouteLookup : ILookup
             //{ "subdermal", new ValueWithNote("4186839", "oromucosal") },
             { "transurethral", new ValueWithNote("4305382", "transurethral") },
             { "vaginal", new ValueWithNote("4057765", "vaginal") },
-            { "via cvvhd", new ValueWithNote("", "") }
+            { "via cvvhd", new ValueWithNote("", "") },
+            { "transmucosal", new ValueWithNote("", "") },
+            { "shampoo", new ValueWithNote("", "") }
         };
 
 

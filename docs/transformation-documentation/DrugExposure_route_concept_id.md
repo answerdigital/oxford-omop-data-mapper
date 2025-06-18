@@ -51,6 +51,7 @@ Prescribing Drug Routes to OMOP Condition Concept IDs
 |intratracheal|4229543|intratracheal|
 |intraurethral|4305382|transurethral|
 |intrauterine|4269621|intrauterine|
+|intra|4171047|intra|
 |intravenous|4171047|intravenous|
 |intravenous (central)|4170113|intravenous central|
 |intraventricular|4222259|intraventricular route - cardiac|
@@ -90,6 +91,8 @@ Prescribing Drug Routes to OMOP Condition Concept IDs
 |transurethral|4305382|transurethral|
 |vaginal|4057765|vaginal|
 |via cvvhd|||
+|transmucosal|||
+|shampoo|||
 
 Notes
 * [OMOP Routes](https://athena.ohdsi.org/search-terms/terms?domain=Route&standardConcept=Standard&page=1&pageSize=500&query=&boosts
@@ -167,6 +170,7 @@ Prescribing Drug Routes to OMOP Condition Concept IDs
 |intratracheal|4229543|intratracheal|
 |intraurethral|4305382|transurethral|
 |intrauterine|4269621|intrauterine|
+|intra|4171047|intra|
 |intravenous|4171047|intravenous|
 |intravenous (central)|4170113|intravenous central|
 |intraventricular|4222259|intraventricular route - cardiac|
@@ -206,6 +210,8 @@ Prescribing Drug Routes to OMOP Condition Concept IDs
 |transurethral|4305382|transurethral|
 |vaginal|4057765|vaginal|
 |via cvvhd|||
+|transmucosal|||
+|shampoo|||
 
 Notes
 * [OMOP Routes](https://athena.ohdsi.org/search-terms/terms?domain=Route&standardConcept=Standard&page=1&pageSize=500&query=&boosts
