@@ -3,6 +3,7 @@ using OmopTransformer.Omop;
 using OmopTransformer.OxfordPrescribing.DrugExposure;
 using OmopTransformer.Transformation;
 using OmopTransformer.Omop.DrugExposure;
+using OmopTransformer.OxfordPrescribing.DrugExposureWithSnomed;
 
 namespace OmopTransformer.OxfordPrescribing;
 
@@ -34,6 +35,12 @@ internal class OxfordPrescribingTransformer : Transformer
     public async Task Transform(CancellationToken cancellationToken)
     {
         Guid runId = Guid.NewGuid();
+
+        await Transform<OxfordPrescribingDrugExposureWithSnomedRecord, OxfordPrescribingDrugExposureWithSnomed>(
+            _drugExposureRecorder.InsertUpdateDrugExposure,
+            "Oxford Prescribing Drugs (With Snomed)",
+            runId,
+            cancellationToken);
 
         await Transform<OxfordPrescribingDrugExposureRecord, OxfordPrescribingDrugExposure>(
           _drugExposureRecorder.InsertUpdateDrugExposure,

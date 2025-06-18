@@ -4,28 +4,28 @@ select
 	patient_identifier_Value,
 	beg_dt_tm,
 	end_dt_tm,
-	lower(replace(catalog, 'zzz', '')) as catalog,
 	order_detail_display_line,
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
-	strengthdose
+	strengthdose,
+	concept_identifier
 from omop_staging.oxford_prescribing
-where concept_identifier is null
+where concept_identifier is not null
 order by
 	patient_identifier_Value,
 	beg_dt_tm,
 	end_dt_tm,
-	catalog,
 	order_detail_display_line,
 	rxroute,
 	strengthdoseunit,
-	strengthdose
+	strengthdose,
+	concept_identifier
 	</Sql>
 	<Explanations>
 		<Explanation columnName="patient_identifier_Value">
 			<Description>Patient NHS Number</Description>
 		</Explanation>
-		<Explanation columnName="catalog">
+		<Explanation columnName="concept_identifier">
 			<Description>The prescribed drug item as showing in the order screen as selected by the clinician</Description>
 		</Explanation>
 		<Explanation columnName="beg_dt_tm">

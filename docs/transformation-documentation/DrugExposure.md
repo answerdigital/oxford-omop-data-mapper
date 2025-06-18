@@ -30,3 +30,7 @@ has_toc: false
 <a href="OxfordPrescribingDrugExposure.svg" target="_blank"><img src="OxfordPrescribingDrugExposure.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordPrescribingDrugExposure%20mapping){: .btn }
+## OxfordPrescribingDrugExposureWithSnomed
+<a href="OxfordPrescribingDrugExposureWithSnomed.svg" target="_blank"><img src="OxfordPrescribingDrugExposureWithSnomed.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordPrescribingDrugExposureWithSnomed%20mapping){: .btn }
