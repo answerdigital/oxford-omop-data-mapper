@@ -331,11 +331,11 @@ Notes
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20drug_source_concept_id%20field%20SACT%20Drug%20Exposure%20mapping){: .btn }
 ### Oxford Prescribing Drug Exposure
-Source column  `order_mnemonic`.
+Source column  `catalog`.
 Oxford Prescribing data to RxNorm Concept ID Mapping
 
 
-|order_mnemonic|drug_source_concept_id|notes|
+|catalog|drug_source_concept_id|notes|
 |------|-----|-----|
 |ajmaline|19105879|ajmaline|
 |albumin human|1344143|albumin human, usp|
@@ -1512,6 +1512,67 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |co-tenidone|21015431|co-tenidone|
 |rupatadine|21014003|rupatadine|
 |zonisamide|744798|zonisamide|
+|shingles (herpes zoster) vaccine, live|42800035|0.65 ML varicella-zoster virus vaccine live (Oka-Merck) strain 29800 UNT/ML Injection [Zostavax]|
+|platelets|36879118|human platelets|
+|emulsifying wax + yellow soft paraffi|21291105|Emulsifying wax + Yellow soft paraffin|
+|diphtheria/pertussis/tetanus vaccine|40213291|diphtheria, tetanus toxoids and pertussis vaccine|
+|hyoscine (base)|40563761|Hyoscine|
+|sodium acid phosphate + potassium dih|36030040|potassium phosphate / sodium phosphate|
+|benzyl benzoate/lanolin/zinc oxide top|36404185|Benzyl Alcohol / benzyl benzoate / benzyl cinnamate / Lanolin / Zinc Oxide Topical Cream|
+|emulsifying wax + liquid paraffin + w|21197867|Emulsifying wax + Liquid paraffin + White soft paraffin|
+|dextran 40 with sodium chloride 0.9% (rh|690469|DEXTRAN 40/SODIUM CHLORIDE|
+|diphtheria + tetanus + pertussis + hepat|2472145|DIPHTHERIA/HAEMOPHILUS/HEP B/PERTUSSIS/POLIO/TETANUS|
+|dexpanthenol-sodium hyaluronate ophth|787787|Sodium hyaluronate + Dexpanthenol|
+|clobetasol/neomycin/nystatin|36408764|Clobetasol / Neomycin / Nystatin Topical Cream|
+|macrogol 3350 with electrolytes|986417|polyethylene glycol 3350|
+|gsk3511294|36856485|depemokimab (gsk3511294)|
+|dipht/tet/pertussis/hep b/polio/haemoph|2472145|DIPHTHERIA/HAEMOPHILUS/HEP B/PERTUSSIS/POLIO/TETANUS|
+|sodium lactate compound (hartmann's) inf|42914391|hartmanns|
+|hartmanns solution|42914391|hartmanns|
+|amino acids (l-lysine 2.5% and l-arginin|2009211|1000 ml amino acids 25 mg/ml injectable solution [aminofusin-tpn]|
+|benzylpenicillin sodium|1728416|penicillin g|
+|be1116|41207381|4 factor prothrombin complex concentrate / factor ix / factor vii / factor x / prothrombin injectable solution [beriplex]|
+|buffered sodium chloride 0.9% sterile iv|968205|sodium chloride 0.154 meq/ml irrigation solution|
+|coagulation factor xa|4197686|coagulation factor xa|
+|copper intrauterine contraceptive device|37498155|copper 313 mg drug implant [paragard]|
+|diphth/pertussis,acel/polio/tetanus vacc|40213289|diphtheria, tetanus toxoids and acellular pertussis vaccine, and poliovirus vaccine, inactivated|
+|cryoprecipitate|36848862|cryoprecipitate|
+|fresh frozen plasma|19025693|plasma protein fraction|
+|epoetin beta-methoxy polyethylene glycol|19015768|methoxy polyethylene glycol-epoetin beta|
+|heparin flush|1367571|heparin|
+|ergometrine-oxytocin|1326115|oxytocin|
+|fluorescein ophthalmic|996625|fluorescein|
+|glucose 20% infusion (continuous)|1560524|glucose|
+|glucose 10% infusion|1560524|glucose|
+|glucose 5% intravenous infusion solution|1560524|glucose|
+|loteprednol ophthalmic|992127|loteprednol|
+|magnesium glycerophosphate|36879003|magnesium glycerophosphate|
+|magnesium carbonate-magnesium sulfate|19093848|magnesium sulfate|
+|glucose 50% intravenous infusion solutio|1560524|glucose|
+|nitrous oxide-oxygen|19021129|nitrous oxide|
+|glucose 12.5% intravenous infusion solut|1560524|glucose|
+|hepatitis b paediatric vaccine|501488|hepatitis b vaccine|
+|influenza vaccine, inactivated|19121608|influenza virus vaccine|
+|pilocarpine ophthalmic|945286|pilocarpine|
+|leech therapy|45775313|hirudin (leech therapy)|
+|rabies vaccine, chick embryo cell|544411|rabies virus vaccine flury-lep strain|
+|potassium acid phosphate|19027362|potassium phosphate|
+|sodium chloride 2.7% intravenous solutio|967823|sodium chloride|
+|sodium chloride 0.9% infusion|967823|sodium chloride|
+|sodium chloride 5% intravenous solution|967823|sodium chloride|
+|sodium chloride 0.45% intravenous soluti|967823|sodium chloride|
+|hyoscine butylbromide|40234201|butylscopolamine|
+|insulin soluble porcine|1586346|insulin, regular, pork|
+|nitrous oxide + oxygen|21128839|nitrous oxide / oxygen gas for inhalation|
+|arterial line flush sodium chloride 0|967823|sodium chloride|
+|sodium acid phosphate|990499|sodium phosphate, monobasic|
+|calcium lactate + calcium phosphate +|939871|sodium phosphate|
+|central line flush sodium chloride 0.|967823|sodium chloride|
+|flupentixol decanoate|19055982|flupenthixol|
+|sodium cromoglicate nasal|1152631|cromolyn|
+|fdy-5301|19069873|sodium iodide|
+|fluorouracil-salicylic acid|36029703|fluorouracil / salicylic acid|
+|haemofiltration fluids|2901397|haemofiltration replacement fluid|
 
 Notes
 * [RxNorm API Documentation](https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html)
@@ -1520,14 +1581,14 @@ Notes
 * [OMOP Common Data Model](https://ohdsi.github.io/CommonDataModel/)
 * [OHDSI Vocabulary Documentation](https://ohdsi.github.io/CommonDataModel/cdm60.html#CONCEPT)
 
-* `order_mnemonic` The prescribed drug item as showing in the order screen as selected by the clinician 
+* `catalog` The prescribed drug item as showing in the order screen as selected by the clinician 
 
 ```sql
 select
 	patient_identifier_Value,
 	beg_dt_tm,
 	end_dt_tm,
-	lower(order_mnemonic) as order_mnemonic,
+	lower(replace(catalog, 'zzz', '')) as catalog,
 	order_detail_display_line,
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
@@ -1538,7 +1599,7 @@ order by
 	patient_identifier_Value,
 	beg_dt_tm,
 	end_dt_tm,
-	order_mnemonic,
+	catalog,
 	order_detail_display_line,
 	rxroute,
 	strengthdoseunit,
