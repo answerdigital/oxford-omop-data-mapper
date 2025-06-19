@@ -1580,6 +1580,23 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |dorzolamide-timolol ophthalmic|36030344|dorzolamide / timolol|
 |bimatoprost-timolol ophthalmic|21060563|bimatoprost / Timolol Ophthalmic Solution|
 |liquid paraffin ophthalmic|19129738|paraffin|
+|ichthammol-zinc oxide|||
+|tafluprost-timolol ophthalmic|||
+|trometamol (tham))|1511352|trometamol citrate|
+|dexamethasone/neomycin/polymyxin b ophth|40027153|dexamethasone / neomycin / polymyxin B Ophthalmic Ointment|
+|piperacillin-tazobactam (tazocin equival|46275426|piperacillin / tazobactam Injection|
+|proxymetacaine ophthalmic|19016891|proparacaine hydrochloride 5 MG/ML Ophthalmic Solution [Minims Proxymetacaine hydrochloride]|
+|lidocaine-zinc oxide|40001305|lidocaine / zinc oxide Topical Ointment|
+|sodium alginate-potassium bicarbonate|939541|sodium alginate 50 MG/ML / sodium bicarbonate 26.7 MG/ML Oral Suspension|
+|acetic acid/dexamethasone/neomycin otic|40027174|dexamethasone / neomycin Otic Solution|
+|calcium citrate + colecalciferol|||
+|al hydroxide/mg hydroxide/simeticone|40007792|aluminum hydroxide / magnesium hydroxide Chewable Tablet|
+|latanoprost-timolol ophthalmic|40058182|latanoprost / timolol Ophthalmic Solution|
+|oxybuprocaine ophthalmic|||
+|soft paraffin + wool fat|||
+|corticotrophin releasing hormone|||
+|alginic acid/calcium carbonate/na bic|40092304|alginic acid / calcium carbonate Chewable Tablet|
+|calcium acetate-magnesium carbonate|40094156|calcium acetate / magnesium carbonate Oral Tablet|
 |taurolock|2901073|taurolock|
 |hepatitis a vaccine|40047409|hepatitis a vaccines|
 |calcium-vitamin d|43126501|calcium/vitamine d|
