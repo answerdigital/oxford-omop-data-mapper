@@ -11,7 +11,7 @@ internal class CosdV9AsaScore : OmopObservation<CosdV9AsaScoreRecord>
     public override string? nhs_number { get; set; }
 
     [ConstantValue(4185914, "Identification of physical status")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.Date))]
     public override DateTime? observation_date { get; set; }

@@ -11,6 +11,6 @@ internal class StandardDrugConceptSelector(int? conceptId, ConceptResolver resol
         if (conceptId.HasValue == false)
             return null;
 
-        return resolver.GetConcept(conceptId.Value, "Drug");
+        return resolver.GetConcepts(conceptId.Value, "Drug");
     }
 }

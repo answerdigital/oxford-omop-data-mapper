@@ -53,27 +53,30 @@ internal class ObservationRecorder : IObservationRecorder
                 if (record.IsValid == false)
                     continue;
 
-                dataTable.Rows.Add(
-                    record.nhs_number,
-                    record.RecordConnectionIdentifier,
-                    record.HospitalProviderSpellNumber,
-                    record.observation_concept_id,
-                    record.observation_date,
-                    record.observation_datetime,
-                    record.observation_type_concept_id,
-                    record.value_as_number,
-                    record.value_as_string,
-                    record.value_as_concept_id,
-                    record.qualifier_concept_id,
-                    record.unit_concept_id,
-                    record.provider_id,
-                    record.observation_source_value,
-                    record.observation_source_concept_id,
-                    record.unit_source_value,
-                    record.qualifier_source_value,
-                    record.value_source_value,
-                    record.observation_event_id,
-                    record.obs_event_field_concept_id);
+                foreach (var conceptId in record.observation_concept_id!)
+                {
+                    dataTable.Rows.Add(
+                        record.nhs_number,
+                        record.RecordConnectionIdentifier,
+                        record.HospitalProviderSpellNumber,
+                        conceptId,
+                        record.observation_date,
+                        record.observation_datetime,
+                        record.observation_type_concept_id,
+                        record.value_as_number,
+                        record.value_as_string,
+                        record.value_as_concept_id,
+                        record.qualifier_concept_id,
+                        record.unit_concept_id,
+                        record.provider_id,
+                        record.observation_source_value,
+                        record.observation_source_concept_id,
+                        record.unit_source_value,
+                        record.qualifier_source_value,
+                        record.value_source_value,
+                        record.observation_event_id,
+                        record.obs_event_field_concept_id);
+                }
             }
 
             var parameter = new

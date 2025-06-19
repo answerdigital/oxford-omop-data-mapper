@@ -28,7 +28,7 @@ internal class SusCCMDSMeasurementGestationLength : OmopMeasurement<SusCCMDSMeas
     public override int? unit_concept_id { get; set; }
 
     [ConstantValue(4260747, "Length of gestation at birth")]
-    public override int? measurement_concept_id { get; set; }
+    public override int[]? measurement_concept_id { get; set; }
 
     public override bool IsValid => base.IsValid && value_as_number != null;
 }

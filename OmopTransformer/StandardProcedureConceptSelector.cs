@@ -11,6 +11,6 @@ internal class StandardProcedureConceptSelector(int? conceptId, ConceptResolver 
         if (conceptId.HasValue == false)
             return null;
 
-        return resolver.GetConcept(conceptId.Value, "Procedure");
+        return resolver.GetConcepts(conceptId.Value, "Procedure");
     }
 }

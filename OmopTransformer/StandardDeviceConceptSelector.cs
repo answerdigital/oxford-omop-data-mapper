@@ -11,6 +11,6 @@ internal class StandardDeviceConceptSelector(int? conceptId, ConceptResolver res
         if (conceptId.HasValue == false)
             return null;
 
-        return resolver.GetConcept(conceptId.Value, "Device");
+        return resolver.GetConcepts(conceptId.Value, "Device");
     }
 }

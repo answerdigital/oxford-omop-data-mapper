@@ -11,7 +11,7 @@ internal class CosdV9AdultComorbidityEvaluation : OmopObservation<CosdV9AdultCom
     public override string? nhs_number { get; set; }
 
     [ConstantValue(40487424, "Adult comorbidity evaluation-27 score")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.Date))]
     public override DateTime? observation_date { get; set; }

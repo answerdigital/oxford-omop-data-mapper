@@ -9,8 +9,6 @@ internal abstract class Icd10ConceptLookup : ConceptLookup
     {
     }
 
-    public override string LoadingLoggerMessage => "Loading ICD10 codes.";
-
     public override string FormatCode(string code) => TrimIcd10(code);
 
     internal static string TrimIcd10(string code)

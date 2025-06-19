@@ -21,7 +21,7 @@ internal class SusAPCBirthWeight : OmopObservation<SusAPCBirthWeightRecord>
     public override string? HospitalProviderSpellNumber { get; set; }
 
     [ConstantValue(3662222, "Weight of neonate at birth")]
-    public override int? observation_concept_id { get; set; }
+    public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.observation_date))]
     public override DateTime? observation_date { get; set; }
