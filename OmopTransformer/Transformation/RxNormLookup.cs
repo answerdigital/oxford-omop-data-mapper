@@ -1342,86 +1342,47 @@ internal class RxNormLookup : ILookup
 //            { "liquid paraffin ophthalmic", new ValueWithNote(null, null) },
 ////             { "liquid paraffin ophthalmic", new ValueWithNote("908523", "mineral oil") }, // confidence: 73.2%, omop match: 100.0%
 ///
-///jc check
-/// 
-//            { "ichthammol-zinc oxide", new ValueWithNote(null, null) },
-////             { "ichthammol-zinc oxide", new ValueWithNote("36030285", "ichthammol / zinc oxide") }, // confidence: 72.7%, omop match: 100.0%
-//            { "tafluprost-timolol ophthalmic", new ValueWithNote(null, null) },
-////             { "tafluprost-timolol ophthalmic", new ValueWithNote("36238005", "tafluprost ophthalmic product") }, // confidence: 72.4%, omop match: 100.0%
-//            { "trometamol (tham))", new ValueWithNote(null, null) },
-////             { "trometamol (tham))", new ValueWithNote("1511352", "trometamol citrate") }, // confidence: 72.2%, omop match: 100.0%
-//            { "dexamethasone/neomycin/polymyxin b ophth", new ValueWithNote(null, null) },
-////             { "dexamethasone/neomycin/polymyxin b ophth", new ValueWithNote("36213940", "dexamethasone / neomycin / polymyxin b ophthalmic product") }, // confidence: 72.2%, omop match: 100.0%
-//            { "piperacillin-tazobactam (tazocin equival", new ValueWithNote(null, null) },
-////             { "piperacillin-tazobactam (tazocin equival", new ValueWithNote("46275426", "piperacillin / tazobactam injection") }, // confidence: 72.0%, omop match: 100.0%
-//            { "proxymetacaine ophthalmic", new ValueWithNote(null, null) },
-////             { "proxymetacaine ophthalmic", new ValueWithNote("929504", "proparacaine") }, // confidence: 71.8%, omop match: 100.0%
-//            { "lidocaine-zinc oxide", new ValueWithNote(null, null) },
-////             { "lidocaine-zinc oxide", new ValueWithNote("36030290", "lidocaine / zinc oxide") }, // confidence: 71.4%, omop match: 100.0%
-//            { "sodium alginate-potassium bicarbonate", new ValueWithNote(null, null) },
-////             { "sodium alginate-potassium bicarbonate", new ValueWithNote("36028316", "alginic acid / sodium bicarbonate") }, // confidence: 71.4%, omop match: 100.0%
-//            { "acetic acid/dexamethasone/neomycin otic", new ValueWithNote(null, null) },
-////             { "acetic acid/dexamethasone/neomycin otic", new ValueWithNote("36213943", "dexamethasone / neomycin otic product") }, // confidence: 71.1%, omop match: 100.0%
-//            { "calcium citrate + colecalciferol", new ValueWithNote(null, null) },
-////             { "calcium citrate + colecalciferol", new ValueWithNote("36027950", "calcium citrate / cholecalciferol") }, // confidence: 70.8%, omop match: 100.0%
-//            { "al hydroxide/mg hydroxide/simeticone", new ValueWithNote(null, null) },
-////             { "al hydroxide/mg hydroxide/simeticone", new ValueWithNote("36027592", "aluminum hydroxide / simethicone") }, // confidence: 70.6%, omop match: 100.0%
-//            { "latanoprost-timolol ophthalmic", new ValueWithNote(null, null) },
-////             { "latanoprost-timolol ophthalmic", new ValueWithNote("36030140", "latanoprost / timolol") }, // confidence: 70.6%, omop match: 100.0%
-//            { "oxybuprocaine ophthalmic", new ValueWithNote(null, null) },
-////             { "oxybuprocaine ophthalmic", new ValueWithNote("935529", "benoxinate") }, // confidence: 70.3%, omop match: 100.0%
-//            { "soft paraffin + wool fat", new ValueWithNote(null, null) },
-////             { "soft paraffin + wool fat", new ValueWithNote("19033354", "petrolatum") }, // confidence: 70.3%, omop match: 100.0%
-//            { "corticotrophin releasing hormone", new ValueWithNote(null, null) },
-////             { "corticotrophin releasing hormone", new ValueWithNote("19048699", "corticotropin-releasing hormone") }, // confidence: 69.8%, omop match: 100.0%
-//            { "alginic acid/calcium carbonate/na bic", new ValueWithNote(null, null) },
-////             { "alginic acid/calcium carbonate/na bic", new ValueWithNote("36027575", "alginic acid / calcium carbonate") }, // confidence: 69.6%, omop match: 100.0%
-//            { "calcium acetate-magnesium carbonate", new ValueWithNote(null, null) },
-////             { "calcium acetate-magnesium carbonate", new ValueWithNote("778779", "calcium acetate / magnesium carbonate") }, // confidence: 69.4%, omop match: 100.0%
-//            { "aluminium acetate", new ValueWithNote(null, null) },
-////             { "aluminium acetate", new ValueWithNote("42898412", "aluminum") }, // confidence: 69.2%, omop match: 100.0%
-//            { "polihexanide ophthalmic", new ValueWithNote(null, null) },
-////             { "polihexanide ophthalmic", new ValueWithNote("43525903", "polihexanide") }, // confidence: 68.6%, omop match: 100.0%
-//            { "mercaptamine ophthalmic", new ValueWithNote(null, null) },
-////             { "mercaptamine ophthalmic", new ValueWithNote("910888", "cysteamine") }, // confidence: 68.6%, omop match: 100.0%
-//            { "liquid paraffin + isopropyl myristate", new ValueWithNote(null, null) },
-////             { "liquid paraffin + isopropyl myristate", new ValueWithNote("19003568", "isopropyl myristate") }, // confidence: 67.9%, omop match: 100.0%
-//            { "mg acetate/mg carbonate/mg hydroxide", new ValueWithNote(null, null) },
-////             { "mg acetate/mg carbonate/mg hydroxide", new ValueWithNote("43012385", "magnesium carbonate hydroxide") }, // confidence: 67.7%, omop match: 100.0%
-//            { "continuous epidural infusion", new ValueWithNote(null, null) },
-////             { "continuous epidural infusion", new ValueWithNote("19100021", "pranoxen continus") }, // confidence: 66.7%, omop match: 100.0%
-//            { "dexamethasone-tobramycin ophthalmic", new ValueWithNote(null, null) },
-////             { "dexamethasone-tobramycin ophthalmic", new ValueWithNote("40027456", "dexamethasone / tobramycin ophthalmic ointment") }, // confidence: 66.7%, omop match: 100.0%
-//            { "ispaghula-mebeverine", new ValueWithNote(null, null) },
-////             { "ispaghula-mebeverine", new ValueWithNote("19008994", "mebeverine") }, // confidence: 66.7%, omop match: 100.0%
-//            { "white soft paraffin + liquid paraffin", new ValueWithNote(null, null) },
-////             { "white soft paraffin + liquid paraffin", new ValueWithNote("19033354", "petrolatum") }, // confidence: 66.7%, omop match: 100.0%
-//            { "potassium acid tartrate-potassium bicarb", new ValueWithNote(null, null) },
-////             { "potassium acid tartrate-potassium bicarb", new ValueWithNote("36027949", "potassium bicarbonate / potassium tartrate") }, // confidence: 65.9%, omop match: 100.0%
-//            { "glucose 2.5% with 0.45% sodium chloride", new ValueWithNote(null, null) },
-////             { "glucose 2.5% with 0.45% sodium chloride", new ValueWithNote("40221365", "50 ml sodium chloride 4.5 mg/ml injection") }, // confidence: 65.7%, omop match: 100.0%
-//            { "imipenem/cilastatin/relebactam", new ValueWithNote(null, null) },
-////             { "imipenem/cilastatin/relebactam", new ValueWithNote("36030067", "cilastatin / imipenem / relebactam") }, // confidence: 65.6%, omop match: 100.0%
-//            { "haemophilus b-meningococcal conj vaccine", new ValueWithNote(null, null) },
-////             { "haemophilus b-meningococcal conj vaccine", new ValueWithNote("530009", "0.5 ml haemophilus influenzae b (ross strain) capsular polysaccharide meningococcal protein conjugate vaccine 0.265 mg/ml injection") }, // confidence: 65.5%, omop match: 100.0%
-//            { "glucose 5% to", new ValueWithNote(null, null) },
-////             { "glucose 5% to", new ValueWithNote("19095012", "glucose 82.5 mg/ml") }, // confidence: 64.5%, omop match: 100.0%
-//            { "calamine-glycerol", new ValueWithNote(null, null) },
-////             { "calamine-glycerol", new ValueWithNote("961145", "glycerin") }, // confidence: 64.0%, omop match: 100.0%
-//            { "fusidic acid ophthalmic", new ValueWithNote(null, null) },
-////             { "fusidic acid ophthalmic", new ValueWithNote("36220424", "fusidate ophthalmic product") }, // confidence: 64.0%, omop match: 100.0%
-//            { "calamine-menthol", new ValueWithNote(null, null) },
-////             { "calamine-menthol", new ValueWithNote("36029578", "calamine / menthol / zinc oxide") }, // confidence: 63.8%, omop match: 100.0%
-//            { "continuous subcutaneous", new ValueWithNote(null, null) },
-////             { "continuous subcutaneous", new ValueWithNote("19053549", "mst continus") }, // confidence: 62.9%, omop match: 100.0%
-//            { "dronabinol + cannabidiol", new ValueWithNote(null, null) },
-////             { "dronabinol + cannabidiol", new ValueWithNote("1510417", "cannabidiol") }, // confidence: 62.9%, omop match: 100.0%
-//            { "hamamelis ophthalmic", new ValueWithNote(null, null) },
-////             { "hamamelis ophthalmic", new ValueWithNote("959196", "witch hazel") }, // confidence: 62.9%, omop match: 100.0%
-//            { "sng001 (interferon -ß1a)", new ValueWithNote(null, null) },
-////             { "sng001 (interferon -ß1a)", new ValueWithNote("40053881", "interferons") }, // confidence: 62.9%, omop match: 100.0%
-//            { "adrenaline-lidocaine", new ValueWithNote(null, null) },
-////             { "adrenaline-lidocaine", new ValueWithNote("44814295", "adrenalin") }, // confidence: 62.1%, omop match: 100.0%
+//jc check
+
+            { "ichthammol-zinc oxide", new ValueWithNote("", "") },
+            { "tafluprost-timolol ophthalmic", new ValueWithNote("", "") },
+            { "trometamol (tham))", new ValueWithNote("1511352", "trometamol citrate") },
+            { "dexamethasone/neomycin/polymyxin b ophth", new ValueWithNote("40027153", "dexamethasone / neomycin / polymyxin B Ophthalmic Ointment") },
+            { "piperacillin-tazobactam (tazocin equival", new ValueWithNote("46275426", "piperacillin / tazobactam Injection") },
+            { "proxymetacaine ophthalmic", new ValueWithNote("19016891", "proparacaine hydrochloride 5 MG/ML Ophthalmic Solution [Minims Proxymetacaine hydrochloride]") },
+            { "lidocaine-zinc oxide", new ValueWithNote("40001305", "lidocaine / zinc oxide Topical Ointment") },
+            { "sodium alginate-potassium bicarbonate", new ValueWithNote("939541", "sodium alginate 50 MG/ML / sodium bicarbonate 26.7 MG/ML Oral Suspension") },
+            { "acetic acid/dexamethasone/neomycin otic", new ValueWithNote("40027174", "dexamethasone / neomycin Otic Solution") },
+            { "calcium citrate + colecalciferol", new ValueWithNote("", "") },
+            { "al hydroxide/mg hydroxide/simeticone", new ValueWithNote("40007792", "aluminum hydroxide / magnesium hydroxide Chewable Tablet") },
+            { "latanoprost-timolol ophthalmic", new ValueWithNote("40058182", "latanoprost / timolol Ophthalmic Solution") },
+            { "oxybuprocaine ophthalmic", new ValueWithNote("", "") },
+            { "soft paraffin + wool fat", new ValueWithNote("", "") },
+            { "corticotrophin releasing hormone", new ValueWithNote("", "") },
+            { "alginic acid/calcium carbonate/na bic", new ValueWithNote("40092304", "alginic acid / calcium carbonate Chewable Tablet") },
+            { "calcium acetate-magnesium carbonate", new ValueWithNote("40094156", "calcium acetate / magnesium carbonate Oral Tablet") },
+            //{ "aluminium acetate", new ValueWithNote(null, null) },
+            //{ "polihexanide ophthalmic", new ValueWithNote(null, null) },
+            //{ "mercaptamine ophthalmic", new ValueWithNote(null, null) },
+            //{ "liquid paraffin + isopropyl myristate", new ValueWithNote(null, null) },
+            //{ "mg acetate/mg carbonate/mg hydroxide", new ValueWithNote(null, null) },
+            //{ "continuous epidural infusion", new ValueWithNote(null, null) },
+            //{ "dexamethasone-tobramycin ophthalmic", new ValueWithNote(null, null) },
+            //{ "ispaghula-mebeverine", new ValueWithNote(null, null) },
+            //{ "white soft paraffin + liquid paraffin", new ValueWithNote(null, null) },
+            //{ "potassium acid tartrate-potassium bicarb", new ValueWithNote(null, null) },
+            //{ "glucose 2.5% with 0.45% sodium chloride", new ValueWithNote(null, null) },
+            //{ "imipenem/cilastatin/relebactam", new ValueWithNote(null, null) },
+            //{ "haemophilus b-meningococcal conj vaccine", new ValueWithNote(null, null) },
+            //{ "glucose 5% to", new ValueWithNote(null, null) },
+            //{ "calamine-glycerol", new ValueWithNote(null, null) },
+            //{ "fusidic acid ophthalmic", new ValueWithNote(null, null) },
+            //{ "calamine-menthol", new ValueWithNote(null, null) },
+            //{ "continuous subcutaneous", new ValueWithNote(null, null) },
+            //{ "dronabinol + cannabidiol", new ValueWithNote(null, null) },
+            //{ "hamamelis ophthalmic", new ValueWithNote(null, null) },
+            //{ "sng001 (interferon -ß1a)", new ValueWithNote(null, null) },
+            //{ "adrenaline-lidocaine", new ValueWithNote(null, null) },
 
 // checked by khayam
 
