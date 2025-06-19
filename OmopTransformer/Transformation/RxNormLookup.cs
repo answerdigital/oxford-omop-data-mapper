@@ -1161,186 +1161,96 @@ internal class RxNormLookup : ILookup
             { "sodium bicarbonate otic", new ValueWithNote("36227308", "sodium bicarbonate otic product") },
             { "moxifloxacin ophthalmic", new ValueWithNote("36213853", "moxifloxacin ophthalmic product") },
             { "prednisolone ophthalmic", new ValueWithNote("36220910", "prednisolone ophthalmic product") },
-//            { "brimonidine-brinzolamide ophthalmic", new ValueWithNote(null, null) },
-////             { "brimonidine-brinzolamide ophthalmic", new ValueWithNote("36246176", "brimonidine / brinzolamide ophthalmic product") }, // confidence: 85.0%, omop match: 100.0%
-//            { "ipratropium nasal", new ValueWithNote(null, null) },
-////             { "ipratropium nasal", new ValueWithNote("40049465", "ipratropium nasal spray") }, // confidence: 85.0%, omop match: 100.0%
-//            { "brimonidine ophthalmic", new ValueWithNote(null, null) },
-////             { "brimonidine ophthalmic", new ValueWithNote("36219537", "brimonidine ophthalmic product") }, // confidence: 84.6%, omop match: 100.0%
-//            { "bimatoprost ophthalmic", new ValueWithNote(null, null) },
-////             { "bimatoprost ophthalmic", new ValueWithNote("36226260", "bimatoprost ophthalmic product") }, // confidence: 84.6%, omop match: 100.0%
-//            { "dorzolamide ophthalmic", new ValueWithNote(null, null) },
-////             { "dorzolamide ophthalmic", new ValueWithNote("36224178", "dorzolamide ophthalmic product") }, // confidence: 84.6%, omop match: 100.0%
-//            { "latanoprost ophthalmic", new ValueWithNote(null, null) },
-////             { "latanoprost ophthalmic", new ValueWithNote("36226918", "latanoprost ophthalmic product") }, // confidence: 84.6%, omop match: 100.0%
-//            { "levobunolol ophthalmic", new ValueWithNote(null, null) },
-////             { "levobunolol ophthalmic", new ValueWithNote("36221015", "levobunolol ophthalmic product") }, // confidence: 84.6%, omop match: 100.0%
-//            { "propamidine ophthalmic", new ValueWithNote(null, null) },
-////             { "propamidine ophthalmic", new ValueWithNote("36211817", "propamidine ophthalmic product") }, // confidence: 84.6%, omop match: 100.0%
-//            { "olopatadine ophthalmic", new ValueWithNote(null, null) },
-////             { "olopatadine ophthalmic", new ValueWithNote("36223879", "olopatadine ophthalmic product") }, // confidence: 84.6%, omop match: 100.0%
-//            { "tropicamide ophthalmic", new ValueWithNote(null, null) },
-////             { "tropicamide ophthalmic", new ValueWithNote("36227351", "tropicamide ophthalmic product") }, // confidence: 84.6%, omop match: 100.0%
-//            { "witch hazel ophthalmic", new ValueWithNote(null, null) },
-////             { "witch hazel ophthalmic", new ValueWithNote("36227261", "witch hazel ophthalmic product") }, // confidence: 84.6%, omop match: 100.0%
-//            { "beclometasone nasal", new ValueWithNote(null, null) },
-////             { "beclometasone nasal", new ValueWithNote("40010699", "beclomethasone nasal spray") }, // confidence: 84.4%, omop match: 100.0%
-//            { "betamethasone-neomycin ophthalmic", new ValueWithNote(null, null) },
-////             { "betamethasone-neomycin ophthalmic", new ValueWithNote("36212136", "betamethasone / neomycin ophthalmic product") }, // confidence: 84.2%, omop match: 100.0%
-//            { "azelastine nasal", new ValueWithNote(null, null) },
-////             { "azelastine nasal", new ValueWithNote("40133581", "azelastine nasal spray") }, // confidence: 84.2%, omop match: 100.0%
-//            { "gentamicin-hydrocortisone otic", new ValueWithNote(null, null) },
-////             { "gentamicin-hydrocortisone otic", new ValueWithNote("36029279", "gentamicin / hydrocortisone") }, // confidence: 84.2%, omop match: 100.0%
-//            { "mometasone nasal", new ValueWithNote(null, null) },
-////             { "mometasone nasal", new ValueWithNote("40066277", "mometasone nasal spray") }, // confidence: 84.2%, omop match: 100.0%
-//            { "budesonide nasal", new ValueWithNote(null, null) },
-////             { "budesonide nasal", new ValueWithNote("40020313", "budesonide nasal spray") }, // confidence: 84.2%, omop match: 100.0%
-//            { "azelastine-fluticasone nasal", new ValueWithNote(null, null) },
-////             { "azelastine-fluticasone nasal", new ValueWithNote("778911", "azelastine / fluticasone") }, // confidence: 84.0%, omop match: 100.0%
-//            { "azelastine ophthalmic", new ValueWithNote(null, null) },
-////             { "azelastine ophthalmic", new ValueWithNote("36225520", "azelastine ophthalmic product") }, // confidence: 84.0%, omop match: 100.0%
-//            { "cefuroxime ophthalmic", new ValueWithNote(null, null) },
-////             { "cefuroxime ophthalmic", new ValueWithNote("36217283", "cefuroxime ophthalmic product") }, // confidence: 84.0%, omop match: 100.0%
-//            { "diclofenac ophthalmic", new ValueWithNote(null, null) },
-////             { "diclofenac ophthalmic", new ValueWithNote("36217233", "diclofenac ophthalmic product") }, // confidence: 84.0%, omop match: 100.0%
-//            { "epinastine ophthalmic", new ValueWithNote(null, null) },
-////             { "epinastine ophthalmic", new ValueWithNote("36225777", "epinastine ophthalmic product") }, // confidence: 84.0%, omop match: 100.0%
-//            { "gentamicin ophthalmic", new ValueWithNote(null, null) },
-////             { "gentamicin ophthalmic", new ValueWithNote("1594375", "gentamicin ophthalmic product") }, // confidence: 84.0%, omop match: 100.0%
-//            { "lodoxamide ophthalmic", new ValueWithNote(null, null) },
-////             { "lodoxamide ophthalmic", new ValueWithNote("36221142", "lodoxamide ophthalmic product") }, // confidence: 84.0%, omop match: 100.0%
-//            { "tetracaine ophthalmic", new ValueWithNote(null, null) },
-////             { "tetracaine ophthalmic", new ValueWithNote("36221743", "tetracaine ophthalmic product") }, // confidence: 84.0%, omop match: 100.0%
-//            { "travoprost ophthalmic", new ValueWithNote(null, null) },
-////             { "travoprost ophthalmic", new ValueWithNote("36225495", "travoprost ophthalmic product") }, // confidence: 84.0%, omop match: 100.0%
-//            { "tafluprost ophthalmic", new ValueWithNote(null, null) },
-////             { "tafluprost ophthalmic", new ValueWithNote("36238005", "tafluprost ophthalmic product") }, // confidence: 84.0%, omop match: 100.0%
-//            { "bromfenac ophthalmic", new ValueWithNote(null, null) },
-////             { "bromfenac ophthalmic", new ValueWithNote("36219545", "bromfenac ophthalmic product") }, // confidence: 83.3%, omop match: 100.0%
-//            { "chloramphenicol otic", new ValueWithNote(null, null) },
-////             { "chloramphenicol otic", new ValueWithNote("36216754", "chloramphenicol otic product") }, // confidence: 83.3%, omop match: 100.0%
-//            { "dicycloverine", new ValueWithNote(null, null) },
-////             { "dicycloverine", new ValueWithNote("1710446", "cycloserine") }, // confidence: 83.3%, omop match: 100.0%
-//            { "ephedrine nasal", new ValueWithNote(null, null) },
-////             { "ephedrine nasal", new ValueWithNote("40037821", "ephedrine nasal spray") }, // confidence: 83.3%, omop match: 100.0%
-//            { "ketorolac ophthalmic", new ValueWithNote(null, null) },
-////             { "ketorolac ophthalmic", new ValueWithNote("36225366", "ketorolac ophthalmic product") }, // confidence: 83.3%, omop match: 100.0%
-//            { "nepafenac ophthalmic", new ValueWithNote(null, null) },
-////             { "nepafenac ophthalmic", new ValueWithNote("36223788", "nepafenac ophthalmic product") }, // confidence: 83.3%, omop match: 100.0%
-//            { "ofloxacin ophthalmic", new ValueWithNote(null, null) },
-////             { "ofloxacin ophthalmic", new ValueWithNote("36227393", "ofloxacin ophthalmic product") }, // confidence: 83.3%, omop match: 100.0%
-//            { "betaxolol ophthalmic", new ValueWithNote(null, null) },
-////             { "betaxolol ophthalmic", new ValueWithNote("36212161", "betaxolol ophthalmic product") }, // confidence: 83.3%, omop match: 100.0%
-//            { "ketotifen ophthalmic", new ValueWithNote(null, null) },
-////             { "ketotifen ophthalmic", new ValueWithNote("36225372", "ketotifen ophthalmic product") }, // confidence: 83.3%, omop match: 100.0%
-//            { "atropine ophthalmic", new ValueWithNote(null, null) },
-////             { "atropine ophthalmic", new ValueWithNote("36212940", "atropine ophthalmic product") }, // confidence: 82.6%, omop match: 100.0%
-//            { "insulin isophane bovine", new ValueWithNote(null, null) },
-////             { "insulin isophane bovine", new ValueWithNote("46221581", "insulin isophane") }, // confidence: 82.1%, omop match: 100.0%
-//            { "ciprofloxacin otic", new ValueWithNote(null, null) },
-////             { "ciprofloxacin otic", new ValueWithNote("36217292", "ciprofloxacin otic product") }, // confidence: 81.8%, omop match: 100.0%
-//            { "citric acid/mg oxide/na picosulfate", new ValueWithNote(null, null) },
-////             { "citric acid/mg oxide/na picosulfate", new ValueWithNote("36029516", "citric acid / magnesium oxide / picosulfurate") }, // confidence: 81.5%, omop match: 100.0%
-//            { "lidocaine-phenylephrine nasal", new ValueWithNote(null, null) },
-////             { "lidocaine-phenylephrine nasal", new ValueWithNote("36030085", "lidocaine / phenylephrine") }, // confidence: 81.5%, omop match: 100.0%
-//            { "zuclopenthixol acetate injection", new ValueWithNote(null, null) },
-////             { "zuclopenthixol acetate injection", new ValueWithNote("19121994", "zuclopenthixol acetate") }, // confidence: 81.5%, omop match: 100.0%
-//            { "amylmetacresol-dichlorobenzyl alc top", new ValueWithNote(null, null) },
-////             { "amylmetacresol-dichlorobenzyl alc top", new ValueWithNote("36028603", "amylmetacresol / dichlorobenzyl alcohol / menthol") }, // confidence: 81.4%, omop match: 100.0%
-//            { "timolol-travoprost ophthalmic", new ValueWithNote(null, null) },
-////             { "timolol-travoprost ophthalmic", new ValueWithNote("40099457", "travoprost ophthalmic solution") }, // confidence: 81.4%, omop match: 100.0%
-//            { "fluticasone nasal", new ValueWithNote(null, null) },
-////             { "fluticasone nasal", new ValueWithNote("36220588", "fluticasone nasal product") }, // confidence: 81.0%, omop match: 100.0%
-//            { "convalescent plasma", new ValueWithNote(null, null) },
-////             { "convalescent plasma", new ValueWithNote("33000", "covid-19 convalescent plasma") }, // confidence: 80.9%, omop match: 100.0%
-//            { "clioquinol-flumetasone otic", new ValueWithNote(null, null) },
-////             { "clioquinol-flumetasone otic", new ValueWithNote("36030361", "clioquinol / flumethasone") }, // confidence: 80.8%, omop match: 100.0%
-//            { "estradiol + norethisterone", new ValueWithNote(null, null) },
-////             { "estradiol + norethisterone", new ValueWithNote("36030820", "ethinyl estradiol / ethisterone") }, // confidence: 80.7%, omop match: 100.0%
-//            { "acetic acid otic", new ValueWithNote(null, null) },
-////             { "acetic acid otic", new ValueWithNote("36217021", "acetic acid otic product") }, // confidence: 80.0%, omop match: 100.0%
-//            { "benzalkonium chloride-cetrimide", new ValueWithNote(null, null) },
-////             { "benzalkonium chloride-cetrimide", new ValueWithNote("36030307", "benzalkonium / cetrimide") }, // confidence: 80.0%, omop match: 100.0%
-//            { "citric acid-magnesium carbonate", new ValueWithNote(null, null) },
-////             { "citric acid-magnesium carbonate", new ValueWithNote("36030486", "citric acid / magnesium oxide / sodium carbonate") }, // confidence: 80.0%, omop match: 100.0%
-//            { "digoxin specific antibody", new ValueWithNote(null, null) },
-////             { "digoxin specific antibody", new ValueWithNote("35603726", "ovine digoxin immune fab") }, // confidence: 80.0%, omop match: 100.0%
-//            { "urea (13-c)", new ValueWithNote(null, null) },
-////             { "urea (13-c)", new ValueWithNote("19054337", "urea c-13") }, // confidence: 80.0%, omop match: 100.0%
-//            { "potassium chloride 20mmol with glucose 5", new ValueWithNote(null, null) },
-////             { "potassium chloride 20mmol with glucose 5", new ValueWithNote("36030057", "glucose / potassium chloride") }, // confidence: 79.4%, omop match: 100.0%
-//            { "potassium chloride 20mmol with glucose 2", new ValueWithNote(null, null) },
-////             { "potassium chloride 20mmol with glucose 2", new ValueWithNote("36030057", "glucose / potassium chloride") }, // confidence: 79.4%, omop match: 100.0%
-//            { "potassium chloride 10mmol with glucose 1", new ValueWithNote(null, null) },
-////             { "potassium chloride 10mmol with glucose 1", new ValueWithNote("36030057", "glucose / potassium chloride") }, // confidence: 79.4%, omop match: 100.0%
-//            { "potassium chloride 10mmol with glucose 5", new ValueWithNote(null, null) },
-////             { "potassium chloride 10mmol with glucose 5", new ValueWithNote("36030057", "glucose / potassium chloride") }, // confidence: 79.4%, omop match: 100.0%
-//            { "potassium chloride 20mmol with glucose 1", new ValueWithNote(null, null) },
-////             { "potassium chloride 20mmol with glucose 1", new ValueWithNote("36030057", "glucose / potassium chloride") }, // confidence: 79.4%, omop match: 100.0%
-//            { "chlorhexidine-fluoride", new ValueWithNote(null, null) },
-////             { "chlorhexidine-fluoride", new ValueWithNote("36027304", "chlorhexidine / sodium fluoride") }, // confidence: 79.2%, omop match: 100.0%
-//            { "ciclosporin ophthalmic", new ValueWithNote(null, null) },
-////             { "ciclosporin ophthalmic", new ValueWithNote("36213827", "cyclosporine ophthalmic product") }, // confidence: 79.2%, omop match: 100.0%
-//            { "aciclovir ophthalmic", new ValueWithNote(null, null) },
-////             { "aciclovir ophthalmic", new ValueWithNote("36217182", "acyclovir ophthalmic product") }, // confidence: 79.2%, omop match: 100.0%
-//            { "amphotericin b (fungizone)", new ValueWithNote(null, null) },
-////             { "amphotericin b (fungizone)", new ValueWithNote("19098044", "amphotericin b 30 mg/ml [fungizone]") }, // confidence: 78.7%, omop match: 100.0%
-//            { "zuclopenthixol decanoate depot inject", new ValueWithNote(null, null) },
-////             { "zuclopenthixol decanoate depot inject", new ValueWithNote("19121997", "zuclopenthixol decanoate") }, // confidence: 78.7%, omop match: 100.0%
-//            { "insulin isophane biphasic", new ValueWithNote(null, null) },
-////             { "insulin isophane biphasic", new ValueWithNote("46221581", "insulin isophane") }, // confidence: 78.0%, omop match: 100.0%
-//            { "potassium ascorbate ophthalmic", new ValueWithNote(null, null) },
-////             { "potassium ascorbate ophthalmic", new ValueWithNote("36027699", "calcium ascorbate / potassium") }, // confidence: 78.0%, omop match: 100.0%
-//            { "fentanyl-levobupivacaine", new ValueWithNote(null, null) },
-////             { "fentanyl-levobupivacaine", new ValueWithNote("19098741", "levobupivacaine") }, // confidence: 76.9%, omop match: 100.0%
-//            { "cocaine nasal", new ValueWithNote(null, null) },
-////             { "cocaine nasal", new ValueWithNote("36213696", "cocaine nasal product") }, // confidence: 76.5%, omop match: 100.0%
-//            { "estradiol-norethisterone", new ValueWithNote(null, null) },
-////             { "estradiol-norethisterone", new ValueWithNote("36030820", "ethinyl estradiol / ethisterone") }, // confidence: 76.4%, omop match: 100.0%
-//            { "immunoglobulin subcutaneous", new ValueWithNote(null, null) },
-////             { "immunoglobulin subcutaneous", new ValueWithNote("551749", "immunoglobulins, intravenous") }, // confidence: 76.4%, omop match: 100.0%
-//            { "liquid paraffin + magnesium hydroxide", new ValueWithNote(null, null) },
-////             { "liquid paraffin + magnesium hydroxide", new ValueWithNote("36215463", "magnesium hydroxide oral liquid product") }, // confidence: 76.3%, omop match: 100.0%
-//            { "antazoline-xylometazoline ophthalmic", new ValueWithNote(null, null) },
-////             { "antazoline-xylometazoline ophthalmic", new ValueWithNote("36030351", "antazoline / xylometazoline") }, // confidence: 76.2%, omop match: 100.0%
-//            { "argipressin (vasopressin)", new ValueWithNote(null, null) },
-////             { "argipressin (vasopressin)", new ValueWithNote("19006871", "argipressin") }, // confidence: 76.0%, omop match: 100.0%
-//            { "betamethasone-fusidic acid", new ValueWithNote(null, null) },
-////             { "betamethasone-fusidic acid", new ValueWithNote("36027464", "betamethasone / fusidate") }, // confidence: 76.0%, omop match: 100.0%
-//            { "lidocaine + adrenaline + tetracaine", new ValueWithNote(null, null) },
-////             { "lidocaine + adrenaline + tetracaine", new ValueWithNote("36028515", "adrenalone / tetracaine") }, // confidence: 75.9%, omop match: 100.0%
-//            { "insulin aspart biphasic", new ValueWithNote(null, null) },
-////             { "insulin aspart biphasic", new ValueWithNote("1567198", "insulin aspart, human") }, // confidence: 75.7%, omop match: 100.0%
-//            { "insulin lispro biphasic", new ValueWithNote(null, null) },
-////             { "insulin lispro biphasic", new ValueWithNote("1550023", "insulin lispro") }, // confidence: 75.7%, omop match: 100.0%
-//            { "bee venom", new ValueWithNote(null, null) },
-////             { "bee venom", new ValueWithNote("514834", "honey bee venom") }, // confidence: 75.0%, omop match: 100.0%
-//            { "ispaghula-senna", new ValueWithNote(null, null) },
-////             { "ispaghula-senna", new ValueWithNote("19132967", "ispaghula extract") }, // confidence: 75.0%, omop match: 100.0%
-//            { "terpin + codeine", new ValueWithNote(null, null) },
-////             { "terpin + codeine", new ValueWithNote("36030564", "codeine / terpin hydrate") }, // confidence: 75.0%, omop match: 100.0%
-//            { "alpha tocopherol + selenium", new ValueWithNote(null, null) },
-////             { "alpha tocopherol + selenium", new ValueWithNote("19056802", "alpha tocopherol") }, // confidence: 74.4%, omop match: 100.0%
-//            { "brinzolamide-timolol ophthalmic", new ValueWithNote(null, null) },
-////             { "brinzolamide-timolol ophthalmic", new ValueWithNote("36219538", "brinzolamide ophthalmic product") }, // confidence: 74.2%, omop match: 100.0%
-//            { "phenoxymethylpenicillin potassium", new ValueWithNote(null, null) },
-////             { "phenoxymethylpenicillin potassium", new ValueWithNote("19133859", "penicillin v potassium 50 mg/ml oral solution") }, // confidence: 74.2%, omop match: 100.0%
-//            { "glucose 4% with 0.18% sodium chloride in", new ValueWithNote(null, null) },
-////             { "glucose 4% with 0.18% sodium chloride in", new ValueWithNote("36029299", "glucose / sodium chloride") }, // confidence: 73.8%, omop match: 100.0%
-//            { "glucose 5% with 0.45% sodium chloride in", new ValueWithNote(null, null) },
-////             { "glucose 5% with 0.45% sodium chloride in", new ValueWithNote("36029299", "glucose / sodium chloride") }, // confidence: 73.8%, omop match: 100.0%
-//            { "glucose 5% with 0.9% sodium chloride int", new ValueWithNote(null, null) },
-////             { "glucose 5% with 0.9% sodium chloride int", new ValueWithNote("36029299", "glucose / sodium chloride") }, // confidence: 73.8%, omop match: 100.0%
-//            { "glucose 10% with sodium chloride 0.18% i", new ValueWithNote(null, null) },
-////             { "glucose 10% with sodium chloride 0.18% i", new ValueWithNote("36029299", "glucose / sodium chloride") }, // confidence: 73.8%, omop match: 100.0%
-//            { "brimonidine-timolol ophthalmic", new ValueWithNote(null, null) },
-////             { "brimonidine-timolol ophthalmic", new ValueWithNote("36030258", "brimonidine / timolol") }, // confidence: 73.5%, omop match: 100.0%
-//            { "dorzolamide-timolol ophthalmic", new ValueWithNote(null, null) },
-////             { "dorzolamide-timolol ophthalmic", new ValueWithNote("36030344", "dorzolamide / timolol") }, // confidence: 73.5%, omop match: 100.0%
-//            { "bimatoprost-timolol ophthalmic", new ValueWithNote(null, null) },
-////             { "bimatoprost-timolol ophthalmic", new ValueWithNote("36226260", "bimatoprost ophthalmic product") }, // confidence: 73.3%, omop match: 100.0%
-//            { "liquid paraffin ophthalmic", new ValueWithNote(null, null) },
-////             { "liquid paraffin ophthalmic", new ValueWithNote("908523", "mineral oil") }, // confidence: 73.2%, omop match: 100.0%
+            { "brimonidine-brinzolamide ophthalmic", new ValueWithNote("36246176", "brimonidine / brinzolamide ophthalmic product") },
+            { "ipratropium nasal", new ValueWithNote("40049465", "ipratropium nasal spray") },
+            { "brimonidine ophthalmic", new ValueWithNote("36219537", "brimonidine ophthalmic product") },
+            { "bimatoprost ophthalmic", new ValueWithNote("36226260", "bimatoprost ophthalmic product") },
+            { "dorzolamide ophthalmic", new ValueWithNote("36224178", "dorzolamide ophthalmic product") },
+            { "latanoprost ophthalmic", new ValueWithNote("36226918", "latanoprost ophthalmic product") },
+            { "levobunolol ophthalmic", new ValueWithNote("36221015", "levobunolol ophthalmic product") },
+            { "propamidine ophthalmic", new ValueWithNote("36211817", "propamidine ophthalmic product") },
+            { "olopatadine ophthalmic", new ValueWithNote("36223879", "olopatadine ophthalmic product") },
+            { "tropicamide ophthalmic", new ValueWithNote("36227351", "tropicamide ophthalmic product") },
+            { "witch hazel ophthalmic", new ValueWithNote("36227261", "witch hazel ophthalmic product") },
+            { "beclometasone nasal", new ValueWithNote("40010699", "beclomethasone nasal spray") },
+            { "betamethasone-neomycin ophthalmic", new ValueWithNote("36212136", "betamethasone / neomycin ophthalmic product") },
+            { "azelastine nasal", new ValueWithNote("40133581", "azelastine nasal spray") },
+            { "gentamicin-hydrocortisone otic", new ValueWithNote("36029279", "gentamicin / hydrocortisone") },
+            { "mometasone nasal", new ValueWithNote("40066277", "mometasone nasal spray") },
+            { "budesonide nasal", new ValueWithNote("40020313", "budesonide nasal spray") },
+            { "azelastine-fluticasone nasal", new ValueWithNote("778911", "azelastine / fluticasone") },
+            { "azelastine ophthalmic", new ValueWithNote("36225520", "azelastine ophthalmic product") },
+            { "cefuroxime ophthalmic", new ValueWithNote("36217283", "cefuroxime ophthalmic product") },
+            { "diclofenac ophthalmic", new ValueWithNote("36217233", "diclofenac ophthalmic product") },
+            { "epinastine ophthalmic", new ValueWithNote("36225777", "epinastine ophthalmic product") },
+            { "gentamicin ophthalmic", new ValueWithNote("1594375", "gentamicin ophthalmic product") },
+            { "lodoxamide ophthalmic", new ValueWithNote("36221142", "lodoxamide ophthalmic product") },
+            { "tetracaine ophthalmic", new ValueWithNote("36221743", "tetracaine ophthalmic product") },
+            { "travoprost ophthalmic", new ValueWithNote("36225495", "travoprost ophthalmic product") },
+            { "tafluprost ophthalmic", new ValueWithNote("36238005", "tafluprost ophthalmic product") },
+            { "bromfenac ophthalmic", new ValueWithNote("36219545", "bromfenac ophthalmic product") },
+            { "chloramphenicol otic", new ValueWithNote("36216754", "chloramphenicol otic product") },
+            { "dicycloverine", new ValueWithNote("924724", "dicyclomine") },
+            { "ephedrine nasal", new ValueWithNote("40037821", "ephedrine nasal spray") },
+            { "ketorolac ophthalmic", new ValueWithNote("36225366", "ketorolac ophthalmic product") },
+            { "nepafenac ophthalmic", new ValueWithNote("36223788", "nepafenac ophthalmic product") },
+            { "ofloxacin ophthalmic", new ValueWithNote("36227393", "ofloxacin ophthalmic product") },
+            { "betaxolol ophthalmic", new ValueWithNote("36212161", "betaxolol ophthalmic product") },
+            { "ketotifen ophthalmic", new ValueWithNote("36225372", "ketotifen ophthalmic product") },
+            { "atropine ophthalmic", new ValueWithNote("36212940", "atropine ophthalmic product") },
+            { "insulin isophane bovine", new ValueWithNote("46221581", "insulin isophane") },
+            { "ciprofloxacin otic", new ValueWithNote("36217292", "ciprofloxacin otic product") },
+            { "citric acid/mg oxide/na picosulfate", new ValueWithNote("36029516", "citric acid / magnesium oxide / picosulfurate") },
+            { "lidocaine-phenylephrine nasal", new ValueWithNote("36030085", "lidocaine / phenylephrine") },
+            { "zuclopenthixol acetate injection", new ValueWithNote("19121994", "zuclopenthixol acetate") },
+            { "amylmetacresol-dichlorobenzyl alc top", new ValueWithNote("36028603", "amylmetacresol / dichlorobenzyl alcohol / menthol") },
+            { "timolol-travoprost ophthalmic", new ValueWithNote("40099457", "travoprost ophthalmic solution") },
+            { "fluticasone nasal", new ValueWithNote("36220588", "fluticasone nasal product") },
+            { "convalescent plasma", new ValueWithNote("", "") },
+            { "clioquinol-flumetasone otic", new ValueWithNote("36030361", "clioquinol / flumethasone") },
+            { "estradiol + norethisterone", new ValueWithNote("21272343", "Estradiol + Norethisterone") },
+            { "acetic acid otic", new ValueWithNote("36217021", "acetic acid otic product") },
+            { "benzalkonium chloride-cetrimide", new ValueWithNote("36030307", "benzalkonium / cetrimide") },
+            { "citric acid-magnesium carbonate", new ValueWithNote("42945929", "Citric Acid / magnesium carbonate Oral Solution") },
+            { "digoxin specific antibody", new ValueWithNote("19045317", "digoxin antibodies Fab fragments") },
+            { "urea (13-c)", new ValueWithNote("19054337", "urea c-13") },
+            { "potassium chloride 20mmol with glucose 5", new ValueWithNote("36030057", "glucose / potassium chloride") },
+            { "potassium chloride 20mmol with glucose 2", new ValueWithNote("36030057", "glucose / potassium chloride") },
+            { "potassium chloride 10mmol with glucose 1", new ValueWithNote("36030057", "glucose / potassium chloride") },
+            { "potassium chloride 10mmol with glucose 5", new ValueWithNote("36030057", "glucose / potassium chloride") },
+            { "potassium chloride 20mmol with glucose 1", new ValueWithNote("36030057", "glucose / potassium chloride") },
+            { "chlorhexidine-fluoride", new ValueWithNote("36027304", "chlorhexidine / sodium fluoride") },
+            { "ciclosporin ophthalmic", new ValueWithNote("36213827", "cyclosporine ophthalmic product") },
+            { "aciclovir ophthalmic", new ValueWithNote("36217182", "acyclovir ophthalmic product") },
+            { "amphotericin b (fungizone)", new ValueWithNote("40009648", "amphotericin B Oral Suspension [Fungizone]") },
+            { "zuclopenthixol decanoate depot inject", new ValueWithNote("19121997", "zuclopenthixol decanoate") },
+            { "insulin isophane biphasic", new ValueWithNote("46221581", "insulin isophane") },
+            { "potassium ascorbate ophthalmic", new ValueWithNote("21035740", "Potassium ascorbate Ophthalmic Solution") },
+            { "fentanyl-levobupivacaine", new ValueWithNote("19098741", "levobupivacaine") },
+            { "cocaine nasal", new ValueWithNote("36213696", "cocaine nasal product") },
+            { "estradiol-norethisterone", new ValueWithNote("21272343", "Estradiol + Norethisterone") },
+            { "immunoglobulin subcutaneous", new ValueWithNote("4008249", "Immunoglobulin") },
+            { "liquid paraffin + magnesium hydroxide", new ValueWithNote("21290920", "Liquid paraffin + Magnesium hydroxide") },
+            { "antazoline-xylometazoline ophthalmic", new ValueWithNote("36030351", "antazoline / xylometazoline") },
+            { "argipressin (vasopressin)", new ValueWithNote("19006871", "argipressin") },
+            { "betamethasone-fusidic acid", new ValueWithNote("36027464", "betamethasone / fusidate") },
+            { "lidocaine + adrenaline + tetracaine", new ValueWithNote("21179205", "Lidocaine + Tetracaine + Adrenaline") },
+            { "insulin aspart biphasic", new ValueWithNote("1567198", "insulin aspart, human") },
+            { "insulin lispro biphasic", new ValueWithNote("1550023", "insulin lispro") },
+            { "bee venom", new ValueWithNote("514834", "honey bee venom") },
+            { "ispaghula-senna", new ValueWithNote("21179012", "Senna + Ispaghula") },
+            { "terpin + codeine", new ValueWithNote("36030564", "codeine / terpin hydrate") },
+            { "alpha tocopherol + selenium", new ValueWithNote("21272268", "Alpha tocopherol + Selenium") },
+            { "brinzolamide-timolol ophthalmic", new ValueWithNote("36219538", "brinzolamide ophthalmic product") },
+            { "phenoxymethylpenicillin potassium", new ValueWithNote("21234367", "Phenoxymethylpenicillin potassium") },
+            { "glucose 4% with 0.18% sodium chloride in", new ValueWithNote("36029299", "glucose / sodium chloride") },
+            { "glucose 5% with 0.45% sodium chloride in", new ValueWithNote("36029299", "glucose / sodium chloride") },
+            { "glucose 5% with 0.9% sodium chloride int", new ValueWithNote("36029299", "glucose / sodium chloride") },
+            { "glucose 10% with sodium chloride 0.18% i", new ValueWithNote("36029299", "glucose / sodium chloride") },
+            { "brimonidine-timolol ophthalmic", new ValueWithNote("36030258", "brimonidine / timolol") },
+            { "dorzolamide-timolol ophthalmic", new ValueWithNote("36030344", "dorzolamide / timolol") },
+            { "bimatoprost-timolol ophthalmic", new ValueWithNote("21060563", "bimatoprost / Timolol Ophthalmic Solution") },
+            { "liquid paraffin ophthalmic", new ValueWithNote("19129738", "paraffin") },
 ///
 //jc check
 
