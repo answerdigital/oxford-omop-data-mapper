@@ -1490,6 +1490,96 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |sodium bicarbonate otic|36227308|sodium bicarbonate otic product|
 |moxifloxacin ophthalmic|36213853|moxifloxacin ophthalmic product|
 |prednisolone ophthalmic|36220910|prednisolone ophthalmic product|
+|brimonidine-brinzolamide ophthalmic|36246176|brimonidine / brinzolamide ophthalmic product|
+|ipratropium nasal|40049465|ipratropium nasal spray|
+|brimonidine ophthalmic|36219537|brimonidine ophthalmic product|
+|bimatoprost ophthalmic|36226260|bimatoprost ophthalmic product|
+|dorzolamide ophthalmic|36224178|dorzolamide ophthalmic product|
+|latanoprost ophthalmic|36226918|latanoprost ophthalmic product|
+|levobunolol ophthalmic|36221015|levobunolol ophthalmic product|
+|propamidine ophthalmic|36211817|propamidine ophthalmic product|
+|olopatadine ophthalmic|36223879|olopatadine ophthalmic product|
+|tropicamide ophthalmic|36227351|tropicamide ophthalmic product|
+|witch hazel ophthalmic|36227261|witch hazel ophthalmic product|
+|beclometasone nasal|40010699|beclomethasone nasal spray|
+|betamethasone-neomycin ophthalmic|36212136|betamethasone / neomycin ophthalmic product|
+|azelastine nasal|40133581|azelastine nasal spray|
+|gentamicin-hydrocortisone otic|36029279|gentamicin / hydrocortisone|
+|mometasone nasal|40066277|mometasone nasal spray|
+|budesonide nasal|40020313|budesonide nasal spray|
+|azelastine-fluticasone nasal|778911|azelastine / fluticasone|
+|azelastine ophthalmic|36225520|azelastine ophthalmic product|
+|cefuroxime ophthalmic|36217283|cefuroxime ophthalmic product|
+|diclofenac ophthalmic|36217233|diclofenac ophthalmic product|
+|epinastine ophthalmic|36225777|epinastine ophthalmic product|
+|gentamicin ophthalmic|1594375|gentamicin ophthalmic product|
+|lodoxamide ophthalmic|36221142|lodoxamide ophthalmic product|
+|tetracaine ophthalmic|36221743|tetracaine ophthalmic product|
+|travoprost ophthalmic|36225495|travoprost ophthalmic product|
+|tafluprost ophthalmic|36238005|tafluprost ophthalmic product|
+|bromfenac ophthalmic|36219545|bromfenac ophthalmic product|
+|chloramphenicol otic|36216754|chloramphenicol otic product|
+|dicycloverine|924724|dicyclomine|
+|ephedrine nasal|40037821|ephedrine nasal spray|
+|ketorolac ophthalmic|36225366|ketorolac ophthalmic product|
+|nepafenac ophthalmic|36223788|nepafenac ophthalmic product|
+|ofloxacin ophthalmic|36227393|ofloxacin ophthalmic product|
+|betaxolol ophthalmic|36212161|betaxolol ophthalmic product|
+|ketotifen ophthalmic|36225372|ketotifen ophthalmic product|
+|atropine ophthalmic|36212940|atropine ophthalmic product|
+|insulin isophane bovine|46221581|insulin isophane|
+|ciprofloxacin otic|36217292|ciprofloxacin otic product|
+|citric acid/mg oxide/na picosulfate|36029516|citric acid / magnesium oxide / picosulfurate|
+|lidocaine-phenylephrine nasal|36030085|lidocaine / phenylephrine|
+|zuclopenthixol acetate injection|19121994|zuclopenthixol acetate|
+|amylmetacresol-dichlorobenzyl alc top|36028603|amylmetacresol / dichlorobenzyl alcohol / menthol|
+|timolol-travoprost ophthalmic|40099457|travoprost ophthalmic solution|
+|fluticasone nasal|36220588|fluticasone nasal product|
+|convalescent plasma|||
+|clioquinol-flumetasone otic|36030361|clioquinol / flumethasone|
+|estradiol + norethisterone|21272343|Estradiol + Norethisterone|
+|acetic acid otic|36217021|acetic acid otic product|
+|benzalkonium chloride-cetrimide|36030307|benzalkonium / cetrimide|
+|citric acid-magnesium carbonate|42945929|Citric Acid / magnesium carbonate Oral Solution|
+|digoxin specific antibody|19045317|digoxin antibodies Fab fragments|
+|urea (13-c)|19054337|urea c-13|
+|potassium chloride 20mmol with glucose 5|36030057|glucose / potassium chloride|
+|potassium chloride 20mmol with glucose 2|36030057|glucose / potassium chloride|
+|potassium chloride 10mmol with glucose 1|36030057|glucose / potassium chloride|
+|potassium chloride 10mmol with glucose 5|36030057|glucose / potassium chloride|
+|potassium chloride 20mmol with glucose 1|36030057|glucose / potassium chloride|
+|chlorhexidine-fluoride|36027304|chlorhexidine / sodium fluoride|
+|ciclosporin ophthalmic|36213827|cyclosporine ophthalmic product|
+|aciclovir ophthalmic|36217182|acyclovir ophthalmic product|
+|amphotericin b (fungizone)|40009648|amphotericin B Oral Suspension [Fungizone]|
+|zuclopenthixol decanoate depot inject|19121997|zuclopenthixol decanoate|
+|insulin isophane biphasic|46221581|insulin isophane|
+|potassium ascorbate ophthalmic|21035740|Potassium ascorbate Ophthalmic Solution|
+|fentanyl-levobupivacaine|19098741|levobupivacaine|
+|cocaine nasal|36213696|cocaine nasal product|
+|estradiol-norethisterone|21272343|Estradiol + Norethisterone|
+|immunoglobulin subcutaneous|4008249|Immunoglobulin|
+|liquid paraffin + magnesium hydroxide|21290920|Liquid paraffin + Magnesium hydroxide|
+|antazoline-xylometazoline ophthalmic|36030351|antazoline / xylometazoline|
+|argipressin (vasopressin)|19006871|argipressin|
+|betamethasone-fusidic acid|36027464|betamethasone / fusidate|
+|lidocaine + adrenaline + tetracaine|21179205|Lidocaine + Tetracaine + Adrenaline|
+|insulin aspart biphasic|1567198|insulin aspart, human|
+|insulin lispro biphasic|1550023|insulin lispro|
+|bee venom|514834|honey bee venom|
+|ispaghula-senna|21179012|Senna + Ispaghula|
+|terpin + codeine|36030564|codeine / terpin hydrate|
+|alpha tocopherol + selenium|21272268|Alpha tocopherol + Selenium|
+|brinzolamide-timolol ophthalmic|36219538|brinzolamide ophthalmic product|
+|phenoxymethylpenicillin potassium|21234367|Phenoxymethylpenicillin potassium|
+|glucose 4% with 0.18% sodium chloride in|36029299|glucose / sodium chloride|
+|glucose 5% with 0.45% sodium chloride in|36029299|glucose / sodium chloride|
+|glucose 5% with 0.9% sodium chloride int|36029299|glucose / sodium chloride|
+|glucose 10% with sodium chloride 0.18% i|36029299|glucose / sodium chloride|
+|brimonidine-timolol ophthalmic|36030258|brimonidine / timolol|
+|dorzolamide-timolol ophthalmic|36030344|dorzolamide / timolol|
+|bimatoprost-timolol ophthalmic|21060563|bimatoprost / Timolol Ophthalmic Solution|
+|liquid paraffin ophthalmic|19129738|paraffin|
 |taurolock|2901073|taurolock|
 |hepatitis a vaccine|40047409|hepatitis a vaccines|
 |calcium-vitamin d|43126501|calcium/vitamine d|
