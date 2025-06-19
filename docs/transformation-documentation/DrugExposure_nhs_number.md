@@ -37,6 +37,7 @@ select
 	beg_dt_tm,
 	end_dt_tm,
 	lower(replace(catalog, 'zzz', '')) as catalog,
+	lower(order_mnemonic) as order_mnemonic,
 	order_detail_display_line,
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
@@ -48,6 +49,7 @@ order by
 	beg_dt_tm,
 	end_dt_tm,
 	catalog,
+	order_mnemonic,
 	order_detail_display_line,
 	rxroute,
 	strengthdoseunit,
@@ -60,7 +62,7 @@ order by
 ### Oxford Prescribing Drug Exposure (with Snomed)
 * Value copied from `patient_identifier_Value`
 
-* `patient_identifier_Value` Patient NHS Number 
+* `patient_identifier_Value` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -68,6 +70,7 @@ select
 	beg_dt_tm,
 	end_dt_tm,
 	order_detail_display_line,
+	order_mnemonic,
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
 	strengthdose,
@@ -79,6 +82,7 @@ order by
 	beg_dt_tm,
 	end_dt_tm,
 	order_detail_display_line,
+	order_mnemonic,
 	rxroute,
 	strengthdoseunit,
 	strengthdose,

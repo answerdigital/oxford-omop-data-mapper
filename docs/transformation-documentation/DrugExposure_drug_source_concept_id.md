@@ -416,7 +416,6 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |chlorothiazide|992590|chlorothiazide|
 |bezafibrate|19022956|bezafibrate|
 |bisoprolol|1338005|bisoprolol|
-|abiraterone|40239056|abiraterone|
 |acenocoumarol|19024063|acenocoumarol|
 |bleomycin|1329241|bleomycin|
 |botulinum toxin type a|729855|botulinum toxin type a|
@@ -1573,6 +1572,59 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |fdy-5301|19069873|sodium iodide|
 |fluorouracil-salicylic acid|36029703|fluorouracil / salicylic acid|
 |haemofiltration fluids|2901397|haemofiltration replacement fluid|
+|adult st8 parenteral nutrition bag|||
+|adult st4 parenteral nutrition bag|||
+|adult st3 parenteral nutrition bag|||
+|adult st6 parenteral nutrition bag|||
+|adult st5 parenteral nutrition bag|||
+|adult st7 parenteral nutrition bag|||
+|adult st9 parenteral nutrition bag|||
+|adult st2 parenteral nutrition bag|||
+|plx-pad cells|||
+|adult st7e parenteral nutrition bag|||
+|adult st1b parenteral nutrition bag|||
+|adult st1a parenteral nutrition bag|||
+|wound care supplies|||
+|parenteral nutrition (adults)|||
+|parenteral nutrition (paediatric)|||
+|fat emulsion, intravenous|||
+|regn10933 + regn10987|||
+|incontinence supplies|||
+|imc-i109v|||
+|balsam/benzyl benz/bismuth/hc/zno top|||
+|ready diluted|||
+|red cells|||
+|srp|||
+|smof 60 (60ml)|||
+|intermittent pneumatic compression (ipc)|||
+|freetext medication|||
+|nca|||
+|blood glucose monitoring supplies|||
+|blood level monitoring (neonatal unit)|||
+|betamethasone-calcipotriol|||
+|carnoys solution|||
+|cinchocaine-prednisolone|||
+|cinchocaine-hydrocortisone|||
+|emollients,|||
+|donor lymphocytes - cd3|||
+|idds|||
+|granulocytes|||
+|ocular lubricant|||
+|ro7204239|||
+|ro7234292|||
+|parenteral nutrition (neonatal unit)|||
+|ncea|||
+|nutritional supplements|||
+|respiratory therapy supplies|||
+|peripheral nerve infusion|||
+|radio-opaque markers|||
+|rsv vaccine, pref a-pref b, recombinant|||
+|vitamins|||
+|saliva substitutes|||
+|support devices|||
+|stem cells - cd34|||
+|pcea|||
+|vitamins with minerals|||
 
 Notes
 * [RxNorm API Documentation](https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html)
@@ -1589,6 +1641,7 @@ select
 	beg_dt_tm,
 	end_dt_tm,
 	lower(replace(catalog, 'zzz', '')) as catalog,
+	lower(order_mnemonic) as order_mnemonic,
 	order_detail_display_line,
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
@@ -1600,6 +1653,7 @@ order by
 	beg_dt_tm,
 	end_dt_tm,
 	catalog,
+	order_mnemonic,
 	order_detail_display_line,
 	rxroute,
 	strengthdoseunit,
@@ -1621,6 +1675,7 @@ select
 	beg_dt_tm,
 	end_dt_tm,
 	order_detail_display_line,
+	order_mnemonic,
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
 	strengthdose,
@@ -1632,6 +1687,7 @@ order by
 	beg_dt_tm,
 	end_dt_tm,
 	order_detail_display_line,
+	order_mnemonic,
 	rxroute,
 	strengthdoseunit,
 	strengthdose,

@@ -87,7 +87,6 @@ internal class RxNormLookup : ILookup
             { "chlorothiazide", new ValueWithNote("992590", "chlorothiazide") },
             { "bezafibrate", new ValueWithNote("19022956", "bezafibrate") },
             { "bisoprolol", new ValueWithNote("1338005", "bisoprolol") },
-            { "abiraterone", new ValueWithNote("40239056", "abiraterone") },
             { "acenocoumarol", new ValueWithNote("19024063", "acenocoumarol") },
             { "bleomycin", new ValueWithNote("1329241", "bleomycin") },
             { "botulinum toxin type a", new ValueWithNote("729855", "botulinum toxin type a") },
@@ -1342,6 +1341,9 @@ internal class RxNormLookup : ILookup
 ////             { "bimatoprost-timolol ophthalmic", new ValueWithNote("36226260", "bimatoprost ophthalmic product") }, // confidence: 73.3%, omop match: 100.0%
 //            { "liquid paraffin ophthalmic", new ValueWithNote(null, null) },
 ////             { "liquid paraffin ophthalmic", new ValueWithNote("908523", "mineral oil") }, // confidence: 73.2%, omop match: 100.0%
+///
+///jc check
+/// 
 //            { "ichthammol-zinc oxide", new ValueWithNote(null, null) },
 ////             { "ichthammol-zinc oxide", new ValueWithNote("36030285", "ichthammol / zinc oxide") }, // confidence: 72.7%, omop match: 100.0%
 //            { "tafluprost-timolol ophthalmic", new ValueWithNote(null, null) },
@@ -1739,75 +1741,59 @@ internal class RxNormLookup : ILookup
 
 //checked by tom - no mappings
 
-//             { "adult st8 parenteral nutrition bag", new ValueWithNote(null, null) }, // confidence: 70.6%, omop match: 0.0%
-//             { "adult st4 parenteral nutrition bag", new ValueWithNote(null, null) }, // confidence: 70.6%, omop match: 0.0%
-//             { "adult st3 parenteral nutrition bag", new ValueWithNote(null, null) }, // confidence: 70.6%, omop match: 0.0%
-//             { "adult st6 parenteral nutrition bag", new ValueWithNote(null, null) }, // confidence: 70.6%, omop match: 0.0%
-//             { "adult st5 parenteral nutrition bag", new ValueWithNote(null, null) }, // confidence: 70.6%, omop match: 0.0%
-//             { "adult st7 parenteral nutrition bag", new ValueWithNote(null, null) }, // confidence: 70.6%, omop match: 0.0%
-//             { "adult st9 parenteral nutrition bag", new ValueWithNote(null, null) }, // confidence: 70.6%, omop match: 0.0%
-//             { "adult st2 parenteral nutrition bag", new ValueWithNote(null, null) }, // confidence: 70.6%, omop match: 0.0%
-//             { "plx-pad cells", new ValueWithNote(null, null) }, // confidence: 70.0%, omop match: 0.0%
-//             { "adult st7e parenteral nutrition bag", new ValueWithNote(null, null) }, // confidence: 69.6%, omop match: 0.0%
-//             { "adult st1b parenteral nutrition bag", new ValueWithNote(null, null) }, // confidence: 69.6%, omop match: 0.0%
-//             { "adult st1a parenteral nutrition bag", new ValueWithNote(null, null) }, // confidence: 69.6%, omop match: 0.0%
-//             { "wound care supplies", new ValueWithNote(null, null) }, // confidence: 69.0%, omop match: 0.0%
-//             { "parenteral nutrition (adults)", new ValueWithNote(null, null) }, // confidence: 66.7%, omop match: 0.0%
-//             { "parenteral nutrition (paediatric)", new ValueWithNote(null, null) }, // confidence: 65.7%, omop match: 0.0%
-//             { "fat emulsion, intravenous", new ValueWithNote(null, null) }, // confidence: 64.9%, omop match: 0.0%
-//             { "regn10933 + regn10987", new ValueWithNote(null, null) }, // confidence: 63.3%, omop match: 0.0%
-//             { "incontinence supplies", new ValueWithNote(null, null) }, // confidence: 60.0%, omop match: 0.0%
-//             { "imc-i109v", new ValueWithNote(null, null) }, // confidence: 58.8%, omop match: 0.0%
-//             { "balsam/benzyl benz/bismuth/hc/zno top", new ValueWithNote(null, null) }, // confidence: 57.5%, omop match: 0.0%
-//             { "ready diluted", new ValueWithNote(null, null) }, // confidence: 57.1%, omop match: 0.0%
-//             { "red cells", new ValueWithNote(null, null) }, // confidence: 55.2%, omop match: 0.0%
-//             { "srp", new ValueWithNote(null, null) }, // confidence: 54.5%, omop match: 0.0%
-//             { "medical supplies", new ValueWithNote(null, null) }, // confidence: 45.5%, omop match: 0.0%
-//             { "smof 60 (60ml)", new ValueWithNote(null, null) }, // confidence: 43.5%, omop match: 0.0%
-//             { "intermittent pneumatic compression (ipc)", new ValueWithNote(null, null) }, // confidence: 37.3%, omop match: 0.0%
-//             { "freetext medication", new ValueWithNote(null, null) }, // confidence: 36.7%, omop match: 0.0%
-//             { "nca", new ValueWithNote(null, null) }, // confidence: 3.5%, omop match: 0.0%
-//             { "amino acids (l-lysine 2.5% and l-arginin", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "blood glucose monitoring supplies", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "blood level monitoring (neonatal unit)", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "betamethasone-calcipotriol", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "carnoys solution", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "cinchocaine-prednisolone", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "cinchocaine-hydrocortisone", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "medical supplies", new ValueWithNote(null, null) }, // confidence: 45.5%, omop match: 0.0%
-//             { "smof 60 (60ml)", new ValueWithNote(null, null) }, // confidence: 43.5%, omop match: 0.0%
-//             { "intermittent pneumatic compression (ipc)", new ValueWithNote(null, null) }, // confidence: 37.3%, omop match: 0.0%
-//             { "freetext medication", new ValueWithNote(null, null) }, // confidence: 36.7%, omop match: 0.0%
-//             { "nca", new ValueWithNote(null, null) }, // confidence: 3.5%, omop match: 0.0%
-//             { "amino acids (l-lysine 2.5% and l-arginin", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "blood glucose monitoring supplies", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "blood level monitoring (neonatal unit)", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "betamethasone-calcipotriol", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "carnoys solution", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "cinchocaine-prednisolone", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "cinchocaine-hydrocortisone", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "emollients,", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "donor lymphocytes - cd3", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "idds", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "granulocytes", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "ocular lubricant", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "ro7204239", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "ro7234292", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "parenteral nutrition (neonatal unit)", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "ncea", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "nutritional supplements", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "respiratory therapy supplies", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "peripheral nerve infusion", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "radio-opaque markers", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "rsv vaccine, pref a-pref b, recombinant", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "vitamins", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "saliva substitutes", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "support devices", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "stem cells - cd34", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "ocular lubricant", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "pcea", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-//             { "vitamins with minerals", new ValueWithNote(null, null) }, // confidence: 0.0%, omop match: 0.0%
-
+             { "adult st8 parenteral nutrition bag", new ValueWithNote("", "") },
+             { "adult st4 parenteral nutrition bag", new ValueWithNote("", "") },
+             { "adult st3 parenteral nutrition bag", new ValueWithNote("", "") },
+             { "adult st6 parenteral nutrition bag", new ValueWithNote("", "") },
+             { "adult st5 parenteral nutrition bag", new ValueWithNote("", "") },
+             { "adult st7 parenteral nutrition bag", new ValueWithNote("", "") },
+             { "adult st9 parenteral nutrition bag", new ValueWithNote("", "") },
+             { "adult st2 parenteral nutrition bag", new ValueWithNote("", "") },
+             { "plx-pad cells", new ValueWithNote("", "") },
+             { "adult st7e parenteral nutrition bag", new ValueWithNote("", "") },
+             { "adult st1b parenteral nutrition bag", new ValueWithNote("", "") },
+             { "adult st1a parenteral nutrition bag", new ValueWithNote("", "") },
+             { "wound care supplies", new ValueWithNote("", "") },
+             { "parenteral nutrition (adults)", new ValueWithNote("", "") },
+             { "parenteral nutrition (paediatric)", new ValueWithNote("", "") },
+             { "fat emulsion, intravenous", new ValueWithNote("", "") },
+             { "regn10933 + regn10987", new ValueWithNote("", "") },
+             { "incontinence supplies", new ValueWithNote("", "") },
+             { "imc-i109v", new ValueWithNote("", "") },
+             { "balsam/benzyl benz/bismuth/hc/zno top", new ValueWithNote("", "") },
+             { "ready diluted", new ValueWithNote("", "") },
+             { "red cells", new ValueWithNote("", "") },
+             { "srp", new ValueWithNote("", "") },
+             { "smof 60 (60ml)", new ValueWithNote("", "") },
+             { "intermittent pneumatic compression (ipc)", new ValueWithNote("", "") },
+             { "freetext medication", new ValueWithNote("", "") },
+             { "nca", new ValueWithNote("", "") },
+             { "blood glucose monitoring supplies", new ValueWithNote("", "") },
+             { "blood level monitoring (neonatal unit)", new ValueWithNote("", "") },
+             { "betamethasone-calcipotriol", new ValueWithNote("", "") },
+             { "carnoys solution", new ValueWithNote("", "") },
+             { "cinchocaine-prednisolone", new ValueWithNote("", "") },
+             { "cinchocaine-hydrocortisone", new ValueWithNote("", "") },
+             { "emollients,", new ValueWithNote("", "") },
+             { "donor lymphocytes - cd3", new ValueWithNote("", "") },
+             { "idds", new ValueWithNote("", "") },
+             { "granulocytes", new ValueWithNote("", "") },
+             { "ocular lubricant", new ValueWithNote("", "") },
+             { "ro7204239", new ValueWithNote("", "") },
+             { "ro7234292", new ValueWithNote("", "") },
+             { "parenteral nutrition (neonatal unit)", new ValueWithNote("", "") },
+             { "ncea", new ValueWithNote("", "") },
+             { "nutritional supplements", new ValueWithNote("", "") },
+             { "respiratory therapy supplies", new ValueWithNote("", "") },
+             { "peripheral nerve infusion", new ValueWithNote("", "") },
+             { "radio-opaque markers", new ValueWithNote("", "") },
+             { "rsv vaccine, pref a-pref b, recombinant", new ValueWithNote("", "") },
+             { "vitamins", new ValueWithNote("", "") },
+             { "saliva substitutes", new ValueWithNote("", "") },
+             { "support devices", new ValueWithNote("", "") },
+             { "stem cells - cd34", new ValueWithNote("", "") },
+             { "pcea", new ValueWithNote("", "") },
+             { "vitamins with minerals", new ValueWithNote("", "") },
         };
 
 
