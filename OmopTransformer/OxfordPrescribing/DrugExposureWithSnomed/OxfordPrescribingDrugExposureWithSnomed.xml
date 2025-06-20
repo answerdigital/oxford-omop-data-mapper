@@ -1,0 +1,56 @@
+﻿<Query>
+    <Sql>
+select
+	patient_identifier_Value,
+	beg_dt_tm,
+	end_dt_tm,
+	order_detail_display_line,
+	order_mnemonic,
+	lower(rxroute) as rxroute,
+	strengthdoseunit,
+	strengthdose,
+	concept_identifier
+from omop_staging.oxford_prescribing
+where concept_identifier is not null
+order by
+	patient_identifier_Value,
+	beg_dt_tm,
+	end_dt_tm,
+	order_detail_display_line,
+	order_mnemonic,
+	rxroute,
+	strengthdoseunit,
+	strengthdose,
+	concept_identifier
+	</Sql>
+	<Explanations>
+		<Explanation columnName="patient_identifier_Value">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="concept_identifier">
+			<Description>The prescribed drug item as showing in the order screen as selected by the clinician</Description>
+		</Explanation>
+		<Explanation columnName="beg_dt_tm">
+			<Description>The begin date of the Drug that was initially dispensed to the PATIENT.</Description>
+		</Explanation>
+		<Explanation columnName="end_dt_tm">
+			<Description>The end date of the Drug that was initially dispensed to the PATIENT.</Description>
+		</Explanation>
+		<Explanation columnName="order_detail_display_line">
+			<Description>All the prescribed drug item details as shown in the order screen as selected by the clinician</Description>
+		</Explanation>
+		<Explanation columnName="order_mnemonic">
+			<Description>All the prescribed drug item details as shown in the order screen as selected by the clinician</Description>
+		</Explanation>
+		<Explanation columnName="rxroute">
+			<Description>The route of drug administration</Description>
+		</Explanation>
+		<Explanation columnName="strengthdoseunit">
+			<Description>The unit of the drug dose</Description>
+		</Explanation>
+		<Explanation columnName="strengthdose">
+			<Description>The unit of the drug dose</Description>
+		</Explanation>
+	</Explanations>
+</Query>
