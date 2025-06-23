@@ -12,7 +12,7 @@ public static class DapperExtensions
         IDbTransaction? transaction = null, 
         CommandType? commandType = null)
     {
-        const int twoHoursInSeconds = 120 * 60;
+        const int fourHoursInSeconds = 4 * 60 * 60;
 
         return
              cnn.ExecuteAsync(
@@ -20,6 +20,6 @@ public static class DapperExtensions
                  param: param,
                  transaction: transaction,
                  commandType: commandType,
-                 commandTimeout: twoHoursInSeconds);
+                 commandTimeout: fourHoursInSeconds);
     }
 }
