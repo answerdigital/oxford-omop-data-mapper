@@ -225,7 +225,7 @@ select
 into #ctePreDrugTarget
 from ctePreDrugTarget
 
-CREATE NONCLUSTERED INDEX [<Name of Missing Index, sysname,>]
+CREATE NONCLUSTERED INDEX IDX_ctePreDrugTarget
 ON [#ctePreDrugTarget] ([person_id],[ingredient_concept_id],[drug_exposure_start_date])
 INCLUDE ([drug_exposure_id])
 
