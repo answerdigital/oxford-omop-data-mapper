@@ -153,13 +153,26 @@ GROUP BY c.PERSON_ID
 
 /* / */
 
-INSERT INTO cdm.condition_era (
+
+create index idx_cteConditionEnds on #cteConditionEnds 
+(
+	person_id,
+	CONDITION_CONCEPT_ID,
+	ERA_END_DATE
+)
+include
+(
+	CONDITION_START_DATE
+)
+
+INSERT INTO cdm.condition_era 
+(
 	person_id
     ,condition_concept_id
     ,condition_era_start_date
     ,condition_era_end_date
     ,condition_occurrence_count
-    )
+)
 SELECT
     person_id
     ,CONDITION_CONCEPT_ID
@@ -173,15 +186,16 @@ GROUP BY person_id
 
 
 
-
 -- Code taken from:
 -- https://github.com/OHDSI/ETL-CMS/blob/master/SQL/create_CDMv5_drug_era_non_stockpile.sql
-
+-- JC: 2025-06-24 Use temp tables to avoid performance problems changes (4h+ to 10m).
 
 if object_id('tempdb..#tmp_de', 'U') is not null drop table #tmp_de;
 
-WITH
-ctePreDrugTarget(drug_exposure_id, person_id, ingredient_concept_id, drug_exposure_start_date, days_supply, drug_exposure_end_date) AS
+drop table if exists #ctePreDrugTarget;
+drop table if exists #cteDrugExposureEnds;
+
+with ctePreDrugTarget(drug_exposure_id, person_id, ingredient_concept_id, drug_exposure_start_date, days_supply, drug_exposure_end_date) AS
 (-- Normalize DRUG_EXPOSURE_END_DATE to either the existing drug exposure end date, or add days supply, or add 1 day to the start date
     SELECT
         d.drug_exposure_id
@@ -206,8 +220,16 @@ ctePreDrugTarget(drug_exposure_id, person_id, ingredient_concept_id, drug_exposu
         AND d.drug_concept_id != 0 ---Our unmapped drug_concept_id's are set to 0, so we don't want different drugs wrapped up in the same era
         AND coalesce(d.days_supply,0) >= 0 ---We have cases where days_supply is negative, and this can set the end_date before the start_date, which we don't want. So we're just looking over those rows. This is a data-quality issue.
 )
+select
+	*
+into #ctePreDrugTarget
+from ctePreDrugTarget
 
-, cteSubExposureEndDates (person_id, ingredient_concept_id, end_date) AS --- A preliminary sorting that groups all of the overlapping exposures into one exposure so that we don't double-count non-gap-days
+CREATE NONCLUSTERED INDEX [<Name of Missing Index, sysname,>]
+ON [#ctePreDrugTarget] ([person_id],[ingredient_concept_id],[drug_exposure_start_date])
+INCLUDE ([drug_exposure_id])
+
+;with cteSubExposureEndDates (person_id, ingredient_concept_id, end_date) AS --- A preliminary sorting that groups all of the overlapping exposures into one exposure so that we don't double-count non-gap-days
 (
     SELECT person_id, ingredient_concept_id, event_date AS end_date
     FROM
@@ -226,38 +248,39 @@ ctePreDrugTarget(drug_exposure_id, person_id, ingredient_concept_id, drug_exposu
             -1 AS event_type,
             ROW_NUMBER() OVER (PARTITION BY person_id, ingredient_concept_id
                 ORDER BY drug_exposure_start_date) AS start_ordinal
-            FROM ctePreDrugTarget
+            FROM #ctePreDrugTarget
 
             UNION ALL
 
             SELECT person_id, ingredient_concept_id, drug_exposure_end_date, 1 AS event_type, NULL
-            FROM ctePreDrugTarget
+            FROM #ctePreDrugTarget
         ) RAWDATA
     ) e
     WHERE (2 * e.start_ordinal) - e.overall_ord = 0
 )
-
-, cteDrugExposureEnds (person_id, drug_concept_id, drug_exposure_start_date, drug_sub_exposure_end_date) AS
-(
 SELECT
     dt.person_id
-    , dt.ingredient_concept_id
-    , dt.drug_exposure_start_date
+    , dt.ingredient_concept_id as drug_concept_id
+    , dt.drug_exposure_start_date as drug_exposure_start_date
     , MIN(e.end_date) AS drug_sub_exposure_end_date
-FROM ctePreDrugTarget dt
-JOIN cteSubExposureEndDates e ON dt.person_id = e.person_id AND dt.ingredient_concept_id = e.ingredient_concept_id AND e.end_date >= dt.drug_exposure_start_date
+into #cteDrugExposureEnds
+FROM #ctePreDrugTarget dt
+	JOIN cteSubExposureEndDates e 
+		ON dt.person_id = e.person_id 
+		AND dt.ingredient_concept_id = e.ingredient_concept_id 
+		AND e.end_date >= dt.drug_exposure_start_date
 GROUP BY
         dt.drug_exposure_id
         , dt.person_id
     , dt.ingredient_concept_id
     , dt.drug_exposure_start_date
-)
+	
 --------------------------------------------------------------------------------------------------------------
-, cteSubExposures(row_number, person_id, drug_concept_id, drug_sub_exposure_start_date, drug_sub_exposure_end_date, drug_exposure_count) AS
+;with cteSubExposures(row_number, person_id, drug_concept_id, drug_sub_exposure_start_date, drug_sub_exposure_end_date, drug_exposure_count) AS
 (
     SELECT ROW_NUMBER() OVER (PARTITION BY person_id, drug_concept_id, drug_sub_exposure_end_date ORDER BY person_id)
         , person_id, drug_concept_id, MIN(drug_exposure_start_date) AS drug_sub_exposure_start_date, drug_sub_exposure_end_date, COUNT(*) AS drug_exposure_count
-    FROM cteDrugExposureEnds
+    FROM #cteDrugExposureEnds
     GROUP BY person_id, drug_concept_id, drug_sub_exposure_end_date
     --ORDER BY person_id, drug_concept_id
 )
