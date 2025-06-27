@@ -190,6 +190,15 @@ internal class DocumentationRenderer
 
     private static IEnumerable<Document> GetSvgDocuments(IEnumerable<Property> properties)
     {
+        Relationship CreateRelationship(string source, Property mapping)
+        {
+            return
+                new Relationship(
+                    source,
+                    mapping.FieldName,
+                    mapping.IsCopyOperation ? "Copy value" : mapping.Transform?.TransformDescription ?? mapping.OperationDescription ?? "");
+        }
+
         var mapperProperties =
             properties
                 .GroupBy(p => p.MapperType.Name)
@@ -214,20 +223,30 @@ internal class DocumentationRenderer
                                                         .Origins
                                                         .Select(
                                                             mappingSource =>
-                                                                new Relationship(
+                                                                CreateRelationship(
                                                                     mappingSource.Origin,
-                                                                    mapping.FieldName,
-                                                                    mapping.IsCopyOperation ? "Copy value" : mapping.Transform?.TransformDescription ?? mapping.OperationDescription ?? ""))))
+                                                                    mapping))
+                                                        .Concat(
+                                                            columnExplanation.Origins.Any()
+                                                            ?
+                                                            Enumerable.Empty<Relationship>()
+                                                            :
+                                                            new []
+                                                            {
+                                                                CreateRelationship(columnExplanation.ColumnName, mapping)
+                                                            })))  
+                                .ToList()
                         })
                 .ToList();
 
         foreach (var mapper in mapperProperties)
         {
             var svgRenderer = new SvgRenderer(mapper.Relationships.ToList());
-
+            
             yield return new Document($"{mapper.MapperType.Name}.svg", svgRenderer.Render());
         }
     }
+    
 
     private IEnumerable<Document> GetJsonDocuments(IEnumerable<Property> properties)
     {
