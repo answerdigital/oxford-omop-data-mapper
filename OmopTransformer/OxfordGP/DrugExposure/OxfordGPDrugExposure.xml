@@ -16,6 +16,7 @@
 		e.SuppliedCode,
 		e.Quantity,
 		e.Units
+	</Sql>
     <Explanations>
 		<Explanation columnName="SuppliedCode">
 			<Description>Supplied SNOMED Code</Description>

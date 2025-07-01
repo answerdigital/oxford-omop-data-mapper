@@ -108,3 +108,30 @@ order by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20dose_unit_source_value%20field%20Oxford%20Prescribing%20Drug%20Exposure%20(with%20Snomed)%20mapping){: .btn }
+### Oxford GP Drug Exposure
+* Value copied from `Units`
+
+* `Units` Units of the medication supplied 
+
+```sql
+select
+	distinct
+		d.NHSNumber,
+		e.LastIssueDate,
+		e.SuppliedCode,
+		e.Quantity,
+		e.Units
+	from omop_staging.oxford_gp_medication e
+		inner join omop_staging.oxford_gp_demographic d
+			on e.PatientIdentifier = d.PatientIdentifier
+	order by
+		d.NHSNumber,
+		e.LastIssueDate,
+		e.SuppliedCode,
+		e.Quantity,
+		e.Units
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20dose_unit_source_value%20field%20Oxford%20GP%20Drug%20Exposure%20mapping){: .btn }
