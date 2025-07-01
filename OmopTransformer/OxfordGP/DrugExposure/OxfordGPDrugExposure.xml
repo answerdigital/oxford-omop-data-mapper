@@ -1,0 +1,37 @@
+﻿<Query>
+    <Sql>
+  select
+	distinct
+		d.NHSNumber,
+		e.LastIssueDate,
+		e.SuppliedCode,
+		e.Quantity,
+		e.Units
+	from omop_staging.oxford_gp_medication e
+		inner join omop_staging.oxford_gp_demographic d
+			on e.PatientIdentifier = d.PatientIdentifier
+	order by
+		d.NHSNumber,
+		e.LastIssueDate,
+		e.SuppliedCode,
+		e.Quantity,
+		e.Units
+    <Explanations>
+		<Explanation columnName="SuppliedCode">
+			<Description>Supplied SNOMED Code</Description>
+		</Explanation>
+	    <Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="LastIssueDate">
+			<Description>Last Issue Date</Description>
+		</Explanation>
+		<Explanation columnName="Quantity">
+			<Description>Quantity of medication supplied</Description>
+		</Explanation>
+		<Explanation columnName="Units">
+			<Description>Units of the medication supplied</Description>
+		</Explanation>
+	</Explanations>
+</Query>
