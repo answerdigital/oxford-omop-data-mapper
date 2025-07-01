@@ -248,6 +248,9 @@
     <None Update="OxfordGP\DrugExposure\OxfordGPDrugExposure.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="OxfordGP\DeviceExposure\OxfordGPDeviceExposure.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="OxfordPrescribing\DrugExposureWithSnomed\OxfordPrescribingDrugExposureWithSnomed.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
