@@ -7,6 +7,8 @@ using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.Omop.VisitOccurrence;
+using OmopTransformer.Omop.DrugExposure;
+using OmopTransformer.Omop.DeviceExposure;
 using OmopTransformer.OxfordGP.ConditionOccurrence;
 using OmopTransformer.OxfordGP.Death;
 using OmopTransformer.OxfordGP.Location;
@@ -14,6 +16,8 @@ using OmopTransformer.OxfordGP.Person;
 using OmopTransformer.OxfordGP.ProcedureOccurrence;
 using OmopTransformer.OxfordGP.VisitDetail;
 using OmopTransformer.OxfordGP.VisitOccurrence;
+using OmopTransformer.OxfordGP.DrugExposure;
+using OmopTransformer.OxfordGP.DeviceExposure;
 using OmopTransformer.Transformation;
 
 namespace OmopTransformer.OxfordGP;
@@ -28,6 +32,8 @@ internal class OxfordGPTransformer : Transformer
     private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
     private readonly IVisitOccurrenceRecorder _visitOccurrenceRecorder;
     private readonly IVisitDetailRecorder _visitDetailRecorder;
+    private readonly IDrugExposureRecorder _drugExposureRecorder;
+    private readonly IDeviceExposureRecorder _deviceExposureRecorder;
 
     public OxfordGPTransformer(
         IRecordTransformer recordTransformer,
@@ -39,11 +45,13 @@ internal class OxfordGPTransformer : Transformer
         ConceptResolver conceptResolver,
         IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
-        ILoggerFactory loggerFactory, 
-        IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
-        IConditionOccurrenceRecorder conditionOccurrenceRecorder, 
-        IVisitOccurrenceRecorder visitOccurrenceRecorder, 
-        IVisitDetailRecorder visitDetailRecorder) : base(recordTransformer,
+        ILoggerFactory loggerFactory,
+        IProcedureOccurrenceRecorder procedureOccurrenceRecorder,
+        IConditionOccurrenceRecorder conditionOccurrenceRecorder,
+        IVisitOccurrenceRecorder visitOccurrenceRecorder,
+        IVisitDetailRecorder visitDetailRecorder,
+        IDrugExposureRecorder drugExposureRecorder,
+        IDeviceExposureRecorder deviceExposureRecorder) : base(recordTransformer,
         transformOptions,
         recordProvider,
         "Oxford-GP",
@@ -59,6 +67,8 @@ internal class OxfordGPTransformer : Transformer
         _conditionOccurrenceRecorder = conditionOccurrenceRecorder;
         _visitOccurrenceRecorder = visitOccurrenceRecorder;
         _visitDetailRecorder = visitDetailRecorder;
+        _drugExposureRecorder = drugExposureRecorder;
+        _deviceExposureRecorder = deviceExposureRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -104,6 +114,18 @@ internal class OxfordGPTransformer : Transformer
         await Transform<OxfordGPVisitDetailRecord, OxfordGPVisitDetails>(
             _visitDetailRecorder.InsertUpdateVisitDetail,
             "Oxford GP Visit Detail",
+            runId,
+            cancellationToken);
+
+        await Transform<OxfordGPDrugExposureRecord, OxfordGPDrugExposure>(
+            _drugExposureRecorder.InsertUpdateDrugExposure,
+            "Oxford GP Drug Exposure",
+            runId,
+            cancellationToken);
+
+        await Transform<OxfordGPDeviceExposureRecord, OxfordGPDeviceExposure>(
+            _deviceExposureRecorder.InsertUpdateDeviceExposure,
+            "Oxford GP Device Exposure",
             runId,
             cancellationToken);
 

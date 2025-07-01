@@ -126,3 +126,26 @@ where NHSNumber is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_source_value%20field%20SUS%20AE%20Investigation%20Device%20Exposure%20mapping){: .btn }
+### Oxford Device Exposure
+* Value copied from `SuppliedCode`
+
+* `SuppliedCode`  
+
+```sql
+select
+	distinct
+		d.NHSNumber,
+		e.EventDate,
+		e.SuppliedCode
+from omop_staging.oxford_gp_event e
+	inner join omop_staging.oxford_gp_demographic d
+		on e.PatientIdentifier = d.PatientIdentifier
+order by
+	d.NHSNumber,
+	e.EventDate,
+	e.SuppliedCode
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DeviceExposure%20table%20device_source_value%20field%20Oxford%20Device%20Exposure%20mapping){: .btn }

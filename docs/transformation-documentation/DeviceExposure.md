@@ -38,3 +38,7 @@ has_toc: false
 <a href="SusAEInvestigationDevice.svg" target="_blank"><img src="SusAEInvestigationDevice.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAEInvestigationDevice%20mapping){: .btn }
+## OxfordGPDeviceExposure
+<a href="OxfordGPDeviceExposure.svg" target="_blank"><img src="OxfordGPDeviceExposure.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordGPDeviceExposure%20mapping){: .btn }
