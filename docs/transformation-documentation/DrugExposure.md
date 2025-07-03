@@ -21,6 +21,7 @@ has_toc: false
 * [sig]({% link docs/transformation-documentation/DrugExposure_sig.md %})
 * [route_concept_id]({% link docs/transformation-documentation/DrugExposure_route_concept_id.md %})
 * [route_source_value]({% link docs/transformation-documentation/DrugExposure_route_source_value.md %})
+* [RecordConnectionIdentifier]({% link docs/transformation-documentation/DrugExposure_RecordConnectionIdentifier.md %})
 
 ## SactDrugExposure
 <a href="SactDrugExposure.svg" target="_blank"><img src="SactDrugExposure.svg" /></a>

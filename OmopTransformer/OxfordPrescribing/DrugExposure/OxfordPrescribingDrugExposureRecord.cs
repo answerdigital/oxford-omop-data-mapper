@@ -16,4 +16,5 @@ internal class OxfordPrescribingDrugExposureRecord
     public string? rxroute { get; set; }
     public string? strengthdoseunit { get; set; }
     public string? strengthdose { get; set; }
+    public string? WAREHOUSE_IDENTIFIER { get; set; }
 }

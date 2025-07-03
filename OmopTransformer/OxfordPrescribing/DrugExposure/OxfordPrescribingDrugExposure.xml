@@ -9,7 +9,8 @@ select
 	order_detail_display_line,
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
-	strengthdose
+	strengthdose,
+	WAREHOUSE_IDENTIFIER
 from omop_staging.oxford_prescribing
 where concept_identifier is null
 order by
@@ -21,7 +22,8 @@ order by
 	order_detail_display_line,
 	rxroute,
 	strengthdoseunit,
-	strengthdose
+	strengthdose,
+	WAREHOUSE_IDENTIFIER
 	</Sql>
 	<Explanations>
 		<Explanation columnName="patient_identifier_Value">
@@ -50,6 +52,9 @@ order by
 		</Explanation>
 		<Explanation columnName="strengthdose">
 			<Description>The unit of the drug dose</Description>
+		</Explanation>
+		<Explanation columnName="WAREHOUSE_IDENTIFIER">
+			<Description>Unique identifier</Description>
 		</Explanation>
 	</Explanations>
 </Query>

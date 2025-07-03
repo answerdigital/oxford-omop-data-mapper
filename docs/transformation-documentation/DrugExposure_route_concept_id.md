@@ -109,7 +109,8 @@ select
 	order_detail_display_line,
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
-	strengthdose
+	strengthdose,
+	WAREHOUSE_IDENTIFIER
 from omop_staging.oxford_prescribing
 where concept_identifier is null
 order by
@@ -121,7 +122,8 @@ order by
 	order_detail_display_line,
 	rxroute,
 	strengthdoseunit,
-	strengthdose
+	strengthdose,
+	WAREHOUSE_IDENTIFIER
 	
 ```
 
