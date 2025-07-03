@@ -1537,11 +1537,11 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |fluticasone nasal|36220588|fluticasone nasal product|
 |convalescent plasma|||
 |clioquinol-flumetasone otic|36030361|clioquinol / flumethasone|
-|estradiol + norethisterone|21272343|Estradiol + Norethisterone|
+|estradiol + norethisterone|21272343|estradiol + norethisterone|
 |acetic acid otic|36217021|acetic acid otic product|
 |benzalkonium chloride-cetrimide|36030307|benzalkonium / cetrimide|
-|citric acid-magnesium carbonate|42945929|Citric Acid / magnesium carbonate Oral Solution|
-|digoxin specific antibody|19045317|digoxin antibodies Fab fragments|
+|citric acid-magnesium carbonate|42945929|citric acid / magnesium carbonate oral solution|
+|digoxin specific antibody|19045317|digoxin antibodies fab fragments|
 |urea (13-c)|19054337|urea c-13|
 |potassium chloride 20mmol with glucose 5|36030057|glucose / potassium chloride|
 |potassium chloride 20mmol with glucose 2|36030057|glucose / potassium chloride|
@@ -1551,224 +1551,224 @@ Oxford Prescribing data to RxNorm Concept ID Mapping
 |chlorhexidine-fluoride|36027304|chlorhexidine / sodium fluoride|
 |ciclosporin ophthalmic|36213827|cyclosporine ophthalmic product|
 |aciclovir ophthalmic|36217182|acyclovir ophthalmic product|
-|amphotericin b (fungizone)|40009648|amphotericin B Oral Suspension [Fungizone]|
+|amphotericin b (fungizone)|40009648|amphotericin b oral suspension [fungizone]|
 |zuclopenthixol decanoate depot inject|19121997|zuclopenthixol decanoate|
 |insulin isophane biphasic|46221581|insulin isophane|
-|potassium ascorbate ophthalmic|21035740|Potassium ascorbate Ophthalmic Solution|
+|potassium ascorbate ophthalmic|21035740|potassium ascorbate ophthalmic solution|
 |fentanyl-levobupivacaine|19098741|levobupivacaine|
 |cocaine nasal|36213696|cocaine nasal product|
-|estradiol-norethisterone|21272343|Estradiol + Norethisterone|
-|immunoglobulin subcutaneous|4008249|Immunoglobulin|
-|liquid paraffin + magnesium hydroxide|21290920|Liquid paraffin + Magnesium hydroxide|
+|estradiol-norethisterone|21272343|estradiol + norethisterone|
+|immunoglobulin subcutaneous|4008249|immunoglobulin|
+|liquid paraffin + magnesium hydroxide|21290920|liquid paraffin + magnesium hydroxide|
 |antazoline-xylometazoline ophthalmic|36030351|antazoline / xylometazoline|
 |argipressin (vasopressin)|19006871|argipressin|
 |betamethasone-fusidic acid|36027464|betamethasone / fusidate|
-|lidocaine + adrenaline + tetracaine|21179205|Lidocaine + Tetracaine + Adrenaline|
+|lidocaine + adrenaline + tetracaine|21179205|lidocaine + tetracaine + adrenaline|
 |insulin aspart biphasic|1567198|insulin aspart, human|
 |insulin lispro biphasic|1550023|insulin lispro|
 |bee venom|514834|honey bee venom|
-|ispaghula-senna|21179012|Senna + Ispaghula|
+|ispaghula-senna|21179012|senna + ispaghula|
 |terpin + codeine|36030564|codeine / terpin hydrate|
-|alpha tocopherol + selenium|21272268|Alpha tocopherol + Selenium|
+|alpha tocopherol + selenium|21272268|alpha tocopherol + selenium|
 |brinzolamide-timolol ophthalmic|36219538|brinzolamide ophthalmic product|
-|phenoxymethylpenicillin potassium|21234367|Phenoxymethylpenicillin potassium|
+|phenoxymethylpenicillin potassium|21234367|phenoxymethylpenicillin potassium|
 |glucose 4% with 0.18% sodium chloride in|36029299|glucose / sodium chloride|
 |glucose 5% with 0.45% sodium chloride in|36029299|glucose / sodium chloride|
 |glucose 5% with 0.9% sodium chloride int|36029299|glucose / sodium chloride|
 |glucose 10% with sodium chloride 0.18% i|36029299|glucose / sodium chloride|
 |brimonidine-timolol ophthalmic|36030258|brimonidine / timolol|
 |dorzolamide-timolol ophthalmic|36030344|dorzolamide / timolol|
-|bimatoprost-timolol ophthalmic|21060563|bimatoprost / Timolol Ophthalmic Solution|
+|bimatoprost-timolol ophthalmic|21060563|bimatoprost / timolol ophthalmic solution|
 |liquid paraffin ophthalmic|19129738|paraffin|
 |ichthammol-zinc oxide|||
 |tafluprost-timolol ophthalmic|||
 |trometamol (tham))|1511352|trometamol citrate|
-|dexamethasone/neomycin/polymyxin b ophth|40027153|dexamethasone / neomycin / polymyxin B Ophthalmic Ointment|
-|piperacillin-tazobactam (tazocin equival|46275426|piperacillin / tazobactam Injection|
-|proxymetacaine ophthalmic|19016891|proparacaine hydrochloride 5 MG/ML Ophthalmic Solution [Minims Proxymetacaine hydrochloride]|
-|lidocaine-zinc oxide|40001305|lidocaine / zinc oxide Topical Ointment|
-|sodium alginate-potassium bicarbonate|939541|sodium alginate 50 MG/ML / sodium bicarbonate 26.7 MG/ML Oral Suspension|
-|acetic acid/dexamethasone/neomycin otic|40027174|dexamethasone / neomycin Otic Solution|
+|dexamethasone/neomycin/polymyxin b ophth|40027153|dexamethasone / neomycin / polymyxin b ophthalmic ointment|
+|piperacillin-tazobactam (tazocin equival|46275426|piperacillin / tazobactam injection|
+|proxymetacaine ophthalmic|19016891|proparacaine hydrochloride 5 mg/ml ophthalmic solution [minims proxymetacaine hydrochloride]|
+|lidocaine-zinc oxide|40001305|lidocaine / zinc oxide topical ointment|
+|sodium alginate-potassium bicarbonate|939541|sodium alginate 50 mg/ml / sodium bicarbonate 26.7 mg/ml oral suspension|
+|acetic acid/dexamethasone/neomycin otic|40027174|dexamethasone / neomycin otic solution|
 |calcium citrate + colecalciferol|||
-|al hydroxide/mg hydroxide/simeticone|40007792|aluminum hydroxide / magnesium hydroxide Chewable Tablet|
-|latanoprost-timolol ophthalmic|40058182|latanoprost / timolol Ophthalmic Solution|
+|al hydroxide/mg hydroxide/simeticone|40007792|aluminum hydroxide / magnesium hydroxide chewable tablet|
+|latanoprost-timolol ophthalmic|40058182|latanoprost / timolol ophthalmic solution|
 |oxybuprocaine ophthalmic|||
 |soft paraffin + wool fat|||
 |corticotrophin releasing hormone|||
-|alginic acid/calcium carbonate/na bic|40092304|alginic acid / calcium carbonate Chewable Tablet|
-|calcium acetate-magnesium carbonate|40094156|calcium acetate / magnesium carbonate Oral Tablet|
+|alginic acid/calcium carbonate/na bic|40092304|alginic acid / calcium carbonate chewable tablet|
+|calcium acetate-magnesium carbonate|40094156|calcium acetate / magnesium carbonate oral tablet|
 |aluminium acetate|930604|aluminum acetate|
-|polihexanide ophthalmic|21026605|polihexanide Ophthalmic Solution|
+|polihexanide ophthalmic|21026605|polihexanide ophthalmic solution|
 |mercaptamine ophthalmic|910888|cysteamine|
 |liquid paraffin + isopropyl myristate|908523|mineral oil|
 |mg acetate/mg carbonate/mg hydroxide|||
 |continuous epidural infusion|||
-|dexamethasone-tobramycin ophthalmic|42481931|Dexamethasone / Tobramycin Ophthalmic Solution|
-|ispaghula-mebeverine|21061297|Ispaghula husk / mebeverine Oral Granules|
+|dexamethasone-tobramycin ophthalmic|42481931|dexamethasone / tobramycin ophthalmic solution|
+|ispaghula-mebeverine|21061297|ispaghula husk / mebeverine oral granules|
 |white soft paraffin + liquid paraffin|19033354|petrolatum|
 |potassium acid tartrate-potassium bicarb|19086788|potassium bitartrate|
-|glucose 2.5% with 0.45% sodium chloride|36249707|glucose 25 MG/ML / sodium chloride 4.5 MG/ML Injection|
+|glucose 2.5% with 0.45% sodium chloride|36249707|glucose 25 mg/ml / sodium chloride 4.5 mg/ml injection|
 |imipenem/cilastatin/relebactam|1778262|imipenem|
-|haemophilus b-meningococcal conj vaccine|43291283|Haemophilus B Conjugate Vaccine Injection|
-|glucose 5% to|36249735|glucose 50 MG/ML Injection|
+|haemophilus b-meningococcal conj vaccine|43291283|haemophilus b conjugate vaccine injection|
+|glucose 5% to|36249735|glucose 50 mg/ml injection|
 |calamine-glycerol|902616|calamine|
-|fusidic acid ophthalmic|40131820|fusidate Ophthalmic Solution|
+|fusidic acid ophthalmic|40131820|fusidate ophthalmic solution|
 |calamine-menthol|902616|calamine|
 |continuous subcutaneous|||
 |dronabinol + cannabidiol|19018910|cannabinol|
-|hamamelis ophthalmic|40750388|Hamamelis virginiana leaf extract Ophthalmic Solution|
+|hamamelis ophthalmic|40750388|hamamelis virginiana leaf extract ophthalmic solution|
 |sng001 (interferon -ß1a)|722424|interferon beta-1a|
 |adrenaline-lidocaine|1343916|epinephrine|
 |alteplase ophthalmic|1347450|alteplase|
-|fusidic acid-hydrocortisone|40040355|Fusidic Acid / Hydrocortisone Topical Cream|
-|dexamethasone/framycetin/gramicid ophth|21120479|Dexamethasone / Framycetin / Gramicidin Ophthalmic Ointment|
-|Castor oil + Zinc oxide|21022025|Castor Oil / Zinc Oxide Topical Ointment|
-|Meningococcal groups A + C + W135 + Y|46275260|meningococcal group A polysaccharide / meningococcal group C polysaccharide / meningococcal polysaccharide vaccine group W-135 / meningococcal polysaccharide vaccine group Y Injection|
-|Potassium Chloride 0.2% (27 mmol/L) in G|36880434|Potassium Chloride 2 MG/ML|
-|Potassium Chloride 0.6% (80 mmol/L) in S|21096236|Potassium Chloride 6 MG/ML|
-|adrenaline-BUPivacaine|36029293|bupivacaine / epinephrine|
-|frangula-sterculia|19016537|Frangula preparation|
-|Continuous subcutaneous infusion|||
-|mercaptAMine (Cysteamine)|910888|cysteamine|
-|Potassium Chloride 0.15% (20 mmol/L) in|21125559|Potassium Chloride 1.5 MG/ML|
-|Clobetasol/oxytetracycline/nystatin topi|21168381|Clobetasone / Nystatin / Oxytetracycline Topical Ointment|
-|BUPivacaine + cloNIDine|732893|bupivacaine|
-|Potassium Chloride 0.3% (40 mmol/L) in S|21115885|Potassium Chloride 3 MG/ML|
-|Potassium Chloride 0.3% (40 mmol/L) in G|21115885|Potassium Chloride 3 MG/ML|
-|Estriol applicator|40037935|estriol Vaginal Cream|
-|Estradiol-dydrogesterone|36030766|dydrogesterone / estradiol|
-|Emulsifying ointment + Phenoxyethanol|43252852|Emulsifying Ointment Bp|
-|Insulin isophane porcine|40052072|insulin isophane Injectable Suspension [Hypurin Porcine Isophane]|
-|Retinol + Vitamin D|19008339|vitamin A|
-|chlorhexidine-nystatin|36404953|Chlorhexidine / Nystatin Topical Cream|
-|Paed 3k 1L (aqueous)|||
-|Al hydroxide/dicycloverine/MgO/simet|36029196|aluminum hydroxide / magnesium hydroxide|
+|fusidic acid-hydrocortisone|40040355|fusidic acid / hydrocortisone topical cream|
+|dexamethasone/framycetin/gramicid ophth|21120479|dexamethasone / framycetin / gramicidin ophthalmic ointment|
+|castor oil + zinc oxide|21022025|castor oil / zinc oxide topical ointment|
+|meningococcal groups a + c + w135 + y|46275260|meningococcal group a polysaccharide / meningococcal group c polysaccharide / meningococcal polysaccharide vaccine group w-135 / meningococcal polysaccharide vaccine group y injection|
+|potassium chloride 0.2% (27 mmol/l) in g|36880434|potassium chloride 2 mg/ml|
+|potassium chloride 0.6% (80 mmol/l) in s|21096236|potassium chloride 6 mg/ml|
+|adrenaline-bupivacaine|36029293|bupivacaine / epinephrine|
+|frangula-sterculia|19016537|frangula preparation|
+|continuous subcutaneous infusion|||
+|mercaptamine (cysteamine)|910888|cysteamine|
+|potassium chloride 0.15% (20 mmol/l) in|21125559|potassium chloride 1.5 mg/ml|
+|clobetasol/oxytetracycline/nystatin topi|21168381|clobetasone / nystatin / oxytetracycline topical ointment|
+|bupivacaine + clonidine|732893|bupivacaine|
+|potassium chloride 0.3% (40 mmol/l) in s|21115885|potassium chloride 3 mg/ml|
+|potassium chloride 0.3% (40 mmol/l) in g|21115885|potassium chloride 3 mg/ml|
+|estriol applicator|40037935|estriol vaginal cream|
+|estradiol-dydrogesterone|36030766|dydrogesterone / estradiol|
+|emulsifying ointment + phenoxyethanol|43252852|emulsifying ointment bp|
+|insulin isophane porcine|40052072|insulin isophane injectable suspension [hypurin porcine isophane]|
+|retinol + vitamin d|19008339|vitamin a|
+|chlorhexidine-nystatin|36404953|chlorhexidine / nystatin topical cream|
+|paed 3k 1l (aqueous)|||
+|al hydroxide/dicycloverine/mgo/simet|36029196|aluminum hydroxide / magnesium hydroxide|
 |sodium bicarbonate-sodium biphosphate|36030996|sodium bicarbonate / sodium phosphate|
-|Neonatal Main (aqueous)|||
+|neonatal main (aqueous)|||
 |ubidecarenone (ubiquinone)|1351115|ubidecarenone|
-|benzalkonium/dimeticone/HC/nystatin top|36408018|Benzalkonium / dimethicone / Hydrocortisone / Nystatin Topical Cream|
-|Neat|1714319|naltrexone|
-|cetylpyridium/chlorocresol/lidocaine top|36812860|	Cetylpyridinium / chlorocresol / Lidocaine Topical Gel|
-|PCA|||
+|benzalkonium/dimeticone/hc/nystatin top|36408018|benzalkonium / dimethicone / hydrocortisone / nystatin topical cream|
+|neat|1714319|naltrexone|
+|cetylpyridium/chlorocresol/lidocaine top|36812860|	cetylpyridinium / chlorocresol / lidocaine topical gel|
+|pca|||
 |imipenem-cilastatin|36030124|cilastatin/imipenem|
-|Drug chart reminder|||
-|guselkumab-golimumab-JNJ78934804|1593700|guselkumab|
-|amifampridine (3,4 DAP)|1355889|amifampridine|
-|Additional chemotherapy and/or chemother|||
-|BCG|19015423|BCG Vaccine|
-|Taurolock|2901073|Taurolock|
-|hepatitis A vaccine|40047409|Hepatitis A Vaccines|
-|calcium-vitamin D|43126501|CALCIUM/VITAMINE D|
-|dibotermin alfa|43126075|Alfa dibotermin|
-|co-trimoxazole|21018085|Co-trimoxazole|
-|co-danthrusate|21015003|Co-danthrusate|
-|co-amilofruse|21014899|Co-amilofruse|
-|co-danthramer|21014474|Co-danthramer|
-|co-cyprindiol|21014586|Co-cyprindiol|
-|Grass pollen|36879220|Grass pollen|
-|co-magaldrox|21018430|Co-magaldrox|
-|co-amilozide|21018645|Co-amilozide|
-|co-careldopa|21017760|Co-careldopa|
-|co-amoxiclav|21015284|Co-amoxiclav|
-|co-beneldopa|21014753|Co-beneldopa|
-|rotavirus vaccine|19018193|Rotavirus Vaccines|
-|agomelatine|21014017|Agomelatine|
-|co-dydramol|21016567|Co-dydramol|
-|co-tenidone|21015431|Co-tenidone|
-|rupatadine|21014003|Rupatadine|
+|drug chart reminder|||
+|guselkumab-golimumab-jnj78934804|1593700|guselkumab|
+|amifampridine (3,4 dap)|1355889|amifampridine|
+|additional chemotherapy and/or chemother|||
+|bcg|19015423|bcg vaccine|
+|taurolock|2901073|taurolock|
+|hepatitis a vaccine|40047409|hepatitis a vaccines|
+|calcium-vitamin d|43126501|calcium/vitamine d|
+|dibotermin alfa|43126075|alfa dibotermin|
+|co-trimoxazole|21018085|co-trimoxazole|
+|co-danthrusate|21015003|co-danthrusate|
+|co-amilofruse|21014899|co-amilofruse|
+|co-danthramer|21014474|co-danthramer|
+|co-cyprindiol|21014586|co-cyprindiol|
+|grass pollen|36879220|grass pollen|
+|co-magaldrox|21018430|co-magaldrox|
+|co-amilozide|21018645|co-amilozide|
+|co-careldopa|21017760|co-careldopa|
+|co-amoxiclav|21015284|co-amoxiclav|
+|co-beneldopa|21014753|co-beneldopa|
+|rotavirus vaccine|19018193|rotavirus vaccines|
+|agomelatine|21014017|agomelatine|
+|co-dydramol|21016567|co-dydramol|
+|co-tenidone|21015431|co-tenidone|
+|rupatadine|21014003|rupatadine|
 |zonisamide|744798|zonisamide|
-|co-codamol|21018553|Co-codamol|
+|co-codamol|21018553|co-codamol|
 |asundexian|36859144|asundexian|
-|bilastine|44012547|Bilastine|
+|bilastine|44012547|bilastine|
 |bictegravir/emtricitabine/tenofovir|778974|bictegravir / emtricitabine / tenofovir alafenamide|
-|ARGX-119|||
-|COVID-19 vaccine|||
+|argx-119|||
+|covid-19 vaccine|||
 |efavirenz/emtricitabine/tenofovir|778827|efavirenz / emtricitabine / tenofovir disoproxil|
 |emtricitabine/rilpivirine/tenofovir|36029761|emtricitabine/rilpivirine/tenofovir alafenamide|
-|doravirine/lamiVUDine/tenofovir|36029841|doravirine / lamivudine / tenofovir disoproxil|
-|Gelclair|||
-|Enteral nutrition|||
-|GTX-102|||
-|insulin soluble|19122121|Insulin|
-|ION582|||
-|Namilumab|36859516|Namilumab|
-|Ianalumab|36863847|Ianalumab|
-|pneumococcal 13-valent conjugate vaccine|19008972|Pneumococcal vaccine|
+|doravirine/lamivudine/tenofovir|36029841|doravirine / lamivudine / tenofovir disoproxil|
+|gelclair|||
+|enteral nutrition|||
+|gtx-102|||
+|insulin soluble|19122121|insulin|
+|ion582|||
+|namilumab|36859516|namilumab|
+|ianalumab|36863847|ianalumab|
+|pneumococcal 13-valent conjugate vaccine|19008972|pneumococcal vaccine|
 |infant formulas|||
 |obexelimab|36861135|obexelimab|
-|smallpox vaccine|19136047|Smallpox Vaccine|
-|lutikizumab|36849342|Lutikizumab|
+|smallpox vaccine|19136047|smallpox vaccine|
+|lutikizumab|36849342|lutikizumab|
 |probiotic|||
-|Turoctocog alfa pegol|36855418|Turoctocog alfa pegol|
+|turoctocog alfa pegol|36855418|turoctocog alfa pegol|
 |silicified microcrystalline cellulose|40224234|microcrystalline cellulose|
 |trace elements|||
-|Rurioctocog alfa pegol|2997891|Rurioctocog Alfa Pegol|
-|Volixibat|36863013|Volixibat|
-|XTMAB-16|||
-|WVE-N531|||
-|Yellow soft paraffin|19129738|paraffin|
-|apitegromab|36862253|Apitegromab|
+|rurioctocog alfa pegol|2997891|rurioctocog alfa pegol|
+|volixibat|36863013|volixibat|
+|xtmab-16|||
+|wve-n531|||
+|yellow soft paraffin|19129738|paraffin|
+|apitegromab|36862253|apitegromab|
 |fluoride|||
-|Pamrevlumab|36860866|Pamrevlumab|
-|Prasinezumab|36860309|Prasinezumab|
-|prothrombin complex|1254255|Prothrombin complex concentrate|
-|potassium bicarbonate-potassium chloride|36027310|potassium bicarbonate / Potassium Chloride|
+|pamrevlumab|36860866|pamrevlumab|
+|prasinezumab|36860309|prasinezumab|
+|prothrombin complex|1254255|prothrombin complex concentrate|
+|potassium bicarbonate-potassium chloride|36027310|potassium bicarbonate / potassium chloride|
 |potassium phosphate-sodium phosphate|36030040|potassium phosphate / sodium phosphate|
 |meningococcal conjugate vaccine|||
 |benzoic acid-salicylic acid|36027050|benzoate / salicylic acid|
 |lactic acid-salicylic acid|||
 |emtricitabine-tenofovir|778947|emtricitabine / tenofovir alafenamide|
-|nirmatrelvir-ritonavir|1235357|nirmatrelvir / ritonavir Oral Tablet|
-|BUPivacaine-fentaNYL|36030181|Bupivacaine / Fentanyl|
-|lactic acid-urea|40167127|actate / urea Topical Lotion|
-|sodium hyaluronate ophthalmic|19106560|Sodium Hyaluronate|
-|Water for injection to|43575855|Water For Injection Roth|
-|Hydrocortisone + Urea|36029271|Hydrocortisone / Urea|
-|beclometasone-formoterol|21014364|Easyhaler Beclometasone|
-|ARGX-117|||
-|fluticasone-formoterol|2070686|fluticasone / formoterol Inhalation Suspension|
-|metFORMIN-vildagliptin|21140122|Metformin / vildagliptin Oral Tablet|
-|hepatitis B adult vaccine|501488|Hepatitis B Vaccine|
-|human papillomavirus vaccine|45892511|L1 protein, human papillomavirus type 11 vaccine / L1 protein, human papillomavirus type 16 vaccine / L1 protein, human papillomavirus type 18 vaccine / L1 protein, human papillomavirus type 31 vaccine / L1 protein, human papillomavirus type 33 vaccine|
-|measles/mumps/rubella vaccine|41111268|Measles Vaccine / Mumps Vaccine / Rubella virus vaccine Injectable Solution|
+|nirmatrelvir-ritonavir|1235357|nirmatrelvir / ritonavir oral tablet|
+|bupivacaine-fentanyl|36030181|bupivacaine / fentanyl|
+|lactic acid-urea|40167127|actate / urea topical lotion|
+|sodium hyaluronate ophthalmic|19106560|sodium hyaluronate|
+|water for injection to|43575855|water for injection roth|
+|hydrocortisone + urea|36029271|hydrocortisone / urea|
+|beclometasone-formoterol|21014364|easyhaler beclometasone|
+|argx-117|||
+|fluticasone-formoterol|2070686|fluticasone / formoterol inhalation suspension|
+|metformin-vildagliptin|21140122|metformin / vildagliptin oral tablet|
+|hepatitis b adult vaccine|501488|hepatitis b vaccine|
+|human papillomavirus vaccine|45892511|l1 protein, human papillomavirus type 11 vaccine / l1 protein, human papillomavirus type 16 vaccine / l1 protein, human papillomavirus type 18 vaccine / l1 protein, human papillomavirus type 31 vaccine / l1 protein, human papillomavirus type 33 vaccine|
+|measles/mumps/rubella vaccine|41111268|measles vaccine / mumps vaccine / rubella virus vaccine injectable solution|
 |gramicid/neomy/nystatin/triamcin otic|36029562|neomycin / nystatin / thiostrepton / triamcinolone|
 |diphtheria/poliomyelitis/tetanus vaccine|||
-|Bacillus Calmette-Guérin|19015423|BCG Vaccine|
+|bacillus calmette-guérin|19015423|bcg vaccine|
 |sodium chloride, hypertonic, ophthalmic|||
-|hepatitis A-hepatitis B vaccine|36028822|Hepatitis A Vaccine, Inactivated / Hepatitis B Vaccine|
+|hepatitis a-hepatitis b vaccine|36028822|hepatitis a vaccine, inactivated / hepatitis b vaccine|
 |sodium bicarbonate-sodium chloride top|36030312|	sodium bicarbonate / sodium chloride|
-|beclometasone/formoterol/glycopyrronium|36787954|Beclomethasone / formoterol / glycopyrronium Inhalant Solution|
-|conjugated estrogens-medroxyPROGESTERone|36027056|estrogens, conjugated (USP) / medroxyprogesterone|
+|beclometasone/formoterol/glycopyrronium|36787954|beclomethasone / formoterol / glycopyrronium inhalant solution|
+|conjugated estrogens-medroxyprogesterone|36027056|estrogens, conjugated (usp) / medroxyprogesterone|
 |other supplements|||
-|calamine/coal tar/zinc oxide|40734311|Calamine / Coal Tar / Zinc Oxide Topical Ointment|
-|Estradiol + norETHISTerone acetate|42902238|estradiol 1 MG / norethindrone acetate 0.5 MG Oral Tablet|
-|diphth/Hib/pertussis/polio/tetanus vacc|41018110|acellular pertussis vaccine, inactivated / diphtheria toxoid vaccine, inactivated / poliovirus vaccine inactivated, type 1 (Mahoney) / tetanus toxoid vaccine, inactivated Prefilled Syringe [Boostrix Polio Cc]|
-|Darunavir + Cobicistat + Emtricitabine +|778975|cobicistat / darunavir / emtricitabine / tenofovir alafenamide|
-|taldefgrobep alfa (BHV-2000)|1254421|Taldefgrobep Alfa|
-|JNJ-67484703|||
-|oral rehydration salts|40756244|Oral Rehydration Salts|
-|calcium carbonate-ca lactate gluconate|42944845|Calcium Carbonate / Calcium Gluconate / calcium lactate / Ergocalciferol Oral Tablet|
-|pneumococcal 23-polyvalent vaccine|561429|Polyvalent pneumococcal vaccine|
+|calamine/coal tar/zinc oxide|40734311|calamine / coal tar / zinc oxide topical ointment|
+|estradiol + norethisterone acetate|42902238|estradiol 1 mg / norethindrone acetate 0.5 mg oral tablet|
+|diphth/hib/pertussis/polio/tetanus vacc|41018110|acellular pertussis vaccine, inactivated / diphtheria toxoid vaccine, inactivated / poliovirus vaccine inactivated, type 1 (mahoney) / tetanus toxoid vaccine, inactivated prefilled syringe [boostrix polio cc]|
+|darunavir + cobicistat + emtricitabine +|778975|cobicistat / darunavir / emtricitabine / tenofovir alafenamide|
+|taldefgrobep alfa (bhv-2000)|1254421|taldefgrobep alfa|
+|jnj-67484703|||
+|oral rehydration salts|40756244|oral rehydration salts|
+|calcium carbonate-ca lactate gluconate|42944845|calcium carbonate / calcium gluconate / calcium lactate / ergocalciferol oral tablet|
+|pneumococcal 23-polyvalent vaccine|561429|polyvalent pneumococcal vaccine|
 |covid-19 mrna vaccine (pfizer / biont|||
-|nirmatrelvir (pf-07321332) + ritonavir|1235357|nirmatrelvir / ritonavir Oral Tablet|
+|nirmatrelvir (pf-07321332) + ritonavir|1235357|nirmatrelvir / ritonavir oral tablet|
 |sodium cromoglicate ophthalmic|||
 |sodium cromoglicate|||
-|alginate/calcium co3/sodium bicarbonate|36274608|alginate / Calcium Carbonate / Sodium Bicarbonate Chewable Tablet|
-|shingles (herpes zoster) vaccine, live|42800035|0.65 ML varicella-zoster virus vaccine live (Oka-Merck) strain 29800 UNT/ML Injection [Zostavax]|
+|alginate/calcium co3/sodium bicarbonate|36274608|alginate / calcium carbonate / sodium bicarbonate chewable tablet|
+|shingles (herpes zoster) vaccine, live|42800035|0.65 ml varicella-zoster virus vaccine live (oka-merck) strain 29800 unt/ml injection [zostavax]|
 |platelets|36879118|human platelets|
-|emulsifying wax + yellow soft paraffi|21291105|Emulsifying wax + Yellow soft paraffin|
+|emulsifying wax + yellow soft paraffi|21291105|emulsifying wax + yellow soft paraffin|
 |diphtheria/pertussis/tetanus vaccine|40213291|diphtheria, tetanus toxoids and pertussis vaccine|
-|hyoscine (base)|40563761|Hyoscine|
+|hyoscine (base)|40563761|hyoscine|
 |sodium acid phosphate + potassium dih|36030040|potassium phosphate / sodium phosphate|
-|benzyl benzoate/lanolin/zinc oxide top|36404185|Benzyl Alcohol / benzyl benzoate / benzyl cinnamate / Lanolin / Zinc Oxide Topical Cream|
-|emulsifying wax + liquid paraffin + w|21197867|Emulsifying wax + Liquid paraffin + White soft paraffin|
-|dextran 40 with sodium chloride 0.9% (rh|690469|DEXTRAN 40/SODIUM CHLORIDE|
-|diphtheria + tetanus + pertussis + hepat|2472145|DIPHTHERIA/HAEMOPHILUS/HEP B/PERTUSSIS/POLIO/TETANUS|
-|dexpanthenol-sodium hyaluronate ophth|787787|Sodium hyaluronate + Dexpanthenol|
-|clobetasol/neomycin/nystatin|36408764|Clobetasol / Neomycin / Nystatin Topical Cream|
+|benzyl benzoate/lanolin/zinc oxide top|36404185|benzyl alcohol / benzyl benzoate / benzyl cinnamate / lanolin / zinc oxide topical cream|
+|emulsifying wax + liquid paraffin + w|21197867|emulsifying wax + liquid paraffin + white soft paraffin|
+|dextran 40 with sodium chloride 0.9% (rh|690469|dextran 40/sodium chloride|
+|diphtheria + tetanus + pertussis + hepat|2472145|diphtheria/haemophilus/hep b/pertussis/polio/tetanus|
+|dexpanthenol-sodium hyaluronate ophth|787787|sodium hyaluronate + dexpanthenol|
+|clobetasol/neomycin/nystatin|36408764|clobetasol / neomycin / nystatin topical cream|
 |macrogol 3350 with electrolytes|986417|polyethylene glycol 3350|
 |gsk3511294|36856485|depemokimab (gsk3511294)|
-|dipht/tet/pertussis/hep b/polio/haemoph|2472145|DIPHTHERIA/HAEMOPHILUS/HEP B/PERTUSSIS/POLIO/TETANUS|
+|dipht/tet/pertussis/hep b/polio/haemoph|2472145|diphtheria/haemophilus/hep b/pertussis/polio/tetanus|
 |sodium lactate compound (hartmann's) inf|42914391|hartmanns|
 |hartmanns solution|42914391|hartmanns|
 |amino acids (l-lysine 2.5% and l-arginin|2009211|1000 ml amino acids 25 mg/ml injectable solution [aminofusin-tpn]|
