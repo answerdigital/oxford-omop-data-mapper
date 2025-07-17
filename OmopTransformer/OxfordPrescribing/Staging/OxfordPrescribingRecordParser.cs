@@ -19,6 +19,7 @@ internal class OxfordPrescribingRecordParser : IOxfordPrescribingRecordParser
             yield return new OxfordPrescribingRecord
             {
                 patient_identifier_value = csv.GetField<string>("patient_identifier_value").GetTrimmedValueOrNull(),
+                EVENT_ID = csv.GetField<string>("EVENT_ID").GetTrimmedValueOrNull(),
                 WAREHOUSE_IDENTIFIER = csv.GetField<string>("WAREHOUSE_IDENTIFIER").GetTrimmedValueOrNull(),
                 ORDER_ID = csv.GetField<string>("ORDER_ID").GetTrimmedValueOrNull(),
                 BEG_DT_TM = csv.GetField<string>("BEG_DT_TM").GetTrimmedValueOrNull(),

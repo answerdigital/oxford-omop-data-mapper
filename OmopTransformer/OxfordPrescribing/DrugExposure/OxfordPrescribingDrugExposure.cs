@@ -48,6 +48,6 @@ internal class OxfordPrescribingDrugExposure : OmopDrugExposure<OxfordPrescribin
     [CopyValue(nameof(Source.rxroute))]
     public override string? route_source_value { get; set; }
 
-    [CopyValue(nameof(Source.WAREHOUSE_IDENTIFIER))]
+    [CopyValue(nameof(Source.EVENT_ID))]
     public override string? RecordConnectionIdentifier { get; set; }
 }

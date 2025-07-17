@@ -3,6 +3,7 @@
 internal class OxfordPrescribingRecord
 {
     public string? patient_identifier_value { get; init; }
+    public string? EVENT_ID { get; init; }
     public string? WAREHOUSE_IDENTIFIER { get; init; }
     public string? ORDER_ID { get; init; }
     public string? BEG_DT_TM { get; init; }

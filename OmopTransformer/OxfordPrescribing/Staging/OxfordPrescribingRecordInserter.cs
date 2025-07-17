@@ -45,6 +45,7 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
         var dataTable = new DataTable();
 
         dataTable.Columns.Add("patient_identifier_value");
+        dataTable.Columns.Add("EVENT_ID");
         dataTable.Columns.Add("WAREHOUSE_IDENTIFIER");
         dataTable.Columns.Add("ORDER_ID");
         dataTable.Columns.Add("BEG_DT_TM");
@@ -83,6 +84,7 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
         {
             dataTable.Rows.Add(
                 row.patient_identifier_value,
+                row.EVENT_ID,
                 row.WAREHOUSE_IDENTIFIER,
                 row.ORDER_ID,
                 row.BEG_DT_TM,
