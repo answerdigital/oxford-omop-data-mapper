@@ -78,6 +78,7 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
         dataTable.Columns.Add("concept_name");
         dataTable.Columns.Add("CONCEPT_CKI");
         dataTable.Columns.Add("cki");
+        dataTable.Columns.Add("EVENT_ID");
 
         foreach (var row in rows)
         {
@@ -115,7 +116,8 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
                 row.concept_identifier,
                 row.concept_name,
                 row.CONCEPT_CKI,
-                row.cki);
+                row.cki,
+                row.EVENT_ID);
         }
 
         var parameter = new

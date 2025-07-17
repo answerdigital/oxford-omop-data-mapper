@@ -36,4 +36,5 @@ internal class OxfordPrescribingRecord
     public string? concept_name { get; init; }
     public string? CONCEPT_CKI { get; init; }
     public string? cki { get; init; }
+    public string? EVENT_ID { get; init; }
 }

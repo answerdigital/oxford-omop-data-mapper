@@ -51,7 +51,8 @@ internal class OxfordPrescribingRecordParser : IOxfordPrescribingRecordParser
                 concept_identifier = csv.GetField<string>("concept_identifier").GetTrimmedValueOrNull(),
                 concept_name = csv.GetField<string>("concept_name").GetTrimmedValueOrNull(),
                 CONCEPT_CKI = csv.GetField<string>("CONCEPT_CKI").GetTrimmedValueOrNull(),
-                cki = csv.GetField<string>("cki").GetTrimmedValueOrNull()
+                cki = csv.GetField<string>("cki").GetTrimmedValueOrNull(),
+                EVENT_ID = csv.GetField<string>("EVENT_ID").GetTrimmedValueOrNull()
             };
         }
     }

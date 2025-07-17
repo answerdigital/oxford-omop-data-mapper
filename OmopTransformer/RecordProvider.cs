@@ -23,7 +23,7 @@ internal class RecordProvider : IRecordProvider
     public async IAsyncEnumerable<IReadOnlyCollection<T>> GetRecordsBatched<T>([EnumeratorCancellation] CancellationToken cancellationToken)
     {
         const int defaultTimeoutInSeconds = 120 * 60; // 2 hours
-        const int batchSize = 6000000;
+        const int batchSize = 3000000;
 
         var query = GetQuery<T>();
 
