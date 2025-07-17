@@ -45,7 +45,6 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
         var dataTable = new DataTable();
 
         dataTable.Columns.Add("patient_identifier_value");
-        dataTable.Columns.Add("EVENT_ID");
         dataTable.Columns.Add("WAREHOUSE_IDENTIFIER");
         dataTable.Columns.Add("ORDER_ID");
         dataTable.Columns.Add("BEG_DT_TM");
@@ -79,12 +78,12 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
         dataTable.Columns.Add("concept_name");
         dataTable.Columns.Add("CONCEPT_CKI");
         dataTable.Columns.Add("cki");
+        dataTable.Columns.Add("EVENT_ID");
 
         foreach (var row in rows)
         {
             dataTable.Rows.Add(
                 row.patient_identifier_value,
-                row.EVENT_ID,
                 row.WAREHOUSE_IDENTIFIER,
                 row.ORDER_ID,
                 row.BEG_DT_TM,
@@ -117,7 +116,8 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
                 row.concept_identifier,
                 row.concept_name,
                 row.CONCEPT_CKI,
-                row.cki);
+                row.cki,
+                row.EVENT_ID);
         }
 
         var parameter = new

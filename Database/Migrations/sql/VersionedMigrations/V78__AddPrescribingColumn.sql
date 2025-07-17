@@ -1,6 +1,6 @@
 alter table omop_staging.oxford_prescribing
 	add 
-		EVENT_ID varchar(max) null
+		EVENT_ID varchar(max)
 
 go
 
@@ -11,7 +11,6 @@ go
 create type omop_staging.oxford_prescribing_row as table
 (
 	patient_identifier_value varchar(max),
-	EVENT_ID varchar(max),
 	WAREHOUSE_IDENTIFIER varchar(max),
 	ORDER_ID varchar(max),
 	BEG_DT_TM varchar(max),
@@ -44,5 +43,6 @@ create type omop_staging.oxford_prescribing_row as table
     concept_identifier varchar(max) null, 
     concept_name varchar(max) null,
     CONCEPT_CKI varchar(max) null,
-    cki varchar(max) null
+    cki varchar(max) null,
+	EVENT_ID varchar(max)
 );
