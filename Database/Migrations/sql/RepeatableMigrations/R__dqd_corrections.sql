@@ -503,7 +503,48 @@ JOIN cdm.death de
     ON cdmTable.person_id = de.person_id
 WHERE cdmTable.VISIT_START_DATETIME IS NOT NULL 
     AND CAST(cdmTable.VISIT_START_DATETIME AS DATE) > DATEADD(day, 60, de.death_date)
-	
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.DRUG_EXPOSURE cdmTable
+
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.DRUG_EXPOSURE_END_DATE AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.DRUG_EXPOSURE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.DRUG_EXPOSURE_END_DATETIME AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.DRUG_EXPOSURE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.DRUG_EXPOSURE_START_DATE AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
+delete de
+output deleted.person_id
+into @deleteddeaths
+FROM cdm.DRUG_EXPOSURE cdmTable
+    
+JOIN cdm.death de 
+    ON cdmTable.person_id = de.person_id
+WHERE CAST(cdmTable.DRUG_EXPOSURE_START_DATETIME AS DATE) > DATEADD(day, 60, CAST(de.death_date AS DATE))
+
+
 delete p
 from provenance p
 	inner join @deleteddeaths d
