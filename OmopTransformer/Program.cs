@@ -45,6 +45,7 @@ using OmopTransformer.OxfordGP.Staging.Clearing;
 using OmopTransformer.OxfordPrescribing.Staging;
 using OmopTransformer.OxfordPrescribing.Staging.Clearing;
 using OmopTransformer.OxfordPrescribing;
+using OmopTransformer.OxfordSpineDeath;
 
 [assembly: InternalsVisibleTo("OmopTransformerTests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2, PublicKey=0024000004800000940000000602000000240000525341310004000001000100c547cac37abd99c8db225ef2f6c8a3602f3b3606cc9891605d02baa56104f4cfc0734aa39b93bf7852f7d9266654753cc297e7d2edfe0bac1cdcf9f717241550e0a7b191195b7667bb4f64bcb8e2121380fd1d9d46ad2d92d2d15605093924cceaf74c4861eff62abf69b9291ed0a340e113be11e6a7d3113e92484cf7045cc7")]
@@ -342,6 +343,11 @@ internal class Program
                 builder.Services.AddTransient<OxfordPrescribingTransformer>();
                 builder.Services.AddHostedService<OxfordPrescribingTransformHostedService>();
             }
+            else if (string.Equals(transformOptions.Type, "oxford-death", StringComparison.OrdinalIgnoreCase))
+            {
+                builder.Services.AddTransient<OxfordSpineDeathTransformer>();
+                builder.Services.AddHostedService<OxfordSpineDeathTransformHostedService>();
+            }
             else
             {
                 await Console.Error.WriteLineAsync($"Unknown transform type {transformOptions.Type}.");
@@ -421,8 +427,11 @@ public class StagingOptions
 [Verb("transform", HelpText = "Handles transformation operations.")]
 public class TransformOptions
 {
-    [Option('t', "type", Required = true, HelpText = "Type of the transformation (e.g., omop).")]
+    [Option('t', "type", Required = true, HelpText = "Type of the transformation (e.g., sus-op).")]
     public string? Type { get; set; }
+
+    [Option('d', "duckdb-source", Required = false, HelpText = "DuckDB source, eg 'read_csv('\\data\\medication_results_short.csv', all_varchar=true)'.")]
+    public string? DuckdbSource { get; set; }
 
     [Option("dry-run", Required = false, Default = false, HelpText = "Run the transformation in dry-run mode.")]
     public bool DryRun { get; set; }

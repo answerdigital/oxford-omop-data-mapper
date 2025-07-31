@@ -5,7 +5,8 @@ namespace OmopTransformer.Transformation;
 [XmlRoot("Query")]
 public class Query
 {
-    public string? Sql { get; set; }
+    [XmlElement("Sql")]
+    public SqlElement? Sql { get; set; }
 
     [XmlElement("Explanations")]
     public QueryExplanation? Explanation { get; set; }

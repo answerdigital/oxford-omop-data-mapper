@@ -1889,7 +1889,7 @@ select
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
 	strengthdose,
-	WAREHOUSE_IDENTIFIER
+	EVENT_ID
 from omop_staging.oxford_prescribing
 where concept_identifier is null
 order by
@@ -1902,7 +1902,7 @@ order by
 	rxroute,
 	strengthdoseunit,
 	strengthdose,
-	WAREHOUSE_IDENTIFIER
+	EVENT_ID
 	
 ```
 

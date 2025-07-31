@@ -1,0 +1,16 @@
+﻿<Query>
+    <Sql type="duckdb">
+select
+	patient_identifier_value,
+	DECEASED_DT_TM
+from ##duckdb_source##
+	</Sql>
+	<Explanations>
+		<Explanation columnName="patient_identifier_Value">
+			<Description>Patient NHS Number</Description>
+		</Explanation>
+		<Explanation columnName="DECEASED_DT_TM">
+			<Description>Spine datetime of death.</Description>
+		</Explanation>
+	</Explanations>
+</Query>

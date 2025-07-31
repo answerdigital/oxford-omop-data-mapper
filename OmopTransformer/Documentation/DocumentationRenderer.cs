@@ -483,7 +483,7 @@ internal class DocumentationRenderer
 
         var explanations = GetColumnCollectionExplanations(query, sourceColumns, sourceType.Name);
 
-        return new SqlQuery(explanations.ToList(), query.Sql ?? "");
+        return new SqlQuery(explanations.ToList(), query!.Sql!.Value ?? "");
     }
 
     private class SqlQuery(IReadOnlyCollection<ColumnDataDictionaryExplanation> columnExplanations, string sqlQuery)

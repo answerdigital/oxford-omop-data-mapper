@@ -7,9 +7,9 @@ has_toc: false
 ---
 # RecordConnectionIdentifier
 ### Oxford Prescribing Drug Exposure
-* Value copied from `WAREHOUSE_IDENTIFIER`
+* Value copied from `EVENT_ID`
 
-* `WAREHOUSE_IDENTIFIER` Unique identifier 
+* `EVENT_ID` Unique identifier 
 
 ```sql
 select
@@ -22,7 +22,7 @@ select
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
 	strengthdose,
-	WAREHOUSE_IDENTIFIER
+	EVENT_ID
 from omop_staging.oxford_prescribing
 where concept_identifier is null
 order by
@@ -35,7 +35,7 @@ order by
 	rxroute,
 	strengthdoseunit,
 	strengthdose,
-	WAREHOUSE_IDENTIFIER
+	EVENT_ID
 	
 ```
 
