@@ -41,3 +41,36 @@ order by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20RecordConnectionIdentifier%20field%20Oxford%20Prescribing%20Drug%20Exposure%20mapping){: .btn }
+### Oxford Prescribing Drug Exposure (with Snomed)
+* Value copied from `EVENT_ID`
+
+```sql
+select
+	patient_identifier_Value,
+	beg_dt_tm,
+	end_dt_tm,
+	order_detail_display_line,
+	order_mnemonic,
+	lower(rxroute) as rxroute,
+	strengthdoseunit,
+	strengthdose,
+	concept_identifier,
+	EVENT_ID
+from omop_staging.oxford_prescribing
+where concept_identifier is not null
+order by
+	patient_identifier_Value,
+	beg_dt_tm,
+	end_dt_tm,
+	order_detail_display_line,
+	order_mnemonic,
+	rxroute,
+	strengthdoseunit,
+	strengthdose,
+	concept_identifier,
+	EVENT_ID
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20RecordConnectionIdentifier%20field%20Oxford%20Prescribing%20Drug%20Exposure%20(with%20Snomed)%20mapping){: .btn }

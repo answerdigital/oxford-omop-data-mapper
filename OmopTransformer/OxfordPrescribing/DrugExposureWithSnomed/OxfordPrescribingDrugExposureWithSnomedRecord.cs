@@ -16,4 +16,5 @@ internal class OxfordPrescribingDrugExposureWithSnomedRecord
     public string? strengthdoseunit { get; set; }
     public string? strengthdose { get; set; }
     public string? concept_identifier { get; set; }
+    public string? EVENT_ID { get; set; }
 }

@@ -56,7 +56,8 @@ select
 	lower(rxroute) as rxroute,
 	strengthdoseunit,
 	strengthdose,
-	concept_identifier
+	concept_identifier,
+	EVENT_ID
 from omop_staging.oxford_prescribing
 where concept_identifier is not null
 order by
@@ -68,7 +69,8 @@ order by
 	rxroute,
 	strengthdoseunit,
 	strengthdose,
-	concept_identifier
+	concept_identifier,
+	EVENT_ID
 	
 ```
 

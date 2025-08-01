@@ -47,4 +47,7 @@ internal class OxfordPrescribingDrugExposureWithSnomed : OmopDrugExposure<Oxford
 
     [CopyValue(nameof(Source.rxroute))]
     public override string? route_source_value { get; set; }
+
+    [CopyValue(nameof(Source.EVENT_ID))]
+    public override string? RecordConnectionIdentifier { get; set; }
 }
