@@ -46,6 +46,8 @@ internal class RecordProvider : IRecordProvider
 
             queryText = queryText.Replace(dbSourceConstant, _transformOptions.DuckdbSource);
 
+            _logger.LogTrace("Duckdb query: {0}", queryText);
+
             await using var connection = new DuckDBConnection("Data Source=:memory:");
             connection.Open();
 
