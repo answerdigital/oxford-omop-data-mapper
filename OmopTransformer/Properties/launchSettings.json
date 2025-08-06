@@ -1,10 +1,8 @@
 {
   "profiles": {
     "OmopTransformer": {
-        "commandName": "Project",
-        "commandLineArgs": "transform --type sus-apc"
-        //"commandLineArgs": "docs ."
-        //"commandLineArgs": "staging clear --type cosd"
+      "commandName": "Project",
+      "commandLineArgs": "transform --type oxford-death --duckdb-source \"read_csv('C:\\Code\\answer-digital\\spine_death.csv', all_varchar=true)\""
     }
   }
 }
