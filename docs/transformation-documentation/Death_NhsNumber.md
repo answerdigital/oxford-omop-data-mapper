@@ -77,6 +77,21 @@ group by NHSNumber
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Death%20table%20NhsNumber%20field%20SUS%20A&E%20Death%20mapping){: .btn }
+### Oxford Spine Death
+* Value copied from `patient_identifier_Value`
+
+* `patient_identifier_Value` Patient NHS Number 
+
+```sql
+select
+	patient_identifier_value,
+	DECEASED_DT_TM
+from ##duckdb_source##
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Death%20table%20NhsNumber%20field%20Oxford%20Spine%20Death%20mapping){: .btn }
 ### Oxford GP Death
 * Value copied from `NHSNumber`
 
