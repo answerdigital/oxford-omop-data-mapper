@@ -1,9 +1,12 @@
-﻿using Microsoft.Data.SqlClient;
-using OmopTransformer.Annotations;
+﻿using System.Data;
 using Dapper;
-using Microsoft.Extensions.Options;
-using System.Runtime.CompilerServices;
+using DuckDB.NET.Data;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using OmopTransformer.Annotations;
+using OmopTransformer.Transformation;
+using System.Runtime.CompilerServices;
 
 namespace OmopTransformer;
 
@@ -12,12 +15,14 @@ internal class RecordProvider : IRecordProvider
     private readonly Configuration _configuration;
     private readonly IQueryLocator _queryLocator;
     private readonly ILogger<RecordProvider> _logger;
+    private readonly TransformOptions _transformOptions;
 
-    public RecordProvider(IOptions<Configuration> configuration, IQueryLocator queryLocator, ILogger<RecordProvider> logger)
+    public RecordProvider(IOptions<Configuration> configuration, IQueryLocator queryLocator, ILogger<RecordProvider> logger, TransformOptions transformOptions)
     {
         _configuration = configuration.Value;
         _queryLocator = queryLocator;
         _logger = logger;
+        _transformOptions = transformOptions;
     }
 
     public async IAsyncEnumerable<IReadOnlyCollection<T>> GetRecordsBatched<T>([EnumeratorCancellation] CancellationToken cancellationToken)
@@ -27,10 +32,47 @@ internal class RecordProvider : IRecordProvider
 
         var query = GetQuery<T>();
 
+        string queryText = query.Sql!.Value!;
+
+        if (query.Sql.Type == "duckdb")
+        {
+            if (string.IsNullOrEmpty(_transformOptions.DuckdbSource))
+                throw new NotSupportedException($"'duckdb-source' argument must be specified when executing a duckdb sql query. Query was '{query.Sql.Value}'.");
+
+            const string dbSourceConstant = "##duckdb_source##";
+
+            if (query.Sql?.Value?.Contains(dbSourceConstant) == false)
+                throw new InvalidDataException($"Query of type duckdb must contain the following replacement token '{dbSourceConstant}'. Query was '{query.Sql.Value}'.");
+
+            queryText = queryText.Replace(dbSourceConstant, _transformOptions.DuckdbSource);
+
+            _logger.LogTrace("Duckdb query: {0}", queryText);
+
+            await using var connection = new DuckDBConnection("Data Source=:memory:");
+            connection.Open();
+
+            yield return await ExecuteNonBatchedQuery<T>(queryText, defaultTimeoutInSeconds, cancellationToken, connection);
+
+        }
+        else if (query.Sql!.Type is null or "mssql")
+        {
+            await foreach (var batch in BatchQuerySqlServer<T>(queryText, batchSize, defaultTimeoutInSeconds, cancellationToken))
+            {
+                yield return batch;
+            }
+        }
+        else
+        {
+            throw new NotSupportedException($"Unsupported query type '{query.Sql.Type}'. Supported options are mssql, duckdb");
+        }
+    }
+
+    private async IAsyncEnumerable<IReadOnlyCollection<T>> BatchQuerySqlServer<T>(string queryText, int batchSize, int defaultTimeoutInSeconds, [EnumeratorCancellation]CancellationToken cancellationToken)
+    {
         await using var connection = new SqlConnection(_configuration.ConnectionString);
         await connection.OpenAsync(cancellationToken);
 
-        if (ContainsOrderByClause(query))
+        if (ContainsOrderByClause(queryText))
         {
             _logger.LogInformation("Running query. Pagination enabled. Batch size {0}.", batchSize);
 
@@ -47,9 +89,9 @@ internal class RecordProvider : IRecordProvider
                     _logger.LogInformation("Batch {0}", batch);
                 }
 
-                query = query.TrimEnd(';', '\n', '\t');
+                queryText = queryText.TrimEnd(';', '\n', '\t');
 
-                var batchQuery = $"{query} OFFSET {offset} ROWS FETCH NEXT {batchSize} ROWS ONLY";
+                var batchQuery = $"{queryText} OFFSET {offset} ROWS FETCH NEXT {batchSize} ROWS ONLY";
 
                 var batchResults = await connection.QueryAsync<T>(
                     new CommandDefinition(
@@ -75,23 +117,27 @@ internal class RecordProvider : IRecordProvider
         }
         else
         {
-            _logger.LogInformation("Running query. Pagination disabled (order by clause missing).");
-
-            var results = await connection.QueryAsync<T>(
-                new CommandDefinition(
-                    commandText: query,
-                    commandTimeout: defaultTimeoutInSeconds,
-                    cancellationToken: cancellationToken));
-
-            yield return results.ToList().AsReadOnly();
+            yield return await ExecuteNonBatchedQuery<T>(queryText, defaultTimeoutInSeconds, cancellationToken, connection);
         }
     }
 
-    private string GetQuery<T>()
+    private async Task<IReadOnlyCollection<T>> ExecuteNonBatchedQuery<T>(string queryText, int defaultTimeoutInSeconds, CancellationToken cancellationToken, IDbConnection connection)
+    {
+        _logger.LogInformation("Running query. Pagination disabled (order by clause missing).");
+
+        var results = await connection.QueryAsync<T>(
+            new CommandDefinition(
+                commandText: queryText,
+                commandTimeout: defaultTimeoutInSeconds,
+                cancellationToken: cancellationToken));
+
+        return results.ToList().AsReadOnly();
+    }
+
+    private Query GetQuery<T>()
     {
         var sourceQuery = (SourceQueryAttribute)typeof(T).GetCustomAttributes(typeof(SourceQueryAttribute), inherit: false).Single();
-        var query = _queryLocator.GetQuery(sourceQuery.QueryFileName);
-        return query.Sql!;
+        return _queryLocator.GetQuery(sourceQuery.QueryFileName); ;
     }
 
     private static bool ContainsOrderByClause(string query) => query.ToUpperInvariant().Contains("ORDER BY");
