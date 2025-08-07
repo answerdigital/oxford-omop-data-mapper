@@ -263,6 +263,9 @@
     <None Update="RTDS\Demographics\RtdsDemographics.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="RTDS\Attendances\RtdsAttendances.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SACT\Person\SactPerson.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

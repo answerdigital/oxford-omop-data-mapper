@@ -1,0 +1,31 @@
+﻿<Query>
+    <Sql>
+select
+	b.PatientId,
+	a.ProcedureCode,
+	a.ActualStartDateTime_s,
+	a.ActualEndDateTime_s
+from omop_staging.RTDS_2a_Attendances a
+left join omop_staging.RTDS_1_Demographics b
+on a.Id = b.Id
+where PatientId is not null
+	</Sql>
+	<Explanations>
+		<Explanation columnName="PatientId">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+
+		<Explanation columnName="ProcedureCode">
+			<Description>OPCS Procedure Code</Description>
+			<Origin></Origin>
+		</Explanation>
+		<Explanation columnName="ActualStartDateTime_s">
+			<Description>Appointment Start Time</Description>
+			<Origin>TREATMENT START DATE (RADIOTHERAPY TREATMENT EPISODE)</Origin>
+		</Explanation>
+		<Explanation columnName="ActualEndDateTime_s">
+			<Description>Appointment End Time</Description>
+		</Explanation>
+	</Explanations>
+</Query>
