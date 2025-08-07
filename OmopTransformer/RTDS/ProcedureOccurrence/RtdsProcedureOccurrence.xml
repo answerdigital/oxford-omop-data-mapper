@@ -1,0 +1,58 @@
+﻿<Query>
+    <Sql>
+with plans as (
+  select
+    distinct
+    b.patientid,
+    a.procedurecode,
+    a.start_date as event_start_date,
+    a.end_date as event_end_date
+  from
+    omop_staging.rtds_2b_plan a
+  left join
+    omop_staging.rtds_1_demographics b
+    on a.id = b.id
+  where
+    b.patientid is not null
+    and b.patientid not like '%[^0-9]%'
+),
+attendances as (
+  select
+    distinct
+    b.patientid,
+    a.procedurecode,
+    a.actualstartdatetime_s as event_start_date,
+    a.actualenddatetime_s as event_end_date
+  from
+    omop_staging.rtds_2a_attendances a
+  left join
+    omop_staging.rtds_1_demographics b
+    on a.id = b.id
+  where
+    b.patientid is not null
+    and b.patientid not like '%[^0-9]%'
+)
+select * from plans
+union all
+select * from attendances
+order by
+  event_start_date;
+	</Sql>
+	<Explanations>
+		<Explanation columnName="PatientId">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="ProcedureCode">
+			<Description>OPCS Procedure Code</Description>
+			<Origin></Origin>
+		</Explanation>
+		<Explanation columnName="event_start_date">
+			<Description>Appointment Start Time</Description>
+			<Origin>TREATMENT START DATE (RADIOTHERAPY TREATMENT EPISODE)</Origin>
+		</Explanation>
+		<Explanation columnName="event_end_date">
+			<Description>Appointment End Time</Description>
+		</Explanation>
+	</Explanations>
+</Query>
