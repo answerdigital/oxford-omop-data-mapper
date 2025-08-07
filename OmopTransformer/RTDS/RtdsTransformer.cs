@@ -3,7 +3,7 @@ using OmopTransformer.Omop;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.ProcedureOccurrence;
-using OmopTransformer.RTDS.Attendances;
+using OmopTransformer.RTDS.ProcedureOccurrence;
 using OmopTransformer.RTDS.Demographics;
 using OmopTransformer.Transformation;
 
@@ -55,10 +55,10 @@ internal class RtdsTransformer : Transformer
             runId,
             cancellationToken);
 
-        await Transform<RtdsAttendances, RtdsProcedureOccurrence>(
-            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
-            "Rtds Procedure Occurrence",
-            runId,
-            cancellationToken);
+        await Transform<RtdsProcedureOccurrenceRecord, RtdsProcedureOccurrence>(
+          _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+          "RTDS Procedure Occurrence",
+          runId,
+          cancellationToken);
     }
 }

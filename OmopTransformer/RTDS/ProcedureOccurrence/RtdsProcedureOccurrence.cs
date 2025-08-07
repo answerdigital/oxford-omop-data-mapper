@@ -1,11 +1,10 @@
 ﻿using OmopTransformer.Annotations;
 using OmopTransformer.Omop.ProcedureOccurrence;
-using OmopTransformer.RTDS.Attendances;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.RTDS;
+namespace OmopTransformer.RTDS.ProcedureOccurrence;
 
-internal class RtdsProcedureOccurrence : OmopProcedureOccurrence<RtdsAttendances>
+internal class RtdsProcedureOccurrence : OmopProcedureOccurrence<RtdsProcedureOccurrenceRecord>
 {
     [CopyValue(nameof(Source.PatientId))]
     public override string? nhs_number { get; set; }
