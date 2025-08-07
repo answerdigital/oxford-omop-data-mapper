@@ -7,8 +7,9 @@ select
 	a.ActualEndDateTime_s
 from omop_staging.RTDS_2a_Attendances a
 left join omop_staging.RTDS_1_Demographics b
-on a.Id = b.Id
+	on a.Id = b.Id
 where PatientId is not null
+and PatientId not like '%[^0-9]%'
 	</Sql>
 	<Explanations>
 		<Explanation columnName="PatientId">
