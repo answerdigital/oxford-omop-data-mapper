@@ -9,6 +9,6 @@ internal class RtdsProcedureOccurrenceRecord
 {
     public string? PatientId { get; set; }
     public string? ProcedureCode { get; set; }
-    public string? ActualStartDateTime_s { get; set; }
-    public string? ActualEndDateTime_s { get; set; }
+    public string? event_start_date { get; set; }
+    public string? event_end_date { get; set; }
 }

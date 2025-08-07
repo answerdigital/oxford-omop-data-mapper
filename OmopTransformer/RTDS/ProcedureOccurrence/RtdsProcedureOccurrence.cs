@@ -12,16 +12,16 @@ internal class RtdsProcedureOccurrence : OmopProcedureOccurrence<RtdsProcedureOc
     [Transform(typeof(StandardProcedureConceptSelector), useOmopTypeAsSource: true, nameof(procedure_source_concept_id))]
     public override int[]? procedure_concept_id { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.ActualStartDateTime_s))]
+    [Transform(typeof(DateConverter), nameof(Source.event_start_date))]
     public override DateTime? procedure_datetime { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.ActualStartDateTime_s))]
+    [Transform(typeof(DateConverter), nameof(Source.event_start_date))]
     public override DateTime? procedure_date { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.ActualEndDateTime_s))]
+    [Transform(typeof(DateConverter), nameof(Source.event_end_date))]
     public override DateTime? procedure_end_datetime { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.ActualEndDateTime_s))]
+    [Transform(typeof(DateConverter), nameof(Source.event_end_date))]
     public override DateTime? procedure_end_date { get; set; }
 
     [ConstantValue(32818, "`EHR Administration record`")]
