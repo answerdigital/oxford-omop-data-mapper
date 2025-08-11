@@ -15,9 +15,9 @@ internal class RunAnalysisRecorder : IRunAnalysisRecorder
 
     public async Task InsertRunAnalysis(Guid runId, string tableType, string origin, int validCount, int invalidCount, CancellationToken cancellationToken)
     {
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
-        await connection.OpenAsync(cancellationToken);
+
 
         await 
             connection

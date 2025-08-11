@@ -1,7 +1,4 @@
-﻿using CsvHelper.Configuration.Attributes;
-using Dapper;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer;
@@ -24,13 +21,12 @@ internal abstract class ConceptLookup
     {
         _logger.LogInformation(LoadingLoggerMessage);
 
-        var connection = new SqlConnection(_configuration.ConnectionString);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
-        connection.Open();
+        var results = connection.QueryLongTimeoutAsync<ConceptMappingRow>(Query, CancellationToken.None).Result;
 
         return
-            connection
-                .Query<ConceptMappingRow>(sql: Query)
+            results
                 .ToDictionary(
                     row => row.Code!,
                     row => row.concept_id);

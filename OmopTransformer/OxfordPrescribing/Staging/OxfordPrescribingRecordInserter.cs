@@ -26,9 +26,7 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         int batchNumber = 1;
 
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
-
-        await connection.OpenAsync(cancellationToken);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
         foreach (var batch in batches)
         {
@@ -40,7 +38,7 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
         }
     }
 
-    private async Task InsertPrescribingRecord(IReadOnlyCollection<OxfordPrescribingRecord> rows, IDbConnection connection)
+    private async Task InsertPrescribingRecord(IReadOnlyCollection<OxfordPrescribingRecord> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
