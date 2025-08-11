@@ -1,12 +1,12 @@
-﻿using System.Data;
-using Dapper;
+﻿using Dapper;
 using DuckDB.NET.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OmopTransformer.Annotations;
-using OmopTransformer.Transformation;
+using System.Data;
 using System.Runtime.CompilerServices;
+using Query = OmopTransformer.Transformation.Query;
 
 namespace OmopTransformer;
 
@@ -51,27 +51,38 @@ internal class RecordProvider : IRecordProvider
             await using var connection = new DuckDBConnection("Data Source=:memory:");
             connection.Open();
 
-            yield return await ExecuteNonBatchedQuery<T>(queryText, defaultTimeoutInSeconds, cancellationToken, connection);
-
+            await foreach (var batch in BatchQuery<T>(queryText, batchSize, defaultTimeoutInSeconds, connection, "duckdb", cancellationToken))
+            {
+                yield return batch;
+            }
         }
         else if (query.Sql!.Type is null or "mssql")
         {
-            await foreach (var batch in BatchQuerySqlServer<T>(queryText, batchSize, defaultTimeoutInSeconds, cancellationToken))
+            await using var connection = new SqlConnection(_configuration.ConnectionString);
+            await connection.OpenAsync(cancellationToken);
+
+            await foreach (var batch in BatchQuery<T>(queryText, batchSize, defaultTimeoutInSeconds, connection, "mssql", cancellationToken))
             {
                 yield return batch;
             }
         }
         else
         {
-            throw new NotSupportedException($"Unsupported query type '{query.Sql.Type}'. Supported options are mssql, duckdb");
+            throw UnsupportedType(query.Sql.Type);
         }
     }
 
-    private async IAsyncEnumerable<IReadOnlyCollection<T>> BatchQuerySqlServer<T>(string queryText, int batchSize, int defaultTimeoutInSeconds, [EnumeratorCancellation]CancellationToken cancellationToken)
-    {
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
-        await connection.OpenAsync(cancellationToken);
+    private static NotSupportedException UnsupportedType(string typeName) => throw new NotSupportedException($"Unsupported query type '{typeName}'. Supported options are mssql, duckdb");
 
+
+    private async IAsyncEnumerable<IReadOnlyCollection<T>> BatchQuery<T>(
+        string queryText, 
+        int batchSize, 
+        int defaultTimeoutInSeconds,
+        IDbConnection connection,
+        string dialect,
+        [EnumeratorCancellation]CancellationToken cancellationToken)
+    {
         if (ContainsOrderByClause(queryText))
         {
             _logger.LogInformation("Running query. Pagination enabled. Batch size {0}.", batchSize);
@@ -91,7 +102,12 @@ internal class RecordProvider : IRecordProvider
 
                 queryText = queryText.TrimEnd(';', '\n', '\t');
 
-                var batchQuery = $"{queryText} OFFSET {offset} ROWS FETCH NEXT {batchSize} ROWS ONLY";
+                string? batchQuery = dialect switch
+                {
+                    "mssql" => $"{queryText} OFFSET {offset} ROWS FETCH NEXT {batchSize} ROWS ONLY",
+                    "duckdb" => $"{queryText} LIMIT {batchSize} OFFSET {offset}",
+                    _ => throw UnsupportedType(dialect)
+                };
 
                 var batchResults = await connection.QueryAsync<T>(
                     new CommandDefinition(
