@@ -3,7 +3,9 @@ using OmopTransformer.Omop;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.ProcedureOccurrence;
+using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.RTDS.ProcedureOccurrence;
+using OmopTransformer.RTDS.ConditionOccurrence;
 using OmopTransformer.RTDS.Demographics;
 using OmopTransformer.Transformation;
 
@@ -14,6 +16,7 @@ internal class RtdsTransformer : Transformer
     private readonly ILocationRecorder _locationRecorder;
     private readonly IPersonRecorder _personRecorder;
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
+    private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
 
     public RtdsTransformer(
         IRecordTransformer recordTransformer,
@@ -22,6 +25,7 @@ internal class RtdsTransformer : Transformer
         ILocationRecorder locationRecorder,
         IPersonRecorder personRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder,
+        IConditionOccurrenceRecorder conditionOccurrenceRecorder,
         IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory)
@@ -37,6 +41,7 @@ internal class RtdsTransformer : Transformer
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
+        _conditionOccurrenceRecorder = conditionOccurrenceRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -57,7 +62,13 @@ internal class RtdsTransformer : Transformer
 
         await Transform<RtdsProcedureOccurrenceRecord, RtdsProcedureOccurrence>(
           _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
-          "RTDS Procedure Occurrence",
+          "Rtds Procedure Occurrence",
+          runId,
+          cancellationToken);
+
+        await Transform<RtdsConditionOccurrenceRecord, RtdsConditionOccurrence>(
+          _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+          "Rtds Condition Occurrence",
           runId,
           cancellationToken);
     }

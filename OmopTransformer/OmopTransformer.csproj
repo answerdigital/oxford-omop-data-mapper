@@ -266,6 +266,9 @@
     <None Update="RTDS\ProcedureOccurrence\RtdsProcedureOccurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="RTDS\ConditionOccurrence\RtdsConditionOccurrence.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SACT\Person\SactPerson.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
