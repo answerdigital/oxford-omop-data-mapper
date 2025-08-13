@@ -18,9 +18,9 @@ internal class MeasurementRecorder : IMeasurementRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
-        await connection.OpenAsync(cancellationToken);
+
 
         var batches = records.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)

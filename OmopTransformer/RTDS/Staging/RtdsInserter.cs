@@ -22,9 +22,9 @@ internal class RtdsInserter : IRtdsInserter
     
     public async Task Insert(RtdsRecords records, CancellationToken cancellationToken)
     {
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
-        await connection.OpenAsync(cancellationToken);
+
 
         _logger.LogInformation("Inserting {0} Rtds Demographics.", records.Demographics.Count);
         await InsertRTDS_1_Demographics(records.Demographics, records.SourceFileName, connection, cancellationToken);
@@ -51,7 +51,7 @@ internal class RtdsInserter : IRtdsInserter
         }
     }
     
-    private async Task InsertRTDS_1_Demographics(IReadOnlyCollection<Rtds1Demographics> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertRTDS_1_Demographics(IReadOnlyCollection<Rtds1Demographics> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
     {
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
@@ -113,7 +113,7 @@ internal class RtdsInserter : IRtdsInserter
         }
     }
 
-    private async Task InsertRTDS_2a_Attendances(IReadOnlyCollection<Rtds2AAttendances> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertRTDS_2a_Attendances(IReadOnlyCollection<Rtds2AAttendances> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
     {
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
@@ -167,7 +167,7 @@ internal class RtdsInserter : IRtdsInserter
         }
     }
 
-    private async Task InsertRTDS_2b_Plan(IReadOnlyCollection<Rtds2BPlan> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertRTDS_2b_Plan(IReadOnlyCollection<Rtds2BPlan> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
     {
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
@@ -221,7 +221,7 @@ internal class RtdsInserter : IRtdsInserter
         }
     }
     
-    private async Task InsertRTDS_3_Prescription(IReadOnlyCollection<Rtds3Prescription> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertRTDS_3_Prescription(IReadOnlyCollection<Rtds3Prescription> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
     {
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
@@ -277,7 +277,7 @@ internal class RtdsInserter : IRtdsInserter
         }
     }
 
-    private async Task InsertRTDS_4_Exposures(IReadOnlyCollection<Rtds4Exposures> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertRTDS_4_Exposures(IReadOnlyCollection<Rtds4Exposures> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
     {
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
@@ -333,7 +333,7 @@ internal class RtdsInserter : IRtdsInserter
         }
     }
 
-    private async Task InsertRTDS_5_Diagnosis_Course(IReadOnlyCollection<Rtds5DiagnosisCourse> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertRTDS_5_Diagnosis_Course(IReadOnlyCollection<Rtds5DiagnosisCourse> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
     {
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)
@@ -379,7 +379,7 @@ internal class RtdsInserter : IRtdsInserter
         }
     }
 
-    private async Task InsertRTDS_PASDATA(IReadOnlyCollection<RtdsPasData> rows, string sourceFileName, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertRTDS_PASDATA(IReadOnlyCollection<RtdsPasData> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
     {
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)

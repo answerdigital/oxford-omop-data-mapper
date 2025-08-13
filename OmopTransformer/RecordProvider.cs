@@ -1,10 +1,6 @@
-﻿using Dapper;
-using DuckDB.NET.Data;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OmopTransformer.Annotations;
-using System.Data;
 using System.Runtime.CompilerServices;
 using Query = OmopTransformer.Transformation.Query;
 
@@ -27,7 +23,6 @@ internal class RecordProvider : IRecordProvider
 
     public async IAsyncEnumerable<IReadOnlyCollection<T>> GetRecordsBatched<T>([EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        const int defaultTimeoutInSeconds = 120 * 60; // 2 hours
         const int batchSize = 3000000;
 
         var query = GetQuery<T>();
@@ -48,20 +43,19 @@ internal class RecordProvider : IRecordProvider
 
             _logger.LogTrace("Duckdb query: {0}", queryText);
 
-            await using var connection = new DuckDBConnection("Data Source=:memory:");
-            connection.Open();
+            var connection = RetryConnection.CreateDuckDbInMemory();
 
-            await foreach (var batch in BatchQuery<T>(queryText, batchSize, defaultTimeoutInSeconds, connection, "duckdb", cancellationToken))
+            await foreach (var batch in BatchQuery<T>(queryText, batchSize, connection, "duckdb", cancellationToken))
             {
                 yield return batch;
             }
         }
         else if (query.Sql!.Type is null or "mssql")
         {
-            await using var connection = new SqlConnection(_configuration.ConnectionString);
-            await connection.OpenAsync(cancellationToken);
+            var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+    
 
-            await foreach (var batch in BatchQuery<T>(queryText, batchSize, defaultTimeoutInSeconds, connection, "mssql", cancellationToken))
+            await foreach (var batch in BatchQuery<T>(queryText, batchSize, connection, "mssql", cancellationToken))
             {
                 yield return batch;
             }
@@ -77,9 +71,8 @@ internal class RecordProvider : IRecordProvider
 
     private async IAsyncEnumerable<IReadOnlyCollection<T>> BatchQuery<T>(
         string queryText, 
-        int batchSize, 
-        int defaultTimeoutInSeconds,
-        IDbConnection connection,
+        int batchSize,
+        RetryConnection connection,
         string dialect,
         [EnumeratorCancellation]CancellationToken cancellationToken)
     {
@@ -109,11 +102,7 @@ internal class RecordProvider : IRecordProvider
                     _ => throw UnsupportedType(dialect)
                 };
 
-                var batchResults = await connection.QueryAsync<T>(
-                    new CommandDefinition(
-                        commandText: batchQuery,
-                        commandTimeout: defaultTimeoutInSeconds,
-                        cancellationToken: cancellationToken));
+                var batchResults = await connection.QueryLongTimeoutAsync<T>(batchQuery, cancellationToken);
 
                 var resultsList = batchResults.ToList();
 
@@ -133,19 +122,15 @@ internal class RecordProvider : IRecordProvider
         }
         else
         {
-            yield return await ExecuteNonBatchedQuery<T>(queryText, defaultTimeoutInSeconds, cancellationToken, connection);
+            yield return await ExecuteNonBatchedQuery<T>(queryText, cancellationToken, connection);
         }
     }
 
-    private async Task<IReadOnlyCollection<T>> ExecuteNonBatchedQuery<T>(string queryText, int defaultTimeoutInSeconds, CancellationToken cancellationToken, IDbConnection connection)
+    private async Task<IReadOnlyCollection<T>> ExecuteNonBatchedQuery<T>(string queryText, CancellationToken cancellationToken, RetryConnection connection)
     {
         _logger.LogInformation("Running query. Pagination disabled (order by clause missing).");
 
-        var results = await connection.QueryAsync<T>(
-            new CommandDefinition(
-                commandText: queryText,
-                commandTimeout: defaultTimeoutInSeconds,
-                cancellationToken: cancellationToken));
+        var results = await connection.QueryLongTimeoutAsync<T>(queryText, cancellationToken);
 
         return results.ToList().AsReadOnly();
     }

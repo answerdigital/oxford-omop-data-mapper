@@ -20,9 +20,9 @@ internal class ConceptMapper : IConceptMapper
     {
         _logger.LogInformation("Rendering non standard to standard concept map.");
 
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
-        await connection.OpenAsync(cancellationToken);
+
 
         await connection.ExecuteLongTimeoutAsync("omop_staging.generate_concept_code_map");
     }

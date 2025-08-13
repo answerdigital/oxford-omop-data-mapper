@@ -18,9 +18,7 @@ internal class PersonRecorder : IPersonRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        await using var connection = new SqlConnection(_configuration!.ConnectionString);
-
-        await connection.OpenAsync(cancellationToken);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
         var batches = records.Batch(_configuration.BatchSize!.Value);
 

@@ -26,9 +26,9 @@ internal class SusCCMDSInserter : ISusCCMDSInserter
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         int batchNumber = 1;
 
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
-        await connection.OpenAsync(cancellationToken);
+
 
         foreach (var batch in batches)
         {
@@ -38,7 +38,7 @@ internal class SusCCMDSInserter : ISusCCMDSInserter
         }
     }
 
-    private async Task InsertBatch(IEnumerable<CCMDSRecord> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertBatch(IEnumerable<CCMDSRecord> rows, RetryConnection connection, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -61,7 +61,7 @@ internal class SusCCMDSInserter : ISusCCMDSInserter
         cancellationToken.ThrowIfCancellationRequested();
     }
 
-    private async Task InsertCCMDS(IReadOnlyCollection<CCMDSRow> rows, IDbConnection connection)
+    private async Task InsertCCMDS(IReadOnlyCollection<CCMDSRow> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -132,7 +132,7 @@ internal class SusCCMDSInserter : ISusCCMDSInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertHighCostDrugs(IReadOnlyCollection<CCMDSCriticalCareHighCostDrugs> rows, IDbConnection connection)
+    private async Task InsertHighCostDrugs(IReadOnlyCollection<CCMDSCriticalCareHighCostDrugs> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -158,7 +158,7 @@ internal class SusCCMDSInserter : ISusCCMDSInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertCriticalCareActivityCodes(IReadOnlyCollection<CCMDSCriticalCareActivityCode> rows, IDbConnection connection)
+    private async Task InsertCriticalCareActivityCodes(IReadOnlyCollection<CCMDSCriticalCareActivityCode> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
