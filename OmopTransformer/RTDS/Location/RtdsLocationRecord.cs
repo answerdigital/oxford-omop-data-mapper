@@ -1,11 +1,11 @@
 ﻿using OmopTransformer.Annotations;
 
-namespace OmopTransformer.RTDS.Demographics;
+namespace OmopTransformer.RTDS.Location;
 
 [DataOrigin("RTDS")]
 [Description("Rtds PAS Location")]
 [SourceQuery("RtdsLocation.xml")]
-internal class RtdsPasLocation
+internal class RtdsLocationRecord
 {
     public string? FirstOfNHSNUMBER { get; set; }
     public string? FirstOfPOSTCODE { get; set; }

@@ -257,16 +257,19 @@
     <None Update="OxfordPrescribing\DrugExposure\OxfordPrescribingDrugExposure.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RTDS\Demographics\RtdsLocation.xml">
+    <None Update="RTDS\Person\RtdsPerson.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="RTDS\Demographics\RtdsDemographics.xml">
+    <None Update="RTDS\Location\RtdsLocation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="RTDS\ProcedureOccurrence\RtdsProcedureOccurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="RTDS\ConditionOccurrence\RtdsConditionOccurrence.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RTDS\VisitDetails\RtdsVisitDetails.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SACT\Person\SactPerson.xml">

@@ -1,0 +1,32 @@
+﻿<Query>
+    <Sql>
+
+select
+  distinct
+  b.patientid,
+  a.start_date as event_start_date,
+  a.end_date as event_end_date
+from
+  omop_staging.rtds_2b_plan a
+left join
+  omop_staging.rtds_1_demographics b
+  on a.id = b.id
+where
+  b.patientid is not null
+  and b.patientid not like '%[^0-9]%'
+
+	</Sql>
+	<Explanations>
+		<Explanation columnName="PatientId">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="event_start_date">
+			<Description>Appointment Start Time</Description>
+			<Origin>TREATMENT START DATE (RADIOTHERAPY TREATMENT EPISODE)</Origin>
+		</Explanation>
+		<Explanation columnName="event_end_date">
+			<Description>Appointment End Time</Description>
+		</Explanation>
+	</Explanations>
+</Query>
