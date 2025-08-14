@@ -1,11 +1,11 @@
 ﻿using OmopTransformer.Annotations;
 using OmopTransformer.Omop.Location;
-using OmopTransformer.RTDS.Demographics;
+using OmopTransformer.RTDS.Location;
 using OmopTransformer.Transformation;
 
 namespace OmopTransformer.RTDS;
 
-internal class RtdsLocation : OmopLocation<RtdsPasLocation>
+internal class RtdsLocation : OmopLocation<RtdsLocationRecord>
 {
     [Transform(typeof(PostcodeFormatter), nameof(Source.FirstOfPOSTCODE))]
     public override string? zip { get; set; }

@@ -1,11 +1,11 @@
 ﻿using OmopTransformer.Annotations;
 using OmopTransformer.Omop.Person;
-using OmopTransformer.RTDS.Demographics;
+using OmopTransformer.RTDS.Person;
 using OmopTransformer.Transformation;
 
 namespace OmopTransformer.RTDS;
 
-internal class RtdsPerson : OmopPerson<RtdsDemographics>
+internal class RtdsPerson : OmopPerson<RtdsPersonRecord>
 {
     [CopyValue(nameof(Source.PatientId))]
     public override string? person_source_value { get; set; }

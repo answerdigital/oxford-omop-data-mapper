@@ -88,6 +88,33 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_end_datetime%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
+### Rtds Condition Occurrence
+Source column  `event_end_date`.
+Converts text to dates.
+
+* `event_end_date` Appointment End Time 
+
+```sql
+select
+    distinct
+    b.PatientId,
+    a.DiagnosisCode,
+    a.Start_date as event_start_date,
+    a.End_date as event_end_date
+from
+    omop_staging.RTDS_5_Diagnosis_Course a
+left join
+    omop_staging.rtds_1_demographics b
+    on a.id = b.id
+where
+    b.patientid is not null
+    and b.patientid not like '%[^0-9]%'
+	and a.DiagnosisTableName = 'ICD-10'
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_end_datetime%20field%20Rtds%20Condition%20Occurrence%20mapping){: .btn }
 ### Oxford Condition Occurrence
 Source column  `EventDate`.
 Converts text to dates.
