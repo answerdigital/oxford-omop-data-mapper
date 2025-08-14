@@ -28,9 +28,9 @@ internal class SusApcInserter : ISusAPCInserter
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         int batchNumber = 1;
 
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
-        await connection.OpenAsync(cancellationToken);
+
 
         foreach (var batch in batches)
         {
@@ -40,7 +40,7 @@ internal class SusApcInserter : ISusAPCInserter
         }
     }
 
-    private async Task InsertBatch(IEnumerable<APCRecord> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertBatch(IEnumerable<APCRecord> rows, RetryConnection connection, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -95,7 +95,7 @@ internal class SusApcInserter : ISusAPCInserter
         _dataOptOut.PrintStats();
     }
 
-    private async Task InsertAPC(IReadOnlyCollection<APCRow> rows, IDbConnection connection)
+    private async Task InsertAPC(IReadOnlyCollection<APCRow> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -549,7 +549,7 @@ internal class SusApcInserter : ISusAPCInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertOverseasVisitor(IReadOnlyCollection<OverseasVisitor> rows, IDbConnection connection)
+    private async Task InsertOverseasVisitor(IReadOnlyCollection<OverseasVisitor> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -577,7 +577,7 @@ internal class SusApcInserter : ISusAPCInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertIcdDiagnosis(IReadOnlyCollection<IcdDiagnosis> rows, IDbConnection connection)
+    private async Task InsertIcdDiagnosis(IReadOnlyCollection<IcdDiagnosis> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -607,7 +607,7 @@ internal class SusApcInserter : ISusAPCInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertReadDiagnosis(IReadOnlyCollection<ReadDiagnosis> rows, IDbConnection connection)
+    private async Task InsertReadDiagnosis(IReadOnlyCollection<ReadDiagnosis> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -635,7 +635,7 @@ internal class SusApcInserter : ISusAPCInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertCareLocation(IReadOnlyCollection<APCCareLocation> rows, IDbConnection connection)
+    private async Task InsertCareLocation(IReadOnlyCollection<APCCareLocation> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -687,7 +687,7 @@ internal class SusApcInserter : ISusAPCInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertOpcsProcedure(IReadOnlyCollection<SusAPCOpcsProcedure> rows, IDbConnection connection)
+    private async Task InsertOpcsProcedure(IReadOnlyCollection<SusAPCOpcsProcedure> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -725,7 +725,7 @@ internal class SusApcInserter : ISusAPCInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertReadProcedure(IReadOnlyCollection<APCReadProcedure> rows, IDbConnection connection)
+    private async Task InsertReadProcedure(IReadOnlyCollection<APCReadProcedure> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -755,7 +755,7 @@ internal class SusApcInserter : ISusAPCInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertBirth(IReadOnlyCollection<APCBirth> rows, IDbConnection connection)
+    private async Task InsertBirth(IReadOnlyCollection<APCBirth> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -813,7 +813,7 @@ internal class SusApcInserter : ISusAPCInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertCriticalCare(IReadOnlyCollection<APCCriticalCare> rows, IDbConnection connection)
+    private async Task InsertCriticalCare(IReadOnlyCollection<APCCriticalCare> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 

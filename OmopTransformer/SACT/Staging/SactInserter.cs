@@ -26,9 +26,9 @@ internal class SactInserter : ISactInserter
 
         var stopwatch = Stopwatch.StartNew();
 
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
-        await connection.OpenAsync(cancellationToken);
+
 
         var batches = sactRows.Batch(_configuration.BatchSize!.Value);
         foreach (var batch in batches)

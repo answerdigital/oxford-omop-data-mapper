@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using Dapper;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -30,7 +29,7 @@ internal class OxfordGPRecordInserter : IOxfordGPRecordInserter
     private async Task InsertBatch<T>(
         IEnumerable<T> rows, 
         string name, 
-        Func<IReadOnlyCollection<T>, IDbConnection, Task> record, 
+        Func<IReadOnlyCollection<T>, RetryConnection, Task> record, 
         CancellationToken cancellationToken)
     {
         if (rows == null) throw new ArgumentNullException(nameof(rows));
@@ -40,9 +39,7 @@ internal class OxfordGPRecordInserter : IOxfordGPRecordInserter
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         int batchNumber = 1;
 
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
-
-        await connection.OpenAsync(cancellationToken);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);;
 
         foreach (var batch in batches)
         {
@@ -54,7 +51,7 @@ internal class OxfordGPRecordInserter : IOxfordGPRecordInserter
         }
     }
 
-    private async Task InsertGPAppointments(IReadOnlyCollection<GPAppointment> rows, IDbConnection connection)
+    private async Task InsertGPAppointments(IReadOnlyCollection<GPAppointment> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -154,7 +151,7 @@ internal class OxfordGPRecordInserter : IOxfordGPRecordInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertGPDemographics(IReadOnlyCollection<GPDemographic> rows, IDbConnection connection)
+    private async Task InsertGPDemographics(IReadOnlyCollection<GPDemographic> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -190,7 +187,7 @@ internal class OxfordGPRecordInserter : IOxfordGPRecordInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertGPEvents(IReadOnlyCollection<GPEvent> rows, IDbConnection connection)
+    private async Task InsertGPEvents(IReadOnlyCollection<GPEvent> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -248,7 +245,7 @@ internal class OxfordGPRecordInserter : IOxfordGPRecordInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertGPMedications(IReadOnlyCollection<GPMedication> rows, IDbConnection connection)
+    private async Task InsertGPMedications(IReadOnlyCollection<GPMedication> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 

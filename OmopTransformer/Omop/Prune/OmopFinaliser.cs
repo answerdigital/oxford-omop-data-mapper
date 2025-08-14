@@ -19,9 +19,7 @@ internal class OmopFinaliser
     {
         _logger.LogInformation("Clearing incomplete omop records.");
 
-        var connection = new SqlConnection(_configuration.ConnectionString);
-
-        await connection.OpenAsync(cancellationToken);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
         await connection.ExecuteLongTimeoutAsync("cdm.prune_omop");
 

@@ -19,8 +19,9 @@
     <PackageReference Include="CsvHelper" Version="33.1.0" />
     <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.7" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.7" />
+    <PackageReference Include="DuckDB.NET.Data.Full" Version="1.3.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 </ItemGroup>
 
@@ -255,6 +256,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="OxfordPrescribing\DrugExposure\OxfordPrescribingDrugExposure.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="OxfordSpineDeath\Death\OxfordSpineDeath.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="RTDS\Person\RtdsPerson.xml">
