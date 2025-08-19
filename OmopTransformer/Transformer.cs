@@ -143,6 +143,8 @@ internal abstract class Transformer
 
         computeStopwatch.Stop();
 
+        insertRecordsStopwatch.Start();
+
         if (_transformOptions.DryRun == false)
         {
             await insertRecord(mappedRecords, $"{_dataSource}:{name}", cancellationToken);
