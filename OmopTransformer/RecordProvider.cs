@@ -39,7 +39,7 @@ internal class RecordProvider : IRecordProvider
             if (query.Sql?.Value?.Contains(dbSourceConstant) == false)
                 throw new InvalidDataException($"Query of type duckdb must contain the following replacement token '{dbSourceConstant}'. Query was '{query.Sql.Value}'.");
 
-            queryText = queryText.Replace(dbSourceConstant, "read_csv('C:\\Code\\answer-digital\\small\\medication_results_big.csv', all_varchar=true)");
+            queryText = queryText.Replace(dbSourceConstant, _transformOptions.DuckdbSource);
 
             _logger.LogTrace("Duckdb query: {0}", queryText);
 
