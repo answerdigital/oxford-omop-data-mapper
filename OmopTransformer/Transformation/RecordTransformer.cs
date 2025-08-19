@@ -49,6 +49,7 @@ internal class RecordTransformer : IRecordTransformer
 
         TransformProperties(record, properties, sourceType, sourceTypeAsOrigin: false); // First run the transformations that refer to the source data from the database.
         TransformProperties(record, properties, sourceType, sourceTypeAsOrigin: true); // Then run transforms that use the results of the previous transformations, by referring to the content of the partially transformed record rather than the incoming database record.
+        record.Source = default; // Dereference source value to recover some memory.
     }
 
     public void PrintLogsAndResetLogger(ILoggerFactory loggerFactory)

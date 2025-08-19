@@ -2,5 +2,5 @@
 
 internal interface IRecordProvider
 {
-    IAsyncEnumerable<IReadOnlyCollection<T>> GetRecordsBatched<T>(CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<T>> GetRecordsBatched<T>(int batchNumber, CancellationToken cancellationToken);
 }
