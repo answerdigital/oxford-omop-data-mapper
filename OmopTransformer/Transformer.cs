@@ -172,7 +172,7 @@ internal abstract class Transformer
         if (_isConceptMapRendered)
             return;
 
-        //await _conceptMapper.RenderConceptMap(cancellationToken);
+        await _conceptMapper.RenderConceptMap(cancellationToken);
 
         _isConceptMapRendered = true;
     }
