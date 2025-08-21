@@ -3,11 +3,11 @@ using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.ConditionOccurrence;
-using OmopTransformer.Omop.VisitDetail;
+using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.Omop;
 using OmopTransformer.RTDS.ProcedureOccurrence;
 using OmopTransformer.RTDS.ConditionOccurrence;
-using OmopTransformer.RTDS.VisitDetails;
+using OmopTransformer.RTDS.VisitOccurrence;
 using OmopTransformer.RTDS.Person;
 using OmopTransformer.RTDS.Location;
 using OmopTransformer.Transformation;
@@ -20,7 +20,7 @@ internal class RtdsTransformer : Transformer
     private readonly IPersonRecorder _personRecorder;
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
     private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
-    private readonly IVisitDetailRecorder _visitDetailRecorder;
+    private readonly IVisitOccurrenceRecorder _visitOccurrenceRecorder;
 
     public RtdsTransformer(
         IRecordTransformer recordTransformer,
@@ -30,7 +30,7 @@ internal class RtdsTransformer : Transformer
         IPersonRecorder personRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder,
         IConditionOccurrenceRecorder conditionOccurrenceRecorder,
-        IVisitDetailRecorder visitDetailRecorder,
+        IVisitOccurrenceRecorder visitOccurrenceRecorder,
         IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory)
@@ -47,7 +47,7 @@ internal class RtdsTransformer : Transformer
         _personRecorder = personRecorder;
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
         _conditionOccurrenceRecorder = conditionOccurrenceRecorder;
-        _visitDetailRecorder = visitDetailRecorder;
+        _visitOccurrenceRecorder = visitOccurrenceRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -78,9 +78,9 @@ internal class RtdsTransformer : Transformer
           runId,
           cancellationToken);
 
-        await Transform<RtdsVisitDetailsRecord, RtdsVisitDetail>(
-          _visitDetailRecorder.InsertUpdateVisitDetail,
-          "Rtds Visit Detail",
+        await Transform<RtdsVisitOccurrenceRecord, RtdsVisitOccurrence>(
+          _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
+          "Rtds Visit Occurrence",
           runId,
           cancellationToken);
     }

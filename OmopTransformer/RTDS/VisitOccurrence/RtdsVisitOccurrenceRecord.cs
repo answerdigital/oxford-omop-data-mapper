@@ -1,11 +1,11 @@
 ﻿using OmopTransformer.Annotations;
 
-namespace OmopTransformer.RTDS.VisitDetails;
+namespace OmopTransformer.RTDS.VisitOccurrence;
 
 [DataOrigin("RTDS")]
-[Description("Rtds VisitDetails")]
-[SourceQuery("RtdsVisitDetails.xml")]
-internal class RtdsVisitDetailsRecord
+[Description("Rtds VisitOccurrence")]
+[SourceQuery("RtdsVisitOccurrence.xml")]
+internal class RtdsVisitOccurrenceRecord
 {
     public string? PatientId { get; set; }
     public string? event_start_date { get; set; }

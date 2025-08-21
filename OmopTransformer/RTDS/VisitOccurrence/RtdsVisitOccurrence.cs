@@ -1,8 +1,8 @@
 ﻿using OmopTransformer.Annotations;
-using OmopTransformer.Omop.VisitDetail;
+using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.RTDS.VisitDetails;
+namespace OmopTransformer.RTDS.VisitOccurrence;
 
 [Notes(
     "Assumptions",
@@ -10,28 +10,28 @@ namespace OmopTransformer.RTDS.VisitDetails;
     "* `Location Class` ID 24 is a Consultant Clinic within the Health Care Provider.",
     "* `Patient Classification` ID 1 is the only entry that covers 24 hours or more with the use of a bed, and whilst others may be a day/night only, they will be discounted because they are less than 24 hours. Also, maternity is also not taken as an `Inpatient` visit.",
     "* No calculations to be made between Start and end visit date to try to calculate 24 hours, but instead the `Patient Classification` will be sufficient")]
-internal class RtdsVisitDetail : OmopVisitDetail<RtdsVisitDetailsRecord>
+internal class RtdsVisitOccurrence : OmopVisitOccurrence<RtdsVisitOccurrenceRecord>
 {
     [CopyValue(nameof(Source.PatientId))]
-    public override string? nhs_number { get; set; }
+    public override string? NhsNumber { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.event_start_date))]
-    public override DateTime? visit_detail_start_date { get; set; }
+    public override DateTime? visit_start_date { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.event_start_date))]
-    public override DateTime? visit_detail_start_datetime { get; set; }
+    public override DateTime? visit_start_datetime { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.event_end_date))]
-    public override DateTime? visit_detail_end_date { get; set; }
+    public override DateTime? visit_end_date { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.event_end_date))]
-    public override DateTime? visit_detail_end_datetime { get; set; }
+    public override DateTime? visit_end_datetime { get; set; }
 
     [ConstantValue(9201, "`Inpatient Visit`")] 
-    public override int? visit_detail_concept_id { get; set; }
+    public override int? visit_concept_id { get; set; }
 
     [ConstantValue(32818, "`EHR administration record`")]
-    public override int? visit_detail_type_concept_id { get; set; }
+    public override int? visit_type_concept_id { get; set; }
 
     // [Transform(typeof(AdmittedSourceLookup), nameof(Source.SourceofAdmissionCode))]
     // public override int? admitted_from_concept_id { get; set; }
