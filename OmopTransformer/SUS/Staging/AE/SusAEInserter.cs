@@ -28,9 +28,9 @@ internal class SusAEInserter : ISusAEInserter
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         int batchNumber = 1;
 
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
-        await connection.OpenAsync(cancellationToken);
+
 
         foreach (var batch in batches)
         {
@@ -40,7 +40,7 @@ internal class SusAEInserter : ISusAEInserter
         }
     }
 
-    private async Task InsertBatch(IEnumerable<AERecord> rows, IDbConnection connection, CancellationToken cancellationToken)
+    private async Task InsertBatch(IEnumerable<AERecord> rows, RetryConnection connection, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -71,7 +71,7 @@ internal class SusAEInserter : ISusAEInserter
         _dataOptOut.PrintStats();
     }
 
-    private async Task InsertAE(IReadOnlyCollection<AERow> rows, IDbConnection connection)
+    private async Task InsertAE(IReadOnlyCollection<AERow> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -365,7 +365,7 @@ internal class SusAEInserter : ISusAEInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertDiagnosis(IReadOnlyCollection<SusAEDiagnosis> rows, IDbConnection connection)
+    private async Task InsertDiagnosis(IReadOnlyCollection<SusAEDiagnosis> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -391,7 +391,7 @@ internal class SusAEInserter : ISusAEInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertInvestigation(IReadOnlyCollection<SusAEInvestigation> rows, IDbConnection connection)
+    private async Task InsertInvestigation(IReadOnlyCollection<SusAEInvestigation> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 
@@ -417,7 +417,7 @@ internal class SusAEInserter : ISusAEInserter
                 commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertTreatment(IReadOnlyCollection<SusAETreatment> rows, IDbConnection connection)
+    private async Task InsertTreatment(IReadOnlyCollection<SusAETreatment> rows, RetryConnection connection)
     {
         var dataTable = new DataTable();
 

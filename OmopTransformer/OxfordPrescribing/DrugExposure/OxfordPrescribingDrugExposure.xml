@@ -1,5 +1,5 @@
 ﻿<Query>
-    <Sql>
+    <Sql type="duckdb">
 select
 	patient_identifier_Value,
 	beg_dt_tm,
@@ -11,7 +11,7 @@ select
 	strengthdoseunit,
 	strengthdose,
 	EVENT_ID
-from omop_staging.oxford_prescribing
+from ##duckdb_source##
 where concept_identifier is null
 order by
 	patient_identifier_Value,

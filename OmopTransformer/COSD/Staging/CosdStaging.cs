@@ -29,8 +29,8 @@ internal class CosdStaging : ICosdStaging
             return;
         }
 
-        await using var connection = new SqlConnection(_configuration.ConnectionString);
-        await connection.OpenAsync(cancellationToken);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+
 
         using var archive = ZipFile.OpenRead(_options.FileName);
 

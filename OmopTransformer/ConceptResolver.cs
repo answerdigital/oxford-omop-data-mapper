@@ -1,6 +1,4 @@
-﻿using Dapper;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer;
@@ -28,13 +26,12 @@ internal class ConceptResolver
     {
         _logger.LogInformation("Loading mappings codes.");
 
-        var connection = new SqlConnection(_configuration.ConnectionString);
-            
-        connection.Open();
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        
+        var results = connection.QueryLongTimeoutAsync<Row>("select * from omop_staging.concept_code_map", CancellationToken.None).Result;
 
         return
-            connection
-                .Query<Row>(sql: "select * from omop_staging.concept_code_map")
+            results
                 .GroupBy(row => row.source_concept_id!)
                 .ToDictionary(row => row.Key!);
     }
@@ -43,14 +40,12 @@ internal class ConceptResolver
     {
         _logger.LogInformation("Loading concept device relationships.");
 
-        var connection = new SqlConnection(_configuration.ConnectionString);
+        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
-        connection.Open();
-
-        return
+        var results = 
             connection
-                .Query<ConceptRelationshipRow>(sql:
-                    @"select distinct
+                .QueryLongTimeoutAsync<ConceptRelationshipRow>(
+                @"select distinct
 	                    cm.source_concept_id as concept_id,
 	                    device.concept_id as device_concept_id
                     from omop_staging.concept_code_map cm
@@ -60,7 +55,12 @@ internal class ConceptResolver
 		                    on cr.concept_id_2 = device.concept_id
                     where device.standard_concept = 'S'
 	                    and cr.relationship_id like '%device%'
-	                    and device.domain_id = 'Device'")
+	                    and device.domain_id = 'Device'",
+                CancellationToken.None)
+            .Result;
+
+        return
+            results
                 .GroupBy(group => group.concept_id)
                 .ToDictionary(
                     row => row.Key,
