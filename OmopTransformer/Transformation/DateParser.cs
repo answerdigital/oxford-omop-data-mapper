@@ -4,12 +4,14 @@ namespace OmopTransformer.Transformation;
 
 internal class DateParser (string? text)
 {
+    private static readonly CultureInfo Culture = CultureInfo.GetCultureInfo("en-GB");
+
     public DateTime? GetAsDate()
     {
         if (string.IsNullOrEmpty(text))
             return null;
         
-        if (DateTime.TryParse(text, CultureInfo.GetCultureInfo("en-GB"), out DateTime parsedDate))
+        if (DateTime.TryParse(text, Culture, out DateTime parsedDate))
         {
             return parsedDate;
         }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OmopTransformer.Annotations;
-using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
 using Query = OmopTransformer.Transformation.Query;
 
 namespace OmopTransformer;
@@ -20,10 +20,10 @@ internal class RecordProvider : IRecordProvider
         _logger = logger;
         _transformOptions = transformOptions;
     }
-
-    public async IAsyncEnumerable<IReadOnlyCollection<T>> GetRecordsBatched<T>([EnumeratorCancellation] CancellationToken cancellationToken)
+    
+    public async Task<IReadOnlyCollection<T>> GetRecordsBatched<T>(int batchNumber, CancellationToken cancellationToken)
     {
-        const int batchSize = 3000000;
+        int batchSize = 4000000;
 
         var query = GetQuery<T>();
 
@@ -45,85 +45,55 @@ internal class RecordProvider : IRecordProvider
 
             var connection = RetryConnection.CreateDuckDbInMemory();
 
-            await foreach (var batch in BatchQuery<T>(queryText, batchSize, connection, "duckdb", cancellationToken))
-            {
-                yield return batch;
-            }
+            return await BatchQuery<T>(queryText, batchSize, connection, "duckdb", batchNumber, cancellationToken);
+
         }
-        else if (query.Sql!.Type is null or "mssql")
+
+        if (query.Sql!.Type is null or "mssql")
         {
             var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
-    
 
-            await foreach (var batch in BatchQuery<T>(queryText, batchSize, connection, "mssql", cancellationToken))
-            {
-                yield return batch;
-            }
+            return await BatchQuery<T>(queryText, batchSize, connection, "mssql", batchNumber, cancellationToken);
         }
-        else
-        {
-            throw UnsupportedType(query.Sql.Type);
-        }
+
+        throw UnsupportedType(query.Sql.Type);
     }
-
+    
     private static NotSupportedException UnsupportedType(string typeName) => throw new NotSupportedException($"Unsupported query type '{typeName}'. Supported options are mssql, duckdb");
 
-
-    private async IAsyncEnumerable<IReadOnlyCollection<T>> BatchQuery<T>(
+    private async Task<IReadOnlyCollection<T>> BatchQuery<T>(
         string queryText, 
         int batchSize,
         RetryConnection connection,
         string dialect,
-        [EnumeratorCancellation]CancellationToken cancellationToken)
+        int batchNumber,
+        CancellationToken cancellationToken)
     {
-        if (ContainsOrderByClause(queryText))
+        if (dialect == "duckdb" || ContainsOrderByClause(queryText))
         {
             _logger.LogInformation("Running query. Pagination enabled. Batch size {0}.", batchSize);
 
-            int offset = 0;
-            int batch = 0;
-            bool hasMoreResults = true;
+            _logger.LogInformation("Batch {0}", batchNumber);
 
-            while (hasMoreResults && !cancellationToken.IsCancellationRequested)
+            queryText = queryText.TrimEnd(';', '\n', '\t');
+
+            int offset = batchSize * batchNumber;
+
+            string? batchQuery = dialect switch
             {
-                batch++;
+                "mssql" => $"{queryText} OFFSET {offset} ROWS FETCH NEXT {batchSize} ROWS ONLY",
+                "duckdb" => $"{queryText} LIMIT {batchSize} OFFSET {offset}",
+                _ => throw UnsupportedType(dialect)
+            };
 
-                if (batch > 1)
-                {
-                    _logger.LogInformation("Batch {0}", batch);
-                }
-
-                queryText = queryText.TrimEnd(';', '\n', '\t');
-
-                string? batchQuery = dialect switch
-                {
-                    "mssql" => $"{queryText} OFFSET {offset} ROWS FETCH NEXT {batchSize} ROWS ONLY",
-                    "duckdb" => $"{queryText} LIMIT {batchSize} OFFSET {offset}",
-                    _ => throw UnsupportedType(dialect)
-                };
-
-                var batchResults = await connection.QueryLongTimeoutAsync<T>(batchQuery, cancellationToken);
-
-                var resultsList = batchResults.ToList();
-
-                if (resultsList.Count is 0)
-                {
-                    hasMoreResults = false;
-                }
-                else
-                {
-                    if (resultsList.Count < batchSize)
-                        hasMoreResults = false;
-
-                    yield return resultsList.AsReadOnly();
-                    offset += batchSize;
-                }
-            }
+            return (await connection.QueryLongTimeoutAsync<T>(batchQuery, cancellationToken)).ToList().AsReadOnly();
         }
-        else
-        {
-            yield return await ExecuteNonBatchedQuery<T>(queryText, cancellationToken, connection);
-        }
+
+        if (batchNumber == 0)
+            return await ExecuteNonBatchedQuery<T>(queryText, cancellationToken, connection);
+
+        // If the caller asks for batch 1 of a non batched query then give them an empty collection.
+        return new ReadOnlyCollection<T>(new List<T>());
     }
 
     private async Task<IReadOnlyCollection<T>> ExecuteNonBatchedQuery<T>(string queryText, CancellationToken cancellationToken, RetryConnection connection)
