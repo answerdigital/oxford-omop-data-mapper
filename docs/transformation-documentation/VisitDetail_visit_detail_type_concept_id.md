@@ -22,10 +22,6 @@ has_toc: false
 * Constant value set to `32818`. `EHR administration record`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_type_concept_id%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
-### Rtds VisitDetails
-* Constant value set to `32818`. `EHR administration record`
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_type_concept_id%20field%20Rtds%20VisitDetails%20mapping){: .btn }
 ### Oxford Visit Details
 * Constant value set to `32818`. `EHR administration record`
 

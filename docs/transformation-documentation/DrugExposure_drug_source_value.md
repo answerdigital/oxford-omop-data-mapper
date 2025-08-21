@@ -43,7 +43,7 @@ select
 	strengthdoseunit,
 	strengthdose,
 	EVENT_ID
-from omop_staging.oxford_prescribing
+from ##duckdb_source##
 where concept_identifier is null
 order by
 	patient_identifier_Value,
@@ -78,7 +78,7 @@ select
 	strengthdose,
 	concept_identifier,
 	EVENT_ID
-from omop_staging.oxford_prescribing
+from ##duckdb_source##
 where concept_identifier is not null
 order by
 	patient_identifier_Value,

@@ -1,9 +1,9 @@
 {
-  "omopTable": "VisitDetail",
+  "omopTable": "VisitOccurrence",
   "origin": "RTDS",
   "omopColumns": [
     {
-      "name": "nhs_number",
+      "name": "NhsNumber",
       "operation_description": "Value copied from `PatientId`",
       "dataSource": [
         {
@@ -21,7 +21,7 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "visit_detail_start_date",
+      "name": "visit_start_date",
       "operation_description": "Converts text to dates.",
       "dataSource": [
         {
@@ -39,7 +39,7 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "visit_detail_start_datetime",
+      "name": "visit_start_datetime",
       "operation_description": "Converts text to dates.",
       "dataSource": [
         {
@@ -57,7 +57,7 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "visit_detail_end_date",
+      "name": "visit_end_date",
       "operation_description": "Converts text to dates.",
       "dataSource": [
         {
@@ -70,7 +70,7 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "visit_detail_end_datetime",
+      "name": "visit_end_datetime",
       "operation_description": "Converts text to dates.",
       "dataSource": [
         {
@@ -83,14 +83,14 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "visit_detail_concept_id",
+      "name": "visit_concept_id",
       "operation_description": "Constant value set to `9201`. `Inpatient Visit`",
       "dataSource": null,
       "query": null,
       "lookup_table_markdown": null
     },
     {
-      "name": "visit_detail_type_concept_id",
+      "name": "visit_type_concept_id",
       "operation_description": "Constant value set to `32818`. `EHR administration record`",
       "dataSource": null,
       "query": null,

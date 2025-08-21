@@ -155,32 +155,6 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_end_date%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
-### Rtds VisitDetails
-Source column  `event_end_date`.
-Converts text to dates.
-
-* `event_end_date` Appointment End Time 
-
-```sql
-select
-  distinct
-  b.patientid,
-  a.start_date as event_start_date,
-  a.end_date as event_end_date
-from
-  omop_staging.rtds_2b_plan a
-left join
-  omop_staging.rtds_1_demographics b
-  on a.id = b.id
-where
-  b.patientid is not null
-  and b.patientid not like '%[^0-9]%'
-
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_end_date%20field%20Rtds%20VisitDetails%20mapping){: .btn }
 ### Oxford Visit Details
 Source column  `EventDate`.
 Converts text to dates.
