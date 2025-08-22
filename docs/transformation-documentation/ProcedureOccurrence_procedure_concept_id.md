@@ -26,11 +26,6 @@ Source column  `procedure_source_concept_id`.
 Maps concepts to standard valid concepts in the `procedure` domain.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20SUS%20AE%20Procedure%20Occurrence%20mapping){: .btn }
-### Rtds Procedure Occurrence
-Source column  `procedure_source_concept_id`.
-Maps concepts to standard valid concepts in the `procedure` domain.
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20Rtds%20Procedure%20Occurrence%20mapping){: .btn }
 ### Oxford Procedure Occurrence
 Source column  `procedure_source_concept_id`.
 Maps concepts to standard valid concepts in the `procedure` domain.

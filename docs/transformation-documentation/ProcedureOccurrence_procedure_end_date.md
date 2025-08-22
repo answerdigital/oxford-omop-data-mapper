@@ -137,55 +137,6 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_end_date%20field%20SUS%20AE%20Procedure%20Occurrence%20mapping){: .btn }
-### Rtds Procedure Occurrence
-Source column  `event_end_date`.
-Converts text to dates.
-
-* `event_end_date` Appointment End Time 
-
-```sql
-with plans as (
-  select
-    distinct
-    b.patientid,
-    a.procedurecode,
-    a.start_date as event_start_date,
-    a.end_date as event_end_date
-  from
-    omop_staging.rtds_2b_plan a
-  left join
-    omop_staging.rtds_1_demographics b
-    on a.id = b.id
-  where
-    b.patientid is not null
-    and b.patientid not like '%[^0-9]%'
-),
-attendances as (
-  select
-    distinct
-    b.patientid,
-    a.procedurecode,
-    a.actualstartdatetime_s as event_start_date,
-    a.actualenddatetime_s as event_end_date
-  from
-    omop_staging.rtds_2a_attendances a
-  left join
-    omop_staging.rtds_1_demographics b
-    on a.id = b.id
-  where
-    b.patientid is not null
-    and b.patientid not like '%[^0-9]%'
-)
-select * from plans
-union all
-select * from attendances
-order by
-  event_start_date;
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_end_date%20field%20Rtds%20Procedure%20Occurrence%20mapping){: .btn }
 ### Oxford Procedure Occurrence
 Source column  `EventDate`.
 Converts text to dates.

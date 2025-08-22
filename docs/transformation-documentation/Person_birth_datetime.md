@@ -84,7 +84,7 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20SACT%20Person%20mapping){: .btn }
-### Rtds Person
+### Rtds Demographics
 Source column  `DateOfBirth`.
 Converts text to dates.
 
@@ -102,7 +102,7 @@ group by PatientId
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20Rtds%20Person%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20birth_datetime%20field%20Rtds%20Demographics%20mapping){: .btn }
 ### Oxford GP Person
 Source column  `DOB`.
 Converts text to dates.

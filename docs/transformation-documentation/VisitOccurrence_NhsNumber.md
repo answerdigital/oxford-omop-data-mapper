@@ -118,31 +118,6 @@ order by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20NhsNumber%20field%20SUS%20AE%20VisitOccurrenceWithSpell%20mapping){: .btn }
-### Rtds VisitOccurrence
-* Value copied from `PatientId`
-
-* `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
-
-```sql
-select
-  distinct
-  b.patientid,
-  a.start_date as event_start_date,
-  a.end_date as event_end_date
-from
-  omop_staging.rtds_2b_plan a
-left join
-  omop_staging.rtds_1_demographics b
-  on a.id = b.id
-where
-  b.patientid is not null
-  and b.patientid not like '%[^0-9]%'
-
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20NhsNumber%20field%20Rtds%20VisitOccurrence%20mapping){: .btn }
 ### Oxford Visit Occurrence
 * Value copied from `NHSNumber`
 

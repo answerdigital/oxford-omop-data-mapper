@@ -24,19 +24,6 @@ select
 	strengthdose,
 	EVENT_ID
 from ##duckdb_source##
-where concept_identifier is null
-order by
-	patient_identifier_Value,
-	beg_dt_tm,
-	end_dt_tm,
-	catalog,
-	order_mnemonic,
-	order_detail_display_line,
-	rxroute,
-	strengthdoseunit,
-	strengthdose,
-	EVENT_ID
-	
 ```
 
 
@@ -60,18 +47,6 @@ select
 	EVENT_ID
 from ##duckdb_source##
 where concept_identifier is not null
-order by
-	patient_identifier_Value,
-	beg_dt_tm,
-	end_dt_tm,
-	order_detail_display_line,
-	order_mnemonic,
-	rxroute,
-	strengthdoseunit,
-	strengthdose,
-	concept_identifier,
-	EVENT_ID
-	
 ```
 
 

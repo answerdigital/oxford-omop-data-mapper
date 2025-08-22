@@ -80,7 +80,7 @@ has_toc: false
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20SACT%20Person%20mapping){: .btn }
-### Rtds Person
+### Rtds Demographics
 * Value copied from `PatientId`
 
 * `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
@@ -97,7 +97,7 @@ group by PatientId
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20Rtds%20Person%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20person_source_value%20field%20Rtds%20Demographics%20mapping){: .btn }
 ### Oxford GP Person
 * Value copied from `NHSNumber`
 

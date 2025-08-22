@@ -26,11 +26,11 @@ has_toc: false
 * Note: This is specific to US-based data mappings and is in regards to being “Hispanic “ and “Not Hispanic”. All our data is UK-based.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20ethnicity_concept_id%20field%20SACT%20Person%20mapping){: .btn }
-### Rtds Person
+### Rtds Demographics
 * Constant value set to `0`. Unknown concept
 * Note: This is specific to US-based data mappings and is in regards to being “Hispanic “ and “Not Hispanic”. All our data is UK-based.
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20ethnicity_concept_id%20field%20Rtds%20Person%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20ethnicity_concept_id%20field%20Rtds%20Demographics%20mapping){: .btn }
 ### Oxford GP Person
 * Constant value set to `0`. Unknown concept
 * Note: This is specific to US-based data mappings and is in regards to being “Hispanic “ and “Not Hispanic”. All our data is UK-based.

@@ -36,10 +36,6 @@ has_toc: false
 <a href="SactConditionOccurrence.svg" target="_blank"><img src="SactConditionOccurrence.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactConditionOccurrence%20mapping){: .btn }
-## RtdsConditionOccurrence
-<a href="RtdsConditionOccurrence.svg" target="_blank"><img src="RtdsConditionOccurrence.svg" /></a>
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsConditionOccurrence%20mapping){: .btn }
 ## OxfordGPConditionOccurrence
 <a href="OxfordGPConditionOccurrence.svg" target="_blank"><img src="OxfordGPConditionOccurrence.svg" /></a>
 
