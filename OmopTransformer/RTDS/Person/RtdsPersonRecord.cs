@@ -1,11 +1,11 @@
 ﻿using OmopTransformer.Annotations;
 
-namespace OmopTransformer.RTDS.Demographics;
+namespace OmopTransformer.RTDS.Person;
 
 [DataOrigin("RTDS")]
-[Description("Rtds Demographics")]
-[SourceQuery("RtdsDemographics.xml")]
-internal class RtdsDemographics
+[Description("Rtds Person")]
+[SourceQuery("RtdsPerson.xml")]
+internal class RtdsPersonRecord
 {
     public string? PatientId { get; set; }
     public string? DateOfBirth { get; set; }

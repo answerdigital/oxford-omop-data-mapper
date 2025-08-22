@@ -74,6 +74,19 @@
       "lookup_table_markdown": null
     },
     {
+      "name": "quantity",
+      "operation_description": "Converts text to floating-point numbers.",
+      "dataSource": [
+        {
+          "name": "Quantity",
+          "description": "Quantity of medication supplied",
+          "origins": []
+        }
+      ],
+      "query": "\n  select\n\tdistinct\n\t\td.NHSNumber,\n\t\te.LastIssueDate,\n\t\te.SuppliedCode,\n\t\te.Quantity,\n\t\te.Units\n\tfrom omop_staging.oxford_gp_medication e\n\t\tinner join omop_staging.oxford_gp_demographic d\n\t\t\ton e.PatientIdentifier = d.PatientIdentifier\n\torder by\n\t\td.NHSNumber,\n\t\te.LastIssueDate,\n\t\te.SuppliedCode,\n\t\te.Quantity,\n\t\te.Units\n\t",
+      "lookup_table_markdown": null
+    },
+    {
       "name": "drug_source_value",
       "operation_description": "Value copied from `SuppliedCode`",
       "dataSource": [
@@ -119,19 +132,6 @@
         {
           "name": "LastIssueDate",
           "description": "Last Issue Date",
-          "origins": []
-        }
-      ],
-      "query": "\n  select\n\tdistinct\n\t\td.NHSNumber,\n\t\te.LastIssueDate,\n\t\te.SuppliedCode,\n\t\te.Quantity,\n\t\te.Units\n\tfrom omop_staging.oxford_gp_medication e\n\t\tinner join omop_staging.oxford_gp_demographic d\n\t\t\ton e.PatientIdentifier = d.PatientIdentifier\n\torder by\n\t\td.NHSNumber,\n\t\te.LastIssueDate,\n\t\te.SuppliedCode,\n\t\te.Quantity,\n\t\te.Units\n\t",
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "quantity",
-      "operation_description": "Converts text to floating-point numbers.",
-      "dataSource": [
-        {
-          "name": "Quantity",
-          "description": "Quantity of medication supplied",
           "origins": []
         }
       ],

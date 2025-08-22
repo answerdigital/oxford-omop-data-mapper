@@ -1,0 +1,100 @@
+{
+  "omopTable": "VisitOccurrence",
+  "origin": "RTDS",
+  "omopColumns": [
+    {
+      "name": "NhsNumber",
+      "operation_description": "Value copied from `PatientId`",
+      "dataSource": [
+        {
+          "name": "PatientId",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\nselect\n  distinct\n  b.patientid,\n  a.start_date as event_start_date,\n  a.end_date as event_end_date\nfrom\n  omop_staging.rtds_2b_plan a\nleft join\n  omop_staging.rtds_1_demographics b\n  on a.id = b.id\nwhere\n  b.patientid is not null\n  and b.patientid not like '%[^0-9]%'\n\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_start_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "event_start_date",
+          "description": "Appointment Start Time",
+          "origins": [
+            {
+              "origin": "TREATMENT START DATE (RADIOTHERAPY TREATMENT EPISODE)",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\n\nselect\n  distinct\n  b.patientid,\n  a.start_date as event_start_date,\n  a.end_date as event_end_date\nfrom\n  omop_staging.rtds_2b_plan a\nleft join\n  omop_staging.rtds_1_demographics b\n  on a.id = b.id\nwhere\n  b.patientid is not null\n  and b.patientid not like '%[^0-9]%'\n\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_start_datetime",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "event_start_date",
+          "description": "Appointment Start Time",
+          "origins": [
+            {
+              "origin": "TREATMENT START DATE (RADIOTHERAPY TREATMENT EPISODE)",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\n\nselect\n  distinct\n  b.patientid,\n  a.start_date as event_start_date,\n  a.end_date as event_end_date\nfrom\n  omop_staging.rtds_2b_plan a\nleft join\n  omop_staging.rtds_1_demographics b\n  on a.id = b.id\nwhere\n  b.patientid is not null\n  and b.patientid not like '%[^0-9]%'\n\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_end_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "event_end_date",
+          "description": "Appointment End Time",
+          "origins": []
+        }
+      ],
+      "query": "\n\nselect\n  distinct\n  b.patientid,\n  a.start_date as event_start_date,\n  a.end_date as event_end_date\nfrom\n  omop_staging.rtds_2b_plan a\nleft join\n  omop_staging.rtds_1_demographics b\n  on a.id = b.id\nwhere\n  b.patientid is not null\n  and b.patientid not like '%[^0-9]%'\n\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_end_datetime",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "event_end_date",
+          "description": "Appointment End Time",
+          "origins": []
+        }
+      ],
+      "query": "\n\nselect\n  distinct\n  b.patientid,\n  a.start_date as event_start_date,\n  a.end_date as event_end_date\nfrom\n  omop_staging.rtds_2b_plan a\nleft join\n  omop_staging.rtds_1_demographics b\n  on a.id = b.id\nwhere\n  b.patientid is not null\n  and b.patientid not like '%[^0-9]%'\n\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_concept_id",
+      "operation_description": "Constant value set to `9201`. `Inpatient Visit`",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_type_concept_id",
+      "operation_description": "Constant value set to `32818`. `EHR administration record`",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    }
+  ]
+}

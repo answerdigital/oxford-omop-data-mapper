@@ -142,7 +142,18 @@ begin
 				from cdm.visit_occurrence vo
 				where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
 					and vo.person_id = p.person_id
-			)
+				)
+		)
+		or
+		(
+			r.HospitalProviderSpellNumber is null
+			and r.RecordConnectionIdentifier is null
+			and not exists (
+				select	*
+				from cdm.visit_occurrence vo
+				where vo.person_id = p.person_id
+					and vo.visit_start_date = r.visit_start_date
+				)
 		);
 
 	declare @columns table (Name varchar(max));
