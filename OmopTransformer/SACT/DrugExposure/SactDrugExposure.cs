@@ -24,9 +24,16 @@ internal class SactDrugExposure : OmopDrugExposure<SactDrugExposureRecord>
     [Transform(typeof(SactDrugLookup), nameof(Source.Drug_Name))]
     public override int? drug_source_concept_id { get; set; }
 
+    [Transform(typeof(FloatParser), nameof(Source.Actual_Dose_Per_Administration))]
+    public override float? quantity { get; set; }
+
     [CopyValue(nameof(Source.Drug_Name))]
     public override string? drug_source_value { get; set; }
 
     [Transform(typeof(SactUnitOfMeasurement), nameof(Source.Administration_Measurement_Per_Actual_Dose))]
     public override string? dose_unit_source_value { get; set; }
+
+    [CopyValue(nameof(Source.Regimen))]
+    public override string? sig { get; set; }
+
 }

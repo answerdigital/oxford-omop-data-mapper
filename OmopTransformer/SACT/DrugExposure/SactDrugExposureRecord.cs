@@ -12,4 +12,5 @@ internal class SactDrugExposureRecord
     public string? Administration_Date { get; set; }
     public string? Actual_Dose_Per_Administration { get; set; }
     public string? Administration_Measurement_Per_Actual_Dose { get; set; }
+    public string? Regimen { get; set; }
 }

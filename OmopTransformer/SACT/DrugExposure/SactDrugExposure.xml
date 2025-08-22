@@ -19,6 +19,10 @@
 			<Description>The name of the Systemic Anti-Cancer Therapy drug given to a PATIENT during an Systemic Anti-Cancer Therapy Drug Regimen.</Description>
 			<Origin>SYSTEMIC ANTI-CANCER THERAPY DRUG NAME</Origin>
 		</Explanation>
+		<Explanation columnName="Regimen">
+			<Description>Specific combination of drugs and their scheduled administration plan used to treat a patient's cancer</Description>
+			<Origin>Regimen</Origin>
+		</Explanation>
 		<Explanation columnName="Administration_Date">
 			<Description>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT.</Description>
 			<Origin>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE</Origin>
