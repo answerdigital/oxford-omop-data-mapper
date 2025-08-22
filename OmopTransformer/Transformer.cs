@@ -115,13 +115,15 @@ internal abstract class Transformer
         Stopwatch getRecordsStopwatch,
         Stopwatch insertRecordsStopwatch,
         Func<IReadOnlyCollection<TTarget>, string, CancellationToken, Task> insertRecord,
-        int batchNumber, 
+        int batchNumber,
         CancellationToken cancellationToken) 
         where TTarget : IOmopRecord<TSource>, new()
     {
+        const int batchSize = 4000000;
+
         getRecordsStopwatch.Start();
         
-        var records = await _recordProvider.GetRecordsBatched<TSource>(batchNumber, cancellationToken);
+        var records = await _recordProvider.GetRecordsBatched<TSource>(batchNumber, batchSize, cancellationToken);
 
         getRecordsStopwatch.Stop();
         
@@ -156,7 +158,7 @@ internal abstract class Transformer
 
         insertRecordsStopwatch.Stop();
 
-        return true;
+        return records.Count >= batchSize; // If we had fewer results than are requested batch size then this must be the last batch.
     }
 
     private static string PerSecond(Stopwatch stopwatch, int total)

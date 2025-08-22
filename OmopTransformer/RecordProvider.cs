@@ -21,10 +21,8 @@ internal class RecordProvider : IRecordProvider
         _transformOptions = transformOptions;
     }
     
-    public async Task<IReadOnlyCollection<T>> GetRecordsBatched<T>(int batchNumber, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<T>> GetRecordsBatched<T>(int batchNumber, int batchSize, CancellationToken cancellationToken)
     {
-        int batchSize = 4000000;
-
         var query = GetQuery<T>();
 
         string queryText = query.Sql!.Value!;
