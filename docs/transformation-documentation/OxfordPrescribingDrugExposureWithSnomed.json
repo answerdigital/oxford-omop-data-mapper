@@ -74,6 +74,19 @@
       "lookup_table_markdown": null
     },
     {
+      "name": "quantity",
+      "operation_description": "Converts text to floating-point numbers.",
+      "dataSource": [
+        {
+          "name": "strengthdose",
+          "description": "The unit of the drug dose",
+          "origins": []
+        }
+      ],
+      "query": "\nselect\n\tpatient_identifier_Value,\n\tbeg_dt_tm,\n\tend_dt_tm,\n\torder_detail_display_line,\n\torder_mnemonic,\n\tlower(rxroute) as rxroute,\n\tstrengthdoseunit,\n\tstrengthdose,\n\tconcept_identifier,\n\tEVENT_ID\nfrom ##duckdb_source##\nwhere concept_identifier is not null\n    ",
+      "lookup_table_markdown": null
+    },
+    {
       "name": "drug_source_value",
       "operation_description": "Value copied from `order_mnemonic`",
       "dataSource": [
@@ -100,6 +113,19 @@
       "lookup_table_markdown": null
     },
     {
+      "name": "sig",
+      "operation_description": "Value copied from `order_detail_display_line`",
+      "dataSource": [
+        {
+          "name": "order_detail_display_line",
+          "description": "All the prescribed drug item details as shown in the order screen as selected by the clinician",
+          "origins": []
+        }
+      ],
+      "query": "\nselect\n\tpatient_identifier_Value,\n\tbeg_dt_tm,\n\tend_dt_tm,\n\torder_detail_display_line,\n\torder_mnemonic,\n\tlower(rxroute) as rxroute,\n\tstrengthdoseunit,\n\tstrengthdose,\n\tconcept_identifier,\n\tEVENT_ID\nfrom ##duckdb_source##\nwhere concept_identifier is not null\n    ",
+      "lookup_table_markdown": null
+    },
+    {
       "name": "drug_exposure_start_datetime",
       "operation_description": "Converts text to dates.",
       "dataSource": [
@@ -119,32 +145,6 @@
         {
           "name": "end_dt_tm",
           "description": "The end date of the Drug that was initially dispensed to the PATIENT.",
-          "origins": []
-        }
-      ],
-      "query": "\nselect\n\tpatient_identifier_Value,\n\tbeg_dt_tm,\n\tend_dt_tm,\n\torder_detail_display_line,\n\torder_mnemonic,\n\tlower(rxroute) as rxroute,\n\tstrengthdoseunit,\n\tstrengthdose,\n\tconcept_identifier,\n\tEVENT_ID\nfrom ##duckdb_source##\nwhere concept_identifier is not null\n    ",
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "quantity",
-      "operation_description": "Converts text to floating-point numbers.",
-      "dataSource": [
-        {
-          "name": "strengthdose",
-          "description": "The unit of the drug dose",
-          "origins": []
-        }
-      ],
-      "query": "\nselect\n\tpatient_identifier_Value,\n\tbeg_dt_tm,\n\tend_dt_tm,\n\torder_detail_display_line,\n\torder_mnemonic,\n\tlower(rxroute) as rxroute,\n\tstrengthdoseunit,\n\tstrengthdose,\n\tconcept_identifier,\n\tEVENT_ID\nfrom ##duckdb_source##\nwhere concept_identifier is not null\n    ",
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "sig",
-      "operation_description": "Value copied from `order_detail_display_line`",
-      "dataSource": [
-        {
-          "name": "order_detail_display_line",
-          "description": "All the prescribed drug item details as shown in the order screen as selected by the clinician",
           "origins": []
         }
       ],

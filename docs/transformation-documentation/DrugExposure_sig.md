@@ -6,6 +6,26 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # sig
+### SACT Drug Exposure
+* Value copied from `Regimen`
+
+* `Regimen` Specific combination of drugs and their scheduled administration plan used to treat a patient's cancer [Regimen]()
+
+```sql
+	select
+		distinct
+		replace(NHS_Number, ' ', '') as NHS_Number,
+		Regimen,
+		Drug_Name,
+		Actual_Dose_Per_Administration,
+		Administration_Measurement_Per_Actual_Dose,
+		Administration_Date
+	from omop_staging.sact_staging
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20sig%20field%20SACT%20Drug%20Exposure%20mapping){: .btn }
 ### Oxford Prescribing Drug Exposure
 * Value copied from `order_detail_display_line`
 
