@@ -69,15 +69,23 @@ internal class ConceptResolver
 
     private void EnsureMapping()
     {
+
         lock (_loadingLock)
         {
             _mappings ??= GetMappings();
-            _devicesByConceptId ??= GetDevices();
 
             if (_mappings.Count == 0)
             {
                 throw new InvalidOperationException("concept_code_map table is empty. Call stored procedure omop_staging.generate_concept_code_map first.");
             }
+        }
+    }
+
+    private void EnsureDeviceMapping()
+    {
+        lock (_loadingLock)
+        {
+            _devicesByConceptId ??= GetDevices();
         }
     }
 
@@ -111,7 +119,7 @@ internal class ConceptResolver
 
     public IReadOnlyCollection<int> GetConceptDevices(int conceptId)
     {
-        EnsureMapping();
+        EnsureDeviceMapping();
 
         if (_devicesByConceptId!.TryGetValue(conceptId, out var devices))
         {
@@ -149,7 +157,6 @@ internal class ConceptResolver
 
     private class Row
     {
-        public string? source_concept_code { get; init; }
         public int source_concept_id { get; init; }
         public int target_concept_id { get; init; }
         public string? domain_id { get; init; }

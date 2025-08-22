@@ -13,18 +13,7 @@ select
 	EVENT_ID
 from ##duckdb_source##
 where concept_identifier is not null
-order by
-	patient_identifier_Value,
-	beg_dt_tm,
-	end_dt_tm,
-	order_detail_display_line,
-	order_mnemonic,
-	rxroute,
-	strengthdoseunit,
-	strengthdose,
-	concept_identifier,
-	EVENT_ID
-	</Sql>
+    </Sql>
 	<Explanations>
 		<Explanation columnName="patient_identifier_Value">
 			<Description>Patient NHS Number</Description>
