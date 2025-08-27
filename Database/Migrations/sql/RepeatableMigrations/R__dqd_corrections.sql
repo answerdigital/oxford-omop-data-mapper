@@ -171,6 +171,13 @@ FROM cdm.CONDITION_OCCURRENCE cdmTable
 WHERE cdmTable.CONDITION_CONCEPT_ID = 196359
   	AND p.gender_concept_id <> 8532 
 
+update p
+set gender_concept_id = 8532
+FROM cdm.CONDITION_OCCURRENCE cdmTable
+	JOIN cdm.person p
+		ON cdmTable.person_id = p.person_id
+WHERE cdmTable.CONDITION_CONCEPT_ID = 196048
+  	AND p.gender_concept_id <> 8532
 
 
 declare @deleteddeaths table
