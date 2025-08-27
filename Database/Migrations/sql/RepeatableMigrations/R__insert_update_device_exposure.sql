@@ -82,7 +82,7 @@ begin
 			on r.nhs_number = p.person_source_value
 	where 
 		(
-			r.HospitalProviderSpellNumber is not null
+			r.HospitalProviderSpellNumber is not null and
 			not exists (
 				select	*
 				from cdm.device_exposure vo
@@ -93,7 +93,7 @@ begin
 		)
 		or
 		(
-			r.HospitalProviderSpellNumber is null and r.r.RecordConnectionIdentifier is null
+			r.HospitalProviderSpellNumber is null and r.RecordConnectionIdentifier is null and
 			not exists (
 				select	*
 				from cdm.device_exposure vo
