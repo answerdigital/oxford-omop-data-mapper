@@ -68,6 +68,7 @@ begin
 			from cdm.visit_occurrence vo
 			where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
 				and p.person_id = vo.person_id
+				and r.RecordConnectionIdentifier is not null
 		) as visit_occurrence_id,
 		(
 			select
@@ -76,6 +77,7 @@ begin
 			from cdm.visit_detail vd
 			where vd.RecordConnectionIdentifier = r.RecordConnectionIdentifier
 				and p.person_id = vd.person_id
+				and r.RecordConnectionIdentifier is not null
 		) as visit_detail_id,
 		r.drug_source_value,
 		r.drug_source_concept_id,
@@ -86,12 +88,26 @@ begin
 		inner join cdm.person p
 			on r.nhs_number = p.person_source_value
 	where 
-		not exists (
-			select	*
-			from cdm.drug_exposure vo
-			where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
-				and vo.person_id = p.person_id
-				and vo.drug_concept_id = r.drug_concept_id
+		(
+			r.RecordConnectionIdentifier is not null and
+			not exists (
+				select	*
+				from cdm.drug_exposure vo
+				where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+					and vo.person_id = p.person_id
+					and vo.drug_concept_id = r.drug_concept_id
+			)
+		)
+		or
+		(
+			r.RecordConnectionIdentifier is null and
+			not exists (
+				select	*
+				from cdm.drug_exposure vo
+				where vo.person_id = p.person_id
+					and vo.drug_concept_id = r.drug_concept_id
+					and vo.drug_exposure_start_date = r.drug_exposure_start_date
+			)
 		);
 
 	insert into provenance

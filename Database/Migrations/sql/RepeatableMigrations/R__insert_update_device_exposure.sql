@@ -59,6 +59,7 @@ begin
 			from cdm.visit_occurrence vo
 			where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
 			and vo.person_id = p.person_id
+			and r.HospitalProviderSpellNumber is not null
 		) as visit_occurrence_id,
 		(
 			select
@@ -67,6 +68,7 @@ begin
 			from cdm.visit_detail vd
 			where vd.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
 			and vd.person_id = p.person_id
+			and r.HospitalProviderSpellNumber is not null
 		) as visit_detail_id,
         r.device_source_value,
         r.device_source_concept_id,
@@ -79,12 +81,27 @@ begin
 		inner join cdm.person p
 			on r.nhs_number = p.person_source_value
 	where 
-		not exists (
-			select	*
-			from cdm.device_exposure vo
-			where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
-				and vo.person_id = p.person_id
-				and vo.device_concept_id = r.device_concept_id
+		(
+			r.HospitalProviderSpellNumber is not null
+			not exists (
+				select	*
+				from cdm.device_exposure vo
+				where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+					and vo.person_id = p.person_id
+					and vo.device_concept_id = r.device_concept_id
+			)
+		)
+		or
+		(
+			r.HospitalProviderSpellNumber is null and r.r.RecordConnectionIdentifier is null
+			not exists (
+				select	*
+				from cdm.device_exposure vo
+				where vo.person_id = p.person_id
+					and vo.device_concept_id = r.device_concept_id
+					and vo.device_exposure_start_date = r.device_exposure_start_date
+					and vo.device_exposure_end_date = r.device_exposure_end_date
+			)
 		);
 
 	insert into provenance

@@ -66,6 +66,7 @@ begin
 						and vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
 				)
 			else
+				case when r.RecordConnectionIdentifier is not null then
 				(
 					select
 						top 1
@@ -74,6 +75,8 @@ begin
 					where vo.person_id = p.person_id 
 						and vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
 				)
+				else null
+				end
 			end
 		) as visit_occurrence_id,
 
@@ -90,6 +93,17 @@ begin
 				from cdm.visit_detail vo
 				where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
 					and vo.person_id = p.person_id
+				)
+		)
+		or
+		(
+			r.RecordConnectionIdentifier is null and r.HospitalProviderSpellNumber is null
+			and not exists (
+				select	*
+				from cdm.visit_detail vo
+				where vo.person_id = p.person_id
+					and vo.visit_detail_start_date = r.visit_detail_start_date
+					and vo.visit_detail_concept_id = r.visit_detail_concept_id
 				)
 		)
 		or
