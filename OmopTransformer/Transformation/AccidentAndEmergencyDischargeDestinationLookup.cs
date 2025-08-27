@@ -8,13 +8,13 @@ internal class AccidentAndEmergencyDischargeDestinationLookup : ILookup
     public Dictionary<string, ValueWithNote> Mappings { get; } =
         new()
         {
-            { "1", new ValueWithNote("8717", "In Patient Hospital") },
-            { "2", new ValueWithNote("38004453", "Family Practice") },
-            { "3", new ValueWithNote("32759", "Home Isolation") },
-            { "4", new ValueWithNote("8870", "Emergency Room - Hospital") },
-            { "5", new ValueWithNote("8870", "Emergency Room - Hospital") },
-            { "6", new ValueWithNote("8756", "Out Patient Hospital") },
-            { "7", new ValueWithNote("",     "No mapping possible") },
+            { "01", new ValueWithNote("8717", "In Patient Hospital") },
+            { "02", new ValueWithNote("38004453", "Family Practice") },
+            { "03", new ValueWithNote("32759", "Home Isolation") },
+            { "04", new ValueWithNote("8870", "Emergency Room - Hospital") },
+            { "05", new ValueWithNote("8870", "Emergency Room - Hospital") },
+            { "06", new ValueWithNote("8756", "Out Patient Hospital") },
+            { "07", new ValueWithNote("",     "No mapping possible") },
             { "10", new ValueWithNote("",     "No mapping possible") },
             { "11", new ValueWithNote("",     "No mapping possible") },
             { "12", new ValueWithNote("",     "No mapping possible") },
