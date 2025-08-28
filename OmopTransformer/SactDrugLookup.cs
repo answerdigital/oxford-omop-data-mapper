@@ -272,6 +272,7 @@ internal class SactDrugLookup : ILookup
             { "tocilizumab", new ValueWithNote("40171288", "tocilizumab") },
             { "tislelizumab", new ValueWithNote("42609339", "tislelizumab") },
             { "bms-986213 / nivolumab", new ValueWithNote("779243", "nivolumab / relatlimab injection") },
+            { "pertuzumab / trastuzumab", new ValueWithNote("1075655", "Pertuzumab- and trastuzumab-containing product") },
 
             // placebo
 
@@ -309,7 +310,6 @@ internal class SactDrugLookup : ILookup
             // { "ng-350a", new ValueWithNote("0", "ng-350a is a next-generation blood-stable adenoviral vector") },
             // { "oral cryotherapy", new ValueWithNote("0", "") },
             // { "oral hydration", new ValueWithNote("0", "") },
-            // { "pertuzumab / trastuzumab", new ValueWithNote("0", "") },
             // { "plx2853", new ValueWithNote("0", "") },
             // { "proton pump inhibitor", new ValueWithNote("0", "") },
             // { "red cell phenotype/genotype ï¿½ pre t", new ValueWithNote("0", "") },
