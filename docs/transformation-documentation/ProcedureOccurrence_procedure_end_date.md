@@ -144,43 +144,36 @@ Converts text to dates.
 * `event_end_date` Appointment End Time 
 
 ```sql
-with plans as (
-  select
-    distinct
-    b.patientid,
-    a.procedurecode,
-    a.start_date as event_start_date,
-    a.end_date as event_end_date
-  from
-    omop_staging.rtds_2b_plan a
-  left join
-    omop_staging.rtds_1_demographics b
-    on a.id = b.id
-  where
-    b.patientid is not null
-    and b.patientid not like '%[^0-9]%'
-),
-attendances as (
-  select
-    distinct
-    b.patientid,
-    a.procedurecode,
-    a.actualstartdatetime_s as event_start_date,
-    a.actualenddatetime_s as event_end_date
-  from
-    omop_staging.rtds_2a_attendances a
-  left join
-    omop_staging.rtds_1_demographics b
-    on a.id = b.id
-  where
-    b.patientid is not null
-    and b.patientid not like '%[^0-9]%'
+with records as (
+	select
+		PatientSer,
+		ProcedureCode,
+		ActualStartDateTime_s as Start_date,
+		ActualEndDateTime_s as End_date
+	from omop_staging.rtds_2a_attendances
+
+	union
+
+	select 
+		PatientSer,
+		ProcedureCode,
+		Start_date,
+		End_date
+	from omop_staging.rtds_2b_plan
+), records_with_patient as (
+	select
+		(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer) as PatientId,
+		r.*
+	from records r
 )
-select * from plans
-union all
-select * from attendances
-order by
-  event_start_date;
+select
+	PatientId,
+	ProcedureCode,
+	Start_date as event_start_date,
+	End_date as event_end_date
+from records_with_patient
+where PatientId is not null
+	and patientid not like '%[^0-9]%'
 	
 ```
 
