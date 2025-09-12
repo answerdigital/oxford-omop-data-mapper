@@ -114,21 +114,25 @@ has_toc: false
 * `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
+with results as (
+	select 
+		distinct
+			(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer) as PatientId,
+			dc.DiagnosisCode,
+			dc.Start_date as event_start_date,
+			dc.End_date as event_end_date
+	from omop_staging.RTDS_5_Diagnosis_Course dc
+	where dc.DiagnosisTableName = 'ICD-10'
+)
 select
-    distinct
-    b.PatientId,
-    a.DiagnosisCode,
-    a.Start_date as event_start_date,
-    a.End_date as event_end_date
-from
-    omop_staging.RTDS_5_Diagnosis_Course a
-left join
-    omop_staging.rtds_1_demographics b
-    on a.id = b.id
+	PatientId,
+	DiagnosisCode,
+	event_start_date,
+	event_end_date
+from results
 where
-    b.patientid is not null
-    and b.patientid not like '%[^0-9]%'
-	and a.DiagnosisTableName = 'ICD-10'
+    PatientId is not null
+    and patientid not like '%[^0-9]%';
 	
 ```
 

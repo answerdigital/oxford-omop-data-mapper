@@ -13,6 +13,6 @@ internal class SusAPCVisitDetailsRecord
     public string? VisitStartTime { get; set; }
     public string? VisitEndDate { get; set; }
     public string? VisitEndTime { get; set; }
-    public int? SourceofAdmissionCode { get; set; }
-    public int? DischargeDestinationCode { get; set; }
+    public string? SourceofAdmissionCode { get; set; }
+    public string? DischargeDestinationCode { get; set; }
 }

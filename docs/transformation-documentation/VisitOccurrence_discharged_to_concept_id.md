@@ -83,13 +83,13 @@ Lookup discharge destination concept for A&E.
 
 |DischargeDestinationCode|discharged_to_concept_id|notes|
 |------|-----|-----|
-|1|8717|In Patient Hospital|
-|2|38004453|Family Practice|
-|3|32759|Home Isolation|
-|4|8870|Emergency Room - Hospital|
-|5|8870|Emergency Room - Hospital|
-|6|8756|Out Patient Hospital|
-|7||No mapping possible|
+|01|8717|In Patient Hospital|
+|02|38004453|Family Practice|
+|03|32759|Home Isolation|
+|04|8870|Emergency Room - Hospital|
+|05|8870|Emergency Room - Hospital|
+|06|8756|Out Patient Hospital|
+|07||No mapping possible|
 |10||No mapping possible|
 |11||No mapping possible|
 |12||No mapping possible|
