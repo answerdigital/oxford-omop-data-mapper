@@ -1,0 +1,43 @@
+﻿<Query>
+    <Sql>
+select
+	nhs_number,
+	event,
+	event_start_dt_tm,
+	result_value,
+	result_units,
+	normal_low,
+	normal_high
+from ##duckdb_source##
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="nhs_number">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+		<Explanation columnName="event">
+			<Description></Description>
+			<Origin></Origin>
+		</Explanation>
+		<Explanation columnName="event_start_dt_tm">
+			<Description></Description>
+			<Origin></Origin>
+		</Explanation>
+		<Explanation columnName="result_value">
+			<Description></Description>
+			<Origin></Origin>
+		</Explanation>
+	    <Explanation columnName="result_units">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+		<Explanation columnName="normal_low">
+			<Description></Description>
+			<Origin></Origin>
+		</Explanation>
+		<Explanation columnName="normal_high">
+			<Description></Description>
+			<Origin></Origin>
+		</Explanation>
+	</Explanations>
+</Query>
