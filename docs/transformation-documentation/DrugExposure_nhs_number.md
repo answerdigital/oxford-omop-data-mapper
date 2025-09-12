@@ -16,7 +16,7 @@ has_toc: false
 		distinct
 		replace(NHS_Number, ' ', '') as NHS_Number,
 		Regimen,
-		Drug_Name,
+		lower(Drug_Name) as Drug_Name,
 		Actual_Dose_Per_Administration,
 		Administration_Measurement_Per_Actual_Dose,
 		Administration_Date
