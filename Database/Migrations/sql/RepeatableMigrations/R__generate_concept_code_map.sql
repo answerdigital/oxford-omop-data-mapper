@@ -33,7 +33,7 @@ begin transaction
  			and c1.standard_concept = 'S'
  			and @date between c1.valid_start_date and c1.valid_end_date
  		)
-		and cr.relationship_id = 'Maps to'
+		and cr.relationship_id in ('Maps to', 'Source - RxNorm eq')
  		and c2.standard_concept is not null
  		and c2.standard_concept = 'S'
  		and @date between c2.valid_start_date and c2.valid_end_date
