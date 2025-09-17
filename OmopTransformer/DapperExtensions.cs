@@ -52,15 +52,8 @@ public static class DapperExtensions
 
     private static async Task<T> ExecuteQueryWithRetry<T>(Func<Task<T>> connectAndQueryDelegate)
     {
-        // Code taken from https://learn.microsoft.com/en-us/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net?view=sql-server-ver17
-
         const int totalNumberOfTimesToTry = 4;
         int retryIntervalSeconds = 10;
-
-        List<int> TransientErrorNumbers = new()
-        {
-            4060, 40197, 40501, 40613, 49918, 49919, 49920, 11001
-        };
 
         Exception? lastException = null;
         for (int tries = 1; tries <= totalNumberOfTimesToTry; tries++)
@@ -77,26 +70,23 @@ public static class DapperExtensions
                     Thread.Sleep(1000 * retryIntervalSeconds);
                     retryIntervalSeconds = Convert.ToInt32(retryIntervalSeconds * 1.5);
                 }
-                
+
                 return await connectAndQueryDelegate();
             }
-            catch (SqlException sqlExc)
+            catch (SqlException exception)
             {
-                lastException = sqlExc;
+                Console.WriteLine("{0}: transient error occurred.", exception.Number);
 
-                if (TransientErrorNumbers.Contains(sqlExc.Number))
-                {
-                    Console.WriteLine("{0}: transient occurred.", sqlExc.Number);
-                    continue;
-                }
+                await Console.Error.WriteLineAsync(exception.ToString());
+            }
+            catch (Exception exception)
+            {
+                await Console.Error.WriteLineAsync($"Fatal error during query execution. {exception}.");
 
-                Console.WriteLine(sqlExc);
-                break;
+                throw;
             }
         }
 
-        
         throw lastException!;
-        
     }
 }
