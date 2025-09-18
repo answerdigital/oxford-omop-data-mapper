@@ -21,12 +21,12 @@ internal class OxfordLabMeasurement : OmopMeasurement<OxfordLabMeasurementRecord
     [ConstantValue(32828, "EHR episode record")]
     public override int? measurement_type_concept_id { get; set; }
 
-    // [Transform(typeof(Icd10StandardNonStandardSelector), nameof(Source.event))]
-    // public override int? measurement_source_concept_id { get; set; }
+    [Transform(typeof(LabTestLookup), nameof(Source.@event))]
+    public override int? measurement_source_concept_id { get; set; }
 
-    // [Transform(typeof(RelationshipSelector), nameof(Source.event))]
-    // public override string? value_source_value { get; set; }
+    [CopyValue(nameof(Source.@event))]
+    public override string? value_source_value { get; set; }
 
-    // [Transform(typeof(StandardMeasurementConceptSelector), useOmopTypeAsSource: true, nameof(measurement_source_concept_id))]
-    // public override int[]? measurement_concept_id { get; set; }
+    [Transform(typeof(StandardMeasurementConceptSelector), useOmopTypeAsSource: true, nameof(measurement_source_concept_id))]
+    public override int[]? measurement_concept_id { get; set; }
 }
