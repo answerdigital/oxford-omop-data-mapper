@@ -7,11 +7,11 @@ namespace OmopTransformer.OxfordLab.Measurements.OxfordLabMeasurement;
 [SourceQuery("OxfordLabMeasurement.xml")]
 internal class OxfordLabMeasurementRecord
 {
-    public string? nhs_number { get; set; }
-    public string? @event { get; set; }
-    public string? event_start_dt_tm { get; set; }
-    public string? result_value { get; set; }
-    public string? result_units { get; set; }
-    public string? normal_low { get; set; }
-    public string? normal_high { get; set; }
+    public string? NHS_NUMBER { get; set; }
+    public string? @EVENT { get; set; }
+    public string? EVENT_START_DT_TM { get; set; }
+    public string? RESULT_VALUE { get; set; }
+    public string? RESULT_UNITS { get; set; }
+    public string? NORMAL_LOW { get; set; }
+    public string? NORMAL_HIGH { get; set; }
 }
