@@ -1,5 +1,5 @@
 ﻿<Query>
-    <Sql>
+    <Sql type="duckdb">
 select
 	nhs_number,
 	event,
