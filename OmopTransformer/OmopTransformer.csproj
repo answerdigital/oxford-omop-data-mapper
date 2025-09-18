@@ -258,7 +258,7 @@
     <None Update="OxfordPrescribing\DrugExposure\OxfordPrescribingDrugExposure.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="OxfordLab\Measurements\OxfordLabMeasurements.xml">
+    <None Update="OxfordLab\Measurements\OxfordLabMeasurement.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="OxfordSpineDeath\Death\OxfordSpineDeath.xml">
