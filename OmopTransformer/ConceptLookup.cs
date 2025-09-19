@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Dapper;
+using DuckDB.NET.Data;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer;
@@ -21,9 +23,9 @@ internal abstract class ConceptLookup
     {
         _logger.LogInformation(LoadingLoggerMessage);
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
 
-        var results = connection.QueryLongTimeoutAsync<ConceptMappingRow>(Query, CancellationToken.None).Result;
+        var results = connection.QueryAsync<ConceptMappingRow>(Query, CancellationToken.None).Result;
 
         return
             results

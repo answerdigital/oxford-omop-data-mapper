@@ -43,7 +43,6 @@ internal class OxfordGPTransformer : Transformer
         IPersonRecorder personRecorder,
         IDeathRecorder deathRecorder,
         ConceptResolver conceptResolver,
-        IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder,
@@ -55,7 +54,6 @@ internal class OxfordGPTransformer : Transformer
         transformOptions,
         recordProvider,
         "Oxford-GP",
-        conceptMapper,
         runAnalysisRecorder,
         loggerFactory)
     {

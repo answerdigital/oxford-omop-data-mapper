@@ -18,7 +18,7 @@ Selects the year from a date or null of the date is null.
 		max(DateofBirth) as DateOfBirth,
 		max(EthnicCategory) as EthnicCategory,
 		max(Sex) as PersonCurrentGenderCode
-	from [omop_staging].[sus_OP]
+	from omop_staging.sus_OP
 	where NHSNumber is not null
 	group by NHSNumber
 	

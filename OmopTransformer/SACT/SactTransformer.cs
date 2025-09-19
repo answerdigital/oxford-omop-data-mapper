@@ -26,7 +26,6 @@ internal class SactTransformer : Transformer
         IPersonRecorder personRecorder,
         IDrugExposureRecorder drugExposureRecorder,
         IConditionOccurrenceRecorder conditionOccurrenceRecorder,
-        IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory)
         : base(
@@ -34,7 +33,6 @@ internal class SactTransformer : Transformer
             transformOptions,
             recordProvider,
             "SACT",
-            conceptMapper,
             runAnalysisRecorder,
             loggerFactory)
     {

@@ -1,8 +1,7 @@
-﻿using System.Data;
-using Dapper;
+﻿using DuckDB.NET.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.Data.SqlClient;
+using System.Diagnostics;
 
 namespace OmopTransformer.SUS.Staging.OP;
 
@@ -28,19 +27,18 @@ internal class SusOPInserter : ISusOPInserter
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         int batchNumber = 1;
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
-
-
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
         foreach (var batch in batches)
         {
             _logger.LogInformation("Batch {0}.", batchNumber++);
 
-            await InsertBatch(batch, connection, cancellationToken);
+            InsertBatch(batch, connection, cancellationToken);
         }
     }
 
-    private async Task InsertBatch(IEnumerable<OPRecord> rows, RetryConnection connection, CancellationToken cancellationToken)
+    private void InsertBatch(IEnumerable<OPRecord> rows, DuckDBConnection connection, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -48,475 +46,275 @@ internal class SusOPInserter : ISusOPInserter
 
         cancellationToken.ThrowIfCancellationRequested();
 
+        Stopwatch stopwatch = Stopwatch.StartNew();
+
         _logger.LogInformation("Inserting OPRow.");
-        await InsertOP(rowsList.Select(row => row.OPRow).ToList(), connection);
+        InsertOP(rowsList.Select(row => row.OPRow).ToList(), connection);
+
+        stopwatch.Stop();
+
+        Console.WriteLine(stopwatch.ElapsedMilliseconds);
 
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("Inserting OPRow ReadProcedure.");
-        await InsertReadProcedure(rowsList.SelectMany(row => row.OPReadProcedures).ToList(), connection);
+        InsertReadProcedure(rowsList.SelectMany(row => row.OPReadProcedures).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("Inserting OPRow OpcdProcedure.");
-        await InsertOpcsProcedure(rowsList.SelectMany(row => row.OpcdProcedure).ToList(), connection);
+        InsertOpcsProcedure(rowsList.SelectMany(row => row.OpcdProcedure).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("Inserting APCRow ReadDiagnoses.");
-        await InsertReadDiagnosis(rowsList.SelectMany(row => row.ReadDiagnoses).ToList(), connection);
+        InsertReadDiagnosis(rowsList.SelectMany(row => row.ReadDiagnoses).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("Inserting OPRow IcdDiagnoses.");
-        await InsertIcdDiagnosis(rowsList.SelectMany(row => row.IcdDiagnoses).ToList(), connection);
+        InsertIcdDiagnosis(rowsList.SelectMany(row => row.IcdDiagnoses).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
-        
+
         _dataOptOut.PrintStats();
     }
 
-    private async Task InsertOP(IReadOnlyCollection<OPRow> rows, RetryConnection connection)
+    private void InsertOP(IReadOnlyCollection<OPRow> rows, DuckDBConnection connection)
     {
-        var dataTable = new DataTable();
-
-        dataTable.Columns.Add("MessageId");
-        dataTable.Columns.Add("GeneratedRecordIdentifier");
-        dataTable.Columns.Add("ReasonforAccess");
-        dataTable.Columns.Add("CDStype");
-        dataTable.Columns.Add("Protocolidentifier");
-        dataTable.Columns.Add("UniqueCDSidentifier");
-        dataTable.Columns.Add("SUSgeneratedspellID");
-        dataTable.Columns.Add("Updatetype");
-        dataTable.Columns.Add("BulkreplacementCDSgroup");
-        dataTable.Columns.Add("Testindicator");
-        dataTable.Columns.Add("Applicabledatetime");
-        dataTable.Columns.Add("Censusdate");
-        dataTable.Columns.Add("Extractdatetime");
-        dataTable.Columns.Add("ReportperiodStartDate");
-        dataTable.Columns.Add("ReportperiodEndDate");
-        dataTable.Columns.Add("OrganisationcodeSenderoftransaction");
-        dataTable.Columns.Add("OrganisationCodeTypeofSender");
-        dataTable.Columns.Add("SubmissionDate");
-        dataTable.Columns.Add("CDSInterchangeID");
-        dataTable.Columns.Add("LocalPatientIdentifier");
-        dataTable.Columns.Add("OrganisationCodeLocalPatientIdentifier");
-        dataTable.Columns.Add("OrganisationCodeTypeLocalPatientIdentifier");
-        dataTable.Columns.Add("NHSNumber");
-        dataTable.Columns.Add("DateofBirth");
-        dataTable.Columns.Add("CarerSupportIndicator");
-        dataTable.Columns.Add("NHSNumberTraceStatus");
-        dataTable.Columns.Add("WithheldIdentityReason");
-        dataTable.Columns.Add("Sex");
-        dataTable.Columns.Add("NameFormatCode");
-        dataTable.Columns.Add("PatientName");
-        dataTable.Columns.Add("PersonTitle");
-        dataTable.Columns.Add("PersonGivenName");
-        dataTable.Columns.Add("PersonFamilyName");
-        dataTable.Columns.Add("PersonNameSuffix");
-        dataTable.Columns.Add("PersonInitials");
-        dataTable.Columns.Add("AddressFormatCode");
-        dataTable.Columns.Add("PatientUsualAddress");
-        dataTable.Columns.Add("Postcode");
-        dataTable.Columns.Add("OrganisationCodeResidenceResponsibility");
-        dataTable.Columns.Add("PCTofResidence");
-        dataTable.Columns.Add("OrganisationCodeTypePCTofResidence");
-        dataTable.Columns.Add("EthnicCategory");
-        dataTable.Columns.Add("OSVClassificationatCDSActivityDate");
-        dataTable.Columns.Add("ConsultantCode");
-        dataTable.Columns.Add("MainSpecialtyCode");
-        dataTable.Columns.Add("TreatmentFunctionCode");
-        dataTable.Columns.Add("LocalSubSpecialtyCode");
-        dataTable.Columns.Add("MultiProfessionalOrMultidisciplinaryIndCode");
-        dataTable.Columns.Add("RehabilitationAssessmentTeamType");
-        dataTable.Columns.Add("DiagnosisSchemeInUseICD");
-        dataTable.Columns.Add("DiagnosisSchemeInUseRead");
-        dataTable.Columns.Add("AttendanceIdentifier");
-        dataTable.Columns.Add("AdministrativeCategory");
-        dataTable.Columns.Add("AttendedorDidNotAttend");
-        dataTable.Columns.Add("FirstAttendance");
-        dataTable.Columns.Add("MedicalStaffTypeSeeingPatient");
-        dataTable.Columns.Add("OperationStatusPerAttendance");
-        dataTable.Columns.Add("OutcomeofAttendance");
-        dataTable.Columns.Add("AppointmentDate");
-        dataTable.Columns.Add("AppointmentTime");
-        dataTable.Columns.Add("ExpectedDurationOfAppointment");
-        dataTable.Columns.Add("ConsultationMediumUsed");
-        dataTable.Columns.Add("WaitingTimeMeasurementType");
-        dataTable.Columns.Add("ActivityLocationTypeCode");
-        dataTable.Columns.Add("EarliestClinicallyAppropriateDate");
-        dataTable.Columns.Add("ClinicCode");
-        dataTable.Columns.Add("CommissioningSerialNumber");
-        dataTable.Columns.Add("NHSServiceAgreementLineNumber");
-        dataTable.Columns.Add("ProviderReferenceNumber");
-        dataTable.Columns.Add("CommissionerReferenceNumber");
-        dataTable.Columns.Add("OrganisationCodeCodeofProvider");
-        dataTable.Columns.Add("OrganisationCodeTypeCodeofProvider");
-        dataTable.Columns.Add("OrganisationCodeCodeofCommissioner");
-        dataTable.Columns.Add("OrganisationCodeTypeCodeofCommissioner");
-        dataTable.Columns.Add("ProcedureSchemeInUseOPCS");
-        dataTable.Columns.Add("ProcedureSchemeInUseRead");
-        dataTable.Columns.Add("LocationClassatAttendance");
-        dataTable.Columns.Add("SiteCodeofTreatment");
-        dataTable.Columns.Add("OrganisationCodeTypeSiteCodeofTreatmentAtAttendance");
-        dataTable.Columns.Add("GeneralMedicalPractitionerCodeofRegisteredGMP");
-        dataTable.Columns.Add("PracticeCodeofRegisteredGP");
-        dataTable.Columns.Add("OrganisationCodeTypeofRegisteredGP");
-        dataTable.Columns.Add("PriorityType");
-        dataTable.Columns.Add("ServiceTypeRequested");
-        dataTable.Columns.Add("SourceofReferralForOutpatients");
-        dataTable.Columns.Add("ReferralRequestReceivedDate");
-        dataTable.Columns.Add("DirectAccessReferralIndicator");
-        dataTable.Columns.Add("ReferrerCode");
-        dataTable.Columns.Add("ReferringOrganisationCode");
-        dataTable.Columns.Add("OrganisationCodeTypeofReferrer");
-        dataTable.Columns.Add("LastDNAOrPatientCancelledDate");
-        dataTable.Columns.Add("HRGCode");
-        dataTable.Columns.Add("HRGVersionNumber");
-        dataTable.Columns.Add("ProcedureSchemeInUse");
-        dataTable.Columns.Add("DominantGroupingVariableProcedure");
-        dataTable.Columns.Add("CoreHRG");
-        dataTable.Columns.Add("HRGVersionCalculated");
-        dataTable.Columns.Add("SUSHRG");
-        dataTable.Columns.Add("UniqueBookingReferenceNumberConverted");
-        dataTable.Columns.Add("PatientPathwayIdentifier");
-        dataTable.Columns.Add("OrganisationCodePatientPathwayIdentifierIssuer");
-        dataTable.Columns.Add("ReferralToTreatmentPeriodStatus");
-        dataTable.Columns.Add("ReferralToTreatmentPeriodStartDate");
-        dataTable.Columns.Add("ReferralToTreatmentPeriodEndDate");
-        dataTable.Columns.Add("LeadCareActivityIndicator");
-        dataTable.Columns.Add("AgeatCDSActivityDate");
-        dataTable.Columns.Add("NHSServiceAgreementChangeDate");
-        dataTable.Columns.Add("CDSActivityDate");
-        dataTable.Columns.Add("EarliestReasonableOfferedDate");
-        dataTable.Columns.Add("LocationType");
-        dataTable.Columns.Add("XMLVersion");
-        dataTable.Columns.Add("ConfidentialityCategoryDerived");
-        dataTable.Columns.Add("ReferralToTreatmentLengthDerived");
-        dataTable.Columns.Add("AgerangepatientderivedfromDOB");
-        dataTable.Columns.Add("Areacodederivedfrompostcode");
-        dataTable.Columns.Add("AttenderTypeDerived");
-        dataTable.Columns.Add("CDSGroup");
-        dataTable.Columns.Add("FinishedIndicator");
-        dataTable.Columns.Add("PCTDerivedfromGP");
-        dataTable.Columns.Add("PCTTypeDerivedfromGP");
-        dataTable.Columns.Add("GPPracticeDerived");
-        dataTable.Columns.Add("PCTDerivedfromderivedGPPractice");
-        dataTable.Columns.Add("SHAfromGPPractice");
-        dataTable.Columns.Add("SHATypefromGPPractice");
-        dataTable.Columns.Add("MonthofBirth");
-        dataTable.Columns.Add("ElectoralWardfrompostcode");
-        dataTable.Columns.Add("PCTfrompostcode");
-        dataTable.Columns.Add("PCTTypefromPostcode");
-        dataTable.Columns.Add("SHAfromPostcode");
-        dataTable.Columns.Add("SHATypefromPostcode");
-        dataTable.Columns.Add("AreacodefromProviderPostcode");
-        dataTable.Columns.Add("AgeatEndofEpisode");
-        dataTable.Columns.Add("AgeatStartofEpisode");
-        dataTable.Columns.Add("YearofBirth");
-        dataTable.Columns.Add("CensusArea");
-        dataTable.Columns.Add("Country");
-        dataTable.Columns.Add("CountyCode");
-        dataTable.Columns.Add("CensusED");
-        dataTable.Columns.Add("EDDistrictCode");
-        dataTable.Columns.Add("ElectoralWardCode");
-        dataTable.Columns.Add("GORCode");
-        dataTable.Columns.Add("LocalUnitaryAuthority");
-        dataTable.Columns.Add("OldSHACode");
-        dataTable.Columns.Add("ElectoralArea");
-        dataTable.Columns.Add("PrimeRecipient");
-        dataTable.Columns.Add("CopyRecipients");
-        dataTable.Columns.Add("IsValidUBRN");
-        dataTable.Columns.Add("UBRNOccurrenceCount");
-
-        foreach (var row in rows)
+        using var appender = connection.CreateAppender("omop_staging", "sus_OP");
         {
-            if (_dataOptOut.PatientAllowed(row.NHSNumber) == false)
-                continue;
+            foreach (var row in rows)
+            {
+                if (_dataOptOut.PatientAllowed(row.NHSNumber) == false)
+                    continue;
 
-            dataTable.Rows.Add(
-                row.MessageId,
-                    row.GeneratedRecordIdentifier,
-                    row.ReasonforAccess,
-                    row.CDStype,
-                    row.Protocolidentifier,
-                    row.UniqueCDSidentifier,
-                    row.SUSgeneratedspellID,
-                    row.Updatetype,
-                    row.BulkreplacementCDSgroup,
-                    row.Testindicator,
-                    row.Applicabledatetime,
-                    row.Censusdate,
-                    row.Extractdatetime,
-                    row.ReportperiodStartDate,
-                    row.ReportperiodEndDate,
-                    row.OrganisationcodeSenderoftransaction,
-                    row.OrganisationCodeTypeofSender,
-                    row.SubmissionDate,
-                    row.CDSInterchangeID,
-                    row.LocalPatientIdentifier,
-                    row.OrganisationCodeLocalPatientIdentifier,
-                    row.OrganisationCodeTypeLocalPatientIdentifier,
-                    row.NHSNumber,
-                    row.DateofBirth,
-                    row.CarerSupportIndicator,
-                    row.NHSNumberTraceStatus,
-                    row.WithheldIdentityReason,
-                    row.Sex,
-                    row.NameFormatCode,
-                    row.PatientName,
-                    row.PersonTitle,
-                    row.PersonGivenName,
-                    row.PersonFamilyName,
-                    row.PersonNameSuffix,
-                    row.PersonInitials,
-                    row.AddressFormatCode,
-                    row.PatientUsualAddress,
-                    row.Postcode,
-                    row.OrganisationCodeResidenceResponsibility,
-                    row.PCTofResidence,
-                    row.OrganisationCodeTypePCTofResidence,
-                    row.EthnicCategory,
-                    row.OSVClassificationatCDSActivityDate,
-                    row.ConsultantCode,
-                    row.MainSpecialtyCode,
-                    row.TreatmentFunctionCode,
-                    row.LocalSubSpecialtyCode,
-                    row.MultiProfessionalOrMultidisciplinaryIndCode,
-                    row.RehabilitationAssessmentTeamType,
-                    row.DiagnosisSchemeInUseICD,
-                    row.DiagnosisSchemeInUseRead,
-                    row.AttendanceIdentifier,
-                    row.AdministrativeCategory,
-                    row.AttendedorDidNotAttend,
-                    row.FirstAttendance,
-                    row.MedicalStaffTypeSeeingPatient,
-                    row.OperationStatusPerAttendance,
-                    row.OutcomeofAttendance,
-                    row.AppointmentDate,
-                    row.AppointmentTime,
-                    row.ExpectedDurationOfAppointment,
-                    row.ConsultationMediumUsed,
-                    row.WaitingTimeMeasurementType,
-                    row.ActivityLocationTypeCode,
-                    row.EarliestClinicallyAppropriateDate,
-                    row.ClinicCode,
-                    row.CommissioningSerialNumber,
-                    row.NHSServiceAgreementLineNumber,
-                    row.ProviderReferenceNumber,
-                    row.CommissionerReferenceNumber,
-                    row.OrganisationCodeCodeofProvider,
-                    row.OrganisationCodeTypeCodeofProvider,
-                    row.OrganisationCodeCodeofCommissioner,
-                    row.OrganisationCodeTypeCodeofCommissioner,
-                    row.ProcedureSchemeInUseOPCS,
-                    row.ProcedureSchemeInUseRead,
-                    row.LocationClassatAttendance,
-                    row.SiteCodeofTreatment,
-                    row.OrganisationCodeTypeSiteCodeofTreatmentAtAttendance,
-                    row.GeneralMedicalPractitionerCodeofRegisteredGMP,
-                    row.PracticeCodeofRegisteredGP,
-                    row.OrganisationCodeTypeofRegisteredGP,
-                    row.PriorityType,
-                    row.ServiceTypeRequested,
-                    row.SourceofReferralForOutpatients,
-                    row.ReferralRequestReceivedDate,
-                    row.DirectAccessReferralIndicator,
-                    row.ReferrerCode,
-                    row.ReferringOrganisationCode,
-                    row.OrganisationCodeTypeofReferrer,
-                    row.LastDNAOrPatientCancelledDate,
-                    row.HRGCode,
-                    row.HRGVersionNumber,
-                    row.ProcedureSchemeInUse,
-                    row.DominantGroupingVariableProcedure,
-                    row.CoreHRG,
-                    row.HRGVersionCalculated,
-                    row.SUSHRG,
-                    row.UniqueBookingReferenceNumberConverted,
-                    row.PatientPathwayIdentifier,
-                    row.OrganisationCodePatientPathwayIdentifierIssuer,
-                    row.ReferralToTreatmentPeriodStatus,
-                    row.ReferralToTreatmentPeriodStartDate,
-                    row.ReferralToTreatmentPeriodEndDate,
-                    row.LeadCareActivityIndicator,
-                    row.AgeatCDSActivityDate,
-                    row.NHSServiceAgreementChangeDate,
-                    row.CDSActivityDate,
-                    row.EarliestReasonableOfferedDate,
-                    row.LocationType,
-                    row.XMLVersion,
-                    row.ConfidentialityCategoryDerived,
-                    row.ReferralToTreatmentLengthDerived,
-                    row.AgerangepatientderivedfromDOB,
-                    row.Areacodederivedfrompostcode,
-                    row.AttenderTypeDerived,
-                    row.CDSGroup,
-                    row.FinishedIndicator,
-                    row.PCTDerivedfromGP,
-                    row.PCTTypeDerivedfromGP,
-                    row.GPPracticeDerived,
-                    row.PCTDerivedfromderivedGPPractice,
-                    row.SHAfromGPPractice,
-                    row.SHATypefromGPPractice,
-                    row.MonthofBirth,
-                    row.ElectoralWardfrompostcode,
-                    row.PCTfrompostcode,
-                    row.PCTTypefromPostcode,
-                    row.SHAfromPostcode,
-                    row.SHATypefromPostcode,
-                    row.AreacodefromProviderPostcode,
-                    row.AgeatEndofEpisode,
-                    row.AgeatStartofEpisode,
-                    row.YearofBirth,
-                    row.CensusArea,
-                    row.Country,
-                    row.CountyCode,
-                    row.CensusED,
-                    row.EDDistrictCode,
-                    row.ElectoralWardCode,
-                    row.GORCode,
-                    row.LocalUnitaryAuthority,
-                    row.OldSHACode,
-                    row.ElectoralArea,
-                    row.PrimeRecipient,
-                    row.CopyRecipients,
-                    row.IsValidUBRN,
-                    row.UBRNOccurrenceCount
-            );
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(row.MessageId)
+                    .AppendValue(row.GeneratedRecordIdentifier)
+                    .AppendValue(row.ReasonforAccess)
+                    .AppendValue(row.CDStype)
+                    .AppendValue(row.Protocolidentifier)
+                    .AppendValue(row.UniqueCDSidentifier)
+                    .AppendValue(row.SUSgeneratedspellID)
+                    .AppendValue(row.Updatetype)
+                    .AppendValue(row.BulkreplacementCDSgroup)
+                    .AppendValue(row.Testindicator)
+                    .AppendValue(row.Applicabledatetime)
+                    .AppendValue(row.Censusdate)
+                    .AppendValue(row.Extractdatetime)
+                    .AppendValue(row.ReportperiodStartDate)
+                    .AppendValue(row.ReportperiodEndDate)
+                    .AppendValue(row.OrganisationcodeSenderoftransaction)
+                    .AppendValue(row.OrganisationCodeTypeofSender)
+                    .AppendValue(row.SubmissionDate)
+                    .AppendValue(row.CDSInterchangeID)
+                    .AppendValue(row.LocalPatientIdentifier)
+                    .AppendValue(row.OrganisationCodeLocalPatientIdentifier)
+                    .AppendValue(row.OrganisationCodeTypeLocalPatientIdentifier)
+                    .AppendValue(row.NHSNumber)
+                    .AppendValue(row.DateofBirth)
+                    .AppendValue(row.CarerSupportIndicator)
+                    .AppendValue(row.NHSNumberTraceStatus)
+                    .AppendValue(row.WithheldIdentityReason)
+                    .AppendValue(row.Sex)
+                    .AppendValue(row.NameFormatCode)
+                    .AppendValue(row.PatientName)
+                    .AppendValue(row.PersonTitle)
+                    .AppendValue(row.PersonGivenName)
+                    .AppendValue(row.PersonFamilyName)
+                    .AppendValue(row.PersonNameSuffix)
+                    .AppendValue(row.PersonInitials)
+                    .AppendValue(row.AddressFormatCode)
+                    .AppendValue(row.PatientUsualAddress)
+                    .AppendValue(row.Postcode)
+                    .AppendValue(row.OrganisationCodeResidenceResponsibility)
+                    .AppendValue(row.PCTofResidence)
+                    .AppendValue(row.OrganisationCodeTypePCTofResidence)
+                    .AppendValue(row.EthnicCategory)
+                    .AppendValue(row.OSVClassificationatCDSActivityDate)
+                    .AppendValue(row.ConsultantCode)
+                    .AppendValue(row.MainSpecialtyCode)
+                    .AppendValue(row.TreatmentFunctionCode)
+                    .AppendValue(row.LocalSubSpecialtyCode)
+                    .AppendValue(row.MultiProfessionalOrMultidisciplinaryIndCode)
+                    .AppendValue(row.RehabilitationAssessmentTeamType)
+                    .AppendValue(row.DiagnosisSchemeInUseICD)
+                    .AppendValue(row.DiagnosisSchemeInUseRead)
+                    .AppendValue(row.AttendanceIdentifier)
+                    .AppendValue(row.AdministrativeCategory)
+                    .AppendValue(row.AttendedorDidNotAttend)
+                    .AppendValue(row.FirstAttendance)
+                    .AppendValue(row.MedicalStaffTypeSeeingPatient)
+                    .AppendValue(row.OperationStatusPerAttendance)
+                    .AppendValue(row.OutcomeofAttendance)
+                    .AppendValue(row.AppointmentDate)
+                    .AppendValue(row.AppointmentTime)
+                    .AppendValue(row.ExpectedDurationOfAppointment)
+                    .AppendValue(row.ConsultationMediumUsed)
+                    .AppendValue(row.WaitingTimeMeasurementType)
+                    .AppendValue(row.ActivityLocationTypeCode)
+                    .AppendValue(row.EarliestClinicallyAppropriateDate)
+                    .AppendValue(row.ClinicCode)
+                    .AppendValue(row.CommissioningSerialNumber)
+                    .AppendValue(row.NHSServiceAgreementLineNumber)
+                    .AppendValue(row.ProviderReferenceNumber)
+                    .AppendValue(row.CommissionerReferenceNumber)
+                    .AppendValue(row.OrganisationCodeCodeofProvider)
+                    .AppendValue(row.OrganisationCodeTypeCodeofProvider)
+                    .AppendValue(row.OrganisationCodeCodeofCommissioner)
+                    .AppendValue(row.OrganisationCodeTypeCodeofCommissioner)
+                    .AppendValue(row.ProcedureSchemeInUseOPCS)
+                    .AppendValue(row.ProcedureSchemeInUseRead)
+                    .AppendValue(row.LocationClassatAttendance)
+                    .AppendValue(row.SiteCodeofTreatment)
+                    .AppendValue(row.OrganisationCodeTypeSiteCodeofTreatmentAtAttendance)
+                    .AppendValue(row.GeneralMedicalPractitionerCodeofRegisteredGMP)
+                    .AppendValue(row.PracticeCodeofRegisteredGP)
+                    .AppendValue(row.OrganisationCodeTypeofRegisteredGP)
+                    .AppendValue(row.PriorityType)
+                    .AppendValue(row.ServiceTypeRequested)
+                    .AppendValue(row.SourceofReferralForOutpatients)
+                    .AppendValue(row.ReferralRequestReceivedDate)
+                    .AppendValue(row.DirectAccessReferralIndicator)
+                    .AppendValue(row.ReferrerCode)
+                    .AppendValue(row.ReferringOrganisationCode)
+                    .AppendValue(row.OrganisationCodeTypeofReferrer)
+                    .AppendValue(row.LastDNAOrPatientCancelledDate)
+                    .AppendValue(row.HRGCode)
+                    .AppendValue(row.HRGVersionNumber)
+                    .AppendValue(row.ProcedureSchemeInUse)
+                    .AppendValue(row.DominantGroupingVariableProcedure)
+                    .AppendValue(row.CoreHRG)
+                    .AppendValue(row.HRGVersionCalculated)
+                    .AppendValue(row.SUSHRG)
+                    .AppendValue(row.UniqueBookingReferenceNumberConverted)
+                    .AppendValue(row.PatientPathwayIdentifier)
+                    .AppendValue(row.OrganisationCodePatientPathwayIdentifierIssuer)
+                    .AppendValue(row.ReferralToTreatmentPeriodStatus)
+                    .AppendValue(row.ReferralToTreatmentPeriodStartDate)
+                    .AppendValue(row.ReferralToTreatmentPeriodEndDate)
+                    .AppendValue(row.LeadCareActivityIndicator)
+                    .AppendValue(row.AgeatCDSActivityDate)
+                    .AppendValue(row.NHSServiceAgreementChangeDate)
+                    .AppendValue(row.CDSActivityDate)
+                    .AppendValue(row.EarliestReasonableOfferedDate)
+                    .AppendValue(row.LocationType)
+                    .AppendValue(row.XMLVersion)
+                    .AppendValue(row.ConfidentialityCategoryDerived)
+                    .AppendValue(row.ReferralToTreatmentLengthDerived)
+                    .AppendValue(row.AgerangepatientderivedfromDOB)
+                    .AppendValue(row.Areacodederivedfrompostcode)
+                    .AppendValue(row.AttenderTypeDerived)
+                    .AppendValue(row.CDSGroup)
+                    .AppendValue(row.FinishedIndicator)
+                    .AppendValue(row.PCTDerivedfromGP)
+                    .AppendValue(row.PCTTypeDerivedfromGP)
+                    .AppendValue(row.GPPracticeDerived)
+                    .AppendValue(row.PCTDerivedfromderivedGPPractice)
+                    .AppendValue(row.SHAfromGPPractice)
+                    .AppendValue(row.SHATypefromGPPractice)
+                    .AppendValue(row.MonthofBirth)
+                    .AppendValue(row.ElectoralWardfrompostcode)
+                    .AppendValue(row.PCTfrompostcode)
+                    .AppendValue(row.PCTTypefromPostcode)
+                    .AppendValue(row.SHAfromPostcode)
+                    .AppendValue(row.SHATypefromPostcode)
+                    .AppendValue(row.AreacodefromProviderPostcode)
+                    .AppendValue(row.AgeatEndofEpisode)
+                    .AppendValue(row.AgeatStartofEpisode)
+                    .AppendValue(row.YearofBirth)
+                    .AppendValue(row.CensusArea)
+                    .AppendValue(row.Country)
+                    .AppendValue(row.CountyCode)
+                    .AppendValue(row.CensusED)
+                    .AppendValue(row.EDDistrictCode)
+                    .AppendValue(row.ElectoralWardCode)
+                    .AppendValue(row.GORCode)
+                    .AppendValue(row.LocalUnitaryAuthority)
+                    .AppendValue(row.OldSHACode)
+                    .AppendValue(row.ElectoralArea)
+                    .AppendValue(row.PrimeRecipient)
+                    .AppendValue(row.CopyRecipients)
+                    .AppendValue(row.IsValidUBRN)
+                    .AppendValue(row.UBRNOccurrenceCount)
+                    .EndRow();
+            }
         }
-
-        var parameter = new
-        {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.sus_OP_row")
-        };
-
-        await connection
-            .ExecuteLongTimeoutAsync(
-                "omop_staging.insert_sus_OP_row",
-                parameter,
-                commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertIcdDiagnosis(IReadOnlyCollection<IcdDiagnosis> rows, RetryConnection connection)
+    private void InsertIcdDiagnosis(IReadOnlyCollection<IcdDiagnosis> rows, DuckDBConnection connection)
     {
-        var dataTable = new DataTable();
-
-        dataTable.Columns.Add("MessageId");
-        dataTable.Columns.Add("DiagnosisICD");
-        dataTable.Columns.Add("PresentOnAdmissionIndicatorDiagnosis");
-        dataTable.Columns.Add("IsPrimaryDiagnosis");
-
-        foreach (var row in rows)
+        using var appender = connection.CreateAppender("omop_staging", "sus_OP_ICDDiagnosis");
         {
-            dataTable.Rows.Add(
-                row.MessageId,
-                row.DiagnosisICD,
-                row.PresentOnAdmissionIndicatorDiagnosis,
-                row.IsPrimaryDiagnosis);
+            foreach (var row in rows)
+            {
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(row.MessageId)
+                    .AppendValue(row.DiagnosisICD)
+                    .AppendValue(row.PresentOnAdmissionIndicatorDiagnosis)
+                    .AppendValue(Convert.ToInt32(row.IsPrimaryDiagnosis))
+                    .EndRow();
+            }
         }
-
-        var parameter = new
-        {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.sus_OP_ICDDiagnosis_row")
-        };
-
-        await connection
-            .ExecuteLongTimeoutAsync(
-                "omop_staging.insert_sus_OP_ICDDiagnosis_row",
-                parameter,
-                commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertReadDiagnosis(IReadOnlyCollection<ReadDiagnosis> rows, RetryConnection connection)
+    private void InsertReadDiagnosis(IReadOnlyCollection<ReadDiagnosis> rows, DuckDBConnection connection)
     {
-        var dataTable = new DataTable();
-
-        dataTable.Columns.Add("MessageId");
-        dataTable.Columns.Add("DiagnosisRead");
-        dataTable.Columns.Add("IsPrimaryDiagnosis");
-
-        foreach (var row in rows)
+        using var appender = connection.CreateAppender("omop_staging", "sus_OP_ReadDiagnosis");
         {
-            dataTable.Rows.Add(
-                row.MessageId,
-                row.DiagnosisRead,
-                row.IsPrimaryDiagnosis);
+            foreach (var row in rows)
+            {
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(row.MessageId)
+                    .AppendValue(row.DiagnosisRead)
+                    .AppendValue(Convert.ToInt32(row.IsPrimaryDiagnosis))
+                    .EndRow();
+            }
         }
-
-        var parameter = new
-        {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.sus_OP_ReadDiagnosis_row")
-        };
-
-        await connection
-            .ExecuteLongTimeoutAsync(
-                "omop_staging.insert_sus_OP_ReadDiagnosis_row",
-                parameter,
-                commandType: CommandType.StoredProcedure);
     }
     
-    private async Task InsertOpcsProcedure(IReadOnlyCollection<SusOPOpcsProcedure> rows, RetryConnection connection)
+    private void InsertOpcsProcedure(IReadOnlyCollection<SusOPOpcsProcedure> rows, DuckDBConnection connection)
     {
-        var dataTable = new DataTable();
-
-        dataTable.Columns.Add("MessageId");
-        dataTable.Columns.Add("ProcedureOPCS");
-        dataTable.Columns.Add("MainOperatingHealthcareProfessionalCodeOpcs");
-        dataTable.Columns.Add("ProfessionalRegistrationIssuerCodeOpcs");
-        dataTable.Columns.Add("ResponsibleAnaesthetistCodeOpcs");
-        dataTable.Columns.Add("ResponsibleAnaesthetistRegBodyOpcs");
-        dataTable.Columns.Add("IsPrimaryProcedure");
-
-        foreach (var row in rows)
+        using var appender = connection.CreateAppender("omop_staging", "sus_OP_OPCSProcedure");
         {
-            dataTable.Rows.Add(
-                row.MessageId,
-                row.ProcedureOPCS,
-                row.MainOperatingHealthcareProfessionalCodeOpcs,
-                row.ProfessionalRegistrationIssuerCodeOpcs,
-                row.ResponsibleAnaesthetistCodeOpcs,
-                row.ResponsibleAnaesthetistRegBodyOpcs,
-                row.IsPrimaryProcedure);
+            foreach (var row in rows)
+            {
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(row.MessageId)
+                    .AppendValue(row.ProcedureOPCS)
+                    .AppendValue(row.MainOperatingHealthcareProfessionalCodeOpcs)
+                    .AppendValue(row.ProfessionalRegistrationIssuerCodeOpcs)
+                    .AppendValue(row.ResponsibleAnaesthetistCodeOpcs)
+                    .AppendValue(row.ResponsibleAnaesthetistRegBodyOpcs)
+                    .AppendValue(Convert.ToInt32(row.IsPrimaryProcedure))
+                    .EndRow();
+            }
         }
-
-        var parameter = new
-        {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.sus_OP_OPCSProcedure_row")
-        };
-
-        await connection
-            .ExecuteLongTimeoutAsync(
-                "omop_staging.insert_sus_OP_OPCSProcedure_row",
-                parameter,
-                commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertReadProcedure(IReadOnlyCollection<OPReadProcedure> rows, RetryConnection connection)
+    private void InsertReadProcedure(IReadOnlyCollection<OPReadProcedure> rows, DuckDBConnection connection)
     {
-        var dataTable = new DataTable();
-
-        dataTable.Columns.Add("MessageId");
-        dataTable.Columns.Add("ProcedureRead");
-        dataTable.Columns.Add("IsPrimaryProcedure");
-
-        foreach (var row in rows)
+        using var appender = connection.CreateAppender("omop_staging", "sus_OP_ReadProcedure");
         {
-            dataTable.Rows.Add(
-                row.MessageId,
-                row.ProcedureRead,
-                row.IsPrimaryProcedure);
+            foreach (var row in rows)
+            {
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(row.MessageId)
+                    .AppendValue(row.ProcedureRead)
+                    .AppendValue(Convert.ToInt32(row.IsPrimaryProcedure))
+                    .EndRow();
+            }
         }
-
-        var parameter = new
-        {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.sus_OP_ReadProcedure_row")
-        };
-
-        await connection
-            .ExecuteLongTimeoutAsync(
-                "omop_staging.insert_sus_OP_ReadProcedure_row",
-                parameter,
-                commandType: CommandType.StoredProcedure);
     }
 }

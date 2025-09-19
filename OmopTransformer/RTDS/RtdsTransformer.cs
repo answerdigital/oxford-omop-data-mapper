@@ -31,7 +31,6 @@ internal class RtdsTransformer : Transformer
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder,
         IConditionOccurrenceRecorder conditionOccurrenceRecorder,
         IVisitOccurrenceRecorder visitOccurrenceRecorder,
-        IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory)
         : base(
@@ -39,7 +38,6 @@ internal class RtdsTransformer : Transformer
             transformOptions,
             recordProvider,
             "RTDS",
-            conceptMapper,
             runAnalysisRecorder,
             loggerFactory)
     {

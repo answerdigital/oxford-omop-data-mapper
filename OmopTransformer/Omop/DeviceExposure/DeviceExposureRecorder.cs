@@ -1,7 +1,7 @@
-﻿using System.Data;
-using Microsoft.Data.SqlClient;
-using Dapper;
+﻿using Dapper;
+using DuckDB.NET.Data;
 using Microsoft.Extensions.Options;
+using System.Data;
 
 namespace OmopTransformer.Omop.DeviceExposure;
 
@@ -18,74 +18,155 @@ internal class DeviceExposureRecorder : IDeviceExposureRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
+        await connection.ExecuteAsync("truncate table omop_staging.device_exposure_row;");
 
-
-        var batches = records.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using (IDbTransaction transaction = connection.BeginTransaction())
         {
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("nhs_number");
-            dataTable.Columns.Add("device_concept_id");
-            dataTable.Columns.Add("device_exposure_start_date", typeof(DateTime));
-            dataTable.Columns.Add("device_exposure_start_datetime", typeof(DateTime));
-            dataTable.Columns.Add("device_exposure_end_date", typeof(DateTime));
-            dataTable.Columns.Add("device_exposure_end_datetime", typeof(DateTime));
-            dataTable.Columns.Add("device_type_concept_id");
-            dataTable.Columns.Add("unique_device_id");
-            dataTable.Columns.Add("production_id");
-            dataTable.Columns.Add("quantity");
-            dataTable.Columns.Add("provider_id");
-            dataTable.Columns.Add("visit_occurrence_id");
-            dataTable.Columns.Add("visit_detail_id");
-            dataTable.Columns.Add("device_source_value");
-            dataTable.Columns.Add("device_source_concept_id");
-            dataTable.Columns.Add("unit_concept_id");
-            dataTable.Columns.Add("unit_source_value");
-            dataTable.Columns.Add("unit_source_concept_id");
-            dataTable.Columns.Add("RecordConnectionIdentifier");
-            dataTable.Columns.Add("HospitalProviderSpellNumber");
-
-            foreach (var record in batch)
+            try
             {
-                if (record.IsValid == false)
-                    continue;
-
-                foreach (var deviceConceptId in record.device_concept_id!)
+                using var appender = connection.CreateAppender("omop_staging", "device_exposure_row");
                 {
-                    dataTable.Rows.Add(
-                        record.nhs_number,
-                        deviceConceptId,
-                        record.device_exposure_start_date,
-                        record.device_exposure_start_datetime,
-                        record.device_exposure_end_date,
-                        record.device_exposure_end_datetime,
-                        record.device_type_concept_id,
-                        record.unique_device_id,
-                        record.production_id,
-                        record.quantity,
-                        record.provider_id,
-                        record.visit_occurrence_id,
-                        record.visit_detail_id,
-                        record.device_source_value,
-                        record.device_source_concept_id,
-                        record.unit_concept_id,
-                        record.unit_source_value,
-                        record.unit_source_concept_id,
-                        record.RecordConnectionIdentifier,
-                        record.HospitalProviderSpellNumber);
+                    foreach (var row in records)
+                    {
+                        if (row.IsValid == false)
+                            continue;
+
+                        foreach (var deviceConceptId in row.device_concept_id!)
+                        {
+
+                            var dbRow = appender.CreateRow();
+
+                            dbRow
+                                .AppendValue(row.nhs_number)
+                                .AppendValue(deviceConceptId)
+                                .AppendValue(row.device_exposure_start_date)
+                                .AppendValue(row.device_exposure_start_datetime)
+                                .AppendValue(row.device_exposure_end_date)
+                                .AppendValue(row.device_exposure_end_datetime)
+                                .AppendValue(row.device_type_concept_id)
+                                .AppendValue(row.unique_device_id)
+                                .AppendValue(row.production_id)
+                                .AppendValue(row.quantity)
+                                .AppendValue(row.provider_id)
+                                .AppendValue(row.visit_occurrence_id)
+                                .AppendValue(row.visit_detail_id)
+                                .AppendValue(row.device_source_value)
+                                .AppendValue(row.device_source_concept_id)
+                                .AppendValue(row.unit_concept_id)
+                                .AppendValue(row.unit_source_value)
+                                .AppendValue(row.unit_source_concept_id)
+                                .AppendValue(row.RecordConnectionIdentifier)
+                                .AppendValue(row.HospitalProviderSpellNumber)
+                                .AppendValue(dataSource)
+                                .EndRow();
+                        }
+                    }
                 }
+                transaction.Commit();
             }
-
-            var parameter = new
+            catch
             {
-                Rows = dataTable.AsTableValuedParameter("cdm.device_exposure_row"),
-                DataSource = dataSource
-            };
+                transaction.Rollback();
 
-            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_device_exposure", parameter, commandType: CommandType.StoredProcedure);
+                throw;
+            }
         }
+
+        await connection
+            .ExecuteAsync(
+                @"
+use vocab;
+
+insert into cdm.device_exposure (
+    person_id,
+    device_concept_id,
+    device_exposure_start_date,
+    device_exposure_start_datetime,
+    device_exposure_end_date,
+    device_exposure_end_datetime,
+    device_type_concept_id,
+    unique_device_id,
+    production_id,
+    quantity,
+    provider_id,
+    visit_occurrence_id,
+    visit_detail_id,
+    device_source_value,
+    device_source_concept_id,
+    unit_concept_id,
+    unit_source_value,
+    unit_source_concept_id,
+    RecordConnectionIdentifier,
+    HospitalProviderSpellNumber,
+    data_source
+)
+select
+    p.person_id,
+    r.device_concept_id,
+    r.device_exposure_start_date,
+    r.device_exposure_start_datetime,
+    r.device_exposure_end_date,
+    r.device_exposure_end_datetime,
+    r.device_type_concept_id,
+    r.unique_device_id,
+    r.production_id,
+    r.quantity,
+    r.provider_id,
+    (
+        select vo.visit_occurrence_id
+        from cdm.visit_occurrence vo
+        where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+        and vo.person_id = p.person_id
+        and r.HospitalProviderSpellNumber is not null
+        limit 1
+    ) as visit_occurrence_id,
+    (
+        select vd.visit_detail_id
+        from cdm.visit_detail vd
+        where vd.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+        and vd.person_id = p.person_id
+        and r.HospitalProviderSpellNumber is not null
+        limit 1
+    ) as visit_detail_id,
+    r.device_source_value,
+    r.device_source_concept_id,
+    r.unit_concept_id,
+    r.unit_source_value,
+    r.unit_source_concept_id,
+    r.RecordConnectionIdentifier,
+    r.HospitalProviderSpellNumber,
+    r.data_source
+from omop_staging.device_exposure_row r
+    inner join cdm.person p
+        on r.nhs_number = p.person_source_value
+where 
+    (
+        r.HospitalProviderSpellNumber is not null and
+        not exists (
+            select 1
+            from cdm.device_exposure vo
+            where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+                and vo.person_id = p.person_id
+                and vo.device_concept_id = r.device_concept_id
+        )
+    )
+    or
+    (
+        r.HospitalProviderSpellNumber is null and r.RecordConnectionIdentifier is null and
+        not exists (
+            select 1
+            from cdm.device_exposure vo
+            where vo.person_id = p.person_id
+                and vo.device_concept_id = r.device_concept_id
+                and vo.device_exposure_start_date = r.device_exposure_start_date
+                and vo.device_exposure_end_date = r.device_exposure_end_date
+        )
+    );
+
+truncate table omop_staging.device_exposure_row;",
+                cancellationToken);
     }
 }

@@ -19,7 +19,7 @@ has_toc: false
 			op.NHSNumber,
 			op.CDSActivityDate
 	from omop_staging.sus_OP_ICDDiagnosis d
-		inner join [omop_staging].[sus_OP] op
+		inner join omop_staging.sus_OP op
 			on d.MessageId = op.MessageId
 	where op.NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
@@ -93,8 +93,8 @@ with results as (
 		distinct
 			(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer) as PatientId,
 			dc.DiagnosisCode,
-			dc.Start_date as event_start_date,
-			dc.End_date as event_end_date
+			dc.DateStamp as event_start_date,
+			dc.DateStamp as event_end_date
 	from omop_staging.RTDS_5_Diagnosis_Course dc
 	where dc.DiagnosisTableName = 'ICD-10'
 )

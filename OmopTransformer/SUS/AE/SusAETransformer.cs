@@ -66,13 +66,11 @@ internal class SusAETransformer : Transformer
         IDrugExposureRecorder drugExposureRecorder,
         IDeviceExposureRecorder deviceExposureRecorder,
         IObservationRecorder observationRecorder,
-        IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory) : base(recordTransformer,
         transformOptions,
         recordProvider,
         "SUSAE",
-        conceptMapper,
         runAnalysisRecorder,
         loggerFactory)
     {

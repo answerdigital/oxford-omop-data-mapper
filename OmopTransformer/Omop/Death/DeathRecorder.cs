@@ -1,7 +1,7 @@
-﻿using System.Data;
-using Microsoft.Data.SqlClient;
-using Dapper;
+﻿using Dapper;
+using DuckDB.NET.Data;
 using Microsoft.Extensions.Options;
+using System.Data;
 
 namespace OmopTransformer.Omop.Death;
 
@@ -18,45 +18,81 @@ internal class DeathRecorder : IDeathRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
+        await connection.ExecuteAsync("truncate table omop_staging.death_row;");
 
-
-        var batches = records.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using (IDbTransaction transaction = connection.BeginTransaction())
         {
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("nhs_number");
-            dataTable.Columns.Add("death_date", typeof(DateTime));
-            dataTable.Columns.Add("death_datetime", typeof(DateTime));
-            dataTable.Columns.Add("death_type_concept_id");
-            dataTable.Columns.Add("cause_concept_id");
-            dataTable.Columns.Add("cause_source_value");
-            dataTable.Columns.Add("cause_source_concept_id");
-
-            foreach (var record in batch)
+            try
             {
-                if (record.IsValid == false)
-                    continue;
+                using var appender = connection.CreateAppender("omop_staging", "death_row");
+                {
+                    foreach (var row in records)
+                    {
+                        if (row.IsValid == false)
+                            continue;
 
-                dataTable.Rows.Add(
-                    record.NhsNumber,
-                    record.death_date,
-                    record.death_datetime,
-                    record.death_type_concept_id,
-                    record.cause_concept_id,
-                    record.cause_source_value,
-                    record.cause_source_concept_id);
+                        var dbRow = appender.CreateRow();
+
+                        dbRow
+                            .AppendValue(row.NhsNumber)
+                            .AppendValue(row.death_date)
+                            .AppendValue(row.death_datetime)
+                            .AppendValue(row.death_type_concept_id)
+                            .AppendValue(row.cause_concept_id)
+                            .AppendValue(row.cause_source_value)
+                            .AppendValue(row.cause_source_concept_id)
+                            .AppendValue(dataSource)
+                            .EndRow();
+                    }
+                }
+                transaction.Commit();
             }
-
-            var parameter = new
+            catch
             {
-                Rows = dataTable.AsTableValuedParameter("cdm.death_row"),
-                DataSource = dataSource
-            };
+                transaction.Rollback();
 
-            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_death", parameter, commandType: CommandType.StoredProcedure);
+                throw;
+            }
         }
+
+        await connection
+            .ExecuteAsync(
+                @$"
+use vocab;
+
+insert into cdm.death (
+    person_id,
+    death_date,
+    death_datetime,
+    death_type_concept_id,
+    cause_concept_id,
+    cause_source_value,
+    cause_source_concept_id,
+    data_source
+)
+select
+    p.person_id,
+    r.death_date,
+    r.death_datetime,
+    r.death_type_concept_id,
+    r.cause_concept_id,
+    r.cause_source_value,
+    r.cause_source_concept_id,
+    r.data_source
+from omop_staging.death_row r
+    inner join cdm.person p
+        on r.nhs_number = p.person_source_value
+where 
+    not exists (
+        select 1
+        from cdm.death d
+        where d.person_id = p.person_id
+    );
+
+truncate table omop_staging.death_row;",
+                cancellationToken);
     }
 }

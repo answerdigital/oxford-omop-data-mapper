@@ -1,7 +1,7 @@
-﻿using System.Data;
-using Dapper;
-using Microsoft.Data.SqlClient;
+﻿using Dapper;
+using DuckDB.NET.Data;
 using Microsoft.Extensions.Options;
+using System.Data;
 
 namespace OmopTransformer.Omop.Provider;
 
@@ -18,56 +18,96 @@ internal class ProviderRecorder : IProviderRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
+        await connection.ExecuteAsync("truncate table omop_staging.provider_row;");
 
-
-        var batches = records.Batch(_configuration.BatchSize!.Value);
-
-        foreach (var batch in batches)
+        using (IDbTransaction transaction = connection.BeginTransaction())
         {
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("provider_name");
-            dataTable.Columns.Add("npi");
-            dataTable.Columns.Add("dea");
-            dataTable.Columns.Add("specialty_concept_id");
-            dataTable.Columns.Add("care_site_id");
-            dataTable.Columns.Add("year_of_birth");
-            dataTable.Columns.Add("gender_concept_id");
-            dataTable.Columns.Add("provider_source_value");
-            dataTable.Columns.Add("specialty_source_value");
-            dataTable.Columns.Add("specialty_source_concept_id");
-            dataTable.Columns.Add("gender_source_value");
-            dataTable.Columns.Add("gender_source_concept_id");
-
-            foreach (var record in batch)
+            try
             {
-                if (record.IsValid == false)
-                    continue;
+                using var appender = connection.CreateAppender("omop_staging", "provider_row");
+                {
+                    foreach (var row in records)
+                    {
+                        if (row.IsValid == false)
+                            continue;
 
-                dataTable.Rows.Add(
-                    record.provider_name,
-                    record.npi,
-                    record.dea,
-                    record.specialty_concept_id,
-                    record.care_site_id,
-                    record.year_of_birth,
-                    record.gender_concept_id,
-                    record.provider_source_value,
-                    record.specialty_source_value,
-                    record.specialty_source_concept_id,
-                    record.gender_source_value,
-                    record.gender_source_concept_id);
+                        var dbRow = appender.CreateRow();
+
+                        dbRow
+                            .AppendValue(row.provider_name)
+                            .AppendValue(row.npi)
+                            .AppendValue(row.dea)
+                            .AppendValue(row.specialty_concept_id)
+                            .AppendValue(row.care_site_id)
+                            .AppendValue(row.year_of_birth)
+                            .AppendValue(row.gender_concept_id)
+                            .AppendValue(row.provider_source_value)
+                            .AppendValue(row.specialty_source_value)
+                            .AppendValue(row.specialty_source_concept_id)
+                            .AppendValue(row.gender_source_value)
+                            .AppendValue(row.gender_source_concept_id)
+                            .AppendValue(dataSource)
+                            .EndRow();
+                    }
+                }
+                transaction.Commit();
             }
-
-            var parameter = new
+            catch
             {
-                rows = dataTable.AsTableValuedParameter("cdm.provider_row"),
-                DataSource = dataSource
-            };
+                transaction.Rollback();
 
-            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_provider", parameter, commandType: CommandType.StoredProcedure);
+                throw;
+            }
         }
+
+        await connection
+            .ExecuteAsync(
+                @"
+use vocab;
+
+insert into cdm.provider (
+    provider_name,
+    npi,
+    dea,
+    specialty_concept_id,
+    care_site_id,
+    year_of_birth,
+    gender_concept_id,
+    provider_source_value,
+    specialty_source_value,
+    specialty_source_concept_id,
+    gender_source_value,
+    gender_source_concept_id,
+    data_source
+)
+select
+    provider_name,
+    npi,
+    dea,
+    specialty_concept_id,
+    care_site_id,
+    year_of_birth,
+    gender_concept_id,
+    provider_source_value,
+    specialty_source_value,
+    specialty_source_concept_id,
+    gender_source_value,
+    gender_source_concept_id,
+    data_source
+from omop_staging.provider_row r
+where 
+    not exists (
+        select 1
+        from cdm.provider p
+        where p.provider_name = r.provider_name
+            and p.specialty_concept_id = r.specialty_concept_id
+            and p.specialty_source_value = r.specialty_source_value
+    );
+
+truncate table omop_staging.provider_row;",
+                cancellationToken);
     }
 }
