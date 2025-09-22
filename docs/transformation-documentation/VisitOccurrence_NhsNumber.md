@@ -124,19 +124,22 @@ order by
 * `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
+with results as (
+	select 
+		distinct
+			(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,
+			a.start_date as event_start_date,
+			a.end_date as event_end_date
+	from omop_staging.rtds_2b_plan a
+)
 select
-  distinct
-  b.patientid,
-  a.start_date as event_start_date,
-  a.end_date as event_end_date
-from
-  omop_staging.rtds_2b_plan a
-left join
-  omop_staging.rtds_1_demographics b
-  on a.id = b.id
+	PatientId,
+	event_start_date,
+	event_end_date
+from results
 where
-  b.patientid is not null
-  and b.patientid not like '%[^0-9]%'
+    PatientId is not null
+    and patientid not like '%[^0-9]%';
 
 	
 ```
