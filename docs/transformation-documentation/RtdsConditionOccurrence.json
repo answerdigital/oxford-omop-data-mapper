@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and patientid not like '%[^0-9]%';\n\t",
+      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and patientid not like '%[^0-9]%';\n\t",
+      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and patientid not like '%[^0-9]%';\n\t",
+      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,7 +78,7 @@
           ]
         }
       ],
-      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and patientid not like '%[^0-9]%';\n\t",
+      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -91,7 +91,7 @@
           "origins": []
         }
       ],
-      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and patientid not like '%[^0-9]%';\n\t",
+      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -104,7 +104,7 @@
           "origins": []
         }
       ],
-      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and patientid not like '%[^0-9]%';\n\t",
+      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -122,7 +122,7 @@
           ]
         }
       ],
-      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and patientid not like '%[^0-9]%';\n\t",
+      "query": "\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as PatientId,\n\t\t\tdc.DiagnosisCode,\n\t\t\tdc.DateStamp as event_start_date,\n\t\t\tdc.DateStamp as event_end_date\n\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\twhere dc.DiagnosisTableName = 'ICD-10'\n)\nselect\n\tPatientId,\n\tDiagnosisCode,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n    PatientId is not null\n    and regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {

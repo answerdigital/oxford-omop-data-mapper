@@ -13,7 +13,7 @@ left join
   on a.id = b.id
 where
   b.patientid is not null
-  and b.patientid not like '%[^0-9]%'
+  and regexp_matches(b.patientid, '\d{10}');
 
 	</Sql>
 	<Explanations>

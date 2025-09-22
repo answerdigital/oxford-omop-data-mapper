@@ -6,8 +6,8 @@ select
 	apc.HospitalProviderSpellNumber,
 	coalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date, 
 	b.BirthWeightBaby as BirthWeight
-from [omop_staging].[sus_APC] apc
-	inner join [omop_staging].[sus_Birth] as b
+from omop_staging.sus_APC apc
+	inner join omop_staging.sus_Birth as b
 		on apc.MessageId = b.MessageId
 where b.BirthWeightBaby is not null
   and apc.NHSNumber is not null

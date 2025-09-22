@@ -141,7 +141,7 @@ internal class OxfordGPRecordInserter : IOxfordGPRecordInserter
 
         var parameter = new
         {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_gp_appointment_row")
+            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_gp_appointment")
         };
 
         await connection
@@ -177,7 +177,7 @@ internal class OxfordGPRecordInserter : IOxfordGPRecordInserter
 
         var parameter = new
         {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_gp_demographic_row")
+            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_gp_demographic")
         };
 
         await connection
@@ -235,7 +235,7 @@ internal class OxfordGPRecordInserter : IOxfordGPRecordInserter
 
         var parameter = new
         {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_gp_event_row")
+            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_gp_event")
         };
 
         await connection
@@ -299,7 +299,7 @@ internal class OxfordGPRecordInserter : IOxfordGPRecordInserter
 
         var parameter = new
         {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_gp_medication_row")
+            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_gp_medication")
         };
 
         await connection

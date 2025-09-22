@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom [omop_staging].[sus_APC] apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
+      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom omop_staging.sus_APC apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom [omop_staging].[sus_APC] apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
+      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom omop_staging.sus_APC apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom [omop_staging].[sus_APC] apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
+      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom omop_staging.sus_APC apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,7 +78,7 @@
           ]
         }
       ],
-      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom [omop_staging].[sus_APC] apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
+      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom omop_staging.sus_APC apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -103,7 +103,7 @@
           ]
         }
       ],
-      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom [omop_staging].[sus_APC] apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
+      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom omop_staging.sus_APC apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -121,7 +121,7 @@
           ]
         }
       ],
-      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom [omop_staging].[sus_APC] apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
+      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom omop_staging.sus_APC apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -139,7 +139,7 @@
           ]
         }
       ],
-      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom [omop_staging].[sus_APC] apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
+      "query": "\nselect \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tmax(apc.CDSActivityDate) as observation_date,\n\tapc.PregnancyTotalPreviousPregnancies\nfrom omop_staging.sus_APC apc\nwhere apc.NHSNumber is not null\n\tand apc.PregnancyTotalPreviousPregnancies is not null\n\tand apc.CDSActivityDate is not null\n\tand apc.CdsType in ('140', '120')\ngroup by \n\tapc.NHSNumber, \n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.PregnancyTotalPreviousPregnancies;\n\t",
       "lookup_table_markdown": null
     }
   ]

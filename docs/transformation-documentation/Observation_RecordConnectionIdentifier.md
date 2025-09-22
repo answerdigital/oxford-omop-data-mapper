@@ -84,7 +84,7 @@ select
 	apc.HospitalProviderSpellNumber,
 	max(apc.CDSActivityDate) as observation_date,
 	apc.PregnancyTotalPreviousPregnancies
-from [omop_staging].[sus_APC] apc
+from omop_staging.sus_APC apc
 where apc.NHSNumber is not null
 	and apc.PregnancyTotalPreviousPregnancies is not null
 	and apc.CDSActivityDate is not null
@@ -111,7 +111,7 @@ select
 	StartDateHospitalProviderSpell,
 	StartTimeHospitalProviderSpell,
 	ReferrerCode   -- Referrer code is the code of the person making the referral request
-FROM [omop_staging].[sus_APC]
+FROM omop_staging.sus_APC
 where NHSNumber is not null
 	
 ```
@@ -150,7 +150,7 @@ select
 	apc.HospitalProviderSpellNumber,
 	coalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,
 	apc.NumberofBabies
-from [omop_staging].[sus_APC] apc													
+from omop_staging.sus_APC apc													
 where apc.NHSNumber is not null
 	and apc.NumberofBabies is not null
 	and apc.CDSType in ('120','140')
@@ -177,7 +177,7 @@ select
 	apc.HospitalProviderSpellNumber,
 	coalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date, 
 	apc.GestationLengthLabourOnset
-from [omop_staging].[sus_APC] as apc																			
+from omop_staging.sus_APC as apc																			
 where apc.NHSNumber is not null
   and apc.GestationLengthLabourOnset is not null
   and apc.CDSType in ('120', '140')
@@ -229,8 +229,8 @@ select
 	apc.HospitalProviderSpellNumber,
 	coalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date, 
 	b.BirthWeightBaby as BirthWeight
-from [omop_staging].[sus_APC] apc
-	inner join [omop_staging].[sus_Birth] as b
+from omop_staging.sus_APC apc
+	inner join omop_staging.sus_Birth as b
 		on apc.MessageId = b.MessageId
 where b.BirthWeightBaby is not null
   and apc.NHSNumber is not null

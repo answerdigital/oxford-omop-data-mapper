@@ -19,8 +19,8 @@ Converts text to number.
 				cc.CriticalCareStartDate as MeasurementDate,
 				coalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,
 				cc.GestationLengthAtDelivery as ValueAsNumber
-		from [omop_staging].[sus_CCMDS] cc 
-		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		from omop_staging.sus_CCMDS cc 
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 		where apc.NHSNumber is not null
 		and cc.GestationLengthAtDelivery is not null
 	
@@ -41,8 +41,8 @@ Converts text to number.
 				cc.CriticalCareStartDate as MeasurementDate,
 				coalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,
 				cc.PersonWeight as ValueAsNumber
-		from [omop_staging].[sus_CCMDS] cc 
-		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		from omop_staging.sus_CCMDS cc 
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 		where apc.NHSNumber is not null
 		and cc.PersonWeight is not null
 	

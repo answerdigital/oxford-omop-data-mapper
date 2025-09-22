@@ -120,7 +120,7 @@ internal class OxfordPrescribingRecordInserter : IOxfordPrescribingRecordInserte
 
         var parameter = new
         {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_prescribing_row")
+            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_prescribing")
         };
 
         await connection

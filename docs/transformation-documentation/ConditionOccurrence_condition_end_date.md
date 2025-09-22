@@ -122,7 +122,7 @@ Converts text to dates.
 with results as (
 	select 
 		distinct
-			(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer) as PatientId,
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as PatientId,
 			dc.DiagnosisCode,
 			dc.DateStamp as event_start_date,
 			dc.DateStamp as event_end_date
@@ -137,7 +137,7 @@ select
 from results
 where
     PatientId is not null
-    and patientid not like '%[^0-9]%';
+    and regexp_matches(patientid, '\d{10}');
 	
 ```
 

@@ -1,6 +1,7 @@
 ﻿using DuckDB.NET.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System.Data;
 using System.Diagnostics;
 
 namespace OmopTransformer.SUS.Staging.OP;
@@ -30,11 +31,23 @@ internal class SusOPInserter : ISusOPInserter
         var connection = new DuckDBConnection(_configuration.ConnectionString!);
         await connection.OpenAsync(cancellationToken);
 
-        foreach (var batch in batches)
+        using IDbTransaction transaction = connection.BeginTransaction();
+        try
         {
-            _logger.LogInformation("Batch {0}.", batchNumber++);
+            foreach (var batch in batches)
+            {
+                _logger.LogInformation("Batch {0}.", batchNumber++);
 
-            InsertBatch(batch, connection, cancellationToken);
+                InsertBatch(batch, connection, cancellationToken);
+            }
+
+            transaction.Commit();
+        }
+        catch
+        {
+            transaction.Rollback();
+
+            throw;
         }
     }
 
@@ -46,15 +59,9 @@ internal class SusOPInserter : ISusOPInserter
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        Stopwatch stopwatch = Stopwatch.StartNew();
-
         _logger.LogInformation("Inserting OPRow.");
         InsertOP(rowsList.Select(row => row.OPRow).ToList(), connection);
-
-        stopwatch.Stop();
-
-        Console.WriteLine(stopwatch.ElapsedMilliseconds);
-
+        
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("Inserting OPRow ReadProcedure.");
