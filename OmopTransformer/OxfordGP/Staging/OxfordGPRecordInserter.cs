@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using Dapper;
+using DuckDB.NET.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -29,283 +29,170 @@ internal class OxfordGPRecordInserter : IOxfordGPRecordInserter
     private async Task InsertBatch<T>(
         IEnumerable<T> rows, 
         string name, 
-        Func<IReadOnlyCollection<T>, RetryConnection, Task> record, 
+        Action<IReadOnlyCollection<T>, DuckDBConnection> record, 
         CancellationToken cancellationToken)
     {
         if (rows == null) throw new ArgumentNullException(nameof(rows));
 
         _logger.LogInformation(name);
 
-        var batches = rows.Batch(_configuration.BatchSize!.Value);
-        int batchNumber = 1;
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);;
+        using IDbTransaction transaction = connection.BeginTransaction();
 
-        foreach (var batch in batches)
+        try
         {
-            _logger.LogInformation("Batch {0}.", batchNumber++);
+            record(rows.ToList(), connection);
 
-            await record(batch.ToList(), connection);
+            transaction.Commit();
+        }
+        catch
+        {
+            transaction.Rollback();
 
-            cancellationToken.ThrowIfCancellationRequested();
+            throw;
         }
     }
 
-    private async Task InsertGPAppointments(IReadOnlyCollection<GPAppointment> rows, RetryConnection connection)
+    private static void InsertGPAppointments(IReadOnlyCollection<GPAppointment> rows, DuckDBConnection connection)
     {
-        var dataTable = new DataTable();
-
-        dataTable.Columns.Add("GPAppointmentsPrimaryKey");
-        dataTable.Columns.Add("PatientIdentifier ");
-        dataTable.Columns.Add("AppointmentDate");
-        dataTable.Columns.Add("AppointmentStatus");
-        dataTable.Columns.Add("AppointmentBookedDate");
-        dataTable.Columns.Add("ClinicianCode");
-        dataTable.Columns.Add("AppointmentCancelledDate");
-        dataTable.Columns.Add("OrganisationName");
-        dataTable.Columns.Add("SourceName");
-        dataTable.Columns.Add("StatusDescription");
-        dataTable.Columns.Add("DNAFlag");
-        dataTable.Columns.Add("OrganisationNationalCode");
-        dataTable.Columns.Add("ClinicianType");
-        dataTable.Columns.Add("OrganisationIdentifier");
-        dataTable.Columns.Add("Location");
-        dataTable.Columns.Add("LocationType");
-        dataTable.Columns.Add("Specialty");
-        dataTable.Columns.Add("ClinicName");
-        dataTable.Columns.Add("BookingSource");
-        dataTable.Columns.Add("BookingMethod");
-        dataTable.Columns.Add("PatientArrivedDateTime");
-        dataTable.Columns.Add("PatientSeenDateTime");
-        dataTable.Columns.Add("DeliveryMethodText");
-        dataTable.Columns.Add("PlannedMinutesDuration");
-        dataTable.Columns.Add("ActualMinutesDuration");
-        dataTable.Columns.Add("NationalSlotDesc");
-        dataTable.Columns.Add("NationalSlotName");
-        dataTable.Columns.Add("NationalContext");
-        dataTable.Columns.Add("NationalService");
-        dataTable.Columns.Add("UrgentFlag");
-        dataTable.Columns.Add("FollowUp");
-        dataTable.Columns.Add("ExternalPatient");
-        dataTable.Columns.Add("ExternalPatientOrganisationIdentifierSystem");
-        dataTable.Columns.Add("ExternalPatientOrganisationIdentifierValue");
-        dataTable.Columns.Add("ExternalPatientOrganisationDisplay");
-        dataTable.Columns.Add("CancellationReasonText");
-        dataTable.Columns.Add("SessionIdentifierValue");
-        dataTable.Columns.Add("ClinicianIdentifierValue");
-        dataTable.Columns.Add("SlotEndDateTime");
-
-        foreach (var row in rows)
+        using var appender = connection.CreateAppender("omop_staging", "oxford_gp_appointment");
         {
-            dataTable.Rows.Add(
-                row.GPAppointmentsPrimaryKey,
-                row.PatientIdentifier,
-                row.AppointmentDate,
-                row.AppointmentStatus,
-                row.AppointmentBookedDate,
-                row.ClinicianCode,
-                row.AppointmentCancelledDate,
-                row.OrganisationName,
-                row.SourceName,
-                row.StatusDescription,
-                row.DNAFlag,
-                row.OrganisationNationalCode,
-                row.ClinicianType,
-                row.OrganisationIdentifier,
-                row.Location,
-                row.LocationType,
-                row.Specialty,
-                row.ClinicName,
-                row.BookingSource,
-                row.BookingMethod,
-                row.PatientArrivedDateTime,
-                row.PatientSeenDateTime,
-                row.DeliveryMethodText,
-                row.PlannedMinutesDuration,
-                row.ActualMinutesDuration,
-                row.NationalSlotDesc,
-                row.NationalSlotName,
-                row.NationalContext,
-                row.NationalService,
-                row.UrgentFlag,
-                row.FollowUp,
-                row.ExternalPatient,
-                row.ExternalPatientOrganisationIdentifierSystem,
-                row.ExternalPatientOrganisationIdentifierValue,
-                row.ExternalPatientOrganisationDisplay,
-                row.CancellationReasonText,
-                row.SessionIdentifierValue,
-                row.ClinicianIdentifierValue,
-                row.SlotEndDateTime);
+            foreach (var row in rows)
+            {
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(row.GPAppointmentsPrimaryKey)
+                    .AppendValue(row.PatientIdentifier)
+                    .AppendValue(row.AppointmentDate)
+                    .AppendValue(row.AppointmentStatus)
+                    .AppendValue(row.AppointmentBookedDate)
+                    .AppendValue(row.ClinicianCode)
+                    .AppendValue(row.AppointmentCancelledDate)
+                    .AppendValue(row.OrganisationName)
+                    .AppendValue(row.SourceName)
+                    .AppendValue(row.StatusDescription)
+                    .AppendValue(row.DNAFlag)
+                    .AppendValue(row.OrganisationNationalCode)
+                    .AppendValue(row.ClinicianType)
+                    .AppendValue(row.OrganisationIdentifier)
+                    .AppendValue(row.Location)
+                    .AppendValue(row.LocationType)
+                    .AppendValue(row.Specialty)
+                    .AppendValue(row.ClinicName)
+                    .AppendValue(row.BookingSource)
+                    .AppendValue(row.BookingMethod)
+                    .AppendValue(row.PatientArrivedDateTime)
+                    .AppendValue(row.PatientSeenDateTime)
+                    .AppendValue(row.DeliveryMethodText)
+                    .AppendValue(row.PlannedMinutesDuration)
+                    .AppendValue(row.ActualMinutesDuration)
+                    .AppendValue(row.NationalSlotDesc)
+                    .AppendValue(row.NationalSlotName)
+                    .AppendValue(row.NationalContext)
+                    .AppendValue(row.NationalService)
+                    .AppendValue(row.UrgentFlag)
+                    .AppendValue(row.FollowUp)
+                    .AppendValue(row.ExternalPatient)
+                    .AppendValue(row.ExternalPatientOrganisationIdentifierSystem)
+                    .AppendValue(row.ExternalPatientOrganisationIdentifierValue)
+                    .AppendValue(row.ExternalPatientOrganisationDisplay)
+                    .AppendValue(row.CancellationReasonText)
+                    .AppendValue(row.SessionIdentifierValue)
+                    .AppendValue(row.ClinicianIdentifierValue)
+                    .AppendValue(row.SlotEndDateTime)
+                    .EndRow();
+            }
         }
-
-        var parameter = new
-        {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_gp_appointment")
-        };
-
-        await connection
-            .ExecuteLongTimeoutAsync(
-                "omop_staging.insert_oxford_gp_appointment_row",
-                parameter,
-                commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertGPDemographics(IReadOnlyCollection<GPDemographic> rows, RetryConnection connection)
+    private static void InsertGPDemographics(IReadOnlyCollection<GPDemographic> rows, DuckDBConnection connection)
     {
-        var dataTable = new DataTable();
-
-        dataTable.Columns.Add("PatientIdentifier");
-        dataTable.Columns.Add("NHSNumber");
-        dataTable.Columns.Add("Forename");
-        dataTable.Columns.Add("Surname");
-        dataTable.Columns.Add("DOB");
-        dataTable.Columns.Add("Postcode");
-        dataTable.Columns.Add("DateofDeath");
-
-        foreach (var row in rows)
+        using var appender = connection.CreateAppender("omop_staging", "oxford_gp_demographic");
         {
-            dataTable.Rows.Add(
-                row.PatientIdentifier,
-                row.NHSNumber,
-                row.Forename,
-                row.Surname,
-                row.DOB,
-                row.Postcode,
-                row.DateofDeath);
+            foreach (var row in rows)
+            {
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(row.PatientIdentifier)
+                    .AppendValue(row.NHSNumber)
+                    .AppendValue(row.Forename)
+                    .AppendValue(row.Surname)
+                    .AppendValue(row.DOB)
+                    .AppendValue(row.Postcode)
+                    .AppendValue(row.DateofDeath)
+                    .EndRow();
+            }
         }
-
-        var parameter = new
-        {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_gp_demographic")
-        };
-
-        await connection
-            .ExecuteLongTimeoutAsync(
-                "omop_staging.insert_oxford_gp_demographic_row",
-                parameter,
-                commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertGPEvents(IReadOnlyCollection<GPEvent> rows, RetryConnection connection)
+    private static void InsertGPEvents(IReadOnlyCollection<GPEvent> rows, DuckDBConnection connection)
     {
-        var dataTable = new DataTable();
-
-        dataTable.Columns.Add("GPEventsPrimaryKey");
-        dataTable.Columns.Add("PatientIdentifier");
-        dataTable.Columns.Add("GeneralPractitionerCode");
-        dataTable.Columns.Add("RegisteredGP");
-        dataTable.Columns.Add("GPPracticeCode");
-        dataTable.Columns.Add("EventDate");
-        dataTable.Columns.Add("SuppliedCode");
-        dataTable.Columns.Add("CodeSet");
-        dataTable.Columns.Add("EventDescription");
-        dataTable.Columns.Add("Episodicity");
-        dataTable.Columns.Add("Units");
-        dataTable.Columns.Add("Value");
-        dataTable.Columns.Add("SensitivityDormant");
-        dataTable.Columns.Add("EventNo");
-        dataTable.Columns.Add("AlternateReadEMISCode");
-        dataTable.Columns.Add("JournalUpdateFlag");
-        dataTable.Columns.Add("UpdateKey");
-        dataTable.Columns.Add("UniqueKey");
-
-        foreach (var row in rows)
+        using var appender = connection.CreateAppender("omop_staging", "oxford_gp_event");
         {
-            dataTable.Rows.Add(
-                row.GPEventsPrimaryKey,
-                row.PatientIdentifier,
-                row.GeneralPractitionerCode,
-                row.RegisteredGP,
-                row.GPPracticeCode,
-                row.EventDate,
-                row.SuppliedCode,
-                row.CodeSet,
-                row.EventDescription,
-                row.Episodicity,
-                row.Units,
-                row.Value,
-                row.SensitivityDormant,
-                row.EventNo,
-                row.AlternateReadEMISCode,
-                row.JournalUpdateFlag,
-                row.UpdateKey,
-                row.UniqueKey);
+            foreach (var row in rows)
+            {
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(row.GPEventsPrimaryKey)
+                    .AppendValue(row.PatientIdentifier)
+                    .AppendValue(row.GeneralPractitionerCode)
+                    .AppendValue(row.RegisteredGP)
+                    .AppendValue(row.GPPracticeCode)
+                    .AppendValue(row.EventDate)
+                    .AppendValue(row.SuppliedCode)
+                    .AppendValue(row.CodeSet)
+                    .AppendValue(row.EventDescription)
+                    .AppendValue(row.Episodicity)
+                    .AppendValue(row.Units)
+                    .AppendValue(row.Value)
+                    .AppendValue(row.SensitivityDormant)
+                    .AppendValue(row.EventNo)
+                    .AppendValue(row.AlternateReadEMISCode)
+                    .AppendValue(row.JournalUpdateFlag)
+                    .AppendValue(row.UpdateKey)
+                    .AppendValue(row.UniqueKey)
+                    .EndRow();
+            }
         }
-
-        var parameter = new
-        {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_gp_event")
-        };
-
-        await connection
-            .ExecuteLongTimeoutAsync(
-                "omop_staging.insert_oxford_gp_event_row",
-                parameter,
-                commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertGPMedications(IReadOnlyCollection<GPMedication> rows, RetryConnection connection)
+    private static void InsertGPMedications(IReadOnlyCollection<GPMedication> rows, DuckDBConnection connection)
     {
-        var dataTable = new DataTable();
-
-        dataTable.Columns.Add("GPMedicationsPrimaryKey");
-        dataTable.Columns.Add("PatientIdentifier");
-        dataTable.Columns.Add("GeneralPracticeCode");
-        dataTable.Columns.Add("RegisteredGP");
-        dataTable.Columns.Add("GPPracticeCode");
-        dataTable.Columns.Add("SuppliedCode");
-        dataTable.Columns.Add("CodeSet");
-        dataTable.Columns.Add("MedicationDescription");
-        dataTable.Columns.Add("Quantity");
-        dataTable.Columns.Add("Dosage");
-        dataTable.Columns.Add("LastIssueDate");
-        dataTable.Columns.Add("MixtureID");
-        dataTable.Columns.Add("Constituent");
-        dataTable.Columns.Add("Units");
-        dataTable.Columns.Add("RepeatMedicationFlag");
-        dataTable.Columns.Add("MedicationNo");
-        dataTable.Columns.Add("MaxIssues");
-        dataTable.Columns.Add("UpdateKey");
-        dataTable.Columns.Add("UniqueKey");
-        dataTable.Columns.Add("AuthorisingUserDisplay");
-        dataTable.Columns.Add("CourseLengthPerIssue");
-
-        foreach (var row in rows)
+        using var appender = connection.CreateAppender("omop_staging", "oxford_gp_medication");
         {
-            dataTable.Rows.Add(
-                row.GPMedicationsPrimaryKey,
-                row.PatientIdentifier,
-                row.GeneralPracticeCode,
-                row.RegisteredGP,
-                row.GPPracticeCode,
-                row.SuppliedCode,
-                row.CodeSet,
-                row.MedicationDescription,
-                row.Quantity,
-                row.Dosage,
-                row.LastIssueDate,
-                row.MixtureID,
-                row.Constituent,
-                row.Units,
-                row.RepeatMedicationFlag,
-                row.MedicationNo,
-                row.MaxIssues,
-                row.UpdateKey,
-                row.UniqueKey,
-                row.AuthorisingUserDisplay,
-                row.CourseLengthPerIssue);
+            foreach (var row in rows)
+            {
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(row.GPMedicationsPrimaryKey)
+                    .AppendValue(row.PatientIdentifier)
+                    .AppendValue(row.GeneralPracticeCode)
+                    .AppendValue(row.RegisteredGP)
+                    .AppendValue(row.GPPracticeCode)
+                    .AppendValue(row.SuppliedCode)
+                    .AppendValue(row.CodeSet)
+                    .AppendValue(row.MedicationDescription)
+                    .AppendValue(row.Quantity)
+                    .AppendValue(row.Dosage)
+                    .AppendValue(row.LastIssueDate)
+                    .AppendValue(row.MixtureID)
+                    .AppendValue(row.Constituent)
+                    .AppendValue(row.Units)
+                    .AppendValue(row.RepeatMedicationFlag)
+                    .AppendValue(row.MedicationNo)
+                    .AppendValue(row.MaxIssues)
+                    .AppendValue(row.UpdateKey)
+                    .AppendValue(row.UniqueKey)
+                    .AppendValue(row.AuthorisingUserDisplay)
+                    .AppendValue(row.CourseLengthPerIssue)
+                    .EndRow();
+            }
         }
-
-        var parameter = new
-        {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.oxford_gp_medication")
-        };
-
-        await connection
-            .ExecuteLongTimeoutAsync(
-                "omop_staging.insert_oxford_gp_medication_row",
-                parameter,
-                commandType: CommandType.StoredProcedure);
     }
 }
