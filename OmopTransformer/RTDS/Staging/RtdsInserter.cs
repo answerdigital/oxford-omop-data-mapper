@@ -148,7 +148,7 @@ internal class RtdsInserter : IRtdsInserter
     
     private void InsertRTDS_3_Prescription(IReadOnlyCollection<Rtds3Prescription> rows, string sourceFileName, DuckDBConnection connection, CancellationToken cancellationToken)
     {
-        using var appender = connection.CreateAppender("omop_staging", "RTDS_4_Exposures");
+        using var appender = connection.CreateAppender("omop_staging", "RTDS_3_Prescription");
         {
             foreach (var row in rows)
             {
@@ -176,7 +176,7 @@ internal class RtdsInserter : IRtdsInserter
 
     private void InsertRTDS_4_Exposures(IReadOnlyCollection<Rtds4Exposures> rows, string sourceFileName, DuckDBConnection connection, CancellationToken cancellationToken)
     {
-        using var appender = connection.CreateAppender("omop_staging", "RTDS_3_Prescription");
+        using var appender = connection.CreateAppender("omop_staging", "RTDS_4_Exposures");
         {
             foreach (var row in rows)
             {
