@@ -79,7 +79,7 @@ internal class MeasurementRecorder : IMeasurementRecorder
         await connection
             .ExecuteAsync(
                 @"
-use vocab;
+
 
 insert into cdm.measurement (
     person_id,

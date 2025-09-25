@@ -10,6 +10,7 @@ using OmopTransformer.Omop.Location;
 using OmopTransformer.SACT;
 using OmopTransformer.SACT.Staging;
 using OmopTransformer.COSD.Staging;
+using OmopTransformer.Init;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.RTDS;
@@ -60,7 +61,7 @@ internal class Program
     {
         var builder = Host.CreateApplicationBuilder(args);
 
-        var result = Parser.Default.ParseArguments<StagingOptions, DocumentationOptions, TransformOptions, FinaliseOptions>(args);
+        var result = Parser.Default.ParseArguments<StagingOptions, DocumentationOptions, TransformOptions, FinaliseOptions, InitOptions>(args);
 
         if (result.Value == null)
         {
@@ -69,6 +70,13 @@ internal class Program
 
         var queryLocator = await QueryLocator.Create();
         builder.Services.AddSingleton<IQueryLocator, QueryLocator>(_ => queryLocator);
+
+
+        if (result.Value is InitOptions)
+        {
+            builder.Services.AddTransient<IInitiation, Initiation>();
+            builder.Services.AddHostedService<InitHostedService>();
+        }
 
         if (result.Value is DocumentationOptions generateDocumentation)
         {
@@ -447,4 +455,9 @@ public class DocumentationOptions
 {
     [Value(0, MetaName = "filename", Required = true, HelpText = "Target path for the generated documentation.")]
     public string? DirectoryPath { get; set; }
+}
+
+[Verb("init", HelpText = "Create database and import vocabulary.")]
+public class InitOptions
+{
 }

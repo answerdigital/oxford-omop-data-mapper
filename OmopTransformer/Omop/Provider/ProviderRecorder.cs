@@ -66,7 +66,7 @@ internal class ProviderRecorder : IProviderRecorder
         await connection
             .ExecuteAsync(
                 @"
-use vocab;
+
 
 insert into cdm.provider (
     provider_name,

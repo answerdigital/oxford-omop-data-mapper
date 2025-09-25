@@ -74,7 +74,7 @@ internal class ConditionOccurrenceRecorder : IConditionOccurrenceRecorder
         await connection
             .ExecuteAsync(
                 @"
-use vocab;
+
 
 insert into cdm.condition_occurrence (
     person_id,

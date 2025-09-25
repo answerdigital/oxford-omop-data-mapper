@@ -77,7 +77,7 @@ internal class ObservationRecorder : IObservationRecorder
         await connection
             .ExecuteAsync(
                 @"
-use vocab;
+
 
 insert into cdm.observation (
     person_id,

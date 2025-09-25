@@ -71,7 +71,7 @@ internal class VisitOccurrenceRecorder : IVisitOccurrenceRecorder
         await connection
             .ExecuteAsync(
                 @"
-use vocab;
+
 
 --update cdm.visit_occurrence
 --set 

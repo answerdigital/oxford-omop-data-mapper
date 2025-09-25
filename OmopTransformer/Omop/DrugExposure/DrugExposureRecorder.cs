@@ -80,7 +80,7 @@ internal class DrugExposureRecorder : IDrugExposureRecorder
         await connection
             .ExecuteAsync(
                 @"
-use vocab;
+
 
 insert into cdm.drug_exposure (
     person_id,

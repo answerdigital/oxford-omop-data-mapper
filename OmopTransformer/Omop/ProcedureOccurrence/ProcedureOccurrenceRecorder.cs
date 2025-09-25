@@ -76,7 +76,7 @@ internal class ProcedureOccurrenceRecorder : IProcedureOccurrenceRecorder
         await connection
                 .ExecuteAsync(
                     @"
-use vocab;
+
 
 insert into cdm.procedure_occurrence (
     person_id,

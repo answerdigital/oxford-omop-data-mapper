@@ -66,7 +66,7 @@ internal class LocationRecorder : ILocationRecorder
         await connection
             .ExecuteAsync(
                 @"
-use vocab;
+
 
 with locationwithrow as (
     select

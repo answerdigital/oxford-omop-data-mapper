@@ -61,7 +61,7 @@ internal class DeathRecorder : IDeathRecorder
         await connection
             .ExecuteAsync(
                 @$"
-use vocab;
+
 
 insert into cdm.death (
     person_id,

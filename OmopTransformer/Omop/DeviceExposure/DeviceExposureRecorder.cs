@@ -78,7 +78,7 @@ internal class DeviceExposureRecorder : IDeviceExposureRecorder
         await connection
             .ExecuteAsync(
                 @"
-use vocab;
+
 
 insert into cdm.device_exposure (
     person_id,

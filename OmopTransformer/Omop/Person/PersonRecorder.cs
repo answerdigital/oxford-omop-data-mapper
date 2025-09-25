@@ -70,7 +70,7 @@ internal class PersonRecorder : IPersonRecorder
         await connection
             .ExecuteAsync(
                 @$"
-use vocab;
+
 
 insert into cdm.person
 (

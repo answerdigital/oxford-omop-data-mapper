@@ -71,7 +71,7 @@ internal class VisitDetailRecorder : IVisitDetailRecorder
         await connection
             .ExecuteAsync(
                 @"
-use vocab;
+
 
 insert into cdm.visit_detail
 (

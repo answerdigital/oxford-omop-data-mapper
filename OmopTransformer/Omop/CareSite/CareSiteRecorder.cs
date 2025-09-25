@@ -60,7 +60,7 @@ internal class CareSiteRecorder : ICareSiteRecorder
         await connection
             .ExecuteAsync(
                 @"
-use vocab;
+
 
 insert into cdm.care_site (
     care_site_name,
