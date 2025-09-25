@@ -72,7 +72,7 @@ Converts concepts to standard concepts.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20AE%20Diabetic%20Patient%20mapping){: .btn }
 ### CosdV9TobaccoSmokingStatus
-* Constant value set to `4275495`. Tobacco smoking behavior - finding
+* Constant value set to `43054909`. Tobacco smoking status
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9TobaccoSmokingStatus%20mapping){: .btn }
 ### CosdV9TobaccoSmokingCessation
@@ -132,7 +132,7 @@ Converts concepts to standard concepts.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway%20mapping){: .btn }
 ### CosdV8SmokingStatusCode
-* Constant value set to `4275495`. Tobacco smoking behavior - finding
+* Constant value set to `43054909`. Tobacco smoking status
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8SmokingStatusCode%20mapping){: .btn }
 ### CosdV8PersonStatedSexualOrientationCodeAtDiagnosis
