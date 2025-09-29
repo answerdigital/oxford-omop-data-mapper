@@ -21,7 +21,7 @@ internal class SusCCMDSHighCostDrugs : OmopObservation<SusCCMDSHighCostDrugsReco
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.ObservationDate), nameof(Source.ObservationDateTime))]
     public override DateTime? observation_datetime { get; set; }
 
-    [ConstantValue(38000280, "Observation recorded from EHR")]
+    [ConstantValue(32818, "EHR administration record")]
     public override int? observation_type_concept_id { get; set; }
 
     [CopyValue(nameof(Source.ObservationSourceValue))]

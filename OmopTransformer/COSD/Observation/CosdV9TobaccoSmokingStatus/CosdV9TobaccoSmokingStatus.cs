@@ -10,7 +10,7 @@ internal class CosdV9TobaccoSmokingStatus : OmopObservation<CosdV9TobaccoSmoking
     [CopyValue(nameof(Source.NhsNumber))]
     public override string? nhs_number { get; set; }
 
-    [ConstantValue(4275495, "Tobacco smoking behavior - finding")]
+    [ConstantValue(43054909, "Tobacco smoking status")]
     public override int[]? observation_concept_id { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.Date))]

@@ -127,6 +127,35 @@ Combines a date with a time of day.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_start_datetime%20field%20SUS%20AE%20VisitOccurrenceWithSpell%20mapping){: .btn }
+### Rtds VisitOccurrence
+Source column  `event_start_date`.
+Converts text to dates.
+
+* `event_start_date` Appointment Start Time [TREATMENT START DATE (RADIOTHERAPY TREATMENT EPISODE)]()
+
+```sql
+with results as (
+	select 
+		distinct
+			(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,
+			a.start_date as event_start_date,
+			a.end_date as event_end_date
+	from omop_staging.rtds_2b_plan a
+)
+select
+	PatientId,
+	event_start_date,
+	event_end_date
+from results
+where
+    PatientId is not null
+    and patientid not like '%[^0-9]%';
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_start_datetime%20field%20Rtds%20VisitOccurrence%20mapping){: .btn }
 ### Oxford Visit Occurrence
 Source column  `EventDate`.
 Converts text to dates.

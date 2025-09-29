@@ -75,7 +75,7 @@
     },
     {
       "name": "observation_type_concept_id",
-      "operation_description": "Constant value set to `38000280`. Observation recorded from EHR",
+      "operation_description": "Constant value set to `32818`. EHR administration record",
       "dataSource": null,
       "query": null,
       "lookup_table_markdown": null

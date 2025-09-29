@@ -22,7 +22,7 @@
     },
     {
       "name": "observation_concept_id",
-      "operation_description": "Constant value set to `4275495`. Tobacco smoking behavior - finding",
+      "operation_description": "Constant value set to `43054909`. Tobacco smoking status",
       "dataSource": null,
       "query": null,
       "lookup_table_markdown": null
