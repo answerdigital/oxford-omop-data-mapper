@@ -1,0 +1,100 @@
+{
+  "omopTable": "VisitOccurrence",
+  "origin": "RTDS",
+  "omopColumns": [
+    {
+      "name": "NhsNumber",
+      "operation_description": "Value copied from `PatientId`",
+      "dataSource": [
+        {
+          "name": "PatientId",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\n\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,\n\t\t\ta.start_date as event_start_date,\n\t\t\ta.end_date as event_end_date\n\tfrom omop_staging.rtds_2b_plan a\n)\nselect\n\tPatientId,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n  PatientId is not null\n  and regexp_matches(PatientId, '\\d{10}');\n\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_start_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "event_start_date",
+          "description": "Appointment Start Time",
+          "origins": [
+            {
+              "origin": "TREATMENT START DATE (RADIOTHERAPY TREATMENT EPISODE)",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\n\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,\n\t\t\ta.start_date as event_start_date,\n\t\t\ta.end_date as event_end_date\n\tfrom omop_staging.rtds_2b_plan a\n)\nselect\n\tPatientId,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n  PatientId is not null\n  and regexp_matches(PatientId, '\\d{10}');\n\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_start_datetime",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "event_start_date",
+          "description": "Appointment Start Time",
+          "origins": [
+            {
+              "origin": "TREATMENT START DATE (RADIOTHERAPY TREATMENT EPISODE)",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\n\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,\n\t\t\ta.start_date as event_start_date,\n\t\t\ta.end_date as event_end_date\n\tfrom omop_staging.rtds_2b_plan a\n)\nselect\n\tPatientId,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n  PatientId is not null\n  and regexp_matches(PatientId, '\\d{10}');\n\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_end_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "event_end_date",
+          "description": "Appointment End Time",
+          "origins": []
+        }
+      ],
+      "query": "\n\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,\n\t\t\ta.start_date as event_start_date,\n\t\t\ta.end_date as event_end_date\n\tfrom omop_staging.rtds_2b_plan a\n)\nselect\n\tPatientId,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n  PatientId is not null\n  and regexp_matches(PatientId, '\\d{10}');\n\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_end_datetime",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "event_end_date",
+          "description": "Appointment End Time",
+          "origins": []
+        }
+      ],
+      "query": "\n\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,\n\t\t\ta.start_date as event_start_date,\n\t\t\ta.end_date as event_end_date\n\tfrom omop_staging.rtds_2b_plan a\n)\nselect\n\tPatientId,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n  PatientId is not null\n  and regexp_matches(PatientId, '\\d{10}');\n\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_concept_id",
+      "operation_description": "Constant value set to `9201`. `Inpatient Visit`",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "visit_type_concept_id",
+      "operation_description": "Constant value set to `32818`. `EHR administration record`",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    }
+  ]
+}

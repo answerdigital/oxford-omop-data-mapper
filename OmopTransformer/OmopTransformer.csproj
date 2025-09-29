@@ -10,12 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="RTDS\VisitOccurrence\**" />
-    <EmbeddedResource Remove="RTDS\VisitOccurrence\**" />
-    <None Remove="RTDS\VisitOccurrence\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="OxfordGP\VisitDetail\OxfordGPVisitDetail.cs" />
   </ItemGroup>
 
@@ -277,6 +271,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="RTDS\ConditionOccurrence\RtdsConditionOccurrence.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RTDS\VisitOccurrence\RtdsVisitOccurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SACT\Person\SactPerson.xml">
