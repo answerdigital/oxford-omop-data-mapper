@@ -1805,7 +1805,7 @@ CREATE table omop_staging.observation_row (
 	value_source_value varchar(50) NULL,
 	observation_event_id integer NULL,
 	obs_event_field_concept_id integer NULL,
-	data_source varchar(100) NULL
+	data_source varchar(100) NOT NULL
 );
 
 CREATE table omop_staging.person_row (
