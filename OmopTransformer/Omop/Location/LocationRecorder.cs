@@ -46,8 +46,8 @@ internal class LocationRecorder : ILocationRecorder
                             .AppendValue(row.location_source_value)
                             .AppendValue(row.country_concept_id)
                             .AppendValue(row.country_source_value)
-                            .AppendValue(row.latitude)
-                            .AppendValue(row.longitude)
+                            .AppendValue((float?)row.latitude)
+                            .AppendValue((float?)row.longitude)
                             .AppendValue(row.nhs_number)
                             .AppendValue(dataSource)
                             .EndRow();

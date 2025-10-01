@@ -46,7 +46,7 @@ internal class ObservationRecorder : IObservationRecorder
                                 .AppendValue(row.observation_date)
                                 .AppendValue(row.observation_datetime)
                                 .AppendValue(row.observation_type_concept_id)
-                                .AppendValue(row.value_as_number)
+                                .AppendValue((float?)row.value_as_number)
                                 .AppendValue(row.value_as_string)
                                 .AppendValue(row.value_as_concept_id)
                                 .AppendValue(row.qualifier_concept_id)
