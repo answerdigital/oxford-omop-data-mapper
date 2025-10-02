@@ -99,3 +99,17 @@ order by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20CareSite%20table%20care_site_name%20field%20SUS%20Inpatient%20Care%20Site%20mapping){: .btn }
+### SACT Inpatient Care Site
+* Value copied from `Organisation_Identifier_Code_Of_Provider`
+
+* `Organisation_Identifier_Code_Of_Provider` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [ORGANISATION IDENTIFIER (CODE OF PROVIDER)](https://www.datadictionary.nhs.uk/data_elements/organisation_identifier__code_of_provider_.html)
+
+```sql
+		select distinct 
+			Organisation_Identifier_Code_Of_Provider
+		from omop_staging.sact_staging
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20CareSite%20table%20care_site_name%20field%20SACT%20Inpatient%20Care%20Site%20mapping){: .btn }

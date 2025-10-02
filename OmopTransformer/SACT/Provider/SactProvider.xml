@@ -1,0 +1,18 @@
+<Query>
+    <Sql>
+	select distinct 
+		Consultant_GMC_Code, 
+		Consultant_Specialty_Code
+	from omop_staging.sact_staging
+	</Sql>
+	<Explanations>
+		<Explanation columnName="Consultant_GMC_Code">
+			<Description>A unique code identifying a care professional</Description>
+			<Origin>CONSULTANT GMC CODE</Origin>
+		</Explanation>
+		<Explanation columnName="Consultant_Specialty_Code">
+			<Description>A unique code identifying each MAIN SPECIALTY designated by Royal Colleges.</Description>
+			<Origin>CONSULTANT SPECIALTY CODE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

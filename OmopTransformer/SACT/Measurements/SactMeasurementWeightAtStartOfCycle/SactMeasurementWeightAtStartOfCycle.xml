@@ -1,0 +1,23 @@
+﻿<Query>
+    <Sql>
+		select distinct 
+			NHS_Number,
+			Weight_At_Start_Of_Cycle,
+			Start_Date_Of_Cycle
+		from omop_staging.sact_staging
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NHS_Number">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+		<Explanation columnName="Weight_At_Start_Of_Cycle">
+			<Description>Weight when the cycle started</Description>
+			<Origin>WEIGHT AT START OF CYCLE</Origin>
+		</Explanation>
+		<Explanation columnName="Start_Date_Of_Cycle">
+			<Description>Date the Cycle started</Description>
+			<Origin>START DATE OF CYCLE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

@@ -288,6 +288,21 @@
     <None Update="SACT\ConditionOccurrence\SactConditionOccurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SACT\Measurements\SactMeasurementHeight\SactMeasurementHeight.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SACT\Measurements\SactMeasurementWeightAtStartOfCycle\SactMeasurementWeightAtStartOfCycle.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SACT\Measurements\SactMeasurementWeightAtStartOfRegimen\SactMeasurementWeightAtStartOfRegimen.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SACT\Provider\SactProvider.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SACT\CareSite\SactCareSite.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SUS\AE\DeviceExposure\InvestigationDevice\SusAEInvestigationDevice.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

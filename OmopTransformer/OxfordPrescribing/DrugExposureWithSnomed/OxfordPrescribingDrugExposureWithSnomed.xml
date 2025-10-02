@@ -43,5 +43,8 @@ where concept_identifier is not null
 		<Explanation columnName="strengthdose">
 			<Description>The unit of the drug dose</Description>
 		</Explanation>
+		<Explanation columnName="EVENT_ID">
+			<Description>The unique ID of the Event</Description>
+		</Explanation>
 	</Explanations>
 </Query>

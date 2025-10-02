@@ -89,7 +89,13 @@
     {
       "name": "RecordConnectionIdentifier",
       "operation_description": "Value copied from `GPEventsPrimaryKey`",
-      "dataSource": [],
+      "dataSource": [
+        {
+          "name": "GPEventsPrimaryKey",
+          "description": "GP Events Unique ID",
+          "origins": []
+        }
+      ],
       "query": "\nselect\n\tGPEventsPrimaryKey,\n\td.NHSNumber,\n\te.EventDate\nfrom omop_staging.oxford_gp_event e\n\tinner join omop_staging.oxford_gp_demographic d\n\t\ton e.PatientIdentifier = d.PatientIdentifier\norder by\n\td.NHSNumber,\n\te.EventDate\n    ",
       "lookup_table_markdown": null
     }

@@ -1,0 +1,13 @@
+﻿<Query>
+    <Sql>
+		select distinct 
+			Organisation_Identifier_Code_Of_Provider
+		from omop_staging.sact_staging
+	</Sql>
+    <Explanations>
+		<Explanation columnName="Organisation_Identifier_Code_Of_Provider">
+			<Description>ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated</Description>
+			<Origin>ORGANISATION IDENTIFIER (CODE OF PROVIDER)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

@@ -27,7 +27,6 @@ internal class OxfordGPVisitOccurrence : OmopVisitOccurrence<OxfordGPVisitOccurr
     [ConstantValue(32818, "`EHR administration record`")]
     public override int? visit_type_concept_id { get; set; }
 
-
     [CopyValue(nameof(Source.GPEventsPrimaryKey))]
     public override string? RecordConnectionIdentifier { get; set; }
 }
