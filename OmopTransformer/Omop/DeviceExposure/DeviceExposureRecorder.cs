@@ -151,7 +151,8 @@ where
             where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
                 and vo.person_id = p.person_id
                 and vo.device_concept_id = r.device_concept_id
-        )
+                and vo.device_exposure_start_date = r.device_exposure_start_date
+                and vo.device_exposure_end_date = r.device_exposure_end_date        )
     )
     or
     (
