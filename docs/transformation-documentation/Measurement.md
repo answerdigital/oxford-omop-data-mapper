@@ -37,6 +37,18 @@ has_toc: false
 <a href="SusAPCMeasurement.svg" target="_blank"><img src="SusAPCMeasurement.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCMeasurement%20mapping){: .btn }
+## SactMeasurementWeightAtStartOfRegimen
+<a href="SactMeasurementWeightAtStartOfRegimen.svg" target="_blank"><img src="SactMeasurementWeightAtStartOfRegimen.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactMeasurementWeightAtStartOfRegimen%20mapping){: .btn }
+## SactMeasurementWeightAtStartOfCycle
+<a href="SactMeasurementWeightAtStartOfCycle.svg" target="_blank"><img src="SactMeasurementWeightAtStartOfCycle.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactMeasurementWeightAtStartOfCycle%20mapping){: .btn }
+## SactMeasurementHeight
+<a href="SactMeasurementHeight.svg" target="_blank"><img src="SactMeasurementHeight.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactMeasurementHeight%20mapping){: .btn }
 ## CosdV9MeasurementTumourLaterality
 <a href="CosdV9MeasurementTumourLaterality.svg" target="_blank"><img src="CosdV9MeasurementTumourLaterality.svg" /></a>
 
