@@ -111,7 +111,7 @@ internal abstract class Transformer
         CancellationToken cancellationToken) 
         where TTarget : IOmopRecord<TSource>, new()
     {
-        const int batchSize = 4000000;
+        int batchSize = _transformOptions.BatchSize;
 
         getRecordsStopwatch.Start();
         

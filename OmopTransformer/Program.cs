@@ -443,6 +443,9 @@ public class TransformOptions
 
     [Option("dry-run", Required = false, Default = false, HelpText = "Run the transformation in dry-run mode.")]
     public bool DryRun { get; set; }
+
+    [Option("batch-size", Required = false, Default = 4000000, HelpText = "Number of records to process in each batch (default 10,000).")]
+    public int BatchSize { get; set; }
 }
 
 [Verb("finalise", HelpText = "Prunes incomplete OMOP records. Builds era tables.")]
