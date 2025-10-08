@@ -23,6 +23,11 @@ from omop_staging.sus_OP
 	where ReferrerCode is not null
 	and NHSNumber is not null
 	and AttendedorDidNotAttend in ('5','6')
+order by NHSNumber,
+	GeneratedRecordIdentifier,
+	AppointmentDate,
+	AppointmentTime,
+	ReferrerCode
 	
 ```
 
@@ -45,6 +50,11 @@ Converts text to dates.
 	where ReferralRequestReceivedDate is not null
 		and op.NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
+	order by op.NHSNumber, 
+		op.AppointmentDate,
+		op.AppointmentTime,
+		op.ReferralRequestReceivedDate,
+		op.GeneratedRecordIdentifier
 	
 ```
 
