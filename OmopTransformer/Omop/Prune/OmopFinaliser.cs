@@ -425,6 +425,8 @@ SELECT * FROM tmp_de;
         var connection = new DuckDBConnection(_configuration.ConnectionString!);
         await connection.OpenAsync(cancellationToken);
 
+        _logger.LogInformation("Correcting male genders.");
+
         await connection.ExecuteAsync(@"
 -- Combined UPDATE statements for the 'person' table
 -- Updates gender to MALE (8507) based on specific conditions
@@ -440,6 +442,17 @@ WHERE
         ca.ancestor_concept_id IN (4090861, 4025213)
         OR cdmTable.CONDITION_CONCEPT_ID = 79758
     );
+");
+
+        _logger.LogInformation("Correcting female genders.");
+
+        await connection.ExecuteAsync(@"
+
+UPDATE cdm.person
+SET gender_concept_id = 8507
+FROM cdm.CONDITION_OCCURRENCE AS cdmTable
+WHERE cdm.person.person_id = cdmTable.person_id
+	and cdmTable.CONDITION_CONCEPT_ID = 196068;
 
 -- Updates gender to FEMALE (8532) based on a list of conditions
 UPDATE cdm.person
@@ -451,7 +464,11 @@ WHERE
     AND cdmTable.CONDITION_CONCEPT_ID IN (
         201801, 200052, 4194652, 437501, 201817, 201238, 195500,
         195197, 197236, 199764, 4162860, 441805, 196359, 196048
-    );
+    );");
+
+        _logger.LogInformation("Correcting deaths where the patient had a DEVICE_EXPOSURE beyond 60 days.");
+
+        await connection.ExecuteAsync(@"
 
 -- Combined DELETE statements for the 'death' table
 -- Deletes death records where related events occur >60 days after death
@@ -465,6 +482,13 @@ WHERE person_id IN (
         (DEVICE_EXPOSURE_START_DATETIME IS NOT NULL AND CAST(DEVICE_EXPOSURE_START_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY))
 );
 
+");
+
+        _logger.LogInformation("Correcting deaths where the patient had a PROCEDURE_OCCURRENCE beyond 60 days.");
+
+
+        await connection.ExecuteAsync(@"
+
 DELETE FROM cdm.death
 WHERE person_id IN (
     SELECT person_id FROM cdm.PROCEDURE_OCCURRENCE
@@ -475,6 +499,13 @@ WHERE person_id IN (
         (PROCEDURE_END_DATETIME IS NOT NULL AND CAST(PROCEDURE_END_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY))
 );
 
+");
+
+        _logger.LogInformation("Correcting deaths where the patient had a VISIT_DETAIL beyond 60 days.");
+
+
+        await connection.ExecuteAsync(@"
+
 DELETE FROM cdm.death
 WHERE person_id IN (
     SELECT person_id FROM cdm.VISIT_DETAIL
@@ -484,6 +515,12 @@ WHERE person_id IN (
         (VISIT_DETAIL_END_DATETIME IS NOT NULL AND CAST(VISIT_DETAIL_END_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY)) OR
         (VISIT_DETAIL_START_DATETIME IS NOT NULL AND CAST(VISIT_DETAIL_START_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY))
 );
+");
+
+        _logger.LogInformation("Correcting deaths where the patient had a VISIT_OCCURRENCE beyond 60 days.");
+
+
+        await connection.ExecuteAsync(@"
 
 DELETE FROM cdm.death
 WHERE person_id IN (
@@ -494,7 +531,12 @@ WHERE person_id IN (
         (VISIT_END_DATETIME IS NOT NULL AND CAST(VISIT_END_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY)) OR
         (VISIT_START_DATETIME IS NOT NULL AND CAST(VISIT_START_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY))
 );
+");
 
+        _logger.LogInformation("Correcting deaths where the patient had a DRUG_EXPOSURE beyond 60 days.");
+
+
+        await connection.ExecuteAsync(@"
 DELETE FROM cdm.death
 WHERE person_id IN (
     SELECT person_id FROM cdm.DRUG_EXPOSURE
@@ -503,7 +545,12 @@ WHERE person_id IN (
         (DRUG_EXPOSURE_START_DATE IS NOT NULL AND DRUG_EXPOSURE_START_DATE > (death.death_date + INTERVAL '60' DAY)) OR
         (DRUG_EXPOSURE_END_DATETIME IS NOT NULL AND CAST(DRUG_EXPOSURE_END_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY)) OR
         (DRUG_EXPOSURE_START_DATETIME IS NOT NULL AND CAST(DRUG_EXPOSURE_START_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY))
-);
+);");
+
+        _logger.LogInformation("Correcting deaths where the patient had a OBSERVATION beyond 60 days.");
+
+
+        await connection.ExecuteAsync(@"
 
 DELETE FROM cdm.death
 WHERE person_id IN (
@@ -513,6 +560,13 @@ WHERE person_id IN (
         (OBSERVATION_DATETIME IS NOT NULL AND CAST(OBSERVATION_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY))
 );
 
+");
+
+        _logger.LogInformation("Correcting deaths where the patient had a CONDITION_ERA beyond 60 days.");
+
+
+        await connection.ExecuteAsync(@"
+
 DELETE FROM cdm.death
 WHERE person_id IN (
     SELECT person_id FROM cdm.CONDITION_ERA
@@ -521,8 +575,41 @@ WHERE person_id IN (
         AND CONDITION_ERA_END_DATE > (death.death_date + INTERVAL '60' DAY)
 );
 
+");
+
+        _logger.LogInformation("Extending visit_occurrence start and end dates to accomodate encapsulated visit_detail records.");
+
+
+        await connection.ExecuteAsync(@"
+
+with visit_dates as (
+    select
+        vo.visit_occurrence_id,
+        min(vo.visit_start_date) as visit_start_date,
+        min(vo.visit_start_datetime) as visit_start_datetime,
+        max(vo.visit_end_date) as visit_end_date,
+        max(vo.visit_end_datetime) as visit_end_datetime
+    from
+        cdm.visit_occurrence vo
+    inner join
+        cdm.visit_detail vd
+        on vo.visit_occurrence_id = vd.visit_occurrence_id
+    group by
+        vo.visit_occurrence_id
+)
+update cdm.visit_occurrence
+set
+    visit_start_date = vd.visit_start_date,
+    visit_start_datetime = vd.visit_start_datetime,
+    visit_end_date = vd.visit_end_date,
+    visit_end_datetime = vd.visit_end_datetime
+from
+    visit_dates vd
+where
+    cdm.visit_occurrence.visit_occurrence_id = vd.visit_occurrence_id;
 
 ");
+
     }
 
     private async Task PruneRecords(CancellationToken cancellationToken)

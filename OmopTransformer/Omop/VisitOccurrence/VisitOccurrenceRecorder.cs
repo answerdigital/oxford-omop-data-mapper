@@ -72,31 +72,6 @@ internal class VisitOccurrenceRecorder : IVisitOccurrenceRecorder
             .ExecuteAsync(
                 @"
 
-
---update cdm.visit_occurrence
---set 
---    visit_start_date = least(r.visit_start_date, cdm.visit_occurrence.visit_start_date),
---    visit_start_datetime = least(r.visit_start_datetime, cdm.visit_occurrence.visit_start_datetime),
---    visit_end_date = greatest(r.visit_end_date, cdm.visit_occurrence.visit_end_date),
---    visit_end_datetime = greatest(r.visit_end_datetime, cdm.visit_occurrence.visit_end_datetime)
---from omop_staging.visit_occurrence_row r
---inner join cdm.person p on r.nhs_number = p.person_source_value
---where cdm.visit_occurrence.person_id = p.person_id
---  and cdm.visit_occurrence.hospitalproviderspellnumber is null
---  and r.hospitalproviderspellnumber is null;
---
---update cdm.visit_occurrence
---set 
---    visit_start_date = least(r.visit_start_date, cdm.visit_occurrence.visit_start_date),
---    visit_start_datetime = least(r.visit_start_datetime, cdm.visit_occurrence.visit_start_datetime),
---    visit_end_date = greatest(r.visit_end_date, cdm.visit_occurrence.visit_end_date),
---    visit_end_datetime = greatest(r.visit_end_datetime, cdm.visit_occurrence.visit_end_datetime)
---from omop_staging.visit_occurrence_row r
---inner join cdm.person p on r.nhs_number = p.person_source_value
---where cdm.visit_occurrence.person_id = p.person_id
---  and cdm.visit_occurrence.recordconnectionidentifier is null
---  and r.recordconnectionidentifier is null;
-
 insert into cdm.visit_occurrence (
     person_id,
     visit_concept_id,
