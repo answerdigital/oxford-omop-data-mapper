@@ -9,6 +9,8 @@ has_toc: false
 ### Oxford Visit Occurrence
 * Value copied from `GPEventsPrimaryKey`
 
+* `GPEventsPrimaryKey` GP Events Unique ID 
+
 ```sql
 select
 	GPEventsPrimaryKey,
