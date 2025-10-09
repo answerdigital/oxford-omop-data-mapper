@@ -11,9 +11,9 @@ internal class OxfordGPStagingSchema : StagingSchema, IOxfordGPStagingSchema
 
     protected override string[] ClearStagingSql =>
     [
-        "if object_id('omop_staging.oxford_gp_medication') is not null begin delete omop_staging.oxford_gp_medication end",
-        "if object_id('omop_staging.oxford_gp_event') is not null begin delete omop_staging.oxford_gp_event end",
-        "if object_id('omop_staging.oxford_gp_demographic') is not null begin delete omop_staging.oxford_gp_demographic end",
-        "if object_id('omop_staging.oxford_gp_appointment') is not null begin delete omop_staging.oxford_gp_appointment end",
+        "truncate table omop_staging.oxford_gp_medication;",
+        "truncate table omop_staging.oxford_gp_event;",
+        "truncate table omop_staging.oxford_gp_demographic;",
+        "truncate table omop_staging.oxford_gp_appointment;",
     ];
 }
