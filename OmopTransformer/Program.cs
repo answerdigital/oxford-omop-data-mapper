@@ -43,8 +43,6 @@ using OmopTransformer.Omop;
 using OmopTransformer.OxfordGP;
 using OmopTransformer.OxfordGP.Staging;
 using OmopTransformer.OxfordGP.Staging.Clearing;
-using OmopTransformer.OxfordPrescribing.Staging;
-using OmopTransformer.OxfordPrescribing.Staging.Clearing;
 using OmopTransformer.OxfordPrescribing;
 using OmopTransformer.OxfordSpineDeath;
 
@@ -237,30 +235,6 @@ internal class Program
                         return;
                 }
             }
-            else if (string.Equals(stagingOptions.Type, "oxford-prescribing", StringComparison.OrdinalIgnoreCase))
-            {
-                if (stagingOptions.Action == null)
-                {
-                    await ActionMustBeSpecifiedError();
-                    return;
-                }
-
-                switch (stagingOptions.Action.ToLower())
-                {
-                    case "load":
-                        builder.Services.AddTransient<IOxfordPrescribingRecordInserter, OxfordPrescribingRecordInserter>();
-                        builder.Services.AddTransient<IOxfordPrescribingRecordParser, OxfordPrescribingRecordParser>();
-                        builder.Services.AddTransient<IOxfordPrescribingStaging, OxfordPrescribingStaging>();
-                        builder.Services.AddHostedService<OxfordPrescribingLoadStagingHostedService>();
-                        break;
-                    case "clear":
-                        builder.Services.AddHostedService<OxfordPrescribingClearStagingHostedService>();
-                        break;
-                    default:
-                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
-                        return;
-                }
-            }
             else if (string.Equals(stagingOptions.Type, "oxford-gp", StringComparison.OrdinalIgnoreCase))
             {
                 if (stagingOptions.Action == null)
@@ -296,7 +270,6 @@ internal class Program
         {
             builder.Services.AddTransient(_ => transformOptions);
             builder.Services.AddTransient<IRunAnalysisRecorder, RunAnalysisRecorder>();
-            builder.Services.AddTransient<IConceptMapper, ConceptMapper>();
             builder.Services.AddTransient<ILocationRecorder, LocationRecorder>();
             builder.Services.AddTransient<IPersonRecorder, PersonRecorder>();
             builder.Services.AddTransient<IConditionOccurrenceRecorder, ConditionOccurrenceRecorder>();
