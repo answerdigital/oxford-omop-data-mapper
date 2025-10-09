@@ -31,6 +31,8 @@ from ##duckdb_source##
 ### Oxford Prescribing Drug Exposure (with Snomed)
 * Value copied from `EVENT_ID`
 
+* `EVENT_ID` The unique ID of the Event 
+
 ```sql
 select
 	patient_identifier_Value,
