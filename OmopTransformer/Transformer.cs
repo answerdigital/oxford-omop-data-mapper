@@ -11,7 +11,6 @@ internal abstract class Transformer
     private readonly ILogger<IRecordTransformer> _logger;
     private readonly TransformOptions _transformOptions;
     private readonly IRecordProvider _recordProvider;
-    private readonly IConceptMapper _conceptMapper;
     private readonly IRunAnalysisRecorder _runAnalysisRecorder;
     private readonly ILoggerFactory _loggerFactory;
 
@@ -19,14 +18,13 @@ internal abstract class Transformer
 
     private readonly string _dataSource;
 
-    protected Transformer(IRecordTransformer recordTransformer, TransformOptions transformOptions, IRecordProvider recordProvider, string dataSource, IConceptMapper conceptMapper, IRunAnalysisRecorder runAnalysisRecorder, ILoggerFactory loggerFactory)
+    protected Transformer(IRecordTransformer recordTransformer, TransformOptions transformOptions, IRecordProvider recordProvider, string dataSource, IRunAnalysisRecorder runAnalysisRecorder, ILoggerFactory loggerFactory)
     {
         _recordTransformer = recordTransformer;
         _logger = loggerFactory.CreateLogger<IRecordTransformer>();
         _transformOptions = transformOptions;
         _recordProvider = recordProvider;
         _dataSource = dataSource;
-        _conceptMapper = conceptMapper;
         _runAnalysisRecorder = runAnalysisRecorder;
         _loggerFactory = loggerFactory;
     }
