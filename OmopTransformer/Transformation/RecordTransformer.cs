@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using OmopTransformer.Annotations;
 using OmopTransformer.Omop;
-using System.Linq;
 using System.Reflection;
 
 namespace OmopTransformer.Transformation;
@@ -37,18 +36,16 @@ internal class RecordTransformer : IRecordTransformer
         _snomedResolver = snomedResolver;
     }
 
-    public void Transform<T>(IOmopRecord<T> record)
+    public void Transform<T>(IOmopRecord<T> record, TransformPlan transformPlan)
     {
         if (record == null) throw new ArgumentNullException(nameof(record));
 
         Type sourceType = record.Source!.GetType();
 
-        var properties = record.GetType().GetProperties();
-
         _logger.LogTrace("Transforming {0}.", record.GetType());
 
-        TransformProperties(record, properties, sourceType, sourceTypeAsOrigin: false); // First run the transformations that refer to the source data from the database.
-        TransformProperties(record, properties, sourceType, sourceTypeAsOrigin: true); // Then run transforms that use the results of the previous transformations, by referring to the content of the partially transformed record rather than the incoming database record.
+        TransformProperties(record, transformPlan, sourceType, sourceTypeAsOrigin: false); // First run the transformations that refer to the source data from the database.
+        TransformProperties(record, transformPlan, sourceType, sourceTypeAsOrigin: true); // Then run transforms that use the results of the previous transformations, by referring to the content of the partially transformed record rather than the incoming database record.
         record.Source = default; // Dereference source value to recover some memory.
     }
 
@@ -58,31 +55,32 @@ internal class RecordTransformer : IRecordTransformer
         _recordTransformLookupLogger.Reset();
     }
 
-    private void TransformProperties<T>(IOmopRecord<T> record, PropertyInfo[] properties, Type sourceType, bool sourceTypeAsOrigin)
+
+    private void TransformProperties<T>(IOmopRecord<T> record, TransformPlan properties, Type sourceType, bool sourceTypeAsOrigin)
     {
-        foreach (var property in properties)
+        foreach (var property in properties.Properties)
         {
-            var attributes = property.GetCustomAttributes(inherit: false);
+            var attributes = property.Attributes;
 
             foreach (var attribute in attributes)
             {
-                if (attribute is CopyValueAttribute copyValueAttribute)
+                if (attribute.Value is CopyValueAttribute copyValueAttribute)
                 {
-                    TransformCopyValue(record, property, sourceType, copyValueAttribute);
+                    TransformCopyValue(record, property.Info, sourceType, copyValueAttribute);
                 } 
-                else if (attribute is TransformAttribute transformAttribute)
+                else if (attribute.Value is TransformAttribute transformAttribute)
                 {
-                    Transform(record, transformAttribute, property, sourceType, sourceTypeAsOrigin);
+                    Transform(record, attribute, transformAttribute, property.Info, sourceType, sourceTypeAsOrigin);
                 }
-                else if (attribute is ConstantValueAttribute constantValueAttribute)
+                else if (attribute.Value is ConstantValueAttribute constantValueAttribute)
                 {
-                    TransformConstantValue(record, property, constantValueAttribute);
+                    TransformConstantValue(record, property.Info, constantValueAttribute);
                 }
             }
         }
     }
 
-    private void Transform<T>(IOmopRecord<T> record, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType, bool sourceTypeAsOrigin)
+    private void Transform<T>(IOmopRecord<T> record, Attribute attribute, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType, bool sourceTypeAsOrigin)
     {
         if (transformAttribute.UseOmopTypeAsSource != sourceTypeAsOrigin)
             return;
@@ -93,7 +91,7 @@ internal class RecordTransformer : IRecordTransformer
         }
         else if (typeof(ILookup).IsAssignableFrom(transformAttribute.Type))
         {
-            TransformLookup(record, transformAttribute, property, sourceType);
+            TransformLookup(record, attribute, transformAttribute, property, sourceType);
         }
         else
         {
@@ -117,10 +115,11 @@ internal class RecordTransformer : IRecordTransformer
         throw new NotSupportedException("Argument type not supported.");
     }
 
-    private void TransformLookup<T>(IOmopRecord<T> record, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType)
+    private void TransformLookup<T>(IOmopRecord<T> record, Attribute attribute, TransformAttribute transformAttribute, PropertyInfo property, Type sourceType)
     {
         _logger.LogTrace("Lookup transform found on property {0}", property.Name);
-        var lookup = (ILookup)Activator.CreateInstance(transformAttribute.Type)!;
+
+        var lookup = attribute.Lookup!;
 
         var arguments =
             transformAttribute

@@ -129,11 +129,18 @@ internal abstract class Transformer
 
         computeStopwatch.Start();
 
-        Parallel.ForEach(mappedRecords, record =>
+        if (mappedRecords.Any())
         {
-            cancellationToken.ThrowIfCancellationRequested();
-            _recordTransformer.Transform(record);
-        });
+            var transformPlan = TransformPlan.Create(mappedRecords.First());
+
+            Parallel.ForEach(mappedRecords, record =>
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                _recordTransformer.Transform(record, transformPlan);
+            });
+        }
+
+       
 
         computeStopwatch.Stop();
 
