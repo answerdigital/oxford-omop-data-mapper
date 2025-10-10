@@ -10,9 +10,7 @@ using OmopTransformer.SUS.AE.Observation.SourceOfReferralForAE;
 using OmopTransformer.SUS.AE.VisitDetails;
 using OmopTransformer.SUS.AE.CareSite;
 using OmopTransformer.Omop.ConditionOccurrence;
-using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.Death;
-using OmopTransformer.Omop.DrugExposure;
 using OmopTransformer.Omop.DeviceExposure;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Omop.Observation;
@@ -21,7 +19,6 @@ using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.Omop.CareSite;
-using OmopTransformer.Omop.Provider;
 using OmopTransformer.Transformation;
 using OmopTransformer.Omop;
 using OmopTransformer.SUS.AE.DeviceExposure.ProcedureDevice;
@@ -33,23 +30,18 @@ internal class SusAETransformer : Transformer
 {
     private readonly ILocationRecorder _locationRecorder;
     private readonly IPersonRecorder _personRecorder;
-    private readonly IMeasurementRecorder _measurementRecorder;
     private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
     private readonly IVisitOccurrenceRecorder _visitOccurrenceRecorder;
     private readonly IVisitDetailRecorder _visitDetailRecorder;
     private readonly IDeathRecorder _deathRecorder;
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
-    private readonly IDrugExposureRecorder _drugExposureRecorder;
     private readonly IDeviceExposureRecorder _deviceExposureRecorder;
     private readonly IObservationRecorder _observationRecorder;
     private readonly ConceptResolver _conceptResolver;
     private readonly ICareSiteRecorder _careSiteRecorder;
-    private readonly IProviderRecorder _providerRecorder;
 
     public SusAETransformer(
         ICareSiteRecorder careSiteRecorder,
-        IProviderRecorder providerRecorder,
-        IMeasurementRecorder measurementRecorder,
         IRecordTransformer recordTransformer,
         TransformOptions transformOptions,
         IRecordProvider recordProvider,
@@ -60,8 +52,7 @@ internal class SusAETransformer : Transformer
         IVisitDetailRecorder visitDetailRecorder,
         IDeathRecorder deathRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
-        ConceptResolver conceptResolver, 
-        IDrugExposureRecorder drugExposureRecorder,
+        ConceptResolver conceptResolver,
         IDeviceExposureRecorder deviceExposureRecorder,
         IObservationRecorder observationRecorder,
         IRunAnalysisRecorder runAnalysisRecorder,
@@ -74,18 +65,15 @@ internal class SusAETransformer : Transformer
     {
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
-        _measurementRecorder = measurementRecorder;
         _conditionOccurrenceRecorder = conditionOccurrenceRecorder;
         _visitOccurrenceRecorder = visitOccurrenceRecorder;
         _visitDetailRecorder = visitDetailRecorder;
         _deathRecorder = deathRecorder;
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
         _conceptResolver = conceptResolver;
-        _drugExposureRecorder = drugExposureRecorder;
         _deviceExposureRecorder = deviceExposureRecorder;
         _observationRecorder = observationRecorder;
         _careSiteRecorder = careSiteRecorder;
-        _providerRecorder = providerRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
