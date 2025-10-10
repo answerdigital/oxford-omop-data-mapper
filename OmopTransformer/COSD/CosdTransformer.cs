@@ -97,7 +97,6 @@ internal class CosdTransformer : Transformer
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
         IObservationRecorder observationRecorder, 
         IMeasurementRecorder measurementRecorder,
-        IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory) 
         : 
@@ -106,7 +105,6 @@ internal class CosdTransformer : Transformer
             transformOptions, 
             recordProvider, 
             "COSD",
-            conceptMapper,
             runAnalysisRecorder,
             loggerFactory)
     {

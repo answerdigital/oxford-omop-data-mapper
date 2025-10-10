@@ -62,13 +62,11 @@ internal class SusOPTransformer : Transformer
         ConceptResolver conceptResolver, 
         IObservationRecorder observationRecorder,
         IDeviceExposureRecorder deviceExposureRecorder,
-        IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory) : base(recordTransformer,
         transformOptions,
         recordProvider,
         "SUSOP",
-        conceptMapper, 
         runAnalysisRecorder,
         loggerFactory)
     {

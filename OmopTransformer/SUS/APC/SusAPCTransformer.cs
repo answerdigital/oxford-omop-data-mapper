@@ -74,7 +74,6 @@ internal class SusAPCTransformer : Transformer
         ConceptResolver conceptResolver,
         IDeviceExposureRecorder deviceExposureRecorder,
         IObservationRecorder observationRecorder,
-        IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory) :
         base(
@@ -82,7 +81,6 @@ internal class SusAPCTransformer : Transformer
             transformOptions,
             recordProvider,
             "SUSAPC",
-            conceptMapper,
             runAnalysisRecorder,
             loggerFactory)
     {

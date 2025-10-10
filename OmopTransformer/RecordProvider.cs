@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Options;
 using OmopTransformer.Annotations;
 using System.Collections.ObjectModel;
+using Dapper;
+using DuckDB.NET.Data;
 using Query = OmopTransformer.Transformation.Query;
 
 namespace OmopTransformer;
@@ -41,7 +43,8 @@ internal class RecordProvider : IRecordProvider
 
             _logger.LogTrace("Duckdb query: {0}", queryText);
 
-            var connection = RetryConnection.CreateDuckDbInMemory();
+            var connection = new DuckDBConnection("Data Source=:memory:");
+            await connection.OpenAsync(cancellationToken);
 
             return await BatchQuery<T>(queryText, batchSize, connection, "duckdb", batchNumber, cancellationToken);
 
@@ -49,7 +52,8 @@ internal class RecordProvider : IRecordProvider
 
         if (query.Sql!.Type is null or "mssql")
         {
-            var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+            var connection = new DuckDBConnection(_configuration.ConnectionString!);
+            await connection.OpenAsync(cancellationToken);
 
             return await BatchQuery<T>(queryText, batchSize, connection, "mssql", batchNumber, cancellationToken);
         }
@@ -62,7 +66,7 @@ internal class RecordProvider : IRecordProvider
     private async Task<IReadOnlyCollection<T>> BatchQuery<T>(
         string queryText, 
         int batchSize,
-        RetryConnection connection,
+        DuckDBConnection connection,
         string dialect,
         int batchNumber,
         CancellationToken cancellationToken)
@@ -84,7 +88,7 @@ internal class RecordProvider : IRecordProvider
                 _ => throw UnsupportedType(dialect)
             };
 
-            return (await connection.QueryLongTimeoutAsync<T>(batchQuery, cancellationToken)).ToList().AsReadOnly();
+            return (await connection.QueryAsync<T>(batchQuery, cancellationToken)).ToList().AsReadOnly();
         }
 
         if (batchNumber == 0)
@@ -94,11 +98,11 @@ internal class RecordProvider : IRecordProvider
         return new ReadOnlyCollection<T>(new List<T>());
     }
 
-    private async Task<IReadOnlyCollection<T>> ExecuteNonBatchedQuery<T>(string queryText, CancellationToken cancellationToken, RetryConnection connection)
+    private async Task<IReadOnlyCollection<T>> ExecuteNonBatchedQuery<T>(string queryText, CancellationToken cancellationToken, DuckDBConnection connection)
     {
         _logger.LogInformation("Running query. Pagination disabled (order by clause missing).");
 
-        var results = await connection.QueryLongTimeoutAsync<T>(queryText, cancellationToken);
+        var results = await connection.QueryAsync<T>(queryText, cancellationToken);
 
         return results.ToList().AsReadOnly();
     }

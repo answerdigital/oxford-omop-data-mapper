@@ -18,13 +18,11 @@ internal class OxfordPrescribingTransformer : Transformer
         IRecordProvider recordProvider,
         IDrugExposureRecorder drugExposureRecorder,
         ConceptResolver conceptResolver,
-        IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory) : base(recordTransformer,
         transformOptions,
         recordProvider,
         "Oxford-Prescribing",
-        conceptMapper,
         runAnalysisRecorder,
         loggerFactory)
     {

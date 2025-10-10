@@ -1,7 +1,7 @@
-﻿using System.Data;
-using Dapper;
-using Microsoft.Data.SqlClient;
+﻿using Dapper;
+using DuckDB.NET.Data;
 using Microsoft.Extensions.Options;
+using System.Data;
 
 namespace OmopTransformer.Omop.ConditionOccurrence;
 
@@ -18,66 +18,122 @@ internal class ConditionOccurrenceRecorder : IConditionOccurrenceRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
+        await connection.ExecuteAsync("truncate table omop_staging.condition_occurrence_row;");
 
-
-        var batches = records.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using (IDbTransaction transaction = connection.BeginTransaction())
         {
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("nhs_number");
-            dataTable.Columns.Add("RecordConnectionIdentifier");
-            dataTable.Columns.Add("condition_concept_id");
-            dataTable.Columns.Add("condition_start_date", typeof(DateTime));
-            dataTable.Columns.Add("condition_start_datetime", typeof(DateTime));
-            dataTable.Columns.Add("condition_end_date", typeof(DateTime));
-            dataTable.Columns.Add("condition_end_datetime", typeof(DateTime));
-            dataTable.Columns.Add("condition_type_concept_id");
-            dataTable.Columns.Add("condition_status_concept_id");
-            dataTable.Columns.Add("stop_reason");
-            dataTable.Columns.Add("provider_id");
-            dataTable.Columns.Add("visit_occurrence_id");
-            dataTable.Columns.Add("visit_detail_id");
-            dataTable.Columns.Add("condition_source_value");
-            dataTable.Columns.Add("condition_source_concept_id");
-            dataTable.Columns.Add("condition_status_source_value");
-
-            foreach (var record in batch)
+            try
             {
-                if (record.IsValid == false)
-                    continue;
-
-                foreach (var conceptId in record.condition_concept_id!)
+                using var appender = connection.CreateAppender("omop_staging", "condition_occurrence_row");
                 {
-                    dataTable.Rows.Add(
-                        record.nhs_number,
-                        record.RecordConnectionIdentifier,
-                        conceptId,
-                        record.condition_start_date,
-                        record.condition_start_datetime,
-                        record.condition_end_date,
-                        record.condition_end_datetime,
-                        record.condition_type_concept_id,
-                        record.condition_status_concept_id,
-                        record.stop_reason,
-                        record.provider_id,
-                        record.visit_occurrence_id,
-                        record.visit_detail_id,
-                        record.condition_source_value,
-                        record.condition_source_concept_id,
-                        record.condition_status_source_value);
+                    foreach (var row in records)
+                    {
+                        if (row.IsValid == false)
+                            continue;
+
+                        foreach (var conceptId in row.condition_concept_id!)
+                        {
+                            var dbRow = appender.CreateRow();
+
+                            dbRow
+                                .AppendValue(row.nhs_number)
+                                .AppendValue(row.RecordConnectionIdentifier)
+                                .AppendValue(conceptId)
+                                .AppendValue(row.condition_start_date)
+                                .AppendValue(row.condition_start_datetime)
+                                .AppendValue(row.condition_end_date)
+                                .AppendValue(row.condition_end_datetime)
+                                .AppendValue(row.condition_type_concept_id)
+                                .AppendValue(row.condition_status_concept_id)
+                                .AppendValue(row.stop_reason)
+                                .AppendValue(row.provider_id)
+                                .AppendValue(row.visit_occurrence_id)
+                                .AppendValue(row.visit_detail_id)
+                                .AppendValue(row.condition_source_value)
+                                .AppendValue(row.condition_source_concept_id)
+                                .AppendValue(row.condition_status_source_value)
+                                .AppendValue(dataSource)
+                                .EndRow();
+                        }
+                    }
                 }
+
+                transaction.Commit();
             }
-
-            var parameter = new
+            catch
             {
-                @rows = dataTable.AsTableValuedParameter("cdm.condition_occurrence_row"),
-                DataSource = dataSource
-            };
+                transaction.Rollback();
 
-            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_condition_occurrence", parameter, commandType: CommandType.StoredProcedure);
+                throw;
+            }
         }
+
+        await connection
+            .ExecuteAsync(
+                @"
+
+
+insert into cdm.condition_occurrence (
+    person_id,
+    condition_concept_id,
+    condition_start_date,
+    condition_start_datetime,
+    condition_end_date,
+    condition_end_datetime,
+    condition_type_concept_id,
+    condition_status_concept_id,
+    stop_reason,
+    provider_id,
+    visit_occurrence_id,
+    visit_detail_id,
+    condition_source_value,
+    condition_source_concept_id,
+    condition_status_source_value,
+    RecordConnectionIdentifier,
+    data_source
+)
+select
+    p.person_id,
+    r.condition_concept_id,
+    r.condition_start_date,
+    r.condition_start_datetime,
+    r.condition_end_date,
+    r.condition_end_datetime,
+    r.condition_type_concept_id,
+    r.condition_status_concept_id,
+    r.stop_reason,
+    r.provider_id,
+    r.visit_occurrence_id,
+    r.visit_detail_id,
+    r.condition_source_value,
+    r.condition_source_concept_id,
+    r.condition_status_source_value,
+    r.RecordConnectionIdentifier,
+    r.data_source
+from omop_staging.condition_occurrence_row r
+inner join cdm.person p on r.nhs_number = p.person_source_value
+where not exists (
+    select 1 
+    from cdm.condition_occurrence co 
+    where r.RecordConnectionIdentifier is not null
+        and co.person_id = p.person_id
+        and co.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+        and co.condition_concept_id = r.condition_concept_id
+)
+and not exists (
+    select 1 
+    from cdm.condition_occurrence co 
+    where r.RecordConnectionIdentifier is null
+        and co.condition_concept_id = r.condition_concept_id
+        and co.condition_start_date = r.condition_start_date
+        and co.person_id = p.person_id
+);
+ 
+
+truncate table omop_staging.condition_occurrence_row;",
+                cancellationToken);
     }
 }

@@ -1,6 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Options;
-using System.Data;
+﻿using Microsoft.Extensions.Options;
+using DuckDB.NET.Data;
 
 namespace OmopTransformer.Omop;
 
@@ -13,23 +12,24 @@ internal class RunAnalysisRecorder : IRunAnalysisRecorder
         _configuration = configuration.Value;
     }
 
-    public async Task InsertRunAnalysis(Guid runId, string tableType, string origin, int validCount, int invalidCount, CancellationToken cancellationToken)
+    public void InsertRunAnalysis(Guid runId, string tableType, string origin, int validCount, int invalidCount)
     {
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        connection.Open();
 
+        using var appender = connection.CreateAppender("dbo", "run_analysis");
+        {
+           
+            var dbRow = appender.CreateRow();
 
-
-        await 
-            connection
-                .ExecuteLongTimeoutAsync(
-                    "dbo.insert_RunAnalysis", 
-                    new
-                    {
-                        RunId = runId,
-                        TableType = tableType,
-                        Origin = origin,
-                        ValidCount = validCount,
-                        InvalidCount = invalidCount
-                    }, commandType: CommandType.StoredProcedure);
+            dbRow
+                .AppendValue(runId)
+                .AppendValue(DateTime.Now)
+                .AppendValue(tableType) 
+                .AppendValue(origin) 
+                .AppendValue(validCount) 
+                .AppendValue(invalidCount)
+                .EndRow();
+        }
     }
 }

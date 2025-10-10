@@ -19,9 +19,9 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 			cc.CriticalCareStartDate as ObservationDate,
 			coalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,
 			d.CriticalCareHighCostDrugs as ObservationSourceValue
-		from [omop_staging].[sus_CCMDS_CriticalCareHighCostDrugs] d
-		inner join [omop_staging].[sus_CCMDS] cc on d.MessageId = cc.MessageId
-		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		from omop_staging.sus_CCMDS_CriticalCareHighCostDrugs d
+		inner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 		where apc.NHSNumber is not null
 	
 ```

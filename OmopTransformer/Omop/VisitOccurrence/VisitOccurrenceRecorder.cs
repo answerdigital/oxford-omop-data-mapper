@@ -1,7 +1,7 @@
-﻿using System.Data;
-using Microsoft.Data.SqlClient;
-using Dapper;
+﻿using Dapper;
+using DuckDB.NET.Data;
 using Microsoft.Extensions.Options;
+using System.Data;
 
 namespace OmopTransformer.Omop.VisitOccurrence;
 
@@ -18,65 +18,136 @@ internal class VisitOccurrenceRecorder : IVisitOccurrenceRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
+        await connection.ExecuteAsync("truncate table omop_staging.visit_occurrence_row;");
 
-
-        var batches = records.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using (IDbTransaction transaction = connection.BeginTransaction())
         {
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("nhs_number");
-            dataTable.Columns.Add("HospitalProviderSpellNumber");
-            dataTable.Columns.Add("RecordConnectionIdentifier");
-            dataTable.Columns.Add("visit_concept_id");
-            dataTable.Columns.Add("visit_start_date", typeof(DateTime));
-            dataTable.Columns.Add("visit_start_datetime", typeof(DateTime));
-            dataTable.Columns.Add("visit_end_date", typeof(DateTime));
-            dataTable.Columns.Add("visit_end_datetime", typeof(DateTime));
-            dataTable.Columns.Add("visit_type_concept_id");
-            dataTable.Columns.Add("provider_id");
-            dataTable.Columns.Add("care_site_id");
-            dataTable.Columns.Add("visit_source_value");
-            dataTable.Columns.Add("visit_source_concept_id");
-            dataTable.Columns.Add("admitted_from_concept_id");
-            dataTable.Columns.Add("admitted_from_source_value");
-            dataTable.Columns.Add("discharged_to_concept_id");
-            dataTable.Columns.Add("discharged_to_source_value");
-
-            foreach (var record in batch)
+            try
             {
-                if (record.IsValid == false)
-                    continue;
+                using var appender = connection.CreateAppender("omop_staging", "visit_occurrence_row");
+                {
+                    foreach (var row in records)
+                    {
+                        if (row.IsValid == false)
+                            continue;
 
-                dataTable.Rows.Add(
-                   record.NhsNumber,
-                    record.HospitalProviderSpellNumber,
-                    record.RecordConnectionIdentifier,
-                    record.visit_concept_id,
-                    record.visit_start_date,
-                    record.visit_start_datetime,
-                    record.visit_end_date,
-                    record.visit_end_datetime,
-                    record.visit_type_concept_id,
-                    record.provider_id,
-                    record.care_site_id,
-                    record.visit_source_value,
-                    record.visit_source_concept_id,
-                    record.admitted_from_concept_id,
-                    record.admitted_from_source_value,
-                    record.discharged_to_concept_id,
-                    record.discharged_to_source_value);
+                        var dbRow = appender.CreateRow();
+
+                        dbRow
+                            .AppendValue(row.NhsNumber)
+                            .AppendValue(row.HospitalProviderSpellNumber)
+                            .AppendValue(row.RecordConnectionIdentifier)
+                            .AppendValue(row.visit_concept_id)
+                            .AppendValue(row.visit_start_date)
+                            .AppendValue(row.visit_start_datetime)
+                            .AppendValue(row.visit_end_date)
+                            .AppendValue(row.visit_end_datetime)
+                            .AppendValue(row.visit_type_concept_id)
+                            .AppendValue(row.provider_id)
+                            .AppendValue(row.care_site_id)
+                            .AppendValue(row.visit_source_value)
+                            .AppendValue(row.visit_source_concept_id)
+                            .AppendValue(row.admitted_from_concept_id)
+                            .AppendValue(row.admitted_from_source_value)
+                            .AppendValue(row.discharged_to_concept_id)
+                            .AppendValue(row.discharged_to_source_value)
+                            .AppendValue(dataSource)
+                            .EndRow();
+                    }
+                }
+                transaction.Commit();
             }
-
-            var parameter = new
+            catch
             {
-                rows = dataTable.AsTableValuedParameter("cdm.visit_occurrence_row"),
-                DataSource = dataSource
-            };
+                transaction.Rollback();
 
-            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_visit_occurrence", parameter, commandType: CommandType.StoredProcedure);
+                throw;
+            }
         }
+
+        await connection
+            .ExecuteAsync(
+                @"
+
+insert into cdm.visit_occurrence (
+    person_id,
+    visit_concept_id,
+    visit_start_date,
+    visit_start_datetime,
+    visit_end_date,
+    visit_end_datetime,
+    visit_type_concept_id,
+    provider_id,
+    care_site_id,
+    visit_source_value,
+    visit_source_concept_id,
+    admitted_from_concept_id,
+    admitted_from_source_value,
+    discharged_to_concept_id,
+    discharged_to_source_value,
+    hospitalproviderspellnumber,
+    recordconnectionidentifier,
+    data_source
+)
+select
+    p.person_id,
+    r.visit_concept_id,
+    r.visit_start_date,
+    r.visit_start_datetime,
+    r.visit_end_date,
+    r.visit_end_datetime,
+    r.visit_type_concept_id,
+    r.provider_id,
+    r.care_site_id,
+    r.visit_source_value,
+    r.visit_source_concept_id,
+    r.admitted_from_concept_id,
+    r.admitted_from_source_value,
+    r.discharged_to_concept_id,
+    r.discharged_to_source_value,
+    r.hospitalproviderspellnumber,
+    r.recordconnectionidentifier,
+    r.data_source
+from omop_staging.visit_occurrence_row r
+inner join cdm.person p on r.nhs_number = p.person_source_value
+where 
+    (
+        r.recordconnectionidentifier is not null 
+        and not exists (
+            select 1
+            from cdm.visit_occurrence vo
+            where vo.recordconnectionidentifier = r.recordconnectionidentifier
+                and vo.person_id = p.person_id
+        )
+    )
+    or
+    (
+        r.hospitalproviderspellnumber is not null 
+        and not exists (
+            select 1
+            from cdm.visit_occurrence vo
+            where vo.hospitalproviderspellnumber = r.hospitalproviderspellnumber
+                and vo.person_id = p.person_id
+        )
+    )
+    or
+    (
+        r.hospitalproviderspellnumber is null
+        and r.recordconnectionidentifier is null
+        and not exists (
+            select 1
+            from cdm.visit_occurrence vo
+            where vo.person_id = p.person_id
+                and vo.visit_start_date = r.visit_start_date
+        )
+    );
+
+
+truncate table omop_staging.visit_occurrence_row;
+",
+                cancellationToken);
     }
 }

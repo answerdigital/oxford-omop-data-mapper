@@ -1,7 +1,7 @@
-﻿using System.Data;
-using Microsoft.Data.SqlClient;
-using Dapper;
+﻿using Dapper;
+using DuckDB.NET.Data;
 using Microsoft.Extensions.Options;
+using System.Data;
 
 namespace OmopTransformer.Omop.ProcedureOccurrence;
 
@@ -16,68 +16,131 @@ internal class ProcedureOccurrenceRecorder : IProcedureOccurrenceRecorder
 
     public async Task InsertUpdateProcedureOccurrence<T>(IReadOnlyCollection<OmopProcedureOccurrence<T>> records, string dataSource, CancellationToken cancellationToken)
     {
+
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
+        await connection.ExecuteAsync("truncate table omop_staging.procedure_occurrence_row;");
 
-
-        var batches = records.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using (IDbTransaction transaction = connection.BeginTransaction())
         {
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("nhs_number");
-            dataTable.Columns.Add("procedure_concept_id");
-            dataTable.Columns.Add("procedure_date", typeof(DateTime));
-            dataTable.Columns.Add("procedure_datetime", typeof(DateTime));
-            dataTable.Columns.Add("procedure_end_date", typeof(DateTime));
-            dataTable.Columns.Add("procedure_end_datetime", typeof(DateTime));
-            dataTable.Columns.Add("procedure_type_concept_id");
-            dataTable.Columns.Add("modifier_concept_id");
-            dataTable.Columns.Add("quantity");
-            dataTable.Columns.Add("provider_id");
-            dataTable.Columns.Add("visit_occurrence_id");
-            dataTable.Columns.Add("visit_detail_id");
-            dataTable.Columns.Add("procedure_source_value");
-            dataTable.Columns.Add("procedure_source_concept_id");
-            dataTable.Columns.Add("modifier_source_value");
-            dataTable.Columns.Add("RecordConnectionIdentifier");
-
-            foreach (var record in batch)
+            try
             {
-                if (record.IsValid == false)
-                    continue;
-
-                foreach (var conceptId in record.procedure_concept_id!)
+                using var appender = connection.CreateAppender("omop_staging", "procedure_occurrence_row");
                 {
-                    dataTable.Rows.Add(
-                        record.nhs_number,
-                        conceptId,
-                        record.procedure_date,
-                        record.procedure_datetime,
-                        record.procedure_end_date,
-                        record.procedure_end_datetime,
-                        record.procedure_type_concept_id,
-                        record.modifier_concept_id,
-                        record.quantity,
-                        record.provider_id,
-                        record.visit_occurrence_id,
-                        record.visit_detail_id,
-                        record.procedure_source_value,
-                        record.procedure_source_concept_id,
-                        record.modifier_source_value,
-                        record.RecordConnectionIdentifier);
+                    foreach (var row in records)
+                    {
+                        if (row.IsValid == false)
+                            continue;
+
+                        foreach (var conceptId in row.procedure_concept_id!)
+                        {
+                            var dbRow = appender.CreateRow();
+
+                            dbRow
+                                .AppendValue(row.nhs_number)
+                                .AppendValue(conceptId)
+                                .AppendValue(row.procedure_date)
+                                .AppendValue(row.procedure_datetime)
+                                .AppendValue(row.procedure_end_date)
+                                .AppendValue(row.procedure_end_datetime)
+                                .AppendValue(row.procedure_type_concept_id)
+                                .AppendValue(row.modifier_concept_id)
+                                .AppendValue(row.quantity)
+                                .AppendValue(row.provider_id)
+                                .AppendValue(row.visit_occurrence_id)
+                                .AppendValue(row.visit_detail_id)
+                                .AppendValue(row.procedure_source_value)
+                                .AppendValue(row.procedure_source_concept_id)
+                                .AppendValue(row.modifier_source_value)
+                                .AppendValue(row.RecordConnectionIdentifier)
+                                .AppendValue(dataSource)
+                                .EndRow();
+                        }
+                    }
+
                 }
+
+                transaction.Commit();
             }
-
-            var parameter = new
+            catch
             {
-                @rows = dataTable.AsTableValuedParameter("cdm.procedure_occurrence_row"),
-                DataSource = dataSource
-            };
+                transaction.Rollback();
 
-            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_procedure_occurrence", parameter, commandType: CommandType.StoredProcedure);
+                throw;
+            }
         }
+
+        await connection
+                .ExecuteAsync(
+                    @"
+
+
+insert into cdm.procedure_occurrence (
+    person_id,
+    procedure_concept_id,
+    procedure_date,
+    procedure_datetime,
+    procedure_end_date,
+    procedure_end_datetime,
+    procedure_type_concept_id,
+    modifier_concept_id,
+    quantity,
+    provider_id,
+    visit_occurrence_id,
+    visit_detail_id,
+    procedure_source_value,
+    procedure_source_concept_id,
+    modifier_source_value,
+    RecordConnectionIdentifier,
+    data_source
+)
+select
+    p.person_id,
+    r.procedure_concept_id,
+    r.procedure_date,
+    r.procedure_datetime,
+    r.procedure_end_date,
+    r.procedure_end_datetime,
+    r.procedure_type_concept_id,
+    r.modifier_concept_id,
+    r.quantity,
+    r.provider_id,
+    r.visit_occurrence_id,
+    r.visit_detail_id,
+    r.procedure_source_value,
+    r.procedure_source_concept_id,
+    r.modifier_source_value,
+    r.RecordConnectionIdentifier,
+    r.data_source
+from omop_staging.procedure_occurrence_row r
+inner join cdm.person p
+    on r.nhs_number = p.person_source_value
+where 
+    not exists (
+        select 1
+        from cdm.procedure_occurrence vo
+        where 
+            (
+                r.RecordConnectionIdentifier is not null and
+                vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier and
+                vo.person_id = p.person_id and
+                vo.procedure_date = r.procedure_date and
+                vo.procedure_concept_id = r.procedure_concept_id
+            )
+            or
+            (
+                r.RecordConnectionIdentifier is null and
+                vo.procedure_date = r.procedure_date and
+                vo.procedure_concept_id = r.procedure_concept_id and
+                vo.person_id = p.person_id
+            )
+    );
+
+truncate table omop_staging.procedure_occurrence_row;",
+                    cancellationToken);
+
     }
 }
