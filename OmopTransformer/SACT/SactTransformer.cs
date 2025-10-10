@@ -40,7 +40,6 @@ internal class SactTransformer : Transformer
         IMeasurementRecorder measurementRecorder,
         IProviderRecorder providerRecorder,
         ICareSiteRecorder careSiteRecorder,
-        IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory)
         : base(

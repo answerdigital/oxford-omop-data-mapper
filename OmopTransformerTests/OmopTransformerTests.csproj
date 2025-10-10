@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CDS\**" />
+    <EmbeddedResource Remove="CDS\**" />
+    <None Remove="CDS\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2025.2.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.10.4" />
@@ -23,10 +29,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OmopTransformer\OmopTransformer.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="CDS\" />
   </ItemGroup>
 
 </Project>
