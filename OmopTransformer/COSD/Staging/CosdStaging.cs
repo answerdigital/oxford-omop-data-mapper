@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using System.IO.Compression;
+﻿using System.IO.Compression;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
