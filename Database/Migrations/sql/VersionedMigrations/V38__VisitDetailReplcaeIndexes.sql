@@ -1,5 +1,0 @@
-drop index FI_cdm_visit_details_HospitalProviderSpellNumber on cdm.visit_detail;
-drop index FI_cdm_visit_details_RecordConnectionIdentifier on cdm.visit_detail;
-
-create index IDX_cdm_visit_details_HospitalProviderSpellNumber on cdm.visit_detail (HospitalProviderSpellNumber);
-create index IDX_cdm_visit_details_RecordConnectionIdentifier on cdm.visit_detail (RecordConnectionIdentifier);

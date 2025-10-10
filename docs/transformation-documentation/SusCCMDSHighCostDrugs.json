@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as ObservationDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,\n\t\t\td.CriticalCareHighCostDrugs as ObservationSourceValue\n\t\tfrom [omop_staging].[sus_CCMDS_CriticalCareHighCostDrugs] d\n\t\tinner join [omop_staging].[sus_CCMDS] cc on d.MessageId = cc.MessageId\n\t\tinner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as ObservationDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,\n\t\t\td.CriticalCareHighCostDrugs as ObservationSourceValue\n\t\tfrom omop_staging.sus_CCMDS_CriticalCareHighCostDrugs d\n\t\tinner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId\n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -42,7 +42,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as ObservationDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,\n\t\t\td.CriticalCareHighCostDrugs as ObservationSourceValue\n\t\tfrom [omop_staging].[sus_CCMDS_CriticalCareHighCostDrugs] d\n\t\tinner join [omop_staging].[sus_CCMDS] cc on d.MessageId = cc.MessageId\n\t\tinner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as ObservationDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,\n\t\t\td.CriticalCareHighCostDrugs as ObservationSourceValue\n\t\tfrom omop_staging.sus_CCMDS_CriticalCareHighCostDrugs d\n\t\tinner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId\n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -70,7 +70,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as ObservationDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,\n\t\t\td.CriticalCareHighCostDrugs as ObservationSourceValue\n\t\tfrom [omop_staging].[sus_CCMDS_CriticalCareHighCostDrugs] d\n\t\tinner join [omop_staging].[sus_CCMDS] cc on d.MessageId = cc.MessageId\n\t\tinner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as ObservationDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,\n\t\t\td.CriticalCareHighCostDrugs as ObservationSourceValue\n\t\tfrom omop_staging.sus_CCMDS_CriticalCareHighCostDrugs d\n\t\tinner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId\n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -95,7 +95,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as ObservationDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,\n\t\t\td.CriticalCareHighCostDrugs as ObservationSourceValue\n\t\tfrom [omop_staging].[sus_CCMDS_CriticalCareHighCostDrugs] d\n\t\tinner join [omop_staging].[sus_CCMDS] cc on d.MessageId = cc.MessageId\n\t\tinner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as ObservationDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,\n\t\t\td.CriticalCareHighCostDrugs as ObservationSourceValue\n\t\tfrom omop_staging.sus_CCMDS_CriticalCareHighCostDrugs d\n\t\tinner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId\n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -113,7 +113,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as ObservationDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,\n\t\t\td.CriticalCareHighCostDrugs as ObservationSourceValue\n\t\tfrom [omop_staging].[sus_CCMDS_CriticalCareHighCostDrugs] d\n\t\tinner join [omop_staging].[sus_CCMDS] cc on d.MessageId = cc.MessageId\n\t\tinner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as ObservationDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,\n\t\t\td.CriticalCareHighCostDrugs as ObservationSourceValue\n\t\tfrom omop_staging.sus_CCMDS_CriticalCareHighCostDrugs d\n\t\tinner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId\n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -131,7 +131,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as ObservationDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,\n\t\t\td.CriticalCareHighCostDrugs as ObservationSourceValue\n\t\tfrom [omop_staging].[sus_CCMDS_CriticalCareHighCostDrugs] d\n\t\tinner join [omop_staging].[sus_CCMDS] cc on d.MessageId = cc.MessageId\n\t\tinner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\tapc.NHSNumber,\n\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\tcc.CriticalCareStartDate as ObservationDate,\n\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as ObservationDateTime,\n\t\t\td.CriticalCareHighCostDrugs as ObservationSourceValue\n\t\tfrom omop_staging.sus_CCMDS_CriticalCareHighCostDrugs d\n\t\tinner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId\n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t",
       "lookup_table_markdown": null
     }
   ]

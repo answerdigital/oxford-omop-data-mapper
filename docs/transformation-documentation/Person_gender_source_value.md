@@ -17,7 +17,7 @@ has_toc: false
 		max(DateofBirth) as DateOfBirth,
 		max(EthnicCategory) as EthnicCategory,
 		max(Sex) as PersonCurrentGenderCode
-	from [omop_staging].[sus_OP]
+	from omop_staging.sus_OP
 	where NHSNumber is not null
 	group by NHSNumber
 	

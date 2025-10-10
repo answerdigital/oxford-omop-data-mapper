@@ -6,7 +6,7 @@ select
 	apc.HospitalProviderSpellNumber,
 	max(apc.CDSActivityDate) as observation_date,
 	apc.PregnancyTotalPreviousPregnancies
-from [omop_staging].[sus_APC] apc
+from omop_staging.sus_APC apc
 where apc.NHSNumber is not null
 	and apc.PregnancyTotalPreviousPregnancies is not null
 	and apc.CDSActivityDate is not null

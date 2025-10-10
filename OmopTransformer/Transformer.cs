@@ -14,8 +14,6 @@ internal abstract class Transformer
     private readonly IRunAnalysisRecorder _runAnalysisRecorder;
     private readonly ILoggerFactory _loggerFactory;
 
-    private bool _isConceptMapRendered = false;
-
     private readonly string _dataSource;
 
     protected Transformer(IRecordTransformer recordTransformer, TransformOptions transformOptions, IRecordProvider recordProvider, string dataSource, IRunAnalysisRecorder runAnalysisRecorder, ILoggerFactory loggerFactory)
@@ -36,8 +34,6 @@ internal abstract class Transformer
         CancellationToken cancellationToken)
         where TTarget : IOmopRecord<TSource>, new()
     {
-        await EnsureConceptMapIsRendered(cancellationToken);
-
         var overallStopwatch = Stopwatch.StartNew();
         var computeStopwatch = new Stopwatch();
         var getRecordsStopwatch = Stopwatch.StartNew();
@@ -77,15 +73,13 @@ internal abstract class Transformer
 
         if (_transformOptions.DryRun == false)
         {
-            await
-                _runAnalysisRecorder
-                    .InsertRunAnalysis(
-                        runId: runId,
-                        tableType: _dataSource,
-                        origin: $"{typeof(TTarget).Name}:{name}",
-                        validCount: stats.ValidRowCount,
-                        invalidCount: stats.InvalidRowCount,
-                        cancellationToken);
+            _runAnalysisRecorder
+                .InsertRunAnalysis(
+                    runId: runId,
+                    tableType: _dataSource,
+                    origin: $"{typeof(TTarget).Name}:{name}",
+                    validCount: stats.ValidRowCount,
+                    invalidCount: stats.InvalidRowCount);
         }
 
         overallStopwatch.Stop();
@@ -117,7 +111,7 @@ internal abstract class Transformer
         CancellationToken cancellationToken) 
         where TTarget : IOmopRecord<TSource>, new()
     {
-        const int batchSize = 4000000;
+        int batchSize = _transformOptions.BatchSize;
 
         getRecordsStopwatch.Start();
         
@@ -167,16 +161,6 @@ internal abstract class Transformer
             return "n/a";
         
         return ((int)(total / stopwatch.Elapsed.TotalSeconds)).ToString();
-    }
-
-    private async Task EnsureConceptMapIsRendered(CancellationToken cancellationToken)
-    {
-        if (_isConceptMapRendered)
-            return;
-
-        await _conceptMapper.RenderConceptMap(cancellationToken);
-
-        _isConceptMapRendered = true;
     }
 
     private class StatsInternal

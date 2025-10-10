@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Dapper;
+using DuckDB.NET.Data;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace OmopTransformer;
@@ -26,9 +28,10 @@ internal class ConceptResolver
     {
         _logger.LogInformation("Loading mappings codes.");
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
-        
-        var results = connection.QueryLongTimeoutAsync<Row>("select * from omop_staging.concept_code_map", CancellationToken.None).Result;
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        connection.Open();
+
+        var results = connection.Query<Row>("select * from omop_staging.concept_code_map", CancellationToken.None);
 
         return
             results
@@ -40,11 +43,12 @@ internal class ConceptResolver
     {
         _logger.LogInformation("Loading concept device relationships.");
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        connection.Open();
 
         var results = 
             connection
-                .QueryLongTimeoutAsync<ConceptRelationshipRow>(
+                .Query<ConceptRelationshipRow>(
                 @"select distinct
 	                    cm.source_concept_id as concept_id,
 	                    device.concept_id as device_concept_id
@@ -56,8 +60,7 @@ internal class ConceptResolver
                     where device.standard_concept = 'S'
 	                    and cr.relationship_id like '%device%'
 	                    and device.domain_id = 'Device'",
-                CancellationToken.None)
-            .Result;
+                CancellationToken.None);
 
         return
             results
@@ -160,7 +163,7 @@ internal class ConceptResolver
         public int source_concept_id { get; init; }
         public int target_concept_id { get; init; }
         public string? domain_id { get; init; }
-        public bool mapped_from_standard { get; init; }
+        public byte mapped_from_standard { get; init; }
     }
 
     private class ConceptRelationshipRow

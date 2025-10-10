@@ -62,7 +62,7 @@ from
 	select
 		ConsultantCode,
 		MainSpecialtyCode
-	from [omop_staging].[sus_APC]
+	from omop_staging.sus_APC
 	where MainSpecialtyCode is not null
 		and ConsultantCode is not null
 ) grouped

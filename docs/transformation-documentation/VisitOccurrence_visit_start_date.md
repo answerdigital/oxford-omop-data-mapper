@@ -142,8 +142,8 @@ select
 	event_end_date
 from results
 where
-    PatientId is not null
-    and patientid not like '%[^0-9]%';
+  PatientId is not null
+  and regexp_matches(PatientId, '\d{10}');
 
 	
 ```

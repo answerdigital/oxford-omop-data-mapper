@@ -1,7 +1,7 @@
-﻿using System.Data;
-using Microsoft.Data.SqlClient;
-using Dapper;
+﻿using Dapper;
+using DuckDB.NET.Data;
 using Microsoft.Extensions.Options;
+using System.Data;
 
 namespace OmopTransformer.Omop.Observation;
 
@@ -18,74 +18,158 @@ internal class ObservationRecorder : IObservationRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
+        await connection.ExecuteAsync("truncate table omop_staging.observation_row;");
 
-
-        var batches = records.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using (IDbTransaction transaction = connection.BeginTransaction())
         {
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("nhs_number");
-            dataTable.Columns.Add("RecordConnectionIdentifier");
-            dataTable.Columns.Add("HospitalProviderSpellNumber", typeof(string));
-            dataTable.Columns.Add("observation_concept_id", typeof(int));
-            dataTable.Columns.Add("observation_date", typeof(DateTime));
-            dataTable.Columns.Add("observation_datetime", typeof(DateTime));
-            dataTable.Columns.Add("observation_type_concept_id", typeof(int));
-            dataTable.Columns.Add("value_as_number", typeof(double));
-            dataTable.Columns.Add("value_as_string");
-            dataTable.Columns.Add("value_as_concept_id", typeof(int));
-            dataTable.Columns.Add("qualifier_concept_id", typeof(int));
-            dataTable.Columns.Add("unit_concept_id", typeof(int));
-            dataTable.Columns.Add("provider_id", typeof(int));
-            dataTable.Columns.Add("observation_source_value");
-            dataTable.Columns.Add("observation_source_concept_id", typeof(int));
-            dataTable.Columns.Add("unit_source_value");
-            dataTable.Columns.Add("qualifier_source_value");
-            dataTable.Columns.Add("value_source_value");
-            dataTable.Columns.Add("observation_event_id", typeof(int));
-            dataTable.Columns.Add("obs_event_field_concept_id", typeof(int));
-
-            foreach (var record in batch)
+            try
             {
-                if (record.IsValid == false)
-                    continue;
-
-                foreach (var conceptId in record.observation_concept_id!)
+                using var appender = connection.CreateAppender("omop_staging", "observation_row");
                 {
-                    dataTable.Rows.Add(
-                        record.nhs_number,
-                        record.RecordConnectionIdentifier,
-                        record.HospitalProviderSpellNumber,
-                        conceptId,
-                        record.observation_date,
-                        record.observation_datetime,
-                        record.observation_type_concept_id,
-                        record.value_as_number,
-                        record.value_as_string,
-                        record.value_as_concept_id,
-                        record.qualifier_concept_id,
-                        record.unit_concept_id,
-                        record.provider_id,
-                        record.observation_source_value,
-                        record.observation_source_concept_id,
-                        record.unit_source_value,
-                        record.qualifier_source_value,
-                        record.value_source_value,
-                        record.observation_event_id,
-                        record.obs_event_field_concept_id);
+                    foreach (var row in records)
+                    {
+                        if (row.IsValid == false)
+                            continue;
+
+                        foreach (var conceptId in row.observation_concept_id!)
+                        {
+                            var dbRow = appender.CreateRow();
+
+                            dbRow
+                                .AppendValue(row.nhs_number)
+                                .AppendValue(row.RecordConnectionIdentifier)
+                                .AppendValue(row.HospitalProviderSpellNumber)
+                                .AppendValue(conceptId)
+                                .AppendValue(row.observation_date)
+                                .AppendValue(row.observation_datetime)
+                                .AppendValue(row.observation_type_concept_id)
+                                .AppendValue((float?)row.value_as_number)
+                                .AppendValue(row.value_as_string)
+                                .AppendValue(row.value_as_concept_id)
+                                .AppendValue(row.qualifier_concept_id)
+                                .AppendValue(row.unit_concept_id)
+                                .AppendValue(row.provider_id)
+                                .AppendValue(row.observation_source_value)
+                                .AppendValue(row.observation_source_concept_id)
+                                .AppendValue(row.unit_source_value)
+                                .AppendValue(row.qualifier_source_value)
+                                .AppendValue(row.value_source_value)
+                                .AppendValue(row.observation_event_id)
+                                .AppendValue(row.obs_event_field_concept_id)
+                                .AppendValue(dataSource)
+                                .EndRow();
+                        }
+                    }
                 }
+                transaction.Commit();
             }
-
-            var parameter = new
+            catch
             {
-                @rows = dataTable.AsTableValuedParameter("cdm.[observation_row]"),
-                DataSource = dataSource
-            };
+                transaction.Rollback();
 
-            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_observation", parameter, commandType: CommandType.StoredProcedure);
+                throw;
+            }
         }
+
+        await connection
+            .ExecuteAsync(
+                @"
+
+
+insert into cdm.observation (
+    person_id,
+    observation_concept_id,
+    observation_date,
+    observation_datetime,
+    observation_type_concept_id,
+    value_as_number,
+    value_as_string,
+    value_as_concept_id,
+    qualifier_concept_id,
+    unit_concept_id,
+    provider_id,
+    visit_occurrence_id,
+    visit_detail_id,
+    observation_source_value,
+    observation_source_concept_id,
+    unit_source_value,
+    qualifier_source_value,
+    value_source_value,
+    observation_event_id,
+    obs_event_field_concept_id,
+    RecordConnectionIdentifier,
+    HospitalProviderSpellNumber,
+    data_source
+)
+select
+    p.person_id,
+    r.observation_concept_id,
+    r.observation_date,
+    r.observation_datetime,
+    r.observation_type_concept_id,
+    r.value_as_number,
+    r.value_as_string,
+    r.value_as_concept_id,
+    r.qualifier_concept_id,
+    r.unit_concept_id,
+    r.provider_id,
+    (
+        select
+            vd.visit_occurrence_id
+        from cdm.visit_detail vd
+        where vd.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+            and vd.person_id = p.person_id
+        limit 1
+    ) as visit_occurrence_id,
+    (
+        select
+            vd.visit_detail_id
+        from cdm.visit_detail vd
+        where vd.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+            and vd.person_id = p.person_id
+        limit 1
+    ) as visit_detail_id,
+    r.observation_source_value,
+    r.observation_source_concept_id,
+    r.unit_source_value,
+    r.qualifier_source_value,
+    r.value_source_value,
+    r.observation_event_id,
+    r.obs_event_field_concept_id,
+    r.RecordConnectionIdentifier,
+    r.HospitalProviderSpellNumber,
+    r.data_source
+from omop_staging.observation_row r
+inner join cdm.person p
+    on r.nhs_number = p.person_source_value
+where 
+    not exists (
+        select 1
+        from cdm.observation o
+        where 
+            (
+                r.RecordConnectionIdentifier is not null and
+                o.person_id = p.person_id and
+                o.observation_date = r.observation_date and
+                o.observation_concept_id = r.observation_concept_id and
+                o.RecordConnectionIdentifier = r.RecordConnectionIdentifier and
+                (r.HospitalProviderSpellNumber is null or o.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber) and
+                (r.observation_source_concept_id is null or o.observation_source_concept_id = r.observation_source_concept_id)
+            )
+            or
+            (
+                r.RecordConnectionIdentifier is null and
+                o.person_id = p.person_id and
+                o.observation_date = r.observation_date and
+                o.observation_concept_id = r.observation_concept_id and
+                o.observation_source_concept_id = r.observation_source_concept_id
+            )
+    );
+
+truncate table omop_staging.observation_row;",
+        cancellationToken);
     }
 }

@@ -11,12 +11,12 @@ internal class RtdsStagingSchema : StagingSchema, IRtdsStagingSchema
 
     protected override string[] ClearStagingSql =>
     [
-        "if object_id('omop_staging.RTDS_1_Demographics') is not null begin delete omop_staging.RTDS_1_Demographics; end",
-        "if object_id('omop_staging.RTDS_2a_Attendances') is not null begin delete omop_staging.RTDS_2a_Attendances; end",
-        "if object_id('omop_staging.RTDS_2b_Plan') is not null begin delete omop_staging.RTDS_2b_Plan; end",
-        "if object_id('omop_staging.RTDS_3_Prescription') is not null begin delete omop_staging.RTDS_3_Prescription; end",
-        "if object_id('omop_staging.RTDS_4_Exposures') is not null begin delete omop_staging.RTDS_4_Exposures; end",
-        "if object_id('omop_staging.RTDS_5_Diagnosis_Course') is not null begin delete omop_staging.RTDS_5_Diagnosis_Course; end",
-        "if object_id('omop_staging.RTDS_PASSDATA') is not null begin delete omop_staging.RTDS_PASSDATA; end"
+        "truncate table omop_staging.RTDS_1_Demographics;",
+        "truncate table omop_staging.RTDS_2a_Attendances;",
+        "truncate table omop_staging.RTDS_2b_Plan;",
+        "truncate table omop_staging.RTDS_3_Prescription;",
+        "truncate table omop_staging.RTDS_4_Exposures;",
+        "truncate table omop_staging.RTDS_5_Diagnosis_Course;",
+        "truncate table omop_staging.RTDS_PASSDATA;"
     ];
 }

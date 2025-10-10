@@ -1,7 +1,7 @@
-﻿using System.Data;
-using Dapper;
-using Microsoft.Data.SqlClient;
+﻿using Dapper;
+using DuckDB.NET.Data;
 using Microsoft.Extensions.Options;
+using System.Data;
 
 namespace OmopTransformer.Omop.Measurement;
 
@@ -18,78 +18,155 @@ internal class MeasurementRecorder : IMeasurementRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
+        await connection.ExecuteAsync("truncate table omop_staging.measurement_row;");
 
-
-        var batches = records.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using (IDbTransaction transaction = connection.BeginTransaction())
         {
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("nhs_number", typeof(string));
-            dataTable.Columns.Add("measurement_concept_id", typeof(int));
-            dataTable.Columns.Add("measurement_date", typeof(DateTime));
-            dataTable.Columns.Add("measurement_datetime", typeof(DateTime));
-            dataTable.Columns.Add("measurement_time", typeof(DateTime));
-            dataTable.Columns.Add("measurement_type_concept_id", typeof(int));
-            dataTable.Columns.Add("operator_concept_id", typeof(int));
-            dataTable.Columns.Add("value_as_number", typeof(double));
-            dataTable.Columns.Add("value_as_concept_id", typeof(int));
-            dataTable.Columns.Add("unit_concept_id", typeof(int));
-            dataTable.Columns.Add("range_low", typeof(double));
-            dataTable.Columns.Add("range_high", typeof(double));
-            dataTable.Columns.Add("provider_id", typeof(int));
-            dataTable.Columns.Add("measurement_source_value", typeof(string));
-            dataTable.Columns.Add("measurement_source_concept_id", typeof(int));
-            dataTable.Columns.Add("unit_source_value", typeof(string));
-            dataTable.Columns.Add("unit_source_concept_id", typeof(int));
-            dataTable.Columns.Add("value_source_value", typeof(string));
-            dataTable.Columns.Add("measurement_event_id", typeof(int));
-            dataTable.Columns.Add("meas_event_field_concept_id", typeof(int));
-            dataTable.Columns.Add("RecordConnectionIdentifier", typeof(string));
-            dataTable.Columns.Add("HospitalProviderSpellNumber", typeof(string));
-
-            foreach (var record in batch)
+            try
             {
-                if (record.IsValid == false)
-                    continue;
-
-                foreach (var conceptId in record.measurement_concept_id!)
+                using var appender = connection.CreateAppender("omop_staging", "measurement_row");
                 {
-                    dataTable.Rows.Add(
-                        record.nhs_number,
-                        conceptId,
-                        record.measurement_date,
-                        record.measurement_datetime,
-                        record.measurement_time,
-                        record.measurement_type_concept_id,
-                        record.operator_concept_id,
-                        record.value_as_number,
-                        record.value_as_concept_id,
-                        record.unit_concept_id,
-                        record.range_low,
-                        record.range_high,
-                        record.provider_id,
-                        record.measurement_source_value,
-                        record.measurement_source_concept_id,
-                        record.unit_source_value,
-                        record.unit_source_concept_id,
-                        record.value_source_value,
-                        record.measurement_event_id,
-                        record.meas_event_field_concept_id,
-                        record.RecordConnectionIdentifier,
-                        record.HospitalProviderSpellNumber);
+                    foreach (var row in records)
+                    {
+                        if (row.IsValid == false)
+                            continue;
+
+                        foreach (var conceptId in row.measurement_concept_id!)
+                        {
+                            var dbRow = appender.CreateRow();
+
+                            dbRow
+                                .AppendValue(row.nhs_number)
+                                .AppendValue(conceptId)
+                                .AppendValue(row.measurement_date)
+                                .AppendValue(row.measurement_datetime)
+                                .AppendValue(row.measurement_time)
+                                .AppendValue(row.measurement_type_concept_id)
+                                .AppendValue(row.operator_concept_id)
+                                .AppendValue((float?)row.value_as_number)
+                                .AppendValue(row.value_as_concept_id)
+                                .AppendValue(row.unit_concept_id)
+                                .AppendValue((float?)row.range_low)
+                                .AppendValue((float?)row.range_high)
+                                .AppendValue(row.provider_id)
+                                .AppendValue(row.measurement_source_value)
+                                .AppendValue(row.measurement_source_concept_id)
+                                .AppendValue(row.unit_source_value)
+                                .AppendValue(row.unit_source_concept_id)
+                                .AppendValue(row.value_source_value)
+                                .AppendValue(row.measurement_event_id)
+                                .AppendValue(row.meas_event_field_concept_id)
+                                .AppendValue(row.RecordConnectionIdentifier)
+                                .AppendValue(row.HospitalProviderSpellNumber)
+                                .AppendValue(dataSource)
+                                .EndRow();
+                        }
+                    }
                 }
+                transaction.Commit();
             }
-
-            var parameter = new
+            catch
             {
-                @rows = dataTable.AsTableValuedParameter("cdm.measurement_row"),
-                DataSource = dataSource
-            };
+                transaction.Rollback();
 
-            await connection.ExecuteLongTimeoutAsync("cdm.insert_update_measurement", parameter, commandType: CommandType.StoredProcedure);
+                throw;
+            }
         }
+
+        await connection
+            .ExecuteAsync(
+                @"
+
+
+insert into cdm.measurement (
+    person_id,
+    measurement_concept_id,
+    measurement_date,
+    measurement_datetime,
+    measurement_time,
+    measurement_type_concept_id,
+    operator_concept_id,
+    value_as_number,
+    value_as_concept_id,
+    unit_concept_id,
+    range_low,
+    range_high,
+    provider_id,
+    measurement_source_value,
+    measurement_source_concept_id,
+    unit_source_value,
+    unit_source_concept_id,
+    value_source_value,
+    measurement_event_id,
+    meas_event_field_concept_id,
+    RecordConnectionIdentifier,
+    HospitalProviderSpellNumber,
+    data_source
+)
+select
+    p.person_id,
+    r.measurement_concept_id,
+    r.measurement_date,
+    r.measurement_datetime,
+    r.measurement_time,
+    r.measurement_type_concept_id,
+    r.operator_concept_id,
+    r.value_as_number,
+    r.value_as_concept_id,
+    r.unit_concept_id,
+    r.range_low,
+    r.range_high,
+    r.provider_id,
+    r.measurement_source_value,
+    r.measurement_source_concept_id,
+    r.unit_source_value,
+    r.unit_source_concept_id,
+    r.value_source_value,
+    r.measurement_event_id,
+    r.meas_event_field_concept_id,
+    r.RecordConnectionIdentifier,
+    r.HospitalProviderSpellNumber,
+    r.data_source
+from omop_staging.measurement_row r
+    inner join cdm.person p
+        on r.nhs_number = p.person_source_value
+where 
+    not exists (
+        select 1
+        from cdm.measurement m
+        where m.person_id = p.person_id 
+            and m.measurement_date = r.measurement_date
+            and m.measurement_concept_id = r.measurement_concept_id
+            and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
+            and r.RecordConnectionIdentifier is null
+            and r.HospitalProviderSpellNumber is null
+    )
+    and not exists (
+        select 1
+        from cdm.measurement m
+        where m.person_id = p.person_id 
+            and m.measurement_date = r.measurement_date
+            and m.measurement_concept_id = r.measurement_concept_id
+            and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
+            and r.RecordConnectionIdentifier is not null
+            and m.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+    )
+    and not exists (
+        select 1
+        from cdm.measurement m
+        where m.person_id = p.person_id 
+            and m.measurement_date = r.measurement_date
+            and m.measurement_concept_id = r.measurement_concept_id
+            and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
+            and r.HospitalProviderSpellNumber is not null
+            and m.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+    );
+
+truncate table omop_staging.measurement_row;",
+                cancellationToken);
+
     }
 }

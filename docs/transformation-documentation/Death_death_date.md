@@ -16,7 +16,7 @@ Converts text to dates.
 	select
 		NHSNumber as nhs_number,
 		coalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date
-	from [omop_staging].[sus_OP]
+	from omop_staging.sus_OP
 	where ReferralToTreatmentPeriodStatus = 36
 		and (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)
 		and NHSNumber is not null
@@ -68,7 +68,7 @@ Converts text to dates.
 select
 	NHSNumber as nhs_number,
 	coalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date
-from [omop_staging].[sus_AE]
+from omop_staging.sus_AE
 where ((ReferralToTreatmentPeriodStatus = 36) --PATIENT died before treatment
 	or (AEPatientGroup = 70) -- PATIENT brought in dead
 	or (AEAttendanceDisposal = 10))  --PATIENT died in AE

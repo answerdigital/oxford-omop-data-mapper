@@ -93,7 +93,7 @@ order by
 ```sql
 	select distinct
 		SiteCodeOfTreatment
-	from [omop_staging].[sus_AE] 	
+	from omop_staging.sus_AE 	
 	
 ```
 

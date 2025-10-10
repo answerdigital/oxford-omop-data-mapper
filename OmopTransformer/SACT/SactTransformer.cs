@@ -48,7 +48,6 @@ internal class SactTransformer : Transformer
             transformOptions,
             recordProvider,
             "SACT",
-            conceptMapper,
             runAnalysisRecorder,
             loggerFactory)
     {

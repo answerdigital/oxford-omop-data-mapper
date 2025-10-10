@@ -1,8 +1,7 @@
-﻿using System.Data;
-using Dapper;
+﻿using DuckDB.NET.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace OmopTransformer.SUS.Staging.Inpatient.CCMDS;
 
@@ -26,19 +25,30 @@ internal class SusCCMDSInserter : ISusCCMDSInserter
         var batches = rows.Batch(_configuration.BatchSize!.Value);
         int batchNumber = 1;
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
-
-
-        foreach (var batch in batches)
+        using IDbTransaction transaction = connection.BeginTransaction();
+        try
         {
-            _logger.LogInformation("Batch {0}.", batchNumber++);
+            foreach (var batch in batches)
+            {
+                _logger.LogInformation("Batch {0}.", batchNumber++);
 
-            await InsertBatch(batch, connection, cancellationToken);
+                InsertBatch(batch, connection, cancellationToken);
+            }
+
+            transaction.Commit();
+        }
+        catch
+        {
+            transaction.Rollback();
+
+            throw;
         }
     }
 
-    private async Task InsertBatch(IEnumerable<CCMDSRecord> rows, RetryConnection connection, CancellationToken cancellationToken)
+    private void InsertBatch(IEnumerable<CCMDSRecord> rows, DuckDBConnection connection, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -47,140 +57,87 @@ internal class SusCCMDSInserter : ISusCCMDSInserter
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("Inserting CCMDS.");
-        await InsertCCMDS(rowsList.Select(row => row.Row).ToList(), connection);
+        InsertCCMDS(rowsList.Select(row => row.Row).ToList(), connection);
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("Inserting CCMDS CriticalCareActivityCode.");
-        await InsertCriticalCareActivityCodes(rowsList.SelectMany(row => row.ActivityCodes).ToList(), connection);
+        InsertCriticalCareActivityCodes(rowsList.SelectMany(row => row.ActivityCodes).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("Inserting CCMDS CriticalCareHighCostDrugs.");
-        await InsertHighCostDrugs(rowsList.SelectMany(row => row.HighCostDrugs).ToList(), connection);
+        InsertHighCostDrugs(rowsList.SelectMany(row => row.HighCostDrugs).ToList(), connection);
 
         cancellationToken.ThrowIfCancellationRequested();
     }
 
-    private async Task InsertCCMDS(IReadOnlyCollection<CCMDSRow> rows, RetryConnection connection)
+    private void InsertCCMDS(IReadOnlyCollection<CCMDSRow> rows, DuckDBConnection connection)
     {
-        var dataTable = new DataTable();
-
-        dataTable.Columns.Add("MessageId");
-        dataTable.Columns.Add("GeneratedRecordID");
-        dataTable.Columns.Add("LoadStagingDate");
-        dataTable.Columns.Add("CriticalCarePeriodSequenceNumber");
-        dataTable.Columns.Add("CDSVersionontheepisodes");
-        dataTable.Columns.Add("HESEPITYPEoftheepisode");
-        dataTable.Columns.Add("CDSInterchangeID");
-        dataTable.Columns.Add("HESEPISTAToftheepisode");
-        dataTable.Columns.Add("EventDate");
-        dataTable.Columns.Add("ActivityDateCriticalCare");
-        dataTable.Columns.Add("CriticalCarePeriodType");
-        dataTable.Columns.Add("CriticalCareEpisodeRelationship");
-        dataTable.Columns.Add("CriticalCareUnitFunction");
-        dataTable.Columns.Add("CriticalCareStartDate");
-        dataTable.Columns.Add("CriticalCareStartTime");
-        dataTable.Columns.Add("CriticalCarePeriodDischargeDate");
-        dataTable.Columns.Add("CriticalCarePeriodDischargeTime");
-        dataTable.Columns.Add("CriticalCarePeriodLocalIdentifier");
-        dataTable.Columns.Add("GestationLengthAtDelivery");
-        dataTable.Columns.Add("CriticalCareSequenceNumberDerived");
-        dataTable.Columns.Add("TotalnumberofCriticalCareActivitiesDerived");
-        dataTable.Columns.Add("LastRecordforthisCriticalCarePeriodIndicatorDerived");
-        dataTable.Columns.Add("CriticalCareActivitytoEpisodeRelationshipDerived");
-        dataTable.Columns.Add("PersonWeight");
-
-        foreach (var row in rows)
+        using var appender = connection.CreateAppender("omop_staging", "sus_CCMDS");
         {
-            dataTable.Rows.Add(
-                row.MessageId,
-                row.GeneratedRecordID,
-                row.LoadStagingDate,
-                row.CriticalCarePeriodSequenceNumber,
-                row.CDSVersionontheepisodes,
-                row.HESEPITYPEoftheepisode,
-                row.CDSInterchangeID,
-                row.HESEPISTAToftheepisode,
-                row.EventDate,
-                row.ActivityDateCriticalCare,
-                row.CriticalCarePeriodType,
-                row.CriticalCareEpisodeRelationship,
-                row.CriticalCareUnitFunction,
-                row.CriticalCareStartDate,
-                row.CriticalCareStartTime,
-                row.CriticalCarePeriodDischargeDate,
-                row.CriticalCarePeriodDischargeTime,
-                row.CriticalCarePeriodLocalIdentifier,
-                row.GestationLengthAtDelivery,
-                row.CriticalCareSequenceNumberDerived,
-                row.TotalnumberofCriticalCareActivitiesDerived,
-                row.LastRecordforthisCriticalCarePeriodIndicatorDerived,
-                row.CriticalCareActivitytoEpisodeRelationshipDerived,
-                row.PersonWeight
-            );
+            foreach (var row in rows)
+            {
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(row.MessageId)
+                    .AppendValue(row.GeneratedRecordID)
+                    .AppendValue(row.LoadStagingDate)
+                    .AppendValue(row.CriticalCarePeriodSequenceNumber)
+                    .AppendValue(row.CDSVersionontheepisodes)
+                    .AppendValue(row.HESEPITYPEoftheepisode)
+                    .AppendValue(row.CDSInterchangeID)
+                    .AppendValue(row.HESEPISTAToftheepisode)
+                    .AppendValue(row.EventDate)
+                    .AppendValue(row.ActivityDateCriticalCare)
+                    .AppendValue(row.CriticalCarePeriodType)
+                    .AppendValue(row.CriticalCareEpisodeRelationship)
+                    .AppendValue(row.CriticalCareUnitFunction)
+                    .AppendValue(row.CriticalCareStartDate)
+                    .AppendValue(row.CriticalCareStartTime)
+                    .AppendValue(row.CriticalCarePeriodDischargeDate)
+                    .AppendValue(row.CriticalCarePeriodDischargeTime)
+                    .AppendValue(row.CriticalCarePeriodLocalIdentifier)
+                    .AppendValue(row.GestationLengthAtDelivery)
+                    .AppendValue(row.CriticalCareSequenceNumberDerived)
+                    .AppendValue(row.TotalnumberofCriticalCareActivitiesDerived)
+                    .AppendValue(row.LastRecordforthisCriticalCarePeriodIndicatorDerived)
+                    .AppendValue(row.CriticalCareActivitytoEpisodeRelationshipDerived)
+                    .AppendValue(row.PersonWeight)
+                    .EndRow();
+            }
         }
-
-        var parameter = new
-        {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.sus_CCMDS_row")
-        };
-
-        await connection
-            .ExecuteLongTimeoutAsync(
-                "omop_staging.insert_sus_CCMDS_row",
-                parameter,
-                commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertHighCostDrugs(IReadOnlyCollection<CCMDSCriticalCareHighCostDrugs> rows, RetryConnection connection)
+    private void InsertHighCostDrugs(IReadOnlyCollection<CCMDSCriticalCareHighCostDrugs> rows, DuckDBConnection connection)
     {
-        var dataTable = new DataTable();
-
-        dataTable.Columns.Add("MessageId");
-        dataTable.Columns.Add("CriticalCareHighCostDrugs");
-
-        foreach (var row in rows)
+        using var appender = connection.CreateAppender("omop_staging", "sus_CCMDS_CriticalCareHighCostDrugs");
         {
-            dataTable.Rows.Add(
-                row.MessageId,
-                row.CriticalCareHighCostDrugs);
+            foreach (var row in rows)
+            {
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(row.MessageId)
+                    .AppendValue(row.CriticalCareHighCostDrugs)
+                    .EndRow();
+            }
         }
-
-        var parameter = new
-        {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.sus_CCMDS_CriticalCareHighCostDrugs_row")
-        };
-
-        await connection
-            .ExecuteLongTimeoutAsync(
-                "omop_staging.insert_sus_CCMDS_CriticalCareHighCostDrugs_row",
-                parameter,
-                commandType: CommandType.StoredProcedure);
     }
 
-    private async Task InsertCriticalCareActivityCodes(IReadOnlyCollection<CCMDSCriticalCareActivityCode> rows, RetryConnection connection)
+    private void InsertCriticalCareActivityCodes(IReadOnlyCollection<CCMDSCriticalCareActivityCode> rows, DuckDBConnection connection)
     {
-        var dataTable = new DataTable();
-
-        dataTable.Columns.Add("MessageId");
-        dataTable.Columns.Add("CriticalCareActivityCode");
-
-        foreach (var row in rows)
+        using var appender = connection.CreateAppender("omop_staging", "sus_CCMDS_CriticalCareActivityCode");
         {
-            dataTable.Rows.Add(
-                row.MessageId,
-                row.CriticalCareActivityCode);
+            foreach (var row in rows)
+            {
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(row.MessageId)
+                    .AppendValue(row.CriticalCareActivityCode)
+                    .EndRow();
+            }
         }
-
-        var parameter = new
-        {
-            Rows = dataTable.AsTableValuedParameter("omop_staging.sus_CCMDS_CriticalCareActivityCode_row")
-        };
-
-        await connection
-            .ExecuteLongTimeoutAsync(
-                "omop_staging.insert_sus_CCMDS_CriticalCareActivityCode_row",
-                parameter,
-                commandType: CommandType.StoredProcedure);
     }
 }

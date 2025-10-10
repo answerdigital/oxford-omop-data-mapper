@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Dapper;
+using DuckDB.NET.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -19,15 +20,14 @@ internal abstract class StagingSchema
 
     public async Task ClearStagingTables(CancellationToken cancellationToken)
     {
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
-
-
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
         _logger.LogInformation("Clearing staging tables.");
-        
+
         foreach (string sql in ClearStagingSql)
         {
-            await connection.ExecuteLongTimeoutAsync(sql);
+            await connection.ExecuteAsync(sql);
         }
     }
 }

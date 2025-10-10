@@ -1,7 +1,7 @@
-﻿using System.Data;
-using Dapper;
-using Microsoft.Data.SqlClient;
+﻿using Dapper;
+using DuckDB.NET.Data;
 using Microsoft.Extensions.Options;
+using System.Data;
 
 namespace OmopTransformer.Omop.Location;
 
@@ -18,55 +18,147 @@ internal class LocationRecorder : ILocationRecorder
     {
         if (records == null) throw new ArgumentNullException(nameof(records));
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
+        await connection.ExecuteAsync("truncate table omop_staging.location_row;");
 
-
-        var batches = records.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using (IDbTransaction transaction = connection.BeginTransaction())
         {
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("address_1");
-            dataTable.Columns.Add("address_2");
-            dataTable.Columns.Add("city");
-            dataTable.Columns.Add("state");
-            dataTable.Columns.Add("zip");
-            dataTable.Columns.Add("county");
-            dataTable.Columns.Add("location_source_value");
-            dataTable.Columns.Add("country_concept_id");
-            dataTable.Columns.Add("country_source_value");
-            dataTable.Columns.Add("latitude");
-            dataTable.Columns.Add("longitude");
-            dataTable.Columns.Add("NhsNumber");
-
-            foreach (var record in batch)
+            try
             {
-                if (record.IsValid == false)
-                    continue;
+                using var appender = connection.CreateAppender("omop_staging", "location_row");
+                {
+                    foreach (var row in records)
+                    {
+                        if (row.IsValid == false)
+                            continue;
 
-                dataTable.Rows.Add(
-                    record.address_1,
-                    record.address_2,
-                    record.city,
-                    record.state,
-                    record.zip,
-                    record.county,
-                    record.location_source_value,
-                    record.country_concept_id,
-                    record.country_source_value,
-                    record.latitude,
-                    record.longitude,
-                    record.nhs_number);
+                        var dbRow = appender.CreateRow();
+
+                        dbRow
+                            .AppendValue(row.address_1)
+                            .AppendValue(row.address_2)
+                            .AppendValue(row.city)
+                            .AppendValue(row.state)
+                            .AppendValue(row.zip)
+                            .AppendValue(row.county)
+                            .AppendValue(row.location_source_value)
+                            .AppendValue(row.country_concept_id)
+                            .AppendValue(row.country_source_value)
+                            .AppendValue((float?)row.latitude)
+                            .AppendValue((float?)row.longitude)
+                            .AppendValue(row.nhs_number)
+                            .AppendValue(dataSource)
+                            .EndRow();
+                    }
+                }
+                transaction.Commit();
             }
-
-            var parameter = new
+            catch
             {
-                Locations = dataTable.AsTableValuedParameter("cdm.[Location]"),
-                DataSource = dataSource
-            };
+                transaction.Rollback();
 
-            await connection.ExecuteLongTimeoutAsync("cdm.InsertUpdateLocation", parameter, commandType: CommandType.StoredProcedure);
+                throw;
+            }
         }
+
+        await connection
+            .ExecuteAsync(
+                @"
+
+
+with locationwithrow as (
+    select
+        address_1,
+        address_2,
+        city,
+        state,
+        zip,
+        county,
+        location_source_value,
+        country_concept_id,
+        country_source_value,
+        latitude,
+        longitude,
+        row_number() over (
+            partition by
+                address_1,
+                address_2,
+                city,
+                state,
+                zip,
+                county,
+                country_concept_id,
+                country_source_value,
+                latitude,
+                longitude
+            order by null
+        ) as rownumber,
+        data_source
+    from omop_staging.location_row l
+)
+insert into cdm.location (
+    address_1,
+    address_2,
+    city,
+    state,
+    zip,
+    county,
+    location_source_value,
+    country_concept_id,
+    country_source_value,
+    latitude,
+    longitude,
+    data_source
+)
+select
+    l.address_1,
+    l.address_2,
+    l.city,
+    l.state,
+    l.zip,
+    l.county,
+    l.location_source_value,
+    l.country_concept_id,
+    l.country_source_value,
+    l.latitude,
+    l.longitude,
+    l.data_source
+from locationwithrow l
+where not exists (
+    select 1
+    from cdm.location
+    where address_1 is not distinct from l.address_1
+        and address_2 is not distinct from l.address_2
+        and city is not distinct from l.city
+        and state is not distinct from l.state
+        and zip is not distinct from l.zip
+        and county is not distinct from l.county
+        and country_concept_id is not distinct from l.country_concept_id
+        and country_source_value is not distinct from l.country_source_value
+        and latitude is not distinct from l.latitude
+        and longitude is not distinct from l.longitude
+)
+and l.rownumber = 1;
+
+update cdm.person
+set location_id = cdm.location_id
+from omop_staging.location_row l
+inner join cdm.location cdm on l.address_1 is not distinct from cdm.address_1
+    and l.address_2 is not distinct from cdm.address_2
+    and l.city is not distinct from cdm.city
+    and l.state is not distinct from cdm.state
+    and l.zip is not distinct from cdm.zip
+    and l.county is not distinct from cdm.county
+    and l.location_source_value is not distinct from cdm.location_source_value
+    and l.country_concept_id is not distinct from cdm.country_concept_id
+    and l.country_source_value is not distinct from cdm.country_source_value
+    and l.latitude is not distinct from cdm.latitude
+    and l.longitude is not distinct from cdm.longitude
+where cdm.person.person_source_value = l.nhsnumber;
+
+truncate table omop_staging.location_row;",
+                cancellationToken);
     }
 }

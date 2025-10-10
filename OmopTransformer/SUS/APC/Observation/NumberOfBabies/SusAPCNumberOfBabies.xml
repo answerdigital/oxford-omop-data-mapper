@@ -6,7 +6,7 @@ select
 	apc.HospitalProviderSpellNumber,
 	coalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,
 	apc.NumberofBabies
-from [omop_staging].[sus_APC] apc													
+from omop_staging.sus_APC apc													
 where apc.NHSNumber is not null
 	and apc.NumberofBabies is not null
 	and apc.CDSType in ('120','140')
