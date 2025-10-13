@@ -1,0 +1,18 @@
+﻿<Query>
+    <Sql>
+		select distinct 
+			NHS_Number,
+			Administration_Date 
+		from [omop_staging].[sact_staging]
+	</Sql>
+	<Explanations>
+		 <Explanation columnName="NHS_Number">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+		<Explanation columnName="Administration_Date">
+			<Description>Date when drug was administered or date an oral drug was initially dispensed to the patient</Description>
+			<Origin>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

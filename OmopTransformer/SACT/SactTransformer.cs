@@ -17,6 +17,10 @@ using OmopTransformer.SACT.Measurements.SactMeasurementHeight;
 using OmopTransformer.SACT.Measurements.SactMeasurementWeightAtStartOfCycle;
 using OmopTransformer.SACT.Measurements.SactMeasurementWeightAtStartOfRegimen;
 using OmopTransformer.SACT.CareSite;
+using OmopTransformer.Omop.VisitOccurrence;
+using OmopTransformer.Omop.VisitDetail;
+using OmopTransformer.SACT.VisitDetail;
+using OmopTransformer.SACT.VisitOccurrence;
 
 namespace OmopTransformer.SACT;
 internal class SactTransformer : Transformer
@@ -25,6 +29,8 @@ internal class SactTransformer : Transformer
     private readonly IPersonRecorder _personRecorder;
     private readonly IDrugExposureRecorder _drugExposureRecorder;
     private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
+    private readonly IVisitOccurrenceRecorder _visitOccurrenceRecorder;
+    private readonly IVisitDetailRecorder _visitDetailRecorder;
     private readonly IProviderRecorder _providerRecorder;
     private readonly ICareSiteRecorder _careSiteRecorder;
     private readonly IMeasurementRecorder _measurementRecorder;
@@ -37,6 +43,8 @@ internal class SactTransformer : Transformer
         IPersonRecorder personRecorder,
         IDrugExposureRecorder drugExposureRecorder,
         IConditionOccurrenceRecorder conditionOccurrenceRecorder,
+        IVisitOccurrenceRecorder visitOccurrenceRecorder,
+        IVisitDetailRecorder visitDetailRecorder,
         IMeasurementRecorder measurementRecorder,
         IProviderRecorder providerRecorder,
         ICareSiteRecorder careSiteRecorder,
@@ -54,6 +62,8 @@ internal class SactTransformer : Transformer
         _personRecorder = personRecorder;
         _drugExposureRecorder = drugExposureRecorder;
         _conditionOccurrenceRecorder = conditionOccurrenceRecorder;
+        _visitOccurrenceRecorder = visitOccurrenceRecorder;
+        _visitDetailRecorder = visitDetailRecorder;
         _measurementRecorder = measurementRecorder;
         _providerRecorder = providerRecorder;
         _careSiteRecorder = careSiteRecorder;
@@ -84,6 +94,18 @@ internal class SactTransformer : Transformer
         await Transform<SactConditionOccurrenceRecord, SactConditionOccurrence>(
             _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
             "SACT Condition Occurrence",
+            newId,
+            cancellationToken);
+
+        await Transform<SactVisitOccurrenceRecord, SactVisitOccurrence>(
+            _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
+            "SACT Visit Occurrence",
+            newId,
+            cancellationToken);
+
+        await Transform<SactVisitDetailRecord, SactVisitDetail>(
+            _visitDetailRecorder.InsertUpdateVisitDetail,
+            "SACT Visit Detail",
             newId,
             cancellationToken);
 
