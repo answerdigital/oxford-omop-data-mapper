@@ -463,7 +463,7 @@ WHERE
     AND cdm.person.gender_concept_id <> 8532
     AND cdmTable.CONDITION_CONCEPT_ID IN (
         201801, 200052, 4194652, 437501, 201817, 201238, 195500,
-        195197, 197236, 199764, 4162860, 441805, 196359, 196048
+        195197, 197236, 199764, 4162860, 441805, 196359, 196048, 437501
     );");
 
         _logger.LogInformation("Correcting deaths where the patient had a DEVICE_EXPOSURE beyond 60 days.");
