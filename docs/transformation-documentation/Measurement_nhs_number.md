@@ -40,8 +40,8 @@ where op.NHSNumber is not null
 				cc.CriticalCareStartDate as MeasurementDate,
 				coalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,
 				cc.GestationLengthAtDelivery as ValueAsNumber
-		from [omop_staging].[sus_CCMDS] cc 
-		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		from omop_staging.sus_CCMDS cc 
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 		where apc.NHSNumber is not null
 		and cc.GestationLengthAtDelivery is not null
 	
@@ -61,8 +61,8 @@ where op.NHSNumber is not null
 				cc.CriticalCareStartDate as MeasurementDate,
 				coalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,
 				cc.PersonWeight as ValueAsNumber
-		from [omop_staging].[sus_CCMDS] cc 
-		inner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
+		from omop_staging.sus_CCMDS cc 
+		inner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier
 		where apc.NHSNumber is not null
 		and cc.PersonWeight is not null
 	
@@ -96,6 +96,54 @@ order by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20Sus%20APC%20%20Measurement%20mapping){: .btn }
+### SACT Measurement Weight at Start of Regimen
+* Value copied from `NHS_Number`
+
+* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+		select distinct 
+			NHS_Number,
+			Weight_At_Start_Of_Regimen,
+			Start_Date_Of_Regimen
+		from omop_staging.sact_staging
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20SACT%20Measurement%20Weight%20at%20Start%20of%20Regimen%20mapping){: .btn }
+### SACT Measurement Weight at Start of Cycle
+* Value copied from `NHS_Number`
+
+* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+		select distinct 
+			NHS_Number,
+			Weight_At_Start_Of_Cycle,
+			Start_Date_Of_Cycle
+		from omop_staging.sact_staging
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20SACT%20Measurement%20Weight%20at%20Start%20of%20Cycle%20mapping){: .btn }
+### SACT  Measurement Height
+* Value copied from `NHS_Number`
+
+* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+		select distinct 
+			NHS_Number,
+			Height_At_Start_Of_Regimen,
+			Start_Date_Of_Regimen
+		from omop_staging.sact_staging
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20SACT%20%20Measurement%20Height%20mapping){: .btn }
 ### COSD V9 Measurement Tumour Laterality
 * Value copied from `NhsNumber`
 

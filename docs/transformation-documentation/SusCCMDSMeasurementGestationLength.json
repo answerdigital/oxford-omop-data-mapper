@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.GeneratedRecordIdentifier,\n\t\t\t\tcc.CriticalCareStartDate as MeasurementDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,\n\t\t\t\tcc.GestationLengthAtDelivery as ValueAsNumber\n\t\tfrom [omop_staging].[sus_CCMDS] cc \n\t\tinner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand cc.GestationLengthAtDelivery is not null\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.GeneratedRecordIdentifier,\n\t\t\t\tcc.CriticalCareStartDate as MeasurementDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,\n\t\t\t\tcc.GestationLengthAtDelivery as ValueAsNumber\n\t\tfrom omop_staging.sus_CCMDS cc \n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand cc.GestationLengthAtDelivery is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.GeneratedRecordIdentifier,\n\t\t\t\tcc.CriticalCareStartDate as MeasurementDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,\n\t\t\t\tcc.GestationLengthAtDelivery as ValueAsNumber\n\t\tfrom [omop_staging].[sus_CCMDS] cc \n\t\tinner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand cc.GestationLengthAtDelivery is not null\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.GeneratedRecordIdentifier,\n\t\t\t\tcc.CriticalCareStartDate as MeasurementDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,\n\t\t\t\tcc.GestationLengthAtDelivery as ValueAsNumber\n\t\tfrom omop_staging.sus_CCMDS cc \n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand cc.GestationLengthAtDelivery is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -63,7 +63,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.GeneratedRecordIdentifier,\n\t\t\t\tcc.CriticalCareStartDate as MeasurementDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,\n\t\t\t\tcc.GestationLengthAtDelivery as ValueAsNumber\n\t\tfrom [omop_staging].[sus_CCMDS] cc \n\t\tinner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand cc.GestationLengthAtDelivery is not null\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.GeneratedRecordIdentifier,\n\t\t\t\tcc.CriticalCareStartDate as MeasurementDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,\n\t\t\t\tcc.GestationLengthAtDelivery as ValueAsNumber\n\t\tfrom omop_staging.sus_CCMDS cc \n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand cc.GestationLengthAtDelivery is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -95,7 +95,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.GeneratedRecordIdentifier,\n\t\t\t\tcc.CriticalCareStartDate as MeasurementDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,\n\t\t\t\tcc.GestationLengthAtDelivery as ValueAsNumber\n\t\tfrom [omop_staging].[sus_CCMDS] cc \n\t\tinner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand cc.GestationLengthAtDelivery is not null\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.GeneratedRecordIdentifier,\n\t\t\t\tcc.CriticalCareStartDate as MeasurementDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,\n\t\t\t\tcc.GestationLengthAtDelivery as ValueAsNumber\n\t\tfrom omop_staging.sus_CCMDS cc \n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand cc.GestationLengthAtDelivery is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -120,7 +120,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.GeneratedRecordIdentifier,\n\t\t\t\tcc.CriticalCareStartDate as MeasurementDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,\n\t\t\t\tcc.GestationLengthAtDelivery as ValueAsNumber\n\t\tfrom [omop_staging].[sus_CCMDS] cc \n\t\tinner join [omop_staging].sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand cc.GestationLengthAtDelivery is not null\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.GeneratedRecordIdentifier,\n\t\t\t\tcc.CriticalCareStartDate as MeasurementDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as MeasurementDateTime,\n\t\t\t\tcc.GestationLengthAtDelivery as ValueAsNumber\n\t\tfrom omop_staging.sus_CCMDS cc \n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand cc.GestationLengthAtDelivery is not null\n\t",
       "lookup_table_markdown": null
     }
   ]

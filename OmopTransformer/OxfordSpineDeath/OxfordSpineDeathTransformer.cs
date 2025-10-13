@@ -16,13 +16,11 @@ internal class OxfordSpineDeathTransformer : Transformer
         TransformOptions transformOptions,
         IRecordProvider recordProvider,
         ConceptResolver conceptResolver,
-        IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory, IDeathRecorder deathRecorder) : base(recordTransformer,
         transformOptions,
         recordProvider,
         "Oxford-Spine-Death",
-        conceptMapper,
         runAnalysisRecorder,
         loggerFactory)
     {

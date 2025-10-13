@@ -180,7 +180,13 @@
     {
       "name": "RecordConnectionIdentifier",
       "operation_description": "Value copied from `EVENT_ID`",
-      "dataSource": [],
+      "dataSource": [
+        {
+          "name": "EVENT_ID",
+          "description": "The unique ID of the Event",
+          "origins": []
+        }
+      ],
       "query": "\nselect\n\tpatient_identifier_Value,\n\tbeg_dt_tm,\n\tend_dt_tm,\n\torder_detail_display_line,\n\torder_mnemonic,\n\tlower(rxroute) as rxroute,\n\tstrengthdoseunit,\n\tstrengthdose,\n\tconcept_identifier,\n\tEVENT_ID\nfrom ##duckdb_source##\nwhere concept_identifier is not null\n    ",
       "lookup_table_markdown": null
     }

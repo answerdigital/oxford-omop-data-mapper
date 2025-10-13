@@ -19,7 +19,7 @@ has_toc: false
 			op.NHSNumber,
 			op.CDSActivityDate
 	from omop_staging.sus_OP_ICDDiagnosis d
-		inner join [omop_staging].[sus_OP] op
+		inner join omop_staging.sus_OP op
 			on d.MessageId = op.MessageId
 	where op.NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
@@ -117,10 +117,10 @@ has_toc: false
 with results as (
 	select 
 		distinct
-			(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer) as PatientId,
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as PatientId,
 			dc.DiagnosisCode,
-			dc.Start_date as event_start_date,
-			dc.End_date as event_end_date
+			dc.DateStamp as event_start_date,
+			dc.DateStamp as event_end_date
 	from omop_staging.RTDS_5_Diagnosis_Course dc
 	where dc.DiagnosisTableName = 'ICD-10'
 )
@@ -132,7 +132,7 @@ select
 from results
 where
     PatientId is not null
-    and patientid not like '%[^0-9]%';
+    and regexp_matches(patientid, '\d{10}');
 	
 ```
 

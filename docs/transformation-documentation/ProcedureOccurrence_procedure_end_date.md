@@ -162,7 +162,7 @@ with records as (
 	from omop_staging.rtds_2b_plan
 ), records_with_patient as (
 	select
-		(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer) as PatientId,
+		(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer limit 1) as PatientId,
 		r.*
 	from records r
 )
@@ -173,7 +173,7 @@ select
 	End_date as event_end_date
 from records_with_patient
 where PatientId is not null
-	and patientid not like '%[^0-9]%'
+	and regexp_matches(patientid, '\d{10}');
 	
 ```
 

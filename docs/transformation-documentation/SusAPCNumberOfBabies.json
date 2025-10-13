@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tcoalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,\n\tapc.NumberofBabies\nfrom [omop_staging].[sus_APC] apc\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere apc.NHSNumber is not null\n\tand apc.NumberofBabies is not null\n\tand apc.CDSType in ('120','140')\ngroup by\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.DeliveryDate,\n\tapc.NumberofBabies;\n\t",
+      "query": "\nselect\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tcoalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,\n\tapc.NumberofBabies\nfrom omop_staging.sus_APC apc\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere apc.NHSNumber is not null\n\tand apc.NumberofBabies is not null\n\tand apc.CDSType in ('120','140')\ngroup by\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.DeliveryDate,\n\tapc.NumberofBabies;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tcoalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,\n\tapc.NumberofBabies\nfrom [omop_staging].[sus_APC] apc\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere apc.NHSNumber is not null\n\tand apc.NumberofBabies is not null\n\tand apc.CDSType in ('120','140')\ngroup by\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.DeliveryDate,\n\tapc.NumberofBabies;\n\t",
+      "query": "\nselect\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tcoalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,\n\tapc.NumberofBabies\nfrom omop_staging.sus_APC apc\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere apc.NHSNumber is not null\n\tand apc.NumberofBabies is not null\n\tand apc.CDSType in ('120','140')\ngroup by\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.DeliveryDate,\n\tapc.NumberofBabies;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -64,7 +64,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tcoalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,\n\tapc.NumberofBabies\nfrom [omop_staging].[sus_APC] apc\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere apc.NHSNumber is not null\n\tand apc.NumberofBabies is not null\n\tand apc.CDSType in ('120','140')\ngroup by\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.DeliveryDate,\n\tapc.NumberofBabies;\n\t",
+      "query": "\nselect\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tcoalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,\n\tapc.NumberofBabies\nfrom omop_staging.sus_APC apc\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere apc.NHSNumber is not null\n\tand apc.NumberofBabies is not null\n\tand apc.CDSType in ('120','140')\ngroup by\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.DeliveryDate,\n\tapc.NumberofBabies;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -86,12 +86,12 @@
           ]
         }
       ],
-      "query": "\nselect\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tcoalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,\n\tapc.NumberofBabies\nfrom [omop_staging].[sus_APC] apc\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere apc.NHSNumber is not null\n\tand apc.NumberofBabies is not null\n\tand apc.CDSType in ('120','140')\ngroup by\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.DeliveryDate,\n\tapc.NumberofBabies;\n\t",
+      "query": "\nselect\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tcoalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,\n\tapc.NumberofBabies\nfrom omop_staging.sus_APC apc\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere apc.NHSNumber is not null\n\tand apc.NumberofBabies is not null\n\tand apc.CDSType in ('120','140')\ngroup by\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.DeliveryDate,\n\tapc.NumberofBabies;\n\t",
       "lookup_table_markdown": null
     },
     {
       "name": "observation_type_concept_id",
-      "operation_description": "Constant value set to `38000280`. Observation recorded from EHR",
+      "operation_description": "Constant value set to `32818`. EHR administration record",
       "dataSource": null,
       "query": null,
       "lookup_table_markdown": null
@@ -111,7 +111,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tcoalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,\n\tapc.NumberofBabies\nfrom [omop_staging].[sus_APC] apc\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere apc.NHSNumber is not null\n\tand apc.NumberofBabies is not null\n\tand apc.CDSType in ('120','140')\ngroup by\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.DeliveryDate,\n\tapc.NumberofBabies;\n\t",
+      "query": "\nselect\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tcoalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,\n\tapc.NumberofBabies\nfrom omop_staging.sus_APC apc\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere apc.NHSNumber is not null\n\tand apc.NumberofBabies is not null\n\tand apc.CDSType in ('120','140')\ngroup by\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.DeliveryDate,\n\tapc.NumberofBabies;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -129,7 +129,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tcoalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,\n\tapc.NumberofBabies\nfrom [omop_staging].[sus_APC] apc\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere apc.NHSNumber is not null\n\tand apc.NumberofBabies is not null\n\tand apc.CDSType in ('120','140')\ngroup by\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.DeliveryDate,\n\tapc.NumberofBabies;\n\t",
+      "query": "\nselect\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier,\n\tapc.HospitalProviderSpellNumber,\n\tcoalesce(max(apc.DeliveryDate), max(apc.CDSActivityDate)) as observation_date,\n\tapc.NumberofBabies\nfrom omop_staging.sus_APC apc\t\t\t\t\t\t\t\t\t\t\t\t\t\nwhere apc.NHSNumber is not null\n\tand apc.NumberofBabies is not null\n\tand apc.CDSType in ('120','140')\ngroup by\n\tapc.NHSNumber,\n\tapc.GeneratedRecordIdentifier, \n    apc.HospitalProviderSpellNumber,\n\tapc.DeliveryDate,\n\tapc.NumberofBabies;\n\t",
       "lookup_table_markdown": null
     }
   ]

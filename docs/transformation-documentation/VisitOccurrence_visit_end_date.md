@@ -128,19 +128,22 @@ Converts text to dates.
 * `event_end_date` Appointment End Time 
 
 ```sql
+with results as (
+	select 
+		distinct
+			(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,
+			a.start_date as event_start_date,
+			a.end_date as event_end_date
+	from omop_staging.rtds_2b_plan a
+)
 select
-  distinct
-  b.patientid,
-  a.start_date as event_start_date,
-  a.end_date as event_end_date
-from
-  omop_staging.rtds_2b_plan a
-left join
-  omop_staging.rtds_1_demographics b
-  on a.id = b.id
+	PatientId,
+	event_start_date,
+	event_end_date
+from results
 where
-  b.patientid is not null
-  and b.patientid not like '%[^0-9]%'
+  PatientId is not null
+  and regexp_matches(PatientId, '\d{10}');
 
 	
 ```

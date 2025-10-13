@@ -29,7 +29,7 @@ internal class SusAPCGestationLengthLabourOnset : OmopObservation<SusAPCGestatio
     [Transform(typeof(DateConverter), nameof(Source.observation_date))]
     public override DateTime? observation_datetime { get; set; }
 
-    [ConstantValue(38000280, "Observation recorded from EHR")]
+    [ConstantValue(32818, "EHR administration record")]
     public override int? observation_type_concept_id { get; set; }
 
     [Transform(typeof(DoubleParser), nameof(Source.GestationLengthLabourOnset))]

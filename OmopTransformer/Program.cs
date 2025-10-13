@@ -10,6 +10,7 @@ using OmopTransformer.Omop.Location;
 using OmopTransformer.SACT;
 using OmopTransformer.SACT.Staging;
 using OmopTransformer.COSD.Staging;
+using OmopTransformer.Init;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.RTDS;
@@ -42,8 +43,6 @@ using OmopTransformer.Omop;
 using OmopTransformer.OxfordGP;
 using OmopTransformer.OxfordGP.Staging;
 using OmopTransformer.OxfordGP.Staging.Clearing;
-using OmopTransformer.OxfordPrescribing.Staging;
-using OmopTransformer.OxfordPrescribing.Staging.Clearing;
 using OmopTransformer.OxfordPrescribing;
 using OmopTransformer.OxfordSpineDeath;
 using OmopTransformer.OxfordLab;
@@ -61,7 +60,7 @@ internal class Program
     {
         var builder = Host.CreateApplicationBuilder(args);
 
-        var result = Parser.Default.ParseArguments<StagingOptions, DocumentationOptions, TransformOptions, FinaliseOptions>(args);
+        var result = Parser.Default.ParseArguments<StagingOptions, DocumentationOptions, TransformOptions, FinaliseOptions, InitOptions>(args);
 
         if (result.Value == null)
         {
@@ -70,6 +69,13 @@ internal class Program
 
         var queryLocator = await QueryLocator.Create();
         builder.Services.AddSingleton<IQueryLocator, QueryLocator>(_ => queryLocator);
+
+
+        if (result.Value is InitOptions)
+        {
+            builder.Services.AddTransient<IInitiation, Initiation>();
+            builder.Services.AddHostedService<InitHostedService>();
+        }
 
         if (result.Value is DocumentationOptions generateDocumentation)
         {
@@ -230,30 +236,6 @@ internal class Program
                         return;
                 }
             }
-            else if (string.Equals(stagingOptions.Type, "oxford-prescribing", StringComparison.OrdinalIgnoreCase))
-            {
-                if (stagingOptions.Action == null)
-                {
-                    await ActionMustBeSpecifiedError();
-                    return;
-                }
-
-                switch (stagingOptions.Action.ToLower())
-                {
-                    case "load":
-                        builder.Services.AddTransient<IOxfordPrescribingRecordInserter, OxfordPrescribingRecordInserter>();
-                        builder.Services.AddTransient<IOxfordPrescribingRecordParser, OxfordPrescribingRecordParser>();
-                        builder.Services.AddTransient<IOxfordPrescribingStaging, OxfordPrescribingStaging>();
-                        builder.Services.AddHostedService<OxfordPrescribingLoadStagingHostedService>();
-                        break;
-                    case "clear":
-                        builder.Services.AddHostedService<OxfordPrescribingClearStagingHostedService>();
-                        break;
-                    default:
-                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
-                        return;
-                }
-            }
             else if (string.Equals(stagingOptions.Type, "oxford-gp", StringComparison.OrdinalIgnoreCase))
             {
                 if (stagingOptions.Action == null)
@@ -308,7 +290,6 @@ internal class Program
         {
             builder.Services.AddTransient(_ => transformOptions);
             builder.Services.AddTransient<IRunAnalysisRecorder, RunAnalysisRecorder>();
-            builder.Services.AddTransient<IConceptMapper, ConceptMapper>();
             builder.Services.AddTransient<ILocationRecorder, LocationRecorder>();
             builder.Services.AddTransient<IPersonRecorder, PersonRecorder>();
             builder.Services.AddTransient<IConditionOccurrenceRecorder, ConditionOccurrenceRecorder>();
@@ -460,6 +441,9 @@ public class TransformOptions
 
     [Option("dry-run", Required = false, Default = false, HelpText = "Run the transformation in dry-run mode.")]
     public bool DryRun { get; set; }
+
+    [Option("batch-size", Required = false, Default = 4000000, HelpText = "Number of records to process in each batch (default 10,000).")]
+    public int BatchSize { get; set; }
 }
 
 [Verb("finalise", HelpText = "Prunes incomplete OMOP records. Builds era tables.")]
@@ -472,4 +456,9 @@ public class DocumentationOptions
 {
     [Value(0, MetaName = "filename", Required = true, HelpText = "Target path for the generated documentation.")]
     public string? DirectoryPath { get; set; }
+}
+
+[Verb("init", HelpText = "Create database and import vocabulary.")]
+public class InitOptions
+{
 }

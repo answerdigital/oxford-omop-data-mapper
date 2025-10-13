@@ -120,21 +120,21 @@ Guidance on SUS & SUS+ can be found on the [NHS Digital Website](https://digital
 
 # Supported Transformations
 
-| OMOP Table           | SUS APC | SUS OP | SUS AE | SUS CCMDS | COSD | RTDS | SACT |
-|----------------------|-----|------|------|------|------|------|------|
-| *Location*            | ✔️  | ✔️   | ✔️   |      | ✔️   | ✔️   | ✔️   |
-| *Person*              | ✔️  | ✔️   | ✔️   |      | ✔️   | ✔️   | ✔️   |
-| *Condition Occurrence* | ✔️  | ✔️   | ✔️   |      | ✔️   |      |      |
-| *Visit Occurrence*     | ✔️  | ✔️   | ✔️   |      |      |      |      |
-| *Visit Details*        | ✔️  | ✔️   | ✔️   | ✔️   |      |      |      |
-| *Measurement*          | ✔️  | ✔️   | ✔️   | ✔️   | ✔️   |      |      |
-| *Death*                | ✔️  | ✔️   | ✔️   |      | ✔️   |      |      |
-| *Procedure Occurrence* | ✔️  | ✔️   | ✔️   |      | ✔️   |      |      |
-| *Drug Exposure*        |   |    |      |      |      |      |      |
-| *Care Site*            | ✔️  | ✔️   | ✔️   |      |      |      |      |
-| *Provider*             | ✔️  | ✔️   |      |      |      |      |      |
-| *Device Exposure*      | ✔️  | ✔️   | ✔️   | ✔️   |      |      |      |
-| *Observation*          | ✔️  | ✔️   | ✔️   | ✔️   | ✔️   |      |      |
+| OMOP Table             | SUS APC | SUS OP | SUS AE | SUS CCMDS | COSD | RTDS  | SACT |
+|------------------------|---------|-------|---------|-----------|------|-------|------|
+| *Location*             | ✔️     | ✔️   | ✔️     |             | ✔️   | ✔️   | ✔️  |
+| *Person*               | ✔️     | ✔️   | ✔️     |             | ✔️   | ✔️   | ✔️  |
+| *Condition Occurrence* | ✔️     | ✔️   | ✔️     |             | ✔️   | ✔️   | ✔️  |
+| *Visit Occurrence*     | ✔️     | ✔️   | ✔️     |             |      |  ✔️  |      |
+| *Visit Details*        | ✔️     | ✔️   | ✔️     | ✔️          |      |      |      |
+| *Measurement*          | ✔️     | ✔️   | ✔️     | ✔️          | ✔️   |      |      |
+| *Death*                | ✔️     | ✔️   | ✔️     |             | ✔️   |      |      |
+| *Procedure Occurrence* | ✔️     | ✔️   | ✔️     |             | ✔️   |  ✔️  | ✔️  |
+| *Drug Exposure*        |         |      |         |            |      |       |      |
+| *Care Site*            | ✔️     | ✔️   | ✔️     |             |      |      |       |
+| *Provider*             | ✔️     | ✔️   |         |             |      |      |      |
+| *Device Exposure*      | ✔️     | ✔️   | ✔️     | ✔️          |      |      |      |
+| *Observation*          | ✔️     | ✔️   | ✔️     | ✔️          | ✔️   |      |      |
 
 
 # Future Aims

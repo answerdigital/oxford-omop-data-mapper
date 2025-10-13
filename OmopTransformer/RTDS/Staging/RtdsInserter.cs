@@ -1,9 +1,8 @@
-﻿using Dapper;
-using OmopTransformer.RTDS.Parser;
-using System.Data;
-using Microsoft.Data.SqlClient;
+﻿using DuckDB.NET.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using OmopTransformer.RTDS.Parser;
+using System.Data;
 
 namespace OmopTransformer.RTDS.Staging;
 
@@ -22,434 +21,245 @@ internal class RtdsInserter : IRtdsInserter
     
     public async Task Insert(RtdsRecords records, CancellationToken cancellationToken)
     {
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        var connection = new DuckDBConnection(_configuration.ConnectionString!);
+        await connection.OpenAsync(cancellationToken);
 
-
-
-        _logger.LogInformation("Inserting {0} Rtds Demographics.", records.Demographics.Count);
-        await InsertRTDS_1_Demographics(records.Demographics, records.SourceFileName, connection, cancellationToken);
-
-        _logger.LogInformation("Inserting {0} Rtds Attendances.", records.Attendances.Count);
-        await InsertRTDS_2a_Attendances(records.Attendances, records.SourceFileName, connection, cancellationToken);
-
-        _logger.LogInformation("Inserting {0} Rtds Plans.", records.Plans.Count);
-        await InsertRTDS_2b_Plan(records.Plans, records.SourceFileName, connection, cancellationToken);
-
-        _logger.LogInformation("Inserting {0} Rtds Prescriptions.", records.Prescriptions.Count);
-        await InsertRTDS_3_Prescription(records.Prescriptions, records.SourceFileName, connection, cancellationToken);
-
-        _logger.LogInformation("Inserting {0} Rtds Exposures.", records.Exposures.Count);
-        await InsertRTDS_4_Exposures(records.Exposures, records.SourceFileName, connection, cancellationToken);
-
-        _logger.LogInformation("Inserting {0} Rtds Diagnosis/Course.", records.Diagnoses_Courses.Count);
-        await InsertRTDS_5_Diagnosis_Course(records.Diagnoses_Courses, records.SourceFileName, connection, cancellationToken);
-
-        if (records.PasData != null)
+        using IDbTransaction transaction = connection.BeginTransaction();
+        try
         {
-            _logger.LogInformation("Inserting {0} Rtds PassData.", records.PasData.Count);
-            await InsertRTDS_PASDATA(records.PasData, records.SourceFileName, connection, cancellationToken);
+            _logger.LogInformation("Inserting {0} Rtds Demographics.", records.Demographics.Count);
+            InsertRTDS_1_Demographics(records.Demographics, records.SourceFileName, connection, cancellationToken);
+
+            _logger.LogInformation("Inserting {0} Rtds Attendances.", records.Attendances.Count);
+            InsertRTDS_2a_Attendances(records.Attendances, records.SourceFileName, connection, cancellationToken);
+
+            _logger.LogInformation("Inserting {0} Rtds Plans.", records.Plans.Count);
+            InsertRTDS_2b_Plan(records.Plans, records.SourceFileName, connection, cancellationToken);
+
+            _logger.LogInformation("Inserting {0} Rtds Prescriptions.", records.Prescriptions.Count);
+            InsertRTDS_3_Prescription(records.Prescriptions, records.SourceFileName, connection, cancellationToken);
+
+            _logger.LogInformation("Inserting {0} Rtds Exposures.", records.Exposures.Count);
+            InsertRTDS_4_Exposures(records.Exposures, records.SourceFileName, connection, cancellationToken);
+
+            _logger.LogInformation("Inserting {0} Rtds Diagnosis/Course.", records.Diagnoses_Courses.Count);
+            InsertRTDS_5_Diagnosis_Course(records.Diagnoses_Courses, records.SourceFileName, connection, cancellationToken);
+
+            if (records.PasData != null)
+            {
+                _logger.LogInformation("Inserting {0} Rtds PassData.", records.PasData.Count);
+                InsertRTDS_PASDATA(records.PasData, records.SourceFileName, connection, cancellationToken);
+            }
+
+            transaction.Commit();
+        }
+        catch
+        {
+            transaction.Rollback();
+
+            throw;
         }
     }
     
-    private async Task InsertRTDS_1_Demographics(IReadOnlyCollection<Rtds1Demographics> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
+    private void InsertRTDS_1_Demographics(IReadOnlyCollection<Rtds1Demographics> rows, string sourceFileName, DuckDBConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using var appender = connection.CreateAppender("omop_staging", "RTDS_1_Demographics");
         {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("SourceFileName");
-            dataTable.Columns.Add("PatientSer");
-            dataTable.Columns.Add("PatientId");
-            dataTable.Columns.Add("PatientId2");
-            dataTable.Columns.Add("UniversalPatientId");
-            dataTable.Columns.Add("SSN");
-            dataTable.Columns.Add("FirstName");
-            dataTable.Columns.Add("LastName");
-            dataTable.Columns.Add("DateOfBirth");
-            dataTable.Columns.Add("Sex");
-            dataTable.Columns.Add("DoctorId");
-            dataTable.Columns.Add("CourseSer");
-            dataTable.Columns.Add("Expression1");
-            dataTable.Columns.Add("StartDateTime");
-            dataTable.Columns.Add("CompletedDateTime");
-            dataTable.Columns.Add("End_date");
-            dataTable.Columns.Add("Start_date");
-                
-            foreach (var row in batch)
+            foreach (var row in rows)
             {
-                dataTable.Rows.Add(
-                    sourceFileName,
-                    row.PatientSer,
-                    row.PatientId,
-                    row.PatientId2,
-                    row.UniversalPatientId,
-                    row.SSN,
-                    row.FirstName,
-                    row.LastName,
-                    row.DateOfBirth,
-                    row.Sex,
-                    row.DoctorId,
-                    row.CourseSer,
-                    row.Expression1,
-                    row.StartDateTime,
-                    row.CompletedDateTime,
-                    row.End_date,
-                    row.Start_date);
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(sourceFileName)
+                    .AppendValue(row.PatientSer)
+                    .AppendValue(row.PatientId)
+                    .AppendValue(row.PatientId2)
+                    .AppendValue(row.UniversalPatientId)
+                    .AppendValue(row.SSN)
+                    .AppendValue(row.FirstName)
+                    .AppendValue(row.LastName)
+                    .AppendValue(row.DateOfBirth)
+                    .AppendValue(row.Sex)
+                    .AppendValue(row.DoctorId)
+                    .AppendValue(row.CourseSer)
+                    .AppendValue(row.Expression1)
+                    .AppendValue(row.StartDateTime)
+                    .AppendValue(row.CompletedDateTime)
+                    .AppendValue(row.End_date)
+                    .AppendValue(row.Start_date)
+                    .EndRow();
             }
-
-            var parameter = new
-            {
-                Rows = dataTable.AsTableValuedParameter("[omop_staging].[RTDS_1_Demographics_row]")
-            };
-
-            await connection
-                .ExecuteLongTimeoutAsync(
-                    "omop_staging.insert_RTDS_1_Demographics",
-                    parameter,
-                    commandType: CommandType.StoredProcedure);
         }
     }
 
-    private async Task InsertRTDS_2a_Attendances(IReadOnlyCollection<Rtds2AAttendances> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
+    private void InsertRTDS_2a_Attendances(IReadOnlyCollection<Rtds2AAttendances> rows, string sourceFileName, DuckDBConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using var appender = connection.CreateAppender("omop_staging", "RTDS_2a_Attendances");
         {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("SourceFileName");
-            dataTable.Columns.Add("ScheduledActivitySer");
-            dataTable.Columns.Add("ScheduledStartTime");
-            dataTable.Columns.Add("AttributeValue");
-            dataTable.Columns.Add("CourseSer");
-            dataTable.Columns.Add("ProcedureCode");
-            dataTable.Columns.Add("PatientSer");
-            dataTable.Columns.Add("ScheduledActivityCode");
-            dataTable.Columns.Add("Description");
-            dataTable.Columns.Add("ActualStartDateTime_s");
-            dataTable.Columns.Add("ActualEndDateTime_s");
-            dataTable.Columns.Add("Start_date");
-            dataTable.Columns.Add("End_date");
-
-            foreach (var row in batch)
+            foreach (var row in rows)
             {
-                dataTable.Rows.Add(
-                    sourceFileName,
-                    row.ScheduledActivitySer,
-                    row.ScheduledStartTime,
-                    row.AttributeValue,
-                    row.CourseSer,
-                    row.ProcedureCode,
-                    row.PatientSer,
-                    row.ScheduledActivityCode,
-                    row.Description,
-                    row.ActualStartDateTime_s,
-                    row.ActualEndDateTime_s,
-                    row.Start_date,
-                    row.End_date);
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(sourceFileName)
+                    .AppendValue(row.ScheduledActivitySer)
+                    .AppendValue(row.ScheduledStartTime)
+                    .AppendValue(row.AttributeValue)
+                    .AppendValue(row.CourseSer)
+                    .AppendValue(row.ProcedureCode)
+                    .AppendValue(row.PatientSer)
+                    .AppendValue(row.ScheduledActivityCode)
+                    .AppendValue(row.Description)
+                    .AppendValue(row.ActualStartDateTime_s)
+                    .AppendValue(row.ActualEndDateTime_s)
+                    .AppendValue(row.Start_date)
+                    .AppendValue(row.End_date)
+                    .EndRow();
             }
-
-            var parameter = new
-            {
-                Rows = dataTable.AsTableValuedParameter("[omop_staging].[RTDS_2a_Attendances_row]")
-            };
-
-            await connection
-                .ExecuteLongTimeoutAsync(
-                    "omop_staging.insert_RTDS_2a_Attendances",
-                    parameter,
-                    commandType: CommandType.StoredProcedure);
         }
     }
 
-    private async Task InsertRTDS_2b_Plan(IReadOnlyCollection<Rtds2BPlan> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
+    private void InsertRTDS_2b_Plan(IReadOnlyCollection<Rtds2BPlan> rows, string sourceFileName, DuckDBConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using var appender = connection.CreateAppender("omop_staging", "RTDS_2b_Plan");
         {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("SourceFileName");
-            dataTable.Columns.Add("ProcedureCode");
-            dataTable.Columns.Add("AttributeValue");
-            dataTable.Columns.Add("PatientSer");
-            dataTable.Columns.Add("DueDateTime");
-            dataTable.Columns.Add("NonScheduledActivityCode");
-            dataTable.Columns.Add("CourseSer");
-            dataTable.Columns.Add("NonScheduledActivitySer");
-            dataTable.Columns.Add("ActivityName");
-            dataTable.Columns.Add("Description");
-            dataTable.Columns.Add("Start_date");
-            dataTable.Columns.Add("End_date");
-            dataTable.Columns.Add("ProcedureCodeSer");
-
-            foreach (var row in batch)
+            foreach (var row in rows)
             {
-                dataTable.Rows.Add(
-                    sourceFileName,
-                    row.ProcedureCode,
-                    row.AttributeValue,
-                    row.PatientSer,
-                    row.DueDateTime,
-                    row.NonScheduledActivityCode,
-                    row.CourseSer,
-                    row.NonScheduledActivitySer,
-                    row.ActivityName,
-                    row.Description,
-                    row.Start_date,
-                    row.End_date,
-                    row.ProcedureCodeSer);
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(sourceFileName)
+                    .AppendValue(row.ProcedureCode)
+                    .AppendValue(row.AttributeValue)
+                    .AppendValue(row.PatientSer)
+                    .AppendValue(row.DueDateTime)
+                    .AppendValue(row.NonScheduledActivityCode)
+                    .AppendValue(row.CourseSer)
+                    .AppendValue(row.NonScheduledActivitySer)
+                    .AppendValue(row.ActivityName)
+                    .AppendValue(row.Description)
+                    .AppendValue(row.Start_date)
+                    .AppendValue(row.End_date)
+                    .AppendValue(row.ProcedureCodeSer)
+                    .EndRow();
             }
-
-            var parameter = new
-            {
-                Rows = dataTable.AsTableValuedParameter("[omop_staging].[RTDS_2b_Plan_row]")
-            };
-
-            await connection
-                .ExecuteLongTimeoutAsync(
-                    "omop_staging.insert_RTDS_2b_Plan",
-                    parameter,
-                    commandType: CommandType.StoredProcedure);
         }
     }
     
-    private async Task InsertRTDS_3_Prescription(IReadOnlyCollection<Rtds3Prescription> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
+    private void InsertRTDS_3_Prescription(IReadOnlyCollection<Rtds3Prescription> rows, string sourceFileName, DuckDBConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using var appender = connection.CreateAppender("omop_staging", "RTDS_3_Prescription");
         {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("SourceFileName");
-            dataTable.Columns.Add("PatientSer");
-            dataTable.Columns.Add("CourseSer");
-            dataTable.Columns.Add("TreatmentType");
-            dataTable.Columns.Add("NoFields");
-            dataTable.Columns.Add("PreDescribedDose");
-            dataTable.Columns.Add("PlanSetupSer");
-            dataTable.Columns.Add("StartDateTime");
-            dataTable.Columns.Add("TotDeliveredActualDose");
-            dataTable.Columns.Add("NoFracs");
-            dataTable.Columns.Add("PlanNameUpper");
-            dataTable.Columns.Add("Start_date");
-            dataTable.Columns.Add("End_date");
-            dataTable.Columns.Add("Expression1");
-
-            foreach (var row in batch)
+            foreach (var row in rows)
             {
-                dataTable.Rows.Add(
-                    sourceFileName,
-                    row.PatientSer,
-                    row.CourseSer,
-                    row.TreatmentType,
-                    row.NoFields,
-                    row.PreDescribedDose,
-                    row.PlanSetupSer,
-                    row.StartDateTime,
-                    row.TotDeliveredActualDose,
-                    row.NoFracs,
-                    row.PlanNameUpper,
-                    row.Start_date,
-                    row.End_date,
-                    row.Expression1);
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(sourceFileName)
+                    .AppendValue(row.PatientSer)
+                    .AppendValue(row.CourseSer)
+                    .AppendValue(row.TreatmentType)
+                    .AppendValue(row.NoFields)
+                    .AppendValue(row.PreDescribedDose)
+                    .AppendValue(row.PlanSetupSer)
+                    .AppendValue(row.StartDateTime)
+                    .AppendValue(row.TotDeliveredActualDose)
+                    .AppendValue(row.NoFracs)
+                    .AppendValue(row.PlanNameUpper)
+                    .AppendValue(row.Start_date)
+                    .AppendValue(row.End_date)
+                    .AppendValue(row.Expression1)
+                    .EndRow();
             }
-
-            var parameter = new
-            {
-                Rows = dataTable.AsTableValuedParameter("[omop_staging].[RTDS_3_Prescription_row]")
-            };
-
-            await connection
-                .ExecuteLongTimeoutAsync(
-                    "omop_staging.insert_RTDS_3_Prescription",
-                    parameter,
-                    commandType: CommandType.StoredProcedure);
         }
     }
 
-    private async Task InsertRTDS_4_Exposures(IReadOnlyCollection<Rtds4Exposures> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
+    private void InsertRTDS_4_Exposures(IReadOnlyCollection<Rtds4Exposures> rows, string sourceFileName, DuckDBConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using var appender = connection.CreateAppender("omop_staging", "RTDS_4_Exposures");
         {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("SourceFileName");
-            dataTable.Columns.Add("PatientSer");
-            dataTable.Columns.Add("CourseSer");
-            dataTable.Columns.Add("RadiationSer");
-            dataTable.Columns.Add("NominalEnergy");
-            dataTable.Columns.Add("RadiationType");
-            dataTable.Columns.Add("PlanSetupSer");
-            dataTable.Columns.Add("EventNumber");
-            dataTable.Columns.Add("MachineId");
-            dataTable.Columns.Add("PlanName");
-            dataTable.Columns.Add("Start_date");
-            dataTable.Columns.Add("End_date");
-            dataTable.Columns.Add("TreatmentDateTime");
-            dataTable.Columns.Add("storedprocedure_version");
-
-            foreach (var row in batch)
+            foreach (var row in rows)
             {
-                dataTable.Rows.Add(
-                    sourceFileName,
-                    row.PatientSer,
-                    row.CourseSer,
-                    row.RadiationSer,
-                    row.NominalEnergy,
-                    row.RadiationType,
-                    row.PlanSetupSer,
-                    row.EventNumber,
-                    row.MachineId,
-                    row.PlanName,
-                    row.Start_date,
-                    row.End_date,
-                    row.TreatmentDateTime,
-                    row.storedprocedure_version);
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(sourceFileName)
+                    .AppendValue(row.PatientSer)
+                    .AppendValue(row.CourseSer)
+                    .AppendValue(row.RadiationSer)
+                    .AppendValue(row.NominalEnergy)
+                    .AppendValue(row.RadiationType)
+                    .AppendValue(row.PlanSetupSer)
+                    .AppendValue(row.EventNumber)
+                    .AppendValue(row.MachineId)
+                    .AppendValue(row.PlanName)
+                    .AppendValue(row.Start_date)
+                    .AppendValue(row.End_date)
+                    .AppendValue(row.TreatmentDateTime)
+                    .AppendValue(row.storedprocedure_version)
+                    .EndRow();
             }
-
-            var parameter = new
-            {
-                Rows = dataTable.AsTableValuedParameter("[omop_staging].[RTDS_4_Exposures_row]")
-            };
-
-            await connection
-                .ExecuteLongTimeoutAsync(
-                    "omop_staging.insert_RTDS_4_Exposures",
-                    parameter,
-                    commandType: CommandType.StoredProcedure);
         }
     }
 
-    private async Task InsertRTDS_5_Diagnosis_Course(IReadOnlyCollection<Rtds5DiagnosisCourse> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
+    private void InsertRTDS_5_Diagnosis_Course(IReadOnlyCollection<Rtds5DiagnosisCourse> rows, string sourceFileName, DuckDBConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using var appender = connection.CreateAppender("omop_staging", "RTDS_5_Diagnosis_Course");
         {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("SourceFileName");
-            dataTable.Columns.Add("PatientSer");
-            dataTable.Columns.Add("CourseSer");
-            dataTable.Columns.Add("DateStamp");
-            dataTable.Columns.Add("DiagnosisCode");
-            dataTable.Columns.Add("DiagnosisTableName");
-            dataTable.Columns.Add("DiagnosisType");
-            dataTable.Columns.Add("End_date");
-            dataTable.Columns.Add("Start_date");
-
-            foreach (var row in batch)
+            foreach (var row in rows)
             {
-                dataTable.Rows.Add(
-                    sourceFileName,
-                    row.PatientSer,
-                    row.CourseSer,
-                    row.DateStamp,
-                    row.DiagnosisCode,
-                    row.DiagnosisTableName,
-                    row.DiagnosisType,
-                    row.End_date,
-                    row.Start_date);
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(sourceFileName)
+                    .AppendValue(row.PatientSer)
+                    .AppendValue(row.CourseSer)
+                    .AppendValue(row.DateStamp)
+                    .AppendValue(row.DiagnosisCode)
+                    .AppendValue(row.DiagnosisTableName)
+                    .AppendValue(row.DiagnosisType)
+                    .AppendValue(row.End_date)
+                    .AppendValue(row.Start_date)
+                    .EndRow();
             }
-
-            var parameter = new
-            {
-                Rows = dataTable.AsTableValuedParameter("[omop_staging].[RTDS_5_Diagnosis_Course_row]")
-            };
-
-            await connection
-                .ExecuteLongTimeoutAsync(
-                    "omop_staging.insert_RTDS_5_Diagnosis_Course",
-                    parameter,
-                    commandType: CommandType.StoredProcedure);
         }
     }
 
-    private async Task InsertRTDS_PASDATA(IReadOnlyCollection<RtdsPasData> rows, string sourceFileName, RetryConnection connection, CancellationToken cancellationToken)
+    private void InsertRTDS_PASDATA(IReadOnlyCollection<RtdsPasData> rows, string sourceFileName, DuckDBConnection connection, CancellationToken cancellationToken)
     {
-        var batches = rows.Batch(_configuration.BatchSize!.Value);
-        foreach (var batch in batches)
+        using var appender = connection.CreateAppender("omop_staging", "RTDS_PASDATA");
         {
-            cancellationToken.ThrowIfCancellationRequested();
-
-            var dataTable = new DataTable();
-
-            dataTable.Columns.Add("SourceFileName");
-            dataTable.Columns.Add("Expr1");
-            dataTable.Columns.Add("Expr2");
-            dataTable.Columns.Add("Expr3");
-            dataTable.Columns.Add("Expr4");
-            dataTable.Columns.Add("Expr5");
-            dataTable.Columns.Add("Expr6");
-            dataTable.Columns.Add("PatientID2");
-            dataTable.Columns.Add("FirstOfNHSNUMBER");
-            dataTable.Columns.Add("NHSNUMBERTRACESTATUS");
-            dataTable.Columns.Add("Expr7");
-            dataTable.Columns.Add("Expr8");
-            dataTable.Columns.Add("FirstOfPOSTCODE");
-            dataTable.Columns.Add("Expr9");
-            dataTable.Columns.Add("BIRTHDATE");
-            dataTable.Columns.Add("GENDER");
-            dataTable.Columns.Add("Expr10");
-            dataTable.Columns.Add("Expr11");
-            dataTable.Columns.Add("Expr12");
-            dataTable.Columns.Add("Expr13");
-            dataTable.Columns.Add("Expr14");
-            dataTable.Columns.Add("FirstOfGPNATIONALCODE");
-            dataTable.Columns.Add("FirstOfPRACTICECODE");
-
-            foreach (var row in batch)
+            foreach (var row in rows)
             {
-                dataTable.Rows.Add(
-                    sourceFileName,
-                    row.Expr1,
-                    row.Expr2,
-                    row.Expr3,
-                    row.Expr4,
-                    row.Expr5,
-                    row.Expr6,
-                    row.PatientID2,
-                    row.FirstOfNHSNUMBER,
-                    row.NHSNUMBERTRACESTATUS,
-                    row.Expr7,
-                    row.Expr8,
-                    row.FirstOfPOSTCODE,
-                    row.Expr9,
-                    row.BIRTHDATE,
-                    row.GENDER,
-                    row.Expr10,
-                    row.Expr11,
-                    row.Expr12,
-                    row.Expr13,
-                    row.Expr14,
-                    row.FirstOfGPNATIONALCODE,
-                    row.FirstOfPRACTICECODE);
+                var dbRow = appender.CreateRow();
+
+                dbRow
+                    .AppendValue(sourceFileName)
+                    .AppendValue(row.Expr1)
+                    .AppendValue(row.Expr2)
+                    .AppendValue(row.Expr3)
+                    .AppendValue(row.Expr4)
+                    .AppendValue(row.Expr5)
+                    .AppendValue(row.Expr6)
+                    .AppendValue(row.PatientID2)
+                    .AppendValue(row.FirstOfNHSNUMBER)
+                    .AppendValue(row.NHSNUMBERTRACESTATUS)
+                    .AppendValue(row.Expr7)
+                    .AppendValue(row.Expr8)
+                    .AppendValue(row.FirstOfPOSTCODE)
+                    .AppendValue(row.Expr9)
+                    .AppendValue(row.BIRTHDATE)
+                    .AppendValue(row.GENDER)
+                    .AppendValue(row.Expr10)
+                    .AppendValue(row.Expr11)
+                    .AppendValue(row.Expr12)
+                    .AppendValue(row.Expr13)
+                    .AppendValue(row.Expr14)
+                    .AppendValue(row.FirstOfGPNATIONALCODE)
+                    .AppendValue(row.FirstOfPRACTICECODE)
+                    .EndRow();
             }
-
-            var parameter = new
-            {
-                Rows = dataTable.AsTableValuedParameter("[omop_staging].[RTDS_PASDATA_row]")
-            };
-
-            await connection
-                .ExecuteLongTimeoutAsync(
-                    "omop_staging.insert_RTDS_PASDATA",
-                    parameter,
-                    commandType: CommandType.StoredProcedure);
         }
+
     }
 }

@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tNHSNumber as nhs_number,\n\tcoalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date\nfrom [omop_staging].[sus_AE]\nwhere ((ReferralToTreatmentPeriodStatus = 36) --PATIENT died before treatment\n\tor (AEPatientGroup = 70) -- PATIENT brought in dead\n\tor (AEAttendanceDisposal = 10))  --PATIENT died in AE\n\tand (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)\n\tand NHSNumber is not null\ngroup by NHSNumber\n\t",
+      "query": "\nselect\n\tNHSNumber as nhs_number,\n\tcoalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date\nfrom omop_staging.sus_AE\nwhere ((ReferralToTreatmentPeriodStatus = 36) --PATIENT died before treatment\n\tor (AEPatientGroup = 70) -- PATIENT brought in dead\n\tor (AEAttendanceDisposal = 10))  --PATIENT died in AE\n\tand (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)\n\tand NHSNumber is not null\ngroup by NHSNumber\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\nselect\n\tNHSNumber as nhs_number,\n\tcoalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date\nfrom [omop_staging].[sus_AE]\nwhere ((ReferralToTreatmentPeriodStatus = 36) --PATIENT died before treatment\n\tor (AEPatientGroup = 70) -- PATIENT brought in dead\n\tor (AEAttendanceDisposal = 10))  --PATIENT died in AE\n\tand (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)\n\tand NHSNumber is not null\ngroup by NHSNumber\n\t",
+      "query": "\nselect\n\tNHSNumber as nhs_number,\n\tcoalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date\nfrom omop_staging.sus_AE\nwhere ((ReferralToTreatmentPeriodStatus = 36) --PATIENT died before treatment\n\tor (AEPatientGroup = 70) -- PATIENT brought in dead\n\tor (AEAttendanceDisposal = 10))  --PATIENT died in AE\n\tand (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)\n\tand NHSNumber is not null\ngroup by NHSNumber\n\t",
       "lookup_table_markdown": null
     }
   ]

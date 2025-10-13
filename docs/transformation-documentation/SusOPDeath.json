@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tNHSNumber as nhs_number,\n\t\tcoalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date\n\tfrom [omop_staging].[sus_OP]\n\twhere ReferralToTreatmentPeriodStatus = 36\n\t\tand (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)\n\t\tand NHSNumber is not null\n\tgroup by NHSNumber\n\t",
+      "query": "\n\tselect\n\t\tNHSNumber as nhs_number,\n\t\tcoalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date\n\tfrom omop_staging.sus_OP\n\twhere ReferralToTreatmentPeriodStatus = 36\n\t\tand (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)\n\t\tand NHSNumber is not null\n\tgroup by NHSNumber\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tNHSNumber as nhs_number,\n\t\tcoalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date\n\tfrom [omop_staging].[sus_OP]\n\twhere ReferralToTreatmentPeriodStatus = 36\n\t\tand (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)\n\t\tand NHSNumber is not null\n\tgroup by NHSNumber\n\t",
+      "query": "\n\tselect\n\t\tNHSNumber as nhs_number,\n\t\tcoalesce(max(ReferralToTreatmentPeriodEndDate), max(CDSActivityDate)) as death_date\n\tfrom omop_staging.sus_OP\n\twhere ReferralToTreatmentPeriodStatus = 36\n\t\tand (CDSActivityDate is not null or ReferralToTreatmentPeriodEndDate is not null)\n\t\tand NHSNumber is not null\n\tgroup by NHSNumber\n\t",
       "lookup_table_markdown": null
     }
   ]

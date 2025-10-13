@@ -12,6 +12,6 @@ internal class SactStagingSchema : StagingSchema, ISactStagingSchema
     protected override string[] ClearStagingSql =>
         new[]
         {
-            "if object_id('omop_staging.sact_staging') is not null begin truncate table omop_staging.sact_staging; end",
+            "truncate table omop_staging.sact_staging;"
         };
 }

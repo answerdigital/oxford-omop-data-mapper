@@ -20,7 +20,7 @@ Converts text to dates.
 			op.NHSNumber,
 			op.CDSActivityDate
 	from omop_staging.sus_OP_ICDDiagnosis d
-		inner join [omop_staging].[sus_OP] op
+		inner join omop_staging.sus_OP op
 			on d.MessageId = op.MessageId
 	where op.NHSNumber is not null
 		and AttendedorDidNotAttend in ('5','6')
@@ -88,6 +88,30 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_end_datetime%20field%20SUS%20Inpatient%20Condition%20Occurrence%20mapping){: .btn }
+### SACT Condition Occurrence
+Source column  `Administration_Date`.
+Converts text to dates.
+
+* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
+
+```sql
+	select
+		Primary_Diagnosis,
+		replace(NHS_Number, ' ', '') as NHS_Number,
+		min(Administration_Date) as Administration_Date
+	from omop_staging.sact_staging
+	group by
+		Primary_Diagnosis,
+		NHS_Number
+	order by
+		NHS_Number,
+		Primary_Diagnosis,
+		min(Administration_Date)
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_end_datetime%20field%20SACT%20Condition%20Occurrence%20mapping){: .btn }
 ### Rtds Condition Occurrence
 Source column  `event_end_date`.
 Converts text to dates.
@@ -98,10 +122,10 @@ Converts text to dates.
 with results as (
 	select 
 		distinct
-			(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer) as PatientId,
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as PatientId,
 			dc.DiagnosisCode,
-			dc.Start_date as event_start_date,
-			dc.End_date as event_end_date
+			dc.DateStamp as event_start_date,
+			dc.DateStamp as event_end_date
 	from omop_staging.RTDS_5_Diagnosis_Course dc
 	where dc.DiagnosisTableName = 'ICD-10'
 )
@@ -113,7 +137,7 @@ select
 from results
 where
     PatientId is not null
-    and patientid not like '%[^0-9]%';
+    and regexp_matches(patientid, '\d{10}');
 	
 ```
 

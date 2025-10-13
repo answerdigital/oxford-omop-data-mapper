@@ -2,7 +2,7 @@
     <Sql>
 	select distinct
 		SiteCodeOfTreatment
-	from [omop_staging].[sus_AE] 	
+	from omop_staging.sus_AE 	
 	</Sql>
     <Explanations>
 		<Explanation columnName="SiteCodeOfTreatment">

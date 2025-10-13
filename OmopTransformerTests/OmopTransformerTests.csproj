@@ -11,22 +11,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CDS\**" />
+    <EmbeddedResource Remove="CDS\**" />
+    <None Remove="CDS\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2025.2.2" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.10.4" />
     <PackageReference Include="MSTest.TestFramework" Version="3.10.4" />
     <PackageReference Include="coverlet.collector" Version="6.0.4" />
     <PackageReference Include="NSubstitute" Version="5.3.0" />
     <PackageReference Include="NUnit" Version="4.4.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="5.1.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="5.2.0" />
 </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\OmopTransformer\OmopTransformer.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="CDS\" />
   </ItemGroup>
 
 </Project>

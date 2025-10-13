@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using System.IO.Compression;
+﻿using System.IO.Compression;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -29,35 +28,36 @@ internal class CosdStaging : ICosdStaging
             return;
         }
 
-        var connection = RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
+        throw null;
+        //var connection = null;RetryConnection.CreateSqlServer(_configuration.ConnectionString!);
 
 
-        using var archive = ZipFile.OpenRead(_options.FileName);
+        //using var archive = ZipFile.OpenRead(_options.FileName);
 
-        _logger.LogInformation("Found {0} entries.", archive.Entries.Count);
+        //_logger.LogInformation("Found {0} entries.", archive.Entries.Count);
 
-        foreach (var entry in archive.Entries)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
+        //foreach (var entry in archive.Entries)
+        //{
+        //    cancellationToken.ThrowIfCancellationRequested();
 
-            await using var stream = entry.Open();
-            using var memoryStream = new MemoryStream();
-            await stream.CopyToAsync(memoryStream, cancellationToken);
+        //    await using var stream = entry.Open();
+        //    using var memoryStream = new MemoryStream();
+        //    await stream.CopyToAsync(memoryStream, cancellationToken);
 
-            _logger.LogInformation("Staging {0}.", entry.Name);
+        //    _logger.LogInformation("Staging {0}.", entry.Name);
 
-            await connection
-                .ExecuteLongTimeoutAsync(
-                    "insert into [omop_staging].[cosd_staging] values (@SubmissionName, @FileName, @Content)",
-                    param:
-                    new
-                    {
-                        SubmissionName = Path.GetFileName(_options.FileName),
-                        FileName = entry.Name,
-                        Content = memoryStream.ToArray()
-                    });
-        }
+        //    await connection
+        //        .ExecuteLongTimeoutAsync(
+        //            "insert into [omop_staging].[cosd_staging] values (@SubmissionName, @FileName, @Content)",
+        //            param:
+        //            new
+        //            {
+        //                SubmissionName = Path.GetFileName(_options.FileName),
+        //                FileName = entry.Name,
+        //                Content = memoryStream.ToArray()
+        //            });
+        //}
 
-        _logger.LogInformation("Staging complete.");
+        //_logger.LogInformation("Staging complete.");
     }
 }

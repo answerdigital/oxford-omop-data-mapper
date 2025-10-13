@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand patientid not like '%[^0-9]%'\n\t",
+      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer limit 1) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -42,7 +42,7 @@
           ]
         }
       ],
-      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand patientid not like '%[^0-9]%'\n\t",
+      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer limit 1) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand patientid not like '%[^0-9]%'\n\t",
+      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer limit 1) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -73,7 +73,7 @@
           "origins": []
         }
       ],
-      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand patientid not like '%[^0-9]%'\n\t",
+      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer limit 1) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -86,7 +86,7 @@
           "origins": []
         }
       ],
-      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand patientid not like '%[^0-9]%'\n\t",
+      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer limit 1) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -111,7 +111,7 @@
           ]
         }
       ],
-      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand patientid not like '%[^0-9]%'\n\t",
+      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer limit 1) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -129,7 +129,7 @@
           ]
         }
       ],
-      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand patientid not like '%[^0-9]%'\n\t",
+      "query": "\nwith records as (\n\tselect\n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tActualStartDateTime_s as Start_date,\n\t\tActualEndDateTime_s as End_date\n\tfrom omop_staging.rtds_2a_attendances\n\n\tunion\n\n\tselect \n\t\tPatientSer,\n\t\tProcedureCode,\n\t\tStart_date,\n\t\tEnd_date\n\tfrom omop_staging.rtds_2b_plan\n), records_with_patient as (\n\tselect\n\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = r.PatientSer limit 1) as PatientId,\n\t\tr.*\n\tfrom records r\n)\nselect\n\tPatientId,\n\tProcedureCode,\n\tStart_date as event_start_date,\n\tEnd_date as event_end_date\nfrom records_with_patient\nwhere PatientId is not null\n\tand regexp_matches(patientid, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     }
   ]

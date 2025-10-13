@@ -7,7 +7,7 @@ using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.Omop;
 using OmopTransformer.RTDS.ProcedureOccurrence;
 using OmopTransformer.RTDS.ConditionOccurrence;
-using OmopTransformer.RTDS.VisitOccurrence;
+//using OmopTransformer.RTDS.VisitOccurrence;
 using OmopTransformer.RTDS.Person;
 using OmopTransformer.RTDS.Location;
 using OmopTransformer.Transformation;
@@ -31,7 +31,6 @@ internal class RtdsTransformer : Transformer
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder,
         IConditionOccurrenceRecorder conditionOccurrenceRecorder,
         IVisitOccurrenceRecorder visitOccurrenceRecorder,
-        IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory)
         : base(
@@ -39,7 +38,6 @@ internal class RtdsTransformer : Transformer
             transformOptions,
             recordProvider,
             "RTDS",
-            conceptMapper,
             runAnalysisRecorder,
             loggerFactory)
     {
@@ -78,10 +76,10 @@ internal class RtdsTransformer : Transformer
           runId,
           cancellationToken);
 
-        await Transform<RtdsVisitOccurrenceRecord, RtdsVisitOccurrence>(
-          _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
-          "Rtds Visit Occurrence",
-          runId,
-          cancellationToken);
+        //await Transform<RtdsVisitOccurrenceRecord, RtdsVisitOccurrence>(
+        //  _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
+        //  "Rtds Visit Occurrence",
+        //  runId,
+        //  cancellationToken);
     }
 }

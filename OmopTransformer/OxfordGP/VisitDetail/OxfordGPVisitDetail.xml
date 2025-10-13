@@ -19,5 +19,8 @@ order by
 		<Explanation columnName="EventDate">
 			<Description>Event date</Description>
 		</Explanation>
+		<Explanation columnName="GPEventsPrimaryKey">
+			<Description>GP Events Unique ID</Description>
+		</Explanation>
 	</Explanations>
 </Query>
