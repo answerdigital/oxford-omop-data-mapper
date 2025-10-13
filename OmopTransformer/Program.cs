@@ -260,25 +260,6 @@ internal class Program
                         return;
                 }
             }
-            else if (string.Equals(stagingOptions.Type, "oxford-lab", StringComparison.OrdinalIgnoreCase))
-            {
-                if (stagingOptions.Action == null)
-                {
-                    await ActionMustBeSpecifiedError();
-                    return;
-                }
-
-                switch (stagingOptions.Action.ToLower())
-                {
-                    case "load":
-                        break;
-                    case "clear":
-                        break;
-                    default:
-                        await UnknownActionMustBeSpecifiedError(stagingOptions.Action);
-                        return;
-                }
-            }
             else
             {
                 await Console.Error.WriteLineAsync($"Unknown staging type {stagingOptions.Type}.");

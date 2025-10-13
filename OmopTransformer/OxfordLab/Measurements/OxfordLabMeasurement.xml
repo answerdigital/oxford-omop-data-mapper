@@ -16,15 +16,15 @@ from ##duckdb_source##
 		    <Origin>NHS NUMBER</Origin>
 	    </Explanation>
 		<Explanation columnName="EVENT">
-			<Description></Description>
+			<Description>Lab test event</Description>
 			<Origin></Origin>
 		</Explanation>
 		<Explanation columnName="EVENT_START_DT_TM">
-			<Description></Description>
+			<Description>Lab test event start datetime</Description>
 			<Origin></Origin>
 		</Explanation>
 		<Explanation columnName="RESULT_VALUE">
-			<Description></Description>
+			<Description>Lab test event result</Description>
 			<Origin></Origin>
 		</Explanation>
 	    <Explanation columnName="RESULT_UNITS">
@@ -32,11 +32,11 @@ from ##duckdb_source##
 		    <Origin>NHS NUMBER</Origin>
 	    </Explanation>
 		<Explanation columnName="NORMAL_LOW">
-			<Description></Description>
+			<Description>Lab test normal range (low)</Description>
 			<Origin></Origin>
 		</Explanation>
 		<Explanation columnName="NORMAL_HIGH">
-			<Description></Description>
+			<Description>Lab test normal range (high)</Description>
 			<Origin></Origin>
 		</Explanation>
 	</Explanations>

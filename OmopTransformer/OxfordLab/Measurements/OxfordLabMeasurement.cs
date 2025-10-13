@@ -9,9 +9,6 @@ internal class OxfordLabMeasurement : OmopMeasurement<OxfordLabMeasurementRecord
     [CopyValue(nameof(Source.NHS_NUMBER))]
     public override string? nhs_number { get; set; }
 
-    // [CopyValue(nameof(Source.GeneratedRecordIdentifier))]
-    // public override string? RecordConnectionIdentifier {get;set;}
-
     [Transform(typeof(DateConverter), nameof(Source.EVENT_START_DT_TM))]
     public override DateTime? measurement_date { get; set; }
 
