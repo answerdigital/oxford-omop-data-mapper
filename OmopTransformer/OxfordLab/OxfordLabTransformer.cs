@@ -17,13 +17,11 @@ internal class OxfordLabTransformer : Transformer
         IRecordProvider recordProvider,
         IMeasurementRecorder measurementRecorder,
         ConceptResolver conceptResolver,
-        IConceptMapper conceptMapper,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory) : base(recordTransformer,
         transformOptions,
         recordProvider,
         "Oxford-Lab",
-        conceptMapper,
         runAnalysisRecorder,
         loggerFactory)
     {

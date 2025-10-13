@@ -1,0 +1,146 @@
+{
+  "omopTable": "Measurement",
+  "origin": "OxfordLab",
+  "omopColumns": [
+    {
+      "name": "nhs_number",
+      "operation_description": "Value copied from `NHS_NUMBER`",
+      "dataSource": [
+        {
+          "name": "NHS_NUMBER",
+          "description": "Patient NHS Number",
+          "origins": [
+            {
+              "origin": "NHS NUMBER",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tNHS_NUMBER,\n\tEVENT,\n\tEVENT_START_DT_TM,\n\tRESULT_VALUE,\n\tRESULT_UNITS,\n\tNORMAL_LOW,\n\tNORMAL_HIGH\nfrom ##duckdb_source##\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "measurement_date",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "EVENT_START_DT_TM",
+          "description": "Lab test event start datetime",
+          "origins": [
+            {
+              "origin": "",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tNHS_NUMBER,\n\tEVENT,\n\tEVENT_START_DT_TM,\n\tRESULT_VALUE,\n\tRESULT_UNITS,\n\tNORMAL_LOW,\n\tNORMAL_HIGH\nfrom ##duckdb_source##\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "measurement_datetime",
+      "operation_description": "Converts text to dates.",
+      "dataSource": [
+        {
+          "name": "EVENT_START_DT_TM",
+          "description": "Lab test event start datetime",
+          "origins": [
+            {
+              "origin": "",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tNHS_NUMBER,\n\tEVENT,\n\tEVENT_START_DT_TM,\n\tRESULT_VALUE,\n\tRESULT_UNITS,\n\tNORMAL_LOW,\n\tNORMAL_HIGH\nfrom ##duckdb_source##\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "measurement_type_concept_id",
+      "operation_description": "Constant value set to `32828`. EHR episode record",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "measurement_source_concept_id",
+      "operation_description": "OXford Lab Test Lookup lookup",
+      "dataSource": [
+        {
+          "name": "EVENT",
+          "description": "Lab test event",
+          "origins": [
+            {
+              "origin": "",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tNHS_NUMBER,\n\tEVENT,\n\tEVENT_START_DT_TM,\n\tRESULT_VALUE,\n\tRESULT_UNITS,\n\tNORMAL_LOW,\n\tNORMAL_HIGH\nfrom ##duckdb_source##\n\t",
+      "lookup_table_markdown": "\r\n\r\n|EVENT|measurement_source_concept_id|notes|\r\n|------|-----|-----|\r\n|Adjusted calcium level, blood|3048816|Calcium.ionized [Moles/volume] adjusted to pH 7.4 in Blood|\r\n|Alanine aminotransferase level, blood|46235106|Alanine aminotransferase [Enzymatic activity/volume] in Blood|\r\n|Albumin level, blood|3043798|Albumin [Presence] in Serum or Plasma|\r\n|Alk phos level, blood|3003650|Alkaline phosphatase [Mass/volume] in Body fluid|\r\n|APTT, blood|3013466|aPTT in Blood by Coagulation assay|\r\n|Basophil count, blood|3006315|Basophils [#/volume] in Blood|\r\n|BE Act (BG)|3005724|B Ag [Presence] on Red Blood Cells|\r\n|BE Std (BG)|3025597|Deprecated Chlamydia trachomatis G+F+K Ab [Units/volume] in Serum|\r\n|Bicarb (BG)|3005724|B Ag [Presence] on Red Blood Cells|\r\n|Blood gases comment|44786790|Volatiles and gases [Presence] in Blood|\r\n|Blood Glucose POC|3020491|Glucose [Moles/volume] in Blood|\r\n|Blood Ketones, POC|3041426|Ketones [Moles/volume] in Blood|\r\n|C-reactive protein level, blood|1091617|C reactive protein [Mass/volume] in Serum, Plasma or Blood|\r\n|Ca+ + (BG)|3036426|Calcium.ionized [Mass/volume] in Blood|\r\n|Calcium level, blood|3027495|Calcium [Presence] in Blood|\r\n|Calculated LDL cholesterol level, blood|3028288|Cholesterol in LDL [Mass/volume] in Serum or Plasma by calculation|\r\n|Cholesterol:HDL ratio, blood|3024723|Cholesterol/Triglyceride [Mass Ratio] in Serum or Plasma|\r\n|Cl- (BG)|46235783|Chloride [Moles/volume] in Serum, Plasma or Blood|\r\n|cLAC (BG)|3034564|CLA2 gene mutations found [Identifier] in Blood or Tissue by Molecular genetics method Nominal|\r\n|Creat (BG)|3026159|Suberate [Presence] in Urine|\r\n|Creatinine level, blood|3051825|Creatinine [Mass/volume] in Blood|\r\n|Creatinine level, urine|3007081|Creatinine [Interpretation] in Urine|\r\n|ctO2c (BG)|40763341|Ascorbate [Moles/volume] in Specimen|\r\n|eGFR comment|40758890|EGFR gene c.2369C>T [Presence] in Blood or Tissue by Molecular genetics method|\r\n|Eosinophil count, blood|3013115|Eosinophils [#/volume] in Blood|\r\n|Estimated GFR, blood|3045262|Creatinine and Glomerular filtration rate.predicted panel - Serum, Plasma or Blood|\r\n|Estimated Osmolality (BG)|3008295|Osmolality of Serum or Plasma|\r\n|FCOHb (BG)|3033821|Fy sup(b) Ab [Presence] in Serum or Plasma from Blood product unit|\r\n|Ferritin level, serum|3001122|Ferritin [Mass/volume] in Serum or Plasma|\r\n|FIO2|3006455|Oxygen [Partial pressure] in Exhaled gas|\r\n|Folate level, serum|3033201|Folate [Mass/volume] in Serum or Plasma|\r\n|General biochemistry comment|3025981|Arginine+Argininosuccinate+Lysine+Serine+Taurine [Presence] in Urine|\r\n|Glucose (BG)|3000483|Glucose [Mass/volume] in Blood|\r\n|Glucose level, plasma|44816672|Glucose [Mass/volume] in Serum, Plasma or Blood|\r\n|Glycated haemoglobin reference, blood|3005131|Glucose mean value [Mass/volume] in Blood Estimated from glycated hemoglobin|\r\n|Haematocrit level, blood|3009542|Hematocrit [Volume Fraction] of Blood by calculation|\r\n|Haematology comment|40762529|Hematologist review of results|\r\n|Haemoglobin|3000963|Hemoglobin [Mass/volume] in Blood|\r\n|Haemoglobin A1c DCCT aligned, blood|3005673|Hemoglobin A1c/Hemoglobin.total in Blood by HPLC|\r\n|Hb (BG)|3041888|Hemoglobin H [Presence] in Blood|\r\n|HBA1c comment|3005673|Hemoglobin A1c/Hemoglobin.total in Blood by HPLC|\r\n|Hct (BG)|36203329|Bg sup(b) Ag [Presence] on Red Blood Cells|\r\n|HDL cholesterol level, blood|3011884|Cholesterol in HDL [Presence] in Serum or Plasma|\r\n|Immature Granulocytes count, blood|3040168|Immature granulocytes [#/volume] in Blood|\r\n|Inorganic phosphate level, blood|3024232|Phosphate [Mass/volume] in Blood|\r\n|Iron level, serum|3021862|Iron [Interpretation] in Serum or Plasma|\r\n|K+ (BG)|21490733|Potassium [Mass/volume] in Blood|\r\n|Lymphocyte count, blood|3019198|Lymphocytes [#/volume] in Blood|\r\n|Magnesium level, blood|3006916|Magnesium [Presence] in Blood|\r\n|Mean cell haemoglobin conc, blood|3000963|Hemoglobin [Mass/volume] in Blood|\r\n|Mean cell haemoglobin level, blood|3000963|Hemoglobin [Mass/volume] in Blood|\r\n|Mean cell volume, blood|3033607|Volume of Blood|\r\n|Mean platelet volume, blood|3001123|Platelet [Entitic mean volume] in Blood|\r\n|MetHb (BG)|3008524|Presence in Serum or Plasma|\r\n|Miscellaneous Immunology comment|3029658|Other cells/Leukocytes in Body fluid|\r\n|Monocyte count, blood|3001604|Monocytes [#/volume] in Blood|\r\n|Na+ (BG)|3000285|Sodium [Moles/volume] in Blood|\r\n|Neutrophil count, blood|3017732|Neutrophils [#/volume] in Blood|\r\n|Non-HDL cholesterol, blood|3044491|Cholesterol non HDL [Mass/volume] in Serum or Plasma|\r\n|NRBC count per 100 WBC, blood|3020036|Deprecated Nucleated Erythrocytes/100 leukocytes [Ratio] in Blood|\r\n|Nucleated red blood cell count, blood|3001490|Nucleated erythrocytes [#/volume] in Blood|\r\n|O2 Sat (BG)|3016502|Oxygen saturation in Arterial blood|\r\n|O_Bone profile, blood|3016185|O group [Presence] on Red Blood Cells from Donor|\r\n|O_C-reactive protein level, blood|3051387|C reactive protein [Mass/volume] in Capillary blood|\r\n|O_Calcium level, blood|3027495|Calcium [Presence] in Blood|\r\n|O_Clotting screen, blood|40770392|Thromboelastography panel - Blood|\r\n|O_Full Blood Count|3033204|Hemoglobin O - Arab/Hemoglobin.total in Blood|\r\n|O_Magnesium level, blood|3033836|Magnesium [Moles/volume] in Blood|\r\n|O_Urea and electrolytes, blood|3004295|Urea nitrogen [Mass/volume] in Blood|\r\n|p5Oc (BG)|3008617|O group [Presence] on Red Blood Cells from Blood product unit|\r\n|pCO2 POC|3013290|Carbon dioxide [Partial pressure] in Blood|\r\n|pCO2(T)c|3010140|Carbon dioxide, total [Moles/volume] in Venous blood|\r\n|pH (BG)|3010421|pH of Blood|\r\n|pH(T)c|1616438|pH of Central venous blood|\r\n|Platelet count, blood|3007461|Platelets [#/volume] in Blood|\r\n|pO2 (BG)|3003246|Oxygen [Partial pressure] in Exhaled gas|\r\n|pO2(T)c|1616654|Oxygen [Partial pressure] in Central venous blood|\r\n|Potassium level, blood|21490733|Potassium [Mass/volume] in Blood|\r\n|Prothrombin time and INR, blood|3014391|Thrombin time [Interpretation] in Blood|\r\n|Prothrombin time, blood|3034426|Prothrombin time (PT)|\r\n|Red blood cell count, blood|3026361|Erythrocytes [#/volume] in Blood|\r\n|Red Blood Cell Distribution Width|3002385|Erythrocyte [DistWidth] in Red Blood Cells|\r\n|Sodium level, blood|3000285|Sodium [Moles/volume] in Blood|\r\n|Specimen type (BG)|40769406|Specimen type|\r\n|Temperature POCT|21492846|Environment temperature during transport|\r\n|Thyroid stimulating hormone, blood|3011450|Thyrotropin [Presence] in Blood|\r\n|Total bilirubin level, blood|3028833|Bilirubin.total [Mass/volume] in Blood|\r\n|Total cholesterol level, blood|3012041|Choleglobin/Hemoglobin.total in Blood|\r\n|Transferrin level, blood|3004789|Transferrin [Mass/volume] in Serum or Plasma|\r\n|Transferrin Saturation|3007987|Deprecated Transferrin saturation in Serum or Plasma|\r\n|Triglycerides level, blood|3022038|Triglyceride [Mass/volume] in Blood|\r\n|Urea level, plasma|3034204|Urea [Mass/volume] in Serum or Plasma|\r\n|Vitamin B12 level, serum|3031790|Cobalamin (Vitamin B12) [Mass/volume] in Serum|\r\n|Vitamin D level, blood|36031904|25-hydroxyvitamin D3+25-hydroxyvitamin D2 [Mass/volume] in Capillary blood|\r\n|Warfarin comment|3026207|Warfarin [Mass/volume] in Urine|\r\n|Warfarin Dose|3024105|Warfarin [Mass] of Dose|\r\n|White blood cell count, blood|3010813|Leukocytes [#/volume] in Blood|\r\n\r\n"
+    },
+    {
+      "name": "measurement_concept_id",
+      "operation_description": "Maps concepts to standard valid concepts in the `measurement` domain.",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "range_low",
+      "operation_description": "Converts text to number.",
+      "dataSource": [
+        {
+          "name": "NORMAL_LOW",
+          "description": "Lab test normal range (low)",
+          "origins": [
+            {
+              "origin": "",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tNHS_NUMBER,\n\tEVENT,\n\tEVENT_START_DT_TM,\n\tRESULT_VALUE,\n\tRESULT_UNITS,\n\tNORMAL_LOW,\n\tNORMAL_HIGH\nfrom ##duckdb_source##\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "range_high",
+      "operation_description": "Converts text to number.",
+      "dataSource": [
+        {
+          "name": "NORMAL_HIGH",
+          "description": "Lab test normal range (high)",
+          "origins": [
+            {
+              "origin": "",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tNHS_NUMBER,\n\tEVENT,\n\tEVENT_START_DT_TM,\n\tRESULT_VALUE,\n\tRESULT_UNITS,\n\tNORMAL_LOW,\n\tNORMAL_HIGH\nfrom ##duckdb_source##\n\t",
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "measurement_source_value",
+      "operation_description": "Value copied from `EVENT`",
+      "dataSource": [
+        {
+          "name": "EVENT",
+          "description": "Lab test event",
+          "origins": [
+            {
+              "origin": "",
+              "url": null
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tNHS_NUMBER,\n\tEVENT,\n\tEVENT_START_DT_TM,\n\tRESULT_VALUE,\n\tRESULT_UNITS,\n\tNORMAL_LOW,\n\tNORMAL_HIGH\nfrom ##duckdb_source##\n\t",
+      "lookup_table_markdown": null
+    }
+  ]
+}

@@ -17,6 +17,8 @@ has_toc: false
 * [operator_concept_id]({% link docs/transformation-documentation/Measurement_operator_concept_id.md %})
 * [value_as_number]({% link docs/transformation-documentation/Measurement_value_as_number.md %})
 * [unit_concept_id]({% link docs/transformation-documentation/Measurement_unit_concept_id.md %})
+* [range_low]({% link docs/transformation-documentation/Measurement_range_low.md %})
+* [range_high]({% link docs/transformation-documentation/Measurement_range_high.md %})
 * [measurement_source_value]({% link docs/transformation-documentation/Measurement_measurement_source_value.md %})
 * [unit_source_value]({% link docs/transformation-documentation/Measurement_unit_source_value.md %})
 * [RecordConnectionIdentifier]({% link docs/transformation-documentation/Measurement_RecordConnectionIdentifier.md %})
@@ -49,6 +51,10 @@ has_toc: false
 <a href="SactMeasurementHeight.svg" target="_blank"><img src="SactMeasurementHeight.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactMeasurementHeight%20mapping){: .btn }
+## OxfordLabMeasurement
+<a href="OxfordLabMeasurement.svg" target="_blank"><img src="OxfordLabMeasurement.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordLabMeasurement%20mapping){: .btn }
 ## CosdV9MeasurementTumourLaterality
 <a href="CosdV9MeasurementTumourLaterality.svg" target="_blank"><img src="CosdV9MeasurementTumourLaterality.svg" /></a>
 

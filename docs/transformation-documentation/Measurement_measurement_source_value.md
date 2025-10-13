@@ -6,6 +6,26 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # measurement_source_value
+### Oxford Lab Measurement
+* Value copied from `EVENT`
+
+* `EVENT` Lab test event []()
+
+```sql
+select
+	NHS_NUMBER,
+	EVENT,
+	EVENT_START_DT_TM,
+	RESULT_VALUE,
+	RESULT_UNITS,
+	NORMAL_LOW,
+	NORMAL_HIGH
+from ##duckdb_source##
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_value%20field%20Oxford%20Lab%20Measurement%20mapping){: .btn }
 ### COSD V9 Measurement Tumour Laterality
 * Value copied from `TumourLaterality`
 
