@@ -89,6 +89,7 @@ with locationwithrow as (
                 state,
                 zip,
                 county,
+                location_source_value,
                 country_concept_id,
                 country_source_value,
                 latitude,
@@ -135,6 +136,7 @@ where not exists (
         and state is not distinct from l.state
         and zip is not distinct from l.zip
         and county is not distinct from l.county
+        and location_source_value is not distinct from l.location_source_value
         and country_concept_id is not distinct from l.country_concept_id
         and country_source_value is not distinct from l.country_source_value
         and latitude is not distinct from l.latitude
