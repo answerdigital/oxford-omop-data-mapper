@@ -36,6 +36,11 @@ Maps concepts to standard valid concepts in the `measurement` domain.
 * Constant value set to `607590`. Body Height
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20SACT%20%20Measurement%20Height%20mapping){: .btn }
+### Oxford Lab Measurement
+Source column  `measurement_source_concept_id`.
+Maps concepts to standard valid concepts in the `measurement` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20Oxford%20Lab%20Measurement%20mapping){: .btn }
 ### COSD V9 Measurement Tumour Laterality
 Source column  `TumourLaterality`.
 Lookup TumourLaterality concepts.

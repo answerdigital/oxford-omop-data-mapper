@@ -1,0 +1,43 @@
+﻿<Query>
+    <Sql type="duckdb">
+select
+	NHS_NUMBER,
+	EVENT,
+	EVENT_START_DT_TM,
+	RESULT_VALUE,
+	RESULT_UNITS,
+	NORMAL_LOW,
+	NORMAL_HIGH
+from ##duckdb_source##
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NHS_NUMBER">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+		<Explanation columnName="EVENT">
+			<Description>Lab test event</Description>
+			<Origin></Origin>
+		</Explanation>
+		<Explanation columnName="EVENT_START_DT_TM">
+			<Description>Lab test event start datetime</Description>
+			<Origin></Origin>
+		</Explanation>
+		<Explanation columnName="RESULT_VALUE">
+			<Description>Lab test event result</Description>
+			<Origin></Origin>
+		</Explanation>
+	    <Explanation columnName="RESULT_UNITS">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+		<Explanation columnName="NORMAL_LOW">
+			<Description>Lab test normal range (low)</Description>
+			<Origin></Origin>
+		</Explanation>
+		<Explanation columnName="NORMAL_HIGH">
+			<Description>Lab test normal range (high)</Description>
+			<Origin></Origin>
+		</Explanation>
+	</Explanations>
+</Query>

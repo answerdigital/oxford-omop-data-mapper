@@ -72,6 +72,8 @@ internal class ConceptResolver
 
     private void EnsureMapping()
     {
+        if (_mappings != null) 
+            return;
 
         lock (_loadingLock)
         {

@@ -28,7 +28,18 @@ public class TransformationTests
 
         var logger = Substitute.For<ILogger<RecordTransformer>>();
 
-        new RecordTransformer(logger, null!, null!, null!, null!, null!, null!, null!).Transform(testConcept);
+        TransformPlan plan = TransformPlan.Create(testConcept);
+
+        new RecordTransformer(
+            logger, 
+            null!, 
+            null!, 
+            null!, 
+            null!, 
+            null!, 
+            null!, 
+            null!)
+            .Transform(testConcept, plan);
 
         Assert.AreEqual(testConcept.Text, "hello world");
         Assert.AreEqual(testConcept.JoinedText, "line 1\r\nline 2");
@@ -55,7 +66,9 @@ public class TransformationTests
 
         var logger = Substitute.For<ILogger<RecordTransformer>>();
 
-        new RecordTransformer(logger, null!, null!, null!, null!, null!, null!, null!).Transform(testConcept);
+        TransformPlan plan = TransformPlan.Create(testConcept);
+
+        new RecordTransformer(logger, null!, null!, null!, null!, null!, null!, null!).Transform(testConcept, plan);
 
         Assert.AreEqual(0, testConcept.ColourId);
     }

@@ -144,6 +144,26 @@ order by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20SACT%20%20Measurement%20Height%20mapping){: .btn }
+### Oxford Lab Measurement
+* Value copied from `NHS_NUMBER`
+
+* `NHS_NUMBER` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+select
+	NHS_NUMBER,
+	EVENT,
+	EVENT_START_DT_TM,
+	RESULT_VALUE,
+	RESULT_UNITS,
+	NORMAL_LOW,
+	NORMAL_HIGH
+from ##duckdb_source##
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20Oxford%20Lab%20Measurement%20mapping){: .btn }
 ### COSD V9 Measurement Tumour Laterality
 * Value copied from `NhsNumber`
 

@@ -155,6 +155,27 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_datetime%20field%20SACT%20%20Measurement%20Height%20mapping){: .btn }
+### Oxford Lab Measurement
+Source column  `EVENT_START_DT_TM`.
+Converts text to dates.
+
+* `EVENT_START_DT_TM` Lab test event start datetime []()
+
+```sql
+select
+	NHS_NUMBER,
+	EVENT,
+	EVENT_START_DT_TM,
+	RESULT_VALUE,
+	RESULT_UNITS,
+	NORMAL_LOW,
+	NORMAL_HIGH
+from ##duckdb_source##
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_datetime%20field%20Oxford%20Lab%20Measurement%20mapping){: .btn }
 ### COSD V9 Measurement Tumour Laterality
 Source column  `DateOfPrimaryDiagnosisClinicallyAgreed`.
 Converts text to dates.
