@@ -9,7 +9,7 @@ has_toc: false
 ### Sus Outpatient VisitDetails
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 with results as
@@ -45,7 +45,7 @@ order by
 ### Sus Critical Care VisitDetails
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 with results as (
@@ -79,7 +79,7 @@ order by
 ### Sus Inptatient VisitDetails
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 		with records as (
@@ -118,7 +118,7 @@ order by
 ### Sus Inptatient VisitDetails
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 		with records as (
@@ -151,10 +151,25 @@ order by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20nhs_number%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
+### Sact VisitDetail
+* Value copied from `NHS_Number`
+
+* `NHS_Number` Patient NHS Number [NHS NUMBER]()
+
+```sql
+		select distinct 
+			NHS_Number,
+			Administration_Date 
+		from omop_staging.sact_staging
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20nhs_number%20field%20Sact%20VisitDetail%20mapping){: .btn }
 ### Oxford Visit Details
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select

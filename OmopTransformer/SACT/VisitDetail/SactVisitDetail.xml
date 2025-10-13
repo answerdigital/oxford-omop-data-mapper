@@ -3,7 +3,7 @@
 		select distinct 
 			NHS_Number,
 			Administration_Date 
-		from [omop_staging].[sact_staging]
+		from omop_staging.sact_staging
 	</Sql>
 	<Explanations>
 		 <Explanation columnName="NHS_Number">

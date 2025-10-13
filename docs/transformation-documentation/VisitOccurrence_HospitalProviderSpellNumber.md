@@ -9,7 +9,7 @@ has_toc: false
 ### SUS OP VisitOccurrenceWithSpell
 * Value copied from `SUSgeneratedspellID`
 
-* `SUSgeneratedspellID` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
+* `SUSgeneratedspellID` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER]()
 
 ```sql
 with results as
@@ -44,7 +44,7 @@ order by
 ### SUS APC VisitOccurrenceWithSpell
 * Value copied from `HospitalProviderSpellNumber`
 
-* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER](https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html)
+* `HospitalProviderSpellNumber` CDS specific hospital spell number that binds many episodes together. [HOSPITAL PROVIDER SPELL NUMBER]()
 
 ```sql
 	with records as (
@@ -84,7 +84,7 @@ order by
 ### SUS AE VisitOccurrenceWithSpell
 * Value copied from `AEAttendanceNumber`
 
-* `AEAttendanceNumber` ATTENDANCE IDENTIFIER is a sequential number or time of day used to enable an attendance to be uniquely identified. [ATTENDANCE IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/attendance_identifier.html)
+* `AEAttendanceNumber` ATTENDANCE IDENTIFIER is a sequential number or time of day used to enable an attendance to be uniquely identified. [ATTENDANCE IDENTIFIER]()
 
 ```sql
 		with records as (

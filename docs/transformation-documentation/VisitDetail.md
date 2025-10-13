@@ -58,6 +58,18 @@ has_toc: false
 > * `Emergency` covers a visit to A&E within the given Hospital Provider, and hence covers Admission Code 21 and 24 only
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAEVisitDetail%20mapping){: .btn }
+## SactVisitDetail
+<a href="SactVisitDetail.svg" target="_blank"><img src="SactVisitDetail.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * SACT Data has the following definition for the Administration Timestamp:
+> * i) For recording the date and time when the anti-cancer drug was administered to a patient (an infusion commenced)
+> * ii) For recording continuous oral chemotherapy, the administration date will be the first day of the nominal cycle, or the date on which an oral drug was dispensed to the patient.
+> * The assumption made is that all the drugs were administered in a Cancer clinic as we have no way of identifying if an oral drug was taken at home
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactVisitDetail%20mapping){: .btn }
 ## OxfordGPVisitDetails
 <a href="OxfordGPVisitDetails.svg" target="_blank"><img src="OxfordGPVisitDetails.svg" /></a>
 

@@ -10,9 +10,9 @@ has_toc: false
 Source columns  `VisitStartDate`, `VisitStartTime`.
 Combines a date with a time of day.
 
-* `VisitStartDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [START DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html), [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
+* `VisitStartDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](), [START DATE (HOSPITAL PROVIDER SPELL)](), [START DATE (EPISODE)]()
 
-* `VisitStartTime` Start time of the episode, if exists, else midnight. [START TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_time__hospital_provider_spell_.html), [START TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html)
+* `VisitStartTime` Start time of the episode, if exists, else midnight. [START TIME (HOSPITAL PROVIDER SPELL)](), [START TIME (EPISODE)]()
 
 ```sql
 with results as
@@ -49,9 +49,9 @@ order by
 Source columns  `VisitStartDate`, `VisitStartTime`.
 Combines a date with a time of day.
 
-* `VisitStartDate` Start date of the visit [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
+* `VisitStartDate` Start date of the visit [CRITICAL CARE START DATE]()
 
-* `VisitStartTime` Start time of the visit, if exists, else midnight. [CRITICAL CARE START TIME](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_time.html)
+* `VisitStartTime` Start time of the visit, if exists, else midnight. [CRITICAL CARE START TIME]()
 
 ```sql
 with results as (
@@ -86,9 +86,9 @@ order by
 Source columns  `VisitStartDate`, `VisitStartTime`.
 Combines a date with a time of day.
 
-* `VisitStartDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [START DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html), [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
+* `VisitStartDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](), [START DATE (HOSPITAL PROVIDER SPELL)](), [START DATE (EPISODE)]()
 
-* `VisitStartTime` Start time of the episode, if exists, else midnight. [START TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_time__hospital_provider_spell_.html), [START TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html)
+* `VisitStartTime` Start time of the episode, if exists, else midnight. [START TIME (HOSPITAL PROVIDER SPELL)](), [START TIME (EPISODE)]()
 
 ```sql
 		with records as (
@@ -128,9 +128,9 @@ Combines a date with a time of day.
 Source columns  `VisitStartDate`, `VisitStartTime`.
 Combines a date with a time of day.
 
-* `VisitStartDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [START DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html), [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
+* `VisitStartDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](), [START DATE (HOSPITAL PROVIDER SPELL)](), [START DATE (EPISODE)]()
 
-* `VisitStartTime` Start time of the episode, if exists, else midnight. [START TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_time__hospital_provider_spell_.html), [START TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html)
+* `VisitStartTime` Start time of the episode, if exists, else midnight. [START TIME (HOSPITAL PROVIDER SPELL)](), [START TIME (EPISODE)]()
 
 ```sql
 		with records as (
@@ -163,6 +163,22 @@ Combines a date with a time of day.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_start_datetime%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
+### Sact VisitDetail
+Source column  `Administration_date`.
+Converts text to dates.
+
+* `Administration_date` Date when drug was administered or date an oral drug was initially dispensed to the patient [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+
+```sql
+		select distinct 
+			NHS_Number,
+			Administration_Date 
+		from omop_staging.sact_staging
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_start_datetime%20field%20Sact%20VisitDetail%20mapping){: .btn }
 ### Oxford Visit Details
 Source column  `EventDate`.
 Converts text to dates.

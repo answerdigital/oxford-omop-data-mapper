@@ -18,6 +18,10 @@ has_toc: false
 * Constant value set to `9203`. `Emergency Room Visit`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_concept_id%20field%20SUS%20AE%20VisitOccurrenceWithSpell%20mapping){: .btn }
+### Sact VisitOccurrence
+* Constant value set to `38004268`. `Oncology Clinic/Center`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_concept_id%20field%20Sact%20VisitOccurrence%20mapping){: .btn }
 ### Rtds VisitOccurrence
 * Constant value set to `9201`. `Inpatient Visit`
 
