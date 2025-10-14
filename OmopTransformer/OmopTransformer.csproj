@@ -260,6 +260,9 @@
     <None Update="OxfordLab\Measurements\OxfordLabMeasurement.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="OxfordLab\Observations\LabReportGeneralComment\OxfordLabGeneralComment.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="OxfordSpineDeath\Death\OxfordSpineDeath.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
