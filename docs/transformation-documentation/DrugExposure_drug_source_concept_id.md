@@ -322,7 +322,7 @@ Notes
 * [Athena Drug Concepts](https://athena.ohdsi.org/search-terms/terms?standardConcept=Standard&domain=Drug&vocabulary=RxNorm&vocabulary=RxNorm+Extension&invalidReason=Valid&page=1&pageSize=15&query=)
 * [placebo forum discussion](https://forums.ohdsi.org/t/how-would-you-map-drug-name-placebo-clinical-trial/15622/2)
 
-* `Drug_Name` The name of the Systemic Anti-Cancer Therapy drug given to a PATIENT during an Systemic Anti-Cancer Therapy Drug Regimen. [SYSTEMIC ANTI-CANCER THERAPY DRUG NAME](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_name.html)
+* `Drug_Name` The name of the Systemic Anti-Cancer Therapy drug given to a PATIENT during an Systemic Anti-Cancer Therapy Drug Regimen. [SYSTEMIC ANTI-CANCER THERAPY DRUG NAME]()
 
 ```sql
 	select

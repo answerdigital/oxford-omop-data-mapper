@@ -9,7 +9,7 @@ has_toc: false
 ### SUS OP Device Exposure
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 	select
@@ -32,7 +32,7 @@ has_toc: false
 ### SUS CCMDS Device Exposure
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 		select distinct
@@ -57,7 +57,7 @@ has_toc: false
 ### SUS APC Procedure Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select
@@ -78,7 +78,7 @@ where NHSNumber is not null
 ### SUS AE Procedure Device Exposure
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 	select
@@ -99,7 +99,7 @@ where NHSNumber is not null
 ### SUS AE Investigation Device Exposure
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 	select
@@ -124,7 +124,7 @@ where NHSNumber is not null
 ### Oxford Device Exposure
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select

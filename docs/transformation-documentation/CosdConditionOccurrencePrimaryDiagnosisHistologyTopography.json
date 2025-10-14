@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -30,7 +30,7 @@
           "origins": [
             {
               "origin": "MORPHOLOGY (ICD-O CANCER TRANSFORMATION)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/morphology__icd-o_cancer_transformation_.html"
+              "url": null
             }
           ]
         },
@@ -40,7 +40,7 @@
           "origins": [
             {
               "origin": "TOPOGRAPHY (ICD-O)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/topography__icd-o_.html"
+              "url": null
             }
           ]
         }
@@ -65,7 +65,7 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             }
           ]
         }
@@ -83,7 +83,7 @@
           "origins": [
             {
               "origin": "MORPHOLOGY (ICD-O CANCER TRANSFORMATION)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/morphology__icd-o_cancer_transformation_.html"
+              "url": null
             }
           ]
         },
@@ -93,7 +93,7 @@
           "origins": [
             {
               "origin": "TOPOGRAPHY (ICD-O)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/topography__icd-o_.html"
+              "url": null
             }
           ]
         }
@@ -118,7 +118,7 @@
           "origins": [
             {
               "origin": "BASIS OF DIAGNOSIS (CANCER)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html"
+              "url": null
             }
           ]
         }
@@ -136,7 +136,7 @@
           "origins": [
             {
               "origin": "BASIS OF DIAGNOSIS (CANCER)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html"
+              "url": null
             }
           ]
         }

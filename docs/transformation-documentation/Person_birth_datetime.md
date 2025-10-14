@@ -10,7 +10,7 @@ has_toc: false
 Source column  `DateOfBirth`.
 Converts text to dates.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 	select
@@ -30,7 +30,7 @@ Converts text to dates.
 Source column  `DateOfBirth`.
 Converts text to dates.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 	select
@@ -50,7 +50,7 @@ Converts text to dates.
 Source column  `DateOfBirth`.
 Converts text to dates.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 	select
@@ -70,7 +70,7 @@ Converts text to dates.
 Source column  `Date_Of_Birth`.
 Converts text to dates.
 
-* `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 	select
@@ -88,7 +88,7 @@ Converts text to dates.
 Source column  `DateOfBirth`.
 Converts text to dates.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 select
@@ -107,7 +107,7 @@ group by PatientId
 Source column  `DOB`.
 Converts text to dates.
 
-* `DOB` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DOB` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 select
@@ -127,7 +127,7 @@ order by
 Source column  `DateOfBirth`.
 Converts text to dates.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
 
 ```sql
 with 

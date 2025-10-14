@@ -10,7 +10,7 @@ has_toc: false
 Source column  `ValueAsNumber`.
 Converts text to number.
 
-* `ValueAsNumber` Value of the Length of Gestation at Delivery [GESTATION LENGTH (AT DELIVERY)](https://www.datadictionary.nhs.uk/data_elements/gestation_length__at_delivery_.html)
+* `ValueAsNumber` Value of the Length of Gestation at Delivery [GESTATION LENGTH (AT DELIVERY)]()
 
 ```sql
 		select distinct
@@ -32,7 +32,7 @@ Converts text to number.
 Source column  `ValueAsNumber`.
 Converts text to number.
 
-* `ValueAsNumber` Value of the Person weight [PERSON WEIGHT](https://www.datadictionary.nhs.uk/data_elements/person_weight.html)
+* `ValueAsNumber` Value of the Person weight [PERSON WEIGHT]()
 
 ```sql
 		select distinct
@@ -105,7 +105,7 @@ Converts text to number.
 Source column  `TumourHeightAboveAnalVerge`.
 Converts text to number.
 
-* `TumourHeightAboveAnalVerge` Is the approximate height of the lower limit of the Tumour above the anal verge (as measured by a rigid sigmoidoscopy) during a Colorectal Cancer Care Spell, where the UNIT OF MEASUREMENT is 'Centimetres (cm)' [TUMOUR HEIGHT ABOVE ANAL VERGE](https://www.datadictionary.nhs.uk/data_elements/tumour_height_above_anal_verge.html)
+* `TumourHeightAboveAnalVerge` Is the approximate height of the lower limit of the Tumour above the anal verge (as measured by a rigid sigmoidoscopy) during a Colorectal Cancer Care Spell, where the UNIT OF MEASUREMENT is 'Centimetres (cm)' [TUMOUR HEIGHT ABOVE ANAL VERGE]()
 
 ```sql
 ;with 

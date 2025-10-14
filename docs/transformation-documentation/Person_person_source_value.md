@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Outpatient Person
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 	select
@@ -28,7 +28,7 @@ has_toc: false
 ### SUS Inpatient Person
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 	select
@@ -47,7 +47,7 @@ has_toc: false
 ### SUS A&E Person
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 	select
@@ -66,7 +66,7 @@ has_toc: false
 ### SACT Person
 * Value copied from `NHS_Number`
 
-* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHS_Number` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 	select
@@ -83,7 +83,7 @@ has_toc: false
 ### Rtds Person
 * Value copied from `PatientId`
 
-* `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `PatientId` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select
@@ -101,7 +101,7 @@ group by PatientId
 ### Oxford GP Person
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select
@@ -120,7 +120,7 @@ order by
 ### COSD Demographics
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 with 

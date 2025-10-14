@@ -10,7 +10,7 @@ has_toc: false
 Source column  `DiagnosisICD`.
 Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
+* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)]()
 
 ```sql
 select
@@ -33,7 +33,7 @@ where op.NHSNumber is not null
 Source column  `DiagnosisICD`.
 Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
+* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)]()
 
 ```sql
 select
@@ -1611,6 +1611,7 @@ select
 	NORMAL_LOW,
 	NORMAL_HIGH
 from ##duckdb_source##
+where lower(EVENT) not like '%comment%'
 	
 ```
 

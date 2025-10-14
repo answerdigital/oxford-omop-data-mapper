@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Outpatient Condition Occurrence
 * Value copied from `DiagnosisICD`
 
-* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
+* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)]()
 
 ```sql
 	select
@@ -36,7 +36,7 @@ has_toc: false
 ### SUS Inpatient Condition Occurrence
 * Value copied from `DiagnosisICD`
 
-* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
+* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)]()
 
 ```sql
 		select
@@ -62,7 +62,7 @@ has_toc: false
 ### SACT Condition Occurrence
 * Value copied from `Primary_Diagnosis`
 
-* `Primary_Diagnosis` PRIMARY DIAGNOSIS (ICD AT START SYSTEMIC ANTI-CANCER THERAPY) is the PRIMARY DIAGNOSIS (ICD) at the start of the Systemic Anti-Cancer Therapy. [PRIMARY DIAGNOSIS (ICD AT START SYSTEMIC ANTI-CANCER THERAPY)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_at_start_systemic_anti-cancer_therapy_.html)
+* `Primary_Diagnosis` PRIMARY DIAGNOSIS (ICD AT START SYSTEMIC ANTI-CANCER THERAPY) is the PRIMARY DIAGNOSIS (ICD) at the start of the Systemic Anti-Cancer Therapy. [PRIMARY DIAGNOSIS (ICD AT START SYSTEMIC ANTI-CANCER THERAPY)]()
 
 ```sql
 	select
@@ -115,7 +115,7 @@ where
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 * Value copied from `CancerDiagnosis`
 
-* `CancerDiagnosis` PRIMARY DIAGNOSIS (ICD) is the International Classification of Diseases (ICD) code used to identify the PRIMARY DIAGNOSIS. [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
+* `CancerDiagnosis` PRIMARY DIAGNOSIS (ICD) is the International Classification of Diseases (ICD) code used to identify the PRIMARY DIAGNOSIS. [PRIMARY DIAGNOSIS (ICD)]()
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -162,9 +162,9 @@ where NhsNumber is not null and
 Source columns  `CancerHistology`, `CancerTopography`.
 Separates text with newlines. Trim whitespace.
 
-* `CancerHistology` MORPHOLOGY (ICD-O CANCER TRANSFORMATION) is the morphology code of the Cancer Transformation using the ICD-O CODE. [MORPHOLOGY (ICD-O CANCER TRANSFORMATION)](https://www.datadictionary.nhs.uk/data_elements/morphology__icd-o_cancer_transformation_.html)
+* `CancerHistology` MORPHOLOGY (ICD-O CANCER TRANSFORMATION) is the morphology code of the Cancer Transformation using the ICD-O CODE. [MORPHOLOGY (ICD-O CANCER TRANSFORMATION)]()
 
-* `CancerTopography` TOPOGRAPHY (ICD-O) is the topographical site of the Tumour using the ICD-O CODE. [TOPOGRAPHY (ICD-O)](https://www.datadictionary.nhs.uk/data_elements/topography__icd-o_.html)
+* `CancerTopography` TOPOGRAPHY (ICD-O) is the topographical site of the Tumour using the ICD-O CODE. [TOPOGRAPHY (ICD-O)]()
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -212,7 +212,7 @@ where NhsNumber is not null and
 ### COSD V9 Condition Occurrence Recurrence
 * Value copied from `SecondaryDiagnosis`
 
-* `SecondaryDiagnosis` SECONDARY DIAGNOSIS (ICD) is the International Classification of Diseases (ICD) code used to identify the secondary PATIENT DIAGNOSIS. [SECONDARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/secondary_diagnosis__icd_.html)
+* `SecondaryDiagnosis` SECONDARY DIAGNOSIS (ICD) is the International Classification of Diseases (ICD) code used to identify the secondary PATIENT DIAGNOSIS. [SECONDARY DIAGNOSIS (ICD)]()
 
 ```sql
 ;with 
@@ -253,7 +253,7 @@ group by NhsNumber, DateOfPrimaryDiagnosisClinicallyAgreed;
 ### COSD V9 Condition Occurrence Recurrence
 * Value copied from `NonPrimaryRecurrenceOriginalDiagnosis`
 
-* `NonPrimaryRecurrenceOriginalDiagnosis` PRIMARY DIAGNOSIS (ICD ORIGINAL) is the International Classification of Diseases (ICD) code used to identify the original PRIMARY DIAGNOSIS. [PRIMARY DIAGNOSIS (ICD ORIGINAL)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_original_.html)
+* `NonPrimaryRecurrenceOriginalDiagnosis` PRIMARY DIAGNOSIS (ICD ORIGINAL) is the International Classification of Diseases (ICD) code used to identify the original PRIMARY DIAGNOSIS. [PRIMARY DIAGNOSIS (ICD ORIGINAL)]()
 
 ```sql
 ;with 
@@ -292,7 +292,7 @@ where NonPrimaryRecurrenceOriginalDiagnosis is not null;
 ### COSD V9 Condition Occurrence Progression
 * Value copied from `NonPrimaryProgressionOriginalDiagnosis`
 
-* `NonPrimaryProgressionOriginalDiagnosis` CANCER PROGRESSION (ICD ORIGINAL) is the International Classification of Diseases (ICD) code of the original PATIENT DIAGNOSIS of the Cancer Progression. [CANCER PROGRESSION (ICD ORIGINAL)](https://www.datadictionary.nhs.uk/data_elements/cancer_progression__icd_original_.html)
+* `NonPrimaryProgressionOriginalDiagnosis` CANCER PROGRESSION (ICD ORIGINAL) is the International Classification of Diseases (ICD) code of the original PATIENT DIAGNOSIS of the Cancer Progression. [CANCER PROGRESSION (ICD ORIGINAL)]()
 
 ```sql
 ;with 
@@ -331,7 +331,7 @@ where NonPrimaryProgressionOriginalDiagnosis is not null;
 ### COSD V9 Condition Occurrence Primary Diagnosis
 * Value copied from `CancerDiagnosis`
 
-* `CancerDiagnosis` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html)
+* `CancerDiagnosis` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)]()
 
 ```sql
 ;with 
@@ -375,9 +375,9 @@ group by NhsNumber, DateOfPrimaryDiagnosisClinicallyAgreed, CancerDiagnosis;
 Source columns  `CancerHistology`, `CancerTopography`.
 Separates text with newlines. Trim whitespace.
 
-* `CancerHistology` MORPHOLOGY (ICD-O CANCER TRANSFORMATION) is the morphology code of the Cancer Transformation using the ICD-O CODE. [MORPHOLOGY (ICD-O CANCER TRANSFORMATION)](https://www.datadictionary.nhs.uk/data_elements/morphology__icd-o_cancer_transformation_.html)
+* `CancerHistology` MORPHOLOGY (ICD-O CANCER TRANSFORMATION) is the morphology code of the Cancer Transformation using the ICD-O CODE. [MORPHOLOGY (ICD-O CANCER TRANSFORMATION)]()
 
-* `CancerTopography` TOPOGRAPHY (ICD-O) is the topographical site of the Tumour using the ICD-O CODE. [TOPOGRAPHY (ICD-O)](https://www.datadictionary.nhs.uk/data_elements/topography__icd-o_.html)
+* `CancerTopography` TOPOGRAPHY (ICD-O) is the topographical site of the Tumour using the ICD-O CODE. [TOPOGRAPHY (ICD-O)]()
 
 ```sql
 ;with 

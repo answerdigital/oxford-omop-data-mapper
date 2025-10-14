@@ -9,7 +9,7 @@ has_toc: false
 ### Sus Outpatient VisitDetails
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 with results as
@@ -45,7 +45,7 @@ order by
 ### Sus Critical Care VisitDetails
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 with results as (
@@ -79,7 +79,7 @@ order by
 ### Sus Inptatient VisitDetails
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 		with records as (
@@ -118,7 +118,7 @@ order by
 ### Sus Inptatient VisitDetails
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 		with records as (
@@ -154,7 +154,7 @@ order by
 ### Oxford Visit Details
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select

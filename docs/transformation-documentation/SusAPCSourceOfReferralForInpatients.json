@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -30,7 +30,7 @@
           "origins": [
             {
               "origin": "CDS RECORD IDENTIFIER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
+              "url": null
             }
           ]
         }
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "START DATE (HOSPITAL PROVIDER SPELL)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html"
+              "url": null
             }
           ]
         }
@@ -73,7 +73,7 @@
           "origins": [
             {
               "origin": "START DATE (HOSPITAL PROVIDER SPELL)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html"
+              "url": null
             }
           ]
         },
@@ -83,7 +83,7 @@
           "origins": [
             {
               "origin": "START TIME (HOSPITAL PROVIDER SPELL)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/start_time__hospital_provider_spell_.html"
+              "url": null
             }
           ]
         }
@@ -108,7 +108,7 @@
           "origins": [
             {
               "origin": "REFERRER CODE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/referrer_code.html"
+              "url": null
             }
           ]
         }

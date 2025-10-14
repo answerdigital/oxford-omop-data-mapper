@@ -10,7 +10,7 @@ has_toc: false
 Source column  `StreetAddressLine1`.
 Convert text to uppercase. Trim whitespace.
 
-* `StreetAddressLine1` The first line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html)
+* `StreetAddressLine1` The first line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)]()
 
 ```sql
 with 

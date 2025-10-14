@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -30,11 +30,11 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             },
             {
               "origin": "DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_non_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             }
           ]
         }
@@ -52,11 +52,11 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             },
             {
               "origin": "DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_non_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             }
           ]
         }
@@ -81,7 +81,7 @@
           "origins": [
             {
               "origin": "TUMOUR LATERALITY",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/tumour_laterality.html"
+              "url": null
             }
           ]
         }
@@ -99,7 +99,7 @@
           "origins": [
             {
               "origin": "TUMOUR LATERALITY",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/tumour_laterality.html"
+              "url": null
             }
           ]
         }
