@@ -10,7 +10,7 @@ has_toc: false
 Source column  `VisitEndDate`.
 Converts text to dates.
 
-* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
+* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](), [END DATE (EPISODE)](), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)]()
 
 ```sql
 with results as
@@ -82,7 +82,7 @@ order by
 Source column  `VisitEndDate`.
 Converts text to dates.
 
-* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
+* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](), [END DATE (EPISODE)](), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)]()
 
 ```sql
 		with records as (
@@ -122,7 +122,7 @@ Converts text to dates.
 Source column  `VisitEndDate`.
 Converts text to dates.
 
-* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
+* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](), [END DATE (EPISODE)](), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)]()
 
 ```sql
 		with records as (
@@ -155,6 +155,22 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_end_date%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
+### Sact VisitDetail
+Source column  `Administration_date`.
+Converts text to dates.
+
+* `Administration_date` Date when drug was administered or date an oral drug was initially dispensed to the patient [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+
+```sql
+		select distinct 
+			NHS_Number,
+			Administration_Date 
+		from omop_staging.sact_staging
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_end_date%20field%20Sact%20VisitDetail%20mapping){: .btn }
 ### Oxford Visit Details
 Source column  `EventDate`.
 Converts text to dates.

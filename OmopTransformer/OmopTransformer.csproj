@@ -290,6 +290,12 @@
     <None Update="SACT\ConditionOccurrence\SactConditionOccurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SACT\VisitOccurrence\SactVisitOccurrence.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SACT\VisitDetail\SactVisitDetail.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SACT\Measurements\SactMeasurementHeight\SactMeasurementHeight.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
