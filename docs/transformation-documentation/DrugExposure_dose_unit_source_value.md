@@ -25,7 +25,7 @@ The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administ
 |98|Other (not listed)||
 
 
-* `Administration_Measurement_Per_Actual_Dose` The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle. [UNIT OF MEASUREMENT (SYSTEMIC ANTI-CANCER THERAPY)](https://www.datadictionary.nhs.uk/data_elements/unit_of_measurement__systemic_anti-cancer_therapy_.html)
+* `Administration_Measurement_Per_Actual_Dose` The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle. [UNIT OF MEASUREMENT (SYSTEMIC ANTI-CANCER THERAPY)]()
 
 ```sql
 	select

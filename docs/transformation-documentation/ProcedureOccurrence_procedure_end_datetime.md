@@ -10,9 +10,9 @@ has_toc: false
 Source columns  `AppointmentDate`, `AppointmentTime`.
 Combines a date with a time of day.
 
-* `AppointmentDate` Appointment Date. [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
+* `AppointmentDate` Appointment Date. [APPOINTMENT DATE]()
 
-* `AppointmentTime` Appointment Time. [APPOINTMENT TIME](https://www.datadictionary.nhs.uk/data_elements/appointment_time.html)
+* `AppointmentTime` Appointment Time. [APPOINTMENT TIME]()
 
 ```sql
 with results as
@@ -91,7 +91,7 @@ order by
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
 
 ```sql
 select
@@ -118,7 +118,7 @@ order by
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
 
 ```sql
 		select
