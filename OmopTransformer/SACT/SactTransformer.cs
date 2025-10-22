@@ -21,6 +21,8 @@ using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.SACT.VisitDetail;
 using OmopTransformer.SACT.VisitOccurrence;
+using OmopTransformer.Omop.Observation;
+using OmopTransformer.SACT.Observation;
 
 namespace OmopTransformer.SACT;
 internal class SactTransformer : Transformer
@@ -34,6 +36,7 @@ internal class SactTransformer : Transformer
     private readonly IProviderRecorder _providerRecorder;
     private readonly ICareSiteRecorder _careSiteRecorder;
     private readonly IMeasurementRecorder _measurementRecorder;
+    private readonly IObservationRecorder _observationRecorder;
 
     public SactTransformer(
         IRecordTransformer recordTransformer,
@@ -48,6 +51,7 @@ internal class SactTransformer : Transformer
         IMeasurementRecorder measurementRecorder,
         IProviderRecorder providerRecorder,
         ICareSiteRecorder careSiteRecorder,
+        IObservationRecorder observationRecorder,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory)
         : base(
@@ -67,6 +71,7 @@ internal class SactTransformer : Transformer
         _measurementRecorder = measurementRecorder;
         _providerRecorder = providerRecorder;
         _careSiteRecorder = careSiteRecorder;
+        _observationRecorder = observationRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -132,10 +137,34 @@ internal class SactTransformer : Transformer
             "SACT Provider",
             newId,
             cancellationToken);
-            
+
         await Transform<SactCareSiteRecord, SactCareSite>(
             _careSiteRecorder.InsertUpdateCareSite,
             "SACT Care Site",
+            newId,
+            cancellationToken);
+
+        await Transform<SactAdministrationRouteRecord, SactAdministrationRoute>(
+            _observationRecorder.InsertUpdateObservations,
+            "SACT Observation - Drug Administration Route",
+            newId,
+            cancellationToken);
+
+        await Transform<SactAdjunctiveTherapyTypeRecord, SactAdjunctiveTherapyType>(
+            _observationRecorder.InsertUpdateObservations,
+            "SACT Observation - Adjunctive Therapy Type",
+            newId,
+            cancellationToken);
+
+        await Transform<SactTreatmentIntentRecord, SactTreatmentIntent>(
+            _observationRecorder.InsertUpdateObservations,
+            "SACT Observation - Treatment Intent",
+            newId,
+            cancellationToken);
+        
+        await Transform<SactClinicalTrialRecord, SactClinicalTrial>(
+            _observationRecorder.InsertUpdateObservations,
+            "SACT Observation - Clinical Trial",
             newId,
             cancellationToken);
     }
