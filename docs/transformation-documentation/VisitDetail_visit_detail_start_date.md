@@ -155,22 +155,6 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_start_date%20field%20Sus%20Inptatient%20VisitDetails%20mapping){: .btn }
-### Sact VisitDetail
-Source column  `Administration_date`.
-Converts text to dates.
-
-* `Administration_date` Date when drug was administered or date an oral drug was initially dispensed to the patient [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
-
-```sql
-		select distinct 
-			NHS_Number,
-			Administration_Date 
-		from omop_staging.sact_staging
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitDetail%20table%20visit_detail_start_date%20field%20Sact%20VisitDetail%20mapping){: .btn }
 ### Oxford Visit Details
 Source column  `EventDate`.
 Converts text to dates.
