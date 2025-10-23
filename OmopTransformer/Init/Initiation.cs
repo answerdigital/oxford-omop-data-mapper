@@ -33,8 +33,7 @@ create sequence sequence_care_site_id start 1;
 create sequence sequence_condition_occurrence_id start 1;
 create sequence sequence_device_exposure_id start 1;
 create sequence sequence_drug_exposure_id start 1;
-create sequence sequence_episode_event start 1;
-create sequence sequence_event_id start 1;
+create sequence sequence_episode_id start 1;
 create sequence sequence_location_id start 1;
 create sequence sequence_measurement_id start 1;
 create sequence sequence_observation_id start 1;
@@ -308,7 +307,7 @@ CREATE TABLE cdm.episode(
 
 CREATE TABLE cdm.episode_event(
 	episode_id integer NOT NULL,
-	event_id integer NOT NULL default nextval('sequence_event_id'),
+	event_id integer NOT NULL,
 	episode_event_field_concept_id integer NOT NULL
 );
 
