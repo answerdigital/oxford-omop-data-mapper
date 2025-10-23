@@ -308,7 +308,7 @@ CREATE TABLE cdm.episode(
 
 CREATE TABLE cdm.episode_event(
 	episode_id integer NOT NULL,
-	event_id integer NOT NULL default nextval('sequence_event_id'),,
+	event_id integer NOT NULL default nextval('sequence_event_id'),
 	episode_event_field_concept_id integer NOT NULL
 );
 
