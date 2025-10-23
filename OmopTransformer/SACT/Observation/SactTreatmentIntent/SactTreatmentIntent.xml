@@ -12,7 +12,7 @@
 			else '' end as Source_value,
 		  	Administration_Date
 		from omop_staging.sact_staging
-        where Intent_Of_Treatment <> '' 
+        where Intent_Of_Treatment != ''
 	</Sql>
 	<Explanations>
 		<Explanation columnName="NHSNumber">
