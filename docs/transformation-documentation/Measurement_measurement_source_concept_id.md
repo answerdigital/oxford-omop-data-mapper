@@ -1560,6 +1560,50 @@ OXford Lab Test Lookup lookup
 |Temperature POCT|21490788|Temperature difference|
 |pO2(T)c|1617274|Carbon dioxide, total [Moles/volume] in Central venous blood|
 |O_HDL cholesterol level, blood|3011884|Cholesterol in HDL [Presence] in Serum or Plasma|
+|Factor VII level, blood|3011547|Coagulation factor VII activity actual/normal in Platelet poor plasma by Coagulation assay|
+|O_Factor VII level, blood|3011547|Coagulation factor VII activity actual/normal in Platelet poor plasma by Coagulation assay|
+|CALC Total CO2|3031147|Carbon dioxide, total [Moles/volume] in Blood by calculation|
+|Acetylcholine receptor abs IIF, blood|3019856|Acetylcholine receptor blocking Ab [Titer] in Serum by Immunofluorescence|
+|Salmonella typhi IgG antibodies|3012862|Salmonella enteritidis IgG Ab [Presence] in Serum|
+|White blood cell count, blood|3010813|Leukocytes [#/volume] in Blood|
+|Anti-nuclear Ab level (Hep-2), blood|3022307|Neuronal nuclear type 2 Ab [Titer] in Serum|
+|O_Anti-nuclear Ab level (Hep-2), blood|3022307|Neuronal nuclear type 2 Ab [Titer] in Serum|
+|Beta-interferon neutralising antibody|3011083|Interferon.beta 1 neutralizing antibody [Titer] in Serum or Plasma by Neutralization test|
+|O_Neutrophil function screen, blood|1091593|Neutrophil Ab screen panel - Serum or Plasma|
+|Prostate specific Ag, blood|3052038|Prostate specific Ag [Mass/volume] in Body fluid|
+|O_Prostate specific Ag, blood|3052038|Prostate specific Ag [Mass/volume] in Body fluid|
+|Collagen/epinephrine platelet fnc, blood|3005807|Platelet function (closure time) collagen+EPINEPHrine induced [Time] in Blood|
+|Diphtheria Ab level, blood|3035832|Corynebacterium diphtheriae Ab [Titer] in Serum|
+|Red cell count|3027017|Erythrocytes [#/volume] in Blood by Manual count|
+|CV2/CRMP5 Abs, blood|3030855|CV2 Ab [Presence] in Serum or Plasma|
+|O_Ovarian antibodies, blood|3018359|Ovary Ab [Presence] in Serum|
+|Blood Glucose POC|3020491|Glucose [Moles/volume] in Blood|
+|Coriander IgE level, blood|3001591|Cilantro IgE Ab [Units/volume] in Serum|
+|O_Coriander IgE level, blood|3001591|Cilantro IgE Ab [Units/volume] in Serum|
+|O_Parathyroid hormone level, blood|3024040|Parathyrin [Interpretation] in Serum or Plasma|
+|hCG level, blood|3004536|Choriogonadotropin [Interpretation] in Serum or Plasma|
+|O_hCG level, blood|3004536|Choriogonadotropin [Interpretation] in Serum or Plasma|
+|Factor V level, blood|40758469|V Ab [Titer] in Serum or Plasma|
+|O_Factor V level, blood|40758469|V Ab [Titer] in Serum or Plasma|
+|Factor VIII binding level, blood|3019250|Coagulation factor VIII activity actual/normal in Platelet poor plasma by Coagulation assay|
+|Hb (BG)|3041888|Hemoglobin H [Presence] in Blood|
+|Factor VIII Timed level|3019250|Coagulation factor VIII activity actual/normal in Platelet poor plasma by Coagulation assay|
+|Infliximab Anti-Drug Ab, blood|43055457|inFLIXimab Ab [Mass/volume] in Serum or Plasma|
+|Warfarin Dose Next Test|3024105|Warfarin [Mass] of Dose|
+|Factor VIII Post dose level|3000104|Factor VIII given [Volume]|
+|Factor IX Timed level|3021326|Factor IX given [Volume]|
+|Urgent PR3 Antibody|42868446|Proteinase 3 IgG Ab [Presence] in Serum by Immunoassay|
+|Bicarb (BG)|3006576|Bicarbonate [Moles/volume] in Blood|
+|Prekallikrein assay, blood|3003422|Prekallikrein (Fletcher Factor) [Mass/volume] in Platelet poor plasma by Chromogenic method|
+|Thyroid peroxidase Ab level, blood|3043429|Thyroperoxidase Ab [Titer] in Serum or Plasma|
+|O_Thyroid peroxidase Ab level, blood|3043429|Thyroperoxidase Ab [Titer] in Serum or Plasma|
+|D-dimer, blood|37021210|Fibrin D-dimer [Mass/volume] in Blood by Immunoassay.DDU|
+|O_D-dimer, blood|37021210|Fibrin D-dimer [Mass/volume] in Blood by Immunoassay.DDU|
+|Fibrinogen alpha gene, blood|3002937|Fibrinogen [Presence] in Platelet poor plasma|
+|Fibrinogen beta gene, blood|3002937|Fibrinogen [Presence] in Platelet poor plasma|
+|Immunoglobulin A level, blood|3045975|IgA [Presence] in Serum|
+|O_Immunoglobulin A level, blood|3045975|IgA [Presence] in Serum|
+|pH(T)c|1616438|pH of Central venous blood|
 
 
 * `EVENT` Lab test event []()
