@@ -394,6 +394,23 @@ and d.AccidentAndEmergencyDiagnosis in ('20','201')
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20SUS%20AE%20Diabetic%20Patient%20mapping){: .btn }
+### Oxford Lab General Comment Observation
+* Value copied from `NHS_NUMBER`
+
+* `NHS_NUMBER` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+select
+    NHS_NUMBER,
+    EVENT,
+    EVENT_START_DT_TM,
+    RESULT_VALUE
+from ##duckdb_source##
+where lower(EVENT) like '%comment%'
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20Oxford%20Lab%20General%20Comment%20Observation%20mapping){: .btn }
 ### CosdV9TobaccoSmokingStatus
 * Value copied from `NhsNumber`
 
