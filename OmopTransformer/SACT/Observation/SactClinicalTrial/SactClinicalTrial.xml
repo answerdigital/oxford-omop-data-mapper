@@ -1,0 +1,32 @@
+﻿<Query>
+    <Sql>
+		select
+			distinct
+  			replace(NHS_Number, ' ', '') as NHSNumber,
+      		Clinical_Trial,
+			Case 
+				When Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')
+			else '' end as Source_Value,
+		  	Administration_Date
+		from omop_staging.sact_staging
+  		where Clinical_Trial = '1'
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="Clinical_Trial">
+			<Description>For the Systemic Anti-Cancer Therapy Data Set, CLINICAL TRIAL INDICATOR identifies if a PATIENT  is currently in an active Systemic Anti-Cancer Therapy CLINICAL TRIAL</Description>
+			<Origin>CLINICAL TRIAL INDICATOR</Origin>
+		</Explanation>
+		<Explanation columnName="Source_Value">
+			<Description>Source value for the Systemic Anti-Cancer Therapy Data Set, CLINICAL TRIAL INDICATOR identifies if a PATIENT  is currently in an active Systemic Anti-Cancer Therapy CLINICAL TRIAL</Description>
+			<Origin>CLINICAL TRIAL INDICATOR</Origin>
+		</Explanation>
+		<Explanation columnName="Administration_Date">
+			<Description>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT.</Description>
+			<Origin>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

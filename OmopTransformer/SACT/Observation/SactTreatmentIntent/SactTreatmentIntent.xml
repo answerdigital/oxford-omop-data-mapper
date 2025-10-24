@@ -1,0 +1,35 @@
+﻿<Query>
+    <Sql>
+		select distinct
+  			replace(NHS_Number, ' ', '') as NHSNumber,
+			Intent_Of_Treatment,
+			Case 
+				When Intent_Of_Treatment = 1 then concat(Intent_Of_Treatment, ' - Curative(aiming to permanently eradicate disease)')
+				When Intent_Of_Treatment = 2 then concat(Intent_Of_Treatment, ' - Palliative(aiming to extend life expectancy)')
+				When Intent_Of_Treatment = 3 then concat(Intent_Of_Treatment, ' - Palliative(aiming to relieve and/or control malignancy related symptoms)')
+				When Intent_Of_Treatment = 4 then concat(Intent_Of_Treatment, ' - Palliative(aiming to achieve remission)')
+				When Intent_Of_Treatment = 5 then concat(Intent_Of_Treatment, ' - Palliative(aiming to permanently eradicate disease)')
+			else '' end as Source_value,
+		  	Administration_Date
+		from omop_staging.sact_staging
+        where Intent_Of_Treatment != ''
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="Intent_Of_Treatment">
+			<Description>The intent of the Systemic Anti-Cancer Therapy Drug Regimen.</Description>
+			<Origin>SYSTEMIC ANTI-CANCER THERAPY DRUG REGIMEN TREATMENT INTENT</Origin>
+		</Explanation>
+		<Explanation columnName="Source_value">
+			<Description>Source value of the intent of the Systemic Anti-Cancer Therapy Drug Regimen.</Description>
+			<Origin>SYSTEMIC ANTI-CANCER THERAPY DRUG REGIMEN TREATMENT INTENT</Origin>
+		</Explanation>
+		<Explanation columnName="Administration_Date">
+			<Description>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT.</Description>
+			<Origin>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

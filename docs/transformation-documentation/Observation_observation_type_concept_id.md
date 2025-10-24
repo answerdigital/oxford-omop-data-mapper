@@ -70,6 +70,22 @@ has_toc: false
 * Constant value set to `32818`. EHR administration record
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20AE%20Diabetic%20Patient%20mapping){: .btn }
+### SACT Adjunctive Therapy Type
+* Constant value set to `32818`. EHR administration record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SACT%20Adjunctive%20Therapy%20Type%20mapping){: .btn }
+### SACT Administration Route
+* Constant value set to `32818`. EHR administration record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SACT%20Administration%20Route%20mapping){: .btn }
+### SACT Clinical Trial
+* Constant value set to `32818`. EHR administration record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SACT%20Clinical%20Trial%20mapping){: .btn }
+### SACT Treatment Intent
+* Constant value set to `32818`. EHR administration record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SACT%20Treatment%20Intent%20mapping){: .btn }
 ### CosdV9TobaccoSmokingStatus
 * Constant value set to `32828`. `EHR episode record`
 

@@ -1,0 +1,24 @@
+﻿<Query>
+    <Sql>
+		select
+		distinct
+  			replace(NHS_Number, ' ', '') as NHSNumber,
+      		SACT_Administration_Route as Administration_Route,
+		  	Administration_Date
+	from omop_staging.sact_staging
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NHSNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="Administration_Route">
+			<Description>The prescribed route of administration for each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle.</Description>
+			<Origin>SYSTEMIC ANTI-CANCER THERAPY DRUG ROUTE OF ADMINISTRATION</Origin>
+		</Explanation>
+		<Explanation columnName="Administration_Date">
+			<Description>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT.</Description>
+			<Origin>SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
