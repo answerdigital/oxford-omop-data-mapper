@@ -10,7 +10,7 @@ has_toc: false
 Source column  `AppointmentDate`.
 Converts text to dates.
 
-* `AppointmentDate` Appointment Date. [APPOINTMENT DATE]()
+* `AppointmentDate` Appointment Date. [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
 
 ```sql
 with results as
@@ -45,7 +45,7 @@ order by
 Source column  `ProcedureOccurrenceStartDate`.
 Converts text to dates.
 
-* `ProcedureOccurrenceStartDate` Start date of the Procedure [CRITICAL CARE START DATE]()
+* `ProcedureOccurrenceStartDate` Start date of the Procedure [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
 
 ```sql
 with results as
@@ -87,7 +87,7 @@ order by
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 select
@@ -114,7 +114,7 @@ order by
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 		select
@@ -207,7 +207,7 @@ order by
 Source column  `ProcedureDate`.
 Converts text to dates.
 
-* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE]()
+* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),								
@@ -250,7 +250,7 @@ from COSD c
 Source column  `ProcedureDate`.
 Converts text to dates.
 
-* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE]()
+* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),								
@@ -287,7 +287,7 @@ where ProcedureDate is not null and PrimaryProcedureOpcs is not null;
 Source column  `ProcedureDate`.
 Converts text to dates.
 
-* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE]()
+* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -332,7 +332,7 @@ from CO c
 Source column  `ProcedureDate`.
 Converts text to dates.
 
-* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE]()
+* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),

@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -30,7 +30,7 @@
           "origins": [
             {
               "origin": "DISCHARGE DATE (HOSPITAL PROVIDER SPELL)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html"
             }
           ]
         }

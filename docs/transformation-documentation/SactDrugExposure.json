@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -37,7 +37,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
             }
           ]
         }
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
             }
           ]
         }
@@ -80,7 +80,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY DRUG NAME",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_name.html"
             }
           ]
         }
@@ -98,7 +98,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ACTUAL DOSE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_actual_dose.html"
             }
           ]
         }
@@ -116,7 +116,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY DRUG NAME",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_name.html"
             }
           ]
         }
@@ -134,7 +134,7 @@
           "origins": [
             {
               "origin": "UNIT OF MEASUREMENT (SYSTEMIC ANTI-CANCER THERAPY)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/unit_of_measurement__systemic_anti-cancer_therapy_.html"
             }
           ]
         }

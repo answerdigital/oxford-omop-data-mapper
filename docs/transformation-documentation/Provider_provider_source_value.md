@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Outpatient Provider
 * Value copied from `ConsultantCode`
 
-* `ConsultantCode` A unique code identifying a care professional [CONSULTANT CODE]()
+* `ConsultantCode` A unique code identifying a care professional [CONSULTANT CODE](https://www.datadictionary.nhs.uk/data_elements/consultant_code.html)
 
 ```sql
 with counts as (
@@ -45,7 +45,7 @@ order by
 ### SUS Inpatient Provider
 * Value copied from `ConsultantCode`
 
-* `ConsultantCode` A unique code identifying a care professional [CONSULTANT CODE]()
+* `ConsultantCode` A unique code identifying a care professional [CONSULTANT CODE](https://www.datadictionary.nhs.uk/data_elements/consultant_code.html)
 
 ```sql
 with counts as (

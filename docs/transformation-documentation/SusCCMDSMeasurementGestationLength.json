@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -30,7 +30,7 @@
           "origins": [
             {
               "origin": "CRITICAL CARE START DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html"
             }
           ]
         }
@@ -48,7 +48,7 @@
           "origins": [
             {
               "origin": "CRITICAL CARE START DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html"
             }
           ]
         },
@@ -58,7 +58,7 @@
           "origins": [
             {
               "origin": "CRITICAL CARE START TIME",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/critical_care_start_time.html"
             }
           ]
         }
@@ -90,7 +90,7 @@
           "origins": [
             {
               "origin": "GESTATION LENGTH (AT DELIVERY)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/gestation_length__at_delivery_.html"
             }
           ]
         }
@@ -115,7 +115,7 @@
           "origins": [
             {
               "origin": "CDS RECORD IDENTIFIER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html"
             }
           ]
         }

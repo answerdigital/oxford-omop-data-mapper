@@ -9,7 +9,7 @@ has_toc: false
 ### Sus OP  Measurement
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -31,7 +31,7 @@ where op.NHSNumber is not null
 ### Sus CCMDS Measurement - Gestation Length at Delivery
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 		select distinct
@@ -52,7 +52,7 @@ where op.NHSNumber is not null
 ### Sus CCMDS Measurement - Person Weight
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 		select distinct
@@ -73,7 +73,7 @@ where op.NHSNumber is not null
 ### Sus APC  Measurement
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -99,7 +99,7 @@ order by
 ### SACT Measurement Weight at Start of Regimen
 * Value copied from `NHS_Number`
 
-* `NHS_Number` Patient NHS Number [NHS NUMBER]()
+* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 		select distinct 
@@ -115,7 +115,7 @@ order by
 ### SACT Measurement Weight at Start of Cycle
 * Value copied from `NHS_Number`
 
-* `NHS_Number` Patient NHS Number [NHS NUMBER]()
+* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 		select distinct 
@@ -131,7 +131,7 @@ order by
 ### SACT  Measurement Height
 * Value copied from `NHS_Number`
 
-* `NHS_Number` Patient NHS Number [NHS NUMBER]()
+* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 		select distinct 
@@ -147,7 +147,7 @@ order by
 ### Oxford Lab Measurement
 * Value copied from `NHS_NUMBER`
 
-* `NHS_NUMBER` Patient NHS Number [NHS NUMBER]()
+* `NHS_NUMBER` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -168,7 +168,7 @@ where lower(EVENT) not like '%comment%'
 ### COSD V9 Measurement Tumour Laterality
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -206,7 +206,7 @@ and TumourLaterality in ('L','R','M','B');
 ### COSD V9 Measurement TNM Category Integrated Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -244,7 +244,7 @@ where TnmStageGroupingIntegrated is not null;
 ### COSD V9 Measurement TNM Category Final Pre Treatment Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -282,7 +282,7 @@ where TnmStageGroupingFinalPretreatment is not null;
 ### COSD V9 Measurement T Category Integrated Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -320,7 +320,7 @@ where TCategoryIntegratedStage is not null;
 ### COSD V9 Measurement T Category Final Pre Treatment Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -358,7 +358,7 @@ where TcategoryFinalPreTreatment is not null;
 ### COSD V9 Measurement Synchronous Tumour Indicator
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -395,7 +395,7 @@ where SynchronousTumourIndicator is not null;
 ### COSD V9 Measurement Primary Pathway Metastasis
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -434,7 +434,7 @@ and MetastaticSite != 97
 ### COSD V9 Measurement Non Primary Pathway Recurrence Metastasis
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -473,7 +473,7 @@ and MetastaticSite != 97
 ### COSD V9 Measurement Non Primary Pathway Progression Metastasis
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -512,7 +512,7 @@ and MetastaticSite != 97
 ### COSD V9 Measurement N Category Integrated Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -550,7 +550,7 @@ where NCategoryIntegratedStage is not null;
 ### COSD V9 Measurement N Category Final Pre Treatment Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -588,7 +588,7 @@ where NcategoryFinalPreTreatment is not null;
 ### COSD V9 Measurement M Category Integrated Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -626,7 +626,7 @@ where MCategoryIntegratedStage is not null;
 ### COSD V9 Measurement M Category Final Pre Treatment Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -664,7 +664,7 @@ where McategoryFinalPreTreatment is not null;
 ### COSD V9 Measurement Grade of Differentiation (At Diagnosis)
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -701,7 +701,7 @@ where GradeOfDifferentiationAtDiagnosis is not null;
 ### COSD V8 Measurement Tumour Laterality
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -740,7 +740,7 @@ and TumourLaterality in ('L','R','M','B');
 ### COSD V8 Measurement Tumour Height Above Anal Verge
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -777,7 +777,7 @@ where TumourHeightAboveAnalVerge is not null;
 ### COSD V8 Measurement TNM Category Integrated Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -815,7 +815,7 @@ where TnmStageGroupingIntegrated is not null;
 ### COSD V8 Measurement TNM Category Final Pre Treatment Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -853,7 +853,7 @@ where TnmStageGroupingFinalPretreatment is not null;
 ### COSD V8 Measurement T Category Integrated Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -891,7 +891,7 @@ where TCategoryIntegratedStage is not null;
 ### COSD V8 Measurement T Category Final Pre Treatment Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -929,7 +929,7 @@ where TcategoryFinalPreTreatment is not null;
 ### COSD V8 Measurement Synchronous Tumour Indicator
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -966,7 +966,7 @@ where SynchronousTumourIndicator is not null;
 ### COSD V8 Measurement Primary Pathway Metastasis
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1005,7 +1005,7 @@ and MetastaticSite != 97
 ### COSD V8 Measurement Non Primary Pathway Metastasis
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1044,7 +1044,7 @@ and MetastaticSite != 97
 ### COSD V8 Measurement N Category Integrated Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1082,7 +1082,7 @@ where NCategoryIntegratedStage is not null;
 ### COSD V8 Measurement N Category Final Pre Treatment Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1120,7 +1120,7 @@ where NcategoryFinalPreTreatment is not null;
 ### COSD V8 Measurement M Category Integrated Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1158,7 +1158,7 @@ where MCategoryIntegratedStage is not null;
 ### COSD V8 Measurement M Category Final Pre Treatment Stage
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 
@@ -1196,7 +1196,7 @@ where McategoryFinalPreTreatment is not null;
 ### COSD V8 Measurement Grade of Differentiation (At Diagnosis)
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with 

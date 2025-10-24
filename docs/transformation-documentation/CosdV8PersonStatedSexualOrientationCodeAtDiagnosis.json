@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -37,15 +37,15 @@
           "origins": [
             {
               "origin": "DIAGNOSIS DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html"
             },
             {
               "origin": "TREATMENT START DATE (CANCER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html"
             },
             {
               "origin": "PROCEDURE DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
             }
           ]
         }
@@ -63,15 +63,15 @@
           "origins": [
             {
               "origin": "DIAGNOSIS DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html"
             },
             {
               "origin": "TREATMENT START DATE (CANCER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html"
             },
             {
               "origin": "PROCEDURE DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
             }
           ]
         }
@@ -96,7 +96,7 @@
           "origins": [
             {
               "origin": "PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/person_stated_sexual_orientation_code__at_diagnosis_.html"
             }
           ]
         }

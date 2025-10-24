@@ -10,7 +10,7 @@ has_toc: false
 Source column  `StreetAddressLine3`.
 Convert text to uppercase. Trim whitespace.
 
-* `StreetAddressLine3` The third line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)]()
+* `StreetAddressLine3` The third line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html)
 
 ```sql
 with 

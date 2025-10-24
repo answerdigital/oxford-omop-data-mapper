@@ -10,7 +10,7 @@ has_toc: false
 Source column  `PrimaryProcedure`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 with results as
@@ -108,7 +108,7 @@ Notes
 * [CRITICAL CARE ACTIVITY CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/attributes/critical_care_activity_code.html)
 * [OMOP Procedures](https://athena.ohdsi.org/search-terms/terms?domain=Procedure&invalidReason=Valid&standardConcept=Standard&vocabulary=SNOMED&page=1&pageSize=15&query=)
 
-* `ProcedureSourceValue` Used to look up the Procedure code. [CRITICAL CARE ACTIVITY CODE]()
+* `ProcedureSourceValue` Used to look up the Procedure code. [CRITICAL CARE ACTIVITY CODE](https://www.datadictionary.nhs.uk/data_elements/critical_care_activity_code.html)
 
 ```sql
 with results as
@@ -150,7 +150,7 @@ order by
 Source column  `PrimaryProcedure`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 select
@@ -391,7 +391,7 @@ order by
 Source column  `ProcedureOpcsCode`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)]()
+* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),								
@@ -434,7 +434,7 @@ from COSD c
 Source column  `PrimaryProcedureOpcs`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)]()
+* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/primary_procedure__opcs_.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),								
@@ -471,7 +471,7 @@ where ProcedureDate is not null and PrimaryProcedureOpcs is not null;
 Source column  `ProcedureOpcsCode`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)]()
+* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
@@ -516,7 +516,7 @@ from CO c
 Source column  `PrimaryProcedureOpcs`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)]()
+* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/primary_procedure__opcs_.html)
 
 ```sql
 ;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),

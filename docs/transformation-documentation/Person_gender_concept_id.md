@@ -22,7 +22,7 @@ Notes
 * [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
 * [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
 
-* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT]()
+* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
 
 ```sql
 	select
@@ -54,7 +54,7 @@ Notes
 * [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
 * [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
 
-* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT]()
+* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
 
 ```sql
 	select
@@ -86,7 +86,7 @@ Notes
 * [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
 * [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
 
-* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT]()
+* `PersonCurrentGenderCode` Patient PersonCurrentGenderCode [PERSON GENDER CODE CURRENT](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
 
 ```sql
 	select
@@ -118,7 +118,7 @@ Notes
 * [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)
 * [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
 
-* `Person_Stated_Gender_Code` The patient's Sex [PERSON GENDER CODE CURRENT]()
+* `Person_Stated_Gender_Code` The patient's Sex [PERSON GENDER CODE CURRENT](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
 
 ```sql
 	select
@@ -147,7 +147,7 @@ Lookup gender concept.
 Notes
 * [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
 
-* `Sex` The patient's Sex [PERSON GENDER CODE CURRENT]()
+* `Sex` The patient's Sex [PERSON GENDER CODE CURRENT](https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html)
 
 ```sql
 select

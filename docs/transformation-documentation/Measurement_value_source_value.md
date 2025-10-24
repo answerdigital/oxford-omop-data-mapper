@@ -10,7 +10,7 @@ has_toc: false
 Source column  `DiagnosisICD`.
 Resolve Measurement domain ICD10 codes to `Maps To Value` concepts.
 
-* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)]()
+* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
 
 ```sql
 select
@@ -32,7 +32,7 @@ where op.NHSNumber is not null
 ### Sus CCMDS Measurement - Person Weight
 * Value copied from `ValueAsNumber`
 
-* `ValueAsNumber` Value of the Person weight [PERSON WEIGHT]()
+* `ValueAsNumber` Value of the Person weight [PERSON WEIGHT](https://www.datadictionary.nhs.uk/data_elements/person_weight.html)
 
 ```sql
 		select distinct
@@ -54,7 +54,7 @@ where op.NHSNumber is not null
 Source column  `DiagnosisICD`.
 Resolve Measurement domain ICD10 codes to `Maps To Value` concepts.
 
-* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)]()
+* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
 
 ```sql
 select
