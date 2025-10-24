@@ -10,5 +10,5 @@ internal class SactClinicalTrialRecord
     public string? NHSNumber { get; set; }
     public string? Clinical_Trial { get; set; }
     public string? Source_value { get; set; }
-    public string? Date_Decision_To_Treat { get; set; }
+    public string? Administration_Date { get; set; }
 }

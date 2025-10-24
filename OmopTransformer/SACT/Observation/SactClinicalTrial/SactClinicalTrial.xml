@@ -2,12 +2,12 @@
     <Sql>
 		select
 			distinct
-  			replace(NHS_Number, ' ', '') as NHS_Number,
+  			replace(NHS_Number, ' ', '') as NHSNumber,
       		Clinical_Trial,
 			Case 
 				When Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')
 			else '' end as Source_Value,
-		  	Date_Decision_To_Treat
+		  	Administration_Date
 		from omop_staging.sact_staging
   		where Clinical_Trial = '1'
 	</Sql>
