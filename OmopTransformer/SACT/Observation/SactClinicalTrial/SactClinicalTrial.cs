@@ -12,10 +12,10 @@ internal class SactClinicalTrial : OmopObservation<SactClinicalTrialRecord>
     [ConstantValue(4002165, "Clinical trial")]
     public override int[]? observation_concept_id { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.Administration_Date))]
+    [Transform(typeof(DateConverter), nameof(Source.Date_Decision_To_Treat))]
     public override DateTime? observation_date { get; set; }
 
-    [Transform(typeof(DateAndTimeCombiner), nameof(Source.Administration_Date), nameof(Source.Administration_Date))]
+    [Transform(typeof(DateAndTimeCombiner), nameof(Source.Date_Decision_To_Treat), nameof(Source.Date_Decision_To_Treat))]
     public override DateTime? observation_datetime { get; set; }
 
     [ConstantValue(32818, "EHR administration record")]
