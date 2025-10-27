@@ -9,8 +9,8 @@ internal class OxfordLabGeneralComment : OmopObservation<OxfordLabGeneralComment
     [CopyValue(nameof(Source.NHS_NUMBER))]
     public override string? nhs_number { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.EVENT_START_DT_TM))]
-    public override DateTime? observation_date { get; set; }
+    [Transform(typeof(DateOnlyConverter), nameof(Source.EVENT_START_DT_TM))]
+    public override DateOnly? observation_date { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.EVENT_START_DT_TM))]
     public override DateTime? observation_datetime { get; set; }
