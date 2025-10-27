@@ -1,7 +1,6 @@
 ﻿<Query>
     <Sql>
-		--fail
-	    select distinct
+select distinct
     Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
     coalesce(
         cast(Record ->> '$.Treatment.DischargeDateHospitalProviderSpell' as date),
@@ -12,8 +11,7 @@
         )
     ) as DeathDate
 from omop_staging.cosd_staging_901
-where type = 'CO'
-  and (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code') = '79';-- Not applicable - PATIENT died or stillbirth
+where (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code') = '79';-- Not applicable - PATIENT died or stillbirth
 	</Sql>
 	<Explanations>
 		<Explanation columnName="NhsNumber">

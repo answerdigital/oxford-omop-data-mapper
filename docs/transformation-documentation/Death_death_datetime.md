@@ -62,8 +62,7 @@ from ##duckdb_source##
 * `DeathDate` The date on which a PERSON died or is officially deemed to have died. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html)
 
 ```sql
-		--fail
-	    select distinct
+select distinct
     Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
     coalesce(
         cast(Record ->> '$.Treatment.DischargeDateHospitalProviderSpell' as date),
@@ -74,8 +73,7 @@ from ##duckdb_source##
         )
     ) as DeathDate
 from omop_staging.cosd_staging_901
-where type = 'CO'
-  and (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code') = '79';-- Not applicable - PATIENT died or stillbirth
+where (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code') = '79';-- Not applicable - PATIENT died or stillbirth
 	
 ```
 

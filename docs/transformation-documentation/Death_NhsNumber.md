@@ -118,8 +118,7 @@ order by
 * `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
-		--fail
-	    select distinct
+select distinct
     Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
     coalesce(
         cast(Record ->> '$.Treatment.DischargeDateHospitalProviderSpell' as date),
@@ -130,8 +129,7 @@ order by
         )
     ) as DeathDate
 from omop_staging.cosd_staging_901
-where type = 'CO'
-  and (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code') = '79';-- Not applicable - PATIENT died or stillbirth
+where (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code') = '79';-- Not applicable - PATIENT died or stillbirth
 	
 ```
 
