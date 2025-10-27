@@ -3,7 +3,12 @@
 internal class DataDictionaryUrlResolver
 {
     private readonly Dictionary<string, string?> _urlByOrigin;
-    private static readonly HttpClient Client = new();
+    private static readonly HttpClient Client = new HttpClient();
+    
+    static DataDictionaryUrlResolver()
+    {
+        Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+    }
 
     private DataDictionaryUrlResolver(Dictionary<string, string?> urlByOrigin)
     {
