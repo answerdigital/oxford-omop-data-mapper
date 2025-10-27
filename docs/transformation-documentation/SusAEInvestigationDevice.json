@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -37,7 +37,7 @@
           "origins": [
             {
               "origin": "START DATE (EPISODE)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html"
             }
           ]
         }
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "START DATE (EPISODE)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html"
             }
           ]
         },
@@ -65,7 +65,7 @@
           "origins": [
             {
               "origin": "START TIME (EPISODE)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html"
             }
           ]
         }
@@ -83,11 +83,11 @@
           "origins": [
             {
               "origin": "CDS ACTIVITY DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
             },
             {
               "origin": "END DATE (EPISODE)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html"
             }
           ]
         }
@@ -105,11 +105,11 @@
           "origins": [
             {
               "origin": "CDS ACTIVITY DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
             },
             {
               "origin": "END DATE (EPISODE)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html"
             }
           ]
         },
@@ -119,7 +119,7 @@
           "origins": [
             {
               "origin": "END TIME (EPISODE)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html"
             }
           ]
         }

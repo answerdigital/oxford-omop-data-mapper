@@ -10,7 +10,7 @@ has_toc: false
 Source column  `VisitStartDate`.
 Converts text to dates.
 
-* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)]()
+* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
 ```sql
 with results as
@@ -46,7 +46,7 @@ order by
 Source column  `VisitStartDate`.
 Converts text to dates.
 
-* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)]()
+* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
 ```sql
 	with records as (
@@ -87,7 +87,7 @@ Converts text to dates.
 Source column  `VisitStartDate`.
 Converts text to dates.
 
-* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)]()
+* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
 ```sql
 		with records as (

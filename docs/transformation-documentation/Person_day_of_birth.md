@@ -10,7 +10,7 @@ has_toc: false
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 	select
@@ -30,7 +30,7 @@ Selects the day of the month or null if the date is null.
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 	select
@@ -50,7 +50,7 @@ Selects the day of the month or null if the date is null.
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 	select
@@ -70,7 +70,7 @@ Selects the day of the month or null if the date is null.
 Source column  `Date_Of_Birth`.
 Selects the day of the month or null if the date is null.
 
-* `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `Date_Of_Birth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 	select
@@ -88,7 +88,7 @@ Selects the day of the month or null if the date is null.
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 select
@@ -107,7 +107,7 @@ group by PatientId
 Source column  `DOB`.
 Selects the day of the month or null if the date is null.
 
-* `DOB` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DOB` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 select
@@ -127,7 +127,7 @@ order by
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 with demographics as (
@@ -162,7 +162,7 @@ group by NhsNumber
 Source column  `DateOfBirth`.
 Selects the day of the month or null if the date is null.
 
-* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE]()
+* `DateOfBirth` Patient's date of birth. [PERSON BIRTH DATE](https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html)
 
 ```sql
 with demographics as (

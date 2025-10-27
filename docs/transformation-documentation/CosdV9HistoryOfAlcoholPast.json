@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -37,31 +37,31 @@
           "origins": [
             {
               "origin": "DATE FIRST SEEN",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html"
             },
             {
               "origin": "DATE FIRST SEEN (CANCER SPECIALIST)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html"
             },
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
             },
             {
               "origin": "TNM STAGE GROUPING DATE (FINAL PRETREATMENT)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html"
             },
             {
               "origin": "TNM STAGE GROUPING DATE (INTEGRATED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html"
             },
             {
               "origin": "TREATMENT START DATE (CANCER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html"
             },
             {
               "origin": "PROCEDURE DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
             }
           ]
         }
@@ -79,31 +79,31 @@
           "origins": [
             {
               "origin": "DATE FIRST SEEN",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html"
             },
             {
               "origin": "DATE FIRST SEEN (CANCER SPECIALIST)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html"
             },
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
             },
             {
               "origin": "TNM STAGE GROUPING DATE (FINAL PRETREATMENT)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html"
             },
             {
               "origin": "TNM STAGE GROUPING DATE (INTEGRATED)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html"
             },
             {
               "origin": "TREATMENT START DATE (CANCER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html"
             },
             {
               "origin": "PROCEDURE DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
             }
           ]
         }
@@ -128,7 +128,7 @@
           "origins": [
             {
               "origin": "ALCOHOL HISTORY (CANCER BEFORE LAST THREE MONTHS)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_before_last_three_months_.html"
             }
           ]
         }

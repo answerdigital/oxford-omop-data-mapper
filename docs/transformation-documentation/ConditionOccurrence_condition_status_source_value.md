@@ -9,7 +9,7 @@ has_toc: false
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 * Value copied from `BasisOfDiagnosisCancer`
 
-* `BasisOfDiagnosisCancer` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)]()
+* `BasisOfDiagnosisCancer` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html)
 
 ```sql
 with co as (
@@ -44,7 +44,7 @@ where NhsNumber is not null and
 ### Cosd V8 Condition Occurrence Primary Diagnosis Histology Topography
 * Value copied from `BasisOfDiagnosisCancer`
 
-* `BasisOfDiagnosisCancer` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)]()
+* `BasisOfDiagnosisCancer` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html)
 
 ```sql
 with co as (
@@ -81,7 +81,7 @@ where NhsNumber is not null and
 ### COSD V9 Condition Occurrence Primary Diagnosis
 * Value copied from `BasisOfDiagnosisCancer`
 
-* `BasisOfDiagnosisCancer` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)]()
+* `BasisOfDiagnosisCancer` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html)
 
 ```sql
 with co as (
@@ -111,7 +111,7 @@ group by NhsNumber, DateOfPrimaryDiagnosisClinicallyAgreed, CancerDiagnosis;
 ### COSD V9 Condition Occurrence Primary Diagnosis Histology Topography
 * Value copied from `BasisOfDiagnosisCancer`
 
-* `BasisOfDiagnosisCancer` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)]()
+* `BasisOfDiagnosisCancer` The basis of how a PATIENT DIAGNOSIS relating to cancer was identified. [BASIS OF DIAGNOSIS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/basis_of_diagnosis__cancer_.html)
 
 ```sql
 select distinct

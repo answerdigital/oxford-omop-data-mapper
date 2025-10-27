@@ -9,7 +9,7 @@ has_toc: false
 ### SACT Drug Exposure
 * Value copied from `NHS_Number`
 
-* `NHS_Number` Patient NHS Number [NHS NUMBER]()
+* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 	select
@@ -51,7 +51,7 @@ from ##duckdb_source##
 ### Oxford Prescribing Drug Exposure (with Snomed)
 * Value copied from `patient_identifier_Value`
 
-* `patient_identifier_Value` Patient NHS Number [NHS NUMBER]()
+* `patient_identifier_Value` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -74,7 +74,7 @@ where concept_identifier is not null
 ### Oxford GP Drug Exposure
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select

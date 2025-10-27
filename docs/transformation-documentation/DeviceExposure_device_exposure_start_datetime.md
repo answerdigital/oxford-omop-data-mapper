@@ -10,9 +10,9 @@ has_toc: false
 Source columns  `AppointmentDate`, `AppointmentTime`.
 Combines a date with a time of day.
 
-* `AppointmentDate` Appointment Date. [APPOINTMENT DATE]()
+* `AppointmentDate` Appointment Date. [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
 
-* `AppointmentTime` Appointment Time. [APPOINTMENT TIME]()
+* `AppointmentTime` Appointment Time. [APPOINTMENT TIME](https://www.datadictionary.nhs.uk/data_elements/appointment_time.html)
 
 ```sql
 	select
@@ -36,9 +36,9 @@ Combines a date with a time of day.
 Source columns  `DeviceExposureStartDate`, `DeviceExposureStartTime`.
 Combines a date with a time of day.
 
-* `DeviceExposureStartDate` Start date of the Device [CRITICAL CARE START DATE]()
+* `DeviceExposureStartDate` Start date of the Device [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
 
-* `DeviceExposureStartTime` Start time of the Device, if exists, else midnight. [CRITICAL CARE START TIME]()
+* `DeviceExposureStartTime` Start time of the Device, if exists, else midnight. [CRITICAL CARE START TIME](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_time.html)
 
 ```sql
 		select distinct
@@ -64,7 +64,7 @@ Combines a date with a time of day.
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 select
@@ -86,7 +86,7 @@ where NHSNumber is not null
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 	select
@@ -108,9 +108,9 @@ Converts text to dates.
 Source columns  `StartDate`, `StartTime`.
 Combines a date with a time of day.
 
-* `StartDate` Start date of the episode. [START DATE (EPISODE)]()
+* `StartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
-* `StartTime` The earliest episode start time for the spell, or midnight if none are specified. [START TIME (EPISODE)]()
+* `StartTime` The earliest episode start time for the spell, or midnight if none are specified. [START TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html)
 
 ```sql
 	select

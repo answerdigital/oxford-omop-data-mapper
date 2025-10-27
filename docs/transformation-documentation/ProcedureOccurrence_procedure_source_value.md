@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Outpatient Procedure Occurrence
 * Value copied from `PrimaryProcedure`
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 with results as
@@ -43,7 +43,7 @@ order by
 ### SUS CCMDS Procedure Occurrence
 * Value copied from `ProcedureSourceValue`
 
-* `ProcedureSourceValue` Used to look up the Procedure code. [CRITICAL CARE ACTIVITY CODE]()
+* `ProcedureSourceValue` Used to look up the Procedure code. [CRITICAL CARE ACTIVITY CODE](https://www.datadictionary.nhs.uk/data_elements/critical_care_activity_code.html)
 
 ```sql
 with results as
@@ -84,7 +84,7 @@ order by
 ### SUS APC Procedure Occurrence
 * Value copied from `PrimaryProcedure`
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 select
@@ -205,7 +205,7 @@ order by
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 * Value copied from `ProcedureOpcsCode`
 
-* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)]()
+* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 with CO as (
@@ -236,7 +236,7 @@ where ProcedureOpcsCode is not null;
 ### Cosd V9 Procedure Occurrence Primary Procedure Opcs
 * Value copied from `PrimaryProcedureOpcs`
 
-* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)]()
+* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/primary_procedure__opcs_.html)
 
 ```sql
 select 
@@ -256,7 +256,7 @@ where type = 'CO'
 ### Cosd V8 Procedure Occurrence Procedure Opcs
 * Value copied from `ProcedureOpcsCode`
 
-* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)]()
+* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 with co as (
@@ -290,7 +290,7 @@ where co.ProcedureOpcsCode is not null;
 ### Cosd V8 Procedure Occurrence Primary Procedure Opcs
 * Value copied from `PrimaryProcedureOpcs`
 
-* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)]()
+* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out. [PRIMARY PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/primary_procedure__opcs_.html)
 
 ```sql
 with CO as (

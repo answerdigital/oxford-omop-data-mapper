@@ -10,7 +10,7 @@ has_toc: false
 Source column  `StreetAddressLine1`.
 Convert text to uppercase. Trim whitespace.
 
-* `StreetAddressLine1` The first line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)]()
+* `StreetAddressLine1` The first line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html)
 
 ```sql
 with demographics as (
@@ -45,7 +45,7 @@ group by NhsNumber
 Source column  `StreetAddressLine1`.
 Convert text to uppercase. Trim whitespace.
 
-* `StreetAddressLine1` The first line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)]()
+* `StreetAddressLine1` The first line of the address. [PATIENT USUAL ADDRESS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/patient_usual_address__at_diagnosis_.html)
 
 ```sql
 with demographics as (

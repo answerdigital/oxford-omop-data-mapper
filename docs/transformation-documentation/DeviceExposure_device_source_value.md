@@ -9,7 +9,7 @@ has_toc: false
 ### SUS OP Device Exposure
 * Value copied from `PrimaryProcedure`
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 	select
@@ -32,7 +32,7 @@ has_toc: false
 ### SUS CCMDS Device Exposure
 * Value copied from `CriticalCareActivityCode`
 
-* `CriticalCareActivityCode` Used to look up the Device code. [CRITICAL CARE ACTIVITY CODE]()
+* `CriticalCareActivityCode` Used to look up the Device code. [CRITICAL CARE ACTIVITY CODE](https://www.datadictionary.nhs.uk/data_elements/critical_care_activity_code.html)
 
 ```sql
 		select distinct
@@ -57,7 +57,7 @@ has_toc: false
 ### SUS APC Procedure Occurrence
 * Value copied from `PrimaryProcedure`
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 select

@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Outpatient Procedure Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 with results as
@@ -43,7 +43,7 @@ order by
 ### SUS CCMDS Procedure Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 with results as
@@ -84,7 +84,7 @@ order by
 ### SUS APC Procedure Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -110,7 +110,7 @@ order by
 ### SUS AE Procedure Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 		select
@@ -136,7 +136,7 @@ order by
 ### Rtds Procedure Occurrence
 * Value copied from `PatientId`
 
-* `PatientId` Patient NHS Number [NHS NUMBER]()
+* `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 with records as (
@@ -177,7 +177,7 @@ where PatientId is not null
 ### Oxford Procedure Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -200,7 +200,7 @@ order by
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 with CO as (
@@ -231,7 +231,7 @@ where ProcedureOpcsCode is not null;
 ### Cosd V9 Procedure Occurrence Primary Procedure Opcs
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 
@@ -251,7 +251,7 @@ where type = 'CO'
 ### Cosd V8 Procedure Occurrence Procedure Opcs
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 with co as (
@@ -285,7 +285,7 @@ where co.ProcedureOpcsCode is not null;
 ### Cosd V8 Procedure Occurrence Primary Procedure Opcs
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 with CO as (

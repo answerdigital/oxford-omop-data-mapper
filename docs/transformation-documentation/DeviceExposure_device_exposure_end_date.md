@@ -10,7 +10,7 @@ has_toc: false
 Source column  `AppointmentDate`.
 Converts text to dates.
 
-* `AppointmentDate` Appointment Date. [APPOINTMENT DATE]()
+* `AppointmentDate` Appointment Date. [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
 
 ```sql
 	select
@@ -60,7 +60,7 @@ Converts text to dates.
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 select
@@ -82,7 +82,7 @@ where NHSNumber is not null
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 	select
@@ -104,7 +104,7 @@ Converts text to dates.
 Source column  `EndDate`.
 Converts text to dates.
 
-* `EndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](), [END DATE (EPISODE)]()
+* `EndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
 
 ```sql
 	select

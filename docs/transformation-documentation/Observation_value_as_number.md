@@ -10,7 +10,7 @@ has_toc: false
 Source column  `TotalPreviousPregnancies`.
 Converts text to number.
 
-* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES]()
+* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES](https://www.datadictionary.nhs.uk/data_elements/pregnancy_total_previous_pregnancies.html)
 
 ```sql
 select 
@@ -38,7 +38,7 @@ group by
 Source column  `NumberofBabies`.
 Converts text to number.
 
-* `NumberofBabies` The number of REGISTRABLE BIRTHS (live or still born at a particular delivery). [NUMBER OF BABIES INDICATION CODE]()
+* `NumberofBabies` The number of REGISTRABLE BIRTHS (live or still born at a particular delivery). [NUMBER OF BABIES INDICATION CODE](https://www.datadictionary.nhs.uk/data_elements/number_of_babies_indication_code.html)
 
 ```sql
 select
@@ -66,7 +66,7 @@ group by
 Source column  `GestationLengthLabourOnset`.
 Converts text to number.
 
-* `GestationLengthLabourOnset` GESTATION LENGTH (LABOUR ONSET) records a period of between 10 to 49 weeks in completed weeks at the onset of Labour. [GESTATION LENGTH (LABOUR ONSET)]()
+* `GestationLengthLabourOnset` GESTATION LENGTH (LABOUR ONSET) records a period of between 10 to 49 weeks in completed weeks at the onset of Labour. [GESTATION LENGTH (LABOUR ONSET)](https://www.datadictionary.nhs.uk/data_elements/gestation_length__labour_onset_.html)
 
 ```sql
 select 
@@ -94,7 +94,7 @@ group by
 Source column  `TobaccoSmokingStatus`.
 Converts text to number.
 
-* `TobaccoSmokingStatus` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)]()
+* `TobaccoSmokingStatus` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/smoking_status__cancer_.html)
 
 ```sql
 with CO as (
@@ -143,7 +143,7 @@ where o.TobaccoSmokingStatus is not null
 Source column  `TobaccoSmokingCessation`.
 Converts text to number.
 
-* `TobaccoSmokingCessation` An indication of whether treatment was given to the PATIENT for tobacco smoking cessation. [TOBACCO SMOKING CESSATION TREATMENT INDICATION CODE]()
+* `TobaccoSmokingCessation` An indication of whether treatment was given to the PATIENT for tobacco smoking cessation. [TOBACCO SMOKING CESSATION TREATMENT INDICATION CODE](https://www.datadictionary.nhs.uk/data_elements/tobacco_smoking_cessation_treatment_indication_code.html)
 
 ```sql
 with CO as (
@@ -192,7 +192,7 @@ where o.TobaccoSmokingCessation is not null
 Source column  `PerformanceStatusAdult`.
 Converts text to number.
 
-* `PerformanceStatusAdult` A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY. [PERFORMANCE STATUS (ADULT)]()
+* `PerformanceStatusAdult` A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY. [PERFORMANCE STATUS (ADULT)](https://www.datadictionary.nhs.uk/data_elements/performance_status__adult_.html)
 
 ```sql
 with CO as (
@@ -241,7 +241,7 @@ where o.PerformanceStatusAdult is not null
 Source column  `MenopausalStatus`.
 Converts text to number.
 
-* `MenopausalStatus` MENOPAUSAL STATUS (AT DIAGNOSIS) is the MENOPAUSAL STATUS of a PATIENT at PATIENT DIAGNOSIS. [MENOPAUSAL STATUS (AT DIAGNOSIS)]()
+* `MenopausalStatus` MENOPAUSAL STATUS (AT DIAGNOSIS) is the MENOPAUSAL STATUS of a PATIENT at PATIENT DIAGNOSIS. [MENOPAUSAL STATUS (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/menopausal_status__at_diagnosis_.html)
 
 ```sql
 with CO as (
@@ -278,7 +278,7 @@ where o.MenopausalStatus is not null
 Source column  `AsaScore`.
 Converts text to number.
 
-* `AsaScore` The physical status of the PATIENT as recorded by an anaesthetist for the operative procedure. [ASA PHYSICAL STATUS CLASSIFICATION SYSTEM CODE]()
+* `AsaScore` The physical status of the PATIENT as recorded by an anaesthetist for the operative procedure. [ASA PHYSICAL STATUS CLASSIFICATION SYSTEM CODE](https://www.datadictionary.nhs.uk/data_elements/asa_physical_status_classification_system_code.html)
 
 ```sql
 with CO as (
@@ -327,7 +327,7 @@ where o.AsaScore is not null
 Source column  `AdultComorbidityEvaluation`.
 Converts text to number.
 
-* `AdultComorbidityEvaluation` The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'. [ADULT COMORBIDITY EVALUATION - 27 SCORE]()
+* `AdultComorbidityEvaluation` The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'. [ADULT COMORBIDITY EVALUATION - 27 SCORE](https://www.datadictionary.nhs.uk/data_elements/adult_comorbidity_evaluation_-_27_score.html)
 
 ```sql
 with CO as (
@@ -376,7 +376,7 @@ where o.AdultComorbidityEvaluation is not null
 Source column  `SmokingStatusCode`.
 Converts text to number.
 
-* `SmokingStatusCode` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)]()
+* `SmokingStatusCode` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/smoking_status__cancer_.html)
 
 ```sql
 with CO as (
@@ -425,7 +425,7 @@ where o.SmokingStatusCode is not null
 Source column  `AdultPerformanceStatus`.
 Converts text to number.
 
-* `AdultPerformanceStatus` A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY. [PERFORMANCE STATUS (ADULT)]()
+* `AdultPerformanceStatus` A World Health Organisation classification indicating a PERSON's status relating to activity/DISABILITY. [PERFORMANCE STATUS (ADULT)](https://www.datadictionary.nhs.uk/data_elements/performance_status__adult_.html)
 
 ```sql
 with CO as (
@@ -474,7 +474,7 @@ where o.AdultPerformanceStatus is not null
 Source column  `AdultComorbidityEvaluation`.
 Converts text to number.
 
-* `AdultComorbidityEvaluation` The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'. [ADULT COMORBIDITY EVALUATION - 27 SCORE]()
+* `AdultComorbidityEvaluation` The PERSON SCORE recorded during a Cancer Care Spell, where the ASSESSMENT TOOL is 'Adult Comorbidity Evaluation - 27'. [ADULT COMORBIDITY EVALUATION - 27 SCORE](https://www.datadictionary.nhs.uk/data_elements/adult_comorbidity_evaluation_-_27_score.html)
 
 ```sql
 with CO as (

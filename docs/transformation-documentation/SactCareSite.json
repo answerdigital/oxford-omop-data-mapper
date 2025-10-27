@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "ORGANISATION IDENTIFIER (CODE OF PROVIDER)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/organisation_identifier__code_of_provider_.html"
             }
           ]
         }

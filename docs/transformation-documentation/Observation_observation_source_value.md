@@ -9,7 +9,7 @@ has_toc: false
 ### Sus CCMDS High Cost Drugs
 * Value copied from `ObservationSourceValue`
 
-* `ObservationSourceValue` High cost drugs. [HIGH COST DRUGS (OPCS)]()
+* `ObservationSourceValue` High cost drugs. [HIGH COST DRUGS (OPCS)](https://www.datadictionary.nhs.uk/data_elements/high_cost_drugs__opcs_.html)
 
 ```sql
 		select distinct

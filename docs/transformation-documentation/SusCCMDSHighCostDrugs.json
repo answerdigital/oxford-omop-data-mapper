@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -37,7 +37,7 @@
           "origins": [
             {
               "origin": "CRITICAL CARE START DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html"
             }
           ]
         }
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "CRITICAL CARE START DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html"
             }
           ]
         },
@@ -65,7 +65,7 @@
           "origins": [
             {
               "origin": "CRITICAL CARE START TIME",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/critical_care_start_time.html"
             }
           ]
         }
@@ -90,7 +90,7 @@
           "origins": [
             {
               "origin": "HOSPITAL PROVIDER SPELL NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
             }
           ]
         }
@@ -108,7 +108,7 @@
           "origins": [
             {
               "origin": "HIGH COST DRUGS (OPCS)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/high_cost_drugs__opcs_.html"
             }
           ]
         }
@@ -126,7 +126,7 @@
           "origins": [
             {
               "origin": "HIGH COST DRUGS (OPCS)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/high_cost_drugs__opcs_.html"
             }
           ]
         }

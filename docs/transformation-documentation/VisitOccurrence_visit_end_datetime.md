@@ -10,9 +10,9 @@ has_toc: false
 Source columns  `VisitEndDate`, `VisitEndTime`.
 Combines a date with a time of day.
 
-* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](), [END DATE (EPISODE)]()
+* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
 
-* `VisitEndTime` The latest episode end time for the spell, or midnight if none are specified. [END TIME (EPISODE)]()
+* `VisitEndTime` The latest episode end time for the spell, or midnight if none are specified. [END TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html)
 
 ```sql
 with results as
@@ -48,9 +48,9 @@ order by
 Source columns  `VisitEndDate`, `VisitEndTime`.
 Combines a date with a time of day.
 
-* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](), [END DATE (EPISODE)]()
+* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
 
-* `VisitEndTime` The latest episode end time for the spell, or midnight if none are specified. [END TIME (EPISODE)]()
+* `VisitEndTime` The latest episode end time for the spell, or midnight if none are specified. [END TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html)
 
 ```sql
 	with records as (
@@ -91,9 +91,9 @@ Combines a date with a time of day.
 Source columns  `VisitEndDate`, `VisitEndTime`.
 Combines a date with a time of day.
 
-* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](), [END DATE (EPISODE)]()
+* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
 
-* `VisitEndTime` The latest episode end time for the spell, or midnight if none are specified. [END TIME (EPISODE)]()
+* `VisitEndTime` The latest episode end time for the spell, or midnight if none are specified. [END TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html)
 
 ```sql
 		with records as (

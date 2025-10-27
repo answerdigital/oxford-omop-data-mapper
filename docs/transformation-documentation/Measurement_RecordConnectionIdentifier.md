@@ -9,7 +9,7 @@ has_toc: false
 ### Sus CCMDS Measurement - Gestation Length at Delivery
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 		select distinct
@@ -30,7 +30,7 @@ has_toc: false
 ### Sus CCMDS Measurement - Person Weight
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 		select distinct
@@ -51,7 +51,7 @@ has_toc: false
 ### Sus APC  Measurement
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select

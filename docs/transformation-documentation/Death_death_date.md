@@ -10,7 +10,7 @@ has_toc: false
 Source column  `death_date`.
 Converts text to dates.
 
-* `death_date` Discharge date of the patient's spell. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)]()
+* `death_date` Discharge date of the patient's spell. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
 
 ```sql
 	select
@@ -30,7 +30,7 @@ Converts text to dates.
 Source column  `death_date`.
 Converts text to dates.
 
-* `death_date` Discharge date of the patient's spell. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)]()
+* `death_date` Discharge date of the patient's spell. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
 
 ```sql
 ;with primarydiagnosis as (
@@ -62,7 +62,7 @@ group by apc.NHSNumber
 Source column  `death_date`.
 Converts text to dates.
 
-* `death_date` Discharge date of the patient's spell. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)]()
+* `death_date` Discharge date of the patient's spell. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
 
 ```sql
 select
@@ -120,7 +120,7 @@ order by
 ### COSD v9 DeathDischargeDestination
 * Value copied from `DeathDate`
 
-* `DeathDate` The date on which a PERSON died or is officially deemed to have died. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](), [TREATMENT START DATE (CANCER)]()
+* `DeathDate` The date on which a PERSON died or is officially deemed to have died. [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html)
 
 ```sql
 		--fail
@@ -145,7 +145,7 @@ where type = 'CO'
 ### COSD v9 BasisOfDiagnosisCancer
 * Value copied from `DeathDate`
 
-* `DeathDate` The date on which a PERSON died or is officially deemed to have died. [MULTIDISCIPLINARY TEAM DISCUSSION DATE (CANCER)](), [TREATMENT START DATE (CANCER)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)]()
+* `DeathDate` The date on which a PERSON died or is officially deemed to have died. [MULTIDISCIPLINARY TEAM DISCUSSION DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/multidisciplinary_team_discussion_date__cancer_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html)
 
 ```sql
 -- fail
@@ -182,7 +182,7 @@ group by NhsNumber;
 Source column  `DeathDate`.
 Converts text to dates.
 
-* `DeathDate` The date on which a PERSON died or is officially deemed to have died. [PERSON DEATH DATE]()
+* `DeathDate` The date on which a PERSON died or is officially deemed to have died. [PERSON DEATH DATE](https://www.datadictionary.nhs.uk/data_elements/person_death_date.html)
 
 ```sql
 select 

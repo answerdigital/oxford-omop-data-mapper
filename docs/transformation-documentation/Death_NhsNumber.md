@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Outpatient Death
 * Value copied from `nhs_number`
 
-* `nhs_number` Patient NHS Number [NHS NUMBER]()
+* `nhs_number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 	select
@@ -28,7 +28,7 @@ has_toc: false
 ### SUS Inpatient Death
 * Value copied from `nhs_number`
 
-* `nhs_number` Patient NHS Number [NHS NUMBER]()
+* `nhs_number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 ;with primarydiagnosis as (
@@ -59,7 +59,7 @@ group by apc.NHSNumber
 ### SUS A&E Death
 * Value copied from `nhs_number`
 
-* `nhs_number` Patient NHS Number [NHS NUMBER]()
+* `nhs_number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -95,7 +95,7 @@ from ##duckdb_source##
 ### Oxford GP Death
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select
@@ -115,7 +115,7 @@ order by
 ### COSD v9 DeathDischargeDestination
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 		--fail
@@ -140,7 +140,7 @@ where type = 'CO'
 ### COSD v9 BasisOfDiagnosisCancer
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 -- fail
@@ -176,7 +176,7 @@ group by NhsNumber;
 ### COSD v8 Death
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER]()
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select 

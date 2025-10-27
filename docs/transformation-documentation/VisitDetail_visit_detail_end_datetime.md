@@ -10,9 +10,9 @@ has_toc: false
 Source columns  `VisitEndDate`, `VisitEndTime`.
 Combines a date with a time of day.
 
-* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](), [END DATE (EPISODE)](), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)]()
+* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
 
-* `VisitEndTime` End time of the episode, if exists, else the spell discharge time, if exists, else the message date. [DISCHARGE TIME (HOSPITAL PROVIDER SPELL)](), [END TIME (EPISODE)]()
+* `VisitEndTime` End time of the episode, if exists, else the spell discharge time, if exists, else the message date. [DISCHARGE TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_time__hospital_provider_spell_.html), [END TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html)
 
 ```sql
 with results as
@@ -86,9 +86,9 @@ order by
 Source columns  `VisitEndDate`, `VisitEndTime`.
 Combines a date with a time of day.
 
-* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](), [END DATE (EPISODE)](), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)]()
+* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
 
-* `VisitEndTime` End time of the episode, if exists, else the spell discharge time, if exists, else the message date. [DISCHARGE TIME (HOSPITAL PROVIDER SPELL)](), [END TIME (EPISODE)]()
+* `VisitEndTime` End time of the episode, if exists, else the spell discharge time, if exists, else the message date. [DISCHARGE TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_time__hospital_provider_spell_.html), [END TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html)
 
 ```sql
 		with records as (
@@ -128,9 +128,9 @@ Combines a date with a time of day.
 Source columns  `VisitEndDate`, `VisitEndTime`.
 Combines a date with a time of day.
 
-* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](), [END DATE (EPISODE)](), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)]()
+* `VisitEndDate` End date of the episode, if exists, else the spell discharge date, if exists, else the message date. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html), [DISCHARGE DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html)
 
-* `VisitEndTime` End time of the episode, if exists, else the spell discharge time, if exists, else the message date. [DISCHARGE TIME (HOSPITAL PROVIDER SPELL)](), [END TIME (EPISODE)]()
+* `VisitEndTime` End time of the episode, if exists, else the spell discharge time, if exists, else the message date. [DISCHARGE TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_time__hospital_provider_spell_.html), [END TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_time__episode_.html)
 
 ```sql
 		with records as (

@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -30,7 +30,7 @@
           "origins": [
             {
               "origin": "CDS ACTIVITY DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
             }
           ]
         }
@@ -48,7 +48,7 @@
           "origins": [
             {
               "origin": "CDS ACTIVITY DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html"
             }
           ]
         }
@@ -73,7 +73,7 @@
           "origins": [
             {
               "origin": "PRIMARY DIAGNOSIS (ICD)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html"
             }
           ]
         }
@@ -91,7 +91,7 @@
           "origins": [
             {
               "origin": "PRIMARY DIAGNOSIS (ICD)",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html"
             }
           ]
         }
