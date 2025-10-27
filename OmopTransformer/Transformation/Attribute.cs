@@ -12,7 +12,7 @@ internal class Attribute
 
     public static Attribute Create(object value)
     {
-        ILookup lookup = null;
+        ILookup? lookup = null;
 
         if (value is TransformAttribute transformAttribute && typeof(ILookup).IsAssignableFrom(transformAttribute.Type))
         {
