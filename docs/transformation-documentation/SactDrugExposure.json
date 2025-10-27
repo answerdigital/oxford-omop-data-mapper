@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -37,7 +37,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
+              "url": null
             }
           ]
         }
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
+              "url": null
             }
           ]
         }
@@ -80,7 +80,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY DRUG NAME",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_name.html"
+              "url": null
             }
           ]
         }
@@ -98,7 +98,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ACTUAL DOSE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_actual_dose.html"
+              "url": null
             }
           ]
         }
@@ -116,7 +116,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY DRUG NAME",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_name.html"
+              "url": null
             }
           ]
         }
@@ -134,7 +134,7 @@
           "origins": [
             {
               "origin": "UNIT OF MEASUREMENT (SYSTEMIC ANTI-CANCER THERAPY)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/unit_of_measurement__systemic_anti-cancer_therapy_.html"
+              "url": null
             }
           ]
         }

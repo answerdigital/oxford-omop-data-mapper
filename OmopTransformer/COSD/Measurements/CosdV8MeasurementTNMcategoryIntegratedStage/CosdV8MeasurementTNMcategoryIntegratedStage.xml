@@ -1,31 +1,19 @@
 ﻿<Query>
     <Sql>
-;with 
-    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
-    CosdRecords as ( 
-
+with co as (
     select
-            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-            T.staging.query('*[local-name() != "Id"][1]/*[1]') as Node
-    from omop_staging.cosd_staging
-    cross apply content.nodes('COSD:COSD/*') as T(staging)
-    where T.staging.exist('Id/@root') = 1
-            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
-            and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-			Id,
-			Node.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-			Node.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
-			Node.value('(ColorectalCore/ColorectalCoreStaging/IntegratedStageTNMStageGrouping)[1]', 'varchar(max)') as TnmStageGroupingIntegrated,
-			Node.value('(ColorectalCore/ColorectalCoreStaging/IntegratedStageTNMStageGroupingDate)[1]', 'varchar(max)') as StageDateIntegratedStage
-	from CosdRecords
+        Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreStaging.IntegratedStageTNMStageGrouping' as TnmStageGroupingIntegrated,
+        Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreStaging.IntegratedStageTNMStageGroupingDate' as StageDateIntegratedStage
+    from omop_staging.cosd_staging_81
+    where Type = 'CO'
 )
 select distinct
-	NhsNumber,
-	coalesce(StageDateIntegratedStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
-	TnmStageGroupingIntegrated
-from CO
+    NhsNumber,
+    coalesce(StageDateIntegratedStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
+    TnmStageGroupingIntegrated
+from co
 where TnmStageGroupingIntegrated is not null;
 	</Sql>
     <Explanations>

@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Outpatient Procedure Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 with results as
@@ -43,7 +43,7 @@ order by
 ### SUS CCMDS Procedure Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 with results as
@@ -84,7 +84,7 @@ order by
 ### SUS APC Procedure Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select
@@ -110,7 +110,7 @@ order by
 ### SUS AE Procedure Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 		select
@@ -136,7 +136,7 @@ order by
 ### Rtds Procedure Occurrence
 * Value copied from `PatientId`
 
-* `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `PatientId` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 with records as (
@@ -177,7 +177,7 @@ where PatientId is not null
 ### Oxford Procedure Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NHSNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
 select
@@ -200,40 +200,29 @@ order by
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
-;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),								
-CosdRecords as (				
-	select								
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,								
-		T.staging.query('.') as Node								
-		from omop_staging.cosd_staging								
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)								
-	where T.staging.exist('Id/@root') = 1								
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'								
-		and substring (FileName, 15, 2) = 'CO'								
-), ProcedureOpcs as (				
-	select								
-		Id,								
-		T.p.value('.', 'varchar(max)') as ProcedureOpcsCode															
-	from CosdRecords								
-	cross apply Node.nodes('ColorectalRecord/Treatment/Surgery/ProcedureOpcs/@code') as T(p)
-), COSD as (
-	select
-		Id,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate
-	from CosdRecords
+with CO as (
+    select distinct
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        coalesce(Record ->> '$.Treatment[0].Surgery.ProcedureDate', Record ->> '$.Treatment.Surgery.ProcedureDate') as ProcedureDate,
+        unnest(
+            [
+                [ Record ->> '$.Treatment.Surgery.ProcedureOpcs.@code' ],
+                Record ->> '$.Treatment.Surgery.ProcedureOpcs[*].@code'
+            ],
+            recursive := true
+        ) as ProcedureOpcsCode
+    from omop_staging.cosd_staging_901
+    where type = 'CO'
 )
-select
-	distinct
-		c.NhsNumber,
-		c.ProcedureDate,
-		p.ProcedureOpcsCode
-from COSD c
-	inner join ProcedureOpcs p
-		on c.Id = p.Id;
+select distinct
+    NhsNumber,
+    ProcedureDate,
+    ProcedureOpcsCode
+from CO
+where ProcedureOpcsCode is not null;
 	
 ```
 
@@ -242,34 +231,18 @@ from COSD c
 ### Cosd V9 Procedure Occurrence Primary Procedure Opcs
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
-;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),								
-CosdRecords as (				
-	select								
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,								
-		T.staging.query('.') as Node								
-		from omop_staging.cosd_staging								
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)								
-	where T.staging.exist('Id/@root') = 1								
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'								
-		and substring (FileName, 15, 2) = 'CO'								
-), COSD as (
-	select
-		Id,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(ColorectalRecord/Treatment/Surgery/PrimaryProcedureOpcs/@code)[1]', 'varchar(max)') as PrimaryProcedureOpcs
-	from CosdRecords
-)
-select
-	distinct
-		NhsNumber,
-		ProcedureDate,
-		PrimaryProcedureOpcs
-from COSD c
-where ProcedureDate is not null and PrimaryProcedureOpcs is not null;
+select 
+  distinct
+    Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+    coalesce(Record ->> '$.Treatment[0].Surgery.ProcedureDate', Record ->> '$.Treatment.Surgery.ProcedureDate') as ProcedureDate,
+    coalesce(Record ->> '$.Treatment[0].Surgery.PrimaryProcedureOpcs.@code', Record ->> '$.Treatment.Surgery.PrimaryProcedureOpcs.@code') as PrimaryProcedureOpcs
+from omop_staging.cosd_staging_901
+where type = 'CO'
+  and ProcedureDate is not null
+  and PrimaryProcedureOpcs is not null;
 	
 ```
 
@@ -278,42 +251,32 @@ where ProcedureDate is not null and PrimaryProcedureOpcs is not null;
 ### Cosd V8 Procedure Occurrence Procedure Opcs
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
-;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
-    CosdRecords as ( 
-    select
-        T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-        T.staging.query('*[local-name() != "Id"][1]/*[1]') as Node -- Select the first inner element of the element that is not called Id.
-    from omop_staging.cosd_staging
-    cross apply content.nodes('COSD:COSD/*') as T(staging)
-    where T.staging.exist('Id/@root') = 1
-            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
-            and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select 
-        Id,
-        Node,
-        Node.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-		Node.value('(ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/PrimaryProcedureOPCS/@code)[1]', 'varchar(max)') as PrimaryProcedureOpcs
-	from CosdRecords        
-), ProcedureOpcs as (				
-	select								
-		Id,								
-		T.p.value('.', 'varchar(max)') as ProcedureOpcsCode															
-	from CosdRecords								
-	cross apply Node.nodes('ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureOPCS/@code') as T(p)
+with co as (
+  select 
+    Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+    Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+    unnest(
+      [
+        [
+          Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'
+        ], 
+        Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code',
+      ], recursive := true
+    ) as ProcedureOpcsCode
+    from omop_staging.cosd_staging_81
+    where Type = 'CO'
 )
 select
-	distinct
-		c.NhsNumber,
-		c.ProcedureDate,
-		p.ProcedureOpcsCode
-from CO c
-	inner join ProcedureOpcs p
-		on c.Id = p.Id;
+  distinct
+		NhsNumber,
+		ProcedureDate,
+		ProcedureOpcsCode
+from co
+where co.ProcedureOpcsCode is not null;
+-- fail
 	
 ```
 
@@ -322,36 +285,24 @@ from CO c
 ### Cosd V8 Procedure Occurrence Primary Procedure Opcs
 * Value copied from `NhsNumber`
 
-* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER]()
 
 ```sql
-;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
-    CosdRecords as ( 
-    select
-            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-            T.staging.query('*[local-name() != "Id"][1]/*[1]') as Node -- Select the first inner element of the element that is not called Id.
-    from omop_staging.cosd_staging
-    cross apply content.nodes('COSD:COSD/*') as T(staging)
-    where T.staging.exist('Id/@root') = 1
-            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
-            and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select 
-        Id,
-        Node,
-        Node.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-		Node.value('(ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/PrimaryProcedureOPCS/@code)[1]', 'varchar(max)') as PrimaryProcedureOpcs
-	from CosdRecords        
+with CO as (
+  select 
+    Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+    Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+    Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOpcs
+  from omop_staging.cosd_staging_81
+  where Type = 'CO'
 )
 select
-	distinct
-		NhsNumber,
-		ProcedureDate,
-		PrimaryProcedureOpcs
-from CO c
-where ProcedureDate is not null and PrimaryProcedureOpcs is not null;
-	
+      distinct
+          ProcedureDate,
+          NhsNumber,
+          PrimaryProcedureOpcs
+from CO o
+where o.ProcedureDate is not null and o.PrimaryProcedureOpcs is not null;
 ```
 
 

@@ -644,10 +644,18 @@ CREATE TABLE omop_staging.concept_code_map(
 	)
 );
 
-CREATE TABLE omop_staging.cosd_staging(
+CREATE TABLE omop_staging.cosd_staging_81(
 	SubmissionName varchar(200) NOT NULL,
 	FileName varchar(200) NOT NULL,
-	Content text NOT NULL
+    Type varchar(5) not null,
+	Record json NOT NULL
+);
+
+CREATE TABLE omop_staging.cosd_staging_901(
+	SubmissionName varchar(200) NOT NULL,
+	FileName varchar(200) NOT NULL,
+    Type varchar(5) not null,
+	Record json NOT NULL
 );
 
 CREATE TABLE omop_staging.oxford_gp_appointment(

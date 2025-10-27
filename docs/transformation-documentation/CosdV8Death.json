@@ -12,12 +12,12 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n\tCosdRecords as ( \n\tselect\n\t\tT.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n\t\tT.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node -- Select the first inner element of the element that is not called Id.\n\tfrom omop_staging.cosd_staging\n\tcross apply content.nodes('COSD:COSD/*') as T(staging)\n\twhere T.staging.exist('Id/@root') = 1\n\t\tand Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n\t\t--and substring (FileName, 15, 2) = 'CO'\n)\nselect \n\tdistinct\n\t\tNode.value('(//NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\tNode.value('(//PersonDeathDate)[1]', 'varchar(max)') as DeathDate\nfrom CosdRecords\nwhere Node.value('(//PersonDeathDate)[1]', 'varchar(max)') is not null;\n\t",
+      "query": "\nselect \n\tdistinct\n\t\tRecord ->> '$..NHSNumber..@extension' ->> 0 as NhsNumber,\n  \t\tRecord ->> '$..PersonDeathDate' ->> 0 as DeathDate\nfrom omop_staging.cosd_staging_81\nwhere DeathDate is not null\n    ",
       "lookup_table_markdown": null
     },
     {
@@ -30,12 +30,12 @@
           "origins": [
             {
               "origin": "PERSON DEATH DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_death_date.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n\tCosdRecords as ( \n\tselect\n\t\tT.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n\t\tT.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node -- Select the first inner element of the element that is not called Id.\n\tfrom omop_staging.cosd_staging\n\tcross apply content.nodes('COSD:COSD/*') as T(staging)\n\twhere T.staging.exist('Id/@root') = 1\n\t\tand Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n\t\t--and substring (FileName, 15, 2) = 'CO'\n)\nselect \n\tdistinct\n\t\tNode.value('(//NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\tNode.value('(//PersonDeathDate)[1]', 'varchar(max)') as DeathDate\nfrom CosdRecords\nwhere Node.value('(//PersonDeathDate)[1]', 'varchar(max)') is not null;\n\t",
+      "query": "\nselect \n\tdistinct\n\t\tRecord ->> '$..NHSNumber..@extension' ->> 0 as NhsNumber,\n  \t\tRecord ->> '$..PersonDeathDate' ->> 0 as DeathDate\nfrom omop_staging.cosd_staging_81\nwhere DeathDate is not null\n    ",
       "lookup_table_markdown": null
     },
     {
@@ -48,12 +48,12 @@
           "origins": [
             {
               "origin": "PERSON DEATH DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_death_date.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n\tCosdRecords as ( \n\tselect\n\t\tT.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n\t\tT.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node -- Select the first inner element of the element that is not called Id.\n\tfrom omop_staging.cosd_staging\n\tcross apply content.nodes('COSD:COSD/*') as T(staging)\n\twhere T.staging.exist('Id/@root') = 1\n\t\tand Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n\t\t--and substring (FileName, 15, 2) = 'CO'\n)\nselect \n\tdistinct\n\t\tNode.value('(//NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\tNode.value('(//PersonDeathDate)[1]', 'varchar(max)') as DeathDate\nfrom CosdRecords\nwhere Node.value('(//PersonDeathDate)[1]', 'varchar(max)') is not null;\n\t",
+      "query": "\nselect \n\tdistinct\n\t\tRecord ->> '$..NHSNumber..@extension' ->> 0 as NhsNumber,\n  \t\tRecord ->> '$..PersonDeathDate' ->> 0 as DeathDate\nfrom omop_staging.cosd_staging_81\nwhere DeathDate is not null\n    ",
       "lookup_table_markdown": null
     },
     {

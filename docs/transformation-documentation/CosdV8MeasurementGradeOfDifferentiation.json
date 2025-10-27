@@ -12,12 +12,12 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)')  as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreDiagnosis/DiagnosisGradeOfDifferentiation/@code)[1]', 'varchar(max)') as GradeOfDifferentiationAtDiagnosis\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
+      "query": "\nwith CO as (\n\tselect \n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreDiagnosis.DiagnosisGradeOfDifferentiation.@code' as GradeOfDifferentiationAtDiagnosis\n\tfrom omop_staging.cosd_staging_81\n\twhere Type = 'CO'\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -30,16 +30,16 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             },
             {
               "origin": "DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_non_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)')  as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreDiagnosis/DiagnosisGradeOfDifferentiation/@code)[1]', 'varchar(max)') as GradeOfDifferentiationAtDiagnosis\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
+      "query": "\nwith CO as (\n\tselect \n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreDiagnosis.DiagnosisGradeOfDifferentiation.@code' as GradeOfDifferentiationAtDiagnosis\n\tfrom omop_staging.cosd_staging_81\n\twhere Type = 'CO'\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -52,16 +52,16 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             },
             {
               "origin": "DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_non_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)')  as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreDiagnosis/DiagnosisGradeOfDifferentiation/@code)[1]', 'varchar(max)') as GradeOfDifferentiationAtDiagnosis\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
+      "query": "\nwith CO as (\n\tselect \n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreDiagnosis.DiagnosisGradeOfDifferentiation.@code' as GradeOfDifferentiationAtDiagnosis\n\tfrom omop_staging.cosd_staging_81\n\twhere Type = 'CO'\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -81,12 +81,12 @@
           "origins": [
             {
               "origin": "GRADE OF DIFFERENTIATION (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)')  as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreDiagnosis/DiagnosisGradeOfDifferentiation/@code)[1]', 'varchar(max)') as GradeOfDifferentiationAtDiagnosis\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
+      "query": "\nwith CO as (\n\tselect \n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreDiagnosis.DiagnosisGradeOfDifferentiation.@code' as GradeOfDifferentiationAtDiagnosis\n\tfrom omop_staging.cosd_staging_81\n\twhere Type = 'CO'\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
       "lookup_table_markdown": "\r\n\r\n|GradeOfDifferentiationAtDiagnosis|measurement_concept_id|notes|\r\n|------|-----|-----|\r\n|GX||GX grade|\r\n|G1|36768162|Grade 1: Well differentiated|\r\n|G2|36770626|Grade 2: Moderately differentiated|\r\n|G3|36769666|Grade 3: Poorly differentiated|\r\n|G4|36769737|Grade 4: Undifferentiated|\r\n\r\nNotes\r\n* [OMOP Grade Differentiation](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&conceptClass=Histopattern&page=1&pageSize=500&query=grade&boosts)\r\n* [NHS - Grade of Differentiation (At Diagnosis)](https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html?hl=grade%2Cdifferentiation)\r\n"
     },
     {
@@ -99,12 +99,12 @@
           "origins": [
             {
               "origin": "GRADE OF DIFFERENTIATION (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('*[local-name() != \"Id\"][1]/*[1]') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)')  as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalCore/ColorectalCoreDiagnosis/DiagnosisGradeOfDifferentiation/@code)[1]', 'varchar(max)') as GradeOfDifferentiationAtDiagnosis\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
+      "query": "\nwith CO as (\n\tselect \n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreDiagnosis.DiagnosisGradeOfDifferentiation.@code' as GradeOfDifferentiationAtDiagnosis\n\tfrom omop_staging.cosd_staging_81\n\twhere Type = 'CO'\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
       "lookup_table_markdown": null
     }
   ]

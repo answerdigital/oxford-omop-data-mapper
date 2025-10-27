@@ -1,11 +1,10 @@
 ﻿using OmopTransformer.Annotations;
-using OmopTransformer.COSD.Demographics;
 using OmopTransformer.Omop.Location;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.COSD;
+namespace OmopTransformer.COSD.DemographicsV8;
 
-internal class CosdLocation : OmopLocation<CosdDemographics>
+internal class CosdV8Location : OmopLocation<CosdDemographicsV8>
 {
     [Transform(typeof(UppercaseAndTrimWhitespace), nameof(Source.StreetAddressLine1))]
     public override string? address_1 { get; set; }

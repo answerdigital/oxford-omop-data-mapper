@@ -20,7 +20,7 @@ group by PatientId
 		</Explanation>
 		<Explanation columnName="Sex">
 			<Description>The patient's Sex</Description>
-			<Origin>PERSON GENDER CODE CURRENT</Origin> <!--This origin isn't quite right but is the closest that I could find.-->
+			<Origin>PERSON GENDER CODE CURRENT</Origin> <!--This origin isn't quite right but is the closest that I could find.-->>
 		</Explanation>
 	</Explanations>
 </Query>

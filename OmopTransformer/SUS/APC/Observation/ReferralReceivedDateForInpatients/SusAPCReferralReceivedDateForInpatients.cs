@@ -20,8 +20,8 @@ internal class SusAPCReferralReceivedDateForInpatients : OmopObservation<SusAPCR
     [ConstantValue(40760321, "Date of Referral")]
     public override int[]? observation_concept_id { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.StartDateHospitalProviderSpell))]
-    public override DateTime? observation_date { get; set; }
+    [Transform(typeof(DateOnlyConverter), nameof(Source.StartDateHospitalProviderSpell))]
+    public override DateOnly? observation_date { get; set; }
 
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.StartDateHospitalProviderSpell), nameof(Source.StartTimeHospitalProviderSpell))]
     public override DateTime? observation_datetime { get; set; }

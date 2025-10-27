@@ -43,7 +43,11 @@ has_toc: false
 <a href="OxfordGPPerson.svg" target="_blank"><img src="OxfordGPPerson.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordGPPerson%20mapping){: .btn }
-## CosdPerson
-<a href="CosdPerson.svg" target="_blank"><img src="CosdPerson.svg" /></a>
+## CosdPersonV9
+<a href="CosdPersonV9.svg" target="_blank"><img src="CosdPersonV9.svg" /></a>
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdPerson%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdPersonV9%20mapping){: .btn }
+## CosdPersonV8
+<a href="CosdPersonV8.svg" target="_blank"><img src="CosdPersonV8.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdPersonV8%20mapping){: .btn }

@@ -13,10 +13,10 @@ internal class CosdV8FamilialCancerSyndromeIndicator : OmopObservation<CosdV8Fam
     [ConstantValue(44782478, "Hereditary cancer-predisposing syndrome")]
     public override int[]? observation_concept_id { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.Date))]
-    public override DateTime? observation_date { get; set; }
+    [CopyValue(nameof(Source.Date))]
+    public override DateOnly? observation_date { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.Date))]
+    [CopyValue(nameof(Source.Date))]
     public override DateTime? observation_datetime { get; set; }
 
     [ConstantValue(32828, "`EHR episode record`")]

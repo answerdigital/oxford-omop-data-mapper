@@ -261,6 +261,21 @@ internal class RecordTransformer : IRecordTransformer
                     return;
                 }
             }
+
+            if (property.PropertyType == typeof(DateTime) || property.PropertyType == typeof(DateTime?))
+            {
+                if (value is DateTime dateTime)
+                {
+                    property.SetValue(record, dateTime);
+                    return;
+                }
+                
+                if (value is DateOnly dateOnly)
+                {
+                    property.SetValue(record, dateOnly.ToDateTime(default));
+                    return;
+                }
+            }
         }
 
         throw new NotSupportedException($"Cannot set value of type {value.GetType()} to property of type {property.PropertyType}");

@@ -1,11 +1,10 @@
 ﻿using OmopTransformer.Annotations;
-using OmopTransformer.COSD.Demographics;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.COSD;
+namespace OmopTransformer.COSD.DemographicsV9;
 
-internal class CosdPerson : OmopPerson<CosdDemographics>
+internal class CosdPersonV9 : OmopPerson<CosdDemographicsV9>
 {
     [CopyValue(nameof(Source.NhsNumber))]
     public override string? person_source_value { get; set; }

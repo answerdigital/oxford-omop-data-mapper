@@ -9,7 +9,8 @@ using OmopTransformer.COSD.ConditionOccurrence.CosdV8ConditionOccurrencePrimaryD
 using OmopTransformer.COSD.Death.v8Death;
 using OmopTransformer.COSD.Death.v9DeathBasisOfDiagnosisCancer;
 using OmopTransformer.COSD.Death.v9DeathDischargeDestination;
-using OmopTransformer.COSD.Demographics;
+using OmopTransformer.COSD.DemographicsV8;
+using OmopTransformer.COSD.DemographicsV9;
 using OmopTransformer.COSD.Measurements.CosdV8MeasurementGradeOfDifferentiation;
 using OmopTransformer.COSD.Measurements.CosdV8MeasurementMcategoryFinalPreTreatmentStage;
 using OmopTransformer.COSD.Measurements.CosdV8MeasurementMcategoryIntegratedStage;
@@ -87,23 +88,23 @@ internal class CosdTransformer : Transformer
     private readonly IMeasurementRecorder _measurementRecorder;
 
     public CosdTransformer(
-        IRecordTransformer recordTransformer, 
-        TransformOptions transformOptions, 
-        IRecordProvider recordProvider, 
-        ILocationRecorder locationRecorder, 
-        IPersonRecorder personRecorder, 
-        IDeathRecorder deathRecorder, 
-        IConditionOccurrenceRecorder conditionOccurrenceRecorder, 
-        IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
-        IObservationRecorder observationRecorder, 
+        IRecordTransformer recordTransformer,
+        TransformOptions transformOptions,
+        IRecordProvider recordProvider,
+        ILocationRecorder locationRecorder,
+        IPersonRecorder personRecorder,
+        IDeathRecorder deathRecorder,
+        IConditionOccurrenceRecorder conditionOccurrenceRecorder,
+        IProcedureOccurrenceRecorder procedureOccurrenceRecorder,
+        IObservationRecorder observationRecorder,
         IMeasurementRecorder measurementRecorder,
         IRunAnalysisRecorder runAnalysisRecorder,
-        ILoggerFactory loggerFactory) 
-        : 
+        ILoggerFactory loggerFactory)
+        :
         base(
-            recordTransformer, 
-            transformOptions, 
-            recordProvider, 
+            recordTransformer,
+            transformOptions,
+            recordProvider,
             "COSD",
             runAnalysisRecorder,
             loggerFactory)
@@ -121,15 +122,27 @@ internal class CosdTransformer : Transformer
     {
         Guid runId = Guid.NewGuid();
 
-        await Transform<CosdDemographics, CosdPerson>(
+        await Transform<CosdDemographicsV9, CosdPersonV9>(
             _personRecorder.InsertUpdatePersons,
-            "COSD Person",
+            "COSD V9 Person",
             runId,
             cancellationToken);
 
-        await Transform<CosdDemographics, CosdLocation>(
+        await Transform<CosdDemographicsV8, CosdPersonV8>(
+            _personRecorder.InsertUpdatePersons,
+            "COSD V8 Person",
+            runId,
+            cancellationToken);
+        
+        await Transform<CosdDemographicsV8, CosdV8Location>(
             _locationRecorder.InsertUpdateLocations,
-            "COSD Location",
+            "COSD V8 Location",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdDemographicsV9, CosdLocationV9>(
+            _locationRecorder.InsertUpdateLocations,
+            "COSD V9 Location",
             runId,
             cancellationToken);
 
@@ -511,7 +524,7 @@ internal class CosdTransformer : Transformer
             runId,
             cancellationToken);
 
-        await Transform< CosdV9MeasurementTumourLateralityRecord, CosdV9MeasurementTumourLaterality>(
+        await Transform<CosdV9MeasurementTumourLateralityRecord, CosdV9MeasurementTumourLaterality>(
             _measurementRecorder.InsertUpdateMeasurements,
             "CosdV9MeasurementTumourLaterality",
             runId,

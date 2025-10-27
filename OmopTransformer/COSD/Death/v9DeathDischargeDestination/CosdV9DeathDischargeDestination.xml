@@ -1,32 +1,19 @@
 ﻿<Query>
     <Sql>
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-	CosdRecords as ( 
-
-	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-)
-select
-	distinct
-		Node.value('(*/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-		coalesce
-		(
-			Node.value('(/*/Treatment/DischargeDateHospitalProviderSpell)[1]', 'varchar(max)'),
-			datefromparts
-			(
-				year(convert(datetime, Node.value('(/*/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)'))),
-				12,
-				31
-			)
-		) as DeathDate
-from CosdRecords
-where Node.value('(/*/Treatment/DischargeDestinationHospitalProviderSpell/@code)[1]', 'varchar(max)') = 79 -- Not applicable - PATIENT died or stillbirth
+		--fail
+	    select distinct
+    Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+    coalesce(
+        cast(Record ->> '$.Treatment.DischargeDateHospitalProviderSpell' as date),
+        make_date(
+            cast(extract(year from cast(Record ->> '$.Treatment.TreatmentStartDateCancer' as date)) as integer),
+            12,
+            31
+        )
+    ) as DeathDate
+from omop_staging.cosd_staging_901
+where type = 'CO'
+  and (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code') = '79';-- Not applicable - PATIENT died or stillbirth
 	</Sql>
 	<Explanations>
 		<Explanation columnName="NhsNumber">

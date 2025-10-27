@@ -20,8 +20,8 @@ internal class SusAESourceOfReferralForAE : OmopObservation<SusAESourceOfReferra
     [ConstantValue(4258129, "Referral by")]
     public override int[]? observation_concept_id { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.ArrivalDate))]
-    public override DateTime? observation_date { get; set; }
+    [Transform(typeof(DateOnlyConverter), nameof(Source.ArrivalDate))]
+    public override DateOnly? observation_date { get; set; }
 
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.ArrivalDate), nameof(Source.ArrivalTime))]
     public override DateTime? observation_datetime { get; set; }

@@ -12,12 +12,12 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n\tXMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),\n\tCosdRecords as ( \n\n\tselect\n\t\tT.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n\t\tT.staging.query('.') as Node\n\tfrom omop_staging.cosd_staging\n\tcross apply content.nodes('COSD81:COSD/*') as T(staging)\n\twhere T.staging.exist('Id/@root') = 1\n\t\tand Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n\t\tand substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\tId,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreDemographics/PersonStatedSexualOrientationCodeAtDiagnosis/@code)[1]', 'varchar(max)') as PersonStatedSexualOrientationCodeAtDiagnosis,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber\n  from CosdRecords\n)\nselect\n      distinct\n          PersonStatedSexualOrientationCodeAtDiagnosis,\n          NhsNumber,\n          (\n              select\n                  min (i) as [Date]\n              from\n              (\n                values\n                (ClinicalDateCancerDiagnosis),\n                (CancerTreatmentStartDate),\n                (ProcedureDate)\n              ) as T(i)\n          ) as [Date]\nfrom CO o\nwhere o.PersonStatedSexualOrientationCodeAtDiagnosis is not null\n  and not (\n\t\tClinicalDateCancerDiagnosis is null and\n\t\tCancerTreatmentStartDate is null and\n\t\tProcedureDate is null\n)\n    ",
+      "query": "\nwith CO as (\nselect \nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreDemographics.PersonStatedSexualOrientationCodeAtDiagnosis.@code' as PersonStatedSexualOrientationCodeAtDiagnosis,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.CancerTreatmentStartDate' as CancerTreatmentStartDate,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber\nfrom omop_staging.cosd_staging_81\nwhere Type = 'CO'\n)\nselect\n      distinct\n          PersonStatedSexualOrientationCodeAtDiagnosis,\n          NhsNumber,\n          least(\n                cast (ClinicalDateCancerDiagnosis as date),\n                cast (ProcedureDate as date),\n                cast (CancerTreatmentStartDate as date)\n          ) as Date\nfrom CO o\nwhere o.PersonStatedSexualOrientationCodeAtDiagnosis is not null\n  and not (\n\t\tClinicalDateCancerDiagnosis is null and\n\t\tProcedureDate is null and\n\t\tCancerTreatmentStartDate is null\n    )\n--tested \n    ",
       "lookup_table_markdown": null
     },
     {
@@ -29,7 +29,7 @@
     },
     {
       "name": "observation_date",
-      "operation_description": "Converts text to dates.",
+      "operation_description": "Value copied from `Date`",
       "dataSource": [
         {
           "name": "Date",
@@ -37,25 +37,25 @@
           "origins": [
             {
               "origin": "DIAGNOSIS DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html"
+              "url": null
             },
             {
               "origin": "TREATMENT START DATE (CANCER)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html"
+              "url": null
             },
             {
               "origin": "PROCEDURE DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n\tXMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),\n\tCosdRecords as ( \n\n\tselect\n\t\tT.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n\t\tT.staging.query('.') as Node\n\tfrom omop_staging.cosd_staging\n\tcross apply content.nodes('COSD81:COSD/*') as T(staging)\n\twhere T.staging.exist('Id/@root') = 1\n\t\tand Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n\t\tand substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\tId,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreDemographics/PersonStatedSexualOrientationCodeAtDiagnosis/@code)[1]', 'varchar(max)') as PersonStatedSexualOrientationCodeAtDiagnosis,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber\n  from CosdRecords\n)\nselect\n      distinct\n          PersonStatedSexualOrientationCodeAtDiagnosis,\n          NhsNumber,\n          (\n              select\n                  min (i) as [Date]\n              from\n              (\n                values\n                (ClinicalDateCancerDiagnosis),\n                (CancerTreatmentStartDate),\n                (ProcedureDate)\n              ) as T(i)\n          ) as [Date]\nfrom CO o\nwhere o.PersonStatedSexualOrientationCodeAtDiagnosis is not null\n  and not (\n\t\tClinicalDateCancerDiagnosis is null and\n\t\tCancerTreatmentStartDate is null and\n\t\tProcedureDate is null\n)\n    ",
+      "query": "\nwith CO as (\nselect \nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreDemographics.PersonStatedSexualOrientationCodeAtDiagnosis.@code' as PersonStatedSexualOrientationCodeAtDiagnosis,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.CancerTreatmentStartDate' as CancerTreatmentStartDate,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber\nfrom omop_staging.cosd_staging_81\nwhere Type = 'CO'\n)\nselect\n      distinct\n          PersonStatedSexualOrientationCodeAtDiagnosis,\n          NhsNumber,\n          least(\n                cast (ClinicalDateCancerDiagnosis as date),\n                cast (ProcedureDate as date),\n                cast (CancerTreatmentStartDate as date)\n          ) as Date\nfrom CO o\nwhere o.PersonStatedSexualOrientationCodeAtDiagnosis is not null\n  and not (\n\t\tClinicalDateCancerDiagnosis is null and\n\t\tProcedureDate is null and\n\t\tCancerTreatmentStartDate is null\n    )\n--tested \n    ",
       "lookup_table_markdown": null
     },
     {
       "name": "observation_datetime",
-      "operation_description": "Converts text to dates.",
+      "operation_description": "Value copied from `Date`",
       "dataSource": [
         {
           "name": "Date",
@@ -63,20 +63,20 @@
           "origins": [
             {
               "origin": "DIAGNOSIS DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html"
+              "url": null
             },
             {
               "origin": "TREATMENT START DATE (CANCER)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html"
+              "url": null
             },
             {
               "origin": "PROCEDURE DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n\tXMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),\n\tCosdRecords as ( \n\n\tselect\n\t\tT.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n\t\tT.staging.query('.') as Node\n\tfrom omop_staging.cosd_staging\n\tcross apply content.nodes('COSD81:COSD/*') as T(staging)\n\twhere T.staging.exist('Id/@root') = 1\n\t\tand Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n\t\tand substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\tId,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreDemographics/PersonStatedSexualOrientationCodeAtDiagnosis/@code)[1]', 'varchar(max)') as PersonStatedSexualOrientationCodeAtDiagnosis,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber\n  from CosdRecords\n)\nselect\n      distinct\n          PersonStatedSexualOrientationCodeAtDiagnosis,\n          NhsNumber,\n          (\n              select\n                  min (i) as [Date]\n              from\n              (\n                values\n                (ClinicalDateCancerDiagnosis),\n                (CancerTreatmentStartDate),\n                (ProcedureDate)\n              ) as T(i)\n          ) as [Date]\nfrom CO o\nwhere o.PersonStatedSexualOrientationCodeAtDiagnosis is not null\n  and not (\n\t\tClinicalDateCancerDiagnosis is null and\n\t\tCancerTreatmentStartDate is null and\n\t\tProcedureDate is null\n)\n    ",
+      "query": "\nwith CO as (\nselect \nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreDemographics.PersonStatedSexualOrientationCodeAtDiagnosis.@code' as PersonStatedSexualOrientationCodeAtDiagnosis,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.CancerTreatmentStartDate' as CancerTreatmentStartDate,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber\nfrom omop_staging.cosd_staging_81\nwhere Type = 'CO'\n)\nselect\n      distinct\n          PersonStatedSexualOrientationCodeAtDiagnosis,\n          NhsNumber,\n          least(\n                cast (ClinicalDateCancerDiagnosis as date),\n                cast (ProcedureDate as date),\n                cast (CancerTreatmentStartDate as date)\n          ) as Date\nfrom CO o\nwhere o.PersonStatedSexualOrientationCodeAtDiagnosis is not null\n  and not (\n\t\tClinicalDateCancerDiagnosis is null and\n\t\tProcedureDate is null and\n\t\tCancerTreatmentStartDate is null\n    )\n--tested \n    ",
       "lookup_table_markdown": null
     },
     {
@@ -96,12 +96,12 @@
           "origins": [
             {
               "origin": "PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_stated_sexual_orientation_code__at_diagnosis_.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n\tXMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),\n\tCosdRecords as ( \n\n\tselect\n\t\tT.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n\t\tT.staging.query('.') as Node\n\tfrom omop_staging.cosd_staging\n\tcross apply content.nodes('COSD81:COSD/*') as T(staging)\n\twhere T.staging.exist('Id/@root') = 1\n\t\tand Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'\n\t\tand substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\tId,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreDemographics/PersonStatedSexualOrientationCodeAtDiagnosis/@code)[1]', 'varchar(max)') as PersonStatedSexualOrientationCodeAtDiagnosis,\n\t\tNode.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber\n  from CosdRecords\n)\nselect\n      distinct\n          PersonStatedSexualOrientationCodeAtDiagnosis,\n          NhsNumber,\n          (\n              select\n                  min (i) as [Date]\n              from\n              (\n                values\n                (ClinicalDateCancerDiagnosis),\n                (CancerTreatmentStartDate),\n                (ProcedureDate)\n              ) as T(i)\n          ) as [Date]\nfrom CO o\nwhere o.PersonStatedSexualOrientationCodeAtDiagnosis is not null\n  and not (\n\t\tClinicalDateCancerDiagnosis is null and\n\t\tCancerTreatmentStartDate is null and\n\t\tProcedureDate is null\n)\n    ",
+      "query": "\nwith CO as (\nselect \nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreDemographics.PersonStatedSexualOrientationCodeAtDiagnosis.@code' as PersonStatedSexualOrientationCodeAtDiagnosis,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.CancerTreatmentStartDate' as CancerTreatmentStartDate,\nRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber\nfrom omop_staging.cosd_staging_81\nwhere Type = 'CO'\n)\nselect\n      distinct\n          PersonStatedSexualOrientationCodeAtDiagnosis,\n          NhsNumber,\n          least(\n                cast (ClinicalDateCancerDiagnosis as date),\n                cast (ProcedureDate as date),\n                cast (CancerTreatmentStartDate as date)\n          ) as Date\nfrom CO o\nwhere o.PersonStatedSexualOrientationCodeAtDiagnosis is not null\n  and not (\n\t\tClinicalDateCancerDiagnosis is null and\n\t\tProcedureDate is null and\n\t\tCancerTreatmentStartDate is null\n    )\n--tested \n    ",
       "lookup_table_markdown": null
     }
   ]

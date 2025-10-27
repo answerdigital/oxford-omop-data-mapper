@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Dapper;
+using DuckDB.NET.Data;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OmopTransformer.Annotations;
 using System.Collections.ObjectModel;
-using Dapper;
-using DuckDB.NET.Data;
 using Query = OmopTransformer.Transformation.Query;
 
 namespace OmopTransformer;
@@ -102,7 +102,9 @@ internal class RecordProvider : IRecordProvider
     {
         _logger.LogInformation("Running query. Pagination disabled (order by clause missing).");
 
-        var results = await connection.QueryAsync<T>(queryText, cancellationToken);
+        var command = new CommandDefinition(queryText, cancellationToken: cancellationToken);
+
+        var results = await connection.QueryAsync<T>(command);
 
         return results.ToList().AsReadOnly();
     }

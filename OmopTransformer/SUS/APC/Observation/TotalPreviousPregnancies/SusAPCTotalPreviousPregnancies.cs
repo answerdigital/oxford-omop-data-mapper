@@ -23,8 +23,8 @@ internal class SusAPCTotalPreviousPregnancies : OmopObservation<SusAPCTotalPrevi
     [ConstantValue(4078008, "Number of previous pregnancies")]
     public override int[]? observation_concept_id { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.observation_date))]
-    public override DateTime? observation_date { get; set; }
+    [Transform(typeof(DateOnlyConverter), nameof(Source.observation_date))]
+    public override DateOnly? observation_date { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.observation_date))]
     public override DateTime? observation_datetime { get; set; }

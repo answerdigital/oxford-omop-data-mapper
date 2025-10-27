@@ -12,12 +12,12 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('.') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD901:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalRecord/PrimaryPathway/Diagnosis/GradeOfDifferentiationAtDiagnosis/@code)[1]', 'varchar(max)') as GradeOfDifferentiationAtDiagnosis\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tDateOfPrimaryDiagnosisClinicallyAgreed,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
+      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,\n        Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' as GradeOfDifferentiationAtDiagnosis,\nfrom omop_staging.cosd_staging_901\nwhere Type = 'CO'\n  and GradeOfDifferentiationAtDiagnosis is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -30,12 +30,12 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('.') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD901:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalRecord/PrimaryPathway/Diagnosis/GradeOfDifferentiationAtDiagnosis/@code)[1]', 'varchar(max)') as GradeOfDifferentiationAtDiagnosis\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tDateOfPrimaryDiagnosisClinicallyAgreed,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
+      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,\n        Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' as GradeOfDifferentiationAtDiagnosis,\nfrom omop_staging.cosd_staging_901\nwhere Type = 'CO'\n  and GradeOfDifferentiationAtDiagnosis is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -48,12 +48,12 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('.') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD901:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalRecord/PrimaryPathway/Diagnosis/GradeOfDifferentiationAtDiagnosis/@code)[1]', 'varchar(max)') as GradeOfDifferentiationAtDiagnosis\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tDateOfPrimaryDiagnosisClinicallyAgreed,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
+      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,\n        Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' as GradeOfDifferentiationAtDiagnosis,\nfrom omop_staging.cosd_staging_901\nwhere Type = 'CO'\n  and GradeOfDifferentiationAtDiagnosis is not null\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -73,12 +73,12 @@
           "origins": [
             {
               "origin": "GRADE OF DIFFERENTIATION (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('.') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD901:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalRecord/PrimaryPathway/Diagnosis/GradeOfDifferentiationAtDiagnosis/@code)[1]', 'varchar(max)') as GradeOfDifferentiationAtDiagnosis\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tDateOfPrimaryDiagnosisClinicallyAgreed,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
+      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,\n        Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' as GradeOfDifferentiationAtDiagnosis,\nfrom omop_staging.cosd_staging_901\nwhere Type = 'CO'\n  and GradeOfDifferentiationAtDiagnosis is not null\n\t",
       "lookup_table_markdown": "\r\n\r\n|GradeOfDifferentiationAtDiagnosis|measurement_concept_id|notes|\r\n|------|-----|-----|\r\n|GX||GX grade|\r\n|G1|36768162|Grade 1: Well differentiated|\r\n|G2|36770626|Grade 2: Moderately differentiated|\r\n|G3|36769666|Grade 3: Poorly differentiated|\r\n|G4|36769737|Grade 4: Undifferentiated|\r\n\r\nNotes\r\n* [OMOP Grade Differentiation](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&conceptClass=Histopattern&page=1&pageSize=500&query=grade&boosts)\r\n* [NHS - Grade of Differentiation (At Diagnosis)](https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html?hl=grade%2Cdifferentiation)\r\n"
     },
     {
@@ -91,12 +91,12 @@
           "origins": [
             {
               "origin": "GRADE OF DIFFERENTIATION (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n    CosdRecords as ( \n\n    select\n            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n            T.staging.query('.') as Node\n    from omop_staging.cosd_staging\n    cross apply content.nodes('COSD901:COSD/*') as T(staging)\n    where T.staging.exist('Id/@root') = 1\n            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n            and substring (FileName, 15, 2) = 'CO'\n), CO as (\n\tselect\n\t\t\tId,\n\t\t\tNode.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\t\tNode.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,\n\t\t\tNode.value('(ColorectalRecord/PrimaryPathway/Diagnosis/GradeOfDifferentiationAtDiagnosis/@code)[1]', 'varchar(max)') as GradeOfDifferentiationAtDiagnosis\n\tfrom CosdRecords\n)\nselect distinct\n\tNhsNumber,\n\tDateOfPrimaryDiagnosisClinicallyAgreed,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
+      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,\n        Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' as GradeOfDifferentiationAtDiagnosis,\nfrom omop_staging.cosd_staging_901\nwhere Type = 'CO'\n  and GradeOfDifferentiationAtDiagnosis is not null\n\t",
       "lookup_table_markdown": null
     }
   ]

@@ -12,12 +12,12 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n\tXMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n\tCosdRecords as ( \n\n\tselect\n\t\tT.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n\t\tT.staging.query('.') as Node\n\tfrom omop_staging.cosd_staging\n\tcross apply content.nodes('COSD901:COSD/*') as T(staging)\n\twhere T.staging.exist('Id/@root') = 1\n\t\tand Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n)\nselect\n\tdistinct\n\t\tNode.value('(*/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\tcoalesce\n\t\t(\n\t\t\tNode.value('(/*/Treatment/DischargeDateHospitalProviderSpell)[1]', 'varchar(max)'),\n\t\t\tdatefromparts\n\t\t\t(\n\t\t\t\tyear(convert(datetime, Node.value('(/*/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)'))),\n\t\t\t\t12,\n\t\t\t\t31\n\t\t\t)\n\t\t) as DeathDate\nfrom CosdRecords\nwhere Node.value('(/*/Treatment/DischargeDestinationHospitalProviderSpell/@code)[1]', 'varchar(max)') = 79 -- Not applicable - PATIENT died or stillbirth\n\t",
+      "query": "\n\t\t--fail\n\t    select distinct\n    Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n    coalesce(\n        cast(Record ->> '$.Treatment.DischargeDateHospitalProviderSpell' as date),\n        make_date(\n            cast(extract(year from cast(Record ->> '$.Treatment.TreatmentStartDateCancer' as date)) as integer),\n            12,\n            31\n        )\n    ) as DeathDate\nfrom omop_staging.cosd_staging_901\nwhere type = 'CO'\n  and (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code') = '79';-- Not applicable - PATIENT died or stillbirth\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -30,16 +30,16 @@
           "origins": [
             {
               "origin": "DISCHARGE DATE (HOSPITAL PROVIDER SPELL)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html"
+              "url": null
             },
             {
               "origin": "TREATMENT START DATE (CANCER)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n\tXMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n\tCosdRecords as ( \n\n\tselect\n\t\tT.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n\t\tT.staging.query('.') as Node\n\tfrom omop_staging.cosd_staging\n\tcross apply content.nodes('COSD901:COSD/*') as T(staging)\n\twhere T.staging.exist('Id/@root') = 1\n\t\tand Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n)\nselect\n\tdistinct\n\t\tNode.value('(*/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\tcoalesce\n\t\t(\n\t\t\tNode.value('(/*/Treatment/DischargeDateHospitalProviderSpell)[1]', 'varchar(max)'),\n\t\t\tdatefromparts\n\t\t\t(\n\t\t\t\tyear(convert(datetime, Node.value('(/*/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)'))),\n\t\t\t\t12,\n\t\t\t\t31\n\t\t\t)\n\t\t) as DeathDate\nfrom CosdRecords\nwhere Node.value('(/*/Treatment/DischargeDestinationHospitalProviderSpell/@code)[1]', 'varchar(max)') = 79 -- Not applicable - PATIENT died or stillbirth\n\t",
+      "query": "\n\t\t--fail\n\t    select distinct\n    Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n    coalesce(\n        cast(Record ->> '$.Treatment.DischargeDateHospitalProviderSpell' as date),\n        make_date(\n            cast(extract(year from cast(Record ->> '$.Treatment.TreatmentStartDateCancer' as date)) as integer),\n            12,\n            31\n        )\n    ) as DeathDate\nfrom omop_staging.cosd_staging_901\nwhere type = 'CO'\n  and (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code') = '79';-- Not applicable - PATIENT died or stillbirth\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -52,16 +52,16 @@
           "origins": [
             {
               "origin": "DISCHARGE DATE (HOSPITAL PROVIDER SPELL)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/discharge_date__hospital_provider_spell_.html"
+              "url": null
             },
             {
               "origin": "TREATMENT START DATE (CANCER)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html"
+              "url": null
             }
           ]
         }
       ],
-      "query": "\n;with \n\tXMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),\n\tCosdRecords as ( \n\n\tselect\n\t\tT.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,\n\t\tT.staging.query('.') as Node\n\tfrom omop_staging.cosd_staging\n\tcross apply content.nodes('COSD901:COSD/*') as T(staging)\n\twhere T.staging.exist('Id/@root') = 1\n\t\tand Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'\n)\nselect\n\tdistinct\n\t\tNode.value('(*/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,\n\t\tcoalesce\n\t\t(\n\t\t\tNode.value('(/*/Treatment/DischargeDateHospitalProviderSpell)[1]', 'varchar(max)'),\n\t\t\tdatefromparts\n\t\t\t(\n\t\t\t\tyear(convert(datetime, Node.value('(/*/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)'))),\n\t\t\t\t12,\n\t\t\t\t31\n\t\t\t)\n\t\t) as DeathDate\nfrom CosdRecords\nwhere Node.value('(/*/Treatment/DischargeDestinationHospitalProviderSpell/@code)[1]', 'varchar(max)') = 79 -- Not applicable - PATIENT died or stillbirth\n\t",
+      "query": "\n\t\t--fail\n\t    select distinct\n    Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n    coalesce(\n        cast(Record ->> '$.Treatment.DischargeDateHospitalProviderSpell' as date),\n        make_date(\n            cast(extract(year from cast(Record ->> '$.Treatment.TreatmentStartDateCancer' as date)) as integer),\n            12,\n            31\n        )\n    ) as DeathDate\nfrom omop_staging.cosd_staging_901\nwhere type = 'CO'\n  and (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code') = '79';-- Not applicable - PATIENT died or stillbirth\n\t",
       "lookup_table_markdown": null
     },
     {

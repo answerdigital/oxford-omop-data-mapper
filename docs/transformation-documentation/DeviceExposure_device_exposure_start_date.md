@@ -10,7 +10,7 @@ has_toc: false
 Source column  `AppointmentDate`.
 Converts text to dates.
 
-* `AppointmentDate` Appointment Date. [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
+* `AppointmentDate` Appointment Date. [APPOINTMENT DATE]()
 
 ```sql
 	select
@@ -34,7 +34,7 @@ Converts text to dates.
 Source column  `DeviceExposureStartDate`.
 Converts text to dates.
 
-* `DeviceExposureStartDate` Start date of the Device [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
+* `DeviceExposureStartDate` Start date of the Device [CRITICAL CARE START DATE]()
 
 ```sql
 		select distinct
@@ -60,7 +60,7 @@ Converts text to dates.
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
 
 ```sql
 select
@@ -82,7 +82,7 @@ where NHSNumber is not null
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
 
 ```sql
 	select
@@ -104,7 +104,7 @@ Converts text to dates.
 Source column  `StartDate`.
 Converts text to dates.
 
-* `StartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
+* `StartDate` Start date of the episode. [START DATE (EPISODE)]()
 
 ```sql
 	select

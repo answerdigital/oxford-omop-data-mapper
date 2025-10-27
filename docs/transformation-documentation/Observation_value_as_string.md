@@ -9,7 +9,7 @@ has_toc: false
 ### SUS OP Source Of Referral For Outpatients
 * Value copied from `ReferrerCode`
 
-* `ReferrerCode` Referrer code is the code of the person making the referral request. [REFERRER CODE](https://www.datadictionary.nhs.uk/data_elements/referrer_code.html)
+* `ReferrerCode` Referrer code is the code of the person making the referral request. [REFERRER CODE]()
 
 ```sql
 select
@@ -35,7 +35,7 @@ order by NHSNumber,
 ### SUS OP Referral Received Date For Outpatients
 * Value copied from `ReferralRequestReceivedDate`
 
-* `ReferralRequestReceivedDate` The date the Referral request was received by the Health Care Provider. [REFERRAL REQUEST RECEIVED DATE](https://www.datadictionary.nhs.uk/data_elements/referral_request_received_date.html)
+* `ReferralRequestReceivedDate` The date the Referral request was received by the Health Care Provider. [REFERRAL REQUEST RECEIVED DATE]()
 
 ```sql
 	select
@@ -61,7 +61,7 @@ order by NHSNumber,
 ### SUS Outpatient Carer Support Indicator Observation
 * Value copied from `CarerSupportIndicator`
 
-* `CarerSupportIndicator` An indication of whether Carer support is available to the PATIENT at their normal residence. [CARER SUPPORT INDICATOR](https://www.datadictionary.nhs.uk/data_elements/carer_support_indicator.html)
+* `CarerSupportIndicator` An indication of whether Carer support is available to the PATIENT at their normal residence. [CARER SUPPORT INDICATOR]()
 
 ```sql
 select 
@@ -85,7 +85,7 @@ group by
 ### SUS Inpatient Total Previous Pregnancies Observation
 * Value copied from `TotalPreviousPregnancies`
 
-* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES](https://www.datadictionary.nhs.uk/data_elements/pregnancy_total_previous_pregnancies.html)
+* `TotalPreviousPregnancies` PREGNANCY TOTAL PREVIOUS PREGNANCIES is the number of previous pregnancies resulting in one or more REGISTRABLE BIRTHS. [PREGNANCY TOTAL PREVIOUS PREGNANCIES]()
 
 ```sql
 select 
@@ -112,7 +112,7 @@ group by
 ### SUS APC Source Of Referral For Inpatients
 * Value copied from `ReferrerCode`
 
-* `ReferrerCode` Referrer code is the code of the person making the referral request. [REFERRER CODE](https://www.datadictionary.nhs.uk/data_elements/referrer_code.html)
+* `ReferrerCode` Referrer code is the code of the person making the referral request. [REFERRER CODE]()
 
 ```sql
 select	
@@ -131,7 +131,7 @@ where NHSNumber is not null
 ### SUS APC Referral Received Date For Inpatients
 * Value copied from `ReferralToTreatmentPeriodStartDate`
 
-* `ReferralToTreatmentPeriodStartDate` The start date of a REFERRAL TO TREATMENT PERIOD . [REFERRAL TO TREATMENT PERIOD START DATE](https://www.datadictionary.nhs.uk/data_elements/referral_to_treatment_period_start_date.html)
+* `ReferralToTreatmentPeriodStartDate` The start date of a REFERRAL TO TREATMENT PERIOD . [REFERRAL TO TREATMENT PERIOD START DATE]()
 
 ```sql
 	select
@@ -151,7 +151,7 @@ where NHSNumber is not null
 ### SUS Inpatient Carer Support Indicator Observation
 * Value copied from `CarerSupportIndicator`
 
-* `CarerSupportIndicator` An indication of whether Carer support is available to the PATIENT at their normal residence. [CARER SUPPORT INDICATOR](https://www.datadictionary.nhs.uk/data_elements/carer_support_indicator.html)
+* `CarerSupportIndicator` An indication of whether Carer support is available to the PATIENT at their normal residence. [CARER SUPPORT INDICATOR]()
 
 ```sql
 select 
@@ -176,7 +176,7 @@ group by
 ### Sus APC Birth Weight Observation
 * Value copied from `BirthWeight`
 
-* `BirthWeight` BIRTH WEIGHT is the result of the Clinical Investigation which measures the Birth Weight, where the UNIT OF MEASUREMENT is Grams (g). [BIRTH WEIGHT](https://www.datadictionary.nhs.uk/data_elements/birth_weight.html)
+* `BirthWeight` BIRTH WEIGHT is the result of the Clinical Investigation which measures the Birth Weight, where the UNIT OF MEASUREMENT is Grams (g). [BIRTH WEIGHT]()
 
 ```sql
 select 
@@ -204,7 +204,7 @@ group by
 ### SUS APC Anaesthetic Given Post Labour Delivery Observation
 * Value copied from `AnaestheticGivenPostLabourDelivery`
 
-* `AnaestheticGivenPostLabourDelivery` Records whether anaesthetic was given after Delivery, and the type used. [ANAESTHETIC GIVEN POST LABOUR OR DELIVERY CODE](https://www.datadictionary.nhs.uk/data_elements/anaesthetic_given_post_labour_or_delivery_code.html)
+* `AnaestheticGivenPostLabourDelivery` Records whether anaesthetic was given after Delivery, and the type used. [ANAESTHETIC GIVEN POST LABOUR OR DELIVERY CODE]()
 
 ```sql
 select
@@ -230,7 +230,7 @@ group by
 ### SUS APC Anaesthetic During Labour Delivery Observation
 * Value copied from `AnaestheticDuringLabourDelivery`
 
-* `AnaestheticDuringLabourDelivery` Records whether anaesthetic was given during Labour/ Delivery, and the type used. [ANAESTHETIC GIVEN DURING LABOUR OR DELIVERY CODE](https://www.datadictionary.nhs.uk/data_elements/anaesthetic_given_during_labour_or_delivery_code.html)
+* `AnaestheticDuringLabourDelivery` Records whether anaesthetic was given during Labour/ Delivery, and the type used. [ANAESTHETIC GIVEN DURING LABOUR OR DELIVERY CODE]()
 
 ```sql
 select
@@ -334,54 +334,36 @@ and d.AccidentAndEmergencyDiagnosis in ('20','201')
 ### CosdV9SourceOfReferralForOutpatients
 * Value copied from `SourceOfReferralForOutpatients`
 
-* `SourceOfReferralForOutpatients` For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS. [SOURCE OF REFERRAL FOR OUT-PATIENTS](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients.html)
+* `SourceOfReferralForOutpatients` For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS. [SOURCE OF REFERRAL FOR OUT-PATIENTS]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-	CosdRecords as ( 
-
+with CO as (
 	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeenCancerSpecialist)[1]', 'varchar(max)') as DateFirstSeenCancerSpecialist,
-		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
-		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)') as StageDateFinalPretreatmentStage,
-		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateIntegratedStage)[1]', 'varchar(max)') as StageDateIntegratedStage,
-		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
-		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/SourceOfReferralForOut-patients/@code)[1]', 'varchar(max)') as SourceOfReferralForOutpatients,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+		Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+		Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+		Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+		  coalesce(Record ->> '$.Treatment[0].TreatmentStartDateCancer', Record ->> '$.Treatment.TreatmentStartDateCancer') as TreatmentStartDateCancer,
+		coalesce(Record ->> '$.Treatment[0].Surgery.ProcedureDate', Record ->> '$.Treatment.Surgery.ProcedureDate') as ProcedureDate,
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway."SourceOfReferralForOut-patients"."@code"' as SourceOfReferralForOutpatients,
+		Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+	from omop_staging.cosd_staging_901
+	where type = 'CO'
 )
 select
-      distinct
-          SourceOfReferralForOutpatients,
-          NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (DateFirstSeen),
-                (DateFirstSeenCancerSpecialist),
-                (DateOfPrimaryDiagnosisClinicallyAgreed),
-                (StageDateFinalPretreatmentStage),
-                (StageDateIntegratedStage),
-                (TreatmentStartDateCancer),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+	distinct
+		SourceOfReferralForOutpatients,
+		NhsNumber,
+		least(
+			cast(DateFirstSeen as date),
+			cast(DateFirstSeenCancerSpecialist as date),
+			cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+			cast(StageDateFinalPretreatmentStage as date),
+			cast(StageDateIntegratedStage as date),
+			cast(TreatmentStartDateCancer as date),
+			cast(ProcedureDate as date)
+		) as Date
 from CO o
 where o.SourceOfReferralForOutpatients is not null
   and not (
@@ -392,7 +374,7 @@ where o.SourceOfReferralForOutpatients is not null
 		StageDateIntegratedStage is null and
 		TreatmentStartDateCancer is null and
 		ProcedureDate is null
-)
+    );
 ```
 
 
@@ -400,54 +382,36 @@ where o.SourceOfReferralForOutpatients is not null
 ### CosdV9SourceOfReferralForNonPrimaryCancerPathway
 * Value copied from `SourceOfReferralForNonPrimaryCancerPathway`
 
-* `SourceOfReferralForNonPrimaryCancerPathway` SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY) identifies the source of referral for a Non Primary Cancer Pathway. [SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY)](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients__non_primary_cancer_pathway_.html)
+* `SourceOfReferralForNonPrimaryCancerPathway` SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY) identifies the source of referral for a Non Primary Cancer Pathway. [SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY)]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-	CosdRecords as ( 
-
+with CO as (
 	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeenCancerSpecialist)[1]', 'varchar(max)') as DateFirstSeenCancerSpecialist,
-		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
-		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)') as StageDateFinalPretreatmentStage,
-		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateIntegratedStage)[1]', 'varchar(max)') as StageDateIntegratedStage,
-		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
-		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(ColorectalRecord/NonPrimaryPathway/NonPrimaryCancerPathwayReferral/SourceOfReferralForNonPrimaryCancerPathway/@code)[1]', 'varchar(max)') as SourceOfReferralForNonPrimaryCancerPathway,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+		Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+		Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+		Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+		coalesce(Record ->> '$.Treatment[0].TreatmentStartDateCancer', Record ->> '$.Treatment.TreatmentStartDateCancer') as TreatmentStartDateCancer,
+		coalesce(Record ->> '$.Treatment[0].Surgery.ProcedureDate', Record ->> '$.Treatment.Surgery.ProcedureDate') as ProcedureDate,
+		Record ->> '$.NonPrimaryPathway.NonPrimaryCancerPathwayReferral.SourceOfReferralForNonPrimaryCancerPathway.@code' as SourceOfReferralForNonPrimaryCancerPathway,
+		Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+	from omop_staging.cosd_staging_901
+	where type = 'CO'
 )
 select
-      distinct
-          SourceOfReferralForNonPrimaryCancerPathway,
-          NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (DateFirstSeen),
-                (DateFirstSeenCancerSpecialist),
-                (DateOfPrimaryDiagnosisClinicallyAgreed),
-                (StageDateFinalPretreatmentStage),
-                (StageDateIntegratedStage),
-                (TreatmentStartDateCancer),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+	distinct
+		SourceOfReferralForNonPrimaryCancerPathway,
+		NhsNumber,
+		least(
+			cast(DateFirstSeen as date),
+			cast(DateFirstSeenCancerSpecialist as date),
+			cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+			cast(StageDateFinalPretreatmentStage as date),
+			cast(StageDateIntegratedStage as date),
+			cast(TreatmentStartDateCancer as date),
+			cast(ProcedureDate as date)
+		) as Date
 from CO o
 where o.SourceOfReferralForNonPrimaryCancerPathway is not null
   and not (
@@ -458,7 +422,7 @@ where o.SourceOfReferralForNonPrimaryCancerPathway is not null
 		StageDateIntegratedStage is null and
 		TreatmentStartDateCancer is null and
 		ProcedureDate is null
-)
+    );
 ```
 
 
@@ -466,53 +430,35 @@ where o.SourceOfReferralForNonPrimaryCancerPathway is not null
 ### CosdV9PersonSexualOrientationCodeAtDiagnosis
 * Value copied from `PersonSexualOrientationCodeAtDiagnosis`
 
-* `PersonSexualOrientationCodeAtDiagnosis` PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS) is the PERSON STATED SEXUAL ORIENTATION CODE at the time of the PATIENT DIAGNOSIS. [PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/person_stated_sexual_orientation_code__at_diagnosis_.html)
+* `PersonSexualOrientationCodeAtDiagnosis` PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS) is the PERSON STATED SEXUAL ORIENTATION CODE at the time of the PATIENT DIAGNOSIS. [PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-	CosdRecords as ( 
-
+with CO as (
 	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
-		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
-		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(ColorectalRecord/Demographics/PersonSexualOrientationCodeAtDiagnosis/@code)[1]', 'varchar(max)') as PersonSexualOrientationCodeAtDiagnosis,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+		Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+		  coalesce(Record ->> '$.Treatment[0].TreatmentStartDateCancer', Record ->> '$.Treatment.TreatmentStartDateCancer') as TreatmentStartDateCancer,
+		coalesce(Record ->> '$.Treatment[0].Surgery.ProcedureDate', Record ->> '$.Treatment.Surgery.ProcedureDate') as ProcedureDate,
+		Record ->> '$.Demographics.PersonSexualOrientationCodeAtDiagnosis.@code' as PersonSexualOrientationCodeAtDiagnosis,
+		Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+	from omop_staging.cosd_staging_901
+	where type = 'CO'
 )
 select
-      distinct
-          PersonSexualOrientationCodeAtDiagnosis,
-          NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (DateOfPrimaryDiagnosisClinicallyAgreed),
-                (TreatmentStartDateCancer),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+	distinct
+		PersonSexualOrientationCodeAtDiagnosis,
+		NhsNumber,
+		least(
+			cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+			cast(TreatmentStartDateCancer as date),
+			cast(ProcedureDate as date)
+		) as Date
 from CO o
 where o.PersonSexualOrientationCodeAtDiagnosis is not null
   and not (
 		DateOfPrimaryDiagnosisClinicallyAgreed is null and
 		TreatmentStartDateCancer is null and
 		ProcedureDate is null
-)
+    );
 ```
 
 
@@ -520,54 +466,36 @@ where o.PersonSexualOrientationCodeAtDiagnosis is not null
 ### CosdV9HistoryOfAlcoholPast
 * Value copied from `HistoryOfAlcoholPast`
 
-* `HistoryOfAlcoholPast` The past history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER BEFORE LAST THREE MONTHS)](https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_before_last_three_months_.html)
+* `HistoryOfAlcoholPast` The past history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER BEFORE LAST THREE MONTHS)]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-	CosdRecords as ( 
-
+with CO as (
 	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeenCancerSpecialist)[1]', 'varchar(max)') as DateFirstSeenCancerSpecialist,
-		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
-		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)') as StageDateFinalPretreatmentStage,
-		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateIntegratedStage)[1]', 'varchar(max)') as StageDateIntegratedStage,
-		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
-		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(ColorectalRecord/ClinicalNurseSpecialistAndRiskFactorAssessments/HistoryOfAlcoholPast/@code)[1]', 'varchar(max)') as HistoryOfAlcoholPast,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+		Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+		Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+		Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+		  coalesce(Record ->> '$.Treatment[0].TreatmentStartDateCancer', Record ->> '$.Treatment.TreatmentStartDateCancer') as TreatmentStartDateCancer,
+		coalesce(Record ->> '$.Treatment[0].Surgery.ProcedureDate', Record ->> '$.Treatment.Surgery.ProcedureDate') as ProcedureDate,
+		Record ->> '$.ClinicalNurseSpecialistAndRiskFactorAssessments.HistoryOfAlcoholPast.@code' as HistoryOfAlcoholPast,
+		Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+	from omop_staging.cosd_staging_901
+	where type = 'CO'
 )
 select
-      distinct
-          HistoryOfAlcoholPast,
-          NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (DateFirstSeen),
-                (DateFirstSeenCancerSpecialist),
-                (DateOfPrimaryDiagnosisClinicallyAgreed),
-                (StageDateFinalPretreatmentStage),
-                (StageDateIntegratedStage),
-                (TreatmentStartDateCancer),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+	distinct
+		HistoryOfAlcoholPast,
+		NhsNumber,
+		least(
+			cast(DateFirstSeen as date),
+			cast(DateFirstSeenCancerSpecialist as date),
+			cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+			cast(StageDateFinalPretreatmentStage as date),
+			cast(StageDateIntegratedStage as date),
+			cast(TreatmentStartDateCancer as date),
+			cast(ProcedureDate as date)
+		) as Date
 from CO o
 where o.HistoryOfAlcoholPast is not null
   and not (
@@ -578,7 +506,7 @@ where o.HistoryOfAlcoholPast is not null
 		StageDateIntegratedStage is null and
 		TreatmentStartDateCancer is null and
 		ProcedureDate is null
-)
+    );
 ```
 
 
@@ -586,54 +514,36 @@ where o.HistoryOfAlcoholPast is not null
 ### CosdV9HistoryOfAlcoholCurrent
 * Value copied from `HistoryOfAlcoholCurrent`
 
-* `HistoryOfAlcoholCurrent` The current history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER IN LAST THREE MONTHS)](https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_in_last_three_months_.html)
+* `HistoryOfAlcoholCurrent` The current history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER IN LAST THREE MONTHS)]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-	CosdRecords as ( 
-
+with CO as (
 	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeenCancerSpecialist)[1]', 'varchar(max)') as DateFirstSeenCancerSpecialist,
-		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
-		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)') as StageDateFinalPretreatmentStage,
-		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateIntegratedStage)[1]', 'varchar(max)') as StageDateIntegratedStage,
-		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
-		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(ColorectalRecord/ClinicalNurseSpecialistAndRiskFactorAssessments/HistoryOfAlcoholCurrent/@code)[1]', 'varchar(max)') as HistoryOfAlcoholCurrent,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+		Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+		Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+		Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+		  coalesce(Record ->> '$.Treatment[0].TreatmentStartDateCancer', Record ->> '$.Treatment.TreatmentStartDateCancer') as TreatmentStartDateCancer,
+		coalesce(Record ->> '$.Treatment[0].Surgery.ProcedureDate', Record ->> '$.Treatment.Surgery.ProcedureDate') as ProcedureDate,
+		Record ->> '$.ClinicalNurseSpecialistAndRiskFactorAssessments.HistoryOfAlcoholCurrent.@code' as HistoryOfAlcoholCurrent,
+		Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+	from omop_staging.cosd_staging_901
+	where type = 'CO'
 )
 select
-      distinct
-          HistoryOfAlcoholCurrent,
-          NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (DateFirstSeen),
-                (DateFirstSeenCancerSpecialist),
-                (DateOfPrimaryDiagnosisClinicallyAgreed),
-                (StageDateFinalPretreatmentStage),
-                (StageDateIntegratedStage),
-                (TreatmentStartDateCancer),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+	distinct
+		HistoryOfAlcoholCurrent,
+		NhsNumber,
+		least(
+			cast(DateFirstSeen as date),
+			cast(DateFirstSeenCancerSpecialist as date),
+			cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+			cast(StageDateFinalPretreatmentStage as date),
+			cast(StageDateIntegratedStage as date),
+			cast(TreatmentStartDateCancer as date),
+			cast(ProcedureDate as date)
+		) as Date
 from CO o
 where o.HistoryOfAlcoholCurrent is not null
   and not (
@@ -644,7 +554,7 @@ where o.HistoryOfAlcoholCurrent is not null
 		StageDateIntegratedStage is null and
 		TreatmentStartDateCancer is null and
 		ProcedureDate is null
-)
+    );
 ```
 
 
@@ -652,54 +562,36 @@ where o.HistoryOfAlcoholCurrent is not null
 ### CosdV9FamilialCancerSyndrome
 * Value copied from `FamilialCancerSyndrome`
 
-* `FamilialCancerSyndrome` An indication of whether there is a possible or confirmed familial cancer syndrome during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME INDICATOR](https://www.datadictionary.nhs.uk/data_elements/familial_cancer_syndrome_indicator.html)
+* `FamilialCancerSyndrome` An indication of whether there is a possible or confirmed familial cancer syndrome during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME INDICATOR]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-	CosdRecords as ( 
-
+with CO as (
 	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeenCancerSpecialist)[1]', 'varchar(max)') as DateFirstSeenCancerSpecialist,
-		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
-		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)') as StageDateFinalPretreatmentStage,
-		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateIntegratedStage)[1]', 'varchar(max)') as StageDateIntegratedStage,
-		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
-		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(ColorectalRecord/PrimaryPathway/Diagnosis/DiagnosisAdditionalItems/FamilialCancerSyndrome/@code)[1]', 'varchar(max)') as FamilialCancerSyndrome,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+		Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+		Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+		Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+		  coalesce(Record ->> '$.Treatment[0].TreatmentStartDateCancer', Record ->> '$.Treatment.TreatmentStartDateCancer') as TreatmentStartDateCancer,
+		coalesce(Record ->> '$.Treatment[0].Surgery.ProcedureDate', Record ->> '$.Treatment.Surgery.ProcedureDate') as ProcedureDate,
+		Record ->> '$.PrimaryPathway.Diagnosis.DiagnosisAdditionalItems.FamilialCancerSyndrome.@code' as FamilialCancerSyndrome,
+		Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+	from omop_staging.cosd_staging_901
+	where type = 'CO'
 )
 select
-      distinct
-          FamilialCancerSyndrome,
-          NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (DateFirstSeen),
-                (DateFirstSeenCancerSpecialist),
-                (DateOfPrimaryDiagnosisClinicallyAgreed),
-                (StageDateFinalPretreatmentStage),
-                (StageDateIntegratedStage),
-                (TreatmentStartDateCancer),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+	distinct
+		FamilialCancerSyndrome,
+		NhsNumber,
+		least(
+			cast(DateFirstSeen as date),
+			cast(DateFirstSeenCancerSpecialist as date),
+			cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+			cast(StageDateFinalPretreatmentStage as date),
+			cast(StageDateIntegratedStage as date),
+			cast(TreatmentStartDateCancer as date),
+			cast(ProcedureDate as date)
+		) as Date
 from CO o
 where o.FamilialCancerSyndrome is not null
   and not (
@@ -710,7 +602,7 @@ where o.FamilialCancerSyndrome is not null
 		StageDateIntegratedStage is null and
 		TreatmentStartDateCancer is null and
 		ProcedureDate is null
-)
+    );
 ```
 
 
@@ -718,54 +610,36 @@ where o.FamilialCancerSyndrome is not null
 ### CosdV9FamilialCancerSyndromeSubsidiaryComment
 * Value copied from `FamilialCancerSyndromeSubsidiaryComment`
 
-* `FamilialCancerSyndromeSubsidiaryComment` FAMILIAL CANCER SYNDROME COMMENT is free text further information recorded where the FAMILIAL CANCER SYNDROME INDICATOR is National Code 'Y - Yes' or 'P - Possible', to identify distinct syndromes which may have different treatment decisions or outcomes that cannot be coded separately during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME COMMENT](https://www.datadictionary.nhs.uk/data_elements/familial_cancer_syndrome_comment.html)
+* `FamilialCancerSyndromeSubsidiaryComment` FAMILIAL CANCER SYNDROME COMMENT is free text further information recorded where the FAMILIAL CANCER SYNDROME INDICATOR is National Code 'Y - Yes' or 'P - Possible', to identify distinct syndromes which may have different treatment decisions or outcomes that cannot be coded separately during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME COMMENT]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-	CosdRecords as ( 
-
+with CO as (
 	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
-		Node.value('(ColorectalRecord/PrimaryPathway/ReferralAndFirstStageOfPatientPathway/DateFirstSeenCancerSpecialist)[1]', 'varchar(max)') as DateFirstSeenCancerSpecialist,
-		Node.value('(ColorectalRecord/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as DateOfPrimaryDiagnosisClinicallyAgreed,
-		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)') as StageDateFinalPretreatmentStage,
-		Node.value('(ColorectalRecord/PrimaryPathway/Staging/StageDateIntegratedStage)[1]', 'varchar(max)') as StageDateIntegratedStage,
-		Node.value('(ColorectalRecord/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)') as TreatmentStartDateCancer,
-		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(ColorectalRecord/PrimaryPathway/Diagnosis/DiagnosisAdditionalItems/FamilialCancerSyndromeSubsidiaryComment)[1]', 'varchar(max)') as FamilialCancerSyndromeSubsidiaryComment,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+		Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+		Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+		Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+		Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+		  coalesce(Record ->> '$.Treatment[0].TreatmentStartDateCancer', Record ->> '$.Treatment.TreatmentStartDateCancer') as TreatmentStartDateCancer,
+		coalesce(Record ->> '$.Treatment[0].Surgery.ProcedureDate', Record ->> '$.Treatment.Surgery.ProcedureDate') as ProcedureDate,
+		Record ->> '$.PrimaryPathway.Diagnosis.DiagnosisAdditionalItems.FamilialCancerSyndromeSubsidiaryComment.#cdata-section' as FamilialCancerSyndromeSubsidiaryComment,
+		Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+	from omop_staging.cosd_staging_901
+	where type = 'CO'
 )
 select
-      distinct
-          FamilialCancerSyndromeSubsidiaryComment,
-          NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (DateFirstSeen),
-                (DateFirstSeenCancerSpecialist),
-                (DateOfPrimaryDiagnosisClinicallyAgreed),
-                (StageDateFinalPretreatmentStage),
-                (StageDateIntegratedStage),
-                (TreatmentStartDateCancer),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+	distinct
+		FamilialCancerSyndromeSubsidiaryComment,
+		NhsNumber,
+		least(
+			cast(DateFirstSeen as date),
+			cast(DateFirstSeenCancerSpecialist as date),
+			cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+			cast(StageDateFinalPretreatmentStage as date),
+			cast(StageDateIntegratedStage as date),
+			cast(TreatmentStartDateCancer as date),
+			cast(ProcedureDate as date)
+		) as Date
 from CO o
 where o.FamilialCancerSyndromeSubsidiaryComment is not null
   and not (
@@ -776,7 +650,7 @@ where o.FamilialCancerSyndromeSubsidiaryComment is not null
 		StageDateIntegratedStage is null and
 		TreatmentStartDateCancer is null and
 		ProcedureDate is null
-)
+    );
 ```
 
 
@@ -784,54 +658,36 @@ where o.FamilialCancerSyndromeSubsidiaryComment is not null
 ### CosdV8SourceOfReferralOutPatients
 * Value copied from `SourceOfReferralOutPatients`
 
-* `SourceOfReferralOutPatients` For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS. [SOURCE OF REFERRAL FOR OUT-PATIENTS](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients.html)
+* `SourceOfReferralOutPatients` For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS. [SOURCE OF REFERRAL FOR OUT-PATIENTS]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),
-	CosdRecords as ( 
-
-	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD81:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/SpecialistDateFirstSeen)[1]', 'varchar(max)') as SpecialistDateFirstSeen,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/IntegratedStageTNMStageGroupingDate)[1]', 'varchar(max)') as IntegratedStageTNMStageGroupingDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/FinalPreTreatmentTNMStageGroupingDate)[1]', 'varchar(max)') as FinalPreTreatmentTNMStageGroupingDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/SourceOfReferralOutPatients/@code)[1]', 'varchar(max)') as SourceOfReferralOutPatients,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+with CO as (
+select 
+  Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreReferralAndFirstStageOfPatientPathway.SpecialistDateFirstSeen' as SpecialistDateFirstSeen,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreStaging.IntegratedStageTNMStageGroupingDate' as IntegratedStageTNMStageGroupingDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as FinalPreTreatmentTNMStageGroupingDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.CancerTreatmentStartDate' as CancerTreatmentStartDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreReferralAndFirstStageOfPatientPathway.SourceOfReferralOutPatients.@code' as SourceOfReferralOutPatients,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber
+from omop_staging.cosd_staging_81
+where Type = 'CO'
 )
 select
       distinct
           SourceOfReferralOutPatients,
           NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (DateFirstSeen),
-                (SpecialistDateFirstSeen),
-                (ClinicalDateCancerDiagnosis),
-                (IntegratedStageTNMStageGroupingDate),
-                (FinalPreTreatmentTNMStageGroupingDate),
-                (CancerTreatmentStartDate),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+          least(
+                cast (DateFirstSeen as date),
+                cast (SpecialistDateFirstSeen as date),
+                cast (ClinicalDateCancerDiagnosis as date),
+                cast (IntegratedStageTNMStageGroupingDate as date),
+                cast (FinalPreTreatmentTNMStageGroupingDate as date),
+                cast (CancerTreatmentStartDate as date),
+                cast (ProcedureDate as date)
+              ) as Date
 from CO o
 where o.SourceOfReferralOutPatients is not null
   and not (
@@ -842,7 +698,8 @@ where o.SourceOfReferralOutPatients is not null
 		FinalPreTreatmentTNMStageGroupingDate is null and
 		CancerTreatmentStartDate is null and
 		ProcedureDate is null
-)
+    )
+-- tested
 ```
 
 
@@ -850,56 +707,38 @@ where o.SourceOfReferralOutPatients is not null
 ### CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway
 * Value copied from `SourceOfReferralForOutPatientsNonPrimaryCancerPathway`
 
-* `SourceOfReferralForOutPatientsNonPrimaryCancerPathway` SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY) identifies the source of referral for a Non Primary Cancer Pathway. [SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY)](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients__non_primary_cancer_pathway_.html)
+* `SourceOfReferralForOutPatientsNonPrimaryCancerPathway` SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY) identifies the source of referral for a Non Primary Cancer Pathway. [SOURCE OF REFERRAL FOR OUT-PATIENTS (NON PRIMARY CANCER PATHWAY)]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),
-	CosdRecords as ( 
-
-	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD81:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/SpecialistDateFirstSeen)[1]', 'varchar(max)') as SpecialistDateFirstSeen,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/IntegratedStageTNMStageGroupingDate)[1]', 'varchar(max)') as IntegratedStageTNMStageGroupingDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/FinalPreTreatmentTNMStageGroupingDate)[1]', 'varchar(max)') as FinalPreTreatmentTNMStageGroupingDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreNonPrimaryCancerPathway/SourceOfReferralForOutPatientsNonPrimaryCancerPathway/@code)[1]', 'varchar(max)') as SourceOfReferralForOutPatientsNonPrimaryCancerPathway,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+with CO as (
+select 
+  Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreReferralAndFirstStageOfPatientPathway.SpecialistDateFirstSeen' as SpecialistDateFirstSeen,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreStaging.IntegratedStageTNMStageGroupingDate' as IntegratedStageTNMStageGroupingDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as FinalPreTreatmentTNMStageGroupingDate,
+coalesce(Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment[0].CancerTreatmentStartDate', Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.CancerTreatmentStartDate') as CancerTreatmentStartDate,
+coalesce(Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment[0].ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate', Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate') as ProcedureDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreReferralAndFirstStageOfPatientPathway.SourceOfReferralOutPatients.@code' as SourceOfReferralOutPatients,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber
+from omop_staging.cosd_staging_81
+where Type = 'CO'
 )
 select
       distinct
-          SourceOfReferralForOutPatientsNonPrimaryCancerPathway,
+          SourceOfReferralOutPatients,
           NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (DateFirstSeen),
-                (SpecialistDateFirstSeen),
-                (ClinicalDateCancerDiagnosis),
-                (IntegratedStageTNMStageGroupingDate),
-                (FinalPreTreatmentTNMStageGroupingDate),
-                (CancerTreatmentStartDate),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+          least(
+                cast (DateFirstSeen as date),
+                cast (SpecialistDateFirstSeen as date),
+                cast (ClinicalDateCancerDiagnosis as date),
+                cast (IntegratedStageTNMStageGroupingDate as date),
+                cast (FinalPreTreatmentTNMStageGroupingDate as date),
+                cast (CancerTreatmentStartDate as date),
+                cast (ProcedureDate as date)
+              ) as Date
 from CO o
-where o.SourceOfReferralForOutPatientsNonPrimaryCancerPathway is not null
+where o.SourceOfReferralOutPatients is not null
   and not (
 		DateFirstSeen is null and
 		SpecialistDateFirstSeen is null and
@@ -908,7 +747,7 @@ where o.SourceOfReferralForOutPatientsNonPrimaryCancerPathway is not null
 		FinalPreTreatmentTNMStageGroupingDate is null and
 		CancerTreatmentStartDate is null and
 		ProcedureDate is null
-)
+    )
 ```
 
 
@@ -916,53 +755,36 @@ where o.SourceOfReferralForOutPatientsNonPrimaryCancerPathway is not null
 ### CosdV8PersonStatedSexualOrientationCodeAtDiagnosis
 * Value copied from `PersonStatedSexualOrientationCodeAtDiagnosis`
 
-* `PersonStatedSexualOrientationCodeAtDiagnosis` PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS) is the PERSON STATED SEXUAL ORIENTATION CODE at the time of the PATIENT DIAGNOSIS. [PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)](https://www.datadictionary.nhs.uk/data_elements/person_stated_sexual_orientation_code__at_diagnosis_.html)
+* `PersonStatedSexualOrientationCodeAtDiagnosis` PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS) is the PERSON STATED SEXUAL ORIENTATION CODE at the time of the PATIENT DIAGNOSIS. [PERSON STATED SEXUAL ORIENTATION CODE (AT DIAGNOSIS)]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),
-	CosdRecords as ( 
-
-	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD81:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreDemographics/PersonStatedSexualOrientationCodeAtDiagnosis/@code)[1]', 'varchar(max)') as PersonStatedSexualOrientationCodeAtDiagnosis,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+with CO as (
+select 
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreDemographics.PersonStatedSexualOrientationCodeAtDiagnosis.@code' as PersonStatedSexualOrientationCodeAtDiagnosis,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.CancerTreatmentStartDate' as CancerTreatmentStartDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber
+from omop_staging.cosd_staging_81
+where Type = 'CO'
 )
 select
       distinct
           PersonStatedSexualOrientationCodeAtDiagnosis,
           NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (ClinicalDateCancerDiagnosis),
-                (CancerTreatmentStartDate),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+          least(
+                cast (ClinicalDateCancerDiagnosis as date),
+                cast (ProcedureDate as date),
+                cast (CancerTreatmentStartDate as date)
+          ) as Date
 from CO o
 where o.PersonStatedSexualOrientationCodeAtDiagnosis is not null
   and not (
 		ClinicalDateCancerDiagnosis is null and
-		CancerTreatmentStartDate is null and
-		ProcedureDate is null
-)
+		ProcedureDate is null and
+		CancerTreatmentStartDate is null
+    )
+--tested
 ```
 
 
@@ -970,54 +792,36 @@ where o.PersonStatedSexualOrientationCodeAtDiagnosis is not null
 ### CosdV8FamilialCancerSyndromeIndicator
 * Value copied from `FamilialCancerSyndromeIndicator`
 
-* `FamilialCancerSyndromeIndicator` An indication of whether there is a possible or confirmed familial cancer syndrome during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME INDICATOR](https://www.datadictionary.nhs.uk/data_elements/familial_cancer_syndrome_indicator.html)
+* `FamilialCancerSyndromeIndicator` An indication of whether there is a possible or confirmed familial cancer syndrome during a Cancer Care Spell. [FAMILIAL CANCER SYNDROME INDICATOR]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),
-	CosdRecords as ( 
-
-	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD81:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/SpecialistDateFirstSeen)[1]', 'varchar(max)') as SpecialistDateFirstSeen,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/IntegratedStageTNMStageGroupingDate)[1]', 'varchar(max)') as IntegratedStageTNMStageGroupingDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/FinalPreTreatmentTNMStageGroupingDate)[1]', 'varchar(max)') as FinalPreTreatmentTNMStageGroupingDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreDiagnosis/ColorectalCoreDiagnosisAdditionalItems/FamilialCancerSyndromeIndicator/@code)[1]', 'varchar(max)') as FamilialCancerSyndromeIndicator,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+with CO as (
+select 
+  Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreReferralAndFirstStageOfPatientPathway.SpecialistDateFirstSeen' as SpecialistDateFirstSeen,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreStaging.IntegratedStageTNMStageGroupingDate' as IntegratedStageTNMStageGroupingDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as FinalPreTreatmentTNMStageGroupingDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.CancerTreatmentStartDate' as CancerTreatmentStartDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreDiagnosis.ColorectalCoreDiagnosisAdditionalItems.FamilialCancerSyndromeIndicator.@code' as FamilialCancerSyndromeIndicator,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber
+from omop_staging.cosd_staging_81
+where Type = 'CO'
 )
 select
       distinct
           FamilialCancerSyndromeIndicator,
           NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (DateFirstSeen),
-                (SpecialistDateFirstSeen),
-                (ClinicalDateCancerDiagnosis),
-                (IntegratedStageTNMStageGroupingDate),
-                (FinalPreTreatmentTNMStageGroupingDate),
-                (CancerTreatmentStartDate),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+          least(
+                cast (DateFirstSeen as date),
+                cast (SpecialistDateFirstSeen as date),
+                cast (ClinicalDateCancerDiagnosis as date),
+                cast (IntegratedStageTNMStageGroupingDate as date),
+                cast (FinalPreTreatmentTNMStageGroupingDate as date),
+                cast (CancerTreatmentStartDate as date),
+                cast (ProcedureDate as date)
+              ) as Date
 from CO o
 where o.FamilialCancerSyndromeIndicator is not null
   and not (
@@ -1028,7 +832,7 @@ where o.FamilialCancerSyndromeIndicator is not null
 		FinalPreTreatmentTNMStageGroupingDate is null and
 		CancerTreatmentStartDate is null and
 		ProcedureDate is null
-)
+    )
 ```
 
 
@@ -1036,54 +840,36 @@ where o.FamilialCancerSyndromeIndicator is not null
 ### CosdV8AlcoholHistoryCancerInLastThreeMonths
 * Value copied from `AlcoholHistoryCancerInLastThreeMonths`
 
-* `AlcoholHistoryCancerInLastThreeMonths` The current history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER IN LAST THREE MONTHS)](https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_in_last_three_months_.html)
+* `AlcoholHistoryCancerInLastThreeMonths` The current history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER IN LAST THREE MONTHS)]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),
-	CosdRecords as ( 
-
-	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD81:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/SpecialistDateFirstSeen)[1]', 'varchar(max)') as SpecialistDateFirstSeen,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/IntegratedStageTNMStageGroupingDate)[1]', 'varchar(max)') as IntegratedStageTNMStageGroupingDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/FinalPreTreatmentTNMStageGroupingDate)[1]', 'varchar(max)') as FinalPreTreatmentTNMStageGroupingDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreClinicalNurseSpecialistAndRiskFactorAssessments/AlcoholHistoryCancerInLastThreeMonths/@code)[1]', 'varchar(max)') as AlcoholHistoryCancerInLastThreeMonths,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+with CO as (
+select 
+  Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreReferralAndFirstStageOfPatientPathway.SpecialistDateFirstSeen' as SpecialistDateFirstSeen,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreStaging.IntegratedStageTNMStageGroupingDate' as IntegratedStageTNMStageGroupingDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as FinalPreTreatmentTNMStageGroupingDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.CancerTreatmentStartDate' as CancerTreatmentStartDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreClinicalNurseSpecialistAndRiskFactorAssessments.AlcoholHistoryCancerInLastThreeMonths.@code' as AlcoholHistoryCancerInLastThreeMonths,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber
+from omop_staging.cosd_staging_81
+where Type = 'CO'
 )
 select
       distinct
           AlcoholHistoryCancerInLastThreeMonths,
           NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (DateFirstSeen),
-                (SpecialistDateFirstSeen),
-                (ClinicalDateCancerDiagnosis),
-                (IntegratedStageTNMStageGroupingDate),
-                (FinalPreTreatmentTNMStageGroupingDate),
-                (CancerTreatmentStartDate),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+          least(
+                cast (DateFirstSeen as date),
+                cast (SpecialistDateFirstSeen as date),
+                cast (ClinicalDateCancerDiagnosis as date),
+                cast (IntegratedStageTNMStageGroupingDate as date),
+                cast (FinalPreTreatmentTNMStageGroupingDate as date),
+                cast (CancerTreatmentStartDate as date),
+                cast (ProcedureDate as date)
+              ) as Date
 from CO o
 where o.AlcoholHistoryCancerInLastThreeMonths is not null
   and not (
@@ -1094,7 +880,7 @@ where o.AlcoholHistoryCancerInLastThreeMonths is not null
 		FinalPreTreatmentTNMStageGroupingDate is null and
 		CancerTreatmentStartDate is null and
 		ProcedureDate is null
-)
+    )
 ```
 
 
@@ -1102,54 +888,36 @@ where o.AlcoholHistoryCancerInLastThreeMonths is not null
 ### CosdV8AlcoholHistoryCancerBeforeLastThreeMonths
 * Value copied from `AlcoholHistoryCancerBeforeLastThreeMonths`
 
-* `AlcoholHistoryCancerBeforeLastThreeMonths` The past history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER BEFORE LAST THREE MONTHS)](https://www.datadictionary.nhs.uk/data_elements/alcohol_history__cancer_before_last_three_months_.html)
+* `AlcoholHistoryCancerBeforeLastThreeMonths` The past history of alcohol consumption for the PATIENT during a Cancer Care Spell. [ALCOHOL HISTORY (CANCER BEFORE LAST THREE MONTHS)]()
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD81),
-	CosdRecords as ( 
-
-	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD81:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
-		and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/DateFirstSeen)[1]', 'varchar(max)') as DateFirstSeen,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreReferralAndFirstStageOfPatientPathway/SpecialistDateFirstSeen)[1]', 'varchar(max)') as SpecialistDateFirstSeen,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/ClinicalDateCancerDiagnosis)[1]', 'varchar(max)') as ClinicalDateCancerDiagnosis,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/IntegratedStageTNMStageGroupingDate)[1]', 'varchar(max)') as IntegratedStageTNMStageGroupingDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreStaging/FinalPreTreatmentTNMStageGroupingDate)[1]', 'varchar(max)') as FinalPreTreatmentTNMStageGroupingDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/CancerTreatmentStartDate)[1]', 'varchar(max)') as CancerTreatmentStartDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreTreatment/ColorectalCoreSurgeryAndOtherProcedures/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreClinicalNurseSpecialistAndRiskFactorAssessments/AlcoholHistoryCancerBeforeLastThreeMonths/@code)[1]', 'varchar(max)') as AlcoholHistoryCancerBeforeLastThreeMonths,
-		Node.value('(COSDRecord/Colorectal/ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber
-  from CosdRecords
+with CO as (
+select 
+  Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreReferralAndFirstStageOfPatientPathway.SpecialistDateFirstSeen' as SpecialistDateFirstSeen,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreStaging.IntegratedStageTNMStageGroupingDate' as IntegratedStageTNMStageGroupingDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as FinalPreTreatmentTNMStageGroupingDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.CancerTreatmentStartDate' as CancerTreatmentStartDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreClinicalNurseSpecialistAndRiskFactorAssessments.AlcoholHistoryCancerBeforeLastThreeMonths.@code' as AlcoholHistoryCancerBeforeLastThreeMonths,
+Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber
+from omop_staging.cosd_staging_81
+where Type = 'CO'
 )
 select
       distinct
           AlcoholHistoryCancerBeforeLastThreeMonths,
           NhsNumber,
-          (
-              select
-                  min (i) as [Date]
-              from
-              (
-                values
-                (DateFirstSeen),
-                (SpecialistDateFirstSeen),
-                (ClinicalDateCancerDiagnosis),
-                (IntegratedStageTNMStageGroupingDate),
-                (FinalPreTreatmentTNMStageGroupingDate),
-                (CancerTreatmentStartDate),
-                (ProcedureDate)
-              ) as T(i)
-          ) as [Date]
+          least(
+                cast (DateFirstSeen as date),
+                cast (SpecialistDateFirstSeen as date),
+                cast (ClinicalDateCancerDiagnosis as date),
+                cast (IntegratedStageTNMStageGroupingDate as date),
+                cast (FinalPreTreatmentTNMStageGroupingDate as date),
+                cast (CancerTreatmentStartDate as date),
+                cast (ProcedureDate as date)
+              ) as Date
 from CO o
 where o.AlcoholHistoryCancerBeforeLastThreeMonths is not null
   and not (
@@ -1160,7 +928,7 @@ where o.AlcoholHistoryCancerBeforeLastThreeMonths is not null
 		FinalPreTreatmentTNMStageGroupingDate is null and
 		CancerTreatmentStartDate is null and
 		ProcedureDate is null
-)
+    )
 ```
 
 

@@ -39,7 +39,11 @@ has_toc: false
 <a href="OxfordGPLocation.svg" target="_blank"><img src="OxfordGPLocation.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordGPLocation%20mapping){: .btn }
-## CosdLocation
-<a href="CosdLocation.svg" target="_blank"><img src="CosdLocation.svg" /></a>
+## CosdLocationV9
+<a href="CosdLocationV9.svg" target="_blank"><img src="CosdLocationV9.svg" /></a>
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdLocation%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdLocationV9%20mapping){: .btn }
+## CosdV8Location
+<a href="CosdV8Location.svg" target="_blank"><img src="CosdV8Location.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8Location%20mapping){: .btn }
