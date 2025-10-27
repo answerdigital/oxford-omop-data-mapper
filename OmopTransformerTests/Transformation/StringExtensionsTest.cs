@@ -1,9 +1,9 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OmopTransformer;
 
 [TestClass]
 public class StringExtensionsTests
 {
+
     [TestMethod]
     public void SubstringOrNull_ValidInput_ReturnsCorrectSubstring()
     {
@@ -21,17 +21,14 @@ public class StringExtensionsTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void SubstringOrNull_NullInput_ThrowsArgumentNullException()
     {
         string? text = null;
 
-#pragma warning disable CS8604
-        text.SubstringOrNull(0, 1);
-#pragma warning restore CS8604
+        Assert.ThrowsExactly<ArgumentNullException>(() => text!.SubstringOrNull(0, 1));
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("", true)]
     [DataRow("   ", true)]
     [DataRow("hello", false)]
@@ -41,7 +38,7 @@ public class StringExtensionsTests
         Assert.AreEqual(expected, input.IsEmpty());
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("  test  ", "test")]
     [DataRow(null, null)]
     [DataRow("", "")]
@@ -50,7 +47,7 @@ public class StringExtensionsTests
         Assert.AreEqual(expected, input.TrimWhitespace());
     }
 
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("hello\r\n", "hello")]
     [DataRow("\r\nhello\r\n", "\r\nhello")]
     [DataRow("hello\r\nworld", "hello\r\nworld")]

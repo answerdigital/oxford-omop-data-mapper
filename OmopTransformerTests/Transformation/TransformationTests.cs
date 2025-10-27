@@ -41,8 +41,8 @@ public class TransformationTests
             null!)
             .Transform(testConcept, plan);
 
-        Assert.AreEqual(testConcept.Text, "hello world");
-        Assert.AreEqual(testConcept.JoinedText, "line 1\r\nline 2");
+        Assert.AreEqual("hello world", testConcept.Text);
+        Assert.AreEqual("line 1\r\nline 2", testConcept.JoinedText);
         Assert.AreEqual(1, testConcept.ColourId);
         Assert.AreEqual(123, testConcept.ConstantNumber);
         
