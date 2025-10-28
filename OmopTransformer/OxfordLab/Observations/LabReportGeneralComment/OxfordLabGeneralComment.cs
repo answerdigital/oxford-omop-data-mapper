@@ -15,7 +15,7 @@ internal class OxfordLabGeneralComment : OmopObservation<OxfordLabGeneralComment
     [Transform(typeof(DateConverter), nameof(Source.EVENT_START_DT_TM))]
     public override DateTime? observation_datetime { get; set; }
 
-    [ConstantValue(37053687, "Lab report general comments")]
+    [ConstantValue(1092006, "General Comment Narrative")]
     public override int[]? observation_concept_id { get; set; }
 
     [ConstantValue(32828, "EHR episode record")]
