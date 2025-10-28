@@ -9,7 +9,7 @@ has_toc: false
 ### SUS OP VisitOccurrenceWithSpell
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 with results as
@@ -44,7 +44,7 @@ order by
 ### SUS APC VisitOccurrenceWithSpell
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 	with records as (
@@ -84,7 +84,7 @@ order by
 ### SUS AE VisitOccurrenceWithSpell
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 		with records as (
@@ -121,7 +121,7 @@ order by
 ### Sact VisitOccurrence
 * Value copied from `NHS_Number`
 
-* `NHS_Number` Patient NHS Number [NHS NUMBER]()
+* `NHS_Number` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 		select distinct 
@@ -136,7 +136,7 @@ order by
 ### Rtds VisitOccurrence
 * Value copied from `PatientId`
 
-* `PatientId` Patient NHS Number [NHS NUMBER]()
+* `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 with results as (
@@ -164,7 +164,7 @@ where
 ### Oxford Visit Occurrence
 * Value copied from `NHSNumber`
 
-* `NHSNumber` Patient NHS Number [NHS NUMBER]()
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 select

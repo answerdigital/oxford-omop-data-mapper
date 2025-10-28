@@ -10,7 +10,7 @@ has_toc: false
 Source column  `VisitStartDate`.
 Converts text to dates.
 
-* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)]()
+* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
 ```sql
 with results as
@@ -46,7 +46,7 @@ order by
 Source column  `VisitStartDate`.
 Converts text to dates.
 
-* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)]()
+* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
 ```sql
 	with records as (
@@ -87,7 +87,7 @@ Converts text to dates.
 Source column  `VisitStartDate`.
 Converts text to dates.
 
-* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)]()
+* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
 ```sql
 		with records as (
@@ -125,7 +125,7 @@ Converts text to dates.
 Source column  `Administration_date`.
 Converts text to dates.
 
-* `Administration_date` Date when drug was administered or date an oral drug was initially dispensed to the patient [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+* `Administration_date` Date when drug was administered or date an oral drug was initially dispensed to the patient [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
 
 ```sql
 		select distinct 

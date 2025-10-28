@@ -9,7 +9,7 @@ has_toc: false
 ### SUS OP Source Of Referral For Outpatients
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select
@@ -35,7 +35,7 @@ order by NHSNumber,
 ### SUS OP Referral Received Date For Outpatients
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 	select
@@ -61,7 +61,7 @@ order by NHSNumber,
 ### SUS Outpatient Carer Support Indicator Observation
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select 
@@ -85,7 +85,7 @@ group by
 ### SUS Inpatient Total Previous Pregnancies Observation
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select 
@@ -112,7 +112,7 @@ group by
 ### SUS APC Source Of Referral For Inpatients
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select	
@@ -131,7 +131,7 @@ where NHSNumber is not null
 ### SUS APC Referral Received Date For Inpatients
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 	select
@@ -151,7 +151,7 @@ where NHSNumber is not null
 ### SUS Inpatient NumberofBabies Observation
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select
@@ -178,7 +178,7 @@ group by
 ### SUS Inpatient Gestation Length Labour Onset Observation
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select 
@@ -205,7 +205,7 @@ group by
 ### SUS Inpatient Carer Support Indicator Observation
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select 
@@ -230,7 +230,7 @@ group by
 ### Sus APC Birth Weight Observation
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select 
@@ -258,7 +258,7 @@ group by
 ### SUS APC Anaesthetic Given Post Labour Delivery Observation
 * Value copied from `RecordConnectionIdentifier`
 
-* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `RecordConnectionIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select
@@ -284,7 +284,7 @@ group by
 ### SUS APC Anaesthetic During Labour Delivery Observation
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select
@@ -311,7 +311,7 @@ group by
 ### SUS AE Source Of Referral For AE
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select
@@ -330,7 +330,7 @@ where SourceofReferralForAE is not null
 ### SUS AE Diabetic Patient
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select
@@ -353,7 +353,7 @@ and d.AccidentAndEmergencyDiagnosis in ('30','301')
 ### SUS AE Diabetic Patient
 * Value copied from `GeneratedRecordIdentifier`
 
-* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER]()
+* `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
 
 ```sql
 select

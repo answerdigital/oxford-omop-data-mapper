@@ -10,9 +10,9 @@ has_toc: false
 Source columns  `AppointmentDate`, `AppointmentTime`.
 Combines a date with a time of day.
 
-* `AppointmentDate` Event date [APPOINTMENT DATE]()
+* `AppointmentDate` Event date [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
 
-* `AppointmentTime` The time, advised to a PATIENT for when they can expect to see a relevant CARE PROFESSIONAL at an Out-Patient Clinic. [APPOINTMENT TIME]()
+* `AppointmentTime` The time, advised to a PATIENT for when they can expect to see a relevant CARE PROFESSIONAL at an Out-Patient Clinic. [APPOINTMENT TIME](https://www.datadictionary.nhs.uk/data_elements/appointment_time.html)
 
 ```sql
 select
@@ -39,9 +39,9 @@ order by NHSNumber,
 Source columns  `AppointmentDate`, `AppointmentTime`.
 Combines a date with a time of day.
 
-* `AppointmentDate` Event date [APPOINTMENT DATE]()
+* `AppointmentDate` Event date [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
 
-* `AppointmentTime` The time, advised to a PATIENT for when they can expect to see a relevant CARE PROFESSIONAL at an Out-Patient Clinic. [APPOINTMENT TIME]()
+* `AppointmentTime` The time, advised to a PATIENT for when they can expect to see a relevant CARE PROFESSIONAL at an Out-Patient Clinic. [APPOINTMENT TIME](https://www.datadictionary.nhs.uk/data_elements/appointment_time.html)
 
 ```sql
 	select
@@ -68,7 +68,7 @@ Combines a date with a time of day.
 Source column  `CDSActivityDate`.
 Converts text to dates.
 
-* `CDSActivityDate` Event date [CDS ACTIVITY DATE]()
+* `CDSActivityDate` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
 
 ```sql
 select 
@@ -93,9 +93,9 @@ group by
 Source columns  `ObservationDate`, `ObservationDateTime`.
 Combines a date with a time of day.
 
-* `ObservationDate` Start date of the visit [CRITICAL CARE START DATE]()
+* `ObservationDate` Start date of the visit [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
 
-* `ObservationDateTime` Start time of the visit, if exists, else midnight. [CRITICAL CARE START TIME]()
+* `ObservationDateTime` Start time of the visit, if exists, else midnight. [CRITICAL CARE START TIME](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_time.html)
 
 ```sql
 		select distinct
@@ -117,7 +117,7 @@ Combines a date with a time of day.
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE]()
+* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
 
 ```sql
 select 
@@ -145,9 +145,9 @@ group by
 Source columns  `StartDateHospitalProviderSpell`, `StartTimeHospitalProviderSpell`.
 Combines a date with a time of day.
 
-* `StartDateHospitalProviderSpell` Event date [START DATE (HOSPITAL PROVIDER SPELL)]()
+* `StartDateHospitalProviderSpell` Event date [START DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html)
 
-* `StartTimeHospitalProviderSpell` Records whether anaesthetic was given during Labour/ Delivery, and the type used. [START TIME (HOSPITAL PROVIDER SPELL)]()
+* `StartTimeHospitalProviderSpell` Records whether anaesthetic was given during Labour/ Delivery, and the type used. [START TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_time__hospital_provider_spell_.html)
 
 ```sql
 select	
@@ -167,9 +167,9 @@ where NHSNumber is not null
 Source columns  `StartDateHospitalProviderSpell`, `StartTimeHospitalProviderSpell`.
 Combines a date with a time of day.
 
-* `StartDateHospitalProviderSpell` START DATE (HOSPITAL PROVIDER SPELL) is the Start Date of the Hospital Provider Spell. [START DATE (HOSPITAL PROVIDER SPELL)]()
+* `StartDateHospitalProviderSpell` START DATE (HOSPITAL PROVIDER SPELL) is the Start Date of the Hospital Provider Spell. [START DATE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_date__hospital_provider_spell_.html)
 
-* `StartTimeHospitalProviderSpell` START TIME (HOSPITAL PROVIDER SPELL)  is the Start Time  of the Hospital Provider Spell . [START TIME (HOSPITAL PROVIDER SPELL)]()
+* `StartTimeHospitalProviderSpell` START TIME (HOSPITAL PROVIDER SPELL)  is the Start Time  of the Hospital Provider Spell . [START TIME (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/start_time__hospital_provider_spell_.html)
 
 ```sql
 	select
@@ -190,7 +190,7 @@ Combines a date with a time of day.
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE](), [DELIVERY DATE]()
+* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [DELIVERY DATE](https://www.datadictionary.nhs.uk/data_elements/delivery_date.html)
 
 ```sql
 select
@@ -218,7 +218,7 @@ group by
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE](), [DELIVERY DATE]()
+* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [DELIVERY DATE](https://www.datadictionary.nhs.uk/data_elements/delivery_date.html)
 
 ```sql
 select 
@@ -246,7 +246,7 @@ group by
 Source column  `CDSActivityDate`.
 Converts text to dates.
 
-* `CDSActivityDate` Event date [CDS ACTIVITY DATE]()
+* `CDSActivityDate` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
 
 ```sql
 select 
@@ -272,7 +272,7 @@ group by
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE](), [DELIVERY DATE]()
+* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [DELIVERY DATE](https://www.datadictionary.nhs.uk/data_elements/delivery_date.html)
 
 ```sql
 select 
@@ -301,7 +301,7 @@ group by
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE]()
+* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
 
 ```sql
 select
@@ -328,7 +328,7 @@ group by
 Source column  `observation_date`.
 Converts text to dates.
 
-* `observation_date` Event date [CDS ACTIVITY DATE](), [DELIVERY DATE]()
+* `observation_date` Event date [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [DELIVERY DATE](https://www.datadictionary.nhs.uk/data_elements/delivery_date.html)
 
 ```sql
 select
@@ -426,14 +426,13 @@ and d.AccidentAndEmergencyDiagnosis in ('20','201')
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_datetime%20field%20SUS%20AE%20Diabetic%20Patient%20mapping){: .btn }
-<<<<<<< HEAD
 ### SACT Adjunctive Therapy Type
 Source columns  `Administration_Date`, `Administration_Date`.
 Combines a date with a time of day.
 
-* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
 
-* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
 
 ```sql
 		select distinct
@@ -457,9 +456,9 @@ Combines a date with a time of day.
 Source columns  `Administration_Date`, `Administration_Date`.
 Combines a date with a time of day.
 
-* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
 
-* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
 
 ```sql
 		select
@@ -477,19 +476,19 @@ Combines a date with a time of day.
 Source columns  `Administration_Date`, `Administration_Date`.
 Combines a date with a time of day.
 
-* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
 
-* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
 
 ```sql
 		select
 			distinct
-  			replace(NHS_Number, ' ', '') as NHS_Number,
+  			replace(NHS_Number, ' ', '') as NHSNumber,
       		Clinical_Trial,
 			Case 
 				When Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')
 			else '' end as Source_Value,
-		  	Date_Decision_To_Treat
+		  	Administration_Date
 		from omop_staging.sact_staging
   		where Clinical_Trial = '1'
 	
@@ -501,9 +500,9 @@ Combines a date with a time of day.
 Source columns  `Administration_Date`, `Administration_Date`.
 Combines a date with a time of day.
 
-* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
 
-* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
 
 ```sql
 		select distinct
@@ -524,7 +523,6 @@ Combines a date with a time of day.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_datetime%20field%20SACT%20Treatment%20Intent%20mapping){: .btn }
-=======
 ### Oxford Lab General Comment Observation
 Source column  `EVENT_START_DT_TM`.
 Converts text to dates.
@@ -543,12 +541,11 @@ where lower(EVENT) like '%comment%'
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_datetime%20field%20Oxford%20Lab%20General%20Comment%20Observation%20mapping){: .btn }
->>>>>>> main
 ### CosdV9TobaccoSmokingStatus
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -615,7 +612,7 @@ where o.TobaccoSmokingStatus is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -682,7 +679,7 @@ where o.TobaccoSmokingCessation is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -749,7 +746,7 @@ where o.SourceOfReferralForOutpatients is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -816,7 +813,7 @@ where o.SourceOfReferralForNonPrimaryCancerPathway is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -871,7 +868,7 @@ where o.PersonSexualOrientationCodeAtDiagnosis is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -938,7 +935,7 @@ where o.PerformanceStatusAdult is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -993,7 +990,7 @@ where o.MenopausalStatus is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1060,7 +1057,7 @@ where o.HistoryOfAlcoholPast is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1127,7 +1124,7 @@ where o.HistoryOfAlcoholCurrent is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1194,7 +1191,7 @@ where o.FamilialCancerSyndrome is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1261,7 +1258,7 @@ where o.FamilialCancerSyndromeSubsidiaryComment is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1328,7 +1325,7 @@ where o.AsaScore is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1395,7 +1392,7 @@ where o.AdultComorbidityEvaluation is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DIAGNOSIS DATE](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DIAGNOSIS DATE](https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1462,7 +1459,7 @@ where o.SourceOfReferralOutPatients is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DIAGNOSIS DATE](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DIAGNOSIS DATE](https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1529,7 +1526,7 @@ where o.SourceOfReferralForOutPatientsNonPrimaryCancerPathway is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DIAGNOSIS DATE](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DIAGNOSIS DATE](https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1596,7 +1593,7 @@ where o.SmokingStatusCode is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DIAGNOSIS DATE](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DIAGNOSIS DATE](https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1651,7 +1648,7 @@ where o.PersonStatedSexualOrientationCodeAtDiagnosis is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DIAGNOSIS DATE](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DIAGNOSIS DATE](https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1718,7 +1715,7 @@ where o.FamilialCancerSyndromeIndicator is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DIAGNOSIS DATE](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DIAGNOSIS DATE](https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1785,7 +1782,7 @@ where o.AlcoholHistoryCancerInLastThreeMonths is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DIAGNOSIS DATE](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DIAGNOSIS DATE](https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1852,7 +1849,7 @@ where o.AlcoholHistoryCancerBeforeLastThreeMonths is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DIAGNOSIS DATE](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DIAGNOSIS DATE](https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 
@@ -1919,7 +1916,7 @@ where o.AdultPerformanceStatus is not null
 Source column  `Date`.
 Converts text to dates.
 
-* `Date` Observation date [DATE FIRST SEEN](), [DATE FIRST SEEN (CANCER SPECIALIST)](), [DIAGNOSIS DATE](), [TNM STAGE GROUPING DATE (INTEGRATED)](), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](), [TREATMENT START DATE (CANCER)](), [PROCEDURE DATE]()
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DIAGNOSIS DATE](https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
 
 ```sql
 ;with 

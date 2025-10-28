@@ -236,7 +236,6 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAEAsthmaticPatient%20mapping){: .btn }
-<<<<<<< HEAD
 ## SactAdjunctiveTherapyType
 <a href="SactAdjunctiveTherapyType.svg" target="_blank"><img src="SactAdjunctiveTherapyType.svg" /></a>
 
@@ -253,12 +252,10 @@ has_toc: false
 <a href="SactTreatmentIntent.svg" target="_blank"><img src="SactTreatmentIntent.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactTreatmentIntent%20mapping){: .btn }
-=======
 ## OxfordLabGeneralComment
 <a href="OxfordLabGeneralComment.svg" target="_blank"><img src="OxfordLabGeneralComment.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordLabGeneralComment%20mapping){: .btn }
->>>>>>> main
 ## CosdV9TobaccoSmokingStatus
 <a href="CosdV9TobaccoSmokingStatus.svg" target="_blank"><img src="CosdV9TobaccoSmokingStatus.svg" /></a>
 

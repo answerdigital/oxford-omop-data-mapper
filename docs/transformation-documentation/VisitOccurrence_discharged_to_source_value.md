@@ -9,7 +9,7 @@ has_toc: false
 ### SUS APC VisitOccurrenceWithSpell
 * Value copied from `DischargeDestinationCode`
 
-* `DischargeDestinationCode` Discharge Destination Code [DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)]()
+* `DischargeDestinationCode` Discharge Destination Code [DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
 
 ```sql
 	with records as (
@@ -49,7 +49,7 @@ has_toc: false
 ### SUS AE VisitOccurrenceWithSpell
 * Value copied from `DischargeDestinationCode`
 
-* `DischargeDestinationCode` Discharge Destination Code [DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)]()
+* `DischargeDestinationCode` Discharge Destination Code [DISCHARGE DESTINATION CODE (HOSPITAL PROVIDER SPELL)](https://www.datadictionary.nhs.uk/data_elements/discharge_destination_code__hospital_provider_spell_.html)
 
 ```sql
 		with records as (

@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -37,7 +37,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
             }
           ]
         }
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
             }
           ]
         },
@@ -65,7 +65,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
             }
           ]
         }
@@ -90,7 +90,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY DRUG ROUTE OF ADMINISTRATION",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_route_of_administration.html"
             }
           ]
         }
@@ -108,7 +108,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY DRUG ROUTE OF ADMINISTRATION",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_route_of_administration.html"
             }
           ]
         }

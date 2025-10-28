@@ -10,9 +10,9 @@ has_toc: false
 Source columns  `VisitStartDate`, `VisitStartTime`.
 Combines a date with a time of day.
 
-* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)]()
+* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
-* `VisitStartTime` The earliest episode start time for the spell, or midnight if none are specified. [START TIME (EPISODE)]()
+* `VisitStartTime` The earliest episode start time for the spell, or midnight if none are specified. [START TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html)
 
 ```sql
 with results as
@@ -48,9 +48,9 @@ order by
 Source columns  `VisitStartDate`, `VisitStartTime`.
 Combines a date with a time of day.
 
-* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)]()
+* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
-* `VisitStartTime` The earliest episode start time for the spell, or midnight if none are specified. [START TIME (EPISODE)]()
+* `VisitStartTime` The earliest episode start time for the spell, or midnight if none are specified. [START TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html)
 
 ```sql
 	with records as (
@@ -91,9 +91,9 @@ Combines a date with a time of day.
 Source columns  `VisitStartDate`, `VisitStartTime`.
 Combines a date with a time of day.
 
-* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)]()
+* `VisitStartDate` Start date of the episode. [START DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_date__episode_.html)
 
-* `VisitStartTime` The earliest episode start time for the spell, or midnight if none are specified. [START TIME (EPISODE)]()
+* `VisitStartTime` The earliest episode start time for the spell, or midnight if none are specified. [START TIME (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/start_time__episode_.html)
 
 ```sql
 		with records as (
@@ -131,7 +131,7 @@ Combines a date with a time of day.
 Source column  `Administration_date`.
 Converts text to dates.
 
-* `Administration_date` Date when drug was administered or date an oral drug was initially dispensed to the patient [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+* `Administration_date` Date when drug was administered or date an oral drug was initially dispensed to the patient [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
 
 ```sql
 		select distinct 

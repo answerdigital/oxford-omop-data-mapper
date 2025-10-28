@@ -9,7 +9,7 @@ has_toc: false
 ### SACT Adjunctive Therapy Type
 * Value copied from `Source_value`
 
-* `Source_value` Source value of the type of Adjunctive Therapy  given to a PATIENT  during a Cancer Care Spell. [ADJUNCTIVE THERAPY TYPE]()
+* `Source_value` Source value of the type of Adjunctive Therapy  given to a PATIENT  during a Cancer Care Spell. [ADJUNCTIVE THERAPY TYPE](https://www.datadictionary.nhs.uk/data_elements/adjunctive_therapy_type.html)
 
 ```sql
 		select distinct
@@ -32,7 +32,7 @@ has_toc: false
 ### SACT Administration Route
 * Value copied from `Administration_Route`
 
-* `Administration_Route` The prescribed route of administration for each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle. [SYSTEMIC ANTI-CANCER THERAPY DRUG ROUTE OF ADMINISTRATION]()
+* `Administration_Route` The prescribed route of administration for each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle. [SYSTEMIC ANTI-CANCER THERAPY DRUG ROUTE OF ADMINISTRATION](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_route_of_administration.html)
 
 ```sql
 		select
@@ -49,7 +49,7 @@ has_toc: false
 ### SACT Treatment Intent
 * Value copied from `Source_value`
 
-* `Source_value` Source value of the intent of the Systemic Anti-Cancer Therapy Drug Regimen. [SYSTEMIC ANTI-CANCER THERAPY DRUG REGIMEN TREATMENT INTENT]()
+* `Source_value` Source value of the intent of the Systemic Anti-Cancer Therapy Drug Regimen. [SYSTEMIC ANTI-CANCER THERAPY DRUG REGIMEN TREATMENT INTENT](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_regimen_treatment_intent.html)
 
 ```sql
 		select distinct

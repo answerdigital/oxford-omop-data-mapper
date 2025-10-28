@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
@@ -37,7 +37,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
             }
           ]
         }
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
             }
           ]
         },
@@ -65,7 +65,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
             }
           ]
         }
@@ -90,13 +90,13 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY DRUG REGIMEN TREATMENT INTENT",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_regimen_treatment_intent.html"
             }
           ]
         }
       ],
       "query": "\n\t\tselect distinct\n  \t\t\treplace(NHS_Number, ' ', '') as NHSNumber,\n\t\t\tIntent_Of_Treatment,\n\t\t\tCase \n\t\t\t\tWhen Intent_Of_Treatment = 1 then concat(Intent_Of_Treatment, ' - Curative(aiming to permanently eradicate disease)')\n\t\t\t\tWhen Intent_Of_Treatment = 2 then concat(Intent_Of_Treatment, ' - Palliative(aiming to extend life expectancy)')\n\t\t\t\tWhen Intent_Of_Treatment = 3 then concat(Intent_Of_Treatment, ' - Palliative(aiming to relieve and/or control malignancy related symptoms)')\n\t\t\t\tWhen Intent_Of_Treatment = 4 then concat(Intent_Of_Treatment, ' - Palliative(aiming to achieve remission)')\n\t\t\t\tWhen Intent_Of_Treatment = 5 then concat(Intent_Of_Treatment, ' - Palliative(aiming to permanently eradicate disease)')\n\t\t\telse '' end as Source_value,\n\t\t  \tAdministration_Date\n\t\tfrom omop_staging.sact_staging\n        where Intent_Of_Treatment != ''\n\t",
-      "lookup_table_markdown": "\r\n\r\n|Intent_Of_Treatment|value_as_concept_id|notes|\r\n|------|-----|-----|\r\n|1|4162591|Curative|\r\n|2|4179711|Palliative|\r\n|3|4179711|Palliative|\r\n|4|4179711|Palliative|\r\n|5|4179711|Palliative|\r\n|98||Other (not listed)|\r\n\r\nNotes\r\n* [SACT Drug Regimen Treatment Intent](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/attributes/systemic_anti-cancer_therapy_drug_regimen_treatment_intent.html)\r\n* [OMOP](https://athena.ohdsi.org/search-terms/terms/4194400)\r\n"
+      "lookup_table_markdown": "\r\n\r\n|Intent_Of_Treatment|value_as_concept_id|notes|\r\n|------|-----|-----|\r\n|1|4162591|Curative|\r\n|2|4179711|Palliative|\r\n|3|4179711|Palliative|\r\n|4|4179711|Palliative|\r\n|5|4179711|Palliative|\r\n|98||Other (not listed)|\r\n|99||Other (not listed)|\r\n\r\nNotes\r\n* [SACT Drug Regimen Treatment Intent](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/attributes/systemic_anti-cancer_therapy_drug_regimen_treatment_intent.html)\r\n* [OMOP](https://athena.ohdsi.org/search-terms/terms/4194400)\r\n"
     },
     {
       "name": "value_source_value",
@@ -108,7 +108,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY DRUG REGIMEN TREATMENT INTENT",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_regimen_treatment_intent.html"
             }
           ]
         }

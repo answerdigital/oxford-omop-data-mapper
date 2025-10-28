@@ -12,12 +12,12 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
             }
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\t\tdistinct\n  \t\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n      \t\tClinical_Trial,\n\t\t\tCase \n\t\t\t\tWhen Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')\n\t\t\telse '' end as Source_Value,\n\t\t  \tDate_Decision_To_Treat\n\t\tfrom omop_staging.sact_staging\n  \t\twhere Clinical_Trial = '1'\n\t",
+      "query": "\n\t\tselect\n\t\t\tdistinct\n  \t\t\treplace(NHS_Number, ' ', '') as NHSNumber,\n      \t\tClinical_Trial,\n\t\t\tCase \n\t\t\t\tWhen Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')\n\t\t\telse '' end as Source_Value,\n\t\t  \tAdministration_Date\n\t\tfrom omop_staging.sact_staging\n  \t\twhere Clinical_Trial = '1'\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -37,12 +37,12 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
             }
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\t\tdistinct\n  \t\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n      \t\tClinical_Trial,\n\t\t\tCase \n\t\t\t\tWhen Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')\n\t\t\telse '' end as Source_Value,\n\t\t  \tDate_Decision_To_Treat\n\t\tfrom omop_staging.sact_staging\n  \t\twhere Clinical_Trial = '1'\n\t",
+      "query": "\n\t\tselect\n\t\t\tdistinct\n  \t\t\treplace(NHS_Number, ' ', '') as NHSNumber,\n      \t\tClinical_Trial,\n\t\t\tCase \n\t\t\t\tWhen Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')\n\t\t\telse '' end as Source_Value,\n\t\t  \tAdministration_Date\n\t\tfrom omop_staging.sact_staging\n  \t\twhere Clinical_Trial = '1'\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
             }
           ]
         },
@@ -65,12 +65,12 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
             }
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\t\tdistinct\n  \t\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n      \t\tClinical_Trial,\n\t\t\tCase \n\t\t\t\tWhen Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')\n\t\t\telse '' end as Source_Value,\n\t\t  \tDate_Decision_To_Treat\n\t\tfrom omop_staging.sact_staging\n  \t\twhere Clinical_Trial = '1'\n\t",
+      "query": "\n\t\tselect\n\t\t\tdistinct\n  \t\t\treplace(NHS_Number, ' ', '') as NHSNumber,\n      \t\tClinical_Trial,\n\t\t\tCase \n\t\t\t\tWhen Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')\n\t\t\telse '' end as Source_Value,\n\t\t  \tAdministration_Date\n\t\tfrom omop_staging.sact_staging\n  \t\twhere Clinical_Trial = '1'\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -90,12 +90,12 @@
           "origins": [
             {
               "origin": "CLINICAL TRIAL INDICATOR",
-              "url": null
+              "url": "https://www.datadictionary.nhs.uk/data_elements/clinical_trial_indicator.html"
             }
           ]
         }
       ],
-      "query": "\n\t\tselect\n\t\t\tdistinct\n  \t\t\treplace(NHS_Number, ' ', '') as NHS_Number,\n      \t\tClinical_Trial,\n\t\t\tCase \n\t\t\t\tWhen Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')\n\t\t\telse '' end as Source_Value,\n\t\t  \tDate_Decision_To_Treat\n\t\tfrom omop_staging.sact_staging\n  \t\twhere Clinical_Trial = '1'\n\t",
+      "query": "\n\t\tselect\n\t\t\tdistinct\n  \t\t\treplace(NHS_Number, ' ', '') as NHSNumber,\n      \t\tClinical_Trial,\n\t\t\tCase \n\t\t\t\tWhen Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')\n\t\t\telse '' end as Source_Value,\n\t\t  \tAdministration_Date\n\t\tfrom omop_staging.sact_staging\n  \t\twhere Clinical_Trial = '1'\n\t",
       "lookup_table_markdown": null
     }
   ]

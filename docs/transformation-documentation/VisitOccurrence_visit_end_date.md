@@ -10,7 +10,7 @@ has_toc: false
 Source column  `VisitEndDate`.
 Converts text to dates.
 
-* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](), [END DATE (EPISODE)]()
+* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
 
 ```sql
 with results as
@@ -46,7 +46,7 @@ order by
 Source column  `VisitEndDate`.
 Converts text to dates.
 
-* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](), [END DATE (EPISODE)]()
+* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
 
 ```sql
 	with records as (
@@ -87,7 +87,7 @@ Converts text to dates.
 Source column  `VisitEndDate`.
 Converts text to dates.
 
-* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](), [END DATE (EPISODE)]()
+* `VisitEndDate` The latest episode end date for the spell, or the latest activity date if none are specified. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html), [END DATE (EPISODE)](https://www.datadictionary.nhs.uk/data_elements/end_date__episode_.html)
 
 ```sql
 		with records as (
@@ -125,7 +125,7 @@ Converts text to dates.
 Source column  `Administration_date`.
 Converts text to dates.
 
-* `Administration_date` Date when drug was administered or date an oral drug was initially dispensed to the patient [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
+* `Administration_date` Date when drug was administered or date an oral drug was initially dispensed to the patient [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
 
 ```sql
 		select distinct 

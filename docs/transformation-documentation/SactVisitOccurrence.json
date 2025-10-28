@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom [omop_staging].[sact_staging]\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom [omop_staging].[sact_staging]\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -53,7 +53,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom [omop_staging].[sact_staging]\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -71,7 +71,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom [omop_staging].[sact_staging]\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -89,7 +89,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom [omop_staging].[sact_staging]\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
