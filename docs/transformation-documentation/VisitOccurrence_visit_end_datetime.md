@@ -127,6 +127,22 @@ Combines a date with a time of day.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_end_datetime%20field%20SUS%20AE%20VisitOccurrenceWithSpell%20mapping){: .btn }
+### Sact VisitOccurrence
+Source column  `Administration_date`.
+Converts text to dates.
+
+* `Administration_date` Date when drug was administered or date an oral drug was initially dispensed to the patient [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
+
+```sql
+		select distinct 
+			NHS_Number,
+			Administration_Date 
+		from omop_staging.sact_staging
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20visit_end_datetime%20field%20Sact%20VisitOccurrence%20mapping){: .btn }
 ### Rtds VisitOccurrence
 Source column  `event_end_date`.
 Converts text to dates.

@@ -33,6 +33,7 @@ create sequence sequence_care_site_id start 1;
 create sequence sequence_condition_occurrence_id start 1;
 create sequence sequence_device_exposure_id start 1;
 create sequence sequence_drug_exposure_id start 1;
+create sequence sequence_episode_id start 1;
 create sequence sequence_location_id start 1;
 create sequence sequence_measurement_id start 1;
 create sequence sequence_observation_id start 1;
@@ -289,7 +290,7 @@ CREATE TABLE cdm.drug_strength(
 );
 
 CREATE TABLE cdm.episode(
-	episode_id integer NOT NULL,
+	episode_id integer NOT NULL default nextval('sequence_episode_id'),
 	person_id integer NOT NULL,
 	episode_concept_id integer NOT NULL,
 	episode_start_date date NOT NULL,

@@ -293,6 +293,9 @@
     <None Update="SACT\ConditionOccurrence\SactConditionOccurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SACT\VisitOccurrence\SactVisitOccurrence.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SACT\Measurements\SactMeasurementHeight\SactMeasurementHeight.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -306,6 +309,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SACT\CareSite\SactCareSite.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SACT\Observation\SactAdministrationRoute\SactAdministrationRoute.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SACT\Observation\SactTreatmentIntent\SactTreatmentIntent.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SACT\Observation\SactAdjunctiveTherapyType\SactAdjunctiveTherapyType.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SACT\Observation\SactClinicalTrial\SactClinicalTrial.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SUS\AE\DeviceExposure\InvestigationDevice\SusAEInvestigationDevice.xml">

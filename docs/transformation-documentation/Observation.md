@@ -16,9 +16,11 @@ has_toc: false
 * [value_as_string]({% link docs/transformation-documentation/Observation_value_as_string.md %})
 * [HospitalProviderSpellNumber]({% link docs/transformation-documentation/Observation_HospitalProviderSpellNumber.md %})
 * [value_as_number]({% link docs/transformation-documentation/Observation_value_as_number.md %})
+* [value_as_concept_id]({% link docs/transformation-documentation/Observation_value_as_concept_id.md %})
 * [unit_concept_id]({% link docs/transformation-documentation/Observation_unit_concept_id.md %})
 * [observation_source_value]({% link docs/transformation-documentation/Observation_observation_source_value.md %})
 * [observation_source_concept_id]({% link docs/transformation-documentation/Observation_observation_source_concept_id.md %})
+* [value_source_value]({% link docs/transformation-documentation/Observation_value_source_value.md %})
 
 ## SusOPSourceOfReferralForOutpatients
 <a href="SusOPSourceOfReferralForOutpatients.svg" target="_blank"><img src="SusOPSourceOfReferralForOutpatients.svg" /></a>
@@ -234,6 +236,22 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAEAsthmaticPatient%20mapping){: .btn }
+## SactAdjunctiveTherapyType
+<a href="SactAdjunctiveTherapyType.svg" target="_blank"><img src="SactAdjunctiveTherapyType.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactAdjunctiveTherapyType%20mapping){: .btn }
+## SactAdministrationRoute
+<a href="SactAdministrationRoute.svg" target="_blank"><img src="SactAdministrationRoute.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactAdministrationRoute%20mapping){: .btn }
+## SactClinicalTrial
+<a href="SactClinicalTrial.svg" target="_blank"><img src="SactClinicalTrial.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactClinicalTrial%20mapping){: .btn }
+## SactTreatmentIntent
+<a href="SactTreatmentIntent.svg" target="_blank"><img src="SactTreatmentIntent.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactTreatmentIntent%20mapping){: .btn }
 ## OxfordLabGeneralComment
 <a href="OxfordLabGeneralComment.svg" target="_blank"><img src="OxfordLabGeneralComment.svg" /></a>
 

@@ -27,6 +27,27 @@ has_toc: false
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_value%20field%20Sus%20CCMDS%20High%20Cost%20Drugs%20mapping){: .btn }
+### SACT Clinical Trial
+* Value copied from `Source_value`
+
+* `Source_value` Source value for the Systemic Anti-Cancer Therapy Data Set, CLINICAL TRIAL INDICATOR identifies if a PATIENT  is currently in an active Systemic Anti-Cancer Therapy CLINICAL TRIAL [CLINICAL TRIAL INDICATOR](https://www.datadictionary.nhs.uk/data_elements/clinical_trial_indicator.html)
+
+```sql
+		select
+			distinct
+  			replace(NHS_Number, ' ', '') as NHSNumber,
+      		Clinical_Trial,
+			Case 
+				When Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')
+			else '' end as Source_Value,
+		  	Administration_Date
+		from omop_staging.sact_staging
+  		where Clinical_Trial = '1'
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_value%20field%20SACT%20Clinical%20Trial%20mapping){: .btn }
 ### Oxford Lab General Comment Observation
 * Value copied from `EVENT`
 
