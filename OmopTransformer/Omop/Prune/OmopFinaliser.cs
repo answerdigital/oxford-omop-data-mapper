@@ -472,14 +472,17 @@ WHERE
 
 -- Combined DELETE statements for the 'death' table
 -- Deletes death records where related events occur >60 days after death
-DELETE FROM cdm.death
-WHERE person_id IN (
-    SELECT person_id FROM cdm.DEVICE_EXPOSURE
-    WHERE 
-        (DEVICE_EXPOSURE_END_DATE IS NOT NULL AND DEVICE_EXPOSURE_END_DATE > (death.death_date + INTERVAL '60' DAY)) OR
-        (DEVICE_EXPOSURE_START_DATE IS NOT NULL AND DEVICE_EXPOSURE_START_DATE > (death.death_date + INTERVAL '60' DAY)) OR
-        (DEVICE_EXPOSURE_END_DATETIME IS NOT NULL AND CAST(DEVICE_EXPOSURE_END_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY)) OR
-        (DEVICE_EXPOSURE_START_DATETIME IS NOT NULL AND CAST(DEVICE_EXPOSURE_START_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY))
+delete from cdm.death d
+where exists (
+    select 1
+    from cdm.DEVICE_EXPOSURE de
+    where de.person_id = d.person_id
+      and (
+        (de.DEVICE_EXPOSURE_END_DATE is not null and de.DEVICE_EXPOSURE_END_DATE > d.death_date + interval '60' day) or
+        (de.DEVICE_EXPOSURE_START_DATE is not null and de.DEVICE_EXPOSURE_START_DATE > d.death_date + interval '60' day) or
+        (de.DEVICE_EXPOSURE_END_DATETIME is not null and cast(de.DEVICE_EXPOSURE_END_DATETIME as date) > d.death_date + interval '60' day) or
+        (de.DEVICE_EXPOSURE_START_DATETIME is not null and cast(de.DEVICE_EXPOSURE_START_DATETIME as date) > d.death_date + interval '60' day)
+      )
 );
 
 ");
@@ -489,14 +492,17 @@ WHERE person_id IN (
 
         await connection.ExecuteAsync(@"
 
-DELETE FROM cdm.death
-WHERE person_id IN (
-    SELECT person_id FROM cdm.PROCEDURE_OCCURRENCE
-    WHERE
-        (PROCEDURE_DATE IS NOT NULL AND PROCEDURE_DATE > (death.death_date + INTERVAL '60' DAY)) OR
-        (PROCEDURE_END_DATE IS NOT NULL AND PROCEDURE_END_DATE > (death.death_date + INTERVAL '60' DAY)) OR
-        (PROCEDURE_DATETIME IS NOT NULL AND CAST(PROCEDURE_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY)) OR
-        (PROCEDURE_END_DATETIME IS NOT NULL AND CAST(PROCEDURE_END_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY))
+delete from cdm.death d
+where exists (
+    select 1
+    from cdm.PROCEDURE_OCCURRENCE po
+    where po.person_id = d.person_id
+      and (
+        (po.PROCEDURE_DATE is not null and po.PROCEDURE_DATE > d.death_date + interval '60' day) or
+        (po.PROCEDURE_END_DATE is not null and po.PROCEDURE_END_DATE > d.death_date + interval '60' day) or
+        (po.PROCEDURE_DATETIME is not null and cast(po.PROCEDURE_DATETIME as date) > d.death_date + interval '60' day) or
+        (po.PROCEDURE_END_DATETIME is not null and cast(po.PROCEDURE_END_DATETIME as date) > d.death_date + interval '60' day)
+      )
 );
 
 ");
@@ -506,14 +512,17 @@ WHERE person_id IN (
 
         await connection.ExecuteAsync(@"
 
-DELETE FROM cdm.death
-WHERE person_id IN (
-    SELECT person_id FROM cdm.VISIT_DETAIL
-    WHERE
-        (VISIT_DETAIL_END_DATE IS NOT NULL AND VISIT_DETAIL_END_DATE > (death.death_date + INTERVAL '60' DAY)) OR
-        (VISIT_DETAIL_START_DATE IS NOT NULL AND VISIT_DETAIL_START_DATE > (death.death_date + INTERVAL '60' DAY)) OR
-        (VISIT_DETAIL_END_DATETIME IS NOT NULL AND CAST(VISIT_DETAIL_END_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY)) OR
-        (VISIT_DETAIL_START_DATETIME IS NOT NULL AND CAST(VISIT_DETAIL_START_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY))
+delete from cdm.death d
+where exists (
+    select 1
+    from cdm.VISIT_DETAIL vd
+    where vd.person_id = d.person_id
+      and (
+        (vd.VISIT_DETAIL_END_DATE is not null and vd.VISIT_DETAIL_END_DATE > d.death_date + interval '60' day) or
+        (vd.VISIT_DETAIL_START_DATE is not null and vd.VISIT_DETAIL_START_DATE > d.death_date + interval '60' day) or
+        (vd.VISIT_DETAIL_END_DATETIME is not null and cast(vd.VISIT_DETAIL_END_DATETIME as date) > d.death_date + interval '60' day) or
+        (vd.VISIT_DETAIL_START_DATETIME is not null and cast(vd.VISIT_DETAIL_START_DATETIME as date) > d.death_date + interval '60' day)
+      )
 );
 ");
 
@@ -522,14 +531,17 @@ WHERE person_id IN (
 
         await connection.ExecuteAsync(@"
 
-DELETE FROM cdm.death
-WHERE person_id IN (
-    SELECT person_id FROM cdm.VISIT_OCCURRENCE
-    WHERE
-        (VISIT_END_DATE IS NOT NULL AND VISIT_END_DATE > (death.death_date + INTERVAL '60' DAY)) OR
-        (VISIT_START_DATE IS NOT NULL AND VISIT_START_DATE > (death.death_date + INTERVAL '60' DAY)) OR
-        (VISIT_END_DATETIME IS NOT NULL AND CAST(VISIT_END_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY)) OR
-        (VISIT_START_DATETIME IS NOT NULL AND CAST(VISIT_START_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY))
+delete from cdm.death d
+where exists (
+    select 1
+    from cdm.VISIT_OCCURRENCE vo
+    where vo.person_id = d.person_id
+      and (
+        (vo.VISIT_END_DATE is not null and vo.VISIT_END_DATE > d.death_date + interval '60' day) or
+        (vo.VISIT_START_DATE is not null and vo.VISIT_START_DATE > d.death_date + interval '60' day) or
+        (vo.VISIT_END_DATETIME is not null and cast(vo.VISIT_END_DATETIME as date) > d.death_date + interval '60' day) or
+        (vo.VISIT_START_DATETIME is not null and cast(vo.VISIT_START_DATETIME as date) > d.death_date + interval '60' day)
+      )
 );
 ");
 
@@ -537,14 +549,17 @@ WHERE person_id IN (
 
 
         await connection.ExecuteAsync(@"
-DELETE FROM cdm.death
-WHERE person_id IN (
-    SELECT person_id FROM cdm.DRUG_EXPOSURE
-    WHERE
-        (DRUG_EXPOSURE_END_DATE IS NOT NULL AND DRUG_EXPOSURE_END_DATE > (death.death_date + INTERVAL '60' DAY)) OR
-        (DRUG_EXPOSURE_START_DATE IS NOT NULL AND DRUG_EXPOSURE_START_DATE > (death.death_date + INTERVAL '60' DAY)) OR
-        (DRUG_EXPOSURE_END_DATETIME IS NOT NULL AND CAST(DRUG_EXPOSURE_END_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY)) OR
-        (DRUG_EXPOSURE_START_DATETIME IS NOT NULL AND CAST(DRUG_EXPOSURE_START_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY))
+delete from cdm.death d
+where exists (
+    select 1
+    from cdm.DRUG_EXPOSURE de
+    where de.person_id = d.person_id
+      and (
+        (de.DRUG_EXPOSURE_END_DATE is not null and de.DRUG_EXPOSURE_END_DATE > d.death_date + interval '60' day) or
+        (de.DRUG_EXPOSURE_START_DATE is not null and de.DRUG_EXPOSURE_START_DATE > d.death_date + interval '60' day) or
+        (de.DRUG_EXPOSURE_END_DATETIME is not null and cast(de.DRUG_EXPOSURE_END_DATETIME as date) > d.death_date + interval '60' day) or
+        (de.DRUG_EXPOSURE_START_DATETIME is not null and cast(de.DRUG_EXPOSURE_START_DATETIME as date) > d.death_date + interval '60' day)
+      )
 );");
 
         _logger.LogInformation("Correcting deaths where the patient had a OBSERVATION beyond 60 days.");
@@ -552,12 +567,15 @@ WHERE person_id IN (
 
         await connection.ExecuteAsync(@"
 
-DELETE FROM cdm.death
-WHERE person_id IN (
-    SELECT person_id FROM cdm.OBSERVATION
-    WHERE
-        (OBSERVATION_DATE IS NOT NULL AND OBSERVATION_DATE > (death.death_date + INTERVAL '60' DAY)) OR
-        (OBSERVATION_DATETIME IS NOT NULL AND CAST(OBSERVATION_DATETIME AS DATE) > (death.death_date + INTERVAL '60' DAY))
+delete from cdm.death d
+where exists (
+    select 1
+    from cdm.OBSERVATION o
+    where o.person_id = d.person_id
+      and (
+        (o.OBSERVATION_DATE is not null and o.OBSERVATION_DATE > d.death_date + interval '60' day) or
+        (o.OBSERVATION_DATETIME is not null and cast(o.OBSERVATION_DATETIME as date) > d.death_date + interval '60' day)
+      )
 );
 
 ");
@@ -567,12 +585,13 @@ WHERE person_id IN (
 
         await connection.ExecuteAsync(@"
 
-DELETE FROM cdm.death
-WHERE person_id IN (
-    SELECT person_id FROM cdm.CONDITION_ERA
-    WHERE
-        CONDITION_ERA_END_DATE IS NOT NULL 
-        AND CONDITION_ERA_END_DATE > (death.death_date + INTERVAL '60' DAY)
+delete from cdm.death d
+where exists (
+    select 1
+    from cdm.CONDITION_ERA ce
+    where ce.person_id = d.person_id
+      and ce.CONDITION_ERA_END_DATE is not null 
+      and ce.CONDITION_ERA_END_DATE > d.death_date + interval '60' day
 );
 
 ");

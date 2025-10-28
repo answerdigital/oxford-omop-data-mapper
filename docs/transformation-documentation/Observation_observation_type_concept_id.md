@@ -70,6 +70,7 @@ has_toc: false
 * Constant value set to `32818`. EHR administration record
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20AE%20Diabetic%20Patient%20mapping){: .btn }
+<<<<<<< HEAD
 ### SACT Adjunctive Therapy Type
 * Constant value set to `32818`. EHR administration record
 
@@ -86,6 +87,12 @@ has_toc: false
 * Constant value set to `32818`. EHR administration record
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SACT%20Treatment%20Intent%20mapping){: .btn }
+=======
+### Oxford Lab General Comment Observation
+* Constant value set to `32828`. EHR episode record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20Oxford%20Lab%20General%20Comment%20Observation%20mapping){: .btn }
+>>>>>>> main
 ### CosdV9TobaccoSmokingStatus
 * Constant value set to `32828`. `EHR episode record`
 

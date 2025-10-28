@@ -71,6 +71,7 @@ Converts concepts to standard concepts.
 * Constant value set to `4233784`. Asthmatic bronchitis (disorder)
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20AE%20Diabetic%20Patient%20mapping){: .btn }
+<<<<<<< HEAD
 ### SACT Adjunctive Therapy Type
 * Constant value set to `4194400`. Treatment intent
 
@@ -87,6 +88,12 @@ Converts concepts to standard concepts.
 * Constant value set to `4194400`. Treatment intent
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SACT%20Treatment%20Intent%20mapping){: .btn }
+=======
+### Oxford Lab General Comment Observation
+* Constant value set to `37053687`. Lab report general comments
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20Oxford%20Lab%20General%20Comment%20Observation%20mapping){: .btn }
+>>>>>>> main
 ### CosdV9TobaccoSmokingStatus
 * Constant value set to `43054909`. Tobacco smoking status
 

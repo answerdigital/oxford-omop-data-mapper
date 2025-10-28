@@ -410,6 +410,7 @@ and d.AccidentAndEmergencyDiagnosis in ('20','201')
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20SUS%20AE%20Diabetic%20Patient%20mapping){: .btn }
+<<<<<<< HEAD
 ### SACT Adjunctive Therapy Type
 Source column  `Administration_Date`.
 Converts text to dates.
@@ -499,6 +500,26 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20SACT%20Treatment%20Intent%20mapping){: .btn }
+=======
+### Oxford Lab General Comment Observation
+Source column  `EVENT_START_DT_TM`.
+Converts text to dates.
+
+* `EVENT_START_DT_TM` Lab test event start datetime [EVENT START DT TM]()
+
+```sql
+select
+    NHS_NUMBER,
+    EVENT,
+    EVENT_START_DT_TM,
+    RESULT_VALUE
+from ##duckdb_source##
+where lower(EVENT) like '%comment%'
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20Oxford%20Lab%20General%20Comment%20Observation%20mapping){: .btn }
+>>>>>>> main
 ### CosdV9TobaccoSmokingStatus
 Source column  `Date`.
 Converts text to dates.
