@@ -8,6 +8,6 @@ namespace OmopTransformer.COSD.Observation.CosdV9AdultComorbidityEvaluation;
 internal class CosdV9AdultComorbidityEvaluationRecord
 {
     public string? NhsNumber { get; set; }
-    public string? Date { get; set; }
+    public DateOnly? Date { get; set; }
     public string? AdultComorbidityEvaluation { get; set; }
 }

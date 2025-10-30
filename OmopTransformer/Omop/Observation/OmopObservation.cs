@@ -6,7 +6,7 @@ internal abstract class OmopObservation<T> : IOmopRecord<T>
     public virtual string? RecordConnectionIdentifier { get; set; }
     public virtual string? HospitalProviderSpellNumber { get; set; }
     public virtual int[]? observation_concept_id { get; set; }
-    public virtual DateTime? observation_date { get; set; }
+    public virtual DateOnly? observation_date { get; set; }
     public virtual DateTime? observation_datetime { get; set; }
     public virtual int? observation_type_concept_id { get; set; }
     public virtual double? value_as_number { get; set; }

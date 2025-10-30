@@ -1,30 +1,14 @@
 ﻿<Query>
     <Sql>
-;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),								
-CosdRecords as (				
-	select								
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,								
-		T.staging.query('.') as Node								
-		from omop_staging.cosd_staging								
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)								
-	where T.staging.exist('Id/@root') = 1								
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'								
-		and substring (FileName, 15, 2) = 'CO'								
-), COSD as (
-	select
-		Id,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-		Node.value('(ColorectalRecord/Treatment/Surgery/ProcedureDate)[1]', 'varchar(max)') as ProcedureDate,
-		Node.value('(ColorectalRecord/Treatment/Surgery/PrimaryProcedureOpcs/@code)[1]', 'varchar(max)') as PrimaryProcedureOpcs
-	from CosdRecords
-)
-select
-	distinct
-		NhsNumber,
-		ProcedureDate,
-		PrimaryProcedureOpcs
-from COSD c
-where ProcedureDate is not null and PrimaryProcedureOpcs is not null;
+select 
+  distinct
+    Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+    coalesce(Record ->> '$.Treatment[0].Surgery.ProcedureDate', Record ->> '$.Treatment.Surgery.ProcedureDate') as ProcedureDate,
+    coalesce(Record ->> '$.Treatment[0].Surgery.PrimaryProcedureOpcs.@code', Record ->> '$.Treatment.Surgery.PrimaryProcedureOpcs.@code') as PrimaryProcedureOpcs
+from omop_staging.cosd_staging_901
+where type = 'CO'
+  and ProcedureDate is not null
+  and PrimaryProcedureOpcs is not null;
 	</Sql>
 	<Explanations>
 		<Explanation columnName="NhsNumber">

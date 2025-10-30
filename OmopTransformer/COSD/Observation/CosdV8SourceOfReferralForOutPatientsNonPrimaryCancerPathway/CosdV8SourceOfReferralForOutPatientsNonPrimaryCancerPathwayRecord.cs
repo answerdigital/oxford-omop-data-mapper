@@ -8,6 +8,6 @@ namespace OmopTransformer.COSD.Observation.CosdV8SourceOfReferralForOutPatientsN
 internal class CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathwayRecord
 {
     public string? NhsNumber { get; set; }
-    public string? Date { get; set; }
+    public DateOnly? Date { get; set; }
     public string? SourceOfReferralForOutPatientsNonPrimaryCancerPathway { get; set; }
 }

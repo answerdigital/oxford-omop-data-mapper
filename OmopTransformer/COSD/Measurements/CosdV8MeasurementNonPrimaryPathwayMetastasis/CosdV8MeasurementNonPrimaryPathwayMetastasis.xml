@@ -1,33 +1,26 @@
 ﻿<Query>
     <Sql>
-;with 
-    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
-    CosdRecords as ( 
-
-    select
-            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-            T.staging.query('*[local-name() != "Id"][1]/*[1]') as Node
-    from omop_staging.cosd_staging
-    cross apply content.nodes('COSD:COSD/*') as T(staging)
-    where T.staging.exist('Id/@root') = 1
-            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
-            and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-			Id,
-			Node.value('(ColorectalCore/ColorectalCoreLinkagePatientId/NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-			Node.value('(ColorectalCore/ColorectalCoreLinkageDiagnosticDetails/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)')  as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
-			T.p.value('.', 'varchar(max)') as MetastaticSite
-	from CosdRecords
-	cross apply Node.nodes('ColorectalCore/ColorectalCoreNonPrimaryCancerPathwayRoute/MetastaticSite/@code') as T(p)
+with co as (
+    select distinct
+        Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+        unnest(
+            [
+                [ Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreNonPrimaryCancerPathwayRoute.MetastaticSite.@code' ],
+                Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreNonPrimaryCancerPathwayRoute.MetastaticSite[*].@code'
+            ],
+            recursive := true
+        ) as MetastaticSite
+    from omop_staging.cosd_staging_81
+    where type = 'CO'
 )
 select distinct
-	NhsNumber,
-	DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
-	MetastaticSite
-from CO
+    NhsNumber,
+    DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+    MetastaticSite
+from co
 where MetastaticSite is not null
-and MetastaticSite != 97
+  and MetastaticSite != '97';
 	</Sql>
     <Explanations>
 	    <Explanation columnName="NHSNumber">

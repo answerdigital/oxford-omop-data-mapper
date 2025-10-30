@@ -1,33 +1,12 @@
 ﻿<Query>
     <Sql>
-;with 
-    XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-    CosdRecords as ( 
-
-    select
-            T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-            T.staging.query('.') as Node
-    from omop_staging.cosd_staging
-    cross apply content.nodes('COSD901:COSD/*') as T(staging)
-    where T.staging.exist('Id/@root') = 1
-            and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-            and substring (FileName, 15, 2) = 'CO'
-), CO as (
-	select
-		Id,
-		Node,
-		Node.value('(ColorectalRecord/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-		Node.value('(ColorectalRecord/NonPrimaryPathway/DateOfNonPrimaryCancerDiagnosisClinicallyAgreed)[1]', 'varchar(max)') as NonPrimaryDiagnosisDate,
-		Node.value('(ColorectalRecord/NonPrimaryPathway/Progression/ProgressionIcd/@code)[1]', 'varchar(max)') as NonPrimaryProgressionOriginalDiagnosis
-	from CosdRecords
-)
-select 
-	distinct 
-        NhsNumber,
-        NonPrimaryDiagnosisDate,
-		NonPrimaryProgressionOriginalDiagnosis
-from CO
-where NonPrimaryProgressionOriginalDiagnosis is not null;
+select distinct
+    Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+    Record ->> '$.NonPrimaryPathway.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,
+    Record ->> '$.NonPrimaryPathway.Progression.ProgressionIcd.@code' as NonPrimaryProgressionOriginalDiagnosis
+from omop_staging.cosd_staging_901
+where type = 'CO'
+  and NonPrimaryProgressionOriginalDiagnosis is not null;
 	</Sql>
     <Explanations>
 		<Explanation columnName="NhsNumber">

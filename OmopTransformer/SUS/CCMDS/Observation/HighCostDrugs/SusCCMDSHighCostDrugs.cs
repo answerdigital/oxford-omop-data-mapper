@@ -15,8 +15,8 @@ internal class SusCCMDSHighCostDrugs : OmopObservation<SusCCMDSHighCostDrugsReco
     [Transform(typeof(StandardConceptSelector), useOmopTypeAsSource: true, nameof(observation_source_concept_id))]
     public override int[]? observation_concept_id { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.ObservationDate))]
-    public override DateTime? observation_date { get; set; }
+    [Transform(typeof(DateOnlyConverter), nameof(Source.ObservationDate))]
+    public override DateOnly? observation_date { get; set; }
 
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.ObservationDate), nameof(Source.ObservationDateTime))]
     public override DateTime? observation_datetime { get; set; }

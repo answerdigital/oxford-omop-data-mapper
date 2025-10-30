@@ -8,6 +8,6 @@ namespace OmopTransformer.COSD.Observation.CosdV9PersonSexualOrientationCodeAtDi
 internal class CosdV9PersonSexualOrientationCodeAtDiagnosisRecord
 {
     public string? NhsNumber { get; set; }
-    public string? Date { get; set; }
+    public DateOnly? Date { get; set; }
     public string? PersonSexualOrientationCodeAtDiagnosis { get; set; }
 }

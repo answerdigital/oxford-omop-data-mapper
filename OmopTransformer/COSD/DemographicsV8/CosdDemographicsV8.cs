@@ -1,11 +1,11 @@
 ﻿using OmopTransformer.Annotations;
 
-namespace OmopTransformer.COSD.Demographics;
+namespace OmopTransformer.COSD.DemographicsV8;
 
 [DataOrigin("COSD")]
-[Description("COSD Demographics")]
-[SourceQuery("OmopDemographics.xml")]
-internal class CosdDemographics
+[Description("COSD Demographics v8")]
+[SourceQuery("OmopDemographicsV8.xml")]
+internal class CosdDemographicsV8
 {
     public string? StreetAddressLine1 { get; set; }
     public string? StreetAddressLine2 { get; set; }
@@ -15,5 +15,4 @@ internal class CosdDemographics
     public string? NhsNumber { get; set; }
     public string? PersonBirthDate { get; set; }
     public string? DateOfBirth { get; set; }
-    public string? EthnicCategory { get; set; }
 }

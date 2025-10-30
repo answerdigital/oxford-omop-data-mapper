@@ -1,57 +1,30 @@
 ﻿<Query>
     <Sql>
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-	CosdRecords as ( 
-
-	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-), CosdDates as (
-	select 
-		convert(varchar(max), Node.value('(*/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)')) as NhsNumber,
-		convert(datetime, Node.value('(/*/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)')) as TreatmentStartDateCancer,
-		convert(datetime, Node.value('(/*/CancerCarePlan/MultidisciplinaryTeamDiscussionDateCancer)[1]', 'varchar(max)')) as MultidisciplinaryTeamDiscussionDateCancer,
-		convert(datetime, Node.value('(/*/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)')) as StageDateFinalPretreatmentStage,
-		convert(datetime, Node.value('(/*/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)')) as DateOfPrimaryDiagnosisClinicallyAgreed
-	from CosdRecords
-	where Node.value('(//BasisOfDiagnosisCancer/@code)[1]', 'int') in (0, 1)
-), Dates as (
-	select
-		NhsNumber,
-		TreatmentStartDateCancer as [Date]
-	from CosdDates
-
-	union 
-
-	select
-		NhsNumber,
-		MultidisciplinaryTeamDiscussionDateCancer as [Date]
-	from CosdDates
-
-	union 
-
-	select
-		NhsNumber,
-		StageDateFinalPretreatmentStage as [Date]
-	from CosdDates
-
-	union 
-
-	select
-		NhsNumber,
-		DateOfPrimaryDiagnosisClinicallyAgreed as [Date]
-	from CosdDates
+        -- fail
+	    with cosddates as (
+    select
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        cast(Record ->> '$.Treatment.TreatmentStartDateCancer' as date) as TreatmentStartDateCancer,
+        cast(Record ->> '$.CancerCarePlan.MultidisciplinaryTeamDiscussionDateCancer' as date) as MultidisciplinaryTeamDiscussionDateCancer,
+        cast(Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as date) as StageDateFinalPretreatmentStage,
+        cast(Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as date) as DateOfPrimaryDiagnosisClinicallyAgreed
+    from omop_staging.cosd_staging_901
+    where type = 'CO'
+      and (Record ->> '$.PrimaryPathway.Diagnosis.BasisOfDiagnosisCancer.@code') in ('0', '1')
+), dates as (
+    select NhsNumber, TreatmentStartDateCancer as "Date" from cosddates where TreatmentStartDateCancer is not null
+    union
+    select NhsNumber, MultidisciplinaryTeamDiscussionDateCancer as "Date" from cosddates where MultidisciplinaryTeamDiscussionDateCancer is not null
+    union
+    select NhsNumber, StageDateFinalPretreatmentStage as "Date" from cosddates where StageDateFinalPretreatmentStage is not null
+    union
+    select NhsNumber, DateOfPrimaryDiagnosisClinicallyAgreed as "Date" from cosddates where DateOfPrimaryDiagnosisClinicallyAgreed is not null
 )
 select
-	NhsNumber,
-	datefromparts(year(max ([Date])), 12, 31) as DeathDate
-from Dates
-group by NhsNumber
+    NhsNumber,
+    make_date(cast(extract(year from max("Date")) as integer), 12, 31) as DeathDate
+from dates
+group by NhsNumber;
 	</Sql>
 	<Explanations>
 		<Explanation columnName="NhsNumber">

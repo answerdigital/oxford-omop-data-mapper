@@ -8,6 +8,6 @@ namespace OmopTransformer.COSD.Observation.CosdV9TobaccoSmokingStatus;
 internal class CosdV9TobaccoSmokingStatusRecord
 {
     public string? NhsNumber { get; set; }
-    public string? Date { get; set; }
+    public DateOnly? Date { get; set; }
     public string? TobaccoSmokingStatus { get; set; }
 }

@@ -118,33 +118,18 @@ order by
 * `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-	CosdRecords as ( 
-
-	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-)
-select
-	distinct
-		Node.value('(*/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-		coalesce
-		(
-			Node.value('(/*/Treatment/DischargeDateHospitalProviderSpell)[1]', 'varchar(max)'),
-			datefromparts
-			(
-				year(convert(datetime, Node.value('(/*/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)'))),
-				12,
-				31
-			)
-		) as DeathDate
-from CosdRecords
-where Node.value('(/*/Treatment/DischargeDestinationHospitalProviderSpell/@code)[1]', 'varchar(max)') = 79 -- Not applicable - PATIENT died or stillbirth
+select distinct
+    Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+    coalesce(
+        cast(Record ->> '$.Treatment.DischargeDateHospitalProviderSpell' as date),
+        make_date(
+            cast(extract(year from cast(Record ->> '$.Treatment.TreatmentStartDateCancer' as date)) as integer),
+            12,
+            31
+        )
+    ) as DeathDate
+from omop_staging.cosd_staging_901
+where (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code') = '79';-- Not applicable - PATIENT died or stillbirth
 	
 ```
 
@@ -156,58 +141,31 @@ where Node.value('(/*/Treatment/DischargeDestinationHospitalProviderSpell/@code)
 * `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
-;with 
-	XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1' AS COSD901),
-	CosdRecords as ( 
-
-	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('.') as Node
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD901:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v9-0-1'
-), CosdDates as (
-	select 
-		convert(varchar(max), Node.value('(*/LinkagePatientId/NhsNumber/@extension)[1]', 'varchar(max)')) as NhsNumber,
-		convert(datetime, Node.value('(/*/Treatment/TreatmentStartDateCancer)[1]', 'varchar(max)')) as TreatmentStartDateCancer,
-		convert(datetime, Node.value('(/*/CancerCarePlan/MultidisciplinaryTeamDiscussionDateCancer)[1]', 'varchar(max)')) as MultidisciplinaryTeamDiscussionDateCancer,
-		convert(datetime, Node.value('(/*/PrimaryPathway/Staging/StageDateFinalPretreatmentStage)[1]', 'varchar(max)')) as StageDateFinalPretreatmentStage,
-		convert(datetime, Node.value('(/*/PrimaryPathway/LinkageDiagnosticDetails/DateOfPrimaryDiagnosisClinicallyAgreed)[1]', 'varchar(max)')) as DateOfPrimaryDiagnosisClinicallyAgreed
-	from CosdRecords
-	where Node.value('(//BasisOfDiagnosisCancer/@code)[1]', 'int') in (0, 1)
-), Dates as (
-	select
-		NhsNumber,
-		TreatmentStartDateCancer as [Date]
-	from CosdDates
-
-	union 
-
-	select
-		NhsNumber,
-		MultidisciplinaryTeamDiscussionDateCancer as [Date]
-	from CosdDates
-
-	union 
-
-	select
-		NhsNumber,
-		StageDateFinalPretreatmentStage as [Date]
-	from CosdDates
-
-	union 
-
-	select
-		NhsNumber,
-		DateOfPrimaryDiagnosisClinicallyAgreed as [Date]
-	from CosdDates
+-- fail
+	    with cosddates as (
+    select
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        cast(Record ->> '$.Treatment.TreatmentStartDateCancer' as date) as TreatmentStartDateCancer,
+        cast(Record ->> '$.CancerCarePlan.MultidisciplinaryTeamDiscussionDateCancer' as date) as MultidisciplinaryTeamDiscussionDateCancer,
+        cast(Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as date) as StageDateFinalPretreatmentStage,
+        cast(Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as date) as DateOfPrimaryDiagnosisClinicallyAgreed
+    from omop_staging.cosd_staging_901
+    where type = 'CO'
+      and (Record ->> '$.PrimaryPathway.Diagnosis.BasisOfDiagnosisCancer.@code') in ('0', '1')
+), dates as (
+    select NhsNumber, TreatmentStartDateCancer as "Date" from cosddates where TreatmentStartDateCancer is not null
+    union
+    select NhsNumber, MultidisciplinaryTeamDiscussionDateCancer as "Date" from cosddates where MultidisciplinaryTeamDiscussionDateCancer is not null
+    union
+    select NhsNumber, StageDateFinalPretreatmentStage as "Date" from cosddates where StageDateFinalPretreatmentStage is not null
+    union
+    select NhsNumber, DateOfPrimaryDiagnosisClinicallyAgreed as "Date" from cosddates where DateOfPrimaryDiagnosisClinicallyAgreed is not null
 )
 select
-	NhsNumber,
-	datefromparts(year(max ([Date])), 12, 31) as DeathDate
-from Dates
-group by NhsNumber
+    NhsNumber,
+    make_date(cast(extract(year from max("Date")) as integer), 12, 31) as DeathDate
+from dates
+group by NhsNumber;
 	
 ```
 
@@ -219,24 +177,12 @@ group by NhsNumber
 * `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
-;with XMLNAMESPACES('http://www.datadictionary.nhs.uk/messages/COSD-v8-1' AS COSD),
-	CosdRecords as ( 
-	select
-		T.staging.value('(Id/@root)[1]', 'uniqueidentifier') as Id,
-		T.staging.query('*[local-name() != "Id"][1]/*[1]') as Node -- Select the first inner element of the element that is not called Id.
-	from omop_staging.cosd_staging
-	cross apply content.nodes('COSD:COSD/*') as T(staging)
-	where T.staging.exist('Id/@root') = 1
-		and Content.value('namespace-uri((/*:COSD)[1])','nvarchar(max)') = 'http://www.datadictionary.nhs.uk/messages/COSD-v8-1'
-		--and substring (FileName, 15, 2) = 'CO'
-)
 select 
 	distinct
-		Node.value('(//NHSNumber/@extension)[1]', 'varchar(max)') as NhsNumber,
-		Node.value('(//PersonDeathDate)[1]', 'varchar(max)') as DeathDate
-from CosdRecords
-where Node.value('(//PersonDeathDate)[1]', 'varchar(max)') is not null;
-	
+		Record ->> '$..NHSNumber..@extension' ->> 0 as NhsNumber,
+  		Record ->> '$..PersonDeathDate' ->> 0 as DeathDate
+from omop_staging.cosd_staging_81
+where DeathDate is not null
 ```
 
 
