@@ -12,8 +12,8 @@ internal class SactTreatmentIntent : OmopObservation<SactTreatmentIntentRecord>
     [ConstantValue(4194400, "Treatment intent")]
     public override int[]? observation_concept_id { get; set; }
 
-    [Transform(typeof(DateConverter), nameof(Source.Administration_Date))]
-    public override DateTime? observation_date { get; set; }
+    [Transform(typeof(DateOnlyConverter), nameof(Source.Administration_Date))]
+    public override DateOnly? observation_date { get; set; }
 
     [Transform(typeof(DateAndTimeCombiner), nameof(Source.Administration_Date), nameof(Source.Administration_Date))]
     public override DateTime? observation_datetime { get; set; }
