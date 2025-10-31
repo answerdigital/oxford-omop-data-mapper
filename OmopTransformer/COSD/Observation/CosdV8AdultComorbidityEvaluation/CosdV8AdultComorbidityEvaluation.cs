@@ -10,7 +10,7 @@ internal class CosdV8AdultComorbidityEvaluation : OmopObservation<CosdV8AdultCom
     [CopyValue(nameof(Source.NhsNumber))]
     public override string? nhs_number { get; set; }
 
-    [ConstantValue(40487424, "Adult comorbidity evaluation-27 score")]
+    [ConstantValue(40488785, "Adult comorbidity evaluation-27")]
     public override int[]? observation_concept_id { get; set; }
 
     [CopyValue(nameof(Source.Date))]
