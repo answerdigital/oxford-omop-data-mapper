@@ -499,6 +499,152 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20SACT%20Treatment%20Intent%20mapping){: .btn }
+### RTDS Decision To Perform Date
+Source column  `DateStamp`.
+Converts text to dates.
+
+* `DateStamp` Decision date of treatment 
+
+```sql
+		with results as (
+			select 
+				distinct
+					(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
+					dc.DiagnosisCode,
+					dc.DateStamp,
+			from omop_staging.RTDS_5_Diagnosis_Course dc
+			where dc.DiagnosisCode like 'Decision%'
+		)
+		select
+			NhsNumber,
+			DateStamp
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20RTDS%20Decision%20To%20Perform%20Date%20mapping){: .btn }
+### RTDS External Beam Radiation Therapy Energy
+Source column  `Treatmentdatetime`.
+Converts text to dates.
+
+* `Treatmentdatetime` Start date of treatment 
+
+```sql
+		with results as (
+			select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
+			Treatmentdatetime,
+			Cast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,
+			NominalEnergy as NominalEnergy
+		from omop_staging.RTDS_4_Exposures
+		)
+		select
+			NhsNumber,
+			Treatmentdatetime,
+			CalculatedNominalEnergy,
+			NominalEnergy
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20RTDS%20External%20Beam%20Radiation%20Therapy%20Energy%20mapping){: .btn }
+### RTDS Number Of Fractions
+Source column  `StartDateTime`.
+Converts text to dates.
+
+* `StartDateTime` Start date of treatment 
+
+```sql
+		with results as (
+			select distinct
+				(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
+				StartDateTime,
+				NoFracs 
+			from omop_staging.RTDS_3_Prescription
+		)
+		select
+			NhsNumber,
+			StartDateTime,
+			NoFracs
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20RTDS%20Number%20Of%20Fractions%20mapping){: .btn }
+### RTDS Date of Referral
+Source column  `DateStamp`.
+Converts text to dates.
+
+* `DateStamp` Decision date of treatment 
+
+```sql
+		with results as (
+			select 
+				distinct
+					(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
+					dc.DiagnosisCode,
+					dc.DateStamp,
+			from omop_staging.RTDS_5_Diagnosis_Course dc
+			where dc.DiagnosisCode like 'Referral%'
+		)
+		select
+			NhsNumber,
+			DateStamp
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20RTDS%20Date%20of%20Referral%20mapping){: .btn }
+### RTDS Treatment Anatomical Site
+Source column  `DueDateTime`.
+Converts text to dates.
+
+* `DueDateTime` DATE WHEN RADIOTHERAPY OCCURRED 
+
+```sql
+		with results as (
+			select distinct
+				(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NHSNumber,
+				AttributeValue,
+				(select concept_id from cdm.concept where domain_id = 'Spec Anatomic Site'
+						and concept_code = CASE WHEN length(code) > 3 THEN substr(code, 1, 3) || '.' || substr(code, 4) ELSE code END) as AnatomicalSiteConceptId,
+				DueDateTime
+			from omop_staging.RTDS_2b_Plan,
+			LATERAL (SELECT regexp_extract(AttributeValue, '^([A-Z][0-9A-Z]+)', 1) AS code) AS t
+			where Description = 'Anatomical Site' 
+			and AttributeValue is not null 
+			and AttributeValue != 'None'
+		)
+		select
+			NhsNumber,
+			AttributeValue,
+			AnatomicalSiteConceptId,
+			DueDateTime
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20RTDS%20Treatment%20Anatomical%20Site%20mapping){: .btn }
 ### Oxford Lab General Comment Observation
 Source column  `EVENT_START_DT_TM`.
 Converts text to dates.

@@ -331,6 +331,60 @@ and d.AccidentAndEmergencyDiagnosis in ('20','201')
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20SUS%20AE%20Diabetic%20Patient%20mapping){: .btn }
+### RTDS Decision To Perform Date
+* Value copied from `DateStamp`
+
+* `DateStamp` Decision date of treatment 
+
+```sql
+		with results as (
+			select 
+				distinct
+					(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
+					dc.DiagnosisCode,
+					dc.DateStamp,
+			from omop_staging.RTDS_5_Diagnosis_Course dc
+			where dc.DiagnosisCode like 'Decision%'
+		)
+		select
+			NhsNumber,
+			DateStamp
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20RTDS%20Decision%20To%20Perform%20Date%20mapping){: .btn }
+### RTDS Date of Referral
+* Value copied from `DateStamp`
+
+* `DateStamp` Decision date of treatment 
+
+```sql
+		with results as (
+			select 
+				distinct
+					(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
+					dc.DiagnosisCode,
+					dc.DateStamp,
+			from omop_staging.RTDS_5_Diagnosis_Course dc
+			where dc.DiagnosisCode like 'Referral%'
+		)
+		select
+			NhsNumber,
+			DateStamp
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20RTDS%20Date%20of%20Referral%20mapping){: .btn }
 ### Oxford Lab General Comment Observation
 * Value copied from `RESULT_VALUE`
 

@@ -1,0 +1,14 @@
+<Query>
+    <Sql>
+		select distinct 
+			DoctorId 
+		from omop_staging.RTDS_1_Demographics 
+		where DoctorId is not null
+	</Sql>
+	<Explanations>
+		<Explanation columnName="DoctorId">
+			<Description>This GENERAL MEDICAL PRACTITIONER works within the General Medical Practitioner Practice with which the PATIENT is registered.</Description>
+			<Origin>GENERAL MEDICAL PRACTITIONER (SPECIFIED)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

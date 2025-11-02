@@ -275,6 +275,9 @@
     <None Update="RTDS\Location\RtdsLocation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="RTDS\Provider\RtdsProvider.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="RTDS\ProcedureOccurrence\RtdsProcedureOccurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -282,6 +285,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="RTDS\VisitOccurrence\RtdsVisitOccurrence.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RTDS\Observation\RtdsDecisionToPerformDate\RtdsDecisionToPerformDate.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RTDS\Observation\RtdsExternalBeamEnergy\RtdsExternalBeamEnergy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RTDS\Observation\RtdsNumberOfFractions\RtdsNumberOfFractions.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RTDS\Observation\RtdsReferralDate\RtdsReferralDate.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="RTDS\Observation\RtdsTreatmentAnatomicalSite\RtdsTreatmentAnatomicalSite.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SACT\Person\SactPerson.xml">

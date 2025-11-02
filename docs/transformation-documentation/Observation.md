@@ -252,6 +252,26 @@ has_toc: false
 <a href="SactTreatmentIntent.svg" target="_blank"><img src="SactTreatmentIntent.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SactTreatmentIntent%20mapping){: .btn }
+## RtdsDecisionToPerformDate
+<a href="RtdsDecisionToPerformDate.svg" target="_blank"><img src="RtdsDecisionToPerformDate.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsDecisionToPerformDate%20mapping){: .btn }
+## RtdsExternalBeamEnergy
+<a href="RtdsExternalBeamEnergy.svg" target="_blank"><img src="RtdsExternalBeamEnergy.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsExternalBeamEnergy%20mapping){: .btn }
+## RtdsNumberOfFractions
+<a href="RtdsNumberOfFractions.svg" target="_blank"><img src="RtdsNumberOfFractions.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsNumberOfFractions%20mapping){: .btn }
+## RtdsReferralDate
+<a href="RtdsReferralDate.svg" target="_blank"><img src="RtdsReferralDate.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsReferralDate%20mapping){: .btn }
+## RtdsTreatmentAnatomicalSite
+<a href="RtdsTreatmentAnatomicalSite.svg" target="_blank"><img src="RtdsTreatmentAnatomicalSite.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsTreatmentAnatomicalSite%20mapping){: .btn }
 ## OxfordLabGeneralComment
 <a href="OxfordLabGeneralComment.svg" target="_blank"><img src="OxfordLabGeneralComment.svg" /></a>
 

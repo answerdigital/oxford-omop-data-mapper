@@ -90,6 +90,62 @@ group by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20Gestation%20Length%20Labour%20Onset%20Observation%20mapping){: .btn }
+### RTDS External Beam Radiation Therapy Energy
+Source column  `CalculatedNominalEnergy`.
+Converts text to number.
+
+* `CalculatedNominalEnergy` RADIOTHERAPY PRESCRIBED BEAM ENERGY  is the prescribed beam energy of a Radiotherapy Exposure used in External Beam Radiotherapy [RADIOTHERAPY PRESCRIBED BEAM ENERGY](https://www.datadictionary.nhs.uk/data_elements/radiotherapy_prescribed_beam_energy.html)
+
+```sql
+		with results as (
+			select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
+			Treatmentdatetime,
+			Cast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,
+			NominalEnergy as NominalEnergy
+		from omop_staging.RTDS_4_Exposures
+		)
+		select
+			NhsNumber,
+			Treatmentdatetime,
+			CalculatedNominalEnergy,
+			NominalEnergy
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20RTDS%20External%20Beam%20Radiation%20Therapy%20Energy%20mapping){: .btn }
+### RTDS Number Of Fractions
+Source column  `NoFracs`.
+Converts text to number.
+
+* `NoFracs` The prescribed number of Radiotherapy Fractions delivered to a PATIENT as described in the Radiotherapy Plan [RADIOTHERAPY PRESCRIBED FRACTIONS](https://www.datadictionary.nhs.uk/data_elements/radiotherapy_prescribed_fractions.html)
+
+```sql
+		with results as (
+			select distinct
+				(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
+				StartDateTime,
+				NoFracs 
+			from omop_staging.RTDS_3_Prescription
+		)
+		select
+			NhsNumber,
+			StartDateTime,
+			NoFracs
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20RTDS%20Number%20Of%20Fractions%20mapping){: .btn }
 ### CosdV9TobaccoSmokingStatus
 Source column  `TobaccoSmokingStatus`.
 Converts text to number.

@@ -11,6 +11,11 @@ using OmopTransformer.RTDS.ConditionOccurrence;
 using OmopTransformer.RTDS.Person;
 using OmopTransformer.RTDS.Location;
 using OmopTransformer.Transformation;
+using OmopTransformer.RTDS.VisitOccurrence;
+using OmopTransformer.Omop.Provider;
+using OmopTransformer.RTDS.Provider;
+using OmopTransformer.Omop.Observation;
+using OmopTransformer.RTDS.Observation;
 
 namespace OmopTransformer.RTDS;
 
@@ -21,6 +26,8 @@ internal class RtdsTransformer : Transformer
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
     private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
     private readonly IVisitOccurrenceRecorder _visitOccurrenceRecorder;
+    private readonly IProviderRecorder _providerRecorder;
+    private readonly IObservationRecorder _observationRecorder;
 
     public RtdsTransformer(
         IRecordTransformer recordTransformer,
@@ -28,6 +35,8 @@ internal class RtdsTransformer : Transformer
         IRecordProvider recordProvider,
         ILocationRecorder locationRecorder,
         IPersonRecorder personRecorder,
+        IProviderRecorder providerRecorder,
+        IObservationRecorder observationRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder,
         IConditionOccurrenceRecorder conditionOccurrenceRecorder,
         IVisitOccurrenceRecorder visitOccurrenceRecorder,
@@ -46,6 +55,8 @@ internal class RtdsTransformer : Transformer
         _procedureOccurrenceRecorder = procedureOccurrenceRecorder;
         _conditionOccurrenceRecorder = conditionOccurrenceRecorder;
         _visitOccurrenceRecorder = visitOccurrenceRecorder;
+        _providerRecorder = providerRecorder;
+        _observationRecorder = observationRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -76,10 +87,52 @@ internal class RtdsTransformer : Transformer
           runId,
           cancellationToken);
 
-        //await Transform<RtdsVisitOccurrenceRecord, RtdsVisitOccurrence>(
-        //  _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
-        //  "Rtds Visit Occurrence",
-        //  runId,
-        //  cancellationToken);
+        await Transform<RtdsVisitOccurrenceRecord, RtdsVisitOccurrence>(
+         _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
+         "Rtds Visit Occurrence",
+         runId,
+         cancellationToken);
+
+        await Transform<RtdsVisitOccurrenceRecord, RtdsVisitOccurrence>(
+        _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
+        "Rtds Visit Occurrence",
+        runId,
+        cancellationToken);
+
+        await Transform<RtdsProviderRecord, RtdsProvider>(
+        _providerRecorder.InsertUpdateProvider,
+        "Rtds Provider",
+        runId,
+        cancellationToken);
+
+        await Transform<RtdsDecisionToPerformDateRecord, RtdsDecisionToPerformDate>(
+            _observationRecorder.InsertUpdateObservations,
+            "RTDS Observation - Decision To Perform Date",
+            runId,
+            cancellationToken);
+
+        await Transform<RtdsExternalBeamEnergyRecord, RtdsExternalBeamEnergy>(
+        _observationRecorder.InsertUpdateObservations,
+        "RTDS Observation - External Beam Radiation Therapy Energy",
+        runId,
+        cancellationToken);
+
+        await Transform<RtdsNumberOfFractionsRecord, RtdsNumberOfFractions>(
+        _observationRecorder.InsertUpdateObservations,
+        "RTDS Observation - Number Of Fractions",
+        runId,
+        cancellationToken);
+
+        await Transform<RtdsTreatmentAnatomicalSiteRecord, RtdsTreatmentAnatomicalSite>(
+        _observationRecorder.InsertUpdateObservations,
+        "RTDS Observation - Treatment Anatomical Site",
+        runId,
+        cancellationToken);
+            
+        await Transform<RtdsReferralDateRecord, RtdsReferralDate>(
+        _observationRecorder.InsertUpdateObservations,
+        "RTDS Observation - Date of Referral",
+        runId,
+        cancellationToken);
     }
 }

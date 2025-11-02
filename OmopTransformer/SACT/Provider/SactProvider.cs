@@ -7,6 +7,9 @@ namespace OmopTransformer.SACT.Provider;
 internal class SactProvider : OmopProvider<SactProviderRecord>
 {
     [CopyValue(nameof(Source.Consultant_GMC_Code))]
+    public override string? provider_name { get; set; }
+
+    [CopyValue(nameof(Source.Consultant_GMC_Code))]
     public override string? provider_source_value { get; set; }
 
     [CopyValue(nameof(Source.Consultant_Specialty_Code))]
