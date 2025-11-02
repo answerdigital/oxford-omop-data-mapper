@@ -140,7 +140,7 @@ Converts concepts to standard concepts.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9AsaScore%20mapping){: .btn }
 ### CosdV9AdultComorbidityEvaluation
-* Constant value set to `40487424`. Adult comorbidity evaluation-27 score
+* Constant value set to `40488785`. Adult comorbidity evaluation-27
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9AdultComorbidityEvaluation%20mapping){: .btn }
 ### CosdV8SourceOfReferralOutPatients
@@ -176,6 +176,6 @@ Converts concepts to standard concepts.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8AdultPerformanceStatus%20mapping){: .btn }
 ### CosdV8AdultComorbidityEvaluation
-* Constant value set to `40487424`. Adult comorbidity evaluation-27 score
+* Constant value set to `40488785`. Adult comorbidity evaluation-27
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8AdultComorbidityEvaluation%20mapping){: .btn }
