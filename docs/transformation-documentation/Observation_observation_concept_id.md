@@ -87,6 +87,26 @@ Converts concepts to standard concepts.
 * Constant value set to `4194400`. Treatment intent
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SACT%20Treatment%20Intent%20mapping){: .btn }
+### RTDS Decision To Perform Date
+* Constant value set to `4134859`. Decision to perform date
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20RTDS%20Decision%20To%20Perform%20Date%20mapping){: .btn }
+### RTDS External Beam Radiation Therapy Energy
+* Constant value set to `4045098`. External beam radiation therapy beam energy
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20RTDS%20External%20Beam%20Radiation%20Therapy%20Energy%20mapping){: .btn }
+### RTDS Number Of Fractions
+* Constant value set to `4037631`. Number of fractions
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20RTDS%20Number%20Of%20Fractions%20mapping){: .btn }
+### RTDS Date of Referral
+* Constant value set to `40760321`. Date of Referral
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20RTDS%20Date%20of%20Referral%20mapping){: .btn }
+### RTDS Treatment Anatomical Site
+* Constant value set to `37163499`. Radiotherapy course of treatment
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20RTDS%20Treatment%20Anatomical%20Site%20mapping){: .btn }
 ### Oxford Lab General Comment Observation
 * Constant value set to `1092006`. General Comment Narrative
 

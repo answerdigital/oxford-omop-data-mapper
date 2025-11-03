@@ -1,0 +1,38 @@
+﻿<Query>
+    <Sql>
+		with results as (
+			select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
+			Treatmentdatetime,
+			Cast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,
+			NominalEnergy as NominalEnergy
+		from omop_staging.RTDS_4_Exposures
+		)
+		select
+			NhsNumber,
+			Treatmentdatetime,
+			CalculatedNominalEnergy,
+			NominalEnergy
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NhsNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="Treatmentdatetime">
+			<Description>Start date of treatment</Description>
+		</Explanation>
+		<Explanation columnName="NominalEnergy">
+			<Description>RADIOTHERAPY PRESCRIBED BEAM ENERGY  is the prescribed beam energy of a Radiotherapy Exposure used in External Beam Radiotherapy</Description>
+			<Origin>RADIOTHERAPY PRESCRIBED BEAM ENERGY</Origin>
+		</Explanation>
+		<Explanation columnName="CalculatedNominalEnergy">
+			<Description>RADIOTHERAPY PRESCRIBED BEAM ENERGY  is the prescribed beam energy of a Radiotherapy Exposure used in External Beam Radiotherapy</Description>
+			<Origin>RADIOTHERAPY PRESCRIBED BEAM ENERGY</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

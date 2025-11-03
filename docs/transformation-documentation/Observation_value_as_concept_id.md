@@ -122,3 +122,36 @@ Notes
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_concept_id%20field%20SACT%20Treatment%20Intent%20mapping){: .btn }
+### RTDS Treatment Anatomical Site
+* Value copied from `AnatomicalSiteConceptId`
+
+* `AnatomicalSiteConceptId` CONCEPT ID OF ANATOMIC SITE OF RADIOTHERAPY PROCEDURE 
+
+```sql
+		with results as (
+			select distinct
+				(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NHSNumber,
+				AttributeValue,
+				(select concept_id from cdm.concept where domain_id = 'Spec Anatomic Site'
+						and concept_code = CASE WHEN length(code) > 3 THEN substr(code, 1, 3) || '.' || substr(code, 4) ELSE code END) as AnatomicalSiteConceptId,
+				DueDateTime
+			from omop_staging.RTDS_2b_Plan,
+			LATERAL (SELECT regexp_extract(AttributeValue, '^([A-Z][0-9A-Z]+)', 1) AS code) AS t
+			where Description = 'Anatomical Site' 
+			and AttributeValue is not null 
+			and AttributeValue != 'None'
+		)
+		select
+			NhsNumber,
+			AttributeValue,
+			AnatomicalSiteConceptId,
+			DueDateTime
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_concept_id%20field%20RTDS%20Treatment%20Anatomical%20Site%20mapping){: .btn }

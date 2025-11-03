@@ -1,0 +1,32 @@
+﻿<Query>
+    <Sql>
+		with results as (
+			select distinct
+				(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
+				StartDateTime,
+				NoFracs 
+			from omop_staging.RTDS_3_Prescription
+		)
+		select
+			NhsNumber,
+			StartDateTime,
+			NoFracs
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NhsNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="StartDateTime">
+			<Description>Start date of treatment</Description>
+		</Explanation>
+		<Explanation columnName="NoFracs">
+			<Description>The prescribed number of Radiotherapy Fractions delivered to a PATIENT as described in the Radiotherapy Plan</Description>
+			<Origin>RADIOTHERAPY PRESCRIBED FRACTIONS</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
