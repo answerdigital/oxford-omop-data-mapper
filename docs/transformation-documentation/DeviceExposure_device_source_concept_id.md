@@ -10,7 +10,7 @@ has_toc: false
 Source column  `PrimaryProcedure`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
 
 ```sql
 	select
@@ -65,7 +65,7 @@ Notes
 * [CRITICAL CARE ACTIVITY CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/attributes/critical_care_activity_code.html)
 * [OMOP Devices](https://athena.ohdsi.org/search-terms/terms?domain=Device&invalidReason=Valid&standardConcept=Standard&page=1&pageSize=500&query=)
 
-* `CriticalCareActivityCode` Used to look up the Device code. [CRITICAL CARE ACTIVITY CODE](https://www.datadictionary.nhs.uk/data_elements/critical_care_activity_code.html)
+* `CriticalCareActivityCode` Used to look up the Device code. [CRITICAL CARE ACTIVITY CODE]()
 
 ```sql
 		select distinct
@@ -91,7 +91,7 @@ Notes
 Source column  `PrimaryProcedure`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)]()
 
 ```sql
 select

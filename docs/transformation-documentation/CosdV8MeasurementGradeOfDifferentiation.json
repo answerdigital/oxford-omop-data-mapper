@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -30,11 +30,11 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             },
             {
               "origin": "DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_non_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             }
           ]
         }
@@ -52,11 +52,11 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             },
             {
               "origin": "DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_non_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             }
           ]
         }
@@ -81,13 +81,13 @@
           "origins": [
             {
               "origin": "GRADE OF DIFFERENTIATION (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html"
+              "url": null
             }
           ]
         }
       ],
       "query": "\nwith CO as (\n\tselect \n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n\t\tRecord ->> '$.Colorectal.ColorectalCore.ColorectalCoreDiagnosis.DiagnosisGradeOfDifferentiation.@code' as GradeOfDifferentiationAtDiagnosis\n\tfrom omop_staging.cosd_staging_81\n\twhere Type = 'CO'\n)\nselect distinct\n\tNhsNumber,\n\tcoalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,\n\tGradeOfDifferentiationAtDiagnosis\nfrom CO\nwhere GradeOfDifferentiationAtDiagnosis is not null;\n\t",
-      "lookup_table_markdown": "\r\n\r\n|GradeOfDifferentiationAtDiagnosis|measurement_concept_id|notes|\r\n|------|-----|-----|\r\n|GX||GX grade|\r\n|G1|36768162|Grade 1: Well differentiated|\r\n|G2|36770626|Grade 2: Moderately differentiated|\r\n|G3|36769666|Grade 3: Poorly differentiated|\r\n|G4|36769737|Grade 4: Undifferentiated|\r\n\r\nNotes\r\n* [OMOP Grade Differentiation](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&conceptClass=Histopattern&page=1&pageSize=500&query=grade&boosts)\r\n* [NHS - Grade of Differentiation (At Diagnosis)](https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html?hl=grade%2Cdifferentiation)\r\n"
+      "lookup_table_markdown": "\n\n|GradeOfDifferentiationAtDiagnosis|measurement_concept_id|notes|\n|------|-----|-----|\n|GX||GX grade|\n|G1|36768162|Grade 1: Well differentiated|\n|G2|36770626|Grade 2: Moderately differentiated|\n|G3|36769666|Grade 3: Poorly differentiated|\n|G4|36769737|Grade 4: Undifferentiated|\n\nNotes\n* [OMOP Grade Differentiation](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&conceptClass=Histopattern&page=1&pageSize=500&query=grade&boosts)\n* [NHS - Grade of Differentiation (At Diagnosis)](https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html?hl=grade%2Cdifferentiation)\n"
     },
     {
       "name": "measurement_source_value",
@@ -99,7 +99,7 @@
           "origins": [
             {
               "origin": "GRADE OF DIFFERENTIATION (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html"
+              "url": null
             }
           ]
         }

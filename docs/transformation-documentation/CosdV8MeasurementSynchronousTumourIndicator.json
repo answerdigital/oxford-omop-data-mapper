@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -30,7 +30,7 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             }
           ]
         }
@@ -48,7 +48,7 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             }
           ]
         }
@@ -73,13 +73,13 @@
           "origins": [
             {
               "origin": "SYNCHRONOUS TUMOUR INDICATOR",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/synchronous_tumour_indicator.html"
+              "url": null
             }
           ]
         }
       ],
       "query": "\nwith co as (\n    select\n        Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n        Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,\n        Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreDiagnosis.ColorectalDiagnosis.SynchronousTumourColonLocation.@code' as SynchronousTumourIndicator\n    from omop_staging.cosd_staging_81\n    where Type = 'CO'\n)\nselect distinct\n    NhsNumber,\n    ClinicalDateCancerDiagnosis,\n    SynchronousTumourIndicator\nfrom co\nwhere SynchronousTumourIndicator is not null;\n\t",
-      "lookup_table_markdown": "\r\n\r\n|SynchronousTumourIndicator|measurement_concept_id|notes|\r\n|------|-----|-----|\r\n|01|36768217|Cecum|\r\n|02|36770601|Appendix|\r\n|03|36768852|Ascending Colon|\r\n|04|36768109|Hepatic Flexure|\r\n|05|36770627|Transverse Colon|\r\n|06|36769645|Splenic Flexure|\r\n|07|36769819|Descending Colon|\r\n|08|36770395|Sigmoid Colon|\r\n|09|36768690|Rectosigmoid|\r\n|10|36769244|Rectum|\r\n\r\nNotes\r\n* [OMOP Cancer Modifier Measurements](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&standardConcept=Standard&page=1&pageSize=500&query=&boosts)\r\n* [NHS - Synchronous Tumour Colon location (at Diagnosis)](https://www.datadictionary.nhs.uk/data_elements/synchronous_tumour_colon_location__at_diagnosis_.html?hl=synchronous%2Ctumour%2Ccolon%2Clocation%2Cdiagnosis)\r\n"
+      "lookup_table_markdown": "\n\n|SynchronousTumourIndicator|measurement_concept_id|notes|\n|------|-----|-----|\n|01|36768217|Cecum|\n|02|36770601|Appendix|\n|03|36768852|Ascending Colon|\n|04|36768109|Hepatic Flexure|\n|05|36770627|Transverse Colon|\n|06|36769645|Splenic Flexure|\n|07|36769819|Descending Colon|\n|08|36770395|Sigmoid Colon|\n|09|36768690|Rectosigmoid|\n|10|36769244|Rectum|\n\nNotes\n* [OMOP Cancer Modifier Measurements](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&standardConcept=Standard&page=1&pageSize=500&query=&boosts)\n* [NHS - Synchronous Tumour Colon location (at Diagnosis)](https://www.datadictionary.nhs.uk/data_elements/synchronous_tumour_colon_location__at_diagnosis_.html?hl=synchronous%2Ctumour%2Ccolon%2Clocation%2Cdiagnosis)\n"
     },
     {
       "name": "measurement_source_value",
@@ -91,7 +91,7 @@
           "origins": [
             {
               "origin": "SYNCHRONOUS TUMOUR INDICATOR",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/synchronous_tumour_indicator.html"
+              "url": null
             }
           ]
         }

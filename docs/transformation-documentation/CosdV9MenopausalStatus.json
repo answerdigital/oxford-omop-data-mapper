@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -37,15 +37,15 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             },
             {
               "origin": "TREATMENT START DATE (CANCER)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html"
+              "url": null
             },
             {
               "origin": "PROCEDURE DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+              "url": null
             }
           ]
         }
@@ -63,15 +63,15 @@
           "origins": [
             {
               "origin": "DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html"
+              "url": null
             },
             {
               "origin": "TREATMENT START DATE (CANCER)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html"
+              "url": null
             },
             {
               "origin": "PROCEDURE DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure_date.html"
+              "url": null
             }
           ]
         }
@@ -96,7 +96,7 @@
           "origins": [
             {
               "origin": "MENOPAUSAL STATUS (AT DIAGNOSIS)",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/menopausal_status__at_diagnosis_.html"
+              "url": null
             }
           ]
         }

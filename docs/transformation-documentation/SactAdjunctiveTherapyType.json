@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -37,7 +37,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
+              "url": null
             }
           ]
         }
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
+              "url": null
             }
           ]
         },
@@ -65,7 +65,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
+              "url": null
             }
           ]
         }
@@ -90,13 +90,13 @@
           "origins": [
             {
               "origin": "ADJUNCTIVE THERAPY TYPE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/adjunctive_therapy_type.html"
+              "url": null
             }
           ]
         }
       ],
       "query": "\n\t\tselect distinct\n  \t\t\treplace(NHS_Number, ' ', '') as NHSNumber,\n\t\t\tAdjunctive_Therapy,\n\t\t\tCase \n\t\t\t\tWhen Adjunctive_Therapy = 1 then concat(Adjunctive_Therapy, ' - Adjuvant Therapy')\n\t\t\t\tWhen Adjunctive_Therapy = 2 then concat(Adjunctive_Therapy, ' - Neoadjuvant Therapy')\n\t\t\t\tWhen Intent_Of_Treatment = 3 then concat(Adjunctive_Therapy, ' - Not Applicable (Primary Treatment)')\n\t\t\t\tWhen Intent_Of_Treatment = 9 then concat(Adjunctive_Therapy, ' - Not Known (Not Recorded)')\n\t\t\telse '' end as Source_value,\n\t\t  \tAdministration_Date\n\t\tfrom omop_staging.sact_staging\n  \t\twhere Adjunctive_Therapy != ''\n\t",
-      "lookup_table_markdown": "\r\n\r\n|Adjunctive_Therapy|value_as_concept_id|notes|\r\n|------|-----|-----|\r\n|1|4191637|Adjuvant - intent|\r\n|2|4161587|Neoadjuvant intent|\r\n|3||Not Applicable (Primary Treatment)|\r\n|9||Not Known (Not Recorded)|\r\n\r\nNotes\r\n* [SACT ADJUNCTIVE THERAPY TYPE](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/data_elements/adjunctive_therapy_type.html)\r\n* [OMOP](https://athena.ohdsi.org/search-terms/terms/4194400)\r\n"
+      "lookup_table_markdown": "\n\n|Adjunctive_Therapy|value_as_concept_id|notes|\n|------|-----|-----|\n|1|4191637|Adjuvant - intent|\n|2|4161587|Neoadjuvant intent|\n|3||Not Applicable (Primary Treatment)|\n|9||Not Known (Not Recorded)|\n\nNotes\n* [SACT ADJUNCTIVE THERAPY TYPE](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/data_elements/adjunctive_therapy_type.html)\n* [OMOP](https://athena.ohdsi.org/search-terms/terms/4194400)\n"
     },
     {
       "name": "value_source_value",
@@ -108,7 +108,7 @@
           "origins": [
             {
               "origin": "ADJUNCTIVE THERAPY TYPE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/adjunctive_therapy_type.html"
+              "url": null
             }
           ]
         }

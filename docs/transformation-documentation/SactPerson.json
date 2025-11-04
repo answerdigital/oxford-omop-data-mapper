@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -30,13 +30,13 @@
           "origins": [
             {
               "origin": "PERSON GENDER CODE CURRENT",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html"
+              "url": null
             }
           ]
         }
       ],
       "query": "\n\tselect\n\t\tNHS_Number,\n\t\tmax (Date_Of_Birth) as Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
-      "lookup_table_markdown": "\r\n\r\n|Person_Stated_Gender_Code|gender_concept_id|notes|\r\n|------|-----|-----|\r\n|1|8507|Male|\r\n|2|8532|Female|\r\n|9|0|Indeterminate (unable to be classified as either male or female)|\r\n|X|0|Not known|\r\n\r\nNotes\r\n* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)\r\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\r\n"
+      "lookup_table_markdown": "\n\n|Person_Stated_Gender_Code|gender_concept_id|notes|\n|------|-----|-----|\n|1|8507|Male|\n|2|8532|Female|\n|9|0|Indeterminate (unable to be classified as either male or female)|\n|X|0|Not known|\n\nNotes\n* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\n"
     },
     {
       "name": "year_of_birth",
@@ -48,7 +48,7 @@
           "origins": [
             {
               "origin": "PERSON BIRTH DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html"
+              "url": null
             }
           ]
         }
@@ -66,7 +66,7 @@
           "origins": [
             {
               "origin": "PERSON BIRTH DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html"
+              "url": null
             }
           ]
         }
@@ -84,7 +84,7 @@
           "origins": [
             {
               "origin": "PERSON BIRTH DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html"
+              "url": null
             }
           ]
         }
@@ -102,7 +102,7 @@
           "origins": [
             {
               "origin": "PERSON BIRTH DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_birth_date.html"
+              "url": null
             }
           ]
         }
@@ -127,7 +127,7 @@
           "origins": [
             {
               "origin": "PERSON GENDER CODE CURRENT",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/person_gender_code_current.html"
+              "url": null
             }
           ]
         }

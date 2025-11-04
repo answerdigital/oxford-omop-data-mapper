@@ -10,7 +10,7 @@ has_toc: false
 Source column  `ObservationSourceValue`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
-* `ObservationSourceValue` High cost drugs. [HIGH COST DRUGS (OPCS)](https://www.datadictionary.nhs.uk/data_elements/high_cost_drugs__opcs_.html)
+* `ObservationSourceValue` High cost drugs. [HIGH COST DRUGS (OPCS)]()
 
 ```sql
 		select distinct
@@ -44,14 +44,14 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 * Constant value set to `2000500003`. History Of Alcohol (Current)
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20CosdV9HistoryOfAlcoholCurrent%20mapping){: .btn }
-### CosdV9FamilialCancerSyndrome
-* Constant value set to `2000500005`. Familial Cancer (Indicator)
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20CosdV9FamilialCancerSyndrome%20mapping){: .btn }
 ### CosdV9FamilialCancerSyndromeSubsidiaryComment
 * Constant value set to `2000500006`. Familial Cancer (Comment)
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20CosdV9FamilialCancerSyndromeSubsidiaryComment%20mapping){: .btn }
+### CosdV9FamilialCancerSyndrome
+* Constant value set to `2000500005`. Familial Cancer (Indicator)
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20CosdV9FamilialCancerSyndrome%20mapping){: .btn }
 ### CosdV8FamilialCancerSyndromeIndicator
 * Constant value set to `2000500005`. Familial Cancer (Indicator)
 

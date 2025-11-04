@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Outpatient Care Site
 * Value copied from `SiteCodeofTreatment`
 
-* `SiteCodeofTreatment` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [SITE CODE (OF TREATMENT)](https://www.datadictionary.nhs.uk/data_elements/site_code__of_treatment_.html)
+* `SiteCodeofTreatment` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [SITE CODE (OF TREATMENT)]()
 
 ```sql
 with counts as ( 
@@ -48,7 +48,7 @@ order by
 ### SUS Inpatient Care Site
 * Value copied from `SiteCodeOfTreatmentAtEpisodeStartDate`
 
-* `SiteCodeOfTreatmentAtEpisodeStartDate` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [SITE CODE (OF TREATMENT)](https://www.datadictionary.nhs.uk/data_elements/site_code__of_treatment_.html)
+* `SiteCodeOfTreatmentAtEpisodeStartDate` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [SITE CODE (OF TREATMENT)]()
 
 ```sql
 with counts as 
@@ -88,7 +88,7 @@ order by
 ### SUS Inpatient Care Site
 * Value copied from `SiteCodeOfTreatment`
 
-* `SiteCodeOfTreatment` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [SITE CODE (OF TREATMENT)](https://www.datadictionary.nhs.uk/data_elements/site_code__of_treatment_.html)
+* `SiteCodeOfTreatment` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [SITE CODE (OF TREATMENT)]()
 
 ```sql
 	select distinct
@@ -102,7 +102,7 @@ order by
 ### SACT Inpatient Care Site
 * Value copied from `Organisation_Identifier_Code_Of_Provider`
 
-* `Organisation_Identifier_Code_Of_Provider` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [ORGANISATION IDENTIFIER (CODE OF PROVIDER)](https://www.datadictionary.nhs.uk/data_elements/organisation_identifier__code_of_provider_.html)
+* `Organisation_Identifier_Code_Of_Provider` ORGANISATION SITE CODE  of the ORGANISATION where the PATIENT was treated [ORGANISATION IDENTIFIER (CODE OF PROVIDER)]()
 
 ```sql
 		select distinct 

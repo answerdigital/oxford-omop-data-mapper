@@ -44,16 +44,6 @@ has_toc: false
 <a href="OxfordGPConditionOccurrence.svg" target="_blank"><img src="OxfordGPConditionOccurrence.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordGPConditionOccurrence%20mapping){: .btn }
-## CosdV8ConditionOccurrencePrimaryDiagnosis
-<a href="CosdV8ConditionOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdV8ConditionOccurrencePrimaryDiagnosis.svg" /></a>
-
-{: .important-title }
-> Assumptions
->
-> * Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
-> * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8ConditionOccurrencePrimaryDiagnosis%20mapping){: .btn }
 ## CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography
 <a href="CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography.svg" target="_blank"><img src="CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography.svg" /></a>
 
@@ -65,6 +55,16 @@ has_toc: false
 > * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography%20mapping){: .btn }
+## CosdV8ConditionOccurrencePrimaryDiagnosis
+<a href="CosdV8ConditionOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdV8ConditionOccurrencePrimaryDiagnosis.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+> * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8ConditionOccurrencePrimaryDiagnosis%20mapping){: .btn }
 ## CosdV9ConditionOccurrenceSecondaryDiagnosis
 <a href="CosdV9ConditionOccurrenceSecondaryDiagnosis.svg" target="_blank"><img src="CosdV9ConditionOccurrenceSecondaryDiagnosis.svg" /></a>
 
@@ -89,16 +89,6 @@ has_toc: false
 > * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9ConditionOccurrenceProgression%20mapping){: .btn }
-## CosdConditionOccurrencePrimaryDiagnosis
-<a href="CosdConditionOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdConditionOccurrencePrimaryDiagnosis.svg" /></a>
-
-{: .important-title }
-> Assumptions
->
-> * Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
-> * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdConditionOccurrencePrimaryDiagnosis%20mapping){: .btn }
 ## CosdConditionOccurrencePrimaryDiagnosisHistologyTopography
 <a href="CosdConditionOccurrencePrimaryDiagnosisHistologyTopography.svg" target="_blank"><img src="CosdConditionOccurrencePrimaryDiagnosisHistologyTopography.svg" /></a>
 
@@ -110,3 +100,13 @@ has_toc: false
 > * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdConditionOccurrencePrimaryDiagnosisHistologyTopography%20mapping){: .btn }
+## CosdConditionOccurrencePrimaryDiagnosis
+<a href="CosdConditionOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdConditionOccurrencePrimaryDiagnosis.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+> * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdConditionOccurrencePrimaryDiagnosis%20mapping){: .btn }

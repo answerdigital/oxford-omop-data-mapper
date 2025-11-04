@@ -9,7 +9,7 @@ has_toc: false
 ### Sus CCMDS High Cost Drugs
 * Value copied from `ObservationSourceValue`
 
-* `ObservationSourceValue` High cost drugs. [HIGH COST DRUGS (OPCS)](https://www.datadictionary.nhs.uk/data_elements/high_cost_drugs__opcs_.html)
+* `ObservationSourceValue` High cost drugs. [HIGH COST DRUGS (OPCS)]()
 
 ```sql
 		select distinct
@@ -30,7 +30,7 @@ has_toc: false
 ### SACT Clinical Trial
 * Value copied from `Source_value`
 
-* `Source_value` Source value for the Systemic Anti-Cancer Therapy Data Set, CLINICAL TRIAL INDICATOR identifies if a PATIENT  is currently in an active Systemic Anti-Cancer Therapy CLINICAL TRIAL [CLINICAL TRIAL INDICATOR](https://www.datadictionary.nhs.uk/data_elements/clinical_trial_indicator.html)
+* `Source_value` Source value for the Systemic Anti-Cancer Therapy Data Set, CLINICAL TRIAL INDICATOR identifies if a PATIENT  is currently in an active Systemic Anti-Cancer Therapy CLINICAL TRIAL [CLINICAL TRIAL INDICATOR]()
 
 ```sql
 		select

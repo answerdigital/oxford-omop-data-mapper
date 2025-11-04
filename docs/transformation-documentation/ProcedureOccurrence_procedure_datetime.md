@@ -10,9 +10,9 @@ has_toc: false
 Source columns  `AppointmentDate`, `AppointmentTime`.
 Combines a date with a time of day.
 
-* `AppointmentDate` Appointment Date. [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
+* `AppointmentDate` Appointment Date. [APPOINTMENT DATE]()
 
-* `AppointmentTime` Appointment Time. [APPOINTMENT TIME](https://www.datadictionary.nhs.uk/data_elements/appointment_time.html)
+* `AppointmentTime` Appointment Time. [APPOINTMENT TIME]()
 
 ```sql
 with results as
@@ -47,9 +47,9 @@ order by
 Source columns  `ProcedureOccurrenceStartDate`, `ProcedureOccurrenceStartTime`.
 Combines a date with a time of day.
 
-* `ProcedureOccurrenceStartDate` Start date of the Procedure [CRITICAL CARE START DATE](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html)
+* `ProcedureOccurrenceStartDate` Start date of the Procedure [CRITICAL CARE START DATE]()
 
-* `ProcedureOccurrenceStartTime` Start time of the Procedure, if exists, else midnight. [CRITICAL CARE START TIME](https://www.datadictionary.nhs.uk/data_elements/critical_care_start_time.html)
+* `ProcedureOccurrenceStartTime` Start time of the Procedure, if exists, else midnight. [CRITICAL CARE START TIME]()
 
 ```sql
 with results as
@@ -91,7 +91,7 @@ order by
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
 
 ```sql
 select
@@ -118,7 +118,7 @@ order by
 Source column  `PrimaryProcedureDate`.
 Converts text to dates.
 
-* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE]()
 
 ```sql
 		select
@@ -211,7 +211,7 @@ order by
 Source column  `ProcedureDate`.
 Converts text to dates.
 
-* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE]()
 
 ```sql
 with CO as (
@@ -243,7 +243,7 @@ where ProcedureOpcsCode is not null;
 Source column  `ProcedureDate`.
 Converts text to dates.
 
-* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE]()
 
 ```sql
 select 
@@ -264,7 +264,7 @@ where type = 'CO'
 Source column  `ProcedureDate`.
 Converts text to dates.
 
-* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE]()
 
 ```sql
 with co as (
@@ -299,7 +299,7 @@ where co.ProcedureOpcsCode is not null;
 Source column  `ProcedureDate`.
 Converts text to dates.
 
-* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+* `ProcedureDate` The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY. [PROCEDURE DATE]()
 
 ```sql
 with CO as (

@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -37,7 +37,7 @@
           "origins": [
             {
               "origin": "CRITICAL CARE START DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html"
+              "url": null
             }
           ]
         }
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "CRITICAL CARE START DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/critical_care_start_date.html"
+              "url": null
             }
           ]
         },
@@ -65,7 +65,7 @@
           "origins": [
             {
               "origin": "CRITICAL CARE START TIME",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/critical_care_start_time.html"
+              "url": null
             }
           ]
         }
@@ -144,13 +144,13 @@
           "origins": [
             {
               "origin": "CRITICAL CARE ACTIVITY CODE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/critical_care_activity_code.html"
+              "url": null
             }
           ]
         }
       ],
       "query": "\n\n\t\tselect distinct\n\t\t\t\tapc.NHSNumber,\n\t\t\t\tapc.HospitalProviderSpellNumber,\n\t\t\t\tcc.CriticalCareStartDate as DeviceExposureStartDate,\n\t\t\t\tcoalesce(cc.CriticalCareStartTime, '00:00:00') as DeviceExposureStartTime,\n\t\t\t\tcoalesce(cc.CriticalCarePeriodDischargeDate, cc.EventDate) as DeviceExposureEndDate,\n\t\t\t\tcoalesce(cc.CriticalCarePeriodDischargeTime, '00:00:00') as DeviceExposureEndTime,\n\t\t\t\td.CriticalCareActivityCode as CriticalCareActivityCode\n\t\tfrom omop_staging.sus_CCMDS_CriticalCareActivityCode d\n\t\tinner join omop_staging.sus_CCMDS cc on d.MessageId = cc.MessageId\n\t\tinner join omop_staging.sus_APC apc on cc.GeneratedRecordID = apc.GeneratedRecordIdentifier\n\t\twhere apc.NHSNumber is not null\n\t\tand d.CriticalCareActivityCode not in('3','4','6','8','10','12','15','21','22','23','24','25','27','28','29','50','57','58','64','65','66','67','68','69','70','71','72','74','82','83','87','99')\n\n\t",
-      "lookup_table_markdown": "\r\n\r\n|CriticalCareActivityCode|device_source_concept_id|notes|\r\n|------|-----|-----|\r\n|1|4107141|Respiratory support via a tracheal tube (Respiratory support via a tracheal tube provided)|\r\n|2|45761109|Nasal Continuous Positive Airway Pressure (nCPAP) (PATIENT receiving nCPAP for any part of the day)|\r\n|5|45757846|Peritoneal Dialysis (PATIENT received Peritoneal Dialysis)|\r\n|7|4209766|Parenteral Nutrition (PATIENT receiving Parenteral Nutrition (amino acids +/- lipids))|\r\n|9|45759341|Oxygen Therapy|\r\n|11|4121351|Care of an intra-arterial catheter or chest drain (PATIENT receiving care of an intra-arterial catheter or chest drain)|\r\n|13|4229159|Tracheostomy cared for by nursing staff (PATIENT receiving care of tracheostomy cared for by nursing staff not by an external Carer (e.g. parent))|\r\n|14|4229159|Tracheostomy cared for by external Carer (PATIENT receiving care of tracheostomy cared for by an external Carer (e.g. parent) not by a NURSE)|\r\n|16|45758443|Haemofiltration (PATIENT received Haemofiltration)|\r\n|26|36715434|Phototherapy (PATIENT receiving phototherapy)|\r\n|51|4097216|Invasive ventilation via endotracheal tube|\r\n|52|4044008|Invasive ventilation via tracheostomy tube|\r\n|53|45768197|Non-invasive ventilatory support|\r\n|55|4266238|Nasopharyngeal airway|\r\n|56|45768197|Advanced ventilatory support (Jet or Oscillatory ventilation)|\r\n|59|4219814|Acute severe asthma requiring intravenous bronchodilator therapy or continuous nebuliser|\r\n|60|4126195|Arterial line monitoring|\r\n|61|4030875|Cardiac pacing via an external box (pacing wires or external pads or oesophageal pacing)|\r\n|62|4179206|Central venous pressure monitoring|\r\n|63|4042177|Bolus intravenous fluids (> 80 ml/kg/day) in addition to maintenance intravenous fluids|\r\n|73|40491434|Continuous pulse oximetry|\r\n|80|4139525|Heated Humidified High Flow Therapy (HHHFT)|\r\n|81|4124293|Presence of an umbilical venous line|\r\n\r\nNotes\r\n* [CRITICAL CARE ACTIVITY CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/attributes/critical_care_activity_code.html)\r\n* [OMOP Devices](https://athena.ohdsi.org/search-terms/terms?domain=Device&invalidReason=Valid&standardConcept=Standard&page=1&pageSize=500&query=)\r\n"
+      "lookup_table_markdown": "\n\n|CriticalCareActivityCode|device_source_concept_id|notes|\n|------|-----|-----|\n|1|4107141|Respiratory support via a tracheal tube (Respiratory support via a tracheal tube provided)|\n|2|45761109|Nasal Continuous Positive Airway Pressure (nCPAP) (PATIENT receiving nCPAP for any part of the day)|\n|5|45757846|Peritoneal Dialysis (PATIENT received Peritoneal Dialysis)|\n|7|4209766|Parenteral Nutrition (PATIENT receiving Parenteral Nutrition (amino acids +/- lipids))|\n|9|45759341|Oxygen Therapy|\n|11|4121351|Care of an intra-arterial catheter or chest drain (PATIENT receiving care of an intra-arterial catheter or chest drain)|\n|13|4229159|Tracheostomy cared for by nursing staff (PATIENT receiving care of tracheostomy cared for by nursing staff not by an external Carer (e.g. parent))|\n|14|4229159|Tracheostomy cared for by external Carer (PATIENT receiving care of tracheostomy cared for by an external Carer (e.g. parent) not by a NURSE)|\n|16|45758443|Haemofiltration (PATIENT received Haemofiltration)|\n|26|36715434|Phototherapy (PATIENT receiving phototherapy)|\n|51|4097216|Invasive ventilation via endotracheal tube|\n|52|4044008|Invasive ventilation via tracheostomy tube|\n|53|45768197|Non-invasive ventilatory support|\n|55|4266238|Nasopharyngeal airway|\n|56|45768197|Advanced ventilatory support (Jet or Oscillatory ventilation)|\n|59|4219814|Acute severe asthma requiring intravenous bronchodilator therapy or continuous nebuliser|\n|60|4126195|Arterial line monitoring|\n|61|4030875|Cardiac pacing via an external box (pacing wires or external pads or oesophageal pacing)|\n|62|4179206|Central venous pressure monitoring|\n|63|4042177|Bolus intravenous fluids (> 80 ml/kg/day) in addition to maintenance intravenous fluids|\n|73|40491434|Continuous pulse oximetry|\n|80|4139525|Heated Humidified High Flow Therapy (HHHFT)|\n|81|4124293|Presence of an umbilical venous line|\n\nNotes\n* [CRITICAL CARE ACTIVITY CODES](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/attributes/critical_care_activity_code.html)\n* [OMOP Devices](https://athena.ohdsi.org/search-terms/terms?domain=Device&invalidReason=Valid&standardConcept=Standard&page=1&pageSize=500&query=)\n"
     },
     {
       "name": "device_source_value",
@@ -162,7 +162,7 @@
           "origins": [
             {
               "origin": "CRITICAL CARE ACTIVITY CODE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/critical_care_activity_code.html"
+              "url": null
             }
           ]
         }
@@ -180,7 +180,7 @@
           "origins": [
             {
               "origin": "HOSPITAL PROVIDER SPELL NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/hospital_provider_spell_number.html"
+              "url": null
             }
           ]
         }

@@ -366,16 +366,6 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9HistoryOfAlcoholCurrent%20mapping){: .btn }
-## CosdV9FamilialCancerSyndrome
-<a href="CosdV9FamilialCancerSyndrome.svg" target="_blank"><img src="CosdV9FamilialCancerSyndrome.svg" /></a>
-
-{: .important-title }
-> Notes
->
-> Observation dates are approximated using other date fields.
->
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9FamilialCancerSyndrome%20mapping){: .btn }
 ## CosdV9FamilialCancerSyndromeSubsidiaryComment
 <a href="CosdV9FamilialCancerSyndromeSubsidiaryComment.svg" target="_blank"><img src="CosdV9FamilialCancerSyndromeSubsidiaryComment.svg" /></a>
 
@@ -386,6 +376,16 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9FamilialCancerSyndromeSubsidiaryComment%20mapping){: .btn }
+## CosdV9FamilialCancerSyndrome
+<a href="CosdV9FamilialCancerSyndrome.svg" target="_blank"><img src="CosdV9FamilialCancerSyndrome.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9FamilialCancerSyndrome%20mapping){: .btn }
 ## CosdV9AsaScore
 <a href="CosdV9AsaScore.svg" target="_blank"><img src="CosdV9AsaScore.svg" /></a>
 

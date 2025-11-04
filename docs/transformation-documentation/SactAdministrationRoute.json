@@ -12,7 +12,7 @@
           "origins": [
             {
               "origin": "NHS NUMBER",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/nhs_number.html"
+              "url": null
             }
           ]
         }
@@ -37,7 +37,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
+              "url": null
             }
           ]
         }
@@ -55,7 +55,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
+              "url": null
             }
           ]
         },
@@ -65,7 +65,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html"
+              "url": null
             }
           ]
         }
@@ -90,13 +90,13 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY DRUG ROUTE OF ADMINISTRATION",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_route_of_administration.html"
+              "url": null
             }
           ]
         }
       ],
       "query": "\n\t\tselect\n\t\tdistinct\n  \t\t\treplace(NHS_Number, ' ', '') as NHSNumber,\n      \t\tSACT_Administration_Route as Administration_Route,\n\t\t  \tAdministration_Date\n\tfrom omop_staging.sact_staging\n\t",
-      "lookup_table_markdown": "\r\n\r\n|Administration_Route|value_as_concept_id|notes|\r\n|------|-----|-----|\r\n|1|40492287|Intravascular|\r\n|2|4186839|Oromucosal|\r\n|3|4302788|Intraspinal|\r\n|4|4302612|Intramuscular|\r\n|5|4142048|Subcutaneous|\r\n|6|40492287|Intravascular|\r\n|7|4304882|Intraabdominal|\r\n|8|4157757|Intracavernous|\r\n|9|40492302|Intracorporus cavernosum of penis route|\r\n|11|4263689|Topical|\r\n|12|4156706|Intradermal|\r\n|13|40491322|Intratumor|\r\n|14|4157758|Intralesional|\r\n|98|||\r\n\r\nNotes\r\n* [SACT Drug Route of Administration](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/data_elements/systemic_anti-cancer_therapy_drug_route_of_administration.html)\r\n* [OMOP](https://athena.ohdsi.org/search-terms/terms/4106215)\r\n"
+      "lookup_table_markdown": "\n\n|Administration_Route|value_as_concept_id|notes|\n|------|-----|-----|\n|1|40492287|Intravascular|\n|2|4186839|Oromucosal|\n|3|4302788|Intraspinal|\n|4|4302612|Intramuscular|\n|5|4142048|Subcutaneous|\n|6|40492287|Intravascular|\n|7|4304882|Intraabdominal|\n|8|4157757|Intracavernous|\n|9|40492302|Intracorporus cavernosum of penis route|\n|11|4263689|Topical|\n|12|4156706|Intradermal|\n|13|40491322|Intratumor|\n|14|4157758|Intralesional|\n|98|||\n\nNotes\n* [SACT Drug Route of Administration](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/data_elements/systemic_anti-cancer_therapy_drug_route_of_administration.html)\n* [OMOP](https://athena.ohdsi.org/search-terms/terms/4106215)\n"
     },
     {
       "name": "value_source_value",
@@ -108,7 +108,7 @@
           "origins": [
             {
               "origin": "SYSTEMIC ANTI-CANCER THERAPY DRUG ROUTE OF ADMINISTRATION",
-              "url": "https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_route_of_administration.html"
+              "url": null
             }
           ]
         }

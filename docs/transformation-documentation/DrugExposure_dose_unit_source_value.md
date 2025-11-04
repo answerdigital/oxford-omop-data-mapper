@@ -25,7 +25,7 @@ The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administ
 |98|Other (not listed)||
 
 
-* `Administration_Measurement_Per_Actual_Dose` The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle. [UNIT OF MEASUREMENT (SYSTEMIC ANTI-CANCER THERAPY)](https://www.datadictionary.nhs.uk/data_elements/unit_of_measurement__systemic_anti-cancer_therapy_.html)
+* `Administration_Measurement_Per_Actual_Dose` The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle. [UNIT OF MEASUREMENT (SYSTEMIC ANTI-CANCER THERAPY)]()
 
 ```sql
 	select
@@ -42,28 +42,6 @@ The UNIT OF MEASUREMENT used for each Systemic Anti-Cancer Therapy Drug Administ
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20dose_unit_source_value%20field%20SACT%20Drug%20Exposure%20mapping){: .btn }
-### Oxford Prescribing Drug Exposure
-* Value copied from `strengthdoseunit`
-
-* `strengthdoseunit` The unit of the drug dose 
-
-```sql
-select
-	patient_identifier_Value,
-	beg_dt_tm,
-	end_dt_tm,
-	lower(replace(catalog, 'zzz', '')) as catalog,
-	lower(order_mnemonic) as order_mnemonic,
-	order_detail_display_line,
-	lower(rxroute) as rxroute,
-	strengthdoseunit,
-	strengthdose,
-	EVENT_ID
-from ##duckdb_source##
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20dose_unit_source_value%20field%20Oxford%20Prescribing%20Drug%20Exposure%20mapping){: .btn }
 ### Oxford Prescribing Drug Exposure (with Snomed)
 * Value copied from `strengthdoseunit`
 
@@ -87,6 +65,28 @@ where concept_identifier is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20dose_unit_source_value%20field%20Oxford%20Prescribing%20Drug%20Exposure%20(with%20Snomed)%20mapping){: .btn }
+### Oxford Prescribing Drug Exposure
+* Value copied from `strengthdoseunit`
+
+* `strengthdoseunit` The unit of the drug dose 
+
+```sql
+select
+	patient_identifier_Value,
+	beg_dt_tm,
+	end_dt_tm,
+	lower(replace(catalog, 'zzz', '')) as catalog,
+	lower(order_mnemonic) as order_mnemonic,
+	order_detail_display_line,
+	lower(rxroute) as rxroute,
+	strengthdoseunit,
+	strengthdose,
+	EVENT_ID
+from ##duckdb_source##
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20dose_unit_source_value%20field%20Oxford%20Prescribing%20Drug%20Exposure%20mapping){: .btn }
 ### Oxford GP Drug Exposure
 * Value copied from `Units`
 

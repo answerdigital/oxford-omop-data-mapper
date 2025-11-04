@@ -10,7 +10,7 @@ has_toc: false
 Source column  `Actual_Dose_Per_Administration`.
 Converts text to floating-point numbers.
 
-* `Actual_Dose_Per_Administration` The actual Systemic Anti-Cancer Therapy dose given in each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle. [SYSTEMIC ANTI-CANCER THERAPY ACTUAL DOSE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_actual_dose.html)
+* `Actual_Dose_Per_Administration` The actual Systemic Anti-Cancer Therapy dose given in each Systemic Anti-Cancer Therapy Drug Administration in a Systemic Anti-Cancer Therapy Drug Cycle. [SYSTEMIC ANTI-CANCER THERAPY ACTUAL DOSE]()
 
 ```sql
 	select
@@ -27,29 +27,6 @@ Converts text to floating-point numbers.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20quantity%20field%20SACT%20Drug%20Exposure%20mapping){: .btn }
-### Oxford Prescribing Drug Exposure
-Source column  `strengthdose`.
-Converts text to floating-point numbers.
-
-* `strengthdose` The unit of the drug dose 
-
-```sql
-select
-	patient_identifier_Value,
-	beg_dt_tm,
-	end_dt_tm,
-	lower(replace(catalog, 'zzz', '')) as catalog,
-	lower(order_mnemonic) as order_mnemonic,
-	order_detail_display_line,
-	lower(rxroute) as rxroute,
-	strengthdoseunit,
-	strengthdose,
-	EVENT_ID
-from ##duckdb_source##
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20quantity%20field%20Oxford%20Prescribing%20Drug%20Exposure%20mapping){: .btn }
 ### Oxford Prescribing Drug Exposure (with Snomed)
 Source column  `strengthdose`.
 Converts text to floating-point numbers.
@@ -74,6 +51,29 @@ where concept_identifier is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20quantity%20field%20Oxford%20Prescribing%20Drug%20Exposure%20(with%20Snomed)%20mapping){: .btn }
+### Oxford Prescribing Drug Exposure
+Source column  `strengthdose`.
+Converts text to floating-point numbers.
+
+* `strengthdose` The unit of the drug dose 
+
+```sql
+select
+	patient_identifier_Value,
+	beg_dt_tm,
+	end_dt_tm,
+	lower(replace(catalog, 'zzz', '')) as catalog,
+	lower(order_mnemonic) as order_mnemonic,
+	order_detail_display_line,
+	lower(rxroute) as rxroute,
+	strengthdoseunit,
+	strengthdose,
+	EVENT_ID
+from ##duckdb_source##
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20quantity%20field%20Oxford%20Prescribing%20Drug%20Exposure%20mapping){: .btn }
 ### Oxford GP Drug Exposure
 Source column  `Quantity`.
 Converts text to floating-point numbers.

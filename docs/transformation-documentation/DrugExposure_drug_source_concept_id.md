@@ -322,7 +322,7 @@ Notes
 * [Athena Drug Concepts](https://athena.ohdsi.org/search-terms/terms?standardConcept=Standard&domain=Drug&vocabulary=RxNorm&vocabulary=RxNorm+Extension&invalidReason=Valid&page=1&pageSize=15&query=)
 * [placebo forum discussion](https://forums.ohdsi.org/t/how-would-you-map-drug-name-placebo-clinical-trial/15622/2)
 
-* `Drug_Name` The name of the Systemic Anti-Cancer Therapy drug given to a PATIENT during an Systemic Anti-Cancer Therapy Drug Regimen. [SYSTEMIC ANTI-CANCER THERAPY DRUG NAME](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_drug_name.html)
+* `Drug_Name` The name of the Systemic Anti-Cancer Therapy drug given to a PATIENT during an Systemic Anti-Cancer Therapy Drug Regimen. [SYSTEMIC ANTI-CANCER THERAPY DRUG NAME]()
 
 ```sql
 	select
@@ -339,6 +339,30 @@ Notes
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20drug_source_concept_id%20field%20SACT%20Drug%20Exposure%20mapping){: .btn }
+### Oxford Prescribing Drug Exposure (with Snomed)
+Source column  `concept_identifier`.
+Resolve Snomed codes to OMOP concepts.
+
+* `concept_identifier` The prescribed drug item as showing in the order screen as selected by the clinician 
+
+```sql
+select
+	patient_identifier_Value,
+	beg_dt_tm,
+	end_dt_tm,
+	order_detail_display_line,
+	order_mnemonic,
+	lower(rxroute) as rxroute,
+	strengthdoseunit,
+	strengthdose,
+	concept_identifier,
+	EVENT_ID
+from ##duckdb_source##
+where concept_identifier is not null
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20drug_source_concept_id%20field%20Oxford%20Prescribing%20Drug%20Exposure%20(with%20Snomed)%20mapping){: .btn }
 ### Oxford Prescribing Drug Exposure
 Source column  `catalog`.
 Oxford Prescribing data to RxNorm Concept ID Mapping
@@ -1904,30 +1928,6 @@ from ##duckdb_source##
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20drug_source_concept_id%20field%20Oxford%20Prescribing%20Drug%20Exposure%20mapping){: .btn }
-### Oxford Prescribing Drug Exposure (with Snomed)
-Source column  `concept_identifier`.
-Resolve Snomed codes to OMOP concepts.
-
-* `concept_identifier` The prescribed drug item as showing in the order screen as selected by the clinician 
-
-```sql
-select
-	patient_identifier_Value,
-	beg_dt_tm,
-	end_dt_tm,
-	order_detail_display_line,
-	order_mnemonic,
-	lower(rxroute) as rxroute,
-	strengthdoseunit,
-	strengthdose,
-	concept_identifier,
-	EVENT_ID
-from ##duckdb_source##
-where concept_identifier is not null
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20drug_source_concept_id%20field%20Oxford%20Prescribing%20Drug%20Exposure%20(with%20Snomed)%20mapping){: .btn }
 ### Oxford GP Drug Exposure
 Source column  `SuppliedCode`.
 Resolve Snomed codes to OMOP concepts.

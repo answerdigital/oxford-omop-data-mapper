@@ -10,7 +10,7 @@ has_toc: false
 Source column  `Administration_Date`.
 Converts text to dates.
 
-* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE](https://www.datadictionary.nhs.uk/data_elements/systemic_anti-cancer_therapy_administration_date.html)
+* `Administration_Date` SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE is the date of the Systemic Anti-Cancer Therapy Drug Administration or the date an oral drug was initially dispensed to the PATIENT. [SYSTEMIC ANTI-CANCER THERAPY ADMINISTRATION DATE]()
 
 ```sql
 	select
@@ -27,29 +27,6 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20drug_exposure_start_date%20field%20SACT%20Drug%20Exposure%20mapping){: .btn }
-### Oxford Prescribing Drug Exposure
-Source column  `beg_dt_tm`.
-Converts text to dates.
-
-* `beg_dt_tm` The begin date of the Drug that was initially dispensed to the PATIENT. 
-
-```sql
-select
-	patient_identifier_Value,
-	beg_dt_tm,
-	end_dt_tm,
-	lower(replace(catalog, 'zzz', '')) as catalog,
-	lower(order_mnemonic) as order_mnemonic,
-	order_detail_display_line,
-	lower(rxroute) as rxroute,
-	strengthdoseunit,
-	strengthdose,
-	EVENT_ID
-from ##duckdb_source##
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20drug_exposure_start_date%20field%20Oxford%20Prescribing%20Drug%20Exposure%20mapping){: .btn }
 ### Oxford Prescribing Drug Exposure (with Snomed)
 Source column  `beg_dt_tm`.
 Converts text to dates.
@@ -74,6 +51,29 @@ where concept_identifier is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20drug_exposure_start_date%20field%20Oxford%20Prescribing%20Drug%20Exposure%20(with%20Snomed)%20mapping){: .btn }
+### Oxford Prescribing Drug Exposure
+Source column  `beg_dt_tm`.
+Converts text to dates.
+
+* `beg_dt_tm` The begin date of the Drug that was initially dispensed to the PATIENT. 
+
+```sql
+select
+	patient_identifier_Value,
+	beg_dt_tm,
+	end_dt_tm,
+	lower(replace(catalog, 'zzz', '')) as catalog,
+	lower(order_mnemonic) as order_mnemonic,
+	order_detail_display_line,
+	lower(rxroute) as rxroute,
+	strengthdoseunit,
+	strengthdose,
+	EVENT_ID
+from ##duckdb_source##
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20DrugExposure%20table%20drug_exposure_start_date%20field%20Oxford%20Prescribing%20Drug%20Exposure%20mapping){: .btn }
 ### Oxford GP Drug Exposure
 Source column  `LastIssueDate`.
 Converts text to dates.
