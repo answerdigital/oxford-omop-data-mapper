@@ -122,6 +122,7 @@ where not exists (
         and co.person_id = p.person_id
         and co.RecordConnectionIdentifier = r.RecordConnectionIdentifier
         and co.condition_concept_id = r.condition_concept_id
+        and (co.condition_concept_id != 0 or and co.condition_source_value = r.condition_source_value)
 )
 and not exists (
     select 1 
@@ -130,6 +131,7 @@ and not exists (
         and co.condition_concept_id = r.condition_concept_id
         and co.condition_start_date = r.condition_start_date
         and co.person_id = p.person_id
+        and (co.condition_concept_id != 0 or and co.condition_source_value = r.condition_source_value)
 );
  
 

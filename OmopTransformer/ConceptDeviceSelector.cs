@@ -4,7 +4,7 @@ using OmopTransformer.Transformation;
 namespace OmopTransformer;
 
 [Description("Finds related devices for a concept.")]
-internal class ConceptDeviceSelector(int? conceptId, ConceptResolver resolver) : ISelector
+internal class ConceptDeviceSelector(int? conceptId, StandardConceptResolver resolver) : ISelector
 {
     public object? GetValue()
     {

@@ -37,7 +37,7 @@ internal class SusAETransformer : Transformer
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
     private readonly IDeviceExposureRecorder _deviceExposureRecorder;
     private readonly IObservationRecorder _observationRecorder;
-    private readonly ConceptResolver _conceptResolver;
+    private readonly StandardConceptResolver _conceptResolver;
     private readonly ICareSiteRecorder _careSiteRecorder;
 
     public SusAETransformer(
@@ -52,7 +52,7 @@ internal class SusAETransformer : Transformer
         IVisitDetailRecorder visitDetailRecorder,
         IDeathRecorder deathRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
-        ConceptResolver conceptResolver,
+        StandardConceptResolver conceptResolver,
         IDeviceExposureRecorder deviceExposureRecorder,
         IObservationRecorder observationRecorder,
         IRunAnalysisRecorder runAnalysisRecorder,

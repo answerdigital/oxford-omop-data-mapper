@@ -5,10 +5,10 @@ using Microsoft.Extensions.Options;
 
 namespace OmopTransformer;
 
-internal class ConceptResolver
+internal class StandardConceptResolver
 {
     private readonly Configuration _configuration;
-    private readonly ILogger<ConceptResolver> _logger;
+    private readonly ILogger<StandardConceptResolver> _logger;
 
     private Dictionary<int, IGrouping<int, Row>>? _mappings;
     private Dictionary<int, IReadOnlyCollection<int>>? _devicesByConceptId;
@@ -18,7 +18,7 @@ internal class ConceptResolver
     private readonly Dictionary<int, int> _unableToMapByFrequency = new();
     private readonly object _unableToMapByFrequencyLock = new();
 
-    public ConceptResolver(IOptions<Configuration> configuration, ILogger<ConceptResolver> logger)
+    public StandardConceptResolver(IOptions<Configuration> configuration, ILogger<StandardConceptResolver> logger)
     {
         _logger = logger;
         _configuration = configuration.Value;
@@ -96,15 +96,23 @@ internal class ConceptResolver
 
     public int[] GetConcepts(int conceptId, string? domain)
     {
+        const int unknownConceptId = 0;
+
         EnsureMapping();
+        bool foundMapping = false;
 
         if (_mappings!.TryGetValue(conceptId, out var value))
         {
-            return
+            foundMapping = true;
+
+            var results =
                 value
                     .Where(row => domain == null || row.domain_id!.Equals(domain, StringComparison.OrdinalIgnoreCase))
                     .Select(row => row.target_concept_id)
                     .ToArray();
+
+            if (results.Length > 0)
+                return results;
         }
 
         lock (_unableToMapByFrequencyLock)
@@ -117,6 +125,15 @@ internal class ConceptResolver
             {
                 _unableToMapByFrequency.Add(conceptId, 1);
             }
+        }
+
+        // if no domain specified, return unknown concept
+        // if domain specified, and mapping not found, return unknown concept
+        // if domain specified, and mapping found but it is in the wrong domain, return empty 
+
+        if (domain == null || foundMapping == false)
+        {
+            return new int[] { unknownConceptId };
         }
 
         return new int[] { };

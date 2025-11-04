@@ -9,7 +9,7 @@ namespace OmopTransformer.OxfordPrescribing;
 
 internal class OxfordPrescribingTransformer : Transformer
 {
-    private readonly ConceptResolver _conceptResolver;
+    private readonly StandardConceptResolver _conceptResolver;
     private readonly IDrugExposureRecorder _drugExposureRecorder;
 
     public OxfordPrescribingTransformer(
@@ -17,7 +17,7 @@ internal class OxfordPrescribingTransformer : Transformer
         TransformOptions transformOptions,
         IRecordProvider recordProvider,
         IDrugExposureRecorder drugExposureRecorder,
-        ConceptResolver conceptResolver,
+        StandardConceptResolver conceptResolver,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory) : base(recordTransformer,
         transformOptions,

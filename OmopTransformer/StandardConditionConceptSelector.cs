@@ -4,7 +4,7 @@ using OmopTransformer.Transformation;
 namespace OmopTransformer;
 
 [Description("Maps concepts to standard valid concepts in the `condition` domain.")]
-internal class StandardConditionConceptSelector(int? conceptId, ConceptResolver resolver) : ISelector
+internal class StandardConditionConceptSelector(int? conceptId, StandardConceptResolver resolver) : ISelector
 {
     public object? GetValue()
     {

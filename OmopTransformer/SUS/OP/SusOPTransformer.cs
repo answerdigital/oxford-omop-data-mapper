@@ -40,7 +40,7 @@ internal class SusOPTransformer : Transformer
     private readonly IDeathRecorder _deathRecorder;
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
     private readonly IObservationRecorder _observationRecorder;
-    private readonly ConceptResolver _conceptResolver;
+    private readonly StandardConceptResolver _conceptResolver;
     private readonly ICareSiteRecorder _careSiteRecorder;
     private readonly IProviderRecorder _providerRecorder;
     private readonly IDeviceExposureRecorder _deviceExposureRecorder;
@@ -59,7 +59,7 @@ internal class SusOPTransformer : Transformer
         IVisitDetailRecorder visitDetailRecorder,
         IDeathRecorder deathRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder, 
-        ConceptResolver conceptResolver, 
+        StandardConceptResolver conceptResolver, 
         IObservationRecorder observationRecorder,
         IDeviceExposureRecorder deviceExposureRecorder,
         IRunAnalysisRecorder runAnalysisRecorder,
