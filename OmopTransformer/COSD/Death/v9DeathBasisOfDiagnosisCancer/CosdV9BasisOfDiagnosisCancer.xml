@@ -1,6 +1,5 @@
 ﻿<Query>
     <Sql>
-        -- fail
 	    with cosddates as (
     select
         Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
