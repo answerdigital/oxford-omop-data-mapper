@@ -258,7 +258,5 @@ internal class SusAPCTransformer : Transformer
            "SUS APC ReferralReceivedDateForInpatients",
            runId,
            cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }

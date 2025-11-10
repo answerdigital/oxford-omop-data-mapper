@@ -172,7 +172,5 @@ internal class SusOPTransformer : Transformer
            "SUS OP DeviceExposure",
            runId,
            cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }

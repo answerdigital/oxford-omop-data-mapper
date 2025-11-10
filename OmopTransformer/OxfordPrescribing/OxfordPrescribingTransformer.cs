@@ -45,7 +45,5 @@ internal class OxfordPrescribingTransformer : Transformer
           "Oxford Prescribing Drugs",
           runId,
           cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }

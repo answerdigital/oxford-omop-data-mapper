@@ -38,7 +38,7 @@ internal abstract class Transformer
         var computeStopwatch = new Stopwatch();
         var getRecordsStopwatch = Stopwatch.StartNew();
         var insertRecordsStopwatch = new Stopwatch();
-        
+
         var notEndOfRecords = true;
         int batchNumber = 0;
 

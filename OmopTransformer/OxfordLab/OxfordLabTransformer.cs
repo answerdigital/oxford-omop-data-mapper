@@ -49,7 +49,5 @@ internal class OxfordLabTransformer : Transformer
             "Oxford Lab General Comments",
             runId,
             cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }

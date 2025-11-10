@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using System.Collections.Concurrent;
+using Dapper;
 using DuckDB.NET.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -14,9 +15,7 @@ internal class StandardConceptResolver
     private Dictionary<int, IReadOnlyCollection<int>>? _devicesByConceptId;
 
     private readonly object _loadingLock = new();
-
-    private readonly Dictionary<int, int> _unableToMapByFrequency = new();
-    private readonly object _unableToMapByFrequencyLock = new();
+    private DomainMapResults? _domainMappingResults;
 
     public StandardConceptResolver(IOptions<Configuration> configuration, ILogger<StandardConceptResolver> logger)
     {
@@ -111,20 +110,18 @@ internal class StandardConceptResolver
                     .Select(row => row.target_concept_id)
                     .ToArray();
 
+            if (domain != null)
+            {
+                _domainMappingResults ??= new DomainMapResults(domain);
+
+                foreach (var row in value)
+                {
+                    _domainMappingResults.Record(row.domain_id!);
+                }
+            }
+
             if (results.Length > 0)
                 return results;
-        }
-
-        lock (_unableToMapByFrequencyLock)
-        {
-            if (_unableToMapByFrequency.TryGetValue(conceptId, out int count))
-            {
-                _unableToMapByFrequency[conceptId] = ++count;
-            }
-            else
-            {
-                _unableToMapByFrequency.Add(conceptId, 1);
-            }
         }
 
         // if no domain specified, return unknown concept
@@ -151,30 +148,10 @@ internal class StandardConceptResolver
         return new int[] { };
     }
 
-    public void ResetErrors()
+    public void PrintLogsAndResetLogger()
     {
-        lock (_unableToMapByFrequencyLock)
-        {
-            _unableToMapByFrequency.Clear();
-        }
-    }
-
-    public void PrintErrors()
-    {
-        lock (_unableToMapByFrequencyLock)
-        {
-            if (_unableToMapByFrequency.Any())
-            {
-                string log = "Top 10 unmappable concept codes. Unmappble concepts cannot be recorded." + Environment.NewLine;
-
-                foreach (var error in _unableToMapByFrequency.OrderByDescending(map => map.Value).Take(10))
-                {
-                    log += $"- concept id: {error.Key}. error count: {error.Value}." + Environment.NewLine;
-                }
-
-                _logger.LogWarning(log);
-            }
-        }
+        _domainMappingResults?.PrintResults(_logger);
+        _domainMappingResults = null;
     }
 
     private class Row
@@ -189,5 +166,42 @@ internal class StandardConceptResolver
     {
         public int concept_id { get; init; }
         public int device_concept_id { get; init; }
+    }
+
+    private class DomainMapResults
+    {
+        public DomainMapResults(string intendedDomain)
+        {
+            _intendedDomain = intendedDomain;
+        }
+
+        private readonly ConcurrentDictionary<string, int> _domainCounts = new();
+        private readonly string _intendedDomain;
+
+        public void Record(string domain)
+        {
+            _domainCounts.AddOrUpdate(domain, 1, (_, count) => count + 1);
+        }
+
+        public void PrintResults(ILogger<StandardConceptResolver> logger)
+        {
+            if (_domainCounts.Count == 0)
+                return;
+
+            if (_domainCounts.Count == 1 && _domainCounts.ContainsKey(_intendedDomain))
+                return;
+
+            long total = _domainCounts.Sum(count => count.Value);
+
+            string logText = $"Source concepts intended for domain {_intendedDomain} were mapped to the following domains:" + Environment.NewLine;
+
+            foreach (var domainCount in _domainCounts.OrderByDescending(count => count.Value))
+            {
+                var percentage = (domainCount.Value * 100d) / total;
+                logText += $"   - Domain: {domainCount.Key}. Count: {domainCount.Value}. Percentage: {Math.Round(percentage, 2)}%." + Environment.NewLine;
+            }
+
+            logger.LogInformation(logText);
+        }
     }
 }

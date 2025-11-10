@@ -56,6 +56,8 @@ internal class RecordTransformer : IRecordTransformer
     {
         _recordTransformLookupLogger.PrintLog(loggerFactory);
         _recordTransformLookupLogger.Reset();
+
+        _resolver.PrintLogsAndResetLogger();
     }
 
 

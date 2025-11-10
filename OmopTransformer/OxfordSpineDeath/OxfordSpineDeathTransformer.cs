@@ -37,7 +37,5 @@ internal class OxfordSpineDeathTransformer : Transformer
             "Oxford Spine Death",
             runId,
             cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }

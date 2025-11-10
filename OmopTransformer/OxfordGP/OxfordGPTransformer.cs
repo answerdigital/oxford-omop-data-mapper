@@ -126,7 +126,5 @@ internal class OxfordGPTransformer : Transformer
             "Oxford GP Device Exposure",
             runId,
             cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }

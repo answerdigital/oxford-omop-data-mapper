@@ -157,7 +157,5 @@ internal class SusAETransformer : Transformer
            "SUS AE CareSite",
            runId,
            cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }
