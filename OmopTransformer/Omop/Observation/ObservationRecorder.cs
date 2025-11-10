@@ -157,7 +157,8 @@ where
                 o.observation_concept_id = r.observation_concept_id and
                 o.RecordConnectionIdentifier = r.RecordConnectionIdentifier and
                 (r.HospitalProviderSpellNumber is null or o.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber) and
-                (r.observation_source_concept_id is null or o.observation_source_concept_id = r.observation_source_concept_id)
+                (r.observation_source_concept_id is null or o.observation_source_concept_id = r.observation_source_concept_id) and
+                (o.observation_concept_id != 0 or ((o.value_as_string is null and r.value_as_string is null) or o.value_as_string = r.value_as_string))
             )
             or
             (
@@ -165,7 +166,8 @@ where
                 o.person_id = p.person_id and
                 o.observation_date = r.observation_date and
                 o.observation_concept_id = r.observation_concept_id and
-                o.observation_source_concept_id = r.observation_source_concept_id
+                o.observation_source_concept_id = r.observation_source_concept_id and
+                (o.observation_concept_id != 0 or ((o.value_as_string is null and r.value_as_string is null) or o.value_as_string = r.value_as_string))
             )
     );
 

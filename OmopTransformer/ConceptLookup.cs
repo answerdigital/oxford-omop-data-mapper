@@ -41,16 +41,21 @@ internal abstract class ConceptLookup
 
     public virtual string FormatCode(string code) => code;
 
-    public int? GetConceptCode(string? code)
+    public int GetConceptCode(string? code)
     {
-        lock (_loadingLock)
+        const int unknownConceptId = 0;
+
+        if (_mappings == null)
         {
-            _mappings ??= GetCodes();
+            lock (_loadingLock)
+            {
+                _mappings ??= GetCodes();
+            }
         }
 
         if (code == null)
         {
-            return null;
+            return unknownConceptId;
         }
 
         var formatCode = FormatCode(code);
@@ -70,7 +75,7 @@ internal abstract class ConceptLookup
             }
         }
 
-        return null;
+        return unknownConceptId;
     }
 }
 

@@ -144,23 +144,22 @@ Converts text to dates.
 * `event_start_date` Appointment Start Time [TREATMENT START DATE (RADIOTHERAPY TREATMENT EPISODE)]()
 
 ```sql
-with results as (
-	select 
-		distinct
-			(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,
-			a.start_date as event_start_date,
-			a.end_date as event_end_date
-	from omop_staging.rtds_2b_plan a
-)
-select
-	PatientId,
-	event_start_date,
-	event_end_date
-from results
-where
-  PatientId is not null
-  and regexp_matches(PatientId, '\d{10}');
-
+	with results as (
+			select 
+				distinct
+					(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = a.PatientSer limit 1) as NhsNumber,
+					a.start_date as event_start_date,
+					a.end_date as event_end_date
+					from omop_staging.rtds_2b_plan a
+		)
+		select
+			NhsNumber,
+			event_start_date,
+			event_end_date
+		from results
+		where
+			NhsNumber is not null
+			and regexp_matches(NhsNumber, '\d{10}');
 	
 ```
 

@@ -146,7 +146,6 @@ where (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code')
 * `DeathDate` The date on which a PERSON died or is officially deemed to have died. [MULTIDISCIPLINARY TEAM DISCUSSION DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/multidisciplinary_team_discussion_date__cancer_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html)
 
 ```sql
--- fail
 	    with cosddates as (
     select
         Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,

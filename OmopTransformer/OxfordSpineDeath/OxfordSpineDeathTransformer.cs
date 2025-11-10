@@ -8,14 +8,14 @@ namespace OmopTransformer.OxfordSpineDeath;
 
 internal class OxfordSpineDeathTransformer : Transformer
 {
-    private readonly ConceptResolver _conceptResolver;
+    private readonly StandardConceptResolver _conceptResolver;
     private readonly IDeathRecorder _deathRecorder;
 
     public OxfordSpineDeathTransformer(
         IRecordTransformer recordTransformer,
         TransformOptions transformOptions,
         IRecordProvider recordProvider,
-        ConceptResolver conceptResolver,
+        StandardConceptResolver conceptResolver,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory, IDeathRecorder deathRecorder) : base(recordTransformer,
         transformOptions,
@@ -37,7 +37,5 @@ internal class OxfordSpineDeathTransformer : Transformer
             "Oxford Spine Death",
             runId,
             cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }
