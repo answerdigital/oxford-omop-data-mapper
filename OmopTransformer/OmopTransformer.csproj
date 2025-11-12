@@ -50,6 +50,15 @@
     <None Update="COSD\Colorectal\ConditionOccurrence\CosdV8ConditionOccurrencePrimaryDiagnosis\CosdV8ConditionOccurrencePrimaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Lung\ConditionOccurrence\CosdConditionOccurrencePrimaryDiagnosis\CosdConditionOccurrencePrimaryDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\ConditionOccurrence\CosdConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\ProcedureOccurrence\CosdProcedureOccurrencePrimaryDiagnosis\CosdProcedureOccurrencePrimaryDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Core\Death\v8Death\CosdV8Death.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
