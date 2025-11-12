@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,\n\t\t\ta.start_date as event_start_date,\n\t\t\ta.end_date as event_end_date\n\tfrom omop_staging.rtds_2b_plan a\n)\nselect\n\tPatientId,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n  PatientId is not null\n  and regexp_matches(PatientId, '\\d{10}');\n\n\t",
+      "query": "\n\twith results as (\n\t\t\tselect \n\t\t\t\tdistinct\n\t\t\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = a.PatientSer limit 1) as NhsNumber,\n\t\t\t\t\ta.start_date as event_start_date,\n\t\t\t\t\ta.end_date as event_end_date\n\t\t\t\t\tfrom omop_staging.rtds_2b_plan a\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tevent_start_date,\n\t\t\tevent_end_date\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,\n\t\t\ta.start_date as event_start_date,\n\t\t\ta.end_date as event_end_date\n\tfrom omop_staging.rtds_2b_plan a\n)\nselect\n\tPatientId,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n  PatientId is not null\n  and regexp_matches(PatientId, '\\d{10}');\n\n\t",
+      "query": "\n\twith results as (\n\t\t\tselect \n\t\t\t\tdistinct\n\t\t\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = a.PatientSer limit 1) as NhsNumber,\n\t\t\t\t\ta.start_date as event_start_date,\n\t\t\t\t\ta.end_date as event_end_date\n\t\t\t\t\tfrom omop_staging.rtds_2b_plan a\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tevent_start_date,\n\t\t\tevent_end_date\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -53,7 +53,7 @@
           ]
         }
       ],
-      "query": "\n\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,\n\t\t\ta.start_date as event_start_date,\n\t\t\ta.end_date as event_end_date\n\tfrom omop_staging.rtds_2b_plan a\n)\nselect\n\tPatientId,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n  PatientId is not null\n  and regexp_matches(PatientId, '\\d{10}');\n\n\t",
+      "query": "\n\twith results as (\n\t\t\tselect \n\t\t\t\tdistinct\n\t\t\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = a.PatientSer limit 1) as NhsNumber,\n\t\t\t\t\ta.start_date as event_start_date,\n\t\t\t\t\ta.end_date as event_end_date\n\t\t\t\t\tfrom omop_staging.rtds_2b_plan a\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tevent_start_date,\n\t\t\tevent_end_date\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -66,7 +66,7 @@
           "origins": []
         }
       ],
-      "query": "\n\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,\n\t\t\ta.start_date as event_start_date,\n\t\t\ta.end_date as event_end_date\n\tfrom omop_staging.rtds_2b_plan a\n)\nselect\n\tPatientId,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n  PatientId is not null\n  and regexp_matches(PatientId, '\\d{10}');\n\n\t",
+      "query": "\n\twith results as (\n\t\t\tselect \n\t\t\t\tdistinct\n\t\t\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = a.PatientSer limit 1) as NhsNumber,\n\t\t\t\t\ta.start_date as event_start_date,\n\t\t\t\t\ta.end_date as event_end_date\n\t\t\t\t\tfrom omop_staging.rtds_2b_plan a\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tevent_start_date,\n\t\t\tevent_end_date\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -79,7 +79,7 @@
           "origins": []
         }
       ],
-      "query": "\n\nwith results as (\n\tselect \n\t\tdistinct\n\t\t\t(select top 1 PatientId from omop_staging.rtds_1_demographics b where b.PatientSer = a.PatientSer) as PatientId,\n\t\t\ta.start_date as event_start_date,\n\t\t\ta.end_date as event_end_date\n\tfrom omop_staging.rtds_2b_plan a\n)\nselect\n\tPatientId,\n\tevent_start_date,\n\tevent_end_date\nfrom results\nwhere\n  PatientId is not null\n  and regexp_matches(PatientId, '\\d{10}');\n\n\t",
+      "query": "\n\twith results as (\n\t\t\tselect \n\t\t\t\tdistinct\n\t\t\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = a.PatientSer limit 1) as NhsNumber,\n\t\t\t\t\ta.start_date as event_start_date,\n\t\t\t\t\ta.end_date as event_end_date\n\t\t\t\t\tfrom omop_staging.rtds_2b_plan a\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tevent_start_date,\n\t\t\tevent_end_date\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
