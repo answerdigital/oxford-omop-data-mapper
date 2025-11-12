@@ -207,6 +207,33 @@ order by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_datetime%20field%20Oxford%20Procedure%20Occurrence%20mapping){: .btn }
+### COSD Lung Procedure Occurrence Primary Diagnosis
+Source column  `ProcedureDate`.
+Converts text to dates.
+
+* `ProcedureDate` The date on which the procedure was performed [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+
+```sql
+with Lung as (
+  select 
+    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
+    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOPCS
+  from omop_staging.cosd_staging_81
+  where Type = 'LU'
+)
+select
+      distinct
+          ProcedureDate,
+          NhsNumber,
+          PrimaryProcedureOpcs
+from Lung l
+where l.ProcedureDate is not null and l.PrimaryProcedureOpcs is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_datetime%20field%20COSD%20Lung%20Procedure%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 Source column  `ProcedureDate`.
 Converts text to dates.

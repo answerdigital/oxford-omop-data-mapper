@@ -419,6 +419,76 @@ order by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20Oxford%20Condition%20Occurrence%20mapping){: .btn }
+### COSD Lung Condition Occurrence Primary Diagnosis
+Source column  `CancerDiagnosis`.
+Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* `CancerDiagnosis` The primary diagnosis code for the cancer. [PRIMARY DIAGNOSIS]()
+
+```sql
+with lung as (
+  select 
+    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
+    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as DiagnosisDate,
+    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,
+    Record ->> '$.Lung.LungCore.LungCoreDiagnosis.MorphologyICDODiagnosis.@code' as CancerHistology,
+    Record ->> '$.Lung.LungCore.LungCoreDiagnosis.TopographyICDO.@code' as CancerTopography,
+    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.PrimaryDiagnosis.@code'as CancerDiagnosis
+  from omop_staging.cosd_staging_81 lu
+where lu.Type = 'LU'
+)
+
+select
+distinct
+  NHSNumber,
+  coalesce(DiagnosisDate, NonPrimaryDiagnosisDate) as DiagnosisDate,
+  CancerHistology,
+  CancerTopography,
+  CancerDiagnosis
+from lung
+where NHSNumber is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20COSD%20Lung%20Condition%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
+### COSD Lung Condition Occurrence Primary Diagnosis Histology Topography
+Source columns  `CancerHistology`, `CancerTopography`.
+Resolve ICD-o-3 codes to OMOP concepts.
+
+* `CancerHistology` MORPHOLOGY (ICD-O CANCER TRANSFORMATION) is the morphology code of the Cancer Transformation using the ICD-O CODE. [MORPHOLOGY (ICD-O CANCER TRANSFORMATION)](https://www.datadictionary.nhs.uk/data_elements/morphology__icd-o_cancer_transformation_.html)
+
+* `CancerTopography` TOPOGRAPHY (ICD-O) is the topographical site of the Tumour using the ICD-O CODE. [TOPOGRAPHY (ICD-O)](https://www.datadictionary.nhs.uk/data_elements/topography__icd-o_.html)
+
+```sql
+with lung as (
+  select 
+    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
+    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as DiagnosisDate,
+    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,
+    Record ->> '$.Lung.LungCore.LungCoreDiagnosis.MorphologyICDODiagnosis.@code' as CancerHistology,
+    Record ->> '$.Lung.LungCore.LungCoreDiagnosis.TopographyICDO.@code' as CancerTopography,
+    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.PrimaryDiagnosis.@code'as CancerDiagnosis
+  from omop_staging.cosd_staging_81 lu
+where lu.Type = 'LU'
+)
+
+select
+distinct
+  NHSNumber,
+  coalesce(DiagnosisDate, NonPrimaryDiagnosisDate) as DiagnosisDate,
+  CancerHistology,
+  CancerTopography,
+  CancerDiagnosis
+from lung
+where NHSNumber is not null
+  and CancerHistology is not null
+  and CancerTopography is not null
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_concept_id%20field%20COSD%20Lung%20Condition%20Occurrence%20Primary%20Diagnosis%20Histology%20Topography%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 Source column  `CancerDiagnosis`.
 Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.

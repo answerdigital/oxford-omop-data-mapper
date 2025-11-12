@@ -6,6 +6,10 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # quantity
+### COSD Lung Procedure Occurrence Primary Diagnosis
+* Constant value set to `1`. One
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20quantity%20field%20COSD%20Lung%20Procedure%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 * Constant value set to `1`. One
 

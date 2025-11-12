@@ -43,6 +43,17 @@ has_toc: false
 <a href="OxfordGPProcedureOccurrence.svg" target="_blank"><img src="OxfordGPProcedureOccurrence.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordGPProcedureOccurrence%20mapping){: .btn }
+## CosdProcedureOccurrencePrimaryDiagnosis
+<a href="CosdProcedureOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdProcedureOccurrencePrimaryDiagnosis.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * Primary procedure OPCS codes from lung cancer treatment records
+> * Procedure dates are taken as recorded in the clinical system
+> * Duplicates are handled by selecting distinct records based on NHS Number, Procedure Date, and Primary Procedure OPCS
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdProcedureOccurrencePrimaryDiagnosis%20mapping){: .btn }
 ## CosdV9ProcedureOccurrenceProcedureOpcs
 <a href="CosdV9ProcedureOccurrenceProcedureOpcs.svg" target="_blank"><img src="CosdV9ProcedureOccurrenceProcedureOpcs.svg" /></a>
 

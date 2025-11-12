@@ -30,6 +30,10 @@ has_toc: false
 * Constant value set to `32818`. `EHR Administration record`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_type_concept_id%20field%20Oxford%20Procedure%20Occurrence%20mapping){: .btn }
+### COSD Lung Procedure Occurrence Primary Diagnosis
+* Constant value set to `32828`. `EHR episode record`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_type_concept_id%20field%20COSD%20Lung%20Procedure%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 * Constant value set to `32828`. `EHR episode record`
 
