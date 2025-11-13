@@ -10,6 +10,12 @@ using LungCosdConditionOccurrencePrimaryDiagnosis = OmopTransformer.COSD.Lung.Co
 using LungCosdConditionOccurrencePrimaryDiagnosisRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdConditionOccurrencePrimaryDiagnosis.CosdConditionOccurrencePrimaryDiagnosisRecord;
 using LungCosdConditionOccurrencePrimaryDiagnosisHistologyTopography = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdConditionOccurrencePrimaryDiagnosisHistologyTopography.CosdConditionOccurrencePrimaryDiagnosisHistologyTopography;
 using LungCosdConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdConditionOccurrencePrimaryDiagnosisHistologyTopography.CosdConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord;
+using LungV8ConditionOccurrenceProgression = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrenceProgression.CosdV8LungConditionOccurrenceProgression;
+using LungV8ConditionOccurrenceProgressionRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrenceProgression.CosdV8LungConditionOccurrenceProgressionRecord;
+using LungV9ConditionOccurrenceProgression = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceProgression.CosdV9LungConditionOccurrenceProgression;
+using LungV9ConditionOccurrenceProgressionRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceProgression.CosdV9LungConditionOccurrenceProgressionRecord;
+using LungV9ConditionOccurrenceRecurrence = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceRecurrence.CosdV9LungConditionOccurrenceRecurrence;
+using LungV9ConditionOccurrenceRecurrenceRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceRecurrence.CosdV9LungConditionOccurrenceRecurrenceRecord;
 using OmopTransformer.COSD.Core.Death.v8Death;
 using OmopTransformer.COSD.Core.Death.v9DeathBasisOfDiagnosisCancer;
 using OmopTransformer.COSD.Core.Death.v9DeathDischargeDestination;
@@ -220,6 +226,24 @@ internal class CosdTransformer : Transformer
         await Transform<LungCosdConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord, LungCosdConditionOccurrencePrimaryDiagnosisHistologyTopography>(
             _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
             "Cosd Lung Condition Occurrence Primary Diagnosis Histology Topography",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV8ConditionOccurrenceProgressionRecord, LungV8ConditionOccurrenceProgression>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V8 Lung Condition Occurrence Progression",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV9ConditionOccurrenceProgressionRecord, LungV9ConditionOccurrenceProgression>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Lung Condition Occurrence Progression",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV9ConditionOccurrenceRecurrenceRecord, LungV9ConditionOccurrenceRecurrence>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Lung Condition Occurrence Recurrence",
             runId,
             cancellationToken);
 
