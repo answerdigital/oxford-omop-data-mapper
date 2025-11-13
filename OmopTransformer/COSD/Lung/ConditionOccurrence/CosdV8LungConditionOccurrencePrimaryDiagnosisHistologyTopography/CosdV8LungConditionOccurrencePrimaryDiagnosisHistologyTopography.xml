@@ -1,0 +1,49 @@
+<Query>
+    <Sql>
+with lung as (
+  select 
+    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
+    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as DiagnosisDate,
+    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,
+    Record ->> '$.Lung.LungCore.LungCoreDiagnosis.MorphologyICDODiagnosis.@code' as CancerHistology,
+    Record ->> '$.Lung.LungCore.LungCoreDiagnosis.TopographyICDO.@code' as CancerTopography,
+    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.PrimaryDiagnosis.@code'as CancerDiagnosis
+  from omop_staging.cosd_staging_81 lu
+where lu.Type = 'LU'
+)
+
+select
+distinct
+  NHSNumber,
+  coalesce(DiagnosisDate, NonPrimaryDiagnosisDate) as DiagnosisDate,
+  CancerHistology,
+  CancerTopography,
+  CancerDiagnosis
+from lung
+where NHSNumber is not null
+  and CancerHistology is not null
+  and CancerTopography is not null
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NHSNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="DiagnosisDate">
+			<Description>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED) is the date the Primary Cancer was confirmed or the Primary Cancer diagnosis was agreed.</Description>
+			<Origin>CLINICAL DATE CANCER DIAGNOSIS</Origin>
+		</Explanation>
+		<Explanation columnName="CancerHistology">
+			<Description>MORPHOLOGY (ICD-O CANCER TRANSFORMATION) is the morphology code of the Cancer Transformation using the ICD-O CODE.</Description>
+			<Origin>MORPHOLOGY (ICD-O CANCER TRANSFORMATION)</Origin>
+		</Explanation>
+		<Explanation columnName="CancerTopography">
+			<Description>TOPOGRAPHY (ICD-O) is the topographical site of the Tumour using the ICD-O CODE.</Description>
+			<Origin>TOPOGRAPHY (ICD-O)</Origin>
+		</Explanation>
+		<Explanation columnName="CancerDiagnosis">
+			<Description>The primary diagnosis code for the cancer.</Description>
+			<Origin>PRIMARY DIAGNOSIS</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

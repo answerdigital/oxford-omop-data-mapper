@@ -36,6 +36,31 @@ Source column  `condition_source_concept_id`.
 Maps concepts to standard valid concepts in the `condition` domain.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_concept_id%20field%20Oxford%20Condition%20Occurrence%20mapping){: .btn }
+### COSD V9 Lung Condition Occurrence Recurrence
+Source column  `condition_source_concept_id`.
+Maps concepts to standard valid concepts in the `condition` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_concept_id%20field%20COSD%20V9%20Lung%20Condition%20Occurrence%20Recurrence%20mapping){: .btn }
+### COSD V9 Lung Condition Occurrence Progression
+Source column  `condition_source_concept_id`.
+Maps concepts to standard valid concepts in the `condition` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_concept_id%20field%20COSD%20V9%20Lung%20Condition%20Occurrence%20Progression%20mapping){: .btn }
+### COSD V8 Lung Condition Occurrence Progression
+Source column  `condition_source_concept_id`.
+Maps concepts to standard valid concepts in the `condition` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_concept_id%20field%20COSD%20V8%20Lung%20Condition%20Occurrence%20Progression%20mapping){: .btn }
+### COSD V8 Lung Condition Occurrence Primary Diagnosis
+Source column  `condition_source_concept_id`.
+Maps concepts to standard valid concepts in the `condition` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_concept_id%20field%20COSD%20V8%20Lung%20Condition%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
+### COSD V8 Lung Condition Occurrence Primary Diagnosis Histology Topography
+Source column  `condition_source_concept_id`.
+Maps concepts to standard valid concepts in the `condition` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_concept_id%20field%20COSD%20V8%20Lung%20Condition%20Occurrence%20Primary%20Diagnosis%20Histology%20Topography%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 Source column  `condition_source_concept_id`.
 Maps concepts to standard valid concepts in the `condition` domain.
