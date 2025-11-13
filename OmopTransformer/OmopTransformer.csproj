@@ -50,10 +50,10 @@
     <None Update="COSD\Colorectal\ConditionOccurrence\CosdV8ConditionOccurrencePrimaryDiagnosis\CosdV8ConditionOccurrencePrimaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Lung\ConditionOccurrence\CosdConditionOccurrencePrimaryDiagnosis\CosdConditionOccurrencePrimaryDiagnosis.xml">
+    <None Update="COSD\Lung\ConditionOccurrence\CosdV8LungConditionOccurrencePrimaryDiagnosis\CosdV8LungConditionOccurrencePrimaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Lung\ConditionOccurrence\CosdConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
+    <None Update="COSD\Lung\ConditionOccurrence\CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="COSD\Lung\ConditionOccurrence\CosdV8LungConditionOccurrenceProgression\CosdV8LungConditionOccurrenceProgression.xml">
@@ -65,7 +65,16 @@
     <None Update="COSD\Lung\ConditionOccurrence\CosdV9LungConditionOccurrenceRecurrence\CosdV9LungConditionOccurrenceRecurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Lung\ProcedureOccurrence\CosdProcedureOccurrencePrimaryDiagnosis\CosdProcedureOccurrencePrimaryDiagnosis.xml">
+    <None Update="COSD\Lung\ProcedureOccurrence\CosdV8LungProcedureOccurrencePrimaryDiagnosis\CosdV8LungProcedureOccurrencePrimaryDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\ProcedureOccurrence\CosdV8LungProcedureOccurrenceProcedureOpcs\CosdV8LungProcedureOccurrenceProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\ProcedureOccurrence\CosdV9LungProcedureOccurrencePrimaryProcedureOpcs\CosdV9LungProcedureOccurrencePrimaryProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\ProcedureOccurrence\CosdV9LungProcedureOccurrenceProcedureOpcs\CosdV9LungProcedureOccurrenceProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="COSD\Core\Death\v8Death\CosdV8Death.xml">

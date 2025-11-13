@@ -1,0 +1,27 @@
+<Query>
+	<Sql>
+select 
+  distinct
+    Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+    Record ->> '$.Treatment.Surgery.ProcedureDate' as ProcedureDate,
+    Record ->> '$.Treatment.Surgery.PrimaryProcedureOpcs.@code' as PrimaryProcedureOpcs
+from omop_staging.cosd_staging_901
+where type = 'LU'
+  and ProcedureDate is not null
+  and PrimaryProcedureOpcs is not null;
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NhsNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="ProcedureDate">
+			<Description>The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY.</Description>
+			<Origin>PROCEDURE DATE</Origin>
+		</Explanation>
+		<Explanation columnName="PrimaryProcedureOpcs">
+			<Description>PRIMARY PROCEDURE (OPCS) is the main PROCEDURE (OPCS) undertaken by a PATIENT.</Description>
+			<Origin>PRIMARY PROCEDURE (OPCS)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

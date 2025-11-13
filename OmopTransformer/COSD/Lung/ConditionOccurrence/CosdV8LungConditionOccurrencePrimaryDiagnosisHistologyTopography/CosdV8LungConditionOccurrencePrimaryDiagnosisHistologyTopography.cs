@@ -2,14 +2,14 @@ using OmopTransformer.Annotations;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.COSD.Lung.ConditionOccurrence.CosdConditionOccurrencePrimaryDiagnosisHistologyTopography;
+namespace OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography;
 
 [Notes(
     "Assumptions",
     "* For a given Diagnosis date, all valid combinations of Histology and Topography are added (thereby giving us an ICD-O-3 condition) as well as the ICD10 Diagnosis.",
     "* Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)",
     "* If the same Diagnosis occurs but we have 2 separate \"basis of diagnosis\" values, then the first one will be taken only")]
-internal class CosdConditionOccurrencePrimaryDiagnosisHistologyTopography : OmopConditionOccurrence<CosdConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord>
+internal class CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography : OmopConditionOccurrence<CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]
     public override string? nhs_number { get; set; }

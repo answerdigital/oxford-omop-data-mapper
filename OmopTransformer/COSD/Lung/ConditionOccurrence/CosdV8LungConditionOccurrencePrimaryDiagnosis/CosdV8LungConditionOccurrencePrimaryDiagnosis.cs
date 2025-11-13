@@ -2,13 +2,13 @@ using OmopTransformer.Annotations;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.COSD.Lung.ConditionOccurrence.CosdConditionOccurrencePrimaryDiagnosis;
+namespace OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosis;
 
 [Notes(
     "Assumptions",
     "* Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)",
     "* If the same Diagnosis occurs but we have 2 separate \"basis of diagnosis\" values, then the first one will be taken only")]
-internal class CosdConditionOccurrencePrimaryDiagnosis : OmopConditionOccurrence<CosdConditionOccurrencePrimaryDiagnosisRecord>
+internal class CosdV8LungConditionOccurrencePrimaryDiagnosis : OmopConditionOccurrence<CosdV8LungConditionOccurrencePrimaryDiagnosisRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]
     public override string? nhs_number { get; set; }

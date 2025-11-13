@@ -2,14 +2,13 @@ using OmopTransformer.Annotations;
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdProcedureOccurrencePrimaryDiagnosis;
+namespace OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV9LungProcedureOccurrencePrimaryProcedureOpcs;
 
 [Notes(
-    "Assumptions",
-    "* Primary procedure OPCS codes from lung cancer treatment records",
-    "* Procedure dates are taken as recorded in the clinical system",
-    "* Duplicates are handled by selecting distinct records based on NHS Number, Procedure Date, and Primary Procedure OPCS")]
-internal class CosdProcedureOccurrencePrimaryDiagnosis : OmopProcedureOccurrence<CosdProcedureOccurrencePrimaryDiagnosisRecord>
+    "Duplicates",
+    "COSD data contains numerous duplicated records due to repeated submissions that include the same records.  The latest record may occasionally have a NULL field that was previously populated.  We observed this for address fields, date of birth and other personal details, but did not observe it for procedure data.",
+    "In order to avoid true duplicates occurring in the data, we have included distinct records for  NHSNumber (person_id) , PrimaryProcedureOpcs(procedure_concept_id), ProcedureDate (procedure_date) and excluded all duplicates.  The tool will handle things a little differently, as each new submission will have to be dealt with as it arrives.")]
+internal class CosdV9LungProcedureOccurrencePrimaryProcedureOpcs : OmopProcedureOccurrence<CosdV9LungProcedureOccurrencePrimaryProcedureOpcsRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]
     public override string? nhs_number { get; set; }
