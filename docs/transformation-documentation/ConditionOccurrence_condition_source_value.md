@@ -167,7 +167,7 @@ where type = 'LU'
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_value%20field%20COSD%20V8%20Lung%20Condition%20Occurrence%20Progression%20mapping){: .btn }
-### COSD Lung Condition Occurrence Primary Diagnosis
+### COSD V8 Lung Condition Occurrence Primary Diagnosis
 * Value copied from `CancerDiagnosis`
 
 * `CancerDiagnosis` The primary diagnosis code for the cancer. [PRIMARY DIAGNOSIS]()
@@ -198,8 +198,8 @@ where NHSNumber is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_value%20field%20COSD%20Lung%20Condition%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
-### COSD Lung Condition Occurrence Primary Diagnosis Histology Topography
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_value%20field%20COSD%20V8%20Lung%20Condition%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
+### COSD V8 Lung Condition Occurrence Primary Diagnosis Histology Topography
 Source columns  `CancerHistology`, `CancerTopography`.
 Separates text with newlines. Trim whitespace.
 
@@ -235,7 +235,7 @@ where NHSNumber is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_value%20field%20COSD%20Lung%20Condition%20Occurrence%20Primary%20Diagnosis%20Histology%20Topography%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ConditionOccurrence%20table%20condition_source_value%20field%20COSD%20V8%20Lung%20Condition%20Occurrence%20Primary%20Diagnosis%20Histology%20Topography%20mapping){: .btn }
 ### Cosd V8 Condition Occurrence Primary Diagnosis
 * Value copied from `CancerDiagnosis`
 

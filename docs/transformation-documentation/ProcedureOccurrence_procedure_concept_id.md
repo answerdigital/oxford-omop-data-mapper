@@ -36,11 +36,26 @@ Source column  `procedure_source_concept_id`.
 Maps concepts to standard valid concepts in the `procedure` domain.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20Oxford%20Procedure%20Occurrence%20mapping){: .btn }
-### COSD Lung Procedure Occurrence Primary Diagnosis
+### Cosd V9 Lung Procedure Occurrence Procedure Opcs
 Source column  `procedure_source_concept_id`.
 Maps concepts to standard valid concepts in the `procedure` domain.
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20COSD%20Lung%20Procedure%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20Cosd%20V9%20Lung%20Procedure%20Occurrence%20Procedure%20Opcs%20mapping){: .btn }
+### Cosd V9 Lung Procedure Occurrence Primary Procedure Opcs
+Source column  `procedure_source_concept_id`.
+Maps concepts to standard valid concepts in the `procedure` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20Cosd%20V9%20Lung%20Procedure%20Occurrence%20Primary%20Procedure%20Opcs%20mapping){: .btn }
+### Cosd V8 Lung Procedure Occurrence Procedure Opcs
+Source column  `procedure_source_concept_id`.
+Maps concepts to standard valid concepts in the `procedure` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20Cosd%20V8%20Lung%20Procedure%20Occurrence%20Procedure%20Opcs%20mapping){: .btn }
+### COSD V8 Lung Procedure Occurrence Primary Diagnosis
+Source column  `procedure_source_concept_id`.
+Maps concepts to standard valid concepts in the `procedure` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20COSD%20V8%20Lung%20Procedure%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 Source column  `procedure_source_concept_id`.
 Maps concepts to standard valid concepts in the `procedure` domain.

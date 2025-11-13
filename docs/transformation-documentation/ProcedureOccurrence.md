@@ -43,8 +43,44 @@ has_toc: false
 <a href="OxfordGPProcedureOccurrence.svg" target="_blank"><img src="OxfordGPProcedureOccurrence.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordGPProcedureOccurrence%20mapping){: .btn }
-## CosdProcedureOccurrencePrimaryDiagnosis
-<a href="CosdProcedureOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdProcedureOccurrencePrimaryDiagnosis.svg" /></a>
+## CosdV9LungProcedureOccurrenceProcedureOpcs
+<a href="CosdV9LungProcedureOccurrenceProcedureOpcs.svg" target="_blank"><img src="CosdV9LungProcedureOccurrenceProcedureOpcs.svg" /></a>
+
+{: .important-title }
+> Duplicates
+>
+> COSD data contains numerous duplicated records due to repeated submissions that include the same records.  The latest record may occasionally have a NULL field that was previously populated.  We observed this for address fields, date of birth and other personal details, but did not observe it for procedure data.
+>
+> In order to avoid true duplicates occurring in the data, we have included distinct records for  NHSNumber (person_id) , ProcedureOpcsCode(procedure_concept_id), ProcedureDate (procedure_date) and excluded all duplicates.  The tool will handle things a little differently, as each new submission will have to be dealt with as it arrives.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungProcedureOccurrenceProcedureOpcs%20mapping){: .btn }
+## CosdV9LungProcedureOccurrencePrimaryProcedureOpcs
+<a href="CosdV9LungProcedureOccurrencePrimaryProcedureOpcs.svg" target="_blank"><img src="CosdV9LungProcedureOccurrencePrimaryProcedureOpcs.svg" /></a>
+
+{: .important-title }
+> Duplicates
+>
+> COSD data contains numerous duplicated records due to repeated submissions that include the same records.  The latest record may occasionally have a NULL field that was previously populated.  We observed this for address fields, date of birth and other personal details, but did not observe it for procedure data.
+>
+> In order to avoid true duplicates occurring in the data, we have included distinct records for  NHSNumber (person_id) , PrimaryProcedureOpcs(procedure_concept_id), ProcedureDate (procedure_date) and excluded all duplicates.  The tool will handle things a little differently, as each new submission will have to be dealt with as it arrives.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungProcedureOccurrencePrimaryProcedureOpcs%20mapping){: .btn }
+## CosdV8LungProcedureOccurrenceProcedureOpcs
+<a href="CosdV8LungProcedureOccurrenceProcedureOpcs.svg" target="_blank"><img src="CosdV8LungProcedureOccurrenceProcedureOpcs.svg" /></a>
+
+{: .important-title }
+> Duplicates
+>
+> COSD data contains numerous duplicated records due to repeated submissions that include the same records.  The latest record may occasionally have a NULL field that was previously populated.  We observed this for address fields, date of birth and other personal details, but did not observe it for procedure data.
+>
+> In order to avoid true duplicates occurring in the data, we have included distinct records for  NHSNumber (person_id) , ProcedureOpcsCode(procedure_concept_id), ProcedureDate (procedure_date) and excluded all duplicates.  The tool will handle things a little differently, as each new submission will have to be dealt with as it arrives.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungProcedureOccurrenceProcedureOpcs%20mapping){: .btn }
+## CosdV8LungProcedureOccurrencePrimaryDiagnosis
+<a href="CosdV8LungProcedureOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdV8LungProcedureOccurrencePrimaryDiagnosis.svg" /></a>
 
 {: .important-title }
 > Assumptions
@@ -53,7 +89,7 @@ has_toc: false
 > * Procedure dates are taken as recorded in the clinical system
 > * Duplicates are handled by selecting distinct records based on NHS Number, Procedure Date, and Primary Procedure OPCS
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdProcedureOccurrencePrimaryDiagnosis%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungProcedureOccurrencePrimaryDiagnosis%20mapping){: .btn }
 ## CosdV9ProcedureOccurrenceProcedureOpcs
 <a href="CosdV9ProcedureOccurrenceProcedureOpcs.svg" target="_blank"><img src="CosdV9ProcedureOccurrenceProcedureOpcs.svg" /></a>
 

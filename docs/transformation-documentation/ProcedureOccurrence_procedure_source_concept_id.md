@@ -387,7 +387,81 @@ order by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_concept_id%20field%20Oxford%20Procedure%20Occurrence%20mapping){: .btn }
-### COSD Lung Procedure Occurrence Primary Diagnosis
+### Cosd V9 Lung Procedure Occurrence Procedure Opcs
+Source column  `ProcedureOpcsCode`.
+Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+
+```sql
+with lung as (
+    select distinct
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        Record ->> '$.Treatment.Surgery.ProcedureDate' as ProcedureDate,
+        unnest ([[Record ->> '$.Treatment.Surgery.ProcedureOpcs.@code'], Record ->> '$.Treatment.Surgery.ProcedureOpcs[*].@code'], recursive := true) as ProcedureOpcsCode
+    from omop_staging.cosd_staging_901
+    where type = 'LU'
+)
+select distinct
+    NhsNumber,
+    ProcedureDate,
+    ProcedureOpcsCode
+from lung
+where ProcedureOpcsCode is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_concept_id%20field%20Cosd%20V9%20Lung%20Procedure%20Occurrence%20Procedure%20Opcs%20mapping){: .btn }
+### Cosd V9 Lung Procedure Occurrence Primary Procedure Opcs
+Source column  `PrimaryProcedureOpcs`.
+Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* `PrimaryProcedureOpcs` PRIMARY PROCEDURE (OPCS) is the main PROCEDURE (OPCS) undertaken by a PATIENT. [PRIMARY PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/primary_procedure__opcs_.html)
+
+```sql
+select 
+  distinct
+    Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+    Record ->> '$.Treatment.Surgery.ProcedureDate' as ProcedureDate,
+    Record ->> '$.Treatment.Surgery.PrimaryProcedureOpcs.@code' as PrimaryProcedureOpcs
+from omop_staging.cosd_staging_901
+where type = 'LU'
+  and ProcedureDate is not null
+  and PrimaryProcedureOpcs is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_concept_id%20field%20Cosd%20V9%20Lung%20Procedure%20Occurrence%20Primary%20Procedure%20Opcs%20mapping){: .btn }
+### Cosd V8 Lung Procedure Occurrence Procedure Opcs
+Source column  `ProcedureOpcsCode`.
+Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* `ProcedureOpcsCode` PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS). [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+
+```sql
+with lung as (
+  select 
+    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
+    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+    unnest ([[Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'], Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'], recursive := true) as ProcedureOpcsCode
+    from omop_staging.cosd_staging_81
+    where Type = 'LU'
+)
+select
+  distinct
+		NhsNumber,
+		ProcedureDate,
+		ProcedureOpcsCode
+from lung
+where lung.ProcedureOpcsCode is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_concept_id%20field%20Cosd%20V8%20Lung%20Procedure%20Occurrence%20Procedure%20Opcs%20mapping){: .btn }
+### COSD V8 Lung Procedure Occurrence Primary Diagnosis
 Source column  `PrimaryProcedureOpcs`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
 
@@ -413,7 +487,7 @@ where l.ProcedureDate is not null and l.PrimaryProcedureOpcs is not null;
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_concept_id%20field%20COSD%20Lung%20Procedure%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_source_concept_id%20field%20COSD%20V8%20Lung%20Procedure%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 Source column  `ProcedureOpcsCode`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
