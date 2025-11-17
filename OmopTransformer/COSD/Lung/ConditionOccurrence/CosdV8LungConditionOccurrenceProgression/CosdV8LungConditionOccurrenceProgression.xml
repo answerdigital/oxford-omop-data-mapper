@@ -6,7 +6,9 @@ select distinct
     Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.CancerProgressionICD.@code' as NonPrimaryProgressionOriginalDiagnosis
 from omop_staging.cosd_staging_81
 where type = 'LU'
-  and NonPrimaryProgressionOriginalDiagnosis is not null;
+  and NonPrimaryProgressionOriginalDiagnosis is not null
+  and NonPrimaryDiagnosisDate is not null
+  and NhsNumber is not null;
 	</Sql>
     <Explanations>
 		<Explanation columnName="NhsNumber">

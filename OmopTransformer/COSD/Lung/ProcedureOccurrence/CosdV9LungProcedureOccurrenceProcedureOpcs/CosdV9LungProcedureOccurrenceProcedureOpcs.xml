@@ -13,7 +13,9 @@ select distinct
     ProcedureDate,
     ProcedureOpcsCode
 from lung
-where ProcedureOpcsCode is not null;
+where ProcedureOpcsCode is not null
+and NhsNumber is not null
+and ProcedureDate is not null;
 	</Sql>
 	<Explanations>
 		<Explanation columnName="NhsNumber">

@@ -7,7 +7,9 @@ select
         Record ->> '$.NonPrimaryPathway.Recurrence.OriginalPrimaryDiagnosisIcd.@code' as NonPrimaryRecurrenceOriginalDiagnosis
 from omop_staging.cosd_staging_901
 where type = 'LU'
-  and NonPrimaryRecurrenceOriginalDiagnosis is not null;
+  and NonPrimaryRecurrenceOriginalDiagnosis is not null
+  and DateOfNonPrimaryCancerDiagnosisClinicallyAgreed is not null
+  and NhsNumber is not null;
 	</Sql>
     <Explanations>
 		<Explanation columnName="NhsNumber">

@@ -14,7 +14,9 @@ select
           NhsNumber,
           PrimaryProcedureOPCS
 from Lung l
-where l.ProcedureDate is not null and l.PrimaryProcedureOPCS is not null;
+where l.ProcedureDate is not null
+and l.PrimaryProcedureOPCS is not null
+and l.NhsNumber is not null;
 	</Sql>
 	<Explanations>
 		<Explanation columnName="ProcedureDate">

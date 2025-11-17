@@ -20,7 +20,8 @@ distinct
   CancerTopography,
   CancerDiagnosis
 from lung
-where NHSNumber is not null
+where NHSNumber is not null;
+
 	</Sql>
     <Explanations>
 	    <Explanation columnName="NHSNumber">

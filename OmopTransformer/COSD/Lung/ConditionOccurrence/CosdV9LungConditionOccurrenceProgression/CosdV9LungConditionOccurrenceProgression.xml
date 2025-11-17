@@ -6,7 +6,9 @@ select distinct
     Record ->> '$.NonPrimaryPathway.Progression.ProgressionIcd.@code' as NonPrimaryProgressionOriginalDiagnosis
 from omop_staging.cosd_staging_901
 where type = 'LU'
-  and NonPrimaryProgressionOriginalDiagnosis is not null;
+  and NonPrimaryProgressionOriginalDiagnosis is not null
+  and NonPrimaryDiagnosisDate is not null
+  and NhsNumber is not null;
 	</Sql>
     <Explanations>
 		<Explanation columnName="NhsNumber">
