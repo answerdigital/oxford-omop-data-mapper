@@ -273,7 +273,7 @@ and ProcedureDate is not null;
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20nhs_number%20field%20Cosd%20V8%20Lung%20Procedure%20Occurrence%20Procedure%20Opcs%20mapping){: .btn }
-### COSD V8 Lung Procedure Occurrence Primary Diagnosis
+### COSD V8 Lung Procedure Occurrence Primary Procedure Opcs
 * Value copied from `NhsNumber`
 
 * `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
@@ -300,7 +300,7 @@ and l.NhsNumber is not null;
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20nhs_number%20field%20COSD%20V8%20Lung%20Procedure%20Occurrence%20Primary%20Diagnosis%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20nhs_number%20field%20COSD%20V8%20Lung%20Procedure%20Occurrence%20Primary%20Procedure%20Opcs%20mapping){: .btn }
 ### Cosd V9 Procedure Occurrence Procedure Opcs
 * Value copied from `NhsNumber`
 

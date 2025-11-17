@@ -79,8 +79,8 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungProcedureOccurrenceProcedureOpcs%20mapping){: .btn }
-## CosdV8LungProcedureOccurrencePrimaryDiagnosis
-<a href="CosdV8LungProcedureOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdV8LungProcedureOccurrencePrimaryDiagnosis.svg" /></a>
+## CosdV8LungProcedureOccurrencePrimaryProcedureOpcs
+<a href="CosdV8LungProcedureOccurrencePrimaryProcedureOpcs.svg" target="_blank"><img src="CosdV8LungProcedureOccurrencePrimaryProcedureOpcs.svg" /></a>
 
 {: .important-title }
 > Assumptions
@@ -89,7 +89,7 @@ has_toc: false
 > * Procedure dates are taken as recorded in the clinical system
 > * Duplicates are handled by selecting distinct records based on NHS Number, Procedure Date, and Primary Procedure OPCS
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungProcedureOccurrencePrimaryDiagnosis%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungProcedureOccurrencePrimaryProcedureOpcs%20mapping){: .btn }
 ## CosdV9ProcedureOccurrenceProcedureOpcs
 <a href="CosdV9ProcedureOccurrenceProcedureOpcs.svg" target="_blank"><img src="CosdV9ProcedureOccurrenceProcedureOpcs.svg" /></a>
 
