@@ -75,7 +75,8 @@ using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurre
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrenceProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV9ProcedureOccurrencePrimaryProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV9ProcedureOccurrenceProcedureOpcs;
-using LungV8ProcedureOccurrencePrimaryDiagnosis = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrencePrimaryDiagnosis;
+using LungV8ProcedureOccurrencePrimaryProcedureOpcs = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrencePrimaryProcedureOpcs.CosdV8LungProcedureOccurrencePrimaryProcedureOpcs;
+using LungV8ProcedureOccurrencePrimaryProcedureOpcsRecord = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrencePrimaryProcedureOpcs.CosdV8LungProcedureOccurrencePrimaryProcedureOpcsRecord;
 using LungV8ProcedureOccurrenceProcedureOpcs = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrenceProcedureOpcs.CosdV8LungProcedureOccurrenceProcedureOpcs;
 using LungV8ProcedureOccurrenceProcedureOpcsRecord = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrenceProcedureOpcs.CosdV8LungProcedureOccurrenceProcedureOpcsRecord;
 using LungV9ProcedureOccurrencePrimaryProcedureOpcs = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV9LungProcedureOccurrencePrimaryProcedureOpcs.CosdV9LungProcedureOccurrencePrimaryProcedureOpcs;
@@ -277,9 +278,9 @@ internal class CosdTransformer : Transformer
             runId,
             cancellationToken);
 
-        await Transform<LungV8ProcedureOccurrencePrimaryDiagnosis.CosdV8LungProcedureOccurrencePrimaryDiagnosisRecord, LungV8ProcedureOccurrencePrimaryDiagnosis.CosdV8LungProcedureOccurrencePrimaryDiagnosis>(
+        await Transform<LungV8ProcedureOccurrencePrimaryProcedureOpcsRecord, LungV8ProcedureOccurrencePrimaryProcedureOpcs>(
             _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
-            "Cosd V8 Lung Procedure Occurrence Primary Diagnosis",
+            "Cosd V8 Lung Procedure Occurrence Primary Procedure Opcs",
             runId,
             cancellationToken);
 

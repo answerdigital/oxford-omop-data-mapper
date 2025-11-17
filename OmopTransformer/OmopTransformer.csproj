@@ -65,7 +65,7 @@
     <None Update="COSD\Lung\ConditionOccurrence\CosdV9LungConditionOccurrenceRecurrence\CosdV9LungConditionOccurrenceRecurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Lung\ProcedureOccurrence\CosdV8LungProcedureOccurrencePrimaryDiagnosis\CosdV8LungProcedureOccurrencePrimaryDiagnosis.xml">
+    <None Update="COSD\Lung\ProcedureOccurrence\CosdV8LungProcedureOccurrencePrimaryProcedureOpcs\CosdV8LungProcedureOccurrencePrimaryProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="COSD\Lung\ProcedureOccurrence\CosdV8LungProcedureOccurrenceProcedureOpcs\CosdV8LungProcedureOccurrenceProcedureOpcs.xml">

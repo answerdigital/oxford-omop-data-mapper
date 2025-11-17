@@ -2,14 +2,14 @@ using OmopTransformer.Annotations;
 using OmopTransformer.Omop.ProcedureOccurrence;
 using OmopTransformer.Transformation;
 
-namespace OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrencePrimaryDiagnosis;
+namespace OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrencePrimaryProcedureOpcs;
 
 [Notes(
     "Assumptions",
     "* Primary procedure OPCS codes from lung cancer treatment records",
     "* Procedure dates are taken as recorded in the clinical system",
     "* Duplicates are handled by selecting distinct records based on NHS Number, Procedure Date, and Primary Procedure OPCS")]
-internal class CosdV8LungProcedureOccurrencePrimaryDiagnosis : OmopProcedureOccurrence<CosdV8LungProcedureOccurrencePrimaryDiagnosisRecord>
+internal class CosdV8LungProcedureOccurrencePrimaryProcedureOpcs : OmopProcedureOccurrence<CosdV8LungProcedureOccurrencePrimaryProcedureOpcsRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]
     public override string? nhs_number { get; set; }
