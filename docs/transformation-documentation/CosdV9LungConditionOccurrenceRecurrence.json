@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.NonPrimaryPathway.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n        Record ->> '$.NonPrimaryPathway.Recurrence.OriginalPrimaryDiagnosisIcd.@code' as NonPrimaryRecurrenceOriginalDiagnosis\nfrom omop_staging.cosd_staging_901\nwhere type = 'LU'\n  and NonPrimaryRecurrenceOriginalDiagnosis is not null;\n\t",
+      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.NonPrimaryPathway.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n        Record ->> '$.NonPrimaryPathway.Recurrence.OriginalPrimaryDiagnosisIcd.@code' as NonPrimaryRecurrenceOriginalDiagnosis\nfrom omop_staging.cosd_staging_901\nwhere type = 'LU'\n  and NonPrimaryRecurrenceOriginalDiagnosis is not null\n  and DateOfNonPrimaryCancerDiagnosisClinicallyAgreed is not null\n  and NhsNumber is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.NonPrimaryPathway.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n        Record ->> '$.NonPrimaryPathway.Recurrence.OriginalPrimaryDiagnosisIcd.@code' as NonPrimaryRecurrenceOriginalDiagnosis\nfrom omop_staging.cosd_staging_901\nwhere type = 'LU'\n  and NonPrimaryRecurrenceOriginalDiagnosis is not null;\n\t",
+      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.NonPrimaryPathway.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n        Record ->> '$.NonPrimaryPathway.Recurrence.OriginalPrimaryDiagnosisIcd.@code' as NonPrimaryRecurrenceOriginalDiagnosis\nfrom omop_staging.cosd_staging_901\nwhere type = 'LU'\n  and NonPrimaryRecurrenceOriginalDiagnosis is not null\n  and DateOfNonPrimaryCancerDiagnosisClinicallyAgreed is not null\n  and NhsNumber is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.NonPrimaryPathway.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n        Record ->> '$.NonPrimaryPathway.Recurrence.OriginalPrimaryDiagnosisIcd.@code' as NonPrimaryRecurrenceOriginalDiagnosis\nfrom omop_staging.cosd_staging_901\nwhere type = 'LU'\n  and NonPrimaryRecurrenceOriginalDiagnosis is not null;\n\t",
+      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.NonPrimaryPathway.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n        Record ->> '$.NonPrimaryPathway.Recurrence.OriginalPrimaryDiagnosisIcd.@code' as NonPrimaryRecurrenceOriginalDiagnosis\nfrom omop_staging.cosd_staging_901\nwhere type = 'LU'\n  and NonPrimaryRecurrenceOriginalDiagnosis is not null\n  and DateOfNonPrimaryCancerDiagnosisClinicallyAgreed is not null\n  and NhsNumber is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,7 +78,7 @@
           ]
         }
       ],
-      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.NonPrimaryPathway.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n        Record ->> '$.NonPrimaryPathway.Recurrence.OriginalPrimaryDiagnosisIcd.@code' as NonPrimaryRecurrenceOriginalDiagnosis\nfrom omop_staging.cosd_staging_901\nwhere type = 'LU'\n  and NonPrimaryRecurrenceOriginalDiagnosis is not null;\n\t",
+      "query": "\nselect\n    distinct\n        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,\n        Record ->> '$.NonPrimaryPathway.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,\n        Record ->> '$.NonPrimaryPathway.Recurrence.OriginalPrimaryDiagnosisIcd.@code' as NonPrimaryRecurrenceOriginalDiagnosis\nfrom omop_staging.cosd_staging_901\nwhere type = 'LU'\n  and NonPrimaryRecurrenceOriginalDiagnosis is not null\n  and DateOfNonPrimaryCancerDiagnosisClinicallyAgreed is not null\n  and NhsNumber is not null;\n\t",
       "lookup_table_markdown": null
     },
     {

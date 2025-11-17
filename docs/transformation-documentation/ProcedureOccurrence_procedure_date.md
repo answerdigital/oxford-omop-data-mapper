@@ -223,7 +223,9 @@ select distinct
     ProcedureDate,
     ProcedureOpcsCode
 from lung
-where ProcedureOpcsCode is not null;
+where ProcedureOpcsCode is not null
+and NhsNumber is not null
+and ProcedureDate is not null;
 	
 ```
 
@@ -243,6 +245,7 @@ select
     Record ->> '$.Treatment.Surgery.PrimaryProcedureOpcs.@code' as PrimaryProcedureOpcs
 from omop_staging.cosd_staging_901
 where type = 'LU'
+  and NhsNumber is not null
   and ProcedureDate is not null
   and PrimaryProcedureOpcs is not null;
 	
@@ -271,7 +274,9 @@ select
 		ProcedureDate,
 		ProcedureOpcsCode
 from lung
-where lung.ProcedureOpcsCode is not null;
+where ProcedureOpcsCode is not null
+and NhsNumber is not null
+and ProcedureDate is not null;
 	
 ```
 
@@ -298,7 +303,9 @@ select
           NhsNumber,
           PrimaryProcedureOPCS
 from Lung l
-where l.ProcedureDate is not null and l.PrimaryProcedureOPCS is not null;
+where l.ProcedureDate is not null
+and l.PrimaryProcedureOPCS is not null
+and l.NhsNumber is not null;
 	
 ```
 

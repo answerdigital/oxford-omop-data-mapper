@@ -181,7 +181,9 @@ select
         Record ->> '$.NonPrimaryPathway.Recurrence.OriginalPrimaryDiagnosisIcd.@code' as NonPrimaryRecurrenceOriginalDiagnosis
 from omop_staging.cosd_staging_901
 where type = 'LU'
-  and NonPrimaryRecurrenceOriginalDiagnosis is not null;
+  and NonPrimaryRecurrenceOriginalDiagnosis is not null
+  and DateOfNonPrimaryCancerDiagnosisClinicallyAgreed is not null
+  and NhsNumber is not null;
 	
 ```
 
@@ -200,7 +202,9 @@ select distinct
     Record ->> '$.NonPrimaryPathway.Progression.ProgressionIcd.@code' as NonPrimaryProgressionOriginalDiagnosis
 from omop_staging.cosd_staging_901
 where type = 'LU'
-  and NonPrimaryProgressionOriginalDiagnosis is not null;
+  and NonPrimaryProgressionOriginalDiagnosis is not null
+  and NonPrimaryDiagnosisDate is not null
+  and NhsNumber is not null;
 	
 ```
 
@@ -219,7 +223,9 @@ select distinct
     Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.CancerProgressionICD.@code' as NonPrimaryProgressionOriginalDiagnosis
 from omop_staging.cosd_staging_81
 where type = 'LU'
-  and NonPrimaryProgressionOriginalDiagnosis is not null;
+  and NonPrimaryProgressionOriginalDiagnosis is not null
+  and NonPrimaryDiagnosisDate is not null
+  and NhsNumber is not null;
 	
 ```
 
@@ -252,7 +258,8 @@ distinct
   CancerTopography,
   CancerDiagnosis
 from lung
-where NHSNumber is not null
+where NHSNumber is not null;
+
 	
 ```
 
@@ -287,7 +294,8 @@ distinct
 from lung
 where NHSNumber is not null
   and CancerHistology is not null
-  and CancerTopography is not null
+  and CancerTopography is not null;
+
 	
 ```
 

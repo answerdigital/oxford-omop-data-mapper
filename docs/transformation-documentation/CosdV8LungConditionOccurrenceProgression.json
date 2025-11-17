@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nselect distinct\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,\n    Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.CancerProgressionICD.@code' as NonPrimaryProgressionOriginalDiagnosis\nfrom omop_staging.cosd_staging_81\nwhere type = 'LU'\n  and NonPrimaryProgressionOriginalDiagnosis is not null;\n\t",
+      "query": "\nselect distinct\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,\n    Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.CancerProgressionICD.@code' as NonPrimaryProgressionOriginalDiagnosis\nfrom omop_staging.cosd_staging_81\nwhere type = 'LU'\n  and NonPrimaryProgressionOriginalDiagnosis is not null\n  and NonPrimaryDiagnosisDate is not null\n  and NhsNumber is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\nselect distinct\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,\n    Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.CancerProgressionICD.@code' as NonPrimaryProgressionOriginalDiagnosis\nfrom omop_staging.cosd_staging_81\nwhere type = 'LU'\n  and NonPrimaryProgressionOriginalDiagnosis is not null;\n\t",
+      "query": "\nselect distinct\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,\n    Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.CancerProgressionICD.@code' as NonPrimaryProgressionOriginalDiagnosis\nfrom omop_staging.cosd_staging_81\nwhere type = 'LU'\n  and NonPrimaryProgressionOriginalDiagnosis is not null\n  and NonPrimaryDiagnosisDate is not null\n  and NhsNumber is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\nselect distinct\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,\n    Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.CancerProgressionICD.@code' as NonPrimaryProgressionOriginalDiagnosis\nfrom omop_staging.cosd_staging_81\nwhere type = 'LU'\n  and NonPrimaryProgressionOriginalDiagnosis is not null;\n\t",
+      "query": "\nselect distinct\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,\n    Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.CancerProgressionICD.@code' as NonPrimaryProgressionOriginalDiagnosis\nfrom omop_staging.cosd_staging_81\nwhere type = 'LU'\n  and NonPrimaryProgressionOriginalDiagnosis is not null\n  and NonPrimaryDiagnosisDate is not null\n  and NhsNumber is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,7 +78,7 @@
           ]
         }
       ],
-      "query": "\nselect distinct\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,\n    Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.CancerProgressionICD.@code' as NonPrimaryProgressionOriginalDiagnosis\nfrom omop_staging.cosd_staging_81\nwhere type = 'LU'\n  and NonPrimaryProgressionOriginalDiagnosis is not null;\n\t",
+      "query": "\nselect distinct\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,\n    Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.CancerProgressionICD.@code' as NonPrimaryProgressionOriginalDiagnosis\nfrom omop_staging.cosd_staging_81\nwhere type = 'LU'\n  and NonPrimaryProgressionOriginalDiagnosis is not null\n  and NonPrimaryDiagnosisDate is not null\n  and NhsNumber is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
