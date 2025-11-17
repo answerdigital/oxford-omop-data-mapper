@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nwith Lung as (\n  select \n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOPCS\n  from omop_staging.cosd_staging_81\n  where Type = 'LU'\n)\nselect\n      distinct\n          ProcedureDate,\n          NhsNumber,\n          PrimaryProcedureOpcs\nfrom Lung l\nwhere l.ProcedureDate is not null and l.PrimaryProcedureOpcs is not null;\n\t",
+      "query": "\nwith Lung as (\n  select \n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOPCS\n  from omop_staging.cosd_staging_81\n  where Type = 'LU'\n)\nselect\n      distinct\n          ProcedureDate,\n          NhsNumber,\n          PrimaryProcedureOPCS\nfrom Lung l\nwhere l.ProcedureDate is not null and l.PrimaryProcedureOPCS is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -42,7 +42,7 @@
           ]
         }
       ],
-      "query": "\nwith Lung as (\n  select \n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOPCS\n  from omop_staging.cosd_staging_81\n  where Type = 'LU'\n)\nselect\n      distinct\n          ProcedureDate,\n          NhsNumber,\n          PrimaryProcedureOpcs\nfrom Lung l\nwhere l.ProcedureDate is not null and l.PrimaryProcedureOpcs is not null;\n\t",
+      "query": "\nwith Lung as (\n  select \n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOPCS\n  from omop_staging.cosd_staging_81\n  where Type = 'LU'\n)\nselect\n      distinct\n          ProcedureDate,\n          NhsNumber,\n          PrimaryProcedureOPCS\nfrom Lung l\nwhere l.ProcedureDate is not null and l.PrimaryProcedureOPCS is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\nwith Lung as (\n  select \n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOPCS\n  from omop_staging.cosd_staging_81\n  where Type = 'LU'\n)\nselect\n      distinct\n          ProcedureDate,\n          NhsNumber,\n          PrimaryProcedureOpcs\nfrom Lung l\nwhere l.ProcedureDate is not null and l.PrimaryProcedureOpcs is not null;\n\t",
+      "query": "\nwith Lung as (\n  select \n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOPCS\n  from omop_staging.cosd_staging_81\n  where Type = 'LU'\n)\nselect\n      distinct\n          ProcedureDate,\n          NhsNumber,\n          PrimaryProcedureOPCS\nfrom Lung l\nwhere l.ProcedureDate is not null and l.PrimaryProcedureOPCS is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -85,7 +85,7 @@
           ]
         }
       ],
-      "query": "\nwith Lung as (\n  select \n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOPCS\n  from omop_staging.cosd_staging_81\n  where Type = 'LU'\n)\nselect\n      distinct\n          ProcedureDate,\n          NhsNumber,\n          PrimaryProcedureOpcs\nfrom Lung l\nwhere l.ProcedureDate is not null and l.PrimaryProcedureOpcs is not null;\n\t",
+      "query": "\nwith Lung as (\n  select \n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOPCS\n  from omop_staging.cosd_staging_81\n  where Type = 'LU'\n)\nselect\n      distinct\n          ProcedureDate,\n          NhsNumber,\n          PrimaryProcedureOPCS\nfrom Lung l\nwhere l.ProcedureDate is not null and l.PrimaryProcedureOPCS is not null;\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -103,7 +103,7 @@
           ]
         }
       ],
-      "query": "\nwith Lung as (\n  select \n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOPCS\n  from omop_staging.cosd_staging_81\n  where Type = 'LU'\n)\nselect\n      distinct\n          ProcedureDate,\n          NhsNumber,\n          PrimaryProcedureOpcs\nfrom Lung l\nwhere l.ProcedureDate is not null and l.PrimaryProcedureOpcs is not null;\n\t",
+      "query": "\nwith Lung as (\n  select \n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,\n    Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOPCS\n  from omop_staging.cosd_staging_81\n  where Type = 'LU'\n)\nselect\n      distinct\n          ProcedureDate,\n          NhsNumber,\n          PrimaryProcedureOPCS\nfrom Lung l\nwhere l.ProcedureDate is not null and l.PrimaryProcedureOPCS is not null;\n\t",
       "lookup_table_markdown": null
     },
     {

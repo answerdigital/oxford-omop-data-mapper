@@ -286,9 +286,9 @@ select
       distinct
           ProcedureDate,
           NhsNumber,
-          PrimaryProcedureOpcs
+          PrimaryProcedureOPCS
 from Lung l
-where l.ProcedureDate is not null and l.PrimaryProcedureOpcs is not null;
+where l.ProcedureDate is not null and l.PrimaryProcedureOPCS is not null;
 	
 ```
 
