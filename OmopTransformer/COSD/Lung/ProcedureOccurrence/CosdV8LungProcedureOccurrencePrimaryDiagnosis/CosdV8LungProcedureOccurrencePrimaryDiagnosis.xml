@@ -12,9 +12,9 @@ select
       distinct
           ProcedureDate,
           NhsNumber,
-          PrimaryProcedureOpcs
+          PrimaryProcedureOPCS
 from Lung l
-where l.ProcedureDate is not null and l.PrimaryProcedureOpcs is not null;
+where l.ProcedureDate is not null and l.PrimaryProcedureOPCS is not null;
 	</Sql>
 	<Explanations>
 		<Explanation columnName="ProcedureDate">
@@ -25,7 +25,7 @@ where l.ProcedureDate is not null and l.PrimaryProcedureOpcs is not null;
 			<Description>Patient NHS Number</Description>
 			<Origin>NHS NUMBER</Origin>
 		</Explanation>
-		<Explanation columnName="PrimaryProcedureOpcs">
+		<Explanation columnName="PrimaryProcedureOPCS">
 			<Description>PRIMARY PROCEDURE (OPCS) is the OPCS Classification of Interventions and Procedures code which is used to identify the primary Patient Procedure carried out.</Description>
 			<Origin>PRIMARY PROCEDURE (OPCS)</Origin>
 		</Explanation>
