@@ -57,6 +57,12 @@ using LungV8MeasurementMcategoryIntegratedStage = OmopTransformer.COSD.Lung.Meas
 using LungV8MeasurementMcategoryIntegratedStageRecord = OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementMcategoryIntegratedStage.CosdV8LungMeasurementMcategoryIntegratedStageRecord;
 using LungV8MeasurementNcategoryFinalPreTreatmentStage = OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementNcategoryFinalPreTreatmentStage.CosdV8LungMeasurementNcategoryFinalPreTreatmentStage;
 using LungV8MeasurementNcategoryFinalPreTreatmentStageRecord = OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementNcategoryFinalPreTreatmentStage.CosdV8LungMeasurementNcategoryFinalPreTreatmentStageRecord;
+using LungV8MeasurementNcategoryIntegratedStage = OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementNcategoryIntegratedStage.CosdV8LungMeasurementNcategoryIntegratedStage;
+using LungV8MeasurementNcategoryIntegratedStageRecord = OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementNcategoryIntegratedStage.CosdV8LungMeasurementNcategoryIntegratedStageRecord;
+using LungV8MeasurementNonPrimaryPathwayMetastasis = OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementNonPrimaryPathwayMetastasis.CosdV8LungMeasurementNonPrimaryPathwayMetastasis;
+using LungV8MeasurementNonPrimaryPathwayMetastasisRecord = OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementNonPrimaryPathwayMetastasis.CosdV8LungMeasurementNonPrimaryPathwayMetastasisRecord;
+using LungV8MeasurementPrimaryPathwayMetastasis = OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementPrimaryPathwayMetastasis.CosdV8LungMeasurementPrimaryPathwayMetastasis;
+using LungV8MeasurementPrimaryPathwayMetastasisRecord = OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementPrimaryPathwayMetastasis.CosdV8LungMeasurementPrimaryPathwayMetastasisRecord;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AdultComorbidityEvaluation;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AdultPerformanceStatus;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AlcoholHistoryCancerBeforeLastThreeMonths;
@@ -631,6 +637,24 @@ internal class CosdTransformer : Transformer
         await Transform<LungV8MeasurementNcategoryFinalPreTreatmentStageRecord, LungV8MeasurementNcategoryFinalPreTreatmentStage>(
             _measurementRecorder.InsertUpdateMeasurements,
             "CosdV8LungMeasurementNcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV8MeasurementNcategoryIntegratedStageRecord, LungV8MeasurementNcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementNcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV8MeasurementNonPrimaryPathwayMetastasisRecord, LungV8MeasurementNonPrimaryPathwayMetastasis>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementNonPrimaryPathwayMetastasis",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV8MeasurementPrimaryPathwayMetastasisRecord, LungV8MeasurementPrimaryPathwayMetastasis>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementPrimaryPathwayMetastasis",
             runId,
             cancellationToken);
     }

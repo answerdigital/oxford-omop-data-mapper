@@ -89,6 +89,15 @@
     <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementNcategoryFinalPreTreatmentStage\CosdV8LungMeasurementNcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementNcategoryIntegratedStage\CosdV8LungMeasurementNcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementNonPrimaryPathwayMetastasis\CosdV8LungMeasurementNonPrimaryPathwayMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementPrimaryPathwayMetastasis\CosdV8LungMeasurementPrimaryPathwayMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Core\Death\v8Death\CosdV8Death.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
