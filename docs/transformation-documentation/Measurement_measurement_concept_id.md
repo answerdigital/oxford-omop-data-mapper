@@ -41,6 +41,168 @@ Source column  `measurement_source_concept_id`.
 Maps concepts to standard valid concepts in the `measurement` domain.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20Oxford%20Lab%20Measurement%20mapping){: .btn }
+### COSD V8 Lung Measurement Primary Pathway Metastasis
+Source column  `MetastaticSite`.
+Lookup MetastasisSite concepts.
+
+
+|MetastaticSite|measurement_concept_id|notes|
+|------|-----|-----|
+|02|36768862|Metastasis to brain|
+|03|36770544|Metastasis to liver|
+|04|36770283|Metastasis to lung|
+|07|36769180|Metastasis to the Unknown Site|
+|08|35225673|Metastasis to skin|
+|09|36769243|Distant spread to lymph node|
+|10|36769301|Metastasis to bone|
+|11|35226074|Metastasis to bone marrow|
+|12|36769269|Regional spread to lymph node|
+|98|36769180|Metastasis|
+|99|36769180|Metastasis|
+
+Notes
+* [OMOP Metastasis](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=metastasis&boosts)
+* [NHS - Metastasis](https://www.datadictionary.nhs.uk/data_elements/metastatic_site__at_diagnosis_.html?hl=metastatic%2Csite%2Cdiagnosis)
+
+* `MetastaticSite` A code that records the site(s) of metastatic disease at diagnosis. [METASTATIC SITE]()
+
+```sql
+with lung as (
+select 
+    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+    unnest(
+      [
+        [
+          Record ->> '$.Lung.LungCore.LungCoreDiagnosis.MetastaticSite.@code'
+        ], 
+        Record ->> '$.Lung.LungCore.LungCoreDiagnosis.MetastaticSite[*].@code'
+      ], recursive := true
+    ) as MetastaticSite
+from omop_staging.cosd_staging_81
+where Type = 'LU'
+)
+select distinct
+    NhsNumber,
+    ClinicalDateCancerDiagnosis,
+    MetastaticSite
+from lung
+where MetastaticSite is not null
+  and MetastaticSite != 97
+  and NhsNumber is not null;
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20Primary%20Pathway%20Metastasis%20mapping){: .btn }
+### COSD V8 Lung Measurement Non Primary Pathway Metastasis
+Source column  `MetastaticSite`.
+Lookup MetastasisSite concepts.
+
+
+|MetastaticSite|measurement_concept_id|notes|
+|------|-----|-----|
+|02|36768862|Metastasis to brain|
+|03|36770544|Metastasis to liver|
+|04|36770283|Metastasis to lung|
+|07|36769180|Metastasis to the Unknown Site|
+|08|35225673|Metastasis to skin|
+|09|36769243|Distant spread to lymph node|
+|10|36769301|Metastasis to bone|
+|11|35226074|Metastasis to bone marrow|
+|12|36769269|Regional spread to lymph node|
+|98|36769180|Metastasis|
+|99|36769180|Metastasis|
+
+Notes
+* [OMOP Metastasis](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=metastasis&boosts)
+* [NHS - Metastasis](https://www.datadictionary.nhs.uk/data_elements/metastatic_site__at_diagnosis_.html?hl=metastatic%2Csite%2Cdiagnosis)
+
+* `MetastaticSite` A code that records the site(s) of metastatic disease relating to a Non-Primary Cancer Pathway. [METASTATIC SITE (NON PRIMARY CANCER PATHWAY)]()
+
+```sql
+with lung as (
+    select distinct
+        Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+        unnest(
+            [
+                [ Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.MetastaticSite.@code' ],
+                Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.MetastaticSite[*].@code'
+            ],
+            recursive := true
+        ) as MetastaticSite
+    from omop_staging.cosd_staging_81
+    where type = 'LU'
+)
+select distinct
+    NhsNumber,
+    DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+    MetastaticSite
+from lung
+where MetastaticSite is not null
+  and MetastaticSite != '97'
+  and NhsNumber is not null;
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20Non%20Primary%20Pathway%20Metastasis%20mapping){: .btn }
+### COSD V8 Lung Measurement N Category Integrated Stage
+Source column  `NCategoryIntegratedStage`.
+Lookup NCategory concepts.
+
+
+|NCategoryIntegratedStage|measurement_concept_id|notes|
+|------|-----|-----|
+|0|1633440|AJCC/UICC N0 Category|
+|0a|1633621|AJCC/UICC N0a Category|
+|0b|1635244|AJCC/UICC N0b Category|
+|1|1634434|AJCC/UICC N1 Category|
+|1a|1633735|AJCC/UICC N1a Category|
+|1b|1635130|AJCC/UICC N1b Category|
+|1c|1634620|AJCC/UICC N1c Category|
+|2|1634119|AJCC/UICC N2 Category|
+|2a|1635644|AJCC/UICC N2a Category|
+|2b|1634134|AJCC/UICC N2b Category|
+|2c|1634080|AJCC/UICC N2c Category|
+|3|1635320|AJCC/UICC N3 Category|
+|3a|1635590|AJCC/UICC N3a Category|
+|3b|1633422|AJCC/UICC N3b Category|
+|3c|1634735|AJCC/UICC N3c Category|
+|4|1635445|AJCC/UICC N4 Category|
+|X|1633885|AJCC/UICC NX Category|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=tnm&boosts)
+
+* `NCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the absence or presence and extent of regional Lymph Node metastases after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [N CATEGORY (INTEGRATED STAGE)](https://www.datadictionary.nhs.uk/data_elements/n_category__integrated_stage_.html)
+
+```sql
+with lung as (
+	select 
+		Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+		Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+		Record ->> '$.Lung.LungCore.LungCoreStaging.IntegratedStageNCategory' as NCategoryIntegratedStage,
+		Record ->> '$.Lung.LungCore.LungCoreStaging.IntegratedStageTNMStageGroupingDate' as StageDateIntegratedStage
+	from omop_staging.cosd_staging_81
+	where Type = 'LU'
+)
+select distinct
+	NhsNumber,
+	coalesce(StageDateIntegratedStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
+	NCategoryIntegratedStage
+from lung
+where NCategoryIntegratedStage is not null
+and NhsNumber is not null;
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20N%20Category%20Integrated%20Stage%20mapping){: .btn }
 ### COSD V8 Lung Measurement N Category (Final Pretreatment)
 Source column  `NcategoryFinalPreTreatment`.
 Lookup NCategory concepts.
