@@ -38,6 +38,22 @@ has_toc: false
 * Constant value set to `32828`. EHR episode record
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_type_concept_id%20field%20Oxford%20Lab%20Measurement%20mapping){: .btn }
+### COSD V8 Lung Measurement N Category (Final Pretreatment)
+* Constant value set to `32828`. EHR episode record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_type_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20N%20Category%20(Final%20Pretreatment)%20mapping){: .btn }
+### COSD V8 Lung Measurement M Category (Integrated Stage)
+* Constant value set to `32828`. EHR episode record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_type_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20M%20Category%20(Integrated%20Stage)%20mapping){: .btn }
+### COSD V8 Lung Measurement M Category (Final Pretreatment)
+* Constant value set to `32828`. EHR episode record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_type_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20M%20Category%20(Final%20Pretreatment)%20mapping){: .btn }
+### COSD V8 Lung Measurement Grade of Differentiation (At Diagnosis)
+* Constant value set to `32828`. EHR episode record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_type_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20Grade%20of%20Differentiation%20(At%20Diagnosis)%20mapping){: .btn }
 ### COSD V9 Measurement Tumour Laterality
 * Constant value set to `32828`. EHR episode record
 

@@ -1624,6 +1624,18 @@ where lower(EVENT) not like '%comment%'
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20Oxford%20Lab%20Measurement%20mapping){: .btn }
+### COSD V8 Lung Measurement N Category (Final Pretreatment)
+* Constant value set to `2000500015`. NCategoryFinalPreTreatmentStage
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20N%20Category%20(Final%20Pretreatment)%20mapping){: .btn }
+### COSD V8 Lung Measurement M Category (Integrated Stage)
+* Constant value set to `2000500010`. MCategoryIntegratedStage
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20M%20Category%20(Integrated%20Stage)%20mapping){: .btn }
+### COSD V8 Lung Measurement M Category (Final Pretreatment)
+* Constant value set to `2000500014`. MCategoryFinalPreTreatmentStage
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20M%20Category%20(Final%20Pretreatment)%20mapping){: .btn }
 ### COSD V9 Measurement TNM Category Integrated Stage
 * Constant value set to `2000500013`. TNMCategoryIntegratedStage
 
