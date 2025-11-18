@@ -1,0 +1,27 @@
+<Query>
+    <Sql>
+select distinct
+    Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
+    Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as NonPrimaryDiagnosisDate,
+    Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayRoute.CancerProgressionICD.@code' as NonPrimaryProgressionOriginalDiagnosis
+from omop_staging.cosd_staging_81
+where type = 'LU'
+  and NonPrimaryProgressionOriginalDiagnosis is not null
+  and NonPrimaryDiagnosisDate is not null
+  and NhsNumber is not null;
+	</Sql>
+    <Explanations>
+		<Explanation columnName="NhsNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="NonPrimaryDiagnosisDate">
+			<Description>DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED) is the date where the Non Primary Cancer PATIENT DIAGNOSIS was confirmed or agreed.</Description>
+			<Origin>DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+		</Explanation>
+		<Explanation columnName="NonPrimaryProgressionOriginalDiagnosis">
+			<Description>CANCER PROGRESSION (ICD ORIGINAL) is the International Classification of Diseases (ICD) code of the original PATIENT DIAGNOSIS of the Cancer Progression.</Description>
+			<Origin>CANCER PROGRESSION (ICD ORIGINAL)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

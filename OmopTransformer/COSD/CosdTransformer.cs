@@ -6,6 +6,16 @@ using OmopTransformer.COSD.Colorectal.ConditionOccurrence.CosdConditionOccurrenc
 using OmopTransformer.COSD.Colorectal.ConditionOccurrence.CosdConditionOccurrenceSecondaryDiagnosis;
 using OmopTransformer.COSD.Colorectal.ConditionOccurrence.CosdV8ConditionOccurrencePrimaryDiagnosis;
 using OmopTransformer.COSD.Colorectal.ConditionOccurrence.CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography;
+using LungV8ConditionOccurrencePrimaryDiagnosis = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosis.CosdV8LungConditionOccurrencePrimaryDiagnosis;
+using LungV8ConditionOccurrencePrimaryDiagnosisRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosis.CosdV8LungConditionOccurrencePrimaryDiagnosisRecord;
+using LungV8ConditionOccurrencePrimaryDiagnosisHistologyTopography = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography;
+using LungV8ConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord;
+using LungV8ConditionOccurrenceProgression = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrenceProgression.CosdV8LungConditionOccurrenceProgression;
+using LungV8ConditionOccurrenceProgressionRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrenceProgression.CosdV8LungConditionOccurrenceProgressionRecord;
+using LungV9ConditionOccurrenceProgression = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceProgression.CosdV9LungConditionOccurrenceProgression;
+using LungV9ConditionOccurrenceProgressionRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceProgression.CosdV9LungConditionOccurrenceProgressionRecord;
+using LungV9ConditionOccurrenceRecurrence = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceRecurrence.CosdV9LungConditionOccurrenceRecurrence;
+using LungV9ConditionOccurrenceRecurrenceRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceRecurrence.CosdV9LungConditionOccurrenceRecurrenceRecord;
 using OmopTransformer.COSD.Core.Death.v8Death;
 using OmopTransformer.COSD.Core.Death.v9DeathBasisOfDiagnosisCancer;
 using OmopTransformer.COSD.Core.Death.v9DeathDischargeDestination;
@@ -65,6 +75,14 @@ using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurre
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrenceProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV9ProcedureOccurrencePrimaryProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV9ProcedureOccurrenceProcedureOpcs;
+using LungV8ProcedureOccurrencePrimaryProcedureOpcs = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrencePrimaryProcedureOpcs.CosdV8LungProcedureOccurrencePrimaryProcedureOpcs;
+using LungV8ProcedureOccurrencePrimaryProcedureOpcsRecord = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrencePrimaryProcedureOpcs.CosdV8LungProcedureOccurrencePrimaryProcedureOpcsRecord;
+using LungV8ProcedureOccurrenceProcedureOpcs = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrenceProcedureOpcs.CosdV8LungProcedureOccurrenceProcedureOpcs;
+using LungV8ProcedureOccurrenceProcedureOpcsRecord = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrenceProcedureOpcs.CosdV8LungProcedureOccurrenceProcedureOpcsRecord;
+using LungV9ProcedureOccurrencePrimaryProcedureOpcs = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV9LungProcedureOccurrencePrimaryProcedureOpcs.CosdV9LungProcedureOccurrencePrimaryProcedureOpcs;
+using LungV9ProcedureOccurrencePrimaryProcedureOpcsRecord = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV9LungProcedureOccurrencePrimaryProcedureOpcs.CosdV9LungProcedureOccurrencePrimaryProcedureOpcsRecord;
+using LungV9ProcedureOccurrenceProcedureOpcs = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV9LungProcedureOccurrenceProcedureOpcs.CosdV9LungProcedureOccurrenceProcedureOpcs;
+using LungV9ProcedureOccurrenceProcedureOpcsRecord = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV9LungProcedureOccurrenceProcedureOpcs.CosdV9LungProcedureOccurrenceProcedureOpcsRecord;
 using OmopTransformer.Omop;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
@@ -206,6 +224,36 @@ internal class CosdTransformer : Transformer
             runId,
             cancellationToken);
 
+        await Transform<LungV8ConditionOccurrencePrimaryDiagnosisRecord, LungV8ConditionOccurrencePrimaryDiagnosis>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V8 Lung Condition Occurrence Primary Diagnosis",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV8ConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord, LungV8ConditionOccurrencePrimaryDiagnosisHistologyTopography>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V8 Lung Condition Occurrence Primary Diagnosis Histology Topography",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV8ConditionOccurrenceProgressionRecord, LungV8ConditionOccurrenceProgression>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V8 Lung Condition Occurrence Progression",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV9ConditionOccurrenceProgressionRecord, LungV9ConditionOccurrenceProgression>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Lung Condition Occurrence Progression",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV9ConditionOccurrenceRecurrenceRecord, LungV9ConditionOccurrenceRecurrence>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Lung Condition Occurrence Recurrence",
+            runId,
+            cancellationToken);
+
         await Transform<CosdV8ProcedureOccurrencePrimaryProcedureOpcsRecord, CosdV8ProcedureOccurrencePrimaryProcedureOpcs>(
             _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
             "Cosd V8 Procedure Occurrence Primary Procedure Opcs",
@@ -227,6 +275,30 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV9ProcedureOccurrenceProcedureOpcsRecord, CosdV9ProcedureOccurrenceProcedureOpcs>(
             _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
             "Cosd V9 Procedure Occurrence Procedure Opcs",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV8ProcedureOccurrencePrimaryProcedureOpcsRecord, LungV8ProcedureOccurrencePrimaryProcedureOpcs>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "Cosd V8 Lung Procedure Occurrence Primary Procedure Opcs",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV8ProcedureOccurrenceProcedureOpcsRecord, LungV8ProcedureOccurrenceProcedureOpcs>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "Cosd V8 Lung Procedure Occurrence Procedure Opcs",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV9ProcedureOccurrencePrimaryProcedureOpcsRecord, LungV9ProcedureOccurrencePrimaryProcedureOpcs>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "Cosd V9 Lung Procedure Occurrence Primary Procedure Opcs",
+            runId,
+            cancellationToken);
+
+        await Transform<LungV9ProcedureOccurrenceProcedureOpcsRecord, LungV9ProcedureOccurrenceProcedureOpcs>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "Cosd V9 Lung Procedure Occurrence Procedure Opcs",
             runId,
             cancellationToken);
 
