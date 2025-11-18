@@ -41,6 +41,300 @@ Source column  `measurement_source_concept_id`.
 Maps concepts to standard valid concepts in the `measurement` domain.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20Oxford%20Lab%20Measurement%20mapping){: .btn }
+### COSD V8 Lung Measurement Tumour Laterality
+Source column  `TumourLaterality`.
+Lookup TumourLaterality concepts.
+
+
+|TumourLaterality|measurement_concept_id|notes|
+|------|-----|-----|
+|L|36770232|Left|
+|R|36770058|Right|
+|M|36769853|Midline|
+|B|36770109|Bilateral|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&conceptClass=Topography&page=1&pageSize=500&query=&boosts)
+* [NHS - Tumour Laterality](https://www.datadictionary.nhs.uk/data_elements/tumour_laterality.html?hl=tumour%2Claterality)
+
+* `TumourLaterality` An indication of the side of the body on which the Primary Tumour originated. Valid values are: L (Left), R (Right), M (Midline), B (Bilateral). [TUMOUR LATERALITY](https://www.datadictionary.nhs.uk/data_elements/tumour_laterality.html)
+
+```sql
+with lung as (
+    select
+        Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.TumourLaterality.@code' as TumourLaterality
+    from omop_staging.cosd_staging_81
+    where Type = 'LU'
+)
+select distinct
+    NhsNumber,
+    coalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,
+    TumourLaterality
+from lung
+where TumourLaterality is not null
+  and TumourLaterality in ('L','R','M','B')
+  and NhsNumber is not null;
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20Tumour%20Laterality%20mapping){: .btn }
+### COSD V8 Lung Measurement TNM Category Integrated Stage
+Source column  `TnmStageGroupingIntegrated`.
+Lookup TNMCategory concepts.
+
+
+|TnmStageGroupingIntegrated|measurement_concept_id|notes|
+|------|-----|-----|
+|1|1635812|IRS-modified TNM stage 1|
+|I|1635812|IRS-modified TNM stage 1|
+|1a|1635812|IRS-modified TNM stage 1|
+|IA|1635812|IRS-modified TNM stage 1|
+|1b|1635812|IRS-modified TNM stage 1|
+|IB|1635812|IRS-modified TNM stage 1|
+|2|1635007|IRS-modified TNM stage 2|
+|II|1635007|IRS-modified TNM stage 2|
+|2a|1635007|IRS-modified TNM stage 2|
+|IIA|1635007|IRS-modified TNM stage 2|
+|2b|1635007|IRS-modified TNM stage 2|
+|IIB|1635007|IRS-modified TNM stage 2|
+|2c|1635007|IRS-modified TNM stage 2|
+|IIC|1635007|IRS-modified TNM stage 2|
+|3|1633995|IRS-modified TNM stage 3|
+|III|1633995|IRS-modified TNM stage 3|
+|3a|1633995|IRS-modified TNM stage 3|
+|IIIA|1633995|IRS-modified TNM stage 3|
+|3b|1633995|IRS-modified TNM stage 3|
+|IIIB|1633995|IRS-modified TNM stage 3|
+|3c|1633995|IRS-modified TNM stage 3|
+|IIIC|1633995|IRS-modified TNM stage 3|
+|4|1634737|IRS-modified TNM stage 4|
+|IV|1634737|IRS-modified TNM stage 4|
+|4a|1634737|IRS-modified TNM stage 4|
+|IVA|1634737|IRS-modified TNM stage 4|
+|4b|1634737|IRS-modified TNM stage 4|
+|IVB|1634737|IRS-modified TNM stage 4|
+|4c|1634737|IRS-modified TNM stage 4|
+|IVC|1634737|IRS-modified TNM stage 4|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=tnm&boosts)
+
+* `TnmStageGroupingIntegrated` Is the code, using a TNM CODING EDITION, which classifies the combination of Tumour, node and metastases into stage groupings after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [TNM STAGE GROUPING (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping__integrated_.html)
+
+```sql
+with lung as (
+    select
+        Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.IntegratedStageTNMStageGrouping' as TnmStageGroupingIntegrated,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.IntegratedStageTNMStageGroupingDate' as StageDateIntegratedStage
+    from omop_staging.cosd_staging_81
+    where Type = 'LU'
+)
+select distinct
+    NhsNumber,
+    coalesce(StageDateIntegratedStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
+    TnmStageGroupingIntegrated
+from lung
+where TnmStageGroupingIntegrated is not null
+and NhsNumber is not null;
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20TNM%20Category%20Integrated%20Stage%20mapping){: .btn }
+### COSD V8 Lung Measurement TNM Category Final Pre Treatment Stage
+Source column  `TnmStageGroupingFinalPretreatment`.
+Lookup TNMCategory concepts.
+
+
+|TnmStageGroupingFinalPretreatment|measurement_concept_id|notes|
+|------|-----|-----|
+|1|1635812|IRS-modified TNM stage 1|
+|I|1635812|IRS-modified TNM stage 1|
+|1a|1635812|IRS-modified TNM stage 1|
+|IA|1635812|IRS-modified TNM stage 1|
+|1b|1635812|IRS-modified TNM stage 1|
+|IB|1635812|IRS-modified TNM stage 1|
+|2|1635007|IRS-modified TNM stage 2|
+|II|1635007|IRS-modified TNM stage 2|
+|2a|1635007|IRS-modified TNM stage 2|
+|IIA|1635007|IRS-modified TNM stage 2|
+|2b|1635007|IRS-modified TNM stage 2|
+|IIB|1635007|IRS-modified TNM stage 2|
+|2c|1635007|IRS-modified TNM stage 2|
+|IIC|1635007|IRS-modified TNM stage 2|
+|3|1633995|IRS-modified TNM stage 3|
+|III|1633995|IRS-modified TNM stage 3|
+|3a|1633995|IRS-modified TNM stage 3|
+|IIIA|1633995|IRS-modified TNM stage 3|
+|3b|1633995|IRS-modified TNM stage 3|
+|IIIB|1633995|IRS-modified TNM stage 3|
+|3c|1633995|IRS-modified TNM stage 3|
+|IIIC|1633995|IRS-modified TNM stage 3|
+|4|1634737|IRS-modified TNM stage 4|
+|IV|1634737|IRS-modified TNM stage 4|
+|4a|1634737|IRS-modified TNM stage 4|
+|IVA|1634737|IRS-modified TNM stage 4|
+|4b|1634737|IRS-modified TNM stage 4|
+|IVB|1634737|IRS-modified TNM stage 4|
+|4c|1634737|IRS-modified TNM stage 4|
+|IVC|1634737|IRS-modified TNM stage 4|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=tnm&boosts)
+
+* `TnmStageGroupingFinalPretreatment` The TNM STAGE GROUPING (FINAL PRETREATMENT) is a combination of the results of the clinical T, N and M, the T, N and M assigned on the basis of the operative findings, and the pathological T, N and M, recorded before the start of treatment, coded at the end of the CANCER CARE SPELL. [TNM STAGE GROUPING (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping__final_pretreatment_.html)
+
+```sql
+with lung as (
+    select
+        Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.FinalPreTreatmentTNMStageGrouping' as TnmStageGroupingFinalPretreatment,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as StageDateFinalPretreatmentStage
+    from omop_staging.cosd_staging_81
+    where Type = 'LU'
+)
+select distinct
+    NhsNumber,
+    coalesce(StageDateFinalPretreatmentStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
+    TnmStageGroupingFinalPretreatment
+from lung
+where TnmStageGroupingFinalPretreatment is not null
+and NhsNumber is not null;
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20TNM%20Category%20Final%20Pre%20Treatment%20Stage%20mapping){: .btn }
+### COSD V8 Lung Measurement T Category Integrated Stage
+Source column  `TCategoryIntegratedStage`.
+Lookup TCategory concepts.
+
+
+|TCategoryIntegratedStage|measurement_concept_id|notes|
+|------|-----|-----|
+|0|1634213|AJCC/UICC T0 Category|
+|1|1635564|AJCC/UICC T1 Category|
+|1a|1633880|AJCC/UICC T1a Category|
+|1b|1633921|AJCC/UICC T1b Category|
+|1c|1633529|AJCC/UICC T1c Category|
+|1d|1634100|AJCC/UICC T1d Category|
+|2|1635562|AJCC/UICC T2 Category|
+|2a|1635327|AJCC/UICC T2a Category|
+|2b|1633593|AJCC/UICC T2b Category|
+|2c|1635270|AJCC/UICC T2c Category|
+|2d|1633678|AJCC/UICC T2d Category|
+|3|1634376|AJCC/UICC T3 Category|
+|3a|1633771|AJCC/UICC T3a Category|
+|3b|1634980|AJCC/UICC T3b Category|
+|3c|1633360|AJCC/UICC T3c Category|
+|3d|1635625|AJCC/UICC T3d Category|
+|3e|1634730|AJCC/UICC T3e Category|
+|4|1634654|AJCC/UICC T4 Category|
+|4a|1635222|AJCC/UICC T4a Category|
+|4b|1634436|AJCC/UICC T4b Category|
+|4c|1635526|AJCC/UICC T4c Category|
+|4d|1633909|AJCC/UICC T4d Category|
+|4e|1634193|AJCC/UICC T4e Category|
+|X|1635682|AJCC/UICC TX Category|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=tnm&boosts)
+
+* `TCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the size and extent of the primary Tumour after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [T CATEGORY (INTEGRATED STAGE)](https://www.datadictionary.nhs.uk/data_elements/t_category__integrated_stage_.html)
+
+```sql
+with lung as (
+    select
+        Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.IntegratedStageTCategory' as TCategoryIntegratedStage,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.IntegratedStageTNMStageGroupingDate' as StageDateIntegratedStage
+    from omop_staging.cosd_staging_81
+    where Type = 'LU'
+)
+select distinct
+    NhsNumber,
+    coalesce(StageDateIntegratedStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
+    TCategoryIntegratedStage
+from lung
+where TCategoryIntegratedStage is not null
+and NhsNumber is not null;
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20T%20Category%20Integrated%20Stage%20mapping){: .btn }
+### COSD V8 Lung Measurement T Category Final Pre Treatment Stage
+Source column  `TcategoryFinalPreTreatment`.
+Lookup TCategory concepts.
+
+
+|TcategoryFinalPreTreatment|measurement_concept_id|notes|
+|------|-----|-----|
+|0|1634213|AJCC/UICC T0 Category|
+|1|1635564|AJCC/UICC T1 Category|
+|1a|1633880|AJCC/UICC T1a Category|
+|1b|1633921|AJCC/UICC T1b Category|
+|1c|1633529|AJCC/UICC T1c Category|
+|1d|1634100|AJCC/UICC T1d Category|
+|2|1635562|AJCC/UICC T2 Category|
+|2a|1635327|AJCC/UICC T2a Category|
+|2b|1633593|AJCC/UICC T2b Category|
+|2c|1635270|AJCC/UICC T2c Category|
+|2d|1633678|AJCC/UICC T2d Category|
+|3|1634376|AJCC/UICC T3 Category|
+|3a|1633771|AJCC/UICC T3a Category|
+|3b|1634980|AJCC/UICC T3b Category|
+|3c|1633360|AJCC/UICC T3c Category|
+|3d|1635625|AJCC/UICC T3d Category|
+|3e|1634730|AJCC/UICC T3e Category|
+|4|1634654|AJCC/UICC T4 Category|
+|4a|1635222|AJCC/UICC T4a Category|
+|4b|1634436|AJCC/UICC T4b Category|
+|4c|1635526|AJCC/UICC T4c Category|
+|4d|1633909|AJCC/UICC T4d Category|
+|4e|1634193|AJCC/UICC T4e Category|
+|X|1635682|AJCC/UICC TX Category|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=tnm&boosts)
+
+* `TcategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the size and extent of the primary Tumour before treatment during a Cancer Care Spell. [T CATEGORY (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/t_category__final_pretreatment_.html)
+
+```sql
+with lung as (
+    select
+        Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.FinalPreTreatmentTCategory' as TcategoryFinalPreTreatment,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as StageDateFinalPretreatmentStage
+    from omop_staging.cosd_staging_81
+    where Type = 'LU'
+)
+select distinct
+    NhsNumber,
+    coalesce(StageDateFinalPretreatmentStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
+    TcategoryFinalPreTreatment
+from lung
+where TcategoryFinalPreTreatment is not null
+and NhsNumber is not null;
+
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20T%20Category%20Final%20Pre%20Treatment%20Stage%20mapping){: .btn }
 ### COSD V8 Lung Measurement Primary Pathway Metastasis
 Source column  `MetastaticSite`.
 Lookup MetastasisSite concepts.

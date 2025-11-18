@@ -55,6 +55,26 @@ has_toc: false
 <a href="OxfordLabMeasurement.svg" target="_blank"><img src="OxfordLabMeasurement.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordLabMeasurement%20mapping){: .btn }
+## CosdV8LungMeasurementTumourLaterality
+<a href="CosdV8LungMeasurementTumourLaterality.svg" target="_blank"><img src="CosdV8LungMeasurementTumourLaterality.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungMeasurementTumourLaterality%20mapping){: .btn }
+## CosdV8LungMeasurementTNMcategoryIntegratedStage
+<a href="CosdV8LungMeasurementTNMcategoryIntegratedStage.svg" target="_blank"><img src="CosdV8LungMeasurementTNMcategoryIntegratedStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungMeasurementTNMcategoryIntegratedStage%20mapping){: .btn }
+## CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStage
+<a href="CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStage.svg" target="_blank"><img src="CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStage%20mapping){: .btn }
+## CosdV8LungMeasurementTcategoryIntegratedStage
+<a href="CosdV8LungMeasurementTcategoryIntegratedStage.svg" target="_blank"><img src="CosdV8LungMeasurementTcategoryIntegratedStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungMeasurementTcategoryIntegratedStage%20mapping){: .btn }
+## CosdV8LungMeasurementTcategoryFinalPreTreatmentStage
+<a href="CosdV8LungMeasurementTcategoryFinalPreTreatmentStage.svg" target="_blank"><img src="CosdV8LungMeasurementTcategoryFinalPreTreatmentStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungMeasurementTcategoryFinalPreTreatmentStage%20mapping){: .btn }
 ## CosdV8LungMeasurementPrimaryPathwayMetastasis
 <a href="CosdV8LungMeasurementPrimaryPathwayMetastasis.svg" target="_blank"><img src="CosdV8LungMeasurementPrimaryPathwayMetastasis.svg" /></a>
 
