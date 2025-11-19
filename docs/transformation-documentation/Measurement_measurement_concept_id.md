@@ -94,6 +94,12 @@ Lookup TNMCategory concepts.
 |I|1635812|IRS-modified TNM stage 1|
 |1a|1635812|IRS-modified TNM stage 1|
 |IA|1635812|IRS-modified TNM stage 1|
+|1a1|1633843|Stage 1A1|
+|IA1|1633843|Stage 1A1|
+|1a2|1634275|Stage 1A2|
+|IA2|1634275|Stage 1A2|
+|1a3|1633775|Stage 1A3|
+|IA3|1633775|Stage 1A3|
 |1b|1635812|IRS-modified TNM stage 1|
 |IB|1635812|IRS-modified TNM stage 1|
 |2|1635007|IRS-modified TNM stage 2|
@@ -160,6 +166,12 @@ Lookup TNMCategory concepts.
 |I|1635812|IRS-modified TNM stage 1|
 |1a|1635812|IRS-modified TNM stage 1|
 |IA|1635812|IRS-modified TNM stage 1|
+|1a1|1633843|Stage 1A1|
+|IA1|1633843|Stage 1A1|
+|1a2|1634275|Stage 1A2|
+|IA2|1634275|Stage 1A2|
+|1a3|1633775|Stage 1A3|
+|IA3|1633775|Stage 1A3|
 |1b|1635812|IRS-modified TNM stage 1|
 |IB|1635812|IRS-modified TNM stage 1|
 |2|1635007|IRS-modified TNM stage 2|
@@ -717,6 +729,12 @@ Lookup TNMCategory concepts.
 |I|1635812|IRS-modified TNM stage 1|
 |1a|1635812|IRS-modified TNM stage 1|
 |IA|1635812|IRS-modified TNM stage 1|
+|1a1|1633843|Stage 1A1|
+|IA1|1633843|Stage 1A1|
+|1a2|1634275|Stage 1A2|
+|IA2|1634275|Stage 1A2|
+|1a3|1633775|Stage 1A3|
+|IA3|1633775|Stage 1A3|
 |1b|1635812|IRS-modified TNM stage 1|
 |IB|1635812|IRS-modified TNM stage 1|
 |2|1635007|IRS-modified TNM stage 2|
@@ -776,6 +794,12 @@ Lookup TNMCategory concepts.
 |I|1635812|IRS-modified TNM stage 1|
 |1a|1635812|IRS-modified TNM stage 1|
 |IA|1635812|IRS-modified TNM stage 1|
+|1a1|1633843|Stage 1A1|
+|IA1|1633843|Stage 1A1|
+|1a2|1634275|Stage 1A2|
+|IA2|1634275|Stage 1A2|
+|1a3|1633775|Stage 1A3|
+|IA3|1633775|Stage 1A3|
 |1b|1635812|IRS-modified TNM stage 1|
 |IB|1635812|IRS-modified TNM stage 1|
 |2|1635007|IRS-modified TNM stage 2|
@@ -1383,6 +1407,12 @@ Lookup TNMCategory concepts.
 |I|1635812|IRS-modified TNM stage 1|
 |1a|1635812|IRS-modified TNM stage 1|
 |IA|1635812|IRS-modified TNM stage 1|
+|1a1|1633843|Stage 1A1|
+|IA1|1633843|Stage 1A1|
+|1a2|1634275|Stage 1A2|
+|IA2|1634275|Stage 1A2|
+|1a3|1633775|Stage 1A3|
+|IA3|1633775|Stage 1A3|
 |1b|1635812|IRS-modified TNM stage 1|
 |IB|1635812|IRS-modified TNM stage 1|
 |2|1635007|IRS-modified TNM stage 2|
@@ -1447,6 +1477,12 @@ Lookup TNMCategory concepts.
 |I|1635812|IRS-modified TNM stage 1|
 |1a|1635812|IRS-modified TNM stage 1|
 |IA|1635812|IRS-modified TNM stage 1|
+|1a1|1633843|Stage 1A1|
+|IA1|1633843|Stage 1A1|
+|1a2|1634275|Stage 1A2|
+|IA2|1634275|Stage 1A2|
+|1a3|1633775|Stage 1A3|
+|IA3|1633775|Stage 1A3|
 |1b|1635812|IRS-modified TNM stage 1|
 |IB|1635812|IRS-modified TNM stage 1|
 |2|1635007|IRS-modified TNM stage 2|
