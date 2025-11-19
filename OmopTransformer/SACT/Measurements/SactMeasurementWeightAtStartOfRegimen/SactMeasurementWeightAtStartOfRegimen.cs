@@ -18,7 +18,7 @@ internal class SactMeasurementWeightAtStartOfRegimen : OmopMeasurement<SactMeasu
     [ConstantValue(32828, "EHR episode record")]
     public override int? measurement_type_concept_id { get; set; }
 
-    [Transform(typeof(DoubleParser), nameof(Source.Weight_At_Start_Of_Regimen))]
+    [Transform(typeof(DecimalParser), nameof(Source.Weight_At_Start_Of_Regimen))]
     public override double? value_as_number { get; set; }
 
     [CopyValue(nameof(Source.Weight_At_Start_Of_Regimen))]

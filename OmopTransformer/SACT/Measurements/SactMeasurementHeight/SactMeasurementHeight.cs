@@ -18,7 +18,7 @@ internal class SactMeasurementHeight : OmopMeasurement<SactMeasurementHeightReco
     [ConstantValue(32828, "EHR episode record")]
     public override int? measurement_type_concept_id { get; set; }
 
-    [Transform(typeof(DoubleParser), nameof(Source.Height_At_Start_Of_Regimen))]
+    [Transform(typeof(DecimalParser), nameof(Source.Height_At_Start_Of_Regimen))]
     public override double? value_as_number { get; set; }
 
     [CopyValue(nameof(Source.Height_At_Start_Of_Regimen))]

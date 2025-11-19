@@ -3,7 +3,18 @@
 		select distinct 
 			NHS_Number,
 			Height_At_Start_Of_Regimen,
-			Start_Date_Of_Regimen
+			CASE
+				-- Check for yyyy-MM-dd format (contains dash and year first)
+				WHEN Start_Date_Of_Regimen LIKE '____-__-__' 
+					THEN CAST(strptime(Start_Date_Of_Regimen, '%Y-%m-%d') AS DATE)
+				-- Check for dd/MM/yyyy format (starts with day <= 31)
+				WHEN Start_Date_Of_Regimen LIKE '__/__/____' AND CAST(substring(Start_Date_Of_Regimen, 1, 2) AS INTEGER) <= 31
+					THEN CAST(strptime(Start_Date_Of_Regimen, '%d/%m/%Y') AS DATE)
+				-- Otherwise assume MM/dd/yyyy format
+				WHEN Start_Date_Of_Regimen LIKE '__/__/____'
+					THEN CAST(strptime(Start_Date_Of_Regimen, '%m/%d/%Y') AS DATE)
+				ELSE NULL
+			END AS Start_Date_Of_Regimen
 		from omop_staging.sact_staging
 	</Sql>
     <Explanations>
