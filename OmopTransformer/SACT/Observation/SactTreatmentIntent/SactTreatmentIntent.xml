@@ -9,6 +9,8 @@
 				When Intent_Of_Treatment = 3 then concat(Intent_Of_Treatment, ' - Palliative(aiming to relieve and/or control malignancy related symptoms)')
 				When Intent_Of_Treatment = 4 then concat(Intent_Of_Treatment, ' - Palliative(aiming to achieve remission)')
 				When Intent_Of_Treatment = 5 then concat(Intent_Of_Treatment, ' - Palliative(aiming to permanently eradicate disease)')
+				When Intent_Of_Treatment = 98 then concat(Intent_Of_Treatment, ' - Other (not listed)')
+        		When Intent_Of_Treatment = 99 then concat(Intent_Of_Treatment, ' - Other (not listed)')
 			else '' end as Source_value,
 		  	Administration_Date
 		from omop_staging.sact_staging
