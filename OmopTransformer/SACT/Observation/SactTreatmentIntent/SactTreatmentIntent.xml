@@ -12,7 +12,18 @@
 				When Intent_Of_Treatment = 98 then concat(Intent_Of_Treatment, ' - Other (not listed)')
         		When Intent_Of_Treatment = 99 then concat(Intent_Of_Treatment, ' - Other (not listed)')
 			else '' end as Source_value,
-		  	Administration_Date
+		  	CASE
+				-- Check for yyyy-MM-dd format (contains dash and year first)
+				WHEN Administration_Date LIKE '____-__-__' 
+					THEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS DATE)
+				-- dd/MM/yyyy format, where day is between 1 and 31
+			    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31
+				    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS DATE)
+				-- Otherwise assume MM/dd/yyyy format
+				WHEN Administration_Date LIKE '__/__/____'
+					THEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS DATE)
+				ELSE NULL
+			END AS Administration_Date
 		from omop_staging.sact_staging
         where Intent_Of_Treatment != ''
 	</Sql>
