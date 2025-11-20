@@ -6,13 +6,13 @@
 			CASE
 				-- Check for yyyy-MM-dd format (contains dash and year first)
 				WHEN Start_Date_Of_Cycle LIKE '____-__-__' 
-					THEN CAST(strptime(Start_Date_Of_Cycle, '%Y-%m-%d') AS DATE)
+					THEN CAST(strptime(Start_Date_Of_Cycle, '%Y-%m-%d') AS TIMESTAMP)
 				-- dd/MM/yyyy format, where day is between 1 and 31
 			    WHEN Start_Date_Of_Cycle LIKE '__/__/____' AND CAST(substring(Start_Date_Of_Cycle, 1, 2) AS INTEGER) BETWEEN 1 AND 31
-				    THEN CAST(strptime(Start_Date_Of_Cycle, '%d/%m/%Y') AS DATE)
+				    THEN CAST(strptime(Start_Date_Of_Cycle, '%d/%m/%Y') AS TIMESTAMP)
 				-- Otherwise assume MM/dd/yyyy format
 				WHEN Start_Date_Of_Cycle LIKE '__/__/____'
-					THEN CAST(strptime(Start_Date_Of_Cycle, '%m/%d/%Y') AS DATE)
+					THEN CAST(strptime(Start_Date_Of_Cycle, '%m/%d/%Y') AS TIMESTAMP)
 				ELSE NULL
 			END AS Start_Date_Of_Cycle
 		from omop_staging.sact_staging
