@@ -7,7 +7,18 @@
 		lower(Drug_Name) as Drug_Name,
 		Actual_Dose_Per_Administration,
 		Administration_Measurement_Per_Actual_Dose,
-		Administration_Date
+		CASE
+			-- Check for yyyy-MM-dd format (contains dash and year first)
+			WHEN Administration_Date LIKE '____-__-__' 
+				THEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS DATE)
+			-- Check for dd/MM/yyyy format (starts with day <= 31)
+			WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) <= 31
+				THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS DATE)
+			-- Otherwise assume MM/dd/yyyy format
+			WHEN Administration_Date LIKE '__/__/____'
+				THEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS DATE)
+			ELSE NULL
+		END AS Administration_Date
 	from omop_staging.sact_staging
 	</Sql>
 	<Explanations>
