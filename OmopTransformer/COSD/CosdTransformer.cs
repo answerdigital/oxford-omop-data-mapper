@@ -56,6 +56,11 @@ using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementTcategoryInteg
 using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStage;
 using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementTNMcategoryIntegratedStage;
 using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementTumourLaterality;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementGradeOfDifferentiation;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementMcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementMcategoryIntegratedStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementNcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementNcategoryIntegratedStage;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AdultComorbidityEvaluation;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AdultPerformanceStatus;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AlcoholHistoryCancerBeforeLastThreeMonths;
@@ -674,6 +679,36 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV8LungMeasurementTumourLateralityRecord, CosdV8LungMeasurementTumourLaterality>(
             _measurementRecorder.InsertUpdateMeasurements,
             "CosdV8LungMeasurementTumourLaterality",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementGradeOfDifferentiationRecord, CosdV9LungMeasurementGradeOfDifferentiation>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementGradeOfDifferentiation",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementMcategoryFinalPreTreatmentStageRecord, CosdV9LungMeasurementMcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementMcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementMcategoryIntegratedStageRecord, CosdV9LungMeasurementMcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementMcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementNcategoryFinalPreTreatmentStageRecord, CosdV9LungMeasurementNcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementNcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementNcategoryIntegratedStageRecord, CosdV9LungMeasurementNcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementNcategoryIntegratedStage",
             runId,
             cancellationToken);
     }

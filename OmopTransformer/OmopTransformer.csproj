@@ -113,6 +113,21 @@
     <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementTumourLaterality\CosdV8LungMeasurementTumourLaterality.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementGradeOfDifferentiation\CosdV9LungMeasurementGradeOfDifferentiation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementMcategoryFinalPreTreatmentStage\CosdV9LungMeasurementMcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementMcategoryIntegratedStage\CosdV9LungMeasurementMcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementNcategoryFinalPreTreatmentStage\CosdV9LungMeasurementNcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementNcategoryIntegratedStage\CosdV9LungMeasurementNcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Core\Death\v8Death\CosdV8Death.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
