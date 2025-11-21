@@ -55,6 +55,26 @@ has_toc: false
 <a href="OxfordLabMeasurement.svg" target="_blank"><img src="OxfordLabMeasurement.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordLabMeasurement%20mapping){: .btn }
+## CosdV9LungMeasurementNcategoryIntegratedStage
+<a href="CosdV9LungMeasurementNcategoryIntegratedStage.svg" target="_blank"><img src="CosdV9LungMeasurementNcategoryIntegratedStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungMeasurementNcategoryIntegratedStage%20mapping){: .btn }
+## CosdV9LungMeasurementNcategoryFinalPreTreatmentStage
+<a href="CosdV9LungMeasurementNcategoryFinalPreTreatmentStage.svg" target="_blank"><img src="CosdV9LungMeasurementNcategoryFinalPreTreatmentStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungMeasurementNcategoryFinalPreTreatmentStage%20mapping){: .btn }
+## CosdV9LungMeasurementMcategoryIntegratedStage
+<a href="CosdV9LungMeasurementMcategoryIntegratedStage.svg" target="_blank"><img src="CosdV9LungMeasurementMcategoryIntegratedStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungMeasurementMcategoryIntegratedStage%20mapping){: .btn }
+## CosdV9LungMeasurementMcategoryFinalPreTreatmentStage
+<a href="CosdV9LungMeasurementMcategoryFinalPreTreatmentStage.svg" target="_blank"><img src="CosdV9LungMeasurementMcategoryFinalPreTreatmentStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungMeasurementMcategoryFinalPreTreatmentStage%20mapping){: .btn }
+## CosdV9LungMeasurementGradeOfDifferentiation
+<a href="CosdV9LungMeasurementGradeOfDifferentiation.svg" target="_blank"><img src="CosdV9LungMeasurementGradeOfDifferentiation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungMeasurementGradeOfDifferentiation%20mapping){: .btn }
 ## CosdV8LungMeasurementTumourLaterality
 <a href="CosdV8LungMeasurementTumourLaterality.svg" target="_blank"><img src="CosdV8LungMeasurementTumourLaterality.svg" /></a>
 
