@@ -40,7 +40,18 @@ has_toc: false
 			Case 
 				When Clinical_Trial = 1 then concat(Clinical_Trial, ' - PATIENT is taking part in a CLINICAL TRIAL')
 			else '' end as Source_Value,
-		  	Administration_Date
+		  	CASE
+				-- Check for yyyy-MM-dd format (contains dash and year first)
+				WHEN Administration_Date LIKE '____-__-__' 
+					THEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)
+				-- dd/MM/yyyy format, where day is between 1 and 31
+			    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31
+				    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)
+				-- Otherwise assume MM/dd/yyyy format
+				WHEN Administration_Date LIKE '__/__/____'
+					THEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)
+				ELSE NULL
+			END AS Administration_Date
 		from omop_staging.sact_staging
   		where Clinical_Trial = '1'
 	

@@ -18,7 +18,7 @@
 			and regexp_matches(NhsNumber, '\d{10}');
 	</Sql>
 	<Explanations>
-		<Explanation columnName="PatientId">
+		<Explanation columnName="NhsNumber">
 			<Description>Patient NHS Number</Description>
 			<Origin>NHS NUMBER</Origin>
 		</Explanation>

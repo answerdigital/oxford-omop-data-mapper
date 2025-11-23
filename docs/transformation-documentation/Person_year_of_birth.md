@@ -75,7 +75,18 @@ Selects the year from a date or null of the date is null.
 ```sql
 	select
 		NHS_Number,
-		max (Date_Of_Birth) as Date_Of_Birth,
+		CASE
+            -- Check for yyyy-MM-dd format (contains dash and year first)
+            WHEN max(Date_Of_Birth) LIKE '____-__-__' 
+                THEN CAST(strptime(max(Date_Of_Birth), '%Y-%m-%d') AS TIMESTAMP)
+            -- dd/MM/yyyy format, where day is between 1 and 31
+            WHEN max(Date_Of_Birth) LIKE '__/__/____' AND CAST(substring(max(Date_Of_Birth), 1, 2) AS INTEGER) BETWEEN 1 AND 31
+                THEN CAST(strptime(max(Date_Of_Birth), '%d/%m/%Y') AS TIMESTAMP)
+            -- Otherwise assume MM/dd/yyyy format
+            WHEN max(Date_Of_Birth) LIKE '__/__/____'
+                THEN CAST(strptime(max(Date_Of_Birth), '%m/%d/%Y') AS TIMESTAMP)
+            ELSE NULL
+        END AS Date_Of_Birth,
 		max (Person_Stated_Gender_Code) as Person_Stated_Gender_Code
 	from omop_staging.sact_staging
 	group by NHS_Number

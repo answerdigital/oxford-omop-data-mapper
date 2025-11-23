@@ -50,7 +50,7 @@ where op.NHSNumber is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20value_source_value%20field%20Sus%20CCMDS%20Measurement%20-%20Person%20Weight%20mapping){: .btn }
-### Sus APC  Measurement
+### Sus APC Measurement
 Source column  `DiagnosisICD`.
 Resolve Measurement domain ICD10 codes to `Maps To Value` concepts.
 
@@ -76,7 +76,7 @@ order by
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20value_source_value%20field%20Sus%20APC%20%20Measurement%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20value_source_value%20field%20Sus%20APC%20Measurement%20mapping){: .btn }
 ### SACT Measurement Weight at Start of Regimen
 * Value copied from `Weight_At_Start_Of_Regimen`
 
@@ -86,7 +86,18 @@ order by
 		select distinct 
 			NHS_Number,
 			Weight_At_Start_Of_Regimen,
-			Start_Date_Of_Regimen
+			CASE
+				-- Check for yyyy-MM-dd format (contains dash and year first)
+				WHEN Start_Date_Of_Regimen LIKE '____-__-__' 
+					THEN CAST(strptime(Start_Date_Of_Regimen, '%Y-%m-%d') AS TIMESTAMP)
+				-- dd/MM/yyyy format, where day is between 1 and 31
+			    WHEN Start_Date_Of_Regimen LIKE '__/__/____' AND CAST(substring(Start_Date_Of_Regimen, 1, 2) AS INTEGER) BETWEEN 1 AND 31
+				    THEN CAST(strptime(Start_Date_Of_Regimen, '%d/%m/%Y') AS TIMESTAMP)
+				-- Otherwise assume MM/dd/yyyy format
+				WHEN Start_Date_Of_Regimen LIKE '__/__/____'
+					THEN CAST(strptime(Start_Date_Of_Regimen, '%m/%d/%Y') AS TIMESTAMP)
+				ELSE NULL
+			END AS Start_Date_Of_Regimen
 		from omop_staging.sact_staging
 	
 ```
@@ -102,7 +113,18 @@ order by
 		select distinct 
 			NHS_Number,
 			Weight_At_Start_Of_Cycle,
-			Start_Date_Of_Cycle
+			CASE
+				-- Check for yyyy-MM-dd format (contains dash and year first)
+				WHEN Start_Date_Of_Cycle LIKE '____-__-__' 
+					THEN CAST(strptime(Start_Date_Of_Cycle, '%Y-%m-%d') AS TIMESTAMP)
+				-- dd/MM/yyyy format, where day is between 1 and 31
+			    WHEN Start_Date_Of_Cycle LIKE '__/__/____' AND CAST(substring(Start_Date_Of_Cycle, 1, 2) AS INTEGER) BETWEEN 1 AND 31
+				    THEN CAST(strptime(Start_Date_Of_Cycle, '%d/%m/%Y') AS TIMESTAMP)
+				-- Otherwise assume MM/dd/yyyy format
+				WHEN Start_Date_Of_Cycle LIKE '__/__/____'
+					THEN CAST(strptime(Start_Date_Of_Cycle, '%m/%d/%Y') AS TIMESTAMP)
+				ELSE NULL
+			END AS Start_Date_Of_Cycle
 		from omop_staging.sact_staging
 	
 ```
@@ -118,7 +140,18 @@ order by
 		select distinct 
 			NHS_Number,
 			Height_At_Start_Of_Regimen,
-			Start_Date_Of_Regimen
+			CASE
+				-- Check for yyyy-MM-dd format (contains dash and year first)
+				WHEN Start_Date_Of_Regimen LIKE '____-__-__' 
+					THEN CAST(strptime(Start_Date_Of_Regimen, '%Y-%m-%d') AS TIMESTAMP)
+				-- dd/MM/yyyy format, where day is between 1 and 31
+			    WHEN Start_Date_Of_Regimen LIKE '__/__/____' AND CAST(substring(Start_Date_Of_Regimen, 1, 2) AS INTEGER) BETWEEN 1 AND 31
+				    THEN CAST(strptime(Start_Date_Of_Regimen, '%d/%m/%Y') AS TIMESTAMP)
+				-- Otherwise assume MM/dd/yyyy format
+				WHEN Start_Date_Of_Regimen LIKE '__/__/____'
+					THEN CAST(strptime(Start_Date_Of_Regimen, '%m/%d/%Y') AS TIMESTAMP)
+				ELSE NULL
+			END AS Start_Date_Of_Regimen
 		from omop_staging.sact_staging
 	
 ```

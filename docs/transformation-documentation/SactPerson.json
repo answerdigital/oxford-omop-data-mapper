@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tmax (Date_Of_Birth) as Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
+      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tCASE\n            -- Check for yyyy-MM-dd format (contains dash and year first)\n            WHEN max(Date_Of_Birth) LIKE '____-__-__' \n                THEN CAST(strptime(max(Date_Of_Birth), '%Y-%m-%d') AS TIMESTAMP)\n            -- dd/MM/yyyy format, where day is between 1 and 31\n            WHEN max(Date_Of_Birth) LIKE '__/__/____' AND CAST(substring(max(Date_Of_Birth), 1, 2) AS INTEGER) BETWEEN 1 AND 31\n                THEN CAST(strptime(max(Date_Of_Birth), '%d/%m/%Y') AS TIMESTAMP)\n            -- Otherwise assume MM/dd/yyyy format\n            WHEN max(Date_Of_Birth) LIKE '__/__/____'\n                THEN CAST(strptime(max(Date_Of_Birth), '%m/%d/%Y') AS TIMESTAMP)\n            ELSE NULL\n        END AS Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tmax (Date_Of_Birth) as Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
+      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tCASE\n            -- Check for yyyy-MM-dd format (contains dash and year first)\n            WHEN max(Date_Of_Birth) LIKE '____-__-__' \n                THEN CAST(strptime(max(Date_Of_Birth), '%Y-%m-%d') AS TIMESTAMP)\n            -- dd/MM/yyyy format, where day is between 1 and 31\n            WHEN max(Date_Of_Birth) LIKE '__/__/____' AND CAST(substring(max(Date_Of_Birth), 1, 2) AS INTEGER) BETWEEN 1 AND 31\n                THEN CAST(strptime(max(Date_Of_Birth), '%d/%m/%Y') AS TIMESTAMP)\n            -- Otherwise assume MM/dd/yyyy format\n            WHEN max(Date_Of_Birth) LIKE '__/__/____'\n                THEN CAST(strptime(max(Date_Of_Birth), '%m/%d/%Y') AS TIMESTAMP)\n            ELSE NULL\n        END AS Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
       "lookup_table_markdown": "\r\n\r\n|Person_Stated_Gender_Code|gender_concept_id|notes|\r\n|------|-----|-----|\r\n|1|8507|Male|\r\n|2|8532|Female|\r\n|9|0|Indeterminate (unable to be classified as either male or female)|\r\n|X|0|Not known|\r\n\r\nNotes\r\n* [NHS Gender](https://www.datadictionary.nhs.uk/data_elements/person_stated_gender_code.html)\r\n* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)\r\n"
     },
     {
@@ -53,7 +53,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tmax (Date_Of_Birth) as Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
+      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tCASE\n            -- Check for yyyy-MM-dd format (contains dash and year first)\n            WHEN max(Date_Of_Birth) LIKE '____-__-__' \n                THEN CAST(strptime(max(Date_Of_Birth), '%Y-%m-%d') AS TIMESTAMP)\n            -- dd/MM/yyyy format, where day is between 1 and 31\n            WHEN max(Date_Of_Birth) LIKE '__/__/____' AND CAST(substring(max(Date_Of_Birth), 1, 2) AS INTEGER) BETWEEN 1 AND 31\n                THEN CAST(strptime(max(Date_Of_Birth), '%d/%m/%Y') AS TIMESTAMP)\n            -- Otherwise assume MM/dd/yyyy format\n            WHEN max(Date_Of_Birth) LIKE '__/__/____'\n                THEN CAST(strptime(max(Date_Of_Birth), '%m/%d/%Y') AS TIMESTAMP)\n            ELSE NULL\n        END AS Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -71,7 +71,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tmax (Date_Of_Birth) as Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
+      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tCASE\n            -- Check for yyyy-MM-dd format (contains dash and year first)\n            WHEN max(Date_Of_Birth) LIKE '____-__-__' \n                THEN CAST(strptime(max(Date_Of_Birth), '%Y-%m-%d') AS TIMESTAMP)\n            -- dd/MM/yyyy format, where day is between 1 and 31\n            WHEN max(Date_Of_Birth) LIKE '__/__/____' AND CAST(substring(max(Date_Of_Birth), 1, 2) AS INTEGER) BETWEEN 1 AND 31\n                THEN CAST(strptime(max(Date_Of_Birth), '%d/%m/%Y') AS TIMESTAMP)\n            -- Otherwise assume MM/dd/yyyy format\n            WHEN max(Date_Of_Birth) LIKE '__/__/____'\n                THEN CAST(strptime(max(Date_Of_Birth), '%m/%d/%Y') AS TIMESTAMP)\n            ELSE NULL\n        END AS Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -89,7 +89,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tmax (Date_Of_Birth) as Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
+      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tCASE\n            -- Check for yyyy-MM-dd format (contains dash and year first)\n            WHEN max(Date_Of_Birth) LIKE '____-__-__' \n                THEN CAST(strptime(max(Date_Of_Birth), '%Y-%m-%d') AS TIMESTAMP)\n            -- dd/MM/yyyy format, where day is between 1 and 31\n            WHEN max(Date_Of_Birth) LIKE '__/__/____' AND CAST(substring(max(Date_Of_Birth), 1, 2) AS INTEGER) BETWEEN 1 AND 31\n                THEN CAST(strptime(max(Date_Of_Birth), '%d/%m/%Y') AS TIMESTAMP)\n            -- Otherwise assume MM/dd/yyyy format\n            WHEN max(Date_Of_Birth) LIKE '__/__/____'\n                THEN CAST(strptime(max(Date_Of_Birth), '%m/%d/%Y') AS TIMESTAMP)\n            ELSE NULL\n        END AS Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -107,7 +107,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tmax (Date_Of_Birth) as Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
+      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tCASE\n            -- Check for yyyy-MM-dd format (contains dash and year first)\n            WHEN max(Date_Of_Birth) LIKE '____-__-__' \n                THEN CAST(strptime(max(Date_Of_Birth), '%Y-%m-%d') AS TIMESTAMP)\n            -- dd/MM/yyyy format, where day is between 1 and 31\n            WHEN max(Date_Of_Birth) LIKE '__/__/____' AND CAST(substring(max(Date_Of_Birth), 1, 2) AS INTEGER) BETWEEN 1 AND 31\n                THEN CAST(strptime(max(Date_Of_Birth), '%d/%m/%Y') AS TIMESTAMP)\n            -- Otherwise assume MM/dd/yyyy format\n            WHEN max(Date_Of_Birth) LIKE '__/__/____'\n                THEN CAST(strptime(max(Date_Of_Birth), '%m/%d/%Y') AS TIMESTAMP)\n            ELSE NULL\n        END AS Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -132,7 +132,7 @@
           ]
         }
       ],
-      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tmax (Date_Of_Birth) as Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
+      "query": "\n\tselect\n\t\tNHS_Number,\n\t\tCASE\n            -- Check for yyyy-MM-dd format (contains dash and year first)\n            WHEN max(Date_Of_Birth) LIKE '____-__-__' \n                THEN CAST(strptime(max(Date_Of_Birth), '%Y-%m-%d') AS TIMESTAMP)\n            -- dd/MM/yyyy format, where day is between 1 and 31\n            WHEN max(Date_Of_Birth) LIKE '__/__/____' AND CAST(substring(max(Date_Of_Birth), 1, 2) AS INTEGER) BETWEEN 1 AND 31\n                THEN CAST(strptime(max(Date_Of_Birth), '%d/%m/%Y') AS TIMESTAMP)\n            -- Otherwise assume MM/dd/yyyy format\n            WHEN max(Date_Of_Birth) LIKE '__/__/____'\n                THEN CAST(strptime(max(Date_Of_Birth), '%m/%d/%Y') AS TIMESTAMP)\n            ELSE NULL\n        END AS Date_Of_Birth,\n\t\tmax (Person_Stated_Gender_Code) as Person_Stated_Gender_Code\n\tfrom omop_staging.sact_staging\n\tgroup by NHS_Number\n\t",
       "lookup_table_markdown": null
     },
     {

@@ -12,7 +12,7 @@ namespace OmopTransformer.RTDS.VisitOccurrence;
     "* No calculations to be made between Start and end visit date to try to calculate 24 hours, but instead the `Patient Classification` will be sufficient")]
 internal class RtdsVisitOccurrence : OmopVisitOccurrence<RtdsVisitOccurrenceRecord>
 {
-    [CopyValue(nameof(Source.PatientId))]
+    [CopyValue(nameof(Source.NhsNumber))]
     public override string? NhsNumber { get; set; }
 
     [Transform(typeof(DateConverter), nameof(Source.event_start_date))]
