@@ -332,7 +332,18 @@ Notes
 		lower(Drug_Name) as Drug_Name,
 		Actual_Dose_Per_Administration,
 		Administration_Measurement_Per_Actual_Dose,
-		Administration_Date
+		CASE
+			-- yyyy-MM-dd format
+			WHEN Administration_Date LIKE '____-__-__' 
+				THEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)
+			-- dd/MM/yyyy format, where day is between 1 and 31
+			WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31
+				THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)
+			-- Otherwise assume MM/dd/yyyy format
+			WHEN Administration_Date LIKE '__/__/____'
+				THEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)
+			ELSE NULL
+		END AS Administration_Date
 	from omop_staging.sact_staging
 	
 ```

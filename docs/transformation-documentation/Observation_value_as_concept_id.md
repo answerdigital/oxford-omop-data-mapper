@@ -15,8 +15,8 @@ The Adjunctive Therapy Type of the DRUG used for each Systemic Anti-Cancer Thera
 |------|-----|-----|
 |1|4191637|Adjuvant - intent|
 |2|4161587|Neoadjuvant intent|
-|3||Not Applicable (Primary Treatment)|
-|9||Not Known (Not Recorded)|
+|3|0|Not Applicable (Primary Treatment)|
+|9|0|Not Known (Not Recorded)|
 
 Notes
 * [SACT ADJUNCTIVE THERAPY TYPE](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/data_elements/adjunctive_therapy_type.html)
@@ -31,10 +31,21 @@ Notes
 			Case 
 				When Adjunctive_Therapy = 1 then concat(Adjunctive_Therapy, ' - Adjuvant Therapy')
 				When Adjunctive_Therapy = 2 then concat(Adjunctive_Therapy, ' - Neoadjuvant Therapy')
-				When Intent_Of_Treatment = 3 then concat(Adjunctive_Therapy, ' - Not Applicable (Primary Treatment)')
-				When Intent_Of_Treatment = 9 then concat(Adjunctive_Therapy, ' - Not Known (Not Recorded)')
+				When Adjunctive_Therapy = 3 then concat(Adjunctive_Therapy, ' - Not Applicable (Primary Treatment)')
+				When Adjunctive_Therapy = 9 then concat(Adjunctive_Therapy, ' - Not Known (Not Recorded)')
 			else '' end as Source_value,
-		  	Administration_Date
+		  	CASE
+				-- Check for yyyy-MM-dd format (contains dash and year first)
+				WHEN Administration_Date LIKE '____-__-__' 
+					THEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)
+				-- dd/MM/yyyy format, where day is between 1 and 31
+			    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31
+				    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)
+				-- Otherwise assume MM/dd/yyyy format
+				WHEN Administration_Date LIKE '__/__/____'
+					THEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)
+				ELSE NULL
+			END AS Administration_Date
 		from omop_staging.sact_staging
   		where Adjunctive_Therapy != ''
 	
@@ -62,7 +73,7 @@ The ADMINISTRATION ROUTE of the DRUG used for each Systemic Anti-Cancer Therapy 
 |12|4156706|Intradermal|
 |13|40491322|Intratumor|
 |14|4157758|Intralesional|
-|98|||
+|98|0||
 
 Notes
 * [SACT Drug Route of Administration](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/data_elements/systemic_anti-cancer_therapy_drug_route_of_administration.html)
@@ -75,7 +86,18 @@ Notes
 		distinct
   			replace(NHS_Number, ' ', '') as NHSNumber,
       		SACT_Administration_Route as Administration_Route,
-		  	Administration_Date
+		  	CASE
+				-- Check for yyyy-MM-dd format (contains dash and year first)
+				WHEN Administration_Date LIKE '____-__-__' 
+					THEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)
+				-- dd/MM/yyyy format, where day is between 1 and 31
+			    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31
+				    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)
+				-- Otherwise assume MM/dd/yyyy format
+				WHEN Administration_Date LIKE '__/__/____'
+					THEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)
+				ELSE NULL
+			END AS Administration_Date
 	from omop_staging.sact_staging
 	
 ```
@@ -94,8 +116,8 @@ The Regimen Treatment Intent of the DRUG used for each Systemic Anti-Cancer Ther
 |3|4179711|Palliative|
 |4|4179711|Palliative|
 |5|4179711|Palliative|
-|98||Other (not listed)|
-|99||Other (not listed)|
+|98|0|Other (not listed)|
+|99|0|Other (not listed)|
 
 Notes
 * [SACT Drug Regimen Treatment Intent](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/attributes/systemic_anti-cancer_therapy_drug_regimen_treatment_intent.html)
@@ -113,8 +135,21 @@ Notes
 				When Intent_Of_Treatment = 3 then concat(Intent_Of_Treatment, ' - Palliative(aiming to relieve and/or control malignancy related symptoms)')
 				When Intent_Of_Treatment = 4 then concat(Intent_Of_Treatment, ' - Palliative(aiming to achieve remission)')
 				When Intent_Of_Treatment = 5 then concat(Intent_Of_Treatment, ' - Palliative(aiming to permanently eradicate disease)')
+				When Intent_Of_Treatment = 98 then concat(Intent_Of_Treatment, ' - Other (not listed)')
+        		When Intent_Of_Treatment = 99 then concat(Intent_Of_Treatment, ' - Other (not listed)')
 			else '' end as Source_value,
-		  	Administration_Date
+		  	CASE
+				-- Check for yyyy-MM-dd format (contains dash and year first)
+				WHEN Administration_Date LIKE '____-__-__' 
+					THEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)
+				-- dd/MM/yyyy format, where day is between 1 and 31
+			    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31
+				    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)
+				-- Otherwise assume MM/dd/yyyy format
+				WHEN Administration_Date LIKE '__/__/____'
+					THEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)
+				ELSE NULL
+			END AS Administration_Date
 		from omop_staging.sact_staging
         where Intent_Of_Treatment != ''
 	

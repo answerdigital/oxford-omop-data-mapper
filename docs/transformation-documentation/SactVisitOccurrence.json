@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tCASE\n\t\t\t\t-- Check for yyyy-MM-dd format (contains dash and year first)\n\t\t\t\tWHEN Administration_Date LIKE '____-__-__' \n\t\t\t\t\tTHEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)\n\t\t\t\t-- dd/MM/yyyy format, where day is between 1 and 31\n\t\t\t    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31\n\t\t\t\t    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)\n\t\t\t\t-- Otherwise assume MM/dd/yyyy format\n\t\t\t\tWHEN Administration_Date LIKE '__/__/____'\n\t\t\t\t\tTHEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)\n\t\t\t\tELSE NULL\n\t\t\tEND AS Administration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tCASE\n\t\t\t\t-- Check for yyyy-MM-dd format (contains dash and year first)\n\t\t\t\tWHEN Administration_Date LIKE '____-__-__' \n\t\t\t\t\tTHEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)\n\t\t\t\t-- dd/MM/yyyy format, where day is between 1 and 31\n\t\t\t    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31\n\t\t\t\t    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)\n\t\t\t\t-- Otherwise assume MM/dd/yyyy format\n\t\t\t\tWHEN Administration_Date LIKE '__/__/____'\n\t\t\t\t\tTHEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)\n\t\t\t\tELSE NULL\n\t\t\tEND AS Administration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -53,7 +53,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tCASE\n\t\t\t\t-- Check for yyyy-MM-dd format (contains dash and year first)\n\t\t\t\tWHEN Administration_Date LIKE '____-__-__' \n\t\t\t\t\tTHEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)\n\t\t\t\t-- dd/MM/yyyy format, where day is between 1 and 31\n\t\t\t    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31\n\t\t\t\t    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)\n\t\t\t\t-- Otherwise assume MM/dd/yyyy format\n\t\t\t\tWHEN Administration_Date LIKE '__/__/____'\n\t\t\t\t\tTHEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)\n\t\t\t\tELSE NULL\n\t\t\tEND AS Administration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -71,7 +71,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tCASE\n\t\t\t\t-- Check for yyyy-MM-dd format (contains dash and year first)\n\t\t\t\tWHEN Administration_Date LIKE '____-__-__' \n\t\t\t\t\tTHEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)\n\t\t\t\t-- dd/MM/yyyy format, where day is between 1 and 31\n\t\t\t    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31\n\t\t\t\t    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)\n\t\t\t\t-- Otherwise assume MM/dd/yyyy format\n\t\t\t\tWHEN Administration_Date LIKE '__/__/____'\n\t\t\t\t\tTHEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)\n\t\t\t\tELSE NULL\n\t\t\tEND AS Administration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -89,7 +89,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tAdministration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tCASE\n\t\t\t\t-- Check for yyyy-MM-dd format (contains dash and year first)\n\t\t\t\tWHEN Administration_Date LIKE '____-__-__' \n\t\t\t\t\tTHEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)\n\t\t\t\t-- dd/MM/yyyy format, where day is between 1 and 31\n\t\t\t    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31\n\t\t\t\t    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)\n\t\t\t\t-- Otherwise assume MM/dd/yyyy format\n\t\t\t\tWHEN Administration_Date LIKE '__/__/____'\n\t\t\t\t\tTHEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)\n\t\t\t\tELSE NULL\n\t\t\tEND AS Administration_Date \n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {

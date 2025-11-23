@@ -18,10 +18,21 @@ has_toc: false
 			Case 
 				When Adjunctive_Therapy = 1 then concat(Adjunctive_Therapy, ' - Adjuvant Therapy')
 				When Adjunctive_Therapy = 2 then concat(Adjunctive_Therapy, ' - Neoadjuvant Therapy')
-				When Intent_Of_Treatment = 3 then concat(Adjunctive_Therapy, ' - Not Applicable (Primary Treatment)')
-				When Intent_Of_Treatment = 9 then concat(Adjunctive_Therapy, ' - Not Known (Not Recorded)')
+				When Adjunctive_Therapy = 3 then concat(Adjunctive_Therapy, ' - Not Applicable (Primary Treatment)')
+				When Adjunctive_Therapy = 9 then concat(Adjunctive_Therapy, ' - Not Known (Not Recorded)')
 			else '' end as Source_value,
-		  	Administration_Date
+		  	CASE
+				-- Check for yyyy-MM-dd format (contains dash and year first)
+				WHEN Administration_Date LIKE '____-__-__' 
+					THEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)
+				-- dd/MM/yyyy format, where day is between 1 and 31
+			    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31
+				    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)
+				-- Otherwise assume MM/dd/yyyy format
+				WHEN Administration_Date LIKE '__/__/____'
+					THEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)
+				ELSE NULL
+			END AS Administration_Date
 		from omop_staging.sact_staging
   		where Adjunctive_Therapy != ''
 	
@@ -39,7 +50,18 @@ has_toc: false
 		distinct
   			replace(NHS_Number, ' ', '') as NHSNumber,
       		SACT_Administration_Route as Administration_Route,
-		  	Administration_Date
+		  	CASE
+				-- Check for yyyy-MM-dd format (contains dash and year first)
+				WHEN Administration_Date LIKE '____-__-__' 
+					THEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)
+				-- dd/MM/yyyy format, where day is between 1 and 31
+			    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31
+				    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)
+				-- Otherwise assume MM/dd/yyyy format
+				WHEN Administration_Date LIKE '__/__/____'
+					THEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)
+				ELSE NULL
+			END AS Administration_Date
 	from omop_staging.sact_staging
 	
 ```
@@ -61,8 +83,21 @@ has_toc: false
 				When Intent_Of_Treatment = 3 then concat(Intent_Of_Treatment, ' - Palliative(aiming to relieve and/or control malignancy related symptoms)')
 				When Intent_Of_Treatment = 4 then concat(Intent_Of_Treatment, ' - Palliative(aiming to achieve remission)')
 				When Intent_Of_Treatment = 5 then concat(Intent_Of_Treatment, ' - Palliative(aiming to permanently eradicate disease)')
+				When Intent_Of_Treatment = 98 then concat(Intent_Of_Treatment, ' - Other (not listed)')
+        		When Intent_Of_Treatment = 99 then concat(Intent_Of_Treatment, ' - Other (not listed)')
 			else '' end as Source_value,
-		  	Administration_Date
+		  	CASE
+				-- Check for yyyy-MM-dd format (contains dash and year first)
+				WHEN Administration_Date LIKE '____-__-__' 
+					THEN CAST(strptime(Administration_Date, '%Y-%m-%d') AS TIMESTAMP)
+				-- dd/MM/yyyy format, where day is between 1 and 31
+			    WHEN Administration_Date LIKE '__/__/____' AND CAST(substring(Administration_Date, 1, 2) AS INTEGER) BETWEEN 1 AND 31
+				    THEN CAST(strptime(Administration_Date, '%d/%m/%Y') AS TIMESTAMP)
+				-- Otherwise assume MM/dd/yyyy format
+				WHEN Administration_Date LIKE '__/__/____'
+					THEN CAST(strptime(Administration_Date, '%m/%d/%Y') AS TIMESTAMP)
+				ELSE NULL
+			END AS Administration_Date
 		from omop_staging.sact_staging
         where Intent_Of_Treatment != ''
 	
