@@ -1,0 +1,37 @@
+<Query>
+    <Sql>
+with lung as (
+    select
+        Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.TumourLaterality.@code' as TumourLaterality
+    from omop_staging.cosd_staging_81
+    where Type = 'LU'
+)
+select distinct
+    NhsNumber,
+    coalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,
+    TumourLaterality
+from lung
+where TumourLaterality is not null
+  and TumourLaterality in ('L','R','M','B')
+  and NhsNumber is not null;
+
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NhsNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="MeasurementDate">
+			<Description>Measurement Date is the date on which the Primary Cancer was confirmed or the Primary Cancer diagnosis was agreed. If this is not available, then it is the date when the diagnosis of the Non-Primary Cancer was clinically agreed.</Description>
+			<Origin>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+			<Origin>DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+		</Explanation>
+		<Explanation columnName="TumourLaterality">
+			<Description>An indication of the side of the body on which the Primary Tumour originated. Valid values are: L (Left), R (Right), M (Midline), B (Bilateral).</Description>
+			<Origin>TUMOUR LATERALITY</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

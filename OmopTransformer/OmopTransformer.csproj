@@ -77,6 +77,57 @@
     <None Update="COSD\Lung\ProcedureOccurrence\CosdV9LungProcedureOccurrenceProcedureOpcs\CosdV9LungProcedureOccurrenceProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementGradeOfDifferentiation\CosdV8LungMeasurementGradeOfDifferentiation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementMcategoryFinalPreTreatmentStage\CosdV8LungMeasurementMcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementMcategoryIntegratedStage\CosdV8LungMeasurementMcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementNcategoryFinalPreTreatmentStage\CosdV8LungMeasurementNcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementNcategoryIntegratedStage\CosdV8LungMeasurementNcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementNonPrimaryPathwayMetastasis\CosdV8LungMeasurementNonPrimaryPathwayMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementPrimaryPathwayMetastasis\CosdV8LungMeasurementPrimaryPathwayMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementTcategoryFinalPreTreatmentStage\CosdV8LungMeasurementTcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementTcategoryIntegratedStage\CosdV8LungMeasurementTcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStage\CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementTNMcategoryIntegratedStage\CosdV8LungMeasurementTNMcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementTumourLaterality\CosdV8LungMeasurementTumourLaterality.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementGradeOfDifferentiation\CosdV9LungMeasurementGradeOfDifferentiation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementMcategoryFinalPreTreatmentStage\CosdV9LungMeasurementMcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementMcategoryIntegratedStage\CosdV9LungMeasurementMcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementNcategoryFinalPreTreatmentStage\CosdV9LungMeasurementNcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementNcategoryIntegratedStage\CosdV9LungMeasurementNcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Core\Death\v8Death\CosdV8Death.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

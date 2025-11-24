@@ -6,16 +6,11 @@ using OmopTransformer.COSD.Colorectal.ConditionOccurrence.CosdConditionOccurrenc
 using OmopTransformer.COSD.Colorectal.ConditionOccurrence.CosdConditionOccurrenceSecondaryDiagnosis;
 using OmopTransformer.COSD.Colorectal.ConditionOccurrence.CosdV8ConditionOccurrencePrimaryDiagnosis;
 using OmopTransformer.COSD.Colorectal.ConditionOccurrence.CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography;
-using LungV8ConditionOccurrencePrimaryDiagnosis = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosis.CosdV8LungConditionOccurrencePrimaryDiagnosis;
-using LungV8ConditionOccurrencePrimaryDiagnosisRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosis.CosdV8LungConditionOccurrencePrimaryDiagnosisRecord;
-using LungV8ConditionOccurrencePrimaryDiagnosisHistologyTopography = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography;
-using LungV8ConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord;
-using LungV8ConditionOccurrenceProgression = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrenceProgression.CosdV8LungConditionOccurrenceProgression;
-using LungV8ConditionOccurrenceProgressionRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrenceProgression.CosdV8LungConditionOccurrenceProgressionRecord;
-using LungV9ConditionOccurrenceProgression = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceProgression.CosdV9LungConditionOccurrenceProgression;
-using LungV9ConditionOccurrenceProgressionRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceProgression.CosdV9LungConditionOccurrenceProgressionRecord;
-using LungV9ConditionOccurrenceRecurrence = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceRecurrence.CosdV9LungConditionOccurrenceRecurrence;
-using LungV9ConditionOccurrenceRecurrenceRecord = OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceRecurrence.CosdV9LungConditionOccurrenceRecurrenceRecord;
+using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosis;
+using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography;
+using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrenceProgression;
+using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceProgression;
+using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV9LungConditionOccurrenceRecurrence;
 using OmopTransformer.COSD.Core.Death.v8Death;
 using OmopTransformer.COSD.Core.Death.v9DeathBasisOfDiagnosisCancer;
 using OmopTransformer.COSD.Core.Death.v9DeathDischargeDestination;
@@ -49,6 +44,23 @@ using OmopTransformer.COSD.Colorectal.Measurements.CosdV9MeasurementTcategoryInt
 using OmopTransformer.COSD.Colorectal.Measurements.CosdV9MeasurementTNMcategoryFinalPreTreatmentStage;
 using OmopTransformer.COSD.Colorectal.Measurements.CosdV9MeasurementTNMcategoryIntegratedStage;
 using OmopTransformer.COSD.Colorectal.Measurements.CosdV9MeasurementTumourLaterality;
+using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementGradeOfDifferentiation;
+using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementMcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementMcategoryIntegratedStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementNcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementNcategoryIntegratedStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementNonPrimaryPathwayMetastasis;
+using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementPrimaryPathwayMetastasis;
+using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementTcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementTcategoryIntegratedStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementTNMcategoryIntegratedStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV8LungMeasurementTumourLaterality;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementGradeOfDifferentiation;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementMcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementMcategoryIntegratedStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementNcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementNcategoryIntegratedStage;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AdultComorbidityEvaluation;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AdultPerformanceStatus;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AlcoholHistoryCancerBeforeLastThreeMonths;
@@ -75,14 +87,10 @@ using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurre
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrenceProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV9ProcedureOccurrencePrimaryProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV9ProcedureOccurrenceProcedureOpcs;
-using LungV8ProcedureOccurrencePrimaryProcedureOpcs = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrencePrimaryProcedureOpcs.CosdV8LungProcedureOccurrencePrimaryProcedureOpcs;
-using LungV8ProcedureOccurrencePrimaryProcedureOpcsRecord = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrencePrimaryProcedureOpcs.CosdV8LungProcedureOccurrencePrimaryProcedureOpcsRecord;
-using LungV8ProcedureOccurrenceProcedureOpcs = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrenceProcedureOpcs.CosdV8LungProcedureOccurrenceProcedureOpcs;
-using LungV8ProcedureOccurrenceProcedureOpcsRecord = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrenceProcedureOpcs.CosdV8LungProcedureOccurrenceProcedureOpcsRecord;
-using LungV9ProcedureOccurrencePrimaryProcedureOpcs = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV9LungProcedureOccurrencePrimaryProcedureOpcs.CosdV9LungProcedureOccurrencePrimaryProcedureOpcs;
-using LungV9ProcedureOccurrencePrimaryProcedureOpcsRecord = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV9LungProcedureOccurrencePrimaryProcedureOpcs.CosdV9LungProcedureOccurrencePrimaryProcedureOpcsRecord;
-using LungV9ProcedureOccurrenceProcedureOpcs = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV9LungProcedureOccurrenceProcedureOpcs.CosdV9LungProcedureOccurrenceProcedureOpcs;
-using LungV9ProcedureOccurrenceProcedureOpcsRecord = OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV9LungProcedureOccurrenceProcedureOpcs.CosdV9LungProcedureOccurrenceProcedureOpcsRecord;
+using OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrencePrimaryProcedureOpcs;
+using OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV8LungProcedureOccurrenceProcedureOpcs;
+using OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV9LungProcedureOccurrencePrimaryProcedureOpcs;
+using OmopTransformer.COSD.Lung.ProcedureOccurrence.CosdV9LungProcedureOccurrenceProcedureOpcs;
 using OmopTransformer.Omop;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
@@ -224,31 +232,31 @@ internal class CosdTransformer : Transformer
             runId,
             cancellationToken);
 
-        await Transform<LungV8ConditionOccurrencePrimaryDiagnosisRecord, LungV8ConditionOccurrencePrimaryDiagnosis>(
+        await Transform<CosdV8LungConditionOccurrencePrimaryDiagnosisRecord, CosdV8LungConditionOccurrencePrimaryDiagnosis>(
             _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
             "Cosd V8 Lung Condition Occurrence Primary Diagnosis",
             runId,
             cancellationToken);
 
-        await Transform<LungV8ConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord, LungV8ConditionOccurrencePrimaryDiagnosisHistologyTopography>(
+        await Transform<CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord, CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography>(
             _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
             "Cosd V8 Lung Condition Occurrence Primary Diagnosis Histology Topography",
             runId,
             cancellationToken);
 
-        await Transform<LungV8ConditionOccurrenceProgressionRecord, LungV8ConditionOccurrenceProgression>(
+        await Transform<CosdV8LungConditionOccurrenceProgressionRecord, CosdV8LungConditionOccurrenceProgression>(
             _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
             "Cosd V8 Lung Condition Occurrence Progression",
             runId,
             cancellationToken);
 
-        await Transform<LungV9ConditionOccurrenceProgressionRecord, LungV9ConditionOccurrenceProgression>(
+        await Transform<CosdV9LungConditionOccurrenceProgressionRecord, CosdV9LungConditionOccurrenceProgression>(
             _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
             "Cosd V9 Lung Condition Occurrence Progression",
             runId,
             cancellationToken);
 
-        await Transform<LungV9ConditionOccurrenceRecurrenceRecord, LungV9ConditionOccurrenceRecurrence>(
+        await Transform<CosdV9LungConditionOccurrenceRecurrenceRecord, CosdV9LungConditionOccurrenceRecurrence>(
             _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
             "Cosd V9 Lung Condition Occurrence Recurrence",
             runId,
@@ -278,25 +286,25 @@ internal class CosdTransformer : Transformer
             runId,
             cancellationToken);
 
-        await Transform<LungV8ProcedureOccurrencePrimaryProcedureOpcsRecord, LungV8ProcedureOccurrencePrimaryProcedureOpcs>(
+        await Transform<CosdV8LungProcedureOccurrencePrimaryProcedureOpcsRecord, CosdV8LungProcedureOccurrencePrimaryProcedureOpcs>(
             _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
             "Cosd V8 Lung Procedure Occurrence Primary Procedure Opcs",
             runId,
             cancellationToken);
 
-        await Transform<LungV8ProcedureOccurrenceProcedureOpcsRecord, LungV8ProcedureOccurrenceProcedureOpcs>(
+        await Transform<CosdV8LungProcedureOccurrenceProcedureOpcsRecord, CosdV8LungProcedureOccurrenceProcedureOpcs>(
             _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
             "Cosd V8 Lung Procedure Occurrence Procedure Opcs",
             runId,
             cancellationToken);
 
-        await Transform<LungV9ProcedureOccurrencePrimaryProcedureOpcsRecord, LungV9ProcedureOccurrencePrimaryProcedureOpcs>(
+        await Transform<CosdV9LungProcedureOccurrencePrimaryProcedureOpcsRecord, CosdV9LungProcedureOccurrencePrimaryProcedureOpcs>(
             _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
             "Cosd V9 Lung Procedure Occurrence Primary Procedure Opcs",
             runId,
             cancellationToken);
 
-        await Transform<LungV9ProcedureOccurrenceProcedureOpcsRecord, LungV9ProcedureOccurrenceProcedureOpcs>(
+        await Transform<CosdV9LungProcedureOccurrenceProcedureOpcsRecord, CosdV9LungProcedureOccurrenceProcedureOpcs>(
             _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
             "Cosd V9 Lung Procedure Occurrence Procedure Opcs",
             runId,
@@ -599,6 +607,108 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV9MeasurementTumourLateralityRecord, CosdV9MeasurementTumourLaterality>(
             _measurementRecorder.InsertUpdateMeasurements,
             "CosdV9MeasurementTumourLaterality",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungMeasurementGradeOfDifferentiationRecord, CosdV8LungMeasurementGradeOfDifferentiation>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementGradeOfDifferentiation",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungMeasurementMcategoryFinalPreTreatmentStageRecord, CosdV8LungMeasurementMcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementMcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungMeasurementMcategoryIntegratedStageRecord, CosdV8LungMeasurementMcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementMcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungMeasurementNcategoryFinalPreTreatmentStageRecord, CosdV8LungMeasurementNcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementNcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungMeasurementNcategoryIntegratedStageRecord, CosdV8LungMeasurementNcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementNcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungMeasurementNonPrimaryPathwayMetastasisRecord, CosdV8LungMeasurementNonPrimaryPathwayMetastasis>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementNonPrimaryPathwayMetastasis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungMeasurementPrimaryPathwayMetastasisRecord, CosdV8LungMeasurementPrimaryPathwayMetastasis>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementPrimaryPathwayMetastasis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungMeasurementTcategoryFinalPreTreatmentStageRecord, CosdV8LungMeasurementTcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementTcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungMeasurementTcategoryIntegratedStageRecord, CosdV8LungMeasurementTcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementTcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStageRecord, CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungMeasurementTNMcategoryIntegratedStageRecord, CosdV8LungMeasurementTNMcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementTNMcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungMeasurementTumourLateralityRecord, CosdV8LungMeasurementTumourLaterality>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8LungMeasurementTumourLaterality",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementGradeOfDifferentiationRecord, CosdV9LungMeasurementGradeOfDifferentiation>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementGradeOfDifferentiation",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementMcategoryFinalPreTreatmentStageRecord, CosdV9LungMeasurementMcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementMcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementMcategoryIntegratedStageRecord, CosdV9LungMeasurementMcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementMcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementNcategoryFinalPreTreatmentStageRecord, CosdV9LungMeasurementNcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementNcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementNcategoryIntegratedStageRecord, CosdV9LungMeasurementNcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementNcategoryIntegratedStage",
             runId,
             cancellationToken);
     }

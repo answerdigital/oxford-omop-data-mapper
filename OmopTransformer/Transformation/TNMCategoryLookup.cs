@@ -14,6 +14,15 @@ internal class TNMCategoryLookup : ILookup
             { "1a", new ValueWithNote("1635812", "IRS-modified TNM stage 1") },
             { "IA", new ValueWithNote("1635812", "IRS-modified TNM stage 1") },
 
+            { "1a1", new ValueWithNote("1633843", "Stage 1A1") },
+            { "IA1", new ValueWithNote("1633843", "Stage 1A1") },
+
+            { "1a2", new ValueWithNote("1634275", "Stage 1A2") },
+            { "IA2", new ValueWithNote("1634275", "Stage 1A2") },
+
+            { "1a3", new ValueWithNote("1633775", "Stage 1A3") },
+            { "IA3", new ValueWithNote("1633775", "Stage 1A3") },
+
             { "1b", new ValueWithNote("1635812", "IRS-modified TNM stage 1") },
             { "IB", new ValueWithNote("1635812", "IRS-modified TNM stage 1") },
 

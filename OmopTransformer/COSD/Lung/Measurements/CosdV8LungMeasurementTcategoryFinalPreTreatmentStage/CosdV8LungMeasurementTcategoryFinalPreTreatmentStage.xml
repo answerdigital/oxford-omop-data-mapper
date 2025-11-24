@@ -1,0 +1,36 @@
+<Query>
+    <Sql>
+with lung as (
+    select
+        Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.FinalPreTreatmentTCategory' as TcategoryFinalPreTreatment,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as StageDateFinalPretreatmentStage
+    from omop_staging.cosd_staging_81
+    where Type = 'LU'
+)
+select distinct
+    NhsNumber,
+    coalesce(StageDateFinalPretreatmentStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
+    TcategoryFinalPreTreatment
+from lung
+where TcategoryFinalPreTreatment is not null
+and NhsNumber is not null;
+
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NhsNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="MeasurementDate">
+			<Description>Measurement Date is the date on which TNM Stage Grouping (Final pre-treatment) was recorded, but if this is not available, then it is the date the Primary Cancer was confirmed or the Primary Cancer diagnosis was agreed.</Description>
+			<Origin>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+			<Origin>TNM STAGE GROUPING DATE (FINAL PRETREATMENT)</Origin>
+		</Explanation>
+		<Explanation columnName="TcategoryFinalPreTreatment">
+			<Description>Is the code, using a TNM CODING EDITION, which classifies the size and extent of the primary Tumour before treatment during a Cancer Care Spell.</Description>
+			<Origin>T CATEGORY (FINAL PRETREATMENT)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
