@@ -61,6 +61,14 @@ using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementMcategoryFinal
 using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementMcategoryIntegratedStage;
 using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementNcategoryFinalPreTreatmentStage;
 using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementNcategoryIntegratedStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementNonPrimaryPathwayProgressionMetastasis;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementNonPrimaryPathwayRecurrenceMetastasis;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementPrimaryPathwayMetastasis;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementTcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementTcategoryIntegratedStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementTNMcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementTNMcategoryIntegratedStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementTumourLaterality;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AdultComorbidityEvaluation;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AdultPerformanceStatus;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AlcoholHistoryCancerBeforeLastThreeMonths;
@@ -709,6 +717,54 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV9LungMeasurementNcategoryIntegratedStageRecord, CosdV9LungMeasurementNcategoryIntegratedStage>(
             _measurementRecorder.InsertUpdateMeasurements,
             "CosdV9LungMeasurementNcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementNonPrimaryPathwayProgressionMetastasisRecord, CosdV9LungMeasurementNonPrimaryPathwayProgressionMetastasis>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementNonPrimaryPathwayProgressionMetastasis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementNonPrimaryPathwayRecurrenceMetastasisRecord, CosdV9LungMeasurementNonPrimaryPathwayRecurrenceMetastasis>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementNonPrimaryPathwayRecurrenceMetastasis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementPrimaryPathwayMetastasisRecord, CosdV9LungMeasurementPrimaryPathwayMetastasis>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementPrimaryPathwayMetastasis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementTcategoryFinalPreTreatmentStageRecord, CosdV9LungMeasurementTcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementTcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementTcategoryIntegratedStageRecord, CosdV9LungMeasurementTcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementTcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementTNMcategoryFinalPreTreatmentStageRecord, CosdV9LungMeasurementTNMcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementTNMcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementTNMcategoryIntegratedStageRecord, CosdV9LungMeasurementTNMcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementTNMcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementTumourLateralityRecord, CosdV9LungMeasurementTumourLaterality>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementTumourLaterality",
             runId,
             cancellationToken);
     }
