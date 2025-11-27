@@ -326,6 +326,18 @@
     <None Update="COSD\Lung\Observation\CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths\CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungAlcoholHistoryCancerInLastThreeMonths\CosdV8LungAlcoholHistoryCancerInLastThreeMonths.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungFamilialCancerSyndromeIndicator\CosdV8LungFamilialCancerSyndromeIndicator.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis\CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungSmokingStatusCode\CosdV8LungSmokingStatusCode.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Colorectal\ProcedureOccurrence\CosdV8ProcedureOccurrenceProcedureOpcs\CosdV8ProcedureOccurrenceProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

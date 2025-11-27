@@ -94,6 +94,10 @@ using OmopTransformer.COSD.Colorectal.Observation.CosdV9TobaccoSmokingStatus;
 using OmopTransformer.COSD.Lung.Observation.CosdV8LungAdultComorbidityEvaluation;
 using OmopTransformer.COSD.Lung.Observation.CosdV8LungAdultPerformanceStatus;
 using OmopTransformer.COSD.Lung.Observation.CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungAlcoholHistoryCancerInLastThreeMonths;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungFamilialCancerSyndromeIndicator;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungSmokingStatusCode;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrencePrimaryProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrenceProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV9ProcedureOccurrencePrimaryProcedureOpcs;
@@ -432,6 +436,30 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonthsRecord, CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths>(
             _observationRecorder.InsertUpdateObservations,
             "Cosd CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungAlcoholHistoryCancerInLastThreeMonthsRecord, CosdV8LungAlcoholHistoryCancerInLastThreeMonths>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungAlcoholHistoryCancerInLastThreeMonths",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungFamilialCancerSyndromeIndicatorRecord, CosdV8LungFamilialCancerSyndromeIndicator>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungFamilialCancerSyndromeIndicator",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosisRecord, CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungSmokingStatusCodeRecord, CosdV8LungSmokingStatusCode>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungSmokingStatusCode",
             runId,
             cancellationToken);
 
