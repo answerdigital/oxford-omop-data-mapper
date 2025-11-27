@@ -39,7 +39,6 @@ where o.AdultComorbidityEvaluation is not null
 		ProcedureDate is null
     )
 
---tested
     </Sql>
     <Explanations>
       <Explanation columnName="NHSNumber">

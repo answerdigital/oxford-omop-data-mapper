@@ -91,6 +91,9 @@ using OmopTransformer.COSD.Colorectal.Observation.CosdV9SourceOfReferralForNonPr
 using OmopTransformer.COSD.Colorectal.Observation.CosdV9SourceOfReferralForOutpatients;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV9TobaccoSmokingCessation;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV9TobaccoSmokingStatus;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungAdultComorbidityEvaluation;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungAdultPerformanceStatus;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrencePrimaryProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrenceProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV9ProcedureOccurrencePrimaryProcedureOpcs;
@@ -411,6 +414,24 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV8AdultPerformanceStatusRecord, CosdV8AdultPerformanceStatus>(
             _observationRecorder.InsertUpdateObservations,
             "Cosd CosdV8AdultPerformanceStatus",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungAdultComorbidityEvaluationRecord, CosdV8LungAdultComorbidityEvaluation>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungAdultComorbidityEvaluation",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungAdultPerformanceStatusRecord, CosdV8LungAdultPerformanceStatus>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungAdultPerformanceStatus",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonthsRecord, CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths",
             runId,
             cancellationToken);
 
