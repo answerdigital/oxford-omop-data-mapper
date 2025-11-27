@@ -276,6 +276,36 @@ has_toc: false
 <a href="OxfordLabGeneralComment.svg" target="_blank"><img src="OxfordLabGeneralComment.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordLabGeneralComment%20mapping){: .btn }
+## CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths
+<a href="CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths.svg" target="_blank"><img src="CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths%20mapping){: .btn }
+## CosdV8LungAdultPerformanceStatus
+<a href="CosdV8LungAdultPerformanceStatus.svg" target="_blank"><img src="CosdV8LungAdultPerformanceStatus.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungAdultPerformanceStatus%20mapping){: .btn }
+## CosdV8LungAdultComorbidityEvaluation
+<a href="CosdV8LungAdultComorbidityEvaluation.svg" target="_blank"><img src="CosdV8LungAdultComorbidityEvaluation.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungAdultComorbidityEvaluation%20mapping){: .btn }
 ## CosdV9TobaccoSmokingStatus
 <a href="CosdV9TobaccoSmokingStatus.svg" target="_blank"><img src="CosdV9TobaccoSmokingStatus.svg" /></a>
 
