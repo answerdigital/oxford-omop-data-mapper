@@ -276,6 +276,46 @@ has_toc: false
 <a href="OxfordLabGeneralComment.svg" target="_blank"><img src="OxfordLabGeneralComment.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordLabGeneralComment%20mapping){: .btn }
+## CosdV8LungSmokingStatusCode
+<a href="CosdV8LungSmokingStatusCode.svg" target="_blank"><img src="CosdV8LungSmokingStatusCode.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungSmokingStatusCode%20mapping){: .btn }
+## CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis
+<a href="CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis.svg" target="_blank"><img src="CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis%20mapping){: .btn }
+## CosdV8LungFamilialCancerSyndromeIndicator
+<a href="CosdV8LungFamilialCancerSyndromeIndicator.svg" target="_blank"><img src="CosdV8LungFamilialCancerSyndromeIndicator.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungFamilialCancerSyndromeIndicator%20mapping){: .btn }
+## CosdV8LungAlcoholHistoryCancerInLastThreeMonths
+<a href="CosdV8LungAlcoholHistoryCancerInLastThreeMonths.svg" target="_blank"><img src="CosdV8LungAlcoholHistoryCancerInLastThreeMonths.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungAlcoholHistoryCancerInLastThreeMonths%20mapping){: .btn }
 ## CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths
 <a href="CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths.svg" target="_blank"><img src="CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths.svg" /></a>
 

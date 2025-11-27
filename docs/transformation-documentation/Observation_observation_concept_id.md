@@ -111,6 +111,22 @@ Converts concepts to standard concepts.
 * Constant value set to `1092006`. General Comment Narrative
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20Oxford%20Lab%20General%20Comment%20Observation%20mapping){: .btn }
+### CosdV8LungSmokingStatusCode
+* Constant value set to `43054909`. Tobacco smoking status
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8LungSmokingStatusCode%20mapping){: .btn }
+### CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis
+* Constant value set to `4036080`. Orientation of sexual relationship
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis%20mapping){: .btn }
+### CosdV8LungFamilialCancerSyndromeIndicator
+* Constant value set to `44782478`. Hereditary cancer-predisposing syndrome
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8LungFamilialCancerSyndromeIndicator%20mapping){: .btn }
+### CosdV8LungAlcoholHistoryCancerInLastThreeMonths
+* Constant value set to `35609491`. Alcohol units consumed per week
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8LungAlcoholHistoryCancerInLastThreeMonths%20mapping){: .btn }
 ### CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths
 * Constant value set to `35609491`. Alcohol units consumed per week
 
