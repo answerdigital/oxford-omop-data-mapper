@@ -338,6 +338,30 @@
     <None Update="COSD\Lung\Observation\CosdV8LungSmokingStatusCode\CosdV8LungSmokingStatusCode.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway\CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungSourceOfReferralOutPatients\CosdV8LungSourceOfReferralOutPatients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungAdultComorbidityEvaluation\CosdV9LungAdultComorbidityEvaluation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungAsaScore\CosdV9LungAsaScore.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungFamilialCancerSyndrome\CosdV9LungFamilialCancerSyndrome.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungFamilialCancerSyndromeSubsidiaryComment\CosdV9LungFamilialCancerSyndromeSubsidiaryComment.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungHistoryOfAlcoholCurrent\CosdV9LungHistoryOfAlcoholCurrent.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungHistoryOfAlcoholPast\CosdV9LungHistoryOfAlcoholPast.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Colorectal\ProcedureOccurrence\CosdV8ProcedureOccurrenceProcedureOpcs\CosdV8ProcedureOccurrenceProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -98,6 +98,14 @@ using OmopTransformer.COSD.Lung.Observation.CosdV8LungAlcoholHistoryCancerInLast
 using OmopTransformer.COSD.Lung.Observation.CosdV8LungFamilialCancerSyndromeIndicator;
 using OmopTransformer.COSD.Lung.Observation.CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis;
 using OmopTransformer.COSD.Lung.Observation.CosdV8LungSmokingStatusCode;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungSourceOfReferralOutPatients;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungAdultComorbidityEvaluation;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungAsaScore;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungFamilialCancerSyndrome;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungFamilialCancerSyndromeSubsidiaryComment;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungHistoryOfAlcoholCurrent;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungHistoryOfAlcoholPast;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrencePrimaryProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrenceProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV9ProcedureOccurrencePrimaryProcedureOpcs;
@@ -460,6 +468,54 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV8LungSmokingStatusCodeRecord, CosdV8LungSmokingStatusCode>(
             _observationRecorder.InsertUpdateObservations,
             "Cosd CosdV8LungSmokingStatusCode",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathwayRecord, CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungSourceOfReferralOutPatientsRecord, CosdV8LungSourceOfReferralOutPatients>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungSourceOfReferralOutPatients",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungAdultComorbidityEvaluationRecord, CosdV9LungAdultComorbidityEvaluation>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungAdultComorbidityEvaluation",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungAsaScoreRecord, CosdV9LungAsaScore>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungAsaScore",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungFamilialCancerSyndromeRecord, CosdV9LungFamilialCancerSyndrome>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungFamilialCancerSyndrome",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungFamilialCancerSyndromeSubsidiaryCommentRecord, CosdV9LungFamilialCancerSyndromeSubsidiaryComment>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungFamilialCancerSyndromeSubsidiaryComment",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungHistoryOfAlcoholCurrentRecord, CosdV9LungHistoryOfAlcoholCurrent>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungHistoryOfAlcoholCurrent",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungHistoryOfAlcoholPastRecord, CosdV9LungHistoryOfAlcoholPast>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungHistoryOfAlcoholPast",
             runId,
             cancellationToken);
 
