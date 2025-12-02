@@ -362,6 +362,24 @@
     <None Update="COSD\Lung\Observation\CosdV9LungHistoryOfAlcoholPast\CosdV9LungHistoryOfAlcoholPast.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungMenopausalStatus\CosdV9LungMenopausalStatus.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungPerformanceStatusAdult\CosdV9LungPerformanceStatusAdult.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungSourceOfReferralForNonPrimaryCancerPathway\CosdV9LungSourceOfReferralForNonPrimaryCancerPathway.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungSourceOfReferralForOutpatients\CosdV9LungSourceOfReferralForOutpatients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungTobaccoSmokingCessation\CosdV9LungTobaccoSmokingCessation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungTobaccoSmokingStatus\CosdV9LungTobaccoSmokingStatus.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Colorectal\ProcedureOccurrence\CosdV8ProcedureOccurrenceProcedureOpcs\CosdV8ProcedureOccurrenceProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
