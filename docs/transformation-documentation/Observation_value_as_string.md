@@ -402,6 +402,102 @@ where lower(EVENT) like '%comment%'
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20Oxford%20Lab%20General%20Comment%20Observation%20mapping){: .btn }
+### CosdV9LungSourceOfReferralForOutpatients
+* Value copied from `SourceOfReferralForOutpatients`
+
+* `SourceOfReferralForOutpatients` For specific National Code usage, see SOURCE OF REFERRAL FOR OUT-PATIENTS. [SOURCE OF REFERRAL FOR OUT-PATIENTS](https://www.datadictionary.nhs.uk/data_elements/source_of_referral_for_out-patients.html)
+
+```sql
+with LU as (
+    select
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+        Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+        Record ->> '$.Treatment.TreatmentStartDateCancer' as TreatmentStartDateCancer,
+        Record ->> '$.Treatment.Surgery.ProcedureDate' as ProcedureDate,
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.SourceOfReferralForOut-patients.@code' as SourceOfReferralForOutpatients,
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+    from omop_staging.cosd_staging_901
+    where type = 'LU'
+)
+select
+    distinct
+        SourceOfReferralForOutpatients,
+        NhsNumber,
+        least(
+            cast(DateFirstSeen as date),
+            cast(DateFirstSeenCancerSpecialist as date),
+            cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+            cast(StageDateFinalPretreatmentStage as date),
+            cast(StageDateIntegratedStage as date),
+            cast(TreatmentStartDateCancer as date),
+            cast(ProcedureDate as date)
+        ) as Date
+from LU o
+where o.SourceOfReferralForOutpatients is not null
+  and not (
+        DateFirstSeen is null and
+        DateFirstSeenCancerSpecialist is null and
+        DateOfPrimaryDiagnosisClinicallyAgreed is null and
+        StageDateFinalPretreatmentStage is null and
+        StageDateIntegratedStage is null and
+        TreatmentStartDateCancer is null and
+        ProcedureDate is null
+    )
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20CosdV9LungSourceOfReferralForOutpatients%20mapping){: .btn }
+### CosdV9LungSourceOfReferralForNonPrimaryCancerPathway
+* Value copied from `SourceOfReferralForNonPrimaryCancerPathway`
+
+* `SourceOfReferralForNonPrimaryCancerPathway` The SOURCE OF REFERRAL FOR NON PRIMARY CANCER PATHWAY records source of referral for the non-primary cancer pathway. [SOURCE OF REFERRAL FOR NON PRIMARY CANCER PATHWAY]()
+
+```sql
+with LU as (
+    select
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+        Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+        Record ->> '$.Treatment.TreatmentStartDateCancer' as TreatmentStartDateCancer,
+        Record ->> '$.Treatment.Surgery.ProcedureDate' as ProcedureDate,
+        Record ->> '$.NonPrimaryPathway.NonPrimaryCancerPathwayReferral.SourceOfReferralForNonPrimaryCancerPathway.@code' as SourceOfReferralForNonPrimaryCancerPathway,
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+    from omop_staging.cosd_staging_901
+    where type = 'LU'
+)
+select
+    distinct
+        SourceOfReferralForNonPrimaryCancerPathway,
+        NhsNumber,
+        least(
+            cast(DateFirstSeen as date),
+            cast(DateFirstSeenCancerSpecialist as date),
+            cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+            cast(StageDateFinalPretreatmentStage as date),
+            cast(StageDateIntegratedStage as date),
+            cast(TreatmentStartDateCancer as date),
+            cast(ProcedureDate as date)
+        ) as Date
+from LU o
+where o.SourceOfReferralForNonPrimaryCancerPathway is not null
+  and not (
+        DateFirstSeen is null and
+        DateFirstSeenCancerSpecialist is null and
+        DateOfPrimaryDiagnosisClinicallyAgreed is null and
+        StageDateFinalPretreatmentStage is null and
+        StageDateIntegratedStage is null and
+        TreatmentStartDateCancer is null and
+        ProcedureDate is null
+    )
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20CosdV9LungSourceOfReferralForNonPrimaryCancerPathway%20mapping){: .btn }
 ### CosdV9LungHistoryOfAlcoholPast
 * Value copied from `HistoryOfAlcoholPast`
 

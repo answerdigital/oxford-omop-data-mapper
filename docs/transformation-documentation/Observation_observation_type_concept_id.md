@@ -110,6 +110,30 @@ has_toc: false
 * Constant value set to `32828`. EHR episode record
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20Oxford%20Lab%20General%20Comment%20Observation%20mapping){: .btn }
+### CosdV9LungTobaccoSmokingStatus
+* Constant value set to `32828`. `EHR episode record`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20CosdV9LungTobaccoSmokingStatus%20mapping){: .btn }
+### CosdV9LungTobaccoSmokingCessation
+* Constant value set to `32828`. `EHR episode record`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20CosdV9LungTobaccoSmokingCessation%20mapping){: .btn }
+### CosdV9LungSourceOfReferralForOutpatients
+* Constant value set to `32828`. `EHR episode record`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20CosdV9LungSourceOfReferralForOutpatients%20mapping){: .btn }
+### CosdV9LungSourceOfReferralForNonPrimaryCancerPathway
+* Constant value set to `32828`. `EHR episode record`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20CosdV9LungSourceOfReferralForNonPrimaryCancerPathway%20mapping){: .btn }
+### CosdV9LungPerformanceStatusAdult
+* Constant value set to `32828`. `EHR episode record`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20CosdV9LungPerformanceStatusAdult%20mapping){: .btn }
+### CosdV9LungMenopausalStatus
+* Constant value set to `32828`. `EHR episode record`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20CosdV9LungMenopausalStatus%20mapping){: .btn }
 ### CosdV9LungHistoryOfAlcoholPast
 * Constant value set to `32828`. `EHR episode record`
 

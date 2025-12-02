@@ -146,6 +146,190 @@ Converts text to number.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20RTDS%20Number%20Of%20Fractions%20mapping){: .btn }
+### CosdV9LungTobaccoSmokingStatus
+Source column  `TobaccoSmokingStatus`.
+Converts text to number.
+
+* `TobaccoSmokingStatus` SMOKING STATUS (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify if the PATIENT smokes tobacco only. [SMOKING STATUS (CANCER)](https://www.datadictionary.nhs.uk/data_elements/smoking_status__cancer_.html)
+
+```sql
+with LU as (
+    select
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+        Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+        Record ->> '$.Treatment.TreatmentStartDateCancer' as TreatmentStartDateCancer,
+        Record ->> '$.Treatment.Surgery.ProcedureDate' as ProcedureDate,
+        Record ->> '$.ClinicalNurseSpecialistAndRiskFactorAssessments.TobaccoSmokingStatus.@code' as TobaccoSmokingStatus,
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+    from omop_staging.cosd_staging_901
+    where type = 'LU'
+)
+select
+    distinct
+        TobaccoSmokingStatus,
+        NhsNumber,
+        least(
+            cast(DateFirstSeen as date),
+            cast(DateFirstSeenCancerSpecialist as date),
+            cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+            cast(StageDateFinalPretreatmentStage as date),
+            cast(StageDateIntegratedStage as date),
+            cast(TreatmentStartDateCancer as date),
+            cast(ProcedureDate as date)
+        ) as Date
+from LU o
+where o.TobaccoSmokingStatus is not null
+  and not (
+        DateFirstSeen is null and
+        DateFirstSeenCancerSpecialist is null and
+        DateOfPrimaryDiagnosisClinicallyAgreed is null and
+        StageDateFinalPretreatmentStage is null and
+        StageDateIntegratedStage is null and
+        TreatmentStartDateCancer is null and
+        ProcedureDate is null
+    )
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9LungTobaccoSmokingStatus%20mapping){: .btn }
+### CosdV9LungTobaccoSmokingCessation
+Source column  `TobaccoSmokingCessation`.
+Converts text to number.
+
+* `TobaccoSmokingCessation` SMOKING CESSATION (CANCER) is for use in the Cancer Outcomes and Services Data Set: Core to identify the patient's current smoking cessation support during a Cancer Care Spell. [SMOKING CESSATION (CANCER)]()
+
+```sql
+with LU as (
+    select
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+        Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+        Record ->> '$.Treatment.TreatmentStartDateCancer' as TreatmentStartDateCancer,
+        Record ->> '$.Treatment.Surgery.ProcedureDate' as ProcedureDate,
+        Record ->> '$.ClinicalNurseSpecialistAndRiskFactorAssessments.TobaccoSmokingCessation.@code' as TobaccoSmokingCessation,
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+    from omop_staging.cosd_staging_901
+    where type = 'LU'
+)
+select
+    distinct
+        TobaccoSmokingCessation,
+        NhsNumber,
+        least(
+            cast(DateFirstSeen as date),
+            cast(DateFirstSeenCancerSpecialist as date),
+            cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+            cast(StageDateFinalPretreatmentStage as date),
+            cast(StageDateIntegratedStage as date),
+            cast(TreatmentStartDateCancer as date),
+            cast(ProcedureDate as date)
+        ) as Date
+from LU o
+where o.TobaccoSmokingCessation is not null
+  and not (
+        DateFirstSeen is null and
+        DateFirstSeenCancerSpecialist is null and
+        DateOfPrimaryDiagnosisClinicallyAgreed is null and
+        StageDateFinalPretreatmentStage is null and
+        StageDateIntegratedStage is null and
+        TreatmentStartDateCancer is null and
+        ProcedureDate is null
+    )
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9LungTobaccoSmokingCessation%20mapping){: .btn }
+### CosdV9LungPerformanceStatusAdult
+Source column  `PerformanceStatusAdult`.
+Converts text to number.
+
+* `PerformanceStatusAdult` The PERSON SCORE for the general physical performance status of an adult during a Cancer Care Spell. [PERFORMANCE STATUS (ADULT)](https://www.datadictionary.nhs.uk/data_elements/performance_status__adult_.html)
+
+```sql
+with LU as (
+    select
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+        Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+        Record ->> '$.Treatment.TreatmentStartDateCancer' as TreatmentStartDateCancer,
+        Record ->> '$.Treatment.Surgery.ProcedureDate' as ProcedureDate,
+        Record ->> '$.PrimaryPathway.Diagnosis.PerformanceStatusAdult.@code' as PerformanceStatusAdult,
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+    from omop_staging.cosd_staging_901
+    where type = 'LU'
+)
+select
+    distinct
+        PerformanceStatusAdult,
+        NhsNumber,
+        least(
+            cast(DateFirstSeen as date),
+            cast(DateFirstSeenCancerSpecialist as date),
+            cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+            cast(StageDateFinalPretreatmentStage as date),
+            cast(StageDateIntegratedStage as date),
+            cast(TreatmentStartDateCancer as date),
+            cast(ProcedureDate as date)
+        ) as Date
+from LU o
+where o.PerformanceStatusAdult is not null
+  and not (
+        DateFirstSeen is null and
+        DateFirstSeenCancerSpecialist is null and
+        DateOfPrimaryDiagnosisClinicallyAgreed is null and
+        StageDateFinalPretreatmentStage is null and
+        StageDateIntegratedStage is null and
+        TreatmentStartDateCancer is null and
+        ProcedureDate is null
+    )
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9LungPerformanceStatusAdult%20mapping){: .btn }
+### CosdV9LungMenopausalStatus
+Source column  `MenopausalStatus`.
+Converts text to number.
+
+* `MenopausalStatus` The PERSON indicator recording the menopausal status of a female patient during a Cancer Care Spell. [MENOPAUSAL STATUS]()
+
+```sql
+with LU as (
+    select
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.Treatment.TreatmentStartDateCancer' as TreatmentStartDateCancer,
+        Record ->> '$.Treatment.Surgery.ProcedureDate' as ProcedureDate,
+        Record ->> '$.ClinicalNurseSpecialistAndRiskFactorAssessments.MenopausalStatus.@code' as MenopausalStatus,
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+    from omop_staging.cosd_staging_901
+    where type = 'LU'
+)
+select
+    distinct
+        MenopausalStatus,
+        NhsNumber,
+        least(
+            cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+            cast(TreatmentStartDateCancer as date),
+            cast(ProcedureDate as date)
+        ) as Date
+from LU o
+where o.MenopausalStatus is not null
+  and not (
+        DateOfPrimaryDiagnosisClinicallyAgreed is null and
+        TreatmentStartDateCancer is null and
+        ProcedureDate is null
+    )
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9LungMenopausalStatus%20mapping){: .btn }
 ### CosdV9LungAdultComorbidityEvaluation
 Source column  `AdultComorbidityEvaluation`.
 Converts text to number.
