@@ -3,7 +3,7 @@
 namespace OmopTransformer.SUS.APC.Measurements.SusAPCMeasurement;
 
 [DataOrigin("SUS")]
-[Description("Sus APC  Measurement")]
+[Description("Sus APC Measurement")]
 [SourceQuery("SusAPCMeasurement.xml")]
 internal class SusAPCMeasurementRecord
 {
