@@ -61,6 +61,14 @@ using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementMcategoryFinal
 using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementMcategoryIntegratedStage;
 using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementNcategoryFinalPreTreatmentStage;
 using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementNcategoryIntegratedStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementNonPrimaryPathwayProgressionMetastasis;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementNonPrimaryPathwayRecurrenceMetastasis;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementPrimaryPathwayMetastasis;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementTcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementTcategoryIntegratedStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementTNMcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementTNMcategoryIntegratedStage;
+using OmopTransformer.COSD.Lung.Measurements.CosdV9LungMeasurementTumourLaterality;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AdultComorbidityEvaluation;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AdultPerformanceStatus;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV8AlcoholHistoryCancerBeforeLastThreeMonths;
@@ -83,6 +91,27 @@ using OmopTransformer.COSD.Colorectal.Observation.CosdV9SourceOfReferralForNonPr
 using OmopTransformer.COSD.Colorectal.Observation.CosdV9SourceOfReferralForOutpatients;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV9TobaccoSmokingCessation;
 using OmopTransformer.COSD.Colorectal.Observation.CosdV9TobaccoSmokingStatus;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungAdultComorbidityEvaluation;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungAdultPerformanceStatus;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungAlcoholHistoryCancerInLastThreeMonths;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungFamilialCancerSyndromeIndicator;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungSmokingStatusCode;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungSourceOfReferralOutPatients;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungAdultComorbidityEvaluation;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungAsaScore;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungFamilialCancerSyndrome;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungFamilialCancerSyndromeSubsidiaryComment;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungHistoryOfAlcoholCurrent;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungHistoryOfAlcoholPast;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungMenopausalStatus;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungPerformanceStatusAdult;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungSourceOfReferralForNonPrimaryCancerPathway;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungSourceOfReferralForOutpatients;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungTobaccoSmokingCessation;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungTobaccoSmokingStatus;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrencePrimaryProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrenceProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV9ProcedureOccurrencePrimaryProcedureOpcs;
@@ -406,6 +435,132 @@ internal class CosdTransformer : Transformer
             runId,
             cancellationToken);
 
+        await Transform<CosdV8LungAdultComorbidityEvaluationRecord, CosdV8LungAdultComorbidityEvaluation>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungAdultComorbidityEvaluation",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungAdultPerformanceStatusRecord, CosdV8LungAdultPerformanceStatus>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungAdultPerformanceStatus",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonthsRecord, CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungAlcoholHistoryCancerInLastThreeMonthsRecord, CosdV8LungAlcoholHistoryCancerInLastThreeMonths>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungAlcoholHistoryCancerInLastThreeMonths",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungFamilialCancerSyndromeIndicatorRecord, CosdV8LungFamilialCancerSyndromeIndicator>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungFamilialCancerSyndromeIndicator",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosisRecord, CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungSmokingStatusCodeRecord, CosdV8LungSmokingStatusCode>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungSmokingStatusCode",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathwayRecord, CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungSourceOfReferralOutPatientsRecord, CosdV8LungSourceOfReferralOutPatients>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV8LungSourceOfReferralOutPatients",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungAdultComorbidityEvaluationRecord, CosdV9LungAdultComorbidityEvaluation>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungAdultComorbidityEvaluation",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungAsaScoreRecord, CosdV9LungAsaScore>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungAsaScore",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungFamilialCancerSyndromeRecord, CosdV9LungFamilialCancerSyndrome>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungFamilialCancerSyndrome",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungFamilialCancerSyndromeSubsidiaryCommentRecord, CosdV9LungFamilialCancerSyndromeSubsidiaryComment>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungFamilialCancerSyndromeSubsidiaryComment",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungHistoryOfAlcoholCurrentRecord, CosdV9LungHistoryOfAlcoholCurrent>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungHistoryOfAlcoholCurrent",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungHistoryOfAlcoholPastRecord, CosdV9LungHistoryOfAlcoholPast>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungHistoryOfAlcoholPast",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMenopausalStatusRecord, CosdV9LungMenopausalStatus>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungMenopausalStatus",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungPerformanceStatusAdultRecord, CosdV9LungPerformanceStatusAdult>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungPerformanceStatusAdult",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungSourceOfReferralForNonPrimaryCancerPathwayRecord, CosdV9LungSourceOfReferralForNonPrimaryCancerPathway>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungSourceOfReferralForNonPrimaryCancerPathway",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungSourceOfReferralForOutpatientsRecord, CosdV9LungSourceOfReferralForOutpatients>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungSourceOfReferralForOutpatients",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungTobaccoSmokingCessationRecord, CosdV9LungTobaccoSmokingCessation>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungTobaccoSmokingCessation",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungTobaccoSmokingStatusRecord, CosdV9LungTobaccoSmokingStatus>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd CosdV9LungTobaccoSmokingStatus",
+            runId,
+            cancellationToken);
+
         await Transform<CosdV9AdultComorbidityEvaluationRecord, CosdV9AdultComorbidityEvaluation>(
             _observationRecorder.InsertUpdateObservations,
             "Cosd CosdV9AdultComorbidityEvaluation",
@@ -709,6 +864,54 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV9LungMeasurementNcategoryIntegratedStageRecord, CosdV9LungMeasurementNcategoryIntegratedStage>(
             _measurementRecorder.InsertUpdateMeasurements,
             "CosdV9LungMeasurementNcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementNonPrimaryPathwayProgressionMetastasisRecord, CosdV9LungMeasurementNonPrimaryPathwayProgressionMetastasis>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementNonPrimaryPathwayProgressionMetastasis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementNonPrimaryPathwayRecurrenceMetastasisRecord, CosdV9LungMeasurementNonPrimaryPathwayRecurrenceMetastasis>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementNonPrimaryPathwayRecurrenceMetastasis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementPrimaryPathwayMetastasisRecord, CosdV9LungMeasurementPrimaryPathwayMetastasis>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementPrimaryPathwayMetastasis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementTcategoryFinalPreTreatmentStageRecord, CosdV9LungMeasurementTcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementTcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementTcategoryIntegratedStageRecord, CosdV9LungMeasurementTcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementTcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementTNMcategoryFinalPreTreatmentStageRecord, CosdV9LungMeasurementTNMcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementTNMcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementTNMcategoryIntegratedStageRecord, CosdV9LungMeasurementTNMcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementTNMcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungMeasurementTumourLateralityRecord, CosdV9LungMeasurementTumourLaterality>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9LungMeasurementTumourLaterality",
             runId,
             cancellationToken);
     }

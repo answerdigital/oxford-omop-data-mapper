@@ -276,6 +276,216 @@ has_toc: false
 <a href="OxfordLabGeneralComment.svg" target="_blank"><img src="OxfordLabGeneralComment.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordLabGeneralComment%20mapping){: .btn }
+## CosdV9LungTobaccoSmokingStatus
+<a href="CosdV9LungTobaccoSmokingStatus.svg" target="_blank"><img src="CosdV9LungTobaccoSmokingStatus.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungTobaccoSmokingStatus%20mapping){: .btn }
+## CosdV9LungTobaccoSmokingCessation
+<a href="CosdV9LungTobaccoSmokingCessation.svg" target="_blank"><img src="CosdV9LungTobaccoSmokingCessation.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungTobaccoSmokingCessation%20mapping){: .btn }
+## CosdV9LungSourceOfReferralForOutpatients
+<a href="CosdV9LungSourceOfReferralForOutpatients.svg" target="_blank"><img src="CosdV9LungSourceOfReferralForOutpatients.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungSourceOfReferralForOutpatients%20mapping){: .btn }
+## CosdV9LungSourceOfReferralForNonPrimaryCancerPathway
+<a href="CosdV9LungSourceOfReferralForNonPrimaryCancerPathway.svg" target="_blank"><img src="CosdV9LungSourceOfReferralForNonPrimaryCancerPathway.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungSourceOfReferralForNonPrimaryCancerPathway%20mapping){: .btn }
+## CosdV9LungPerformanceStatusAdult
+<a href="CosdV9LungPerformanceStatusAdult.svg" target="_blank"><img src="CosdV9LungPerformanceStatusAdult.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungPerformanceStatusAdult%20mapping){: .btn }
+## CosdV9LungMenopausalStatus
+<a href="CosdV9LungMenopausalStatus.svg" target="_blank"><img src="CosdV9LungMenopausalStatus.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungMenopausalStatus%20mapping){: .btn }
+## CosdV9LungHistoryOfAlcoholPast
+<a href="CosdV9LungHistoryOfAlcoholPast.svg" target="_blank"><img src="CosdV9LungHistoryOfAlcoholPast.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungHistoryOfAlcoholPast%20mapping){: .btn }
+## CosdV9LungHistoryOfAlcoholCurrent
+<a href="CosdV9LungHistoryOfAlcoholCurrent.svg" target="_blank"><img src="CosdV9LungHistoryOfAlcoholCurrent.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungHistoryOfAlcoholCurrent%20mapping){: .btn }
+## CosdV9LungFamilialCancerSyndrome
+<a href="CosdV9LungFamilialCancerSyndrome.svg" target="_blank"><img src="CosdV9LungFamilialCancerSyndrome.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungFamilialCancerSyndrome%20mapping){: .btn }
+## CosdV9LungFamilialCancerSyndromeSubsidiaryComment
+<a href="CosdV9LungFamilialCancerSyndromeSubsidiaryComment.svg" target="_blank"><img src="CosdV9LungFamilialCancerSyndromeSubsidiaryComment.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungFamilialCancerSyndromeSubsidiaryComment%20mapping){: .btn }
+## CosdV9LungAsaScore
+<a href="CosdV9LungAsaScore.svg" target="_blank"><img src="CosdV9LungAsaScore.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungAsaScore%20mapping){: .btn }
+## CosdV9LungAdultComorbidityEvaluation
+<a href="CosdV9LungAdultComorbidityEvaluation.svg" target="_blank"><img src="CosdV9LungAdultComorbidityEvaluation.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungAdultComorbidityEvaluation%20mapping){: .btn }
+## CosdV8LungSourceOfReferralOutPatients
+<a href="CosdV8LungSourceOfReferralOutPatients.svg" target="_blank"><img src="CosdV8LungSourceOfReferralOutPatients.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungSourceOfReferralOutPatients%20mapping){: .btn }
+## CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway
+<a href="CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway.svg" target="_blank"><img src="CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway%20mapping){: .btn }
+## CosdV8LungSmokingStatusCode
+<a href="CosdV8LungSmokingStatusCode.svg" target="_blank"><img src="CosdV8LungSmokingStatusCode.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungSmokingStatusCode%20mapping){: .btn }
+## CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis
+<a href="CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis.svg" target="_blank"><img src="CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis%20mapping){: .btn }
+## CosdV8LungFamilialCancerSyndromeIndicator
+<a href="CosdV8LungFamilialCancerSyndromeIndicator.svg" target="_blank"><img src="CosdV8LungFamilialCancerSyndromeIndicator.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungFamilialCancerSyndromeIndicator%20mapping){: .btn }
+## CosdV8LungAlcoholHistoryCancerInLastThreeMonths
+<a href="CosdV8LungAlcoholHistoryCancerInLastThreeMonths.svg" target="_blank"><img src="CosdV8LungAlcoholHistoryCancerInLastThreeMonths.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungAlcoholHistoryCancerInLastThreeMonths%20mapping){: .btn }
+## CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths
+<a href="CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths.svg" target="_blank"><img src="CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths%20mapping){: .btn }
+## CosdV8LungAdultPerformanceStatus
+<a href="CosdV8LungAdultPerformanceStatus.svg" target="_blank"><img src="CosdV8LungAdultPerformanceStatus.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungAdultPerformanceStatus%20mapping){: .btn }
+## CosdV8LungAdultComorbidityEvaluation
+<a href="CosdV8LungAdultComorbidityEvaluation.svg" target="_blank"><img src="CosdV8LungAdultComorbidityEvaluation.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungAdultComorbidityEvaluation%20mapping){: .btn }
 ## CosdV9TobaccoSmokingStatus
 <a href="CosdV9TobaccoSmokingStatus.svg" target="_blank"><img src="CosdV9TobaccoSmokingStatus.svg" /></a>
 

@@ -38,7 +38,7 @@ where o.SourceOfReferralOutPatients is not null
 		CancerTreatmentStartDate is null and
 		ProcedureDate is null
     )
--- tested
+
     </Sql>
     <Explanations>
       <Explanation columnName="NHSNumber">
