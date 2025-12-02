@@ -92,48 +92,105 @@ internal class StandardConceptResolver
             _devicesByConceptId ??= GetDevices();
         }
     }
-
-    public int[] GetConcepts(int conceptId, string? domain)
+    
+    private static int? ResolveConcept(Row row, string domain)
     {
         const int unknownConceptId = 0;
 
-        EnsureMapping();
-        bool foundMapping = false;
-
-        if (_mappings!.TryGetValue(conceptId, out var value))
+        // Standard or non standard with relationship with standard concept in concept correct domain
+        if (row.target_domain_id == domain && row.target_concept_id.HasValue)
         {
-            foundMapping = true;
+            return row.target_concept_id;
+        }
 
-            var results =
-                value
-                    .Where(row => domain == null || row.domain_id!.Equals(domain, StringComparison.OrdinalIgnoreCase))
-                    .Select(row => row.target_concept_id)
-                    .ToArray();
 
-            if (domain != null)
+        //Non standard or Standard concept in wrong domain
+
+        if (row.target_domain_id != domain && row.target_concept_id.HasValue)
+        {
+            return null;
+        }
+
+        //Non standard concept in wrong domain with no relationship to standard 
+
+        if (row.mapped_from_standard == 0 && row.source_domain_id != domain && row.target_concept_id.HasValue == false)
+        {
+            return null;
+        }
+
+        // Non standard concept in correct domain with no relationship to standard
+        if (row.mapped_from_standard == 0 && row.source_domain_id == domain && row.target_concept_id.HasValue == false)
+        {
+            return unknownConceptId;
+        }
+
+        return null;
+    }
+
+    public int[] GetConcepts(int conceptId, string? domain)
+    {
+        EnsureMapping();
+
+        const int unknownConceptId = 0;
+
+        var unknownConcept = new int[] { unknownConceptId };
+
+        //| Domain Constraint | Input | Source Concept Id | Concept Id |
+        //| -------------------| -------| ------------------| ------------|
+        //| No | Unknown concept | 0 | 0 |
+        //| No | Standard concept | 456 | 456 |
+        //| No | Non standard concept with no relationship to standard | 123 | 0 |
+        //| No | Non standard concept with relationship to standard | 123 | 456 |
+        //| Yes | Unknown concept | 0 | 0 |
+        //| Yes | Standard concept correct domain | 456 | 456 |
+        //| Yes | Non standard concept with relationship to standard in correct domain | 123 | 456 |
+        //| Yes | Non standard concept in correct domain with no relationship to standard | 123 | 0 |
+        //| Yes | Standard concept wrong domain | null | null |
+        //| Yes | Non standard concept in wrong domain with no relationship to standard | null | null |
+        //| Yes | Non standard concept with relationship to standard in wrong domain | null | null
+
+
+        if (domain == null)
+        {
+            if (_mappings!.TryGetValue(conceptId, out var value))
             {
-                _domainMappingResults ??= new DomainMapResults(domain);
-
-                foreach (var row in value)
+                if (value.Any(row => row.target_concept_id.HasValue == false))
                 {
-                    _domainMappingResults.Record(row.domain_id!);
+                    // Non standard concept with no relationship to standard
+
+                    return unknownConcept;
+                }
+
+                // Standard concept or Non standard concept with relationship to standard
+                return
+                    value
+                        .Select(row => row.target_concept_id!.Value)
+                        .ToArray();
+            }
+
+            // Unknown concept
+            return unknownConcept;
+        }
+        else
+        {
+            if (_mappings!.TryGetValue(conceptId, out var value))
+            {
+
+                var resolvedConcepts =
+                    value
+                        .Select(row => ResolveConcept(row, domain))
+                        .Where(result => result.HasValue)
+                        .Select(result => result!.Value)
+                        .ToArray();
+
+                if (resolvedConcepts.Length > 0)
+                {
+                    return resolvedConcepts;
                 }
             }
 
-            if (results.Length > 0)
-                return results;
+            return unknownConcept;
         }
-
-        // if no domain specified, return unknown concept
-        // if domain specified, and mapping not found, return unknown concept
-        // if domain specified, and mapping found but it is in the wrong domain, return empty 
-
-        if (domain == null || foundMapping == false)
-        {
-            return new int[] { unknownConceptId };
-        }
-
-        return new int[] { };
     }
 
     public IReadOnlyCollection<int> GetConceptDevices(int conceptId)
@@ -157,8 +214,10 @@ internal class StandardConceptResolver
     private class Row
     {
         public int source_concept_id { get; init; }
-        public int target_concept_id { get; init; }
-        public string? domain_id { get; init; }
+        public int? target_concept_id { get; init; }
+
+        public string? source_domain_id { get; init; }
+        public string? target_domain_id { get; init; }
         public byte mapped_from_standard { get; init; }
     }
 
