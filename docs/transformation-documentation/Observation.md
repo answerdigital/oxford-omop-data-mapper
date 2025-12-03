@@ -328,6 +328,16 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungSourceOfReferralForNonPrimaryCancerPathway%20mapping){: .btn }
+## CosdV9LungRelapseMethodOfDetection
+<a href="CosdV9LungRelapseMethodOfDetection.svg" target="_blank"><img src="CosdV9LungRelapseMethodOfDetection.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungRelapseMethodOfDetection%20mapping){: .btn }
 ## CosdV9LungPerformanceStatusAdult
 <a href="CosdV9LungPerformanceStatusAdult.svg" target="_blank"><img src="CosdV9LungPerformanceStatusAdult.svg" /></a>
 
@@ -448,6 +458,16 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungSmokingStatusCode%20mapping){: .btn }
+## CosdV8LungRelapseMethodOfDetection
+<a href="CosdV8LungRelapseMethodOfDetection.svg" target="_blank"><img src="CosdV8LungRelapseMethodOfDetection.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungRelapseMethodOfDetection%20mapping){: .btn }
 ## CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis
 <a href="CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis.svg" target="_blank"><img src="CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis.svg" /></a>
 

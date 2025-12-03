@@ -23,6 +23,7 @@ Notes
 * [OMOP Open approach](https://athena.ohdsi.org/search-terms/terms/4044378)
 * [OMOP Laparoscopic/Thoracoscopic](https://athena.ohdsi.org/search-terms/terms/44808608)
 * [OMOP Robotic surgery](https://athena.ohdsi.org/search-terms/terms/44790026)
+* [SURGICAL ACCESS TYPE](https://www.datadictionary.nhs.uk/data_elements/surgical_access_type.html)
 
 * `SurgicalAccessType` A code representing the surgical access type used during a procedure. [SURGICAL ACCESS TYPE](https://www.datadictionary.nhs.uk/data_elements/surgical_access_type.html)
 
@@ -86,6 +87,7 @@ Notes
 * [OMOP Open approach](https://athena.ohdsi.org/search-terms/terms/4044378)
 * [OMOP Laparoscopic/Thoracoscopic](https://athena.ohdsi.org/search-terms/terms/44808608)
 * [OMOP Robotic surgery](https://athena.ohdsi.org/search-terms/terms/44790026)
+* [SURGICAL ACCESS TYPE](https://www.datadictionary.nhs.uk/data_elements/surgical_access_type.html)
 
 * `SurgicalAccessType` A code representing the surgical access type used during a procedure. [SURGICAL ACCESS TYPE](https://www.datadictionary.nhs.uk/data_elements/surgical_access_type.html)
 
