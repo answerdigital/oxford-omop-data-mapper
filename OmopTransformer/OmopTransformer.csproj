@@ -77,6 +77,12 @@
     <None Update="COSD\Lung\ProcedureOccurrence\CosdV9LungProcedureOccurrenceProcedureOpcs\CosdV9LungProcedureOccurrenceProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Lung\ProcedureOccurrence\CosdV8LungProcedureOccurrenceRelapseMethodOfDetection\CosdV8LungProcedureOccurrenceRelapseMethodOfDetection.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\ProcedureOccurrence\CosdV9LungProcedureOccurrenceRelapseMethodOfDetection\CosdV9LungProcedureOccurrenceRelapseMethodOfDetection.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementGradeOfDifferentiation\CosdV8LungMeasurementGradeOfDifferentiation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -384,12 +390,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="COSD\Lung\Observation\CosdV9LungSurgicalAccessType\CosdV9LungSurgicalAccessType.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="COSD\Lung\Observation\CosdV8LungRelapseMethodOfDetection\CosdV8LungRelapseMethodOfDetection.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="COSD\Lung\Observation\CosdV9LungRelapseMethodOfDetection\CosdV9LungRelapseMethodOfDetection.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="COSD\Colorectal\ProcedureOccurrence\CosdV8ProcedureOccurrenceProcedureOpcs\CosdV8ProcedureOccurrenceProcedureOpcs.xml">

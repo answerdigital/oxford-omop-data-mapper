@@ -49,7 +49,7 @@ where o.RelapseMethodDetectionType is not null
 		   <Origin>RELAPSE - METHOD OF DETECTION</Origin>
 		</Explanation>
       <Explanation columnName="Date" >
-    	  <Description>Observation date</Description>
+    	  <Description>Procedure date</Description>
     	  <Origin>DATE FIRST SEEN</Origin>
     	  <Origin>DATE FIRST SEEN (CANCER SPECIALIST)</Origin>
     	  <Origin>DIAGNOSIS DATE</Origin>

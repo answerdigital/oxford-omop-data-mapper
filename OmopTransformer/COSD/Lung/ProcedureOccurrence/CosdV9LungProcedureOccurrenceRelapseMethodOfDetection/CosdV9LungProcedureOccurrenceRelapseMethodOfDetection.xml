@@ -1,0 +1,34 @@
+<Query>
+    <Sql>
+with LU as (
+    select 
+        Record ->> '$.CancerRecurrenceCareRelatedTransaction[*].DateCancerRecurrenceOrProgressionDetected' as DateCancerRecurrenceOrProgressionDetected,
+        Record ->> '$.CancerRecurrenceCareRelatedTransaction[*].RelapseMethodOfDetection.@code' as RelapseMethodOfDetection,
+        Record ->> '$.NhsNumber.@extension' as NhsNumber
+    from omop_staging.cosd_staging_901
+    where Type = 'LU'
+)
+select
+      distinct
+          unnest(RelapseMethodOfDetection, recursive := true) as RelapseMethodOfDetection,
+          NhsNumber,
+          cast (unnest(DateCancerRecurrenceOrProgressionDetected, recursive := true) as date) as Date
+from LU o
+where o.RelapseMethodOfDetection is not null
+  and o.DateCancerRecurrenceOrProgressionDetected is not null
+    </Sql>
+    <Explanations>
+      <Explanation columnName="NhsNumber">
+    	  <Description>Patient NHS Number</Description>
+    	  <Origin>NHS NUMBER</Origin>
+      </Explanation>
+		 <Explanation columnName="RelapseMethodOfDetection">
+		   <Description>A code representing the method used to detect a relapse or recurrence.</Description>
+		   <Origin>RELAPSE - METHOD OF DETECTION</Origin>
+		</Explanation>
+      <Explanation columnName="Date" >
+    	  <Description>Procedure date</Description>
+    	  <Origin>CANCER RECURRENCE OR PROGRESSION - DATE DETECTED</Origin>
+      </Explanation>
+    </Explanations>
+</Query>
