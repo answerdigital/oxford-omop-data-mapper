@@ -36,6 +36,49 @@ Source column  `procedure_source_concept_id`.
 Maps concepts to standard valid concepts in the `procedure` domain.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20Oxford%20Procedure%20Occurrence%20mapping){: .btn }
+### CosdV9LungProcedureOccurrenceRelapseMethodOfDetection
+Source column  `RelapseMethodOfDetection`.
+Lookup RelapseMethodOfDetection concepts for lung cancer recurrence.
+
+
+|RelapseMethodOfDetection|procedure_concept_id|notes|
+|------|-----|-----|
+|1|4303062|Morphology|
+|2|4276031|Flow|
+|3|4233623|Molecular|
+|4|4240345|Clinical Examination|
+|9|0|Other (not listed)|
+
+Notes
+* [OMOP Morphology](https://athena.ohdsi.org/search-terms/terms/4303062)
+* [OMOP Flow](https://athena.ohdsi.org/search-terms/terms/4276031)
+* [OMOP Molecular](https://athena.ohdsi.org/search-terms/terms/4233623)
+* [OMOP Clinical Examination](https://athena.ohdsi.org/search-terms/terms/4240345)
+* [RELAPSE - METHOD OF DETECTION](https://www.datadictionary.nhs.uk/data_elements/relapse_-_method_of_detection.html)
+
+* `RelapseMethodOfDetection` A code representing the method used to detect a relapse or recurrence. [RELAPSE - METHOD OF DETECTION]()
+
+```sql
+with LU as (
+    select 
+        Record ->> '$.CancerRecurrenceCareRelatedTransaction[*].DateCancerRecurrenceOrProgressionDetected' as DateCancerRecurrenceOrProgressionDetected,
+        Record ->> '$.CancerRecurrenceCareRelatedTransaction[*].RelapseMethodOfDetection.@code' as RelapseMethodOfDetection,
+        Record ->> '$.NhsNumber.@extension' as NhsNumber
+    from omop_staging.cosd_staging_901
+    where Type = 'LU'
+)
+select
+      distinct
+          unnest(RelapseMethodOfDetection, recursive := true) as RelapseMethodOfDetection,
+          NhsNumber,
+          cast (unnest(DateCancerRecurrenceOrProgressionDetected, recursive := true) as date) as Date
+from LU o
+where o.RelapseMethodOfDetection is not null
+  and o.DateCancerRecurrenceOrProgressionDetected is not null
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20CosdV9LungProcedureOccurrenceRelapseMethodOfDetection%20mapping){: .btn }
 ### Cosd V9 Lung Procedure Occurrence Procedure Opcs
 Source column  `procedure_source_concept_id`.
 Maps concepts to standard valid concepts in the `procedure` domain.
@@ -46,6 +89,71 @@ Source column  `procedure_source_concept_id`.
 Maps concepts to standard valid concepts in the `procedure` domain.
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20Cosd%20V9%20Lung%20Procedure%20Occurrence%20Primary%20Procedure%20Opcs%20mapping){: .btn }
+### CosdV8LungProcedureOccurrenceRelapseMethodOfDetection
+Source column  `RelapseMethodDetectionType`.
+Lookup RelapseMethodOfDetection concepts for lung cancer recurrence.
+
+
+|RelapseMethodDetectionType|procedure_concept_id|notes|
+|------|-----|-----|
+|1|4303062|Morphology|
+|2|4276031|Flow|
+|3|4233623|Molecular|
+|4|4240345|Clinical Examination|
+|9|0|Other (not listed)|
+
+Notes
+* [OMOP Morphology](https://athena.ohdsi.org/search-terms/terms/4303062)
+* [OMOP Flow](https://athena.ohdsi.org/search-terms/terms/4276031)
+* [OMOP Molecular](https://athena.ohdsi.org/search-terms/terms/4233623)
+* [OMOP Clinical Examination](https://athena.ohdsi.org/search-terms/terms/4240345)
+* [RELAPSE - METHOD OF DETECTION](https://www.datadictionary.nhs.uk/data_elements/relapse_-_method_of_detection.html)
+
+* `RelapseMethodDetectionType` A code representing the method used to detect a relapse or recurrence. [RELAPSE - METHOD OF DETECTION]()
+
+```sql
+with LU as (
+    select 
+        Record ->> '$.Lung.LungCore.LungCoreReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+        Record ->> '$.Lung.LungCore.LungCoreReferralAndFirstStageOfPatientPathway.SpecialistDateFirstSeen' as SpecialistDateFirstSeen,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.IntegratedStageTNMStageGroupingDate' as IntegratedStageTNMStageGroupingDate,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as FinalPreTreatmentTNMStageGroupingDate,
+        unnest ([[Record ->> '$.Lung.LungCore.LungCoreTreatment.CancerTreatmentStartDate'], Record ->> '$.Lung.LungCore.LungCoreTreatment[*].CancerTreatmentStartDate'], recursive := true) as CancerTreatmentStartDate,
+        Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+        Record ->> '$.Lung.LungCore.LungCoreNonPrimaryCancerPathwayALLAMLAndMPAL.RelapseMethodDetectionType.@code' as RelapseMethodDetectionType,
+        Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber
+    from omop_staging.cosd_staging_81
+    where Type = 'LU'
+)
+select
+      distinct
+          RelapseMethodDetectionType,
+          NhsNumber,
+          least(
+                cast (DateFirstSeen as date),
+                cast (SpecialistDateFirstSeen as date),
+                cast (ClinicalDateCancerDiagnosis as date),
+                cast (IntegratedStageTNMStageGroupingDate as date),
+                cast (FinalPreTreatmentTNMStageGroupingDate as date),
+                cast (CancerTreatmentStartDate as date),
+                cast (ProcedureDate as date)
+              ) as Date
+from LU o
+where o.RelapseMethodDetectionType is not null
+  and not (
+    DateFirstSeen is null and
+    SpecialistDateFirstSeen is null and
+    ClinicalDateCancerDiagnosis is null and
+    IntegratedStageTNMStageGroupingDate is null and
+    FinalPreTreatmentTNMStageGroupingDate is null and
+    CancerTreatmentStartDate is null and
+    ProcedureDate is null
+    )
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_concept_id%20field%20CosdV8LungProcedureOccurrenceRelapseMethodOfDetection%20mapping){: .btn }
 ### Cosd V8 Lung Procedure Occurrence Procedure Opcs
 Source column  `procedure_source_concept_id`.
 Maps concepts to standard valid concepts in the `procedure` domain.

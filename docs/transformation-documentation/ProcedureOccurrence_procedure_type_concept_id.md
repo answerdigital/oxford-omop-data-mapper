@@ -30,6 +30,10 @@ has_toc: false
 * Constant value set to `32818`. `EHR Administration record`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_type_concept_id%20field%20Oxford%20Procedure%20Occurrence%20mapping){: .btn }
+### CosdV9LungProcedureOccurrenceRelapseMethodOfDetection
+* Constant value set to `32828`. `EHR episode record`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_type_concept_id%20field%20CosdV9LungProcedureOccurrenceRelapseMethodOfDetection%20mapping){: .btn }
 ### Cosd V9 Lung Procedure Occurrence Procedure Opcs
 * Constant value set to `32828`. `EHR episode record`
 
@@ -38,6 +42,10 @@ has_toc: false
 * Constant value set to `32828`. `EHR episode record`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_type_concept_id%20field%20Cosd%20V9%20Lung%20Procedure%20Occurrence%20Primary%20Procedure%20Opcs%20mapping){: .btn }
+### CosdV8LungProcedureOccurrenceRelapseMethodOfDetection
+* Constant value set to `32828`. `EHR episode record`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20ProcedureOccurrence%20table%20procedure_type_concept_id%20field%20CosdV8LungProcedureOccurrenceRelapseMethodOfDetection%20mapping){: .btn }
 ### Cosd V8 Lung Procedure Occurrence Procedure Opcs
 * Constant value set to `32828`. `EHR episode record`
 

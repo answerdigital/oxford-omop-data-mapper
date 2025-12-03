@@ -131,10 +131,6 @@ Converts concepts to standard concepts.
 * Constant value set to `4258129`. Referral by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9LungSourceOfReferralForNonPrimaryCancerPathway%20mapping){: .btn }
-### CosdV9LungRelapseMethodOfDetection
-* Constant value set to `4049924`. Method of detection
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9LungRelapseMethodOfDetection%20mapping){: .btn }
 ### CosdV9LungPerformanceStatusAdult
 * Constant value set to `4309681`. General physical performance status
 
@@ -183,10 +179,6 @@ Converts concepts to standard concepts.
 * Constant value set to `43054909`. Tobacco smoking status
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8LungSmokingStatusCode%20mapping){: .btn }
-### CosdV8LungRelapseMethodOfDetection
-* Constant value set to `4049924`. Method of detection
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8LungRelapseMethodOfDetection%20mapping){: .btn }
 ### CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis
 * Constant value set to `4036080`. Orientation of sexual relationship
 
