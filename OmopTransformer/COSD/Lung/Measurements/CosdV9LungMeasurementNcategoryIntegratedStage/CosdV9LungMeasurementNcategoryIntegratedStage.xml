@@ -1,0 +1,30 @@
+<Query>
+    <Sql>
+select 
+  distinct
+    Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+    coalesce(
+        Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage',
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed'
+    ) as MeasurementDate,
+    Record ->> '$.PrimaryPathway.Staging.NCategoryIntegratedStage' as NCategoryIntegratedStage
+from omop_staging.cosd_staging_901
+where type = 'LU'
+  and NCategoryIntegratedStage is not null
+  and NhsNumber is not null
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NhsNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="MeasurementDate">
+			<Description>The date of the staging measurement, using the stage date if available, otherwise the diagnosis date.</Description>
+			<Origin>STAGE DATE FINAL PRETREATMENT STAGE / DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+		</Explanation>
+		<Explanation columnName="NCategoryIntegratedStage">
+			<Description>The N category (regional lymph nodes) assigned to the tumour for the integrated stage.</Description>
+			<Origin>N CATEGORY INTEGRATED STAGE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

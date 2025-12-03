@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -19,8 +19,8 @@
     <PackageReference Include="CsvHelper" Version="33.1.0" />
     <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="DuckDB.NET.Data.Full" Version="1.4.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.10" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 </ItemGroup>
 
@@ -29,202 +29,367 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\ConditionOccurrence\CosdConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdV9ConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
+    <None Update="COSD\Colorectal\ConditionOccurrence\CosdConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdV9ConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\ConditionOccurrence\CosdConditionOccurrencePrimaryDiagnosis\CosdV9ConditionOccurrencePrimaryDiagnosis.xml">
+    <None Update="COSD\Colorectal\ConditionOccurrence\CosdConditionOccurrencePrimaryDiagnosis\CosdV9ConditionOccurrencePrimaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\ConditionOccurrence\CosdConditionOccurrenceProgression\CosdV9ConditionOccurrenceProgression.xml">
+    <None Update="COSD\Colorectal\ConditionOccurrence\CosdConditionOccurrenceProgression\CosdV9ConditionOccurrenceProgression.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\ConditionOccurrence\CosdConditionOccurrenceSecondaryDiagnosis\CosdV9ConditionOccurrenceSecondaryDiagnosis.xml">
+    <None Update="COSD\Colorectal\ConditionOccurrence\CosdConditionOccurrenceSecondaryDiagnosis\CosdV9ConditionOccurrenceSecondaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\ConditionOccurrence\CosdConditionOccurrenceRecurrence\CosdV9ConditionOccurrenceRecurrence.xml">
+    <None Update="COSD\Colorectal\ConditionOccurrence\CosdConditionOccurrenceRecurrence\CosdV9ConditionOccurrenceRecurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\ConditionOccurrence\CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
+    <None Update="COSD\Colorectal\ConditionOccurrence\CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\ConditionOccurrence\CosdV8ConditionOccurrencePrimaryDiagnosis\CosdV8ConditionOccurrencePrimaryDiagnosis.xml">
+    <None Update="COSD\Colorectal\ConditionOccurrence\CosdV8ConditionOccurrencePrimaryDiagnosis\CosdV8ConditionOccurrencePrimaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Death\v8Death\CosdV8Death.xml">
+    <None Update="COSD\Lung\ConditionOccurrence\CosdV8LungConditionOccurrencePrimaryDiagnosis\CosdV8LungConditionOccurrencePrimaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Death\v9DeathBasisOfDiagnosisCancer\CosdV9BasisOfDiagnosisCancer.xml">
+    <None Update="COSD\Lung\ConditionOccurrence\CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Death\v9DeathDischargeDestination\CosdV9DeathDischargeDestination.xml">
+    <None Update="COSD\Lung\ConditionOccurrence\CosdV8LungConditionOccurrenceProgression\CosdV8LungConditionOccurrenceProgression.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\DemographicsV8\OmopDemographicsV8.xml">
+    <None Update="COSD\Lung\ConditionOccurrence\CosdV9LungConditionOccurrenceProgression\CosdV9LungConditionOccurrenceProgression.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\DemographicsV9\OmopDemographicsV9.xml">
+    <None Update="COSD\Lung\ConditionOccurrence\CosdV9LungConditionOccurrenceRecurrence\CosdV9LungConditionOccurrenceRecurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementGradeOfDifferentiation\CosdV8MeasurementGradeOfDifferentiation.xml">
+    <None Update="COSD\Lung\ProcedureOccurrence\CosdV8LungProcedureOccurrencePrimaryProcedureOpcs\CosdV8LungProcedureOccurrencePrimaryProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementMcategoryFinalPreTreatmentStage\CosdV8MeasurementMcategoryFinalPreTreatmentStage.xml">
+    <None Update="COSD\Lung\ProcedureOccurrence\CosdV8LungProcedureOccurrenceProcedureOpcs\CosdV8LungProcedureOccurrenceProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementMcategoryIntegratedStage\CosdV8MeasurementMcategoryIntegratedStage.xml">
+    <None Update="COSD\Lung\ProcedureOccurrence\CosdV9LungProcedureOccurrencePrimaryProcedureOpcs\CosdV9LungProcedureOccurrencePrimaryProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementNcategoryFinalPreTreatmentStage\CosdV8MeasurementNcategoryFinalPreTreatmentStage.xml">
+    <None Update="COSD\Lung\ProcedureOccurrence\CosdV9LungProcedureOccurrenceProcedureOpcs\CosdV9LungProcedureOccurrenceProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementNcategoryIntegratedStage\CosdV8MeasurementNcategoryIntegratedStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementGradeOfDifferentiation\CosdV8LungMeasurementGradeOfDifferentiation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementNonPrimaryPathwayMetastasis\CosdV8MeasurementNonPrimaryPathwayMetastasis.xml">
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementMcategoryFinalPreTreatmentStage\CosdV8LungMeasurementMcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementPrimaryPathwayMetastasis\CosdV8MeasurementPrimaryPathwayMetastasis.xml">
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementMcategoryIntegratedStage\CosdV8LungMeasurementMcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementSynchronousTumourIndicator\CosdV8MeasurementSynchronousTumourIndicator.xml">
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementNcategoryFinalPreTreatmentStage\CosdV8LungMeasurementNcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementTcategoryFinalPreTreatmentStage\CosdV8MeasurementTcategoryFinalPreTreatmentStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementNcategoryIntegratedStage\CosdV8LungMeasurementNcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementTcategoryIntegratedStage\CosdV8MeasurementTcategoryIntegratedStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementNonPrimaryPathwayMetastasis\CosdV8LungMeasurementNonPrimaryPathwayMetastasis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementTNMcategoryFinalPreTreatmentStage\CosdV8MeasurementTNMcategoryFinalPreTreatmentStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementPrimaryPathwayMetastasis\CosdV8LungMeasurementPrimaryPathwayMetastasis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementTNMcategoryIntegratedStage\CosdV8MeasurementTNMcategoryIntegratedStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementTcategoryFinalPreTreatmentStage\CosdV8LungMeasurementTcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementTumourHeightAboveAnalVerge\CosdV8MeasurementTumourHeightAboveAnalVerge.xml">
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementTcategoryIntegratedStage\CosdV8LungMeasurementTcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV8MeasurementTumourLaterality\CosdV8MeasurementTumourLaterality.xml">
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStage\CosdV8LungMeasurementTNMcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementGradeOfDifferentiation\CosdV9MeasurementGradeOfDifferentiation.xml">
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementTNMcategoryIntegratedStage\CosdV8LungMeasurementTNMcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementMcategoryFinalPreTreatmentStage\CosdV9MeasurementMcategoryFinalPreTreatmentStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV8LungMeasurementTumourLaterality\CosdV8LungMeasurementTumourLaterality.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementMcategoryIntegratedStage\CosdV9MeasurementMcategoryIntegratedStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementGradeOfDifferentiation\CosdV9LungMeasurementGradeOfDifferentiation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementNcategoryFinalPreTreatmentStage\CosdV9MeasurementNcategoryFinalPreTreatmentStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementMcategoryFinalPreTreatmentStage\CosdV9LungMeasurementMcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementNcategoryIntegratedStage\CosdV9MeasurementNcategoryIntegratedStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementMcategoryIntegratedStage\CosdV9LungMeasurementMcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementNonPrimaryPathwayProgressionMetastasis\CosdV9MeasurementNonPrimaryPathwayProgressionMetastasis.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementNcategoryFinalPreTreatmentStage\CosdV9LungMeasurementNcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementNonPrimaryPathwayRecurrenceMetastasis\CosdV9MeasurementNonPrimaryPathwayRecurrenceMetastasis.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementNcategoryIntegratedStage\CosdV9LungMeasurementNcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementPrimaryPathwayMetastasis\CosdV9MeasurementPrimaryPathwayMetastasis.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementNonPrimaryPathwayProgressionMetastasis\CosdV9LungMeasurementNonPrimaryPathwayProgressionMetastasis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementSynchronousTumourIndicator\CosdV9MeasurementSynchronousTumourIndicator.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementNonPrimaryPathwayRecurrenceMetastasis\CosdV9LungMeasurementNonPrimaryPathwayRecurrenceMetastasis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementTcategoryFinalPreTreatmentStage\CosdV9MeasurementTcategoryFinalPreTreatmentStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementPrimaryPathwayMetastasis\CosdV9LungMeasurementPrimaryPathwayMetastasis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementTcategoryIntegratedStage\CosdV9MeasurementTcategoryIntegratedStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementTcategoryFinalPreTreatmentStage\CosdV9LungMeasurementTcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementTNMcategoryFinalPreTreatmentStage\CosdV9MeasurementTNMcategoryFinalPreTreatmentStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementTcategoryIntegratedStage\CosdV9LungMeasurementTcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementTNMcategoryIntegratedStage\CosdV9MeasurementTNMcategoryIntegratedStage.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementTNMcategoryFinalPreTreatmentStage\CosdV9LungMeasurementTNMcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Measurements\CosdV9MeasurementTumourLaterality\CosdV9MeasurementTumourLaterality.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementTNMcategoryIntegratedStage\CosdV9LungMeasurementTNMcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV8AdultComorbidityEvaluation\CosdV8AdultComorbidityEvaluation.xml">
+    <None Update="COSD\Lung\Measurements\CosdV9LungMeasurementTumourLaterality\CosdV9LungMeasurementTumourLaterality.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV8AdultPerformanceStatus\CosdV8AdultPerformanceStatus.xml">
+    <None Update="COSD\Core\Death\v8Death\CosdV8Death.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV8AlcoholHistoryCancerBeforeLastThreeMonths\CosdV8AlcoholHistoryCancerBeforeLastThreeMonths.xml">
+    <None Update="COSD\Core\Death\v9DeathBasisOfDiagnosisCancer\CosdV9BasisOfDiagnosisCancer.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV8AlcoholHistoryCancerInLastThreeMonths\CosdV8AlcoholHistoryCancerInLastThreeMonths.xml">
+    <None Update="COSD\Core\Death\v9DeathDischargeDestination\CosdV9DeathDischargeDestination.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV8FamilialCancerSyndromeIndicator\CosdV8FamilialCancerSyndromeIndicator.xml">
+    <None Update="COSD\Core\DemographicsV8\OmopDemographicsV8.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV8PersonStatedSexualOrientationCodeAtDiagnosis\CosdV8PersonStatedSexualOrientationCodeAtDiagnosis.xml">
+    <None Update="COSD\Core\DemographicsV9\OmopDemographicsV9.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV8SmokingStatusCode\CosdV8SmokingStatusCode.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementGradeOfDifferentiation\CosdV8MeasurementGradeOfDifferentiation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway\CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementMcategoryFinalPreTreatmentStage\CosdV8MeasurementMcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV8SourceOfReferralOutPatients\CosdV8SourceOfReferralOutPatients.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementMcategoryIntegratedStage\CosdV8MeasurementMcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9AdultComorbidityEvaluation\CosdV9AdultComorbidityEvaluation.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementNcategoryFinalPreTreatmentStage\CosdV8MeasurementNcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9AsaScore\CosdV9AsaScore.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementNcategoryIntegratedStage\CosdV8MeasurementNcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9FamilialCancerSyndromeSubsidiaryComment\CosdV9FamilialCancerSyndromeSubsidiaryComment.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementNonPrimaryPathwayMetastasis\CosdV8MeasurementNonPrimaryPathwayMetastasis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9FamilialCancerSyndrome\CosdV9FamilialCancerSyndrome.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementPrimaryPathwayMetastasis\CosdV8MeasurementPrimaryPathwayMetastasis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9HistoryOfAlcoholCurrent\CosdV9HistoryOfAlcoholCurrent.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementSynchronousTumourIndicator\CosdV8MeasurementSynchronousTumourIndicator.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9HistoryOfAlcoholPast\CosdV9HistoryOfAlcoholPast.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementTcategoryFinalPreTreatmentStage\CosdV8MeasurementTcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9MenopausalStatus\CosdV9MenopausalStatus.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementTcategoryIntegratedStage\CosdV8MeasurementTcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9PerformanceStatusAdult\CosdV9PerformanceStatusAdult.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementTNMcategoryFinalPreTreatmentStage\CosdV8MeasurementTNMcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9PersonSexualOrientationCodeAtDiagnosis\CosdV9PersonSexualOrientationCodeAtDiagnosis.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementTNMcategoryIntegratedStage\CosdV8MeasurementTNMcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9SourceOfReferralForNonPrimaryCancerPathway\CosdV9SourceOfReferralForNonPrimaryCancerPathway.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementTumourHeightAboveAnalVerge\CosdV8MeasurementTumourHeightAboveAnalVerge.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9SourceOfReferralForOutpatients\CosdV9SourceOfReferralForOutpatients.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV8MeasurementTumourLaterality\CosdV8MeasurementTumourLaterality.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9TobaccoSmokingCessation\CosdV9TobaccoSmokingCessation.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementGradeOfDifferentiation\CosdV9MeasurementGradeOfDifferentiation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Observation\CosdV9TobaccoSmokingStatus\CosdV9TobaccoSmokingStatus.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementMcategoryFinalPreTreatmentStage\CosdV9MeasurementMcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\ProcedureOccurrence\CosdV8ProcedureOccurrenceProcedureOpcs\CosdV8ProcedureOccurrenceProcedureOpcs.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementMcategoryIntegratedStage\CosdV9MeasurementMcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\ProcedureOccurrence\CosdV8ProcedureOccurrencePrimaryProcedureOpcs\CosdV8ProcedureOccurrencePrimaryProcedureOpcs.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementNcategoryFinalPreTreatmentStage\CosdV9MeasurementNcategoryFinalPreTreatmentStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\ProcedureOccurrence\CosdV9ProcedureOccurrencePrimaryProcedureOpcs\CosdV9ProcedureOccurrencePrimaryProcedureOpcs.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementNcategoryIntegratedStage\CosdV9MeasurementNcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\ProcedureOccurrence\CosdV9ProcedureOccurrenceProcedureOpcs\CosdV9ProcedureOccurrenceProcedureOpcs.xml">
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementNonPrimaryPathwayProgressionMetastasis\CosdV9MeasurementNonPrimaryPathwayProgressionMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementNonPrimaryPathwayRecurrenceMetastasis\CosdV9MeasurementNonPrimaryPathwayRecurrenceMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementPrimaryPathwayMetastasis\CosdV9MeasurementPrimaryPathwayMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementSynchronousTumourIndicator\CosdV9MeasurementSynchronousTumourIndicator.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementTcategoryFinalPreTreatmentStage\CosdV9MeasurementTcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementTcategoryIntegratedStage\CosdV9MeasurementTcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementTNMcategoryFinalPreTreatmentStage\CosdV9MeasurementTNMcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementTNMcategoryIntegratedStage\CosdV9MeasurementTNMcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Measurements\CosdV9MeasurementTumourLaterality\CosdV9MeasurementTumourLaterality.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV8AdultComorbidityEvaluation\CosdV8AdultComorbidityEvaluation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV8AdultPerformanceStatus\CosdV8AdultPerformanceStatus.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV8AlcoholHistoryCancerBeforeLastThreeMonths\CosdV8AlcoholHistoryCancerBeforeLastThreeMonths.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV8AlcoholHistoryCancerInLastThreeMonths\CosdV8AlcoholHistoryCancerInLastThreeMonths.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV8FamilialCancerSyndromeIndicator\CosdV8FamilialCancerSyndromeIndicator.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV8PersonStatedSexualOrientationCodeAtDiagnosis\CosdV8PersonStatedSexualOrientationCodeAtDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV8SmokingStatusCode\CosdV8SmokingStatusCode.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway\CosdV8SourceOfReferralForOutPatientsNonPrimaryCancerPathway.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV8SourceOfReferralOutPatients\CosdV8SourceOfReferralOutPatients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9AdultComorbidityEvaluation\CosdV9AdultComorbidityEvaluation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9AsaScore\CosdV9AsaScore.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9FamilialCancerSyndromeSubsidiaryComment\CosdV9FamilialCancerSyndromeSubsidiaryComment.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9FamilialCancerSyndrome\CosdV9FamilialCancerSyndrome.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9HistoryOfAlcoholCurrent\CosdV9HistoryOfAlcoholCurrent.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9HistoryOfAlcoholPast\CosdV9HistoryOfAlcoholPast.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9MenopausalStatus\CosdV9MenopausalStatus.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9PerformanceStatusAdult\CosdV9PerformanceStatusAdult.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9PersonSexualOrientationCodeAtDiagnosis\CosdV9PersonSexualOrientationCodeAtDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9SourceOfReferralForNonPrimaryCancerPathway\CosdV9SourceOfReferralForNonPrimaryCancerPathway.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9SourceOfReferralForOutpatients\CosdV9SourceOfReferralForOutpatients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9TobaccoSmokingCessation\CosdV9TobaccoSmokingCessation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\Observation\CosdV9TobaccoSmokingStatus\CosdV9TobaccoSmokingStatus.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungAdultComorbidityEvaluation\CosdV8LungAdultComorbidityEvaluation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungAdultPerformanceStatus\CosdV8LungAdultPerformanceStatus.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths\CosdV8LungAlcoholHistoryCancerBeforeLastThreeMonths.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungAlcoholHistoryCancerInLastThreeMonths\CosdV8LungAlcoholHistoryCancerInLastThreeMonths.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungFamilialCancerSyndromeIndicator\CosdV8LungFamilialCancerSyndromeIndicator.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis\CosdV8LungPersonStatedSexualOrientationCodeAtDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungSmokingStatusCode\CosdV8LungSmokingStatusCode.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway\CosdV8LungSourceOfReferralForOutPatientsNonPrimaryCancerPathway.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungSourceOfReferralOutPatients\CosdV8LungSourceOfReferralOutPatients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungAdultComorbidityEvaluation\CosdV9LungAdultComorbidityEvaluation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungAsaScore\CosdV9LungAsaScore.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungFamilialCancerSyndrome\CosdV9LungFamilialCancerSyndrome.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungFamilialCancerSyndromeSubsidiaryComment\CosdV9LungFamilialCancerSyndromeSubsidiaryComment.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungHistoryOfAlcoholCurrent\CosdV9LungHistoryOfAlcoholCurrent.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungHistoryOfAlcoholPast\CosdV9LungHistoryOfAlcoholPast.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungMenopausalStatus\CosdV9LungMenopausalStatus.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungPerformanceStatusAdult\CosdV9LungPerformanceStatusAdult.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungSourceOfReferralForNonPrimaryCancerPathway\CosdV9LungSourceOfReferralForNonPrimaryCancerPathway.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungSourceOfReferralForOutpatients\CosdV9LungSourceOfReferralForOutpatients.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungTobaccoSmokingCessation\CosdV9LungTobaccoSmokingCessation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungTobaccoSmokingStatus\CosdV9LungTobaccoSmokingStatus.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\ProcedureOccurrence\CosdV8ProcedureOccurrenceProcedureOpcs\CosdV8ProcedureOccurrenceProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\ProcedureOccurrence\CosdV8ProcedureOccurrencePrimaryProcedureOpcs\CosdV8ProcedureOccurrencePrimaryProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\ProcedureOccurrence\CosdV9ProcedureOccurrencePrimaryProcedureOpcs\CosdV9ProcedureOccurrencePrimaryProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Colorectal\ProcedureOccurrence\CosdV9ProcedureOccurrenceProcedureOpcs\CosdV9ProcedureOccurrenceProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="OxfordGP\ConditionOccurrence\OxfordGPConditionOccurrence.xml">
