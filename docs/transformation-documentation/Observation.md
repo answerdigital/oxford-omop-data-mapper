@@ -17,9 +17,11 @@ has_toc: false
 * [HospitalProviderSpellNumber]({% link docs/transformation-documentation/Observation_HospitalProviderSpellNumber.md %})
 * [value_as_number]({% link docs/transformation-documentation/Observation_value_as_number.md %})
 * [value_as_concept_id]({% link docs/transformation-documentation/Observation_value_as_concept_id.md %})
+* [qualifier_concept_id]({% link docs/transformation-documentation/Observation_qualifier_concept_id.md %})
 * [unit_concept_id]({% link docs/transformation-documentation/Observation_unit_concept_id.md %})
 * [observation_source_value]({% link docs/transformation-documentation/Observation_observation_source_value.md %})
 * [observation_source_concept_id]({% link docs/transformation-documentation/Observation_observation_source_concept_id.md %})
+* [qualifier_source_value]({% link docs/transformation-documentation/Observation_qualifier_source_value.md %})
 * [value_source_value]({% link docs/transformation-documentation/Observation_value_source_value.md %})
 
 ## SusOPSourceOfReferralForOutpatients
@@ -296,6 +298,16 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungTobaccoSmokingCessation%20mapping){: .btn }
+## CosdV9LungSurgicalAccessType
+<a href="CosdV9LungSurgicalAccessType.svg" target="_blank"><img src="CosdV9LungSurgicalAccessType.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungSurgicalAccessType%20mapping){: .btn }
 ## CosdV9LungSourceOfReferralForOutpatients
 <a href="CosdV9LungSourceOfReferralForOutpatients.svg" target="_blank"><img src="CosdV9LungSourceOfReferralForOutpatients.svg" /></a>
 
@@ -396,6 +408,16 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungAdultComorbidityEvaluation%20mapping){: .btn }
+## CosdV8LungSurgicalAccessType
+<a href="CosdV8LungSurgicalAccessType.svg" target="_blank"><img src="CosdV8LungSurgicalAccessType.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungSurgicalAccessType%20mapping){: .btn }
 ## CosdV8LungSourceOfReferralOutPatients
 <a href="CosdV8LungSourceOfReferralOutPatients.svg" target="_blank"><img src="CosdV8LungSourceOfReferralOutPatients.svg" /></a>
 
