@@ -380,6 +380,12 @@
     <None Update="COSD\Lung\Observation\CosdV9LungTobaccoSmokingStatus\CosdV9LungTobaccoSmokingStatus.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Lung\Observation\CosdV8LungSurgicalAccessType\CosdV8LungSurgicalAccessType.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Lung\Observation\CosdV9LungSurgicalAccessType\CosdV9LungSurgicalAccessType.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Colorectal\ProcedureOccurrence\CosdV8ProcedureOccurrenceProcedureOpcs\CosdV8ProcedureOccurrenceProcedureOpcs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
