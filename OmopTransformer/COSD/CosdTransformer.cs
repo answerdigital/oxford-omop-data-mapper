@@ -114,6 +114,8 @@ using OmopTransformer.COSD.Lung.Observation.CosdV9LungTobaccoSmokingCessation;
 using OmopTransformer.COSD.Lung.Observation.CosdV9LungTobaccoSmokingStatus;
 using OmopTransformer.COSD.Lung.Observation.CosdV8LungSurgicalAccessType;
 using OmopTransformer.COSD.Lung.Observation.CosdV9LungSurgicalAccessType;
+using OmopTransformer.COSD.Lung.Observation.CosdV8LungRelapseMethodOfDetection;
+using OmopTransformer.COSD.Lung.Observation.CosdV9LungRelapseMethodOfDetection;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrencePrimaryProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV8ProcedureOccurrenceProcedureOpcs;
 using OmopTransformer.COSD.Colorectal.ProcedureOccurrence.CosdV9ProcedureOccurrencePrimaryProcedureOpcs;
@@ -572,6 +574,18 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV9LungSurgicalAccessTypeRecord, CosdV9LungSurgicalAccessType>(
             _observationRecorder.InsertUpdateObservations,
             "Cosd V9 Lung Surgical Access Type",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8LungRelapseMethodOfDetectionRecord, CosdV8LungRelapseMethodOfDetection>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd V8 Lung Relapse Method Of Detection",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9LungRelapseMethodOfDetectionRecord, CosdV9LungRelapseMethodOfDetection>(
+            _observationRecorder.InsertUpdateObservations,
+            "Cosd V9 Lung Relapse Method Of Detection",
             runId,
             cancellationToken);
 
