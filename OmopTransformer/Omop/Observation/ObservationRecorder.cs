@@ -105,43 +105,44 @@ insert into cdm.observation (
     data_source
 )
 select
-    p.person_id,
-    r.observation_concept_id,
-    r.observation_date,
-    r.observation_datetime,
-    r.observation_type_concept_id,
-    r.value_as_number,
-    r.value_as_string,
-    r.value_as_concept_id,
-    r.qualifier_concept_id,
-    r.unit_concept_id,
-    r.provider_id,
-    (
-        select
-            vd.visit_occurrence_id
-        from cdm.visit_detail vd
-        where vd.RecordConnectionIdentifier = r.RecordConnectionIdentifier
-            and vd.person_id = p.person_id
-        limit 1
-    ) as visit_occurrence_id,
-    (
-        select
-            vd.visit_detail_id
-        from cdm.visit_detail vd
-        where vd.RecordConnectionIdentifier = r.RecordConnectionIdentifier
-            and vd.person_id = p.person_id
-        limit 1
-    ) as visit_detail_id,
-    r.observation_source_value,
-    r.observation_source_concept_id,
-    r.unit_source_value,
-    r.qualifier_source_value,
-    r.value_source_value,
-    r.observation_event_id,
-    r.obs_event_field_concept_id,
-    r.RecordConnectionIdentifier,
-    r.HospitalProviderSpellNumber,
-    r.data_source
+    distinct
+        p.person_id,
+        r.observation_concept_id,
+        r.observation_date,
+        r.observation_datetime,
+        r.observation_type_concept_id,
+        r.value_as_number,
+        r.value_as_string,
+        r.value_as_concept_id,
+        r.qualifier_concept_id,
+        r.unit_concept_id,
+        r.provider_id,
+        (
+            select
+                vd.visit_occurrence_id
+            from cdm.visit_detail vd
+            where vd.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+                and vd.person_id = p.person_id
+            limit 1
+        ) as visit_occurrence_id,
+        (
+            select
+                vd.visit_detail_id
+            from cdm.visit_detail vd
+            where vd.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+                and vd.person_id = p.person_id
+            limit 1
+        ) as visit_detail_id,
+        r.observation_source_value,
+        r.observation_source_concept_id,
+        r.unit_source_value,
+        r.qualifier_source_value,
+        r.value_source_value,
+        r.observation_event_id,
+        r.obs_event_field_concept_id,
+        r.RecordConnectionIdentifier,
+        r.HospitalProviderSpellNumber,
+        r.data_source
 from omop_staging.observation_row r
 inner join cdm.person p
     on r.nhs_number = p.person_source_value
