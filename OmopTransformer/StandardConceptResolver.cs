@@ -187,6 +187,16 @@ internal class StandardConceptResolver
                 {
                     return resolvedConcepts;
                 }
+
+
+                _domainMappingResults ??= new DomainMapResults(domain);
+
+                // Log domain of standard version of input concept, if exists
+                foreach (var row in value)
+                {
+                    if (row.target_domain_id != null)
+                        _domainMappingResults.Record(row.target_domain_id!);
+                }
             }
 
             return unknownConcept;
