@@ -84,19 +84,20 @@ insert into cdm.provider (
     data_source
 )
 select
-    provider_name,
-    npi,
-    dea,
-    specialty_concept_id,
-    care_site_id,
-    year_of_birth,
-    gender_concept_id,
-    provider_source_value,
-    specialty_source_value,
-    specialty_source_concept_id,
-    gender_source_value,
-    gender_source_concept_id,
-    data_source
+    distinct
+        provider_name,
+        npi,
+        dea,
+        specialty_concept_id,
+        care_site_id,
+        year_of_birth,
+        gender_concept_id,
+        provider_source_value,
+        specialty_source_value,
+        specialty_source_concept_id,
+        gender_source_value,
+        gender_source_concept_id,
+        data_source
 from omop_staging.provider_row r
 where 
     not exists (

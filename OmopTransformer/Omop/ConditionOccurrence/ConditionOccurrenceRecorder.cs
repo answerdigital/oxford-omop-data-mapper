@@ -96,23 +96,24 @@ insert into cdm.condition_occurrence (
     data_source
 )
 select
-    p.person_id,
-    r.condition_concept_id,
-    r.condition_start_date,
-    r.condition_start_datetime,
-    r.condition_end_date,
-    r.condition_end_datetime,
-    r.condition_type_concept_id,
-    r.condition_status_concept_id,
-    r.stop_reason,
-    r.provider_id,
-    r.visit_occurrence_id,
-    r.visit_detail_id,
-    r.condition_source_value,
-    r.condition_source_concept_id,
-    r.condition_status_source_value,
-    r.RecordConnectionIdentifier,
-    r.data_source
+    distinct
+        p.person_id,
+        r.condition_concept_id,
+        r.condition_start_date,
+        r.condition_start_datetime,
+        r.condition_end_date,
+        r.condition_end_datetime,
+        r.condition_type_concept_id,
+        r.condition_status_concept_id,
+        r.stop_reason,
+        r.provider_id,
+        r.visit_occurrence_id,
+        r.visit_detail_id,
+        r.condition_source_value,
+        r.condition_source_concept_id,
+        r.condition_status_source_value,
+        r.RecordConnectionIdentifier,
+        r.data_source
 from omop_staging.condition_occurrence_row r
 inner join cdm.person p on r.nhs_number = p.person_source_value
 where not exists (
