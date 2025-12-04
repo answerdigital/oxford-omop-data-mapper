@@ -24,6 +24,9 @@ internal class SusAPCMeasurement : OmopMeasurement<SusAPCMeasurementRecord>
     [Transform(typeof(Icd10StandardNonStandardSelector), nameof(Source.DiagnosisICD))]
     public override int? measurement_source_concept_id { get; set; }
 
+    [CopyValue(nameof(Source.DiagnosisICD))]
+    public override string? measurement_source_value { get; set; }
+
     [Transform(typeof(RelationshipSelector), nameof(Source.DiagnosisICD))]
     public override string? value_source_value { get; set; }
 

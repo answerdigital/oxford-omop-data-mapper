@@ -10,7 +10,7 @@ namespace OmopTransformer.OxfordLab;
 
 internal class OxfordLabTransformer : Transformer
 {
-    private readonly ConceptResolver _conceptResolver;
+    private readonly StandardConceptResolver _conceptResolver;
     private readonly IMeasurementRecorder _measurementRecorder;
     private readonly IObservationRecorder _observationRecorder;
 
@@ -20,7 +20,7 @@ internal class OxfordLabTransformer : Transformer
         IRecordProvider recordProvider,
         IMeasurementRecorder measurementRecorder,
         IObservationRecorder observationRecorder,
-        ConceptResolver conceptResolver,
+        StandardConceptResolver conceptResolver,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory) : base(recordTransformer,
         transformOptions,
@@ -49,7 +49,5 @@ internal class OxfordLabTransformer : Transformer
             "Oxford Lab General Comments",
             runId,
             cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }

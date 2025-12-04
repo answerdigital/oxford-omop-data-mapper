@@ -48,7 +48,7 @@ has_toc: false
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20RecordConnectionIdentifier%20field%20Sus%20CCMDS%20Measurement%20-%20Person%20Weight%20mapping){: .btn }
-### Sus APC  Measurement
+### Sus APC Measurement
 * Value copied from `GeneratedRecordIdentifier`
 
 * `GeneratedRecordIdentifier` CDS specific identifier that binds multiple CDS messages together. [CDS RECORD IDENTIFIER](https://www.datadictionary.nhs.uk/data_elements/cds_record_identifier.html)
@@ -73,4 +73,4 @@ order by
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20RecordConnectionIdentifier%20field%20Sus%20APC%20%20Measurement%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20RecordConnectionIdentifier%20field%20Sus%20APC%20Measurement%20mapping){: .btn }

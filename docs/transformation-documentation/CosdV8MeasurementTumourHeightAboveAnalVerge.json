@@ -71,15 +71,8 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "operator_concept_id",
-      "operation_description": "Constant value set to `4172703`. `-`",
-      "dataSource": null,
-      "query": null,
-      "lookup_table_markdown": null
-    },
-    {
-      "name": "value_as_number",
-      "operation_description": "Converts text to number.",
+      "name": "measurement_source_value",
+      "operation_description": "Value copied from `TumourHeightAboveAnalVerge`",
       "dataSource": [
         {
           "name": "TumourHeightAboveAnalVerge",
@@ -96,8 +89,15 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "measurement_source_value",
-      "operation_description": "Value copied from `TumourHeightAboveAnalVerge`",
+      "name": "operator_concept_id",
+      "operation_description": "Constant value set to `4172703`. `-`",
+      "dataSource": null,
+      "query": null,
+      "lookup_table_markdown": null
+    },
+    {
+      "name": "value_as_number",
+      "operation_description": "Converts text to number.",
       "dataSource": [
         {
           "name": "TumourHeightAboveAnalVerge",

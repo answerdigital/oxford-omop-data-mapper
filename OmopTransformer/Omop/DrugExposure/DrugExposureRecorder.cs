@@ -157,6 +157,7 @@ where
             where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
                 and vo.person_id = p.person_id
                 and vo.drug_concept_id = r.drug_concept_id
+
         )
     )
     or
@@ -168,6 +169,7 @@ where
             where vo.person_id = p.person_id
                 and vo.drug_concept_id = r.drug_concept_id
                 and vo.drug_exposure_start_date = r.drug_exposure_start_date
+                and (vo.drug_concept_id != 0 or ((vo.drug_source_value is null and r.drug_source_value is null) or vo.drug_source_value = r.drug_source_value))
         )
     );
 

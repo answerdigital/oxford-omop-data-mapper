@@ -165,6 +165,7 @@ where
                 and vo.device_concept_id = r.device_concept_id
                 and vo.device_exposure_start_date = r.device_exposure_start_date
                 and vo.device_exposure_end_date = r.device_exposure_end_date
+                and (vo.device_concept_id != 0 or ((vo.device_source_value is null and r.device_source_value is null) or vo.device_source_value = r.device_source_value))
         )
     );
 

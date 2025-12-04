@@ -70,7 +70,7 @@ where op.NHSNumber is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20Sus%20CCMDS%20Measurement%20-%20Person%20Weight%20mapping){: .btn }
-### Sus APC  Measurement
+### Sus APC Measurement
 * Value copied from `NHSNumber`
 
 * `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
@@ -95,7 +95,7 @@ order by
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20Sus%20APC%20%20Measurement%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20Sus%20APC%20Measurement%20mapping){: .btn }
 ### SACT Measurement Weight at Start of Regimen
 * Value copied from `NHS_Number`
 

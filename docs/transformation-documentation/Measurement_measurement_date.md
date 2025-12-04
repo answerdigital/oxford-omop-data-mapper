@@ -73,7 +73,7 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_date%20field%20Sus%20CCMDS%20Measurement%20-%20Person%20Weight%20mapping){: .btn }
-### Sus APC  Measurement
+### Sus APC Measurement
 Source column  `CDSActivityDate`.
 Converts text to dates.
 
@@ -99,7 +99,7 @@ order by
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_date%20field%20Sus%20APC%20%20Measurement%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_date%20field%20Sus%20APC%20Measurement%20mapping){: .btn }
 ### SACT Measurement Weight at Start of Regimen
 Source column  `Start_Date_Of_Regimen`.
 Converts text to dates.
