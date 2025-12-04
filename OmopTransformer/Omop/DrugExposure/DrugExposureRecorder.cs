@@ -109,42 +109,43 @@ insert into cdm.drug_exposure (
     data_source
 )
 select
-    p.person_id,
-    r.drug_concept_id,
-    r.drug_exposure_start_date,
-    r.drug_exposure_start_datetime,
-    r.drug_exposure_end_date,
-    r.drug_exposure_end_datetime,
-    r.verbatim_end_date,
-    r.drug_type_concept_id,
-    r.stop_reason,
-    r.refills,
-    r.quantity,
-    r.days_supply,
-    r.sig,
-    r.route_concept_id,
-    r.lot_number,
-    r.provider_id,
-    (
-        select vo.visit_occurrence_id
-        from cdm.visit_occurrence vo
-        where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
-            and p.person_id = vo.person_id
-        limit 1
-    ) as visit_occurrence_id,
-    (
-        select vd.visit_detail_id
-        from cdm.visit_detail vd
-        where vd.RecordConnectionIdentifier = r.RecordConnectionIdentifier
-            and p.person_id = vd.person_id
-        limit 1
-    ) as visit_detail_id,
-    r.drug_source_value,
-    r.drug_source_concept_id,
-    r.route_source_value,
-    r.dose_unit_source_value,
-    r.RecordConnectionIdentifier,
-    r.data_source
+    distinct
+        p.person_id,
+        r.drug_concept_id,
+        r.drug_exposure_start_date,
+        r.drug_exposure_start_datetime,
+        r.drug_exposure_end_date,
+        r.drug_exposure_end_datetime,
+        r.verbatim_end_date,
+        r.drug_type_concept_id,
+        r.stop_reason,
+        r.refills,
+        r.quantity,
+        r.days_supply,
+        r.sig,
+        r.route_concept_id,
+        r.lot_number,
+        r.provider_id,
+        (
+            select vo.visit_occurrence_id
+            from cdm.visit_occurrence vo
+            where vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+                and p.person_id = vo.person_id
+            limit 1
+        ) as visit_occurrence_id,
+        (
+            select vd.visit_detail_id
+            from cdm.visit_detail vd
+            where vd.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+                and p.person_id = vd.person_id
+            limit 1
+        ) as visit_detail_id,
+        r.drug_source_value,
+        r.drug_source_concept_id,
+        r.route_source_value,
+        r.dose_unit_source_value,
+        r.RecordConnectionIdentifier,
+        r.data_source
 from omop_staging.drug_exposure_row r
 inner join cdm.person p on r.nhs_number = p.person_source_value
 where 

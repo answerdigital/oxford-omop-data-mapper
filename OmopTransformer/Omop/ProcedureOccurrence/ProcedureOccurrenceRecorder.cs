@@ -98,23 +98,24 @@ insert into cdm.procedure_occurrence (
     data_source
 )
 select
-    p.person_id,
-    r.procedure_concept_id,
-    r.procedure_date,
-    r.procedure_datetime,
-    r.procedure_end_date,
-    r.procedure_end_datetime,
-    r.procedure_type_concept_id,
-    r.modifier_concept_id,
-    r.quantity,
-    r.provider_id,
-    r.visit_occurrence_id,
-    r.visit_detail_id,
-    r.procedure_source_value,
-    r.procedure_source_concept_id,
-    r.modifier_source_value,
-    r.RecordConnectionIdentifier,
-    r.data_source
+    distinct
+        p.person_id,
+        r.procedure_concept_id,
+        r.procedure_date,
+        r.procedure_datetime,
+        r.procedure_end_date,
+        r.procedure_end_datetime,
+        r.procedure_type_concept_id,
+        r.modifier_concept_id,
+        r.quantity,
+        r.provider_id,
+        r.visit_occurrence_id,
+        r.visit_detail_id,
+        r.procedure_source_value,
+        r.procedure_source_concept_id,
+        r.modifier_source_value,
+        r.RecordConnectionIdentifier,
+        r.data_source
 from omop_staging.procedure_occurrence_row r
 inner join cdm.person p
     on r.nhs_number = p.person_source_value

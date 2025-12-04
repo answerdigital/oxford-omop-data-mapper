@@ -92,25 +92,26 @@ insert into cdm.visit_occurrence (
     recordconnectionidentifier,
     data_source
 )
-select
-    p.person_id,
-    r.visit_concept_id,
-    r.visit_start_date,
-    r.visit_start_datetime,
-    r.visit_end_date,
-    r.visit_end_datetime,
-    r.visit_type_concept_id,
-    r.provider_id,
-    r.care_site_id,
-    r.visit_source_value,
-    r.visit_source_concept_id,
-    r.admitted_from_concept_id,
-    r.admitted_from_source_value,
-    r.discharged_to_concept_id,
-    r.discharged_to_source_value,
-    r.hospitalproviderspellnumber,
-    r.recordconnectionidentifier,
-    r.data_source
+select 
+    distinct
+        p.person_id,
+        r.visit_concept_id,
+        r.visit_start_date,
+        r.visit_start_datetime,
+        r.visit_end_date,
+        r.visit_end_datetime,
+        r.visit_type_concept_id,
+        r.provider_id,
+        r.care_site_id,
+        r.visit_source_value,
+        r.visit_source_concept_id,
+        r.admitted_from_concept_id,
+        r.admitted_from_source_value,
+        r.discharged_to_concept_id,
+        r.discharged_to_source_value,
+        r.hospitalproviderspellnumber,
+        r.recordconnectionidentifier,
+        r.data_source
 from omop_staging.visit_occurrence_row r
 inner join cdm.person p on r.nhs_number = p.person_source_value
 where 

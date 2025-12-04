@@ -107,29 +107,30 @@ insert into cdm.measurement (
     data_source
 )
 select
-    p.person_id,
-    r.measurement_concept_id,
-    r.measurement_date,
-    r.measurement_datetime,
-    r.measurement_time,
-    r.measurement_type_concept_id,
-    r.operator_concept_id,
-    r.value_as_number,
-    r.value_as_concept_id,
-    r.unit_concept_id,
-    r.range_low,
-    r.range_high,
-    r.provider_id,
-    r.measurement_source_value,
-    r.measurement_source_concept_id,
-    r.unit_source_value,
-    r.unit_source_concept_id,
-    r.value_source_value,
-    r.measurement_event_id,
-    r.meas_event_field_concept_id,
-    r.RecordConnectionIdentifier,
-    r.HospitalProviderSpellNumber,
-    r.data_source
+    distinct
+        p.person_id,
+        r.measurement_concept_id,
+        r.measurement_date,
+        r.measurement_datetime,
+        r.measurement_time,
+        r.measurement_type_concept_id,
+        r.operator_concept_id,
+        r.value_as_number,
+        r.value_as_concept_id,
+        r.unit_concept_id,
+        r.range_low,
+        r.range_high,
+        r.provider_id,
+        r.measurement_source_value,
+        r.measurement_source_concept_id,
+        r.unit_source_value,
+        r.unit_source_concept_id,
+        r.value_source_value,
+        r.measurement_event_id,
+        r.meas_event_field_concept_id,
+        r.RecordConnectionIdentifier,
+        r.HospitalProviderSpellNumber,
+        r.data_source
 from omop_staging.measurement_row r
     inner join cdm.person p
         on r.nhs_number = p.person_source_value

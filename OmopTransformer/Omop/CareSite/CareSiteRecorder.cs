@@ -71,12 +71,13 @@ insert into cdm.care_site (
     data_source
 )
 select
-    care_site_name,
-    place_of_service_concept_id,
-    location_id,
-    care_site_source_value,
-    place_of_service_source_value,
-    data_source
+    distinct
+        care_site_name,
+        place_of_service_concept_id,
+        location_id,
+        care_site_source_value,
+        place_of_service_source_value,
+        data_source
 from omop_staging.care_site_row up
 where not exists (select 1 from cdm.care_site p where p.care_site_name = up.care_site_name);
 
