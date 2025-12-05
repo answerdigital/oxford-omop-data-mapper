@@ -1,21 +1,43 @@
 <Query>
     <Sql>
 with LU as (
-    select 
-        Record ->> '$.CancerRecurrenceCareRelatedTransaction[*].DateCancerRecurrenceOrProgressionDetected' as DateCancerRecurrenceOrProgressionDetected,
-        Record ->> '$.CancerRecurrenceCareRelatedTransaction[*].RelapseMethodOfDetection.@code' as RelapseMethodOfDetection,
-        Record ->> '$.NhsNumber.@extension' as NhsNumber
+    select
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+        Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+        Record ->> '$.Treatment.TreatmentStartDateCancer' as TreatmentStartDateCancer,
+        Record ->> '$.Treatment.Surgery.ProcedureDate' as ProcedureDate,
+        unnest ([[Record ->> '$.NonPrimaryPathway.Recurrence.Relapse-MethodOfDetection.@code'], Record ->> '$.NonPrimaryPathway.Recurrence.Relapse-MethodOfDetection[*].@code'], recursive := true) as RelapseMethodOfDetection,
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
     from omop_staging.cosd_staging_901
-    where Type = 'LU'
+    where type = 'LU'
 )
 select
-      distinct
-          unnest(RelapseMethodOfDetection, recursive := true) as RelapseMethodOfDetection,
-          NhsNumber,
-          cast (unnest(DateCancerRecurrenceOrProgressionDetected, recursive := true) as date) as Date
+    distinct
+        RelapseMethodOfDetection,
+        NhsNumber,
+        least(
+            cast(DateFirstSeen as date),
+            cast(DateFirstSeenCancerSpecialist as date),
+            cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+            cast(StageDateFinalPretreatmentStage as date),
+            cast(StageDateIntegratedStage as date),
+            cast(TreatmentStartDateCancer as date),
+            cast(ProcedureDate as date)
+        ) as Date
 from LU o
 where o.RelapseMethodOfDetection is not null
-  and o.DateCancerRecurrenceOrProgressionDetected is not null
+  and not (
+        DateFirstSeen is null and
+        DateFirstSeenCancerSpecialist is null and
+        DateOfPrimaryDiagnosisClinicallyAgreed is null and
+        StageDateFinalPretreatmentStage is null and
+        StageDateIntegratedStage is null and
+        TreatmentStartDateCancer is null and
+        ProcedureDate is null
+    )
     </Sql>
     <Explanations>
       <Explanation columnName="NhsNumber">
