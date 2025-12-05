@@ -1370,7 +1370,6 @@ where o.PersonStatedSexualOrientationCodeAtDiagnosis is not null
 		ProcedureDate is null and
 		CancerTreatmentStartDate is null
     )
---tested
 ```
 
 
