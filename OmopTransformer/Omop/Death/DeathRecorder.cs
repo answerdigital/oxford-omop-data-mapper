@@ -74,14 +74,15 @@ insert into cdm.death (
     data_source
 )
 select
-    p.person_id,
-    r.death_date,
-    r.death_datetime,
-    r.death_type_concept_id,
-    r.cause_concept_id,
-    r.cause_source_value,
-    r.cause_source_concept_id,
-    r.data_source
+    distinct
+        p.person_id,
+        r.death_date,
+        r.death_datetime,
+        r.death_type_concept_id,
+        r.cause_concept_id,
+        r.cause_source_value,
+        r.cause_source_concept_id,
+        r.data_source
 from omop_staging.death_row r
     inner join cdm.person p
         on r.nhs_number = p.person_source_value

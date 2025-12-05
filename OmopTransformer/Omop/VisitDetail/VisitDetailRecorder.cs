@@ -96,50 +96,51 @@ insert into cdm.visit_detail
 	data_source
 )
 select
-	p.person_id,
-	r.visit_detail_concept_id,
-	r.visit_detail_start_date,
-	r.visit_detail_start_datetime,
-	r.visit_detail_end_date,
-	r.visit_detail_end_datetime,
-	r.visit_detail_type_concept_id,
-	r.provider_id,
-	r.care_site_id,
-	r.visit_detail_source_value,
-	r.visit_detail_source_concept_id,
-	r.admitted_from_concept_id,
-	r.admitted_from_source_value,
-	r.discharged_to_source_value,
-	r.discharged_to_concept_id,
-	(
-		case 
-			when r.HospitalProviderSpellNumber is not null then
-			(
-				select
-					vo.visit_occurrence_id
-				from cdm.visit_occurrence  vo
-				where vo.person_id = p.person_id 
-					and vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
-				limit 1
-			)
-		else
-			case when r.RecordConnectionIdentifier is not null then
-			(
-				select
-					vo.visit_occurrence_id
-				from cdm.visit_occurrence  vo
-				where vo.person_id = p.person_id 
-					and vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
-				limit 1
-			)
-			else null
-			end
-		end
-	) as visit_occurrence_id,
+    distinct
+	    p.person_id,
+	    r.visit_detail_concept_id,
+	    r.visit_detail_start_date,
+	    r.visit_detail_start_datetime,
+	    r.visit_detail_end_date,
+	    r.visit_detail_end_datetime,
+	    r.visit_detail_type_concept_id,
+	    r.provider_id,
+	    r.care_site_id,
+	    r.visit_detail_source_value,
+	    r.visit_detail_source_concept_id,
+	    r.admitted_from_concept_id,
+	    r.admitted_from_source_value,
+	    r.discharged_to_source_value,
+	    r.discharged_to_concept_id,
+	    (
+		    case 
+			    when r.HospitalProviderSpellNumber is not null then
+			    (
+				    select
+					    vo.visit_occurrence_id
+				    from cdm.visit_occurrence  vo
+				    where vo.person_id = p.person_id 
+					    and vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+				    limit 1
+			    )
+		    else
+			    case when r.RecordConnectionIdentifier is not null then
+			    (
+				    select
+					    vo.visit_occurrence_id
+				    from cdm.visit_occurrence  vo
+				    where vo.person_id = p.person_id 
+					    and vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+				    limit 1
+			    )
+			    else null
+			    end
+		    end
+	    ) as visit_occurrence_id,
 
-	r.HospitalProviderSpellNumber,
-	r.RecordConnectionIdentifier,
-    r.data_source
+	    r.HospitalProviderSpellNumber,
+	    r.RecordConnectionIdentifier,
+        r.data_source
 from omop_staging.visit_detail_row r
 	inner join cdm.person p
 		on r.nhs_number = p.person_source_value

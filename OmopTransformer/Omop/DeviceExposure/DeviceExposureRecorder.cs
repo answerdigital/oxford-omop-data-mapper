@@ -104,41 +104,42 @@ insert into cdm.device_exposure (
     data_source
 )
 select
-    p.person_id,
-    r.device_concept_id,
-    r.device_exposure_start_date,
-    r.device_exposure_start_datetime,
-    r.device_exposure_end_date,
-    r.device_exposure_end_datetime,
-    r.device_type_concept_id,
-    r.unique_device_id,
-    r.production_id,
-    r.quantity,
-    r.provider_id,
-    (
-        select vo.visit_occurrence_id
-        from cdm.visit_occurrence vo
-        where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
-        and vo.person_id = p.person_id
-        and r.HospitalProviderSpellNumber is not null
-        limit 1
-    ) as visit_occurrence_id,
-    (
-        select vd.visit_detail_id
-        from cdm.visit_detail vd
-        where vd.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
-        and vd.person_id = p.person_id
-        and r.HospitalProviderSpellNumber is not null
-        limit 1
-    ) as visit_detail_id,
-    r.device_source_value,
-    r.device_source_concept_id,
-    r.unit_concept_id,
-    r.unit_source_value,
-    r.unit_source_concept_id,
-    r.RecordConnectionIdentifier,
-    r.HospitalProviderSpellNumber,
-    r.data_source
+    distinct
+        p.person_id,
+        r.device_concept_id,
+        r.device_exposure_start_date,
+        r.device_exposure_start_datetime,
+        r.device_exposure_end_date,
+        r.device_exposure_end_datetime,
+        r.device_type_concept_id,
+        r.unique_device_id,
+        r.production_id,
+        r.quantity,
+        r.provider_id,
+        (
+            select vo.visit_occurrence_id
+            from cdm.visit_occurrence vo
+            where vo.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+            and vo.person_id = p.person_id
+            and r.HospitalProviderSpellNumber is not null
+            limit 1
+        ) as visit_occurrence_id,
+        (
+            select vd.visit_detail_id
+            from cdm.visit_detail vd
+            where vd.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+            and vd.person_id = p.person_id
+            and r.HospitalProviderSpellNumber is not null
+            limit 1
+        ) as visit_detail_id,
+        r.device_source_value,
+        r.device_source_concept_id,
+        r.unit_concept_id,
+        r.unit_source_value,
+        r.unit_source_concept_id,
+        r.RecordConnectionIdentifier,
+        r.HospitalProviderSpellNumber,
+        r.data_source
 from omop_staging.device_exposure_row r
     inner join cdm.person p
         on r.nhs_number = p.person_source_value
