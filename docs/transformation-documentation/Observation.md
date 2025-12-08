@@ -52,6 +52,14 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPReferralReceivedDateForOutpatients%20mapping){: .btn }
+## SusOPProcedureObservation
+<a href="SusOPProcedureObservation.svg" target="_blank"><img src="SusOPProcedureObservation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPProcedureObservation%20mapping){: .btn }
+## SusOPICDDiagnosisObservation
+<a href="SusOPICDDiagnosisObservation.svg" target="_blank"><img src="SusOPICDDiagnosisObservation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPICDDiagnosisObservation%20mapping){: .btn }
 ## SusOPCarerSupportIndicator
 <a href="SusOPCarerSupportIndicator.svg" target="_blank"><img src="SusOPCarerSupportIndicator.svg" /></a>
 
@@ -112,6 +120,10 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCReferralReceivedDateForInpatients%20mapping){: .btn }
+## SusAPCProcedureObservations
+<a href="SusAPCProcedureObservations.svg" target="_blank"><img src="SusAPCProcedureObservations.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCProcedureObservations%20mapping){: .btn }
 ## SusAPCNumberOfBabies
 <a href="SusAPCNumberOfBabies.svg" target="_blank"><img src="SusAPCNumberOfBabies.svg" /></a>
 
@@ -126,6 +138,10 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCNumberOfBabies%20mapping){: .btn }
+## SusAPCSusDiagnosisObservation
+<a href="SusAPCSusDiagnosisObservation.svg" target="_blank"><img src="SusAPCSusDiagnosisObservation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCSusDiagnosisObservation%20mapping){: .btn }
 ## SusAPCGestationLengthLabourOnset
 <a href="SusAPCGestationLengthLabourOnset.svg" target="_blank"><img src="SusAPCGestationLengthLabourOnset.svg" /></a>
 

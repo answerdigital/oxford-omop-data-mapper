@@ -6,6 +6,64 @@ grand_parent: Transformation Documentation
 has_toc: false
 ---
 # observation_source_concept_id
+### SUS Outpatient Procedure Observation
+Source column  `PrimaryProcedure`.
+Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+
+```sql
+with results as
+(
+	select
+		distinct
+			op.GeneratedRecordIdentifier,
+			op.NHSNumber,
+			op.AppointmentDate,
+			op.AppointmentTime,
+			p.ProcedureOPCS as PrimaryProcedure
+	from omop_staging.sus_OP op
+		inner join omop_staging.sus_OP_OPCSProcedure p
+		on op.MessageId = p.MessageId
+	where NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
+)
+select *
+from results
+order by 
+	GeneratedRecordIdentifier,
+	NHSNumber,
+	AppointmentDate, 
+	AppointmentTime,
+	PrimaryProcedure
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20SUS%20Outpatient%20Procedure%20Observation%20mapping){: .btn }
+### Sus OP ICDDiagnosis table
+Source column  `DiagnosisICD`.
+Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
+
+```sql
+select
+    distinct
+        d.DiagnosisICD,
+        op.GeneratedRecordIdentifier,
+        op.NHSNumber,
+        op.CDSActivityDate
+from omop_staging.sus_OP_ICDDiagnosis d
+    inner join omop_staging.sus_OP op
+        on d.MessageId = op.MessageId
+where op.NHSNumber is not null
+	and AttendedorDidNotAttend in ('5','6')
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20Sus%20OP%20ICDDiagnosis%20table%20mapping){: .btn }
 ### Sus CCMDS High Cost Drugs
 Source column  `ObservationSourceValue`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
@@ -28,6 +86,60 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20Sus%20CCMDS%20High%20Cost%20Drugs%20mapping){: .btn }
+### SUS APC Procedure Occurrence
+Source column  `PrimaryProcedure`.
+Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+
+```sql
+select
+	distinct
+		apc.GeneratedRecordIdentifier,
+		apc.NHSNumber,
+		p.ProcedureDateOPCS as PrimaryProcedureDate,
+		p.ProcedureOPCS as PrimaryProcedure
+from omop_staging.sus_APC apc
+	inner join omop_staging.sus_OPCSProcedure p
+		on apc.MessageId = p.MessageId
+where NHSNumber is not null
+order by
+	apc.GeneratedRecordIdentifier,
+	apc.NHSNumber,
+	p.ProcedureDateOPCS,
+	p.ProcedureOPCS
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
+### Sus APC Diagnosis Table
+Source column  `DiagnosisICD`.
+Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
+
+* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
+
+```sql
+select
+    distinct
+        d.DiagnosisICD,
+        apc.GeneratedRecordIdentifier,
+        apc.NHSNumber,
+        apc.CDSActivityDate
+from omop_staging.sus_ICDDiagnosis d
+    inner join omop_staging.sus_APC apc
+        on d.MessageId = apc.MessageId
+where apc.NHSNumber is not null
+order by
+	d.DiagnosisICD,
+    apc.GeneratedRecordIdentifier,
+    apc.NHSNumber,
+    apc.CDSActivityDate
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20Sus%20APC%20Diagnosis%20Table%20mapping){: .btn }
 ### SUS APC Anaesthetic Given Post Labour Delivery Observation
 * Constant value set to `2000500002`. ANAESTHETIC GIVEN POST LABOUR OR DELIVERY CODE
 

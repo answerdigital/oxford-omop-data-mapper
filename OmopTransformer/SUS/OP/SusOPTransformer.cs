@@ -1,31 +1,33 @@
 ﻿using Microsoft.Extensions.Logging;
-using OmopTransformer.SUS.OP.Death;
-using OmopTransformer.SUS.OP.Location;
-using OmopTransformer.SUS.OP.ConditionOccurrence;
-using OmopTransformer.SUS.OP.ProcedureOccurrence;
-using OmopTransformer.SUS.OP.Measurements.SusOPMeasurement;
-using OmopTransformer.SUS.OP.VisitOccurrenceWithSpell;
-using OmopTransformer.SUS.OP.VisitDetails;
-using OmopTransformer.SUS.OP.Observation.CarerSupportIndicator;
-using OmopTransformer.SUS.OP.Observation.SourceOfReferralForOutpatients;
-using OmopTransformer.SUS.OP.Observation.ReferralReceivedDateForOutpatients;
-using OmopTransformer.SUS.OP.CareSite;
-using OmopTransformer.SUS.OP.Provider;
-using OmopTransformer.Omop.Measurement;
+using OmopTransformer.Omop;
+using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Omop.ConditionOccurrence;
 using OmopTransformer.Omop.Death;
+using OmopTransformer.Omop.DeviceExposure;
 using OmopTransformer.Omop.Location;
+using OmopTransformer.Omop.Measurement;
 using OmopTransformer.Omop.Observation;
 using OmopTransformer.Omop.Person;
 using OmopTransformer.Omop.ProcedureOccurrence;
+using OmopTransformer.Omop.Provider;
 using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.Omop.VisitOccurrence;
-using OmopTransformer.Omop.CareSite;
-using OmopTransformer.Omop.Provider;
-using OmopTransformer.Omop.DeviceExposure;
-using OmopTransformer.Transformation;
-using OmopTransformer.Omop;
+using OmopTransformer.SUS.OP.CareSite;
+using OmopTransformer.SUS.OP.ConditionOccurrence;
+using OmopTransformer.SUS.OP.Death;
 using OmopTransformer.SUS.OP.DeviceExposure;
+using OmopTransformer.SUS.OP.Location;
+using OmopTransformer.SUS.OP.Measurements.SusOPMeasurement;
+using OmopTransformer.SUS.OP.Observation.CarerSupportIndicator;
+using OmopTransformer.SUS.OP.Observation.ICDDiagnosis;
+using OmopTransformer.SUS.OP.Observation.ProcedureObservation;
+using OmopTransformer.SUS.OP.Observation.ReferralReceivedDateForOutpatients;
+using OmopTransformer.SUS.OP.Observation.SourceOfReferralForOutpatients;
+using OmopTransformer.SUS.OP.ProcedureOccurrence;
+using OmopTransformer.SUS.OP.Provider;
+using OmopTransformer.SUS.OP.VisitDetails;
+using OmopTransformer.SUS.OP.VisitOccurrenceWithSpell;
+using OmopTransformer.Transformation;
 
 namespace OmopTransformer.SUS.OP;
 
@@ -172,6 +174,18 @@ internal class SusOPTransformer : Transformer
            "SUS OP DeviceExposure",
            runId,
            cancellationToken);
+
+        await Transform<SusOPICDDiagnosisObservationRecord, SusOPICDDiagnosisObservation>(
+            _observationRecorder.InsertUpdateObservations,
+            "SUS OP Diagnosis Observations",
+            runId,
+            cancellationToken);
+
+        await Transform<SusOPProcedureObservationRecord, SusOPProcedureObservation>(
+            _observationRecorder.InsertUpdateObservations,
+            "SUS OP sus_OP_OPCSProcedure Observations",
+            runId,
+            cancellationToken);
 
         _conceptResolver.PrintErrors();
     }
