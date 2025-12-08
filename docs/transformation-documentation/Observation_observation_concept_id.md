@@ -119,6 +119,10 @@ Converts concepts to standard concepts.
 * Constant value set to `4206526`. Smoking cessation behavior
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9LungTobaccoSmokingCessation%20mapping){: .btn }
+### CosdV9LungSurgicalAccessType
+* Constant value set to `4301351`. Surgical access
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9LungSurgicalAccessType%20mapping){: .btn }
 ### CosdV9LungSourceOfReferralForOutpatients
 * Constant value set to `4258129`. Referral by
 
@@ -159,6 +163,10 @@ Converts concepts to standard concepts.
 * Constant value set to `40488785`. Adult comorbidity evaluation-27
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV9LungAdultComorbidityEvaluation%20mapping){: .btn }
+### CosdV8LungSurgicalAccessType
+* Constant value set to `4301351`. Surgical access
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20CosdV8LungSurgicalAccessType%20mapping){: .btn }
 ### CosdV8LungSourceOfReferralOutPatients
 * Constant value set to `4258129`. Referral by
 
