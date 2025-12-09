@@ -93,12 +93,6 @@ internal class RtdsTransformer : Transformer
          runId,
          cancellationToken);
 
-        await Transform<RtdsVisitOccurrenceRecord, RtdsVisitOccurrence>(
-        _visitOccurrenceRecorder.InsertUpdateVisitOccurrence,
-        "Rtds Visit Occurrence",
-        runId,
-        cancellationToken);
-
         await Transform<RtdsProviderRecord, RtdsProvider>(
         _providerRecorder.InsertUpdateProvider,
         "Rtds Provider",

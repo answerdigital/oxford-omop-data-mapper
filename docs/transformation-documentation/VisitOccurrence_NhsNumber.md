@@ -134,9 +134,9 @@ order by
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20VisitOccurrence%20table%20NhsNumber%20field%20Sact%20VisitOccurrence%20mapping){: .btn }
 ### Rtds VisitOccurrence
-* Value copied from `PatientId`
+* Value copied from `NhsNumber`
 
-* `PatientId` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
 	with results as (

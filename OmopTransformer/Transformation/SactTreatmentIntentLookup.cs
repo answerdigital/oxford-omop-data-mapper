@@ -13,8 +13,8 @@ internal class SactTreatmentIntentLookup : ILookup
             { "3", new ValueWithNote("4179711", "Palliative") },
             { "4", new ValueWithNote("4179711", "Palliative") },
             { "5", new ValueWithNote("4179711", "Palliative") },
-            { "98" , new ValueWithNote("", "Other (not listed)") },
-            { "99" , new ValueWithNote("", "Other (not listed)") },
+            { "98" , new ValueWithNote("0", "Other (not listed)") },
+            { "99" , new ValueWithNote("0", "Other (not listed)") },
         };
 
      public string[] ColumnNotes =>
