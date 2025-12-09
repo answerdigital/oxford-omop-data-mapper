@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tWeight_At_Start_Of_Cycle,\n\t\t\tCASE\n\t\t\t\t-- Check for yyyy-MM-dd format (contains dash and year first)\n\t\t\t\tWHEN Start_Date_Of_Cycle LIKE '____-__-__' \n\t\t\t\t\tTHEN CAST(strptime(Start_Date_Of_Cycle, '%Y-%m-%d') AS TIMESTAMP)\n\t\t\t\t-- dd/MM/yyyy format, where day is between 1 and 31\n\t\t\t    WHEN Start_Date_Of_Cycle LIKE '__/__/____' AND CAST(substring(Start_Date_Of_Cycle, 1, 2) AS INTEGER) BETWEEN 1 AND 31\n\t\t\t\t    THEN CAST(strptime(Start_Date_Of_Cycle, '%d/%m/%Y') AS TIMESTAMP)\n\t\t\t\t-- Otherwise assume MM/dd/yyyy format\n\t\t\t\tWHEN Start_Date_Of_Cycle LIKE '__/__/____'\n\t\t\t\t\tTHEN CAST(strptime(Start_Date_Of_Cycle, '%m/%d/%Y') AS TIMESTAMP)\n\t\t\t\tELSE NULL\n\t\t\tEND AS Start_Date_Of_Cycle\n\t\tfrom omop_staging.sact_staging\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tWeight_At_Start_Of_Cycle,\n\t\t\tStart_Date_Of_Cycle\n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -35,7 +35,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tWeight_At_Start_Of_Cycle,\n\t\t\tCASE\n\t\t\t\t-- Check for yyyy-MM-dd format (contains dash and year first)\n\t\t\t\tWHEN Start_Date_Of_Cycle LIKE '____-__-__' \n\t\t\t\t\tTHEN CAST(strptime(Start_Date_Of_Cycle, '%Y-%m-%d') AS TIMESTAMP)\n\t\t\t\t-- dd/MM/yyyy format, where day is between 1 and 31\n\t\t\t    WHEN Start_Date_Of_Cycle LIKE '__/__/____' AND CAST(substring(Start_Date_Of_Cycle, 1, 2) AS INTEGER) BETWEEN 1 AND 31\n\t\t\t\t    THEN CAST(strptime(Start_Date_Of_Cycle, '%d/%m/%Y') AS TIMESTAMP)\n\t\t\t\t-- Otherwise assume MM/dd/yyyy format\n\t\t\t\tWHEN Start_Date_Of_Cycle LIKE '__/__/____'\n\t\t\t\t\tTHEN CAST(strptime(Start_Date_Of_Cycle, '%m/%d/%Y') AS TIMESTAMP)\n\t\t\t\tELSE NULL\n\t\t\tEND AS Start_Date_Of_Cycle\n\t\tfrom omop_staging.sact_staging\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tWeight_At_Start_Of_Cycle,\n\t\t\tStart_Date_Of_Cycle\n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -53,7 +53,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tWeight_At_Start_Of_Cycle,\n\t\t\tCASE\n\t\t\t\t-- Check for yyyy-MM-dd format (contains dash and year first)\n\t\t\t\tWHEN Start_Date_Of_Cycle LIKE '____-__-__' \n\t\t\t\t\tTHEN CAST(strptime(Start_Date_Of_Cycle, '%Y-%m-%d') AS TIMESTAMP)\n\t\t\t\t-- dd/MM/yyyy format, where day is between 1 and 31\n\t\t\t    WHEN Start_Date_Of_Cycle LIKE '__/__/____' AND CAST(substring(Start_Date_Of_Cycle, 1, 2) AS INTEGER) BETWEEN 1 AND 31\n\t\t\t\t    THEN CAST(strptime(Start_Date_Of_Cycle, '%d/%m/%Y') AS TIMESTAMP)\n\t\t\t\t-- Otherwise assume MM/dd/yyyy format\n\t\t\t\tWHEN Start_Date_Of_Cycle LIKE '__/__/____'\n\t\t\t\t\tTHEN CAST(strptime(Start_Date_Of_Cycle, '%m/%d/%Y') AS TIMESTAMP)\n\t\t\t\tELSE NULL\n\t\t\tEND AS Start_Date_Of_Cycle\n\t\tfrom omop_staging.sact_staging\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tWeight_At_Start_Of_Cycle,\n\t\t\tStart_Date_Of_Cycle\n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -78,7 +78,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tWeight_At_Start_Of_Cycle,\n\t\t\tCASE\n\t\t\t\t-- Check for yyyy-MM-dd format (contains dash and year first)\n\t\t\t\tWHEN Start_Date_Of_Cycle LIKE '____-__-__' \n\t\t\t\t\tTHEN CAST(strptime(Start_Date_Of_Cycle, '%Y-%m-%d') AS TIMESTAMP)\n\t\t\t\t-- dd/MM/yyyy format, where day is between 1 and 31\n\t\t\t    WHEN Start_Date_Of_Cycle LIKE '__/__/____' AND CAST(substring(Start_Date_Of_Cycle, 1, 2) AS INTEGER) BETWEEN 1 AND 31\n\t\t\t\t    THEN CAST(strptime(Start_Date_Of_Cycle, '%d/%m/%Y') AS TIMESTAMP)\n\t\t\t\t-- Otherwise assume MM/dd/yyyy format\n\t\t\t\tWHEN Start_Date_Of_Cycle LIKE '__/__/____'\n\t\t\t\t\tTHEN CAST(strptime(Start_Date_Of_Cycle, '%m/%d/%Y') AS TIMESTAMP)\n\t\t\t\tELSE NULL\n\t\t\tEND AS Start_Date_Of_Cycle\n\t\tfrom omop_staging.sact_staging\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tWeight_At_Start_Of_Cycle,\n\t\t\tStart_Date_Of_Cycle\n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -103,7 +103,7 @@
           ]
         }
       ],
-      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tWeight_At_Start_Of_Cycle,\n\t\t\tCASE\n\t\t\t\t-- Check for yyyy-MM-dd format (contains dash and year first)\n\t\t\t\tWHEN Start_Date_Of_Cycle LIKE '____-__-__' \n\t\t\t\t\tTHEN CAST(strptime(Start_Date_Of_Cycle, '%Y-%m-%d') AS TIMESTAMP)\n\t\t\t\t-- dd/MM/yyyy format, where day is between 1 and 31\n\t\t\t    WHEN Start_Date_Of_Cycle LIKE '__/__/____' AND CAST(substring(Start_Date_Of_Cycle, 1, 2) AS INTEGER) BETWEEN 1 AND 31\n\t\t\t\t    THEN CAST(strptime(Start_Date_Of_Cycle, '%d/%m/%Y') AS TIMESTAMP)\n\t\t\t\t-- Otherwise assume MM/dd/yyyy format\n\t\t\t\tWHEN Start_Date_Of_Cycle LIKE '__/__/____'\n\t\t\t\t\tTHEN CAST(strptime(Start_Date_Of_Cycle, '%m/%d/%Y') AS TIMESTAMP)\n\t\t\t\tELSE NULL\n\t\t\tEND AS Start_Date_Of_Cycle\n\t\tfrom omop_staging.sact_staging\n\t",
+      "query": "\n\t\tselect distinct \n\t\t\tNHS_Number,\n\t\t\tWeight_At_Start_Of_Cycle,\n\t\t\tStart_Date_Of_Cycle\n\t\tfrom omop_staging.sact_staging\n\t",
       "lookup_table_markdown": null
     },
     {

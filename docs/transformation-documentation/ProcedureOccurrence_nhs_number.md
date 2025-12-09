@@ -161,7 +161,7 @@ with records as (
 		r.*
 	from records r
 )
-select
+select distinct
 	PatientId,
 	ProcedureCode,
 	Start_date as event_start_date,
