@@ -1,22 +1,15 @@
 ﻿<Query>
     <Sql>
-		with results as (
-			select distinct
-			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			Treatmentdatetime,
 			Cast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,
 			NominalEnergy as NominalEnergy
-		from omop_staging.RTDS_4_Exposures
-		)
-		select
-			NhsNumber,
-			Treatmentdatetime,
-			CalculatedNominalEnergy,
-			NominalEnergy
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_4_Exposures dc
+		where NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}')
+		and NominalEnergy is not null 
+		and NominalEnergy != '';
 	</Sql>
 	<Explanations>
 		<Explanation columnName="NhsNumber">
