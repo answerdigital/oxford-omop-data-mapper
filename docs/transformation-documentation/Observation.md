@@ -261,6 +261,11 @@ has_toc: false
 ## RtdsExternalBeamEnergy
 <a href="RtdsExternalBeamEnergy.svg" target="_blank"><img src="RtdsExternalBeamEnergy.svg" /></a>
 
+{: .important-title }
+> Assumptions
+>
+> * Multiple records around the same time is indicative of one nominal beam energy with multiple control points being recorded
+
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsExternalBeamEnergy%20mapping){: .btn }
 ## RtdsNumberOfFractions
 <a href="RtdsNumberOfFractions.svg" target="_blank"><img src="RtdsNumberOfFractions.svg" /></a>

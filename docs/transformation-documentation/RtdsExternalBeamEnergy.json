@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\t\twith results as (\n\t\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,\n\t\t\tNominalEnergy as NominalEnergy\n\t\tfrom omop_staging.RTDS_4_Exposures\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCalculatedNominalEnergy,\n\t\t\tNominalEnergy\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,\n\t\t\tNominalEnergy as NominalEnergy\n\t\tfrom omop_staging.RTDS_4_Exposures dc\n\t\twhere NhsNumber is not null\n\t\tand regexp_matches(NhsNumber, '\\d{10}')\n\t\tand NominalEnergy is not null \n\t\tand NominalEnergy != '';\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -37,7 +37,7 @@
           "origins": []
         }
       ],
-      "query": "\n\t\twith results as (\n\t\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,\n\t\t\tNominalEnergy as NominalEnergy\n\t\tfrom omop_staging.RTDS_4_Exposures\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCalculatedNominalEnergy,\n\t\t\tNominalEnergy\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,\n\t\t\tNominalEnergy as NominalEnergy\n\t\tfrom omop_staging.RTDS_4_Exposures dc\n\t\twhere NhsNumber is not null\n\t\tand regexp_matches(NhsNumber, '\\d{10}')\n\t\tand NominalEnergy is not null \n\t\tand NominalEnergy != '';\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -55,7 +55,7 @@
           "origins": []
         }
       ],
-      "query": "\n\t\twith results as (\n\t\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,\n\t\t\tNominalEnergy as NominalEnergy\n\t\tfrom omop_staging.RTDS_4_Exposures\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCalculatedNominalEnergy,\n\t\t\tNominalEnergy\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,\n\t\t\tNominalEnergy as NominalEnergy\n\t\tfrom omop_staging.RTDS_4_Exposures dc\n\t\twhere NhsNumber is not null\n\t\tand regexp_matches(NhsNumber, '\\d{10}')\n\t\tand NominalEnergy is not null \n\t\tand NominalEnergy != '';\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -80,7 +80,7 @@
           ]
         }
       ],
-      "query": "\n\t\twith results as (\n\t\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,\n\t\t\tNominalEnergy as NominalEnergy\n\t\tfrom omop_staging.RTDS_4_Exposures\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCalculatedNominalEnergy,\n\t\t\tNominalEnergy\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,\n\t\t\tNominalEnergy as NominalEnergy\n\t\tfrom omop_staging.RTDS_4_Exposures dc\n\t\twhere NhsNumber is not null\n\t\tand regexp_matches(NhsNumber, '\\d{10}')\n\t\tand NominalEnergy is not null \n\t\tand NominalEnergy != '';\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -98,7 +98,7 @@
           ]
         }
       ],
-      "query": "\n\t\twith results as (\n\t\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,\n\t\t\tNominalEnergy as NominalEnergy\n\t\tfrom omop_staging.RTDS_4_Exposures\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCalculatedNominalEnergy,\n\t\t\tNominalEnergy\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\tTreatmentdatetime,\n\t\t\tCast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,\n\t\t\tNominalEnergy as NominalEnergy\n\t\tfrom omop_staging.RTDS_4_Exposures dc\n\t\twhere NhsNumber is not null\n\t\tand regexp_matches(NhsNumber, '\\d{10}')\n\t\tand NominalEnergy is not null \n\t\tand NominalEnergy != '';\n\t",
       "lookup_table_markdown": null
     }
   ]

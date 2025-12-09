@@ -506,22 +506,13 @@ Converts text to dates.
 * `DateStamp` Decision date of treatment 
 
 ```sql
-		with results as (
-			select 
-				distinct
-					(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
-					dc.DiagnosisCode,
-					dc.DateStamp,
-			from omop_staging.RTDS_5_Diagnosis_Course dc
-			where dc.DiagnosisCode like 'Decision%'
-		)
-		select
-			NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			DateStamp
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_5_Diagnosis_Course dc
+		where dc.DiagnosisCode like 'Decision%'
+		and NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}');
 	
 ```
 
@@ -534,23 +525,16 @@ Converts text to dates.
 * `Treatmentdatetime` Start date of treatment 
 
 ```sql
-		with results as (
-			select distinct
-			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			Treatmentdatetime,
 			Cast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,
 			NominalEnergy as NominalEnergy
-		from omop_staging.RTDS_4_Exposures
-		)
-		select
-			NhsNumber,
-			Treatmentdatetime,
-			CalculatedNominalEnergy,
-			NominalEnergy
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_4_Exposures dc
+		where NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}')
+		and NominalEnergy is not null 
+		and NominalEnergy != '';
 	
 ```
 
@@ -563,21 +547,14 @@ Converts text to dates.
 * `StartDateTime` Start date of treatment 
 
 ```sql
-		with results as (
-			select distinct
-				(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
-				StartDateTime,
-				NoFracs 
-			from omop_staging.RTDS_3_Prescription
-		)
-		select
-			NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			StartDateTime,
-			NoFracs
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+			NoFracs 
+		from omop_staging.RTDS_3_Prescription dc
+		where NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}')
+		and NoFracs is not null;
 	
 ```
 
@@ -590,22 +567,14 @@ Converts text to dates.
 * `DateStamp` Decision date of treatment 
 
 ```sql
-		with results as (
-			select 
-				distinct
-					(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
-					dc.DiagnosisCode,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
+			dc.DiagnosisCode,
 					dc.DateStamp,
-			from omop_staging.RTDS_5_Diagnosis_Course dc
-			where dc.DiagnosisCode like 'Referral%'
-		)
-		select
-			NhsNumber,
-			DateStamp
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_5_Diagnosis_Course dc
+		where dc.DiagnosisCode like 'Referral%'
+		and NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}');
 	
 ```
 
@@ -618,28 +587,19 @@ Converts text to dates.
 * `DueDateTime` DATE WHEN RADIOTHERAPY OCCURRED 
 
 ```sql
-		with results as (
-			select distinct
-				(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NHSNumber,
-				AttributeValue,
-				(select concept_id from cdm.concept where domain_id = 'Spec Anatomic Site'
-						and concept_code = CASE WHEN length(code) > 3 THEN substr(code, 1, 3) || '.' || substr(code, 4) ELSE code END) as AnatomicalSiteConceptId,
-				DueDateTime
-			from omop_staging.RTDS_2b_Plan,
-			LATERAL (SELECT regexp_extract(AttributeValue, '^([A-Z][0-9A-Z]+)', 1) AS code) AS t
-			where Description = 'Anatomical Site' 
-			and AttributeValue is not null 
-			and AttributeValue != 'None'
-		)
-		select
-			NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			AttributeValue,
-			AnatomicalSiteConceptId,
+			(select concept_id from cdm.concept where domain_id = 'Spec Anatomic Site'
+				and concept_code = CASE WHEN length(code) > 3 THEN substr(code, 1, 3) || '.' || substr(code, 4) ELSE code END) as AnatomicalSiteConceptId,
 			DueDateTime
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_2b_Plan dc,
+		LATERAL (SELECT regexp_extract(AttributeValue, '^([A-Z][0-9A-Z]+)', 1) AS code) AS t
+		where Description = 'Anatomical Site' 
+		and AttributeValue is not null 
+		and AttributeValue != 'None'
+		and NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}');
 	
 ```
 

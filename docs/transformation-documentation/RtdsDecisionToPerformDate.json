@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\n\t\twith results as (\n\t\t\tselect \n\t\t\t\tdistinct\n\t\t\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\t\t\tdc.DiagnosisCode,\n\t\t\t\t\tdc.DateStamp,\n\t\t\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\t\t\twhere dc.DiagnosisCode like 'Decision%'\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tDateStamp\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\tDateStamp\n\t\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\t\twhere dc.DiagnosisCode like 'Decision%'\n\t\tand NhsNumber is not null\n\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -37,7 +37,7 @@
           "origins": []
         }
       ],
-      "query": "\n\t\twith results as (\n\t\t\tselect \n\t\t\t\tdistinct\n\t\t\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\t\t\tdc.DiagnosisCode,\n\t\t\t\t\tdc.DateStamp,\n\t\t\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\t\t\twhere dc.DiagnosisCode like 'Decision%'\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tDateStamp\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\tDateStamp\n\t\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\t\twhere dc.DiagnosisCode like 'Decision%'\n\t\tand NhsNumber is not null\n\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -55,7 +55,7 @@
           "origins": []
         }
       ],
-      "query": "\n\t\twith results as (\n\t\t\tselect \n\t\t\t\tdistinct\n\t\t\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\t\t\tdc.DiagnosisCode,\n\t\t\t\t\tdc.DateStamp,\n\t\t\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\t\t\twhere dc.DiagnosisCode like 'Decision%'\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tDateStamp\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\tDateStamp\n\t\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\t\twhere dc.DiagnosisCode like 'Decision%'\n\t\tand NhsNumber is not null\n\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -75,7 +75,7 @@
           "origins": []
         }
       ],
-      "query": "\n\t\twith results as (\n\t\t\tselect \n\t\t\t\tdistinct\n\t\t\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\t\t\tdc.DiagnosisCode,\n\t\t\t\t\tdc.DateStamp,\n\t\t\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\t\t\twhere dc.DiagnosisCode like 'Decision%'\n\t\t)\n\t\tselect\n\t\t\tNhsNumber,\n\t\t\tDateStamp\n\t\tfrom results\n\t\twhere\n\t\t\tNhsNumber is not null\n\t\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
+      "query": "\n\t\tselect distinct\n\t\t\t(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,\n\t\t\tDateStamp\n\t\tfrom omop_staging.RTDS_5_Diagnosis_Course dc\n\t\twhere dc.DiagnosisCode like 'Decision%'\n\t\tand NhsNumber is not null\n\t\tand regexp_matches(NhsNumber, '\\d{10}');\n\t",
       "lookup_table_markdown": null
     }
   ]
