@@ -9,7 +9,7 @@ has_toc: false
 ### SUS Outpatient Procedure Occurrence
 * Value copied from `PrimaryProcedure`
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+* `PrimaryProcedure` OPCS-4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 with results as
@@ -84,7 +84,7 @@ order by
 ### SUS APC Procedure Occurrence
 * Value copied from `PrimaryProcedure`
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+* `PrimaryProcedure` OPCS-4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 select

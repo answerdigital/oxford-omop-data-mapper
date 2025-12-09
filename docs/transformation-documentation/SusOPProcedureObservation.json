@@ -94,7 +94,7 @@
       "dataSource": [
         {
           "name": "PrimaryProcedure",
-          "description": "OPC4 Procedure code.",
+          "description": "OPCS-4 Procedure code.",
           "origins": [
             {
               "origin": "PROCEDURE (OPCS)",

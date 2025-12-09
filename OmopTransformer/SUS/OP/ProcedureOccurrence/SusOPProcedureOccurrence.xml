@@ -50,7 +50,7 @@ order by
 		</Explanation>
 		
 		<Explanation columnName="PrimaryProcedure">
-			<Description>OPC4 Procedure code.</Description>
+			<Description>OPCS-4 Procedure code.</Description>
 			<Origin>PROCEDURE (OPCS)</Origin>
 		</Explanation>
 	</Explanations>
