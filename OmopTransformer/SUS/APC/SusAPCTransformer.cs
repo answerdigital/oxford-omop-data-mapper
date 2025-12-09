@@ -263,13 +263,13 @@ internal class SusAPCTransformer : Transformer
 
         await Transform<SusAPCProcedureObservationsRecord, SusAPCProcedureObservations>(
             _observationRecorder.InsertUpdateObservations,
-            "SUS OP Diagnosis Observations",
+            "SUS APC Diagnosis Observations",
             runId,
             cancellationToken);
 
         await Transform<SusAPCSusDiagnosisRecord, SusAPCSusDiagnosisObservation>(
             _observationRecorder.InsertUpdateObservations,
-            "SUS OP sus_OP_OPCSProcedure Observations",
+            "SUS APC sus_OP_OPCSProcedure Observations",
             runId,
             cancellationToken);
 
