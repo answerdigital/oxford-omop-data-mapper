@@ -21,7 +21,7 @@ internal class SactDrugAdministrationRouteLookup : ILookup
             { "12" , new ValueWithNote("4156706", "Intradermal") },
             { "13" , new ValueWithNote("40491322", "Intratumor") },
             { "14" , new ValueWithNote("4157758", "Intralesional") },
-            { "98" , new ValueWithNote("", "") },
+            { "98" , new ValueWithNote("0", "") },
         };
 
      public string[] ColumnNotes =>
