@@ -29,7 +29,7 @@ where op.NHSNumber is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20Sus%20OP%20%20Measurement%20mapping){: .btn }
-### Sus APC  Measurement
+### Sus APC Measurement
 Source column  `DiagnosisICD`.
 Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
 
@@ -55,7 +55,7 @@ order by
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20Sus%20APC%20%20Measurement%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20Sus%20APC%20Measurement%20mapping){: .btn }
 ### Oxford Lab Measurement
 Source column  `EVENT`.
 OXford Lab Test Lookup lookup
