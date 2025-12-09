@@ -14,6 +14,16 @@ has_toc: false
 * Constant value set to `40760321`. Date of Referral
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20OP%20Referral%20Received%20Date%20For%20Outpatients%20mapping){: .btn }
+### SUS Outpatient Procedure Observation
+Source column  `observation_source_concept_id`.
+Maps concepts to standard valid concepts in the `Observation` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20Outpatient%20Procedure%20Observation%20mapping){: .btn }
+### Sus OP ICDDiagnosis table
+Source column  `observation_source_concept_id`.
+Maps concepts to standard valid concepts in the `Observation` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20Sus%20OP%20ICDDiagnosis%20table%20mapping){: .btn }
 ### SUS Outpatient Carer Support Indicator Observation
 * Constant value set to `4224770`. Social support status
 
@@ -35,10 +45,20 @@ Converts concepts to standard concepts.
 * Constant value set to `40760321`. Date of Referral
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20APC%20Referral%20Received%20Date%20For%20Inpatients%20mapping){: .btn }
+### SUS APC Procedure Occurrence
+Source column  `observation_source_concept_id`.
+Maps concepts to standard valid concepts in the `Observation` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
 ### SUS Inpatient NumberofBabies Observation
 * Constant value set to `4209211`. Number of births at term
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20SUS%20Inpatient%20NumberofBabies%20Observation%20mapping){: .btn }
+### Sus APC Diagnosis Table
+Source column  `observation_source_concept_id`.
+Maps concepts to standard valid concepts in the `Observation` domain.
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_concept_id%20field%20Sus%20APC%20Diagnosis%20Table%20mapping){: .btn }
 ### SUS Inpatient Gestation Length Labour Onset Observation
 * Constant value set to `40493181`. Length of gestation at time of procedure
 

@@ -9,7 +9,7 @@ has_toc: false
 ### SUS OP Device Exposure
 * Value copied from `PrimaryProcedure`
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+* `PrimaryProcedure` OPCS-4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 	select
@@ -57,7 +57,7 @@ has_toc: false
 ### SUS APC Procedure Occurrence
 * Value copied from `PrimaryProcedure`
 
-* `PrimaryProcedure` OPC4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
+* `PrimaryProcedure` OPCS-4 Procedure code. [PROCEDURE (OPCS)](https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html)
 
 ```sql
 select

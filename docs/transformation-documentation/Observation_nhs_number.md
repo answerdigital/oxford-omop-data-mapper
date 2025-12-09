@@ -58,6 +58,62 @@ order by NHSNumber,
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20SUS%20OP%20Referral%20Received%20Date%20For%20Outpatients%20mapping){: .btn }
+### SUS Outpatient Procedure Observation
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+with results as
+(
+	select
+		distinct
+			op.GeneratedRecordIdentifier,
+			op.NHSNumber,
+			op.AppointmentDate,
+			op.AppointmentTime,
+			p.ProcedureOPCS as PrimaryProcedure
+	from omop_staging.sus_OP op
+		inner join omop_staging.sus_OP_OPCSProcedure p
+		on op.MessageId = p.MessageId
+	where NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
+)
+select *
+from results
+order by 
+	GeneratedRecordIdentifier,
+	NHSNumber,
+	AppointmentDate, 
+	AppointmentTime,
+	PrimaryProcedure
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20SUS%20Outpatient%20Procedure%20Observation%20mapping){: .btn }
+### Sus OP ICDDiagnosis table
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+select
+    distinct
+        d.DiagnosisICD,
+        op.GeneratedRecordIdentifier,
+        op.NHSNumber,
+        op.CDSActivityDate
+from omop_staging.sus_OP_ICDDiagnosis d
+    inner join omop_staging.sus_OP op
+        on d.MessageId = op.MessageId
+where op.NHSNumber is not null
+	and AttendedorDidNotAttend in ('5','6')
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20Sus%20OP%20ICDDiagnosis%20table%20mapping){: .btn }
 ### SUS Outpatient Carer Support Indicator Observation
 * Value copied from `NHSNumber`
 
@@ -169,6 +225,32 @@ where NHSNumber is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20SUS%20APC%20Referral%20Received%20Date%20For%20Inpatients%20mapping){: .btn }
+### SUS APC Procedure Occurrence
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+select
+	distinct
+		apc.GeneratedRecordIdentifier,
+		apc.NHSNumber,
+		p.ProcedureDateOPCS as PrimaryProcedureDate,
+		p.ProcedureOPCS as PrimaryProcedure
+from omop_staging.sus_APC apc
+	inner join omop_staging.sus_OPCSProcedure p
+		on apc.MessageId = p.MessageId
+where NHSNumber is not null
+order by
+	apc.GeneratedRecordIdentifier,
+	apc.NHSNumber,
+	p.ProcedureDateOPCS,
+	p.ProcedureOPCS
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
 ### SUS Inpatient NumberofBabies Observation
 * Value copied from `NHSNumber`
 
@@ -196,6 +278,32 @@ group by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20SUS%20Inpatient%20NumberofBabies%20Observation%20mapping){: .btn }
+### Sus APC Diagnosis Table
+* Value copied from `NHSNumber`
+
+* `NHSNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+select
+    distinct
+        d.DiagnosisICD,
+        apc.GeneratedRecordIdentifier,
+        apc.NHSNumber,
+        apc.CDSActivityDate
+from omop_staging.sus_ICDDiagnosis d
+    inner join omop_staging.sus_APC apc
+        on d.MessageId = apc.MessageId
+where apc.NHSNumber is not null
+order by
+	d.DiagnosisICD,
+    apc.GeneratedRecordIdentifier,
+    apc.NHSNumber,
+    apc.CDSActivityDate
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20nhs_number%20field%20Sus%20APC%20Diagnosis%20Table%20mapping){: .btn }
 ### SUS Inpatient Gestation Length Labour Onset Observation
 * Value copied from `NHSNumber`
 
