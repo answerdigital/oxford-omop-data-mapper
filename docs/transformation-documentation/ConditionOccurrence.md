@@ -161,3 +161,79 @@ has_toc: false
 > * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdConditionOccurrencePrimaryDiagnosisHistologyTopography%20mapping){: .btn }
+## CosdV9BreastConditionOccurrenceSecondaryDiagnosis
+<a href="CosdV9BreastConditionOccurrenceSecondaryDiagnosis.svg" target="_blank"><img src="CosdV9BreastConditionOccurrenceSecondaryDiagnosis.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastConditionOccurrenceSecondaryDiagnosis%20mapping){: .btn }
+## CosdV9BreastConditionOccurrenceRecurrence
+<a href="CosdV9BreastConditionOccurrenceRecurrence.svg" target="_blank"><img src="CosdV9BreastConditionOccurrenceRecurrence.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+> * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastConditionOccurrenceRecurrence%20mapping){: .btn }
+## CosdV9BreastConditionOccurrenceProgression
+<a href="CosdV9BreastConditionOccurrenceProgression.svg" target="_blank"><img src="CosdV9BreastConditionOccurrenceProgression.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+> * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastConditionOccurrenceProgression%20mapping){: .btn }
+## CosdV9BreastConditionOccurrencePrimaryDiagnosis
+<a href="CosdV9BreastConditionOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdV9BreastConditionOccurrencePrimaryDiagnosis.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+> * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastConditionOccurrencePrimaryDiagnosis%20mapping){: .btn }
+## CosdV9BreastConditionOccurrencePrimaryDiagnosisHistologyTopography
+<a href="CosdV9BreastConditionOccurrencePrimaryDiagnosisHistologyTopography.svg" target="_blank"><img src="CosdV9BreastConditionOccurrencePrimaryDiagnosisHistologyTopography.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * For a given Diagnosis date, all valid combinations of Histology and Topography are added (thereby giving us an ICD-O-3 condition) as well as the ICD10 Diagnosis.
+> * Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+> * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastConditionOccurrencePrimaryDiagnosisHistologyTopography%20mapping){: .btn }
+## CosdV8BreastConditionOccurrenceProgression
+<a href="CosdV8BreastConditionOccurrenceProgression.svg" target="_blank"><img src="CosdV8BreastConditionOccurrenceProgression.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+> * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8BreastConditionOccurrenceProgression%20mapping){: .btn }
+## CosdV8BreastConditionOccurrencePrimaryDiagnosis
+<a href="CosdV8BreastConditionOccurrencePrimaryDiagnosis.svg" target="_blank"><img src="CosdV8BreastConditionOccurrencePrimaryDiagnosis.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+> * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8BreastConditionOccurrencePrimaryDiagnosis%20mapping){: .btn }
+## CosdV8BreastConditionOccurrencePrimaryDiagnosisHistologyTopography
+<a href="CosdV8BreastConditionOccurrencePrimaryDiagnosisHistologyTopography.svg" target="_blank"><img src="CosdV8BreastConditionOccurrencePrimaryDiagnosisHistologyTopography.svg" /></a>
+
+{: .important-title }
+> Assumptions
+>
+> * For a given Diagnosis date, all valid combinations of Histology and Topography are added (thereby giving us an ICD-O-3 condition) as well as the ICD10 Diagnosis.
+> * Any changes in a Diagnosis that may occur in later submissions, for the same Diagnosis date, is taken to be an additional diagnosis as opposed to a change (hence removal of the original)
+> * If the same Diagnosis occurs but we have 2 separate "basis of diagnosis" values, then the first one will be taken only
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8BreastConditionOccurrencePrimaryDiagnosisHistologyTopography%20mapping){: .btn }
