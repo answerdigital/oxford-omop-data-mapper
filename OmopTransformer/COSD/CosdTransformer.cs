@@ -6,6 +6,14 @@ using OmopTransformer.COSD.Colorectal.ConditionOccurrence.CosdConditionOccurrenc
 using OmopTransformer.COSD.Colorectal.ConditionOccurrence.CosdConditionOccurrenceSecondaryDiagnosis;
 using OmopTransformer.COSD.Colorectal.ConditionOccurrence.CosdV8ConditionOccurrencePrimaryDiagnosis;
 using OmopTransformer.COSD.Colorectal.ConditionOccurrence.CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography;
+using OmopTransformer.COSD.Breast.ConditionOccurrence.CosdV8BreastConditionOccurrencePrimaryDiagnosis;
+using OmopTransformer.COSD.Breast.ConditionOccurrence.CosdV8BreastConditionOccurrencePrimaryDiagnosisHistologyTopography;
+using OmopTransformer.COSD.Breast.ConditionOccurrence.CosdV8BreastConditionOccurrenceProgression;
+using OmopTransformer.COSD.Breast.ConditionOccurrence.CosdV9BreastConditionOccurrencePrimaryDiagnosis;
+using OmopTransformer.COSD.Breast.ConditionOccurrence.CosdV9BreastConditionOccurrencePrimaryDiagnosisHistologyTopography;
+using OmopTransformer.COSD.Breast.ConditionOccurrence.CosdV9BreastConditionOccurrenceSecondaryDiagnosis;
+using OmopTransformer.COSD.Breast.ConditionOccurrence.CosdV9BreastConditionOccurrenceProgression;
+using OmopTransformer.COSD.Breast.ConditionOccurrence.CosdV9BreastConditionOccurrenceRecurrence;
 using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosis;
 using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography;
 using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrenceProgression;
@@ -262,6 +270,54 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord, CosdV8ConditionOccurrencePrimaryDiagnosisHistologyTopography>(
             _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
             "Cosd V8 Condition Occurrence Primary Diagnosis Histology Topography",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8BreastConditionOccurrencePrimaryDiagnosisRecord, CosdV8BreastConditionOccurrencePrimaryDiagnosis>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V8 Breast Condition Occurrence Primary Diagnosis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8BreastConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord, CosdV8BreastConditionOccurrencePrimaryDiagnosisHistologyTopography>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V8 Breast Condition Occurrence Primary Diagnosis Histology Topography",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8BreastConditionOccurrenceProgressionRecord, CosdV8BreastConditionOccurrenceProgression>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V8 Breast Condition Occurrence Progression",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9BreastConditionOccurrencePrimaryDiagnosisRecord, CosdV9BreastConditionOccurrencePrimaryDiagnosis>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Breast Condition Occurrence Primary Diagnosis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9BreastConditionOccurrencePrimaryDiagnosisHistologyTopographyRecord, CosdV9BreastConditionOccurrencePrimaryDiagnosisHistologyTopography>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Breast Condition Occurrence Primary Diagnosis Histology Topography",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9BreastConditionOccurrenceSecondaryDiagnosisRecord, CosdV9BreastConditionOccurrenceSecondaryDiagnosis>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Breast Condition Occurrence Secondary Diagnosis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9BreastConditionOccurrenceProgressionRecord, CosdV9BreastConditionOccurrenceProgression>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Breast Condition Occurrence Progression",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9BreastConditionOccurrenceRecurrenceRecord, CosdV9BreastConditionOccurrenceRecurrence>(
+            _conditionOccurrenceRecorder.InsertUpdateConditionOccurrence,
+            "Cosd V9 Breast Condition Occurrence Recurrence",
             runId,
             cancellationToken);
 

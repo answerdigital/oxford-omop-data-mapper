@@ -1,0 +1,46 @@
+<Query>
+    <Sql>
+with BR as (
+    select
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.PrimaryPathway.Diagnosis.BasisOfDiagnosisCancer.@code' as BasisOfDiagnosisCancer,
+        Record ->> '$.PrimaryPathway.Diagnosis."MorphologyIcd-o-3"."@code"' as CancerHistology,
+        Record ->> '$.PrimaryPathway.Diagnosis."TopographyIcd-o-3"."@code"' as CancerTopography
+    from omop_staging.cosd_staging_901
+    where type = 'BR'
+)
+select distinct
+    NhsNumber,
+    DateOfPrimaryDiagnosisClinicallyAgreed,
+    BasisOfDiagnosisCancer,
+    CancerHistology,
+    CancerTopography
+from BR
+where DateOfPrimaryDiagnosisClinicallyAgreed is not null
+  and CancerHistology is not null
+  and CancerTopography is not null;
+    </Sql>
+    <Explanations>
+	    <Explanation columnName="NhsNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="DateOfPrimaryDiagnosisClinicallyAgreed">
+			<Description>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED) is the date the Primary Cancer was confirmed or the Primary Cancer diagnosis was agreed.</Description>
+			<Origin>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+		</Explanation>
+		<Explanation columnName="BasisOfDiagnosisCancer">
+			<Description>The basis of how a PATIENT DIAGNOSIS relating to cancer was identified.</Description>
+			<Origin>BASIS OF DIAGNOSIS (CANCER)</Origin>
+		</Explanation>
+		<Explanation columnName="CancerHistology">
+			<Description>MORPHOLOGY (ICD-O CANCER TRANSFORMATION) is the morphology code of the Cancer Transformation using the ICD-O CODE.</Description>
+			<Origin>MORPHOLOGY (ICD-O CANCER TRANSFORMATION)</Origin>
+		</Explanation>
+		<Explanation columnName="CancerTopography">
+			<Description>TOPOGRAPHY (ICD-O) is the topographical site of the Tumour using the ICD-O CODE.</Description>
+			<Origin>TOPOGRAPHY (ICD-O)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
