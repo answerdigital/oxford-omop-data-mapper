@@ -1,0 +1,33 @@
+﻿<Query>
+    <Sql>
+select
+    distinct
+        d.DiagnosisICD,
+        op.GeneratedRecordIdentifier,
+        op.NHSNumber,
+        op.CDSActivityDate
+from omop_staging.sus_OP_ICDDiagnosis d
+    inner join omop_staging.sus_OP op
+        on d.MessageId = op.MessageId
+where op.NHSNumber is not null
+	and AttendedorDidNotAttend in ('5','6')
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NHSNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+		<Explanation columnName="CDSActivityDate">
+			<Description>Start date of the episode, if exists, else the start date of the spell.</Description>
+			<Origin>CDS ACTIVITY DATE</Origin>
+		</Explanation>
+		<Explanation columnName="GeneratedRecordIdentifier">
+			<Description>CDS specific identifier that binds multiple CDS messages together.</Description>
+			<Origin>CDS RECORD IDENTIFIER</Origin>
+		</Explanation>
+		<Explanation columnName="DiagnosisICD">
+			<Description>ICD10 diagnosis code</Description>
+			<Origin>PRIMARY DIAGNOSIS (ICD)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

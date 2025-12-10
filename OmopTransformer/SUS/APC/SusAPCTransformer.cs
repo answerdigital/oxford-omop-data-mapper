@@ -1,44 +1,46 @@
 ﻿using Microsoft.Extensions.Logging;
-using OmopTransformer.SUS.APC.Death;
-using OmopTransformer.SUS.APC.Location;
+using OmopTransformer.Omop;
+using OmopTransformer.Omop.CareSite;
+using OmopTransformer.Omop.ConditionOccurrence;
+using OmopTransformer.Omop.Death;
+using OmopTransformer.Omop.DeviceExposure;
+using OmopTransformer.Omop.Location;
+using OmopTransformer.Omop.Measurement;
+using OmopTransformer.Omop.Observation;
+using OmopTransformer.Omop.Person;
+using OmopTransformer.Omop.ProcedureOccurrence;
+using OmopTransformer.Omop.Provider;
+using OmopTransformer.Omop.VisitDetail;
+using OmopTransformer.Omop.VisitOccurrence;
+using OmopTransformer.SUS.APC.CareSite;
 using OmopTransformer.SUS.APC.ConditionOccurrence;
-using OmopTransformer.SUS.APC.ProcedureOccurrence;
+using OmopTransformer.SUS.APC.Death;
+using OmopTransformer.SUS.APC.DeviceExposure;
+using OmopTransformer.SUS.APC.Location;
 using OmopTransformer.SUS.APC.Measurements.SusAPCMeasurement;
-using OmopTransformer.SUS.APC.VisitOccurrenceWithSpell;
 using OmopTransformer.SUS.APC.Observation.AnaestheticDuringLabourDelivery;
 using OmopTransformer.SUS.APC.Observation.AnaestheticGivenPostLabourDelivery;
 using OmopTransformer.SUS.APC.Observation.BirthWeight;
 using OmopTransformer.SUS.APC.Observation.CarerSupportIndicator;
 using OmopTransformer.SUS.APC.Observation.GestationLengthLabourOnset;
+using OmopTransformer.SUS.APC.Observation.ICDDiagnosis;
 using OmopTransformer.SUS.APC.Observation.NumberOfBabies;
-using OmopTransformer.SUS.APC.Observation.TotalPreviousPregnancies;
-using OmopTransformer.SUS.APC.Observation.SourceOfReferralForInpatients;
+using OmopTransformer.SUS.APC.Observation.ProcedureObservations;
 using OmopTransformer.SUS.APC.Observation.ReferralReceivedDateForInpatients;
-using OmopTransformer.SUS.APC.VisitDetails;
-using OmopTransformer.SUS.APC.CareSite;
+using OmopTransformer.SUS.APC.Observation.SourceOfReferralForInpatients;
+using OmopTransformer.SUS.APC.Observation.TotalPreviousPregnancies;
+using OmopTransformer.SUS.APC.ProcedureOccurrence;
 using OmopTransformer.SUS.APC.Provider;
-using OmopTransformer.Omop.ConditionOccurrence;
-using OmopTransformer.Omop.Measurement;
-using OmopTransformer.Omop.Death;
-using OmopTransformer.Omop.Location;
-using OmopTransformer.Omop.Observation;
-using OmopTransformer.Omop.Person;
-using OmopTransformer.Omop.ProcedureOccurrence;
-using OmopTransformer.Omop.VisitDetail;
-using OmopTransformer.Omop.VisitOccurrence;
-using OmopTransformer.Omop.CareSite;
-using OmopTransformer.Omop.Provider;
-using OmopTransformer.Transformation;
-using OmopTransformer.Omop;
-using OmopTransformer.SUS.CCMDS.VisitDetails;
-using OmopTransformer.SUS.CCMDS.ProcedureOccurrence;
-using OmopTransformer.SUS.CCMDS.Observation.HighCostDrugs;
-using OmopTransformer.SUS.CCMDS.Observation.HighCostDrugs.SusCCMDSHighCostDrugs;
+using OmopTransformer.SUS.APC.VisitDetails;
+using OmopTransformer.SUS.APC.VisitOccurrenceWithSpell;
+using OmopTransformer.SUS.CCMDS.DeviceExposure;
 using OmopTransformer.SUS.CCMDS.Measurements.GestationLengthAtDelivery;
 using OmopTransformer.SUS.CCMDS.Measurements.PersonWeight;
-using OmopTransformer.SUS.CCMDS.DeviceExposure;
-using OmopTransformer.Omop.DeviceExposure;
-using OmopTransformer.SUS.APC.DeviceExposure;
+using OmopTransformer.SUS.CCMDS.Observation.HighCostDrugs;
+using OmopTransformer.SUS.CCMDS.Observation.HighCostDrugs.SusCCMDSHighCostDrugs;
+using OmopTransformer.SUS.CCMDS.ProcedureOccurrence;
+using OmopTransformer.SUS.CCMDS.VisitDetails;
+using OmopTransformer.Transformation;
 namespace OmopTransformer.SUS.APC;
 
 internal class SusAPCTransformer : Transformer
@@ -116,10 +118,10 @@ internal class SusAPCTransformer : Transformer
           cancellationToken);
 
         await Transform<SusAPCProcedureOccurrenceRecord, SusAPCProcedureOccurrence>(
-          _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
-          "SUS APC Procedure Occurrence",
-          runId,
-          cancellationToken);
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "SUS APC Procedure Occurrence",
+            runId,
+            cancellationToken);
 
         await Transform<SusAPCDeviceExposureRecord, SusAPCDeviceExposure>(
             _deviceExposureRecorder.InsertUpdateDeviceExposure,
@@ -258,5 +260,19 @@ internal class SusAPCTransformer : Transformer
            "SUS APC ReferralReceivedDateForInpatients",
            runId,
            cancellationToken);
+
+        await Transform<SusAPCProcedureObservationsRecord, SusAPCProcedureObservations>(
+            _observationRecorder.InsertUpdateObservations,
+            "SUS APC Diagnosis Observations",
+            runId,
+            cancellationToken);
+
+        await Transform<SusAPCSusDiagnosisRecord, SusAPCSusDiagnosisObservation>(
+            _observationRecorder.InsertUpdateObservations,
+            "SUS APC sus_OP_OPCSProcedure Observations",
+            runId,
+            cancellationToken);
+
+        _conceptResolver.PrintErrors();
     }
 }

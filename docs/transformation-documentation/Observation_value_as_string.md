@@ -337,22 +337,13 @@ and d.AccidentAndEmergencyDiagnosis in ('20','201')
 * `DateStamp` Decision date of treatment 
 
 ```sql
-		with results as (
-			select 
-				distinct
-					(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
-					dc.DiagnosisCode,
-					dc.DateStamp,
-			from omop_staging.RTDS_5_Diagnosis_Course dc
-			where dc.DiagnosisCode like 'Decision%'
-		)
-		select
-			NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			DateStamp
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_5_Diagnosis_Course dc
+		where dc.DiagnosisCode like 'Decision%'
+		and NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}');
 	
 ```
 
@@ -364,22 +355,14 @@ and d.AccidentAndEmergencyDiagnosis in ('20','201')
 * `DateStamp` Decision date of treatment 
 
 ```sql
-		with results as (
-			select 
-				distinct
-					(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
-					dc.DiagnosisCode,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
+			dc.DiagnosisCode,
 					dc.DateStamp,
-			from omop_staging.RTDS_5_Diagnosis_Course dc
-			where dc.DiagnosisCode like 'Referral%'
-		)
-		select
-			NhsNumber,
-			DateStamp
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_5_Diagnosis_Course dc
+		where dc.DiagnosisCode like 'Referral%'
+		and NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}');
 	
 ```
 
@@ -1370,7 +1353,6 @@ where o.PersonStatedSexualOrientationCodeAtDiagnosis is not null
 		ProcedureDate is null and
 		CancerTreatmentStartDate is null
     )
---tested
 ```
 
 

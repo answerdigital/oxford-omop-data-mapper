@@ -60,6 +60,64 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20SUS%20OP%20Referral%20Received%20Date%20For%20Outpatients%20mapping){: .btn }
+### SUS Outpatient Procedure Observation
+Source column  `AppointmentDate`.
+Converts text to dates.
+
+* `AppointmentDate` Appointment Date. [APPOINTMENT DATE](https://www.datadictionary.nhs.uk/data_elements/appointment_date.html)
+
+```sql
+with results as
+(
+	select
+		distinct
+			op.GeneratedRecordIdentifier,
+			op.NHSNumber,
+			op.AppointmentDate,
+			op.AppointmentTime,
+			p.ProcedureOPCS as PrimaryProcedure
+	from omop_staging.sus_OP op
+		inner join omop_staging.sus_OP_OPCSProcedure p
+		on op.MessageId = p.MessageId
+	where NHSNumber is not null
+		and AttendedorDidNotAttend in ('5','6')
+)
+select *
+from results
+order by 
+	GeneratedRecordIdentifier,
+	NHSNumber,
+	AppointmentDate, 
+	AppointmentTime,
+	PrimaryProcedure
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20SUS%20Outpatient%20Procedure%20Observation%20mapping){: .btn }
+### Sus OP ICDDiagnosis table
+Source column  `CDSActivityDate`.
+Converts text to dates.
+
+* `CDSActivityDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+
+```sql
+select
+    distinct
+        d.DiagnosisICD,
+        op.GeneratedRecordIdentifier,
+        op.NHSNumber,
+        op.CDSActivityDate
+from omop_staging.sus_OP_ICDDiagnosis d
+    inner join omop_staging.sus_OP op
+        on d.MessageId = op.MessageId
+where op.NHSNumber is not null
+	and AttendedorDidNotAttend in ('5','6')
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20Sus%20OP%20ICDDiagnosis%20table%20mapping){: .btn }
 ### SUS Outpatient Carer Support Indicator Observation
 Source column  `CDSActivityDate`.
 Converts text to dates.
@@ -176,6 +234,33 @@ Converts text to dates.
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20SUS%20APC%20Referral%20Received%20Date%20For%20Inpatients%20mapping){: .btn }
+### SUS APC Procedure Occurrence
+Source column  `PrimaryProcedureDate`.
+Converts text to dates.
+
+* `PrimaryProcedureDate` Procedure Date. [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+
+```sql
+select
+	distinct
+		apc.GeneratedRecordIdentifier,
+		apc.NHSNumber,
+		p.ProcedureDateOPCS as PrimaryProcedureDate,
+		p.ProcedureOPCS as PrimaryProcedure
+from omop_staging.sus_APC apc
+	inner join omop_staging.sus_OPCSProcedure p
+		on apc.MessageId = p.MessageId
+where NHSNumber is not null
+order by
+	apc.GeneratedRecordIdentifier,
+	apc.NHSNumber,
+	p.ProcedureDateOPCS,
+	p.ProcedureOPCS
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
 ### SUS Inpatient NumberofBabies Observation
 Source column  `observation_date`.
 Converts text to dates.
@@ -204,6 +289,33 @@ group by
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20SUS%20Inpatient%20NumberofBabies%20Observation%20mapping){: .btn }
+### Sus APC Diagnosis Table
+Source column  `CDSActivityDate`.
+Converts text to dates.
+
+* `CDSActivityDate` Start date of the episode, if exists, else the start date of the spell. [CDS ACTIVITY DATE](https://www.datadictionary.nhs.uk/data_elements/cds_activity_date.html)
+
+```sql
+select
+    distinct
+        d.DiagnosisICD,
+        apc.GeneratedRecordIdentifier,
+        apc.NHSNumber,
+        apc.CDSActivityDate
+from omop_staging.sus_ICDDiagnosis d
+    inner join omop_staging.sus_APC apc
+        on d.MessageId = apc.MessageId
+where apc.NHSNumber is not null
+order by
+	d.DiagnosisICD,
+    apc.GeneratedRecordIdentifier,
+    apc.NHSNumber,
+    apc.CDSActivityDate
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20Sus%20APC%20Diagnosis%20Table%20mapping){: .btn }
 ### SUS Inpatient Gestation Length Labour Onset Observation
 Source column  `observation_date`.
 Converts text to dates.
@@ -423,8 +535,8 @@ Converts text to dates.
 			Case 
 				When Adjunctive_Therapy = 1 then concat(Adjunctive_Therapy, ' - Adjuvant Therapy')
 				When Adjunctive_Therapy = 2 then concat(Adjunctive_Therapy, ' - Neoadjuvant Therapy')
-				When Intent_Of_Treatment = 3 then concat(Adjunctive_Therapy, ' - Not Applicable (Primary Treatment)')
-				When Intent_Of_Treatment = 9 then concat(Adjunctive_Therapy, ' - Not Known (Not Recorded)')
+				When Adjunctive_Therapy = 3 then concat(Adjunctive_Therapy, ' - Not Applicable (Primary Treatment)')
+				When Adjunctive_Therapy = 9 then concat(Adjunctive_Therapy, ' - Not Known (Not Recorded)')
 			else '' end as Source_value,
 		  	Administration_Date
 		from omop_staging.sact_staging
@@ -506,22 +618,13 @@ Converts text to dates.
 * `DateStamp` Decision date of treatment 
 
 ```sql
-		with results as (
-			select 
-				distinct
-					(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
-					dc.DiagnosisCode,
-					dc.DateStamp,
-			from omop_staging.RTDS_5_Diagnosis_Course dc
-			where dc.DiagnosisCode like 'Decision%'
-		)
-		select
-			NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			DateStamp
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_5_Diagnosis_Course dc
+		where dc.DiagnosisCode like 'Decision%'
+		and NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}');
 	
 ```
 
@@ -534,23 +637,16 @@ Converts text to dates.
 * `Treatmentdatetime` Start date of treatment 
 
 ```sql
-		with results as (
-			select distinct
-			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			Treatmentdatetime,
 			Cast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,
 			NominalEnergy as NominalEnergy
-		from omop_staging.RTDS_4_Exposures
-		)
-		select
-			NhsNumber,
-			Treatmentdatetime,
-			CalculatedNominalEnergy,
-			NominalEnergy
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_4_Exposures dc
+		where NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}')
+		and NominalEnergy is not null 
+		and NominalEnergy != '';
 	
 ```
 
@@ -563,21 +659,14 @@ Converts text to dates.
 * `StartDateTime` Start date of treatment 
 
 ```sql
-		with results as (
-			select distinct
-				(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
-				StartDateTime,
-				NoFracs 
-			from omop_staging.RTDS_3_Prescription
-		)
-		select
-			NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			StartDateTime,
-			NoFracs
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+			NoFracs 
+		from omop_staging.RTDS_3_Prescription dc
+		where NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}')
+		and NoFracs is not null;
 	
 ```
 
@@ -590,22 +679,14 @@ Converts text to dates.
 * `DateStamp` Decision date of treatment 
 
 ```sql
-		with results as (
-			select 
-				distinct
-					(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
-					dc.DiagnosisCode,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
+			dc.DiagnosisCode,
 					dc.DateStamp,
-			from omop_staging.RTDS_5_Diagnosis_Course dc
-			where dc.DiagnosisCode like 'Referral%'
-		)
-		select
-			NhsNumber,
-			DateStamp
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_5_Diagnosis_Course dc
+		where dc.DiagnosisCode like 'Referral%'
+		and NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}');
 	
 ```
 
@@ -618,28 +699,19 @@ Converts text to dates.
 * `DueDateTime` DATE WHEN RADIOTHERAPY OCCURRED 
 
 ```sql
-		with results as (
-			select distinct
-				(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NHSNumber,
-				AttributeValue,
-				(select concept_id from cdm.concept where domain_id = 'Spec Anatomic Site'
-						and concept_code = CASE WHEN length(code) > 3 THEN substr(code, 1, 3) || '.' || substr(code, 4) ELSE code END) as AnatomicalSiteConceptId,
-				DueDateTime
-			from omop_staging.RTDS_2b_Plan,
-			LATERAL (SELECT regexp_extract(AttributeValue, '^([A-Z][0-9A-Z]+)', 1) AS code) AS t
-			where Description = 'Anatomical Site' 
-			and AttributeValue is not null 
-			and AttributeValue != 'None'
-		)
-		select
-			NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			AttributeValue,
-			AnatomicalSiteConceptId,
+			(select concept_id from cdm.concept where domain_id = 'Spec Anatomic Site'
+				and concept_code = CASE WHEN length(code) > 3 THEN substr(code, 1, 3) || '.' || substr(code, 4) ELSE code END) as AnatomicalSiteConceptId,
 			DueDateTime
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_2b_Plan dc,
+		LATERAL (SELECT regexp_extract(AttributeValue, '^([A-Z][0-9A-Z]+)', 1) AS code) AS t
+		where Description = 'Anatomical Site' 
+		and AttributeValue is not null 
+		and AttributeValue != 'None'
+		and NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}');
 	
 ```
 
@@ -759,6 +831,54 @@ where o.TobaccoSmokingCessation is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20CosdV9LungTobaccoSmokingCessation%20mapping){: .btn }
+### CosdV9LungSurgicalAccessType
+* Value copied from `Date`
+
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DIAGNOSIS DATE (CLINICALLY AGREED)](), [STAGE DATE (FINAL PRETREATMENT STAGE)](), [STAGE DATE (INTEGRATED STAGE)](), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+
+```sql
+with LU as (
+    select
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+        Record ->> '$.PrimaryPathway.ReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage' as StageDateFinalPretreatmentStage,
+        Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage' as StageDateIntegratedStage,
+        Record ->> '$.Treatment.TreatmentStartDateCancer' as TreatmentStartDateCancer,
+        Record ->> '$.Treatment.Surgery.ProcedureDate' as ProcedureDate,
+        Record ->> '$.Treatment.Surgery.SurgicalAccessType.@code' as SurgicalAccessType,
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber
+    from omop_staging.cosd_staging_901
+    where type = 'LU'
+)
+select
+    distinct
+        SurgicalAccessType,
+        NhsNumber,
+        least(
+            cast(DateFirstSeen as date),
+            cast(DateFirstSeenCancerSpecialist as date),
+            cast(DateOfPrimaryDiagnosisClinicallyAgreed as date),
+            cast(StageDateFinalPretreatmentStage as date),
+            cast(StageDateIntegratedStage as date),
+            cast(TreatmentStartDateCancer as date),
+            cast(ProcedureDate as date)
+        ) as Date
+from LU o
+where o.SurgicalAccessType is not null
+  and not (
+        DateFirstSeen is null and
+        DateFirstSeenCancerSpecialist is null and
+        DateOfPrimaryDiagnosisClinicallyAgreed is null and
+        StageDateFinalPretreatmentStage is null and
+        StageDateIntegratedStage is null and
+        TreatmentStartDateCancer is null and
+        ProcedureDate is null
+    )
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20CosdV9LungSurgicalAccessType%20mapping){: .btn }
 ### CosdV9LungSourceOfReferralForOutpatients
 * Value copied from `Date`
 
@@ -1224,6 +1344,54 @@ where o.AdultComorbidityEvaluation is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20CosdV9LungAdultComorbidityEvaluation%20mapping){: .btn }
+### CosdV8LungSurgicalAccessType
+* Value copied from `Date`
+
+* `Date` Observation date [DATE FIRST SEEN](https://www.datadictionary.nhs.uk/data_elements/date_first_seen.html), [DATE FIRST SEEN (CANCER SPECIALIST)](https://www.datadictionary.nhs.uk/data_elements/date_first_seen__cancer_specialist_.html), [DIAGNOSIS DATE](https://www.datadictionary.nhs.uk/data_elements/diagnosis_date.html), [TNM STAGE GROUPING DATE (INTEGRATED)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__integrated_.html), [TNM STAGE GROUPING DATE (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/tnm_stage_grouping_date__final_pretreatment_.html), [TREATMENT START DATE (CANCER)](https://www.datadictionary.nhs.uk/data_elements/treatment_start_date__cancer_.html), [PROCEDURE DATE](https://www.datadictionary.nhs.uk/data_elements/procedure_date.html)
+
+```sql
+with LU as (
+    select 
+        Record ->> '$.Lung.LungCore.LungCoreReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+        Record ->> '$.Lung.LungCore.LungCoreReferralAndFirstStageOfPatientPathway.SpecialistDateFirstSeen' as SpecialistDateFirstSeen,
+        Record ->> '$.Lung.LungCore.LungCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.IntegratedStageTNMStageGroupingDate' as IntegratedStageTNMStageGroupingDate,
+        Record ->> '$.Lung.LungCore.LungCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as FinalPreTreatmentTNMStageGroupingDate,
+        unnest ([[Record ->> '$.Lung.LungCore.LungCoreTreatment.CancerTreatmentStartDate'], Record ->> '$.Lung.LungCore.LungCoreTreatment[*].CancerTreatmentStartDate'], recursive := true) as CancerTreatmentStartDate,
+        Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+        Record ->> '$.Lung.LungCore.LungCoreTreatment.LungCoreSurgeryAndOtherProcedures.SurgicalAccessType.@code' as SurgicalAccessType,
+        Record ->> '$.Lung.LungCore.LungCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber
+    from omop_staging.cosd_staging_81
+    where Type = 'LU'
+)
+select
+      distinct
+          SurgicalAccessType,
+          NhsNumber,
+          least(
+                cast (DateFirstSeen as date),
+                cast (SpecialistDateFirstSeen as date),
+                cast (ClinicalDateCancerDiagnosis as date),
+                cast (IntegratedStageTNMStageGroupingDate as date),
+                cast (FinalPreTreatmentTNMStageGroupingDate as date),
+                cast (CancerTreatmentStartDate as date),
+                cast (ProcedureDate as date)
+              ) as Date
+from LU o
+where o.SurgicalAccessType is not null
+  and not (
+    DateFirstSeen is null and
+    SpecialistDateFirstSeen is null and
+    ClinicalDateCancerDiagnosis is null and
+    IntegratedStageTNMStageGroupingDate is null and
+    FinalPreTreatmentTNMStageGroupingDate is null and
+    CancerTreatmentStartDate is null and
+    ProcedureDate is null
+    )
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_date%20field%20CosdV8LungSurgicalAccessType%20mapping){: .btn }
 ### CosdV8LungSourceOfReferralOutPatients
 * Value copied from `Date`
 
@@ -2420,7 +2588,6 @@ where o.PersonStatedSexualOrientationCodeAtDiagnosis is not null
 		ProcedureDate is null and
 		CancerTreatmentStartDate is null
     )
---tested
 ```
 
 

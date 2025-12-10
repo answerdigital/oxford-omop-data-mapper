@@ -17,9 +17,11 @@ has_toc: false
 * [HospitalProviderSpellNumber]({% link docs/transformation-documentation/Observation_HospitalProviderSpellNumber.md %})
 * [value_as_number]({% link docs/transformation-documentation/Observation_value_as_number.md %})
 * [value_as_concept_id]({% link docs/transformation-documentation/Observation_value_as_concept_id.md %})
+* [qualifier_concept_id]({% link docs/transformation-documentation/Observation_qualifier_concept_id.md %})
 * [unit_concept_id]({% link docs/transformation-documentation/Observation_unit_concept_id.md %})
 * [observation_source_value]({% link docs/transformation-documentation/Observation_observation_source_value.md %})
 * [observation_source_concept_id]({% link docs/transformation-documentation/Observation_observation_source_concept_id.md %})
+* [qualifier_source_value]({% link docs/transformation-documentation/Observation_qualifier_source_value.md %})
 * [value_source_value]({% link docs/transformation-documentation/Observation_value_source_value.md %})
 
 ## SusOPSourceOfReferralForOutpatients
@@ -50,6 +52,14 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPReferralReceivedDateForOutpatients%20mapping){: .btn }
+## SusOPProcedureObservation
+<a href="SusOPProcedureObservation.svg" target="_blank"><img src="SusOPProcedureObservation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPProcedureObservation%20mapping){: .btn }
+## SusOPICDDiagnosisObservation
+<a href="SusOPICDDiagnosisObservation.svg" target="_blank"><img src="SusOPICDDiagnosisObservation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusOPICDDiagnosisObservation%20mapping){: .btn }
 ## SusOPCarerSupportIndicator
 <a href="SusOPCarerSupportIndicator.svg" target="_blank"><img src="SusOPCarerSupportIndicator.svg" /></a>
 
@@ -110,6 +120,10 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCReferralReceivedDateForInpatients%20mapping){: .btn }
+## SusAPCProcedureObservations
+<a href="SusAPCProcedureObservations.svg" target="_blank"><img src="SusAPCProcedureObservations.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCProcedureObservations%20mapping){: .btn }
 ## SusAPCNumberOfBabies
 <a href="SusAPCNumberOfBabies.svg" target="_blank"><img src="SusAPCNumberOfBabies.svg" /></a>
 
@@ -124,6 +138,10 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCNumberOfBabies%20mapping){: .btn }
+## SusAPCSusDiagnosisObservation
+<a href="SusAPCSusDiagnosisObservation.svg" target="_blank"><img src="SusAPCSusDiagnosisObservation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=SusAPCSusDiagnosisObservation%20mapping){: .btn }
 ## SusAPCGestationLengthLabourOnset
 <a href="SusAPCGestationLengthLabourOnset.svg" target="_blank"><img src="SusAPCGestationLengthLabourOnset.svg" /></a>
 
@@ -259,6 +277,11 @@ has_toc: false
 ## RtdsExternalBeamEnergy
 <a href="RtdsExternalBeamEnergy.svg" target="_blank"><img src="RtdsExternalBeamEnergy.svg" /></a>
 
+{: .important-title }
+> Assumptions
+>
+> * Multiple records around the same time is indicative of one nominal beam energy with multiple control points being recorded
+
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=RtdsExternalBeamEnergy%20mapping){: .btn }
 ## RtdsNumberOfFractions
 <a href="RtdsNumberOfFractions.svg" target="_blank"><img src="RtdsNumberOfFractions.svg" /></a>
@@ -296,6 +319,16 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungTobaccoSmokingCessation%20mapping){: .btn }
+## CosdV9LungSurgicalAccessType
+<a href="CosdV9LungSurgicalAccessType.svg" target="_blank"><img src="CosdV9LungSurgicalAccessType.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungSurgicalAccessType%20mapping){: .btn }
 ## CosdV9LungSourceOfReferralForOutpatients
 <a href="CosdV9LungSourceOfReferralForOutpatients.svg" target="_blank"><img src="CosdV9LungSourceOfReferralForOutpatients.svg" /></a>
 
@@ -396,6 +429,16 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungAdultComorbidityEvaluation%20mapping){: .btn }
+## CosdV8LungSurgicalAccessType
+<a href="CosdV8LungSurgicalAccessType.svg" target="_blank"><img src="CosdV8LungSurgicalAccessType.svg" /></a>
+
+{: .important-title }
+> Notes
+>
+> Observation dates are approximated using other date fields.
+>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungSurgicalAccessType%20mapping){: .btn }
 ## CosdV8LungSourceOfReferralOutPatients
 <a href="CosdV8LungSourceOfReferralOutPatients.svg" target="_blank"><img src="CosdV8LungSourceOfReferralOutPatients.svg" /></a>
 

@@ -4,10 +4,10 @@
   "omopColumns": [
     {
       "name": "NhsNumber",
-      "operation_description": "Value copied from `PatientId`",
+      "operation_description": "Value copied from `NhsNumber`",
       "dataSource": [
         {
-          "name": "PatientId",
+          "name": "NhsNumber",
           "description": "Patient NHS Number",
           "origins": [
             {

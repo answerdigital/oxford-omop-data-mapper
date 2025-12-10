@@ -10,8 +10,8 @@ internal class SactAdjunctiveTherapyTypeLookup : ILookup
         {
             { "1", new ValueWithNote("4191637", "Adjuvant - intent") },
             { "2", new ValueWithNote("4161587", "Neoadjuvant intent") },
-            { "3", new ValueWithNote("", "Not Applicable (Primary Treatment)") },
-            { "9" , new ValueWithNote("", "Not Known (Not Recorded)") },
+            { "3", new ValueWithNote("0", "Not Applicable (Primary Treatment)") },
+            { "9" , new ValueWithNote("0", "Not Known (Not Recorded)") },
         };
 
      public string[] ColumnNotes =>

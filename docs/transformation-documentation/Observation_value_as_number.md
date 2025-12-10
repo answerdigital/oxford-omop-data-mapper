@@ -97,23 +97,16 @@ Converts text to number.
 * `CalculatedNominalEnergy` RADIOTHERAPY PRESCRIBED BEAM ENERGY  is the prescribed beam energy of a Radiotherapy Exposure used in External Beam Radiotherapy [RADIOTHERAPY PRESCRIBED BEAM ENERGY](https://www.datadictionary.nhs.uk/data_elements/radiotherapy_prescribed_beam_energy.html)
 
 ```sql
-		with results as (
-			select distinct
-			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			Treatmentdatetime,
 			Cast(NominalEnergy as double) / 1000 as CalculatedNominalEnergy,
 			NominalEnergy as NominalEnergy
-		from omop_staging.RTDS_4_Exposures
-		)
-		select
-			NhsNumber,
-			Treatmentdatetime,
-			CalculatedNominalEnergy,
-			NominalEnergy
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_4_Exposures dc
+		where NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}')
+		and NominalEnergy is not null 
+		and NominalEnergy != '';
 	
 ```
 
@@ -126,21 +119,14 @@ Converts text to number.
 * `NoFracs` The prescribed number of Radiotherapy Fractions delivered to a PATIENT as described in the Radiotherapy Plan [RADIOTHERAPY PRESCRIBED FRACTIONS](https://www.datadictionary.nhs.uk/data_elements/radiotherapy_prescribed_fractions.html)
 
 ```sql
-		with results as (
-			select distinct
-				(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NhsNumber,
-				StartDateTime,
-				NoFracs 
-			from omop_staging.RTDS_3_Prescription
-		)
-		select
-			NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			StartDateTime,
-			NoFracs
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+			NoFracs 
+		from omop_staging.RTDS_3_Prescription dc
+		where NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}')
+		and NoFracs is not null;
 	
 ```
 

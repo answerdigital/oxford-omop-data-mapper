@@ -15,8 +15,8 @@ The Adjunctive Therapy Type of the DRUG used for each Systemic Anti-Cancer Thera
 |------|-----|-----|
 |1|4191637|Adjuvant - intent|
 |2|4161587|Neoadjuvant intent|
-|3||Not Applicable (Primary Treatment)|
-|9||Not Known (Not Recorded)|
+|3|0|Not Applicable (Primary Treatment)|
+|9|0|Not Known (Not Recorded)|
 
 Notes
 * [SACT ADJUNCTIVE THERAPY TYPE](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/data_elements/adjunctive_therapy_type.html)
@@ -31,8 +31,8 @@ Notes
 			Case 
 				When Adjunctive_Therapy = 1 then concat(Adjunctive_Therapy, ' - Adjuvant Therapy')
 				When Adjunctive_Therapy = 2 then concat(Adjunctive_Therapy, ' - Neoadjuvant Therapy')
-				When Intent_Of_Treatment = 3 then concat(Adjunctive_Therapy, ' - Not Applicable (Primary Treatment)')
-				When Intent_Of_Treatment = 9 then concat(Adjunctive_Therapy, ' - Not Known (Not Recorded)')
+				When Adjunctive_Therapy = 3 then concat(Adjunctive_Therapy, ' - Not Applicable (Primary Treatment)')
+				When Adjunctive_Therapy = 9 then concat(Adjunctive_Therapy, ' - Not Known (Not Recorded)')
 			else '' end as Source_value,
 		  	Administration_Date
 		from omop_staging.sact_staging
@@ -62,7 +62,7 @@ The ADMINISTRATION ROUTE of the DRUG used for each Systemic Anti-Cancer Therapy 
 |12|4156706|Intradermal|
 |13|40491322|Intratumor|
 |14|4157758|Intralesional|
-|98|||
+|98|0||
 
 Notes
 * [SACT Drug Route of Administration](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/data_elements/systemic_anti-cancer_therapy_drug_route_of_administration.html)
@@ -94,8 +94,8 @@ The Regimen Treatment Intent of the DRUG used for each Systemic Anti-Cancer Ther
 |3|4179711|Palliative|
 |4|4179711|Palliative|
 |5|4179711|Palliative|
-|98||Other (not listed)|
-|99||Other (not listed)|
+|98|0|Other (not listed)|
+|99|0|Other (not listed)|
 
 Notes
 * [SACT Drug Regimen Treatment Intent](https://archive.datadictionary.nhs.uk/DD%20Release%20May%202024/attributes/systemic_anti-cancer_therapy_drug_regimen_treatment_intent.html)
@@ -128,28 +128,19 @@ Notes
 * `AnatomicalSiteConceptId` CONCEPT ID OF ANATOMIC SITE OF RADIOTHERAPY PROCEDURE 
 
 ```sql
-		with results as (
-			select distinct
-				(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = PatientSer limit 1) as NHSNumber,
-				AttributeValue,
-				(select concept_id from cdm.concept where domain_id = 'Spec Anatomic Site'
-						and concept_code = CASE WHEN length(code) > 3 THEN substr(code, 1, 3) || '.' || substr(code, 4) ELSE code END) as AnatomicalSiteConceptId,
-				DueDateTime
-			from omop_staging.RTDS_2b_Plan,
-			LATERAL (SELECT regexp_extract(AttributeValue, '^([A-Z][0-9A-Z]+)', 1) AS code) AS t
-			where Description = 'Anatomical Site' 
-			and AttributeValue is not null 
-			and AttributeValue != 'None'
-		)
-		select
-			NhsNumber,
+		select distinct
+			(select PatientId from omop_staging.rtds_1_demographics d where d.PatientSer = dc.PatientSer limit 1) as NhsNumber,
 			AttributeValue,
-			AnatomicalSiteConceptId,
+			(select concept_id from cdm.concept where domain_id = 'Spec Anatomic Site'
+				and concept_code = CASE WHEN length(code) > 3 THEN substr(code, 1, 3) || '.' || substr(code, 4) ELSE code END) as AnatomicalSiteConceptId,
 			DueDateTime
-		from results
-		where
-			NhsNumber is not null
-			and regexp_matches(NhsNumber, '\d{10}');
+		from omop_staging.RTDS_2b_Plan dc,
+		LATERAL (SELECT regexp_extract(AttributeValue, '^([A-Z][0-9A-Z]+)', 1) AS code) AS t
+		where Description = 'Anatomical Site' 
+		and AttributeValue is not null 
+		and AttributeValue != 'None'
+		and NhsNumber is not null
+		and regexp_matches(NhsNumber, '\d{10}');
 	
 ```
 

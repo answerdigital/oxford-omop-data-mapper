@@ -43,6 +43,10 @@ has_toc: false
 <a href="OxfordGPProcedureOccurrence.svg" target="_blank"><img src="OxfordGPProcedureOccurrence.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OxfordGPProcedureOccurrence%20mapping){: .btn }
+## CosdV9LungProcedureOccurrenceRelapseMethodOfDetection
+<a href="CosdV9LungProcedureOccurrenceRelapseMethodOfDetection.svg" target="_blank"><img src="CosdV9LungProcedureOccurrenceRelapseMethodOfDetection.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungProcedureOccurrenceRelapseMethodOfDetection%20mapping){: .btn }
 ## CosdV9LungProcedureOccurrenceProcedureOpcs
 <a href="CosdV9LungProcedureOccurrenceProcedureOpcs.svg" target="_blank"><img src="CosdV9LungProcedureOccurrenceProcedureOpcs.svg" /></a>
 
@@ -67,6 +71,10 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9LungProcedureOccurrencePrimaryProcedureOpcs%20mapping){: .btn }
+## CosdV8LungProcedureOccurrenceRelapseMethodOfDetection
+<a href="CosdV8LungProcedureOccurrenceRelapseMethodOfDetection.svg" target="_blank"><img src="CosdV8LungProcedureOccurrenceRelapseMethodOfDetection.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8LungProcedureOccurrenceRelapseMethodOfDetection%20mapping){: .btn }
 ## CosdV8LungProcedureOccurrenceProcedureOpcs
 <a href="CosdV8LungProcedureOccurrenceProcedureOpcs.svg" target="_blank"><img src="CosdV8LungProcedureOccurrenceProcedureOpcs.svg" /></a>
 

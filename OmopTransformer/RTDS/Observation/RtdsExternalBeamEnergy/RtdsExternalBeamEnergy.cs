@@ -4,6 +4,9 @@ using OmopTransformer.Transformation;
 
 namespace OmopTransformer.RTDS.Observation;
 
+[Notes(
+    "Assumptions",
+    "* Multiple records around the same time is indicative of one nominal beam energy with multiple control points being recorded")]
 internal class RtdsExternalBeamEnergy : OmopObservation<RtdsExternalBeamEnergyRecord>
 {
     [CopyValue(nameof(Source.NhsNumber))]

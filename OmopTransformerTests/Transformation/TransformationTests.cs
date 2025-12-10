@@ -72,6 +72,30 @@ public class TransformationTests
 
         Assert.AreEqual(0, testConcept.ColourId);
     }
+
+    [TestMethod]
+    public void TestWhitespaceTrimmedLookup()
+    {
+        var sourceClass =
+            new SourceClass
+            {
+                Number = 123,
+                Text = "hello world",
+                Line1 = "line 1",
+                Line2 = "line 2",
+                ColourName = "  blue  "
+            };
+
+        var testConcept = new TestConcept(sourceClass);
+
+        var logger = Substitute.For<ILogger<RecordTransformer>>();
+
+        TransformPlan plan = TransformPlan.Create(testConcept);
+
+        new RecordTransformer(logger, null!, null!, null!, null!, null!, null!, null!).Transform(testConcept, plan);
+
+        Assert.AreEqual(1, testConcept.ColourId);
+    }
 }
 
 internal class SourceClass

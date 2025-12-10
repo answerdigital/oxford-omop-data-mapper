@@ -112,7 +112,7 @@ internal class RecordTransformer : IRecordTransformer
             return null;
 
         if (firstArgument is string argument)
-            return argument;
+            return argument.Trim();
 
         if (firstArgument is int nullableInt)
             return nullableInt.ToString();

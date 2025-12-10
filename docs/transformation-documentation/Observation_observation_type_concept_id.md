@@ -14,6 +14,14 @@ has_toc: false
 * Constant value set to `32818`. EHR administration record
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20OP%20Referral%20Received%20Date%20For%20Outpatients%20mapping){: .btn }
+### SUS Outpatient Procedure Observation
+* Constant value set to `32818`. EHR administration record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20Outpatient%20Procedure%20Observation%20mapping){: .btn }
+### Sus OP ICDDiagnosis table
+* Constant value set to `32818`. EHR administration record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20Sus%20OP%20ICDDiagnosis%20table%20mapping){: .btn }
 ### SUS Outpatient Carer Support Indicator Observation
 * Constant value set to `32834`. EHR outpatient note
 
@@ -34,10 +42,18 @@ has_toc: false
 * Constant value set to `32818`. EHR administration record
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20APC%20Referral%20Received%20Date%20For%20Inpatients%20mapping){: .btn }
+### SUS APC Procedure Occurrence
+* Constant value set to `32818`. EHR administration record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
 ### SUS Inpatient NumberofBabies Observation
 * Constant value set to `32818`. EHR administration record
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20SUS%20Inpatient%20NumberofBabies%20Observation%20mapping){: .btn }
+### Sus APC Diagnosis Table
+* Constant value set to `32818`. EHR administration record
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20Sus%20APC%20Diagnosis%20Table%20mapping){: .btn }
 ### SUS Inpatient Gestation Length Labour Onset Observation
 * Constant value set to `32818`. EHR administration record
 
@@ -118,6 +134,10 @@ has_toc: false
 * Constant value set to `32828`. `EHR episode record`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20CosdV9LungTobaccoSmokingCessation%20mapping){: .btn }
+### CosdV9LungSurgicalAccessType
+* Constant value set to `32828`. `EHR episode record`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20CosdV9LungSurgicalAccessType%20mapping){: .btn }
 ### CosdV9LungSourceOfReferralForOutpatients
 * Constant value set to `32828`. `EHR episode record`
 
@@ -158,6 +178,10 @@ has_toc: false
 * Constant value set to `32828`. `EHR episode record`
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20CosdV9LungAdultComorbidityEvaluation%20mapping){: .btn }
+### CosdV8LungSurgicalAccessType
+* Constant value set to `32828`. `EHR episode record`
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_type_concept_id%20field%20CosdV8LungSurgicalAccessType%20mapping){: .btn }
 ### CosdV8LungSourceOfReferralOutPatients
 * Constant value set to `32828`. `EHR episode record`
 
