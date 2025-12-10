@@ -186,7 +186,5 @@ internal class SusOPTransformer : Transformer
             "SUS OP sus_OP_OPCSProcedure Observations",
             runId,
             cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }

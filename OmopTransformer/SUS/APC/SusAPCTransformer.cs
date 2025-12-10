@@ -272,7 +272,5 @@ internal class SusAPCTransformer : Transformer
             "SUS APC sus_OP_OPCSProcedure Observations",
             runId,
             cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }
