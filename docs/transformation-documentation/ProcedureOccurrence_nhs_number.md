@@ -476,8 +476,6 @@ select
 		ProcedureOpcsCode
 from co
 where co.ProcedureOpcsCode is not null;
--- fail
-	
 ```
 
 

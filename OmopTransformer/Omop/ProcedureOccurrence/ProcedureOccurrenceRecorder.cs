@@ -129,14 +129,17 @@ where
                 vo.RecordConnectionIdentifier = r.RecordConnectionIdentifier and
                 vo.person_id = p.person_id and
                 vo.procedure_date = r.procedure_date and
-                vo.procedure_concept_id = r.procedure_concept_id
+                vo.procedure_concept_id = r.procedure_concept_id and     
+                (vo.procedure_concept_id != 0 or ((vo.procedure_source_value is null and r.procedure_source_value is null) or vo.procedure_source_value = r.procedure_source_value))
+
             )
             or
             (
                 r.RecordConnectionIdentifier is null and
                 vo.procedure_date = r.procedure_date and
                 vo.procedure_concept_id = r.procedure_concept_id and
-                vo.person_id = p.person_id
+                vo.person_id = p.person_id and
+                (vo.procedure_concept_id != 0 or ((vo.procedure_source_value is null and r.procedure_source_value is null) or vo.procedure_source_value = r.procedure_source_value))
             )
     );
 

@@ -4,7 +4,7 @@ using OmopTransformer.Transformation;
 namespace OmopTransformer;
 
 [Description("Maps concepts to standard valid concepts in the `Observation` domain.")]
-internal class StandardObservationConceptSelector(int? conceptId, ConceptResolver resolver) : ISelector
+internal class StandardObservationConceptSelector(int? conceptId, StandardConceptResolver resolver) : ISelector
 {
     public object? GetValue()
     {
