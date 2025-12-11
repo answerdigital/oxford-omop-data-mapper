@@ -22,7 +22,7 @@ select
 		ProcedureOpcsCode
 from co
 where co.ProcedureOpcsCode is not null;
-    </Sql>
+	</Sql>
 	<Explanations>
 		<Explanation columnName="NhsNumber">
 			<Description>Patient NHS Number</Description>

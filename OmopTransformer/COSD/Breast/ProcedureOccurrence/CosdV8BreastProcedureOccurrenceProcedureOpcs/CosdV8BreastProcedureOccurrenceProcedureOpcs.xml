@@ -1,0 +1,41 @@
+<Query>
+    <Sql>
+with br as (
+  select 
+    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+    unnest(
+      [
+        [
+          Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'
+        ], 
+        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'
+      ], recursive := true
+    ) as ProcedureOpcsCode
+    from omop_staging.cosd_staging_81
+    where Type = 'BR'
+)
+select
+  distinct
+        NhsNumber,
+        ProcedureDate,
+        ProcedureOpcsCode
+from br
+where br.ProcedureOpcsCode is not null;
+--no rows in ci
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NhsNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="ProcedureDate">
+			<Description>The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY.</Description>
+			<Origin>PROCEDURE DATE</Origin>
+		</Explanation>
+		<Explanation columnName="ProcedureOpcsCode">
+			<Description>PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS).</Description>
+			<Origin>PROCEDURE (OPCS)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

@@ -50,6 +50,45 @@
     <None Update="COSD\Colorectal\ConditionOccurrence\CosdV8ConditionOccurrencePrimaryDiagnosis\CosdV8ConditionOccurrencePrimaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Breast\ConditionOccurrence\CosdV8BreastConditionOccurrencePrimaryDiagnosis\CosdV8BreastConditionOccurrencePrimaryDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ConditionOccurrence\CosdV8BreastConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdV8BreastConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ConditionOccurrence\CosdV8BreastConditionOccurrenceProgression\CosdV8BreastConditionOccurrenceProgression.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ConditionOccurrence\CosdV9BreastConditionOccurrencePrimaryDiagnosis\CosdV9BreastConditionOccurrencePrimaryDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ConditionOccurrence\CosdV9BreastConditionOccurrencePrimaryDiagnosisHistologyTopography\CosdV9BreastConditionOccurrencePrimaryDiagnosisHistologyTopography.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ConditionOccurrence\CosdV9BreastConditionOccurrenceSecondaryDiagnosis\CosdV9BreastConditionOccurrenceSecondaryDiagnosis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ConditionOccurrence\CosdV9BreastConditionOccurrenceProgression\CosdV9BreastConditionOccurrenceProgression.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ConditionOccurrence\CosdV9BreastConditionOccurrenceRecurrence\CosdV9BreastConditionOccurrenceRecurrence.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ProcedureOccurrence\CosdV8BreastProcedureOccurrenceProcedureOpcs\CosdV8BreastProcedureOccurrenceProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ProcedureOccurrence\CosdV8BreastProcedureOccurrencePrimaryProcedureOpcs\CosdV8BreastProcedureOccurrencePrimaryProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ProcedureOccurrence\CosdV9BreastProcedureOccurrenceProcedureOpcs\CosdV9BreastProcedureOccurrenceProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ProcedureOccurrence\CosdV9BreastProcedureOccurrencePrimaryProcedureOpcs\CosdV9BreastProcedureOccurrencePrimaryProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\Measurements\CosdV8BreastMeasurementGradeOfDifferentiation\CosdV8BreastMeasurementGradeOfDifferentiation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Lung\ConditionOccurrence\CosdV8LungConditionOccurrencePrimaryDiagnosis\CosdV8LungConditionOccurrencePrimaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

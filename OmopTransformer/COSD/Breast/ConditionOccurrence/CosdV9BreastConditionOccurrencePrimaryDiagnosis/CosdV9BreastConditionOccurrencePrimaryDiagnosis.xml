@@ -1,0 +1,41 @@
+<Query>
+    <Sql>
+with br as (
+    select
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.PrimaryPathway.Diagnosis."MorphologyIcd-o-3"."@code"' as CancerHistology,
+        Record ->> '$.PrimaryPathway.Diagnosis."TopographyIcd-o-3"."@code"' as CancerTopography,
+        Record ->> '$.PrimaryPathway.Diagnosis.BasisOfDiagnosisCancer.@code' as BasisOfDiagnosisCancer,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.PrimaryDiagnosisIcd.@code' as CancerDiagnosis
+    from omop_staging.cosd_staging_901
+    where type = 'BR'
+)
+select
+    NhsNumber,
+    DateOfPrimaryDiagnosisClinicallyAgreed,
+    max(BasisOfDiagnosisCancer) as BasisOfDiagnosisCancer,
+    CancerDiagnosis
+from br
+where DateOfPrimaryDiagnosisClinicallyAgreed is not null
+group by NhsNumber, DateOfPrimaryDiagnosisClinicallyAgreed, CancerDiagnosis;
+    </Sql>
+    <Explanations>
+	    <Explanation columnName="NhsNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="DateOfPrimaryDiagnosisClinicallyAgreed">
+			<Description>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED) is the date the Primary Cancer was confirmed or the Primary Cancer diagnosis was agreed.</Description>
+			<Origin>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+		</Explanation>
+		<Explanation columnName="BasisOfDiagnosisCancer">
+			<Description>The basis of how a PATIENT DIAGNOSIS relating to cancer was identified.</Description>
+			<Origin>BASIS OF DIAGNOSIS (CANCER)</Origin>
+		</Explanation>
+		<Explanation columnName="CancerDiagnosis">
+			<Description>PRIMARY DIAGNOSIS (ICD) is the International Classification of Diseases (ICD) code used to identify the PRIMARY DIAGNOSIS.</Description>
+			<Origin>PRIMARY DIAGNOSIS (ICD)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
