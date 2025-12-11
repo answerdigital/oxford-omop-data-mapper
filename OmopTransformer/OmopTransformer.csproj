@@ -74,6 +74,21 @@
     <None Update="COSD\Breast\ConditionOccurrence\CosdV9BreastConditionOccurrenceRecurrence\CosdV9BreastConditionOccurrenceRecurrence.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Breast\ProcedureOccurrence\CosdV8BreastProcedureOccurrenceProcedureOpcs\CosdV8BreastProcedureOccurrenceProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ProcedureOccurrence\CosdV8BreastProcedureOccurrencePrimaryProcedureOpcs\CosdV8BreastProcedureOccurrencePrimaryProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ProcedureOccurrence\CosdV9BreastProcedureOccurrenceProcedureOpcs\CosdV9BreastProcedureOccurrenceProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\ProcedureOccurrence\CosdV9BreastProcedureOccurrencePrimaryProcedureOpcs\CosdV9BreastProcedureOccurrencePrimaryProcedureOpcs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\Measurements\CosdV8BreastMeasurementGradeOfDifferentiation\CosdV8BreastMeasurementGradeOfDifferentiation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Lung\ConditionOccurrence\CosdV8LungConditionOccurrencePrimaryDiagnosis\CosdV8LungConditionOccurrencePrimaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

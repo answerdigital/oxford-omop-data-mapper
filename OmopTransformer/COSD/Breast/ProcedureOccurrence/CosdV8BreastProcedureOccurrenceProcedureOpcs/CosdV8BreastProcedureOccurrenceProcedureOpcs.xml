@@ -1,27 +1,28 @@
-﻿<Query>
+<Query>
     <Sql>
-with co as (
+with br as (
   select 
-    Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
-    Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
     unnest(
       [
         [
-          Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'
+          Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'
         ], 
-        Record ->> '$.Colorectal.ColorectalCore.ColorectalCoreTreatment.ColorectalCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code',
+        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'
       ], recursive := true
     ) as ProcedureOpcsCode
     from omop_staging.cosd_staging_81
-    where Type = 'CO'
+    where Type = 'BR'
 )
 select
   distinct
-		NhsNumber,
-		ProcedureDate,
-		ProcedureOpcsCode
-from co
-where co.ProcedureOpcsCode is not null;
+        NhsNumber,
+        ProcedureDate,
+        ProcedureOpcsCode
+from br
+where br.ProcedureOpcsCode is not null;
+--no rows in ci
 	</Sql>
 	<Explanations>
 		<Explanation columnName="NhsNumber">

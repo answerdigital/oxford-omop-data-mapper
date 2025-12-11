@@ -14,6 +14,11 @@ using OmopTransformer.COSD.Breast.ConditionOccurrence.CosdV9BreastConditionOccur
 using OmopTransformer.COSD.Breast.ConditionOccurrence.CosdV9BreastConditionOccurrenceSecondaryDiagnosis;
 using OmopTransformer.COSD.Breast.ConditionOccurrence.CosdV9BreastConditionOccurrenceProgression;
 using OmopTransformer.COSD.Breast.ConditionOccurrence.CosdV9BreastConditionOccurrenceRecurrence;
+using OmopTransformer.COSD.Breast.ProcedureOccurrence.CosdV8BreastProcedureOccurrenceProcedureOpcs;
+using OmopTransformer.COSD.Breast.ProcedureOccurrence.CosdV8BreastProcedureOccurrencePrimaryProcedureOpcs;
+using OmopTransformer.COSD.Breast.ProcedureOccurrence.CosdV9BreastProcedureOccurrenceProcedureOpcs;
+using OmopTransformer.COSD.Breast.ProcedureOccurrence.CosdV9BreastProcedureOccurrencePrimaryProcedureOpcs;
+using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementGradeOfDifferentiation;
 using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosis;
 using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography;
 using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrenceProgression;
@@ -372,6 +377,30 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV9ProcedureOccurrenceProcedureOpcsRecord, CosdV9ProcedureOccurrenceProcedureOpcs>(
             _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
             "Cosd V9 Procedure Occurrence Procedure Opcs",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8BreastProcedureOccurrencePrimaryProcedureOpcsRecord, CosdV8BreastProcedureOccurrencePrimaryProcedureOpcs>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "Cosd V8 Breast Procedure Occurrence Primary Procedure Opcs",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8BreastProcedureOccurrenceProcedureOpcsRecord, CosdV8BreastProcedureOccurrenceProcedureOpcs>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "Cosd V8 Breast Procedure Occurrence Procedure Opcs",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9BreastProcedureOccurrencePrimaryProcedureOpcsRecord, CosdV9BreastProcedureOccurrencePrimaryProcedureOpcs>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "Cosd V9 Breast Procedure Occurrence Primary Procedure Opcs",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9BreastProcedureOccurrenceProcedureOpcsRecord, CosdV9BreastProcedureOccurrenceProcedureOpcs>(
+            _procedureOccurrenceRecorder.InsertUpdateProcedureOccurrence,
+            "Cosd V9 Breast Procedure Occurrence Procedure Opcs",
             runId,
             cancellationToken);
 
@@ -996,6 +1025,12 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV9LungMeasurementTumourLateralityRecord, CosdV9LungMeasurementTumourLaterality>(
             _measurementRecorder.InsertUpdateMeasurements,
             "CosdV9LungMeasurementTumourLaterality",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8BreastMeasurementGradeOfDifferentiationRecord, CosdV8BreastMeasurementGradeOfDifferentiation>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8BreastMeasurementGradeOfDifferentiation",
             runId,
             cancellationToken);
     }

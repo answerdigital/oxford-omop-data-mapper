@@ -1,0 +1,38 @@
+<Query>
+    <Sql>
+with BR as (
+    select distinct
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        coalesce(Record ->> '$.Treatment[0].Surgery.ProcedureDate', Record ->> '$.Treatment.Surgery.ProcedureDate') as ProcedureDate,
+        unnest(
+            [
+                [ Record ->> '$.Treatment.Surgery.ProcedureOpcs.@code' ],
+                Record ->> '$.Treatment.Surgery.ProcedureOpcs[*].@code'
+            ],
+            recursive := true
+        ) as ProcedureOpcsCode
+    from omop_staging.cosd_staging_901
+    where type = 'BR'
+)
+select distinct
+    NhsNumber,
+    ProcedureDate,
+    ProcedureOpcsCode
+from BR
+where ProcedureOpcsCode is not null;
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NhsNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="ProcedureDate">
+			<Description>The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY.</Description>
+			<Origin>PROCEDURE DATE</Origin>
+		</Explanation>
+		<Explanation columnName="ProcedureOpcsCode">
+			<Description>PROCEDURE (OPCS) is a Patient Procedure other than the PRIMARY PROCEDURE (OPCS).</Description>
+			<Origin>PROCEDURE (OPCS)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

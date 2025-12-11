@@ -1,0 +1,34 @@
+<Query>
+    <Sql>
+with BR as (
+  select
+    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
+    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.PrimaryProcedureOPCS.@code' as PrimaryProcedureOpcs
+  from omop_staging.cosd_staging_81
+  where Type = 'BR'
+)
+select
+      distinct
+          NhsNumber,
+          ProcedureDate,
+          PrimaryProcedureOpcs
+from BR
+where ProcedureDate is not null and PrimaryProcedureOpcs is not null;
+--no rows in ci
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NhsNumber">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+		<Explanation columnName="ProcedureDate">
+			<Description>The date, month, year and century, or any combination of these elements, that is of relevance to an ACTIVITY.</Description>
+			<Origin>PROCEDURE DATE</Origin>
+		</Explanation>
+		<Explanation columnName="PrimaryProcedureOpcs">
+			<Description>The main or first Procedure in a series of Procedures.</Description>
+			<Origin>PRIMARY PROCEDURE (OPCS)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
