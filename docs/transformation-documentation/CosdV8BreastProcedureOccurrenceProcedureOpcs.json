@@ -17,7 +17,7 @@
           ]
         }
       ],
-      "query": "\nwith br as (\n  select \n    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    unnest(\n      [\n        [\n          Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'\n        ], \n        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'\n      ], recursive := true\n    ) as ProcedureOpcsCode\n    from omop_staging.cosd_staging_81\n    where Type = 'BR'\n)\nselect\n  distinct\n        NhsNumber,\n        ProcedureDate,\n        ProcedureOpcsCode\nfrom br\nwhere br.ProcedureOpcsCode is not null;\n\t",
+      "query": "\nwith br as (\n  select \n    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    unnest(\n      [\n        [\n          Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'\n        ], \n        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'\n      ], recursive := true\n    ) as ProcedureOpcsCode\n    from omop_staging.cosd_staging_81\n    where Type = 'BR'\n)\nselect\n  distinct\n        NhsNumber,\n        ProcedureDate,\n        ProcedureOpcsCode\nfrom br\nwhere br.ProcedureOpcsCode is not null;\n--no rows in ci\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -42,7 +42,7 @@
           ]
         }
       ],
-      "query": "\nwith br as (\n  select \n    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    unnest(\n      [\n        [\n          Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'\n        ], \n        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'\n      ], recursive := true\n    ) as ProcedureOpcsCode\n    from omop_staging.cosd_staging_81\n    where Type = 'BR'\n)\nselect\n  distinct\n        NhsNumber,\n        ProcedureDate,\n        ProcedureOpcsCode\nfrom br\nwhere br.ProcedureOpcsCode is not null;\n\t",
+      "query": "\nwith br as (\n  select \n    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    unnest(\n      [\n        [\n          Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'\n        ], \n        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'\n      ], recursive := true\n    ) as ProcedureOpcsCode\n    from omop_staging.cosd_staging_81\n    where Type = 'BR'\n)\nselect\n  distinct\n        NhsNumber,\n        ProcedureDate,\n        ProcedureOpcsCode\nfrom br\nwhere br.ProcedureOpcsCode is not null;\n--no rows in ci\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "query": "\nwith br as (\n  select \n    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    unnest(\n      [\n        [\n          Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'\n        ], \n        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'\n      ], recursive := true\n    ) as ProcedureOpcsCode\n    from omop_staging.cosd_staging_81\n    where Type = 'BR'\n)\nselect\n  distinct\n        NhsNumber,\n        ProcedureDate,\n        ProcedureOpcsCode\nfrom br\nwhere br.ProcedureOpcsCode is not null;\n\t",
+      "query": "\nwith br as (\n  select \n    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    unnest(\n      [\n        [\n          Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'\n        ], \n        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'\n      ], recursive := true\n    ) as ProcedureOpcsCode\n    from omop_staging.cosd_staging_81\n    where Type = 'BR'\n)\nselect\n  distinct\n        NhsNumber,\n        ProcedureDate,\n        ProcedureOpcsCode\nfrom br\nwhere br.ProcedureOpcsCode is not null;\n--no rows in ci\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -85,7 +85,7 @@
           ]
         }
       ],
-      "query": "\nwith br as (\n  select \n    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    unnest(\n      [\n        [\n          Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'\n        ], \n        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'\n      ], recursive := true\n    ) as ProcedureOpcsCode\n    from omop_staging.cosd_staging_81\n    where Type = 'BR'\n)\nselect\n  distinct\n        NhsNumber,\n        ProcedureDate,\n        ProcedureOpcsCode\nfrom br\nwhere br.ProcedureOpcsCode is not null;\n\t",
+      "query": "\nwith br as (\n  select \n    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    unnest(\n      [\n        [\n          Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'\n        ], \n        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'\n      ], recursive := true\n    ) as ProcedureOpcsCode\n    from omop_staging.cosd_staging_81\n    where Type = 'BR'\n)\nselect\n  distinct\n        NhsNumber,\n        ProcedureDate,\n        ProcedureOpcsCode\nfrom br\nwhere br.ProcedureOpcsCode is not null;\n--no rows in ci\n\t",
       "lookup_table_markdown": null
     },
     {
@@ -103,7 +103,7 @@
           ]
         }
       ],
-      "query": "\nwith br as (\n  select \n    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    unnest(\n      [\n        [\n          Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'\n        ], \n        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'\n      ], recursive := true\n    ) as ProcedureOpcsCode\n    from omop_staging.cosd_staging_81\n    where Type = 'BR'\n)\nselect\n  distinct\n        NhsNumber,\n        ProcedureDate,\n        ProcedureOpcsCode\nfrom br\nwhere br.ProcedureOpcsCode is not null;\n\t",
+      "query": "\nwith br as (\n  select \n    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,\n    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,\n    unnest(\n      [\n        [\n          Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS.@code'\n        ], \n        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureOPCS[*].@code'\n      ], recursive := true\n    ) as ProcedureOpcsCode\n    from omop_staging.cosd_staging_81\n    where Type = 'BR'\n)\nselect\n  distinct\n        NhsNumber,\n        ProcedureDate,\n        ProcedureOpcsCode\nfrom br\nwhere br.ProcedureOpcsCode is not null;\n--no rows in ci\n\t",
       "lookup_table_markdown": null
     },
     {

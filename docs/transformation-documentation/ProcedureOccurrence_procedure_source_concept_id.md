@@ -577,10 +577,7 @@ select
 		ProcedureOpcsCode
 from co
 where co.ProcedureOpcsCode is not null;
-<<<<<<< HEAD
 	
-=======
->>>>>>> main
 ```
 
 
@@ -699,6 +696,7 @@ select
         ProcedureOpcsCode
 from br
 where br.ProcedureOpcsCode is not null;
+--no rows in ci
 	
 ```
 
