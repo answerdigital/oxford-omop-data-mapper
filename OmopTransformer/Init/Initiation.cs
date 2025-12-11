@@ -2559,8 +2559,8 @@ insert into omop_staging.concept_code_map
  		c.concept_code as source_concept_code,
 		c.concept_id as source_concept_id,
  		c.concept_id as target_concept_id,
- 		c.domain_id as target_domain_id,
-    c.domain_id as source_domain_id,
+        c.domain_id as source_domain_id,
+        c.domain_id as target_domain_id,
  		1 as mapped_from_standard
  	from cdm.concept c
  	where c.standard_concept is not null
