@@ -54,7 +54,7 @@ internal class SusAPCTransformer : Transformer
     private readonly IDeathRecorder _deathRecorder;
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
     private readonly IObservationRecorder _observationRecorder;
-    private readonly ConceptResolver _conceptResolver;
+    private readonly StandardConceptResolver _conceptResolver;
     private readonly ICareSiteRecorder _careSiteRecorder;
     private readonly IProviderRecorder _providerRecorder;
     private readonly IDeviceExposureRecorder _deviceExposureRecorder;
@@ -73,7 +73,7 @@ internal class SusAPCTransformer : Transformer
         IVisitDetailRecorder visitDetailRecorder,
         IDeathRecorder deathRecorder,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder,
-        ConceptResolver conceptResolver,
+        StandardConceptResolver conceptResolver,
         IDeviceExposureRecorder deviceExposureRecorder,
         IObservationRecorder observationRecorder,
         IRunAnalysisRecorder runAnalysisRecorder,
@@ -272,7 +272,5 @@ internal class SusAPCTransformer : Transformer
             "SUS APC sus_OP_OPCSProcedure Observations",
             runId,
             cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }

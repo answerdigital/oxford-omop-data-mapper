@@ -4,7 +4,7 @@ using OmopTransformer.Transformation;
 namespace OmopTransformer;
 
 [Description("Maps concepts to standard valid concepts in the `procedure` domain.")]
-internal class StandardProcedureConceptSelector(int? conceptId, ConceptResolver resolver) : ISelector
+internal class StandardProcedureConceptSelector(int? conceptId, StandardConceptResolver resolver) : ISelector
 {
     public object? GetValue()
     {

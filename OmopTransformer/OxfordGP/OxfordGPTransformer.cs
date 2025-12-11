@@ -27,7 +27,7 @@ internal class OxfordGPTransformer : Transformer
     private readonly ILocationRecorder _locationRecorder;
     private readonly IPersonRecorder _personRecorder;
     private readonly IDeathRecorder _deathRecorder;
-    private readonly ConceptResolver _conceptResolver;
+    private readonly StandardConceptResolver _conceptResolver;
     private readonly IProcedureOccurrenceRecorder _procedureOccurrenceRecorder;
     private readonly IConditionOccurrenceRecorder _conditionOccurrenceRecorder;
     private readonly IVisitOccurrenceRecorder _visitOccurrenceRecorder;
@@ -42,7 +42,7 @@ internal class OxfordGPTransformer : Transformer
         ILocationRecorder locationRecorder,
         IPersonRecorder personRecorder,
         IDeathRecorder deathRecorder,
-        ConceptResolver conceptResolver,
+        StandardConceptResolver conceptResolver,
         IRunAnalysisRecorder runAnalysisRecorder,
         ILoggerFactory loggerFactory,
         IProcedureOccurrenceRecorder procedureOccurrenceRecorder,
@@ -126,7 +126,5 @@ internal class OxfordGPTransformer : Transformer
             "Oxford GP Device Exposure",
             runId,
             cancellationToken);
-
-        _conceptResolver.PrintErrors();
     }
 }

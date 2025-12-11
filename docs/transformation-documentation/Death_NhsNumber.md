@@ -141,7 +141,6 @@ where (Record ->> '$.Treatment.DischargeDestinationHospitalProviderSpell.@code')
 * `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
--- fail
 	    with cosddates as (
     select
         Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,

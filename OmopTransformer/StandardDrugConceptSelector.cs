@@ -4,7 +4,7 @@ using OmopTransformer.Transformation;
 namespace OmopTransformer;
 
 [Description("Maps concepts to standard valid concepts in the `drug` domain.")]
-internal class StandardDrugConceptSelector(int? conceptId, ConceptResolver resolver) : ISelector
+internal class StandardDrugConceptSelector(int? conceptId, StandardConceptResolver resolver) : ISelector
 {
     public object? GetValue()
     {

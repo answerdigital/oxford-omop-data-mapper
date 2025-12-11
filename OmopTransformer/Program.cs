@@ -361,7 +361,7 @@ internal class Program
         builder.Services.AddSingleton<Opcs4Resolver>();
         builder.Services.AddSingleton<Icdo3Resolver>();
         builder.Services.AddSingleton<SnomedResolver>();
-        builder.Services.AddSingleton<ConceptResolver>();
+        builder.Services.AddSingleton<StandardConceptResolver>();
         builder.Services.AddSingleton<MeasurementMapsToValueResolver>();
 
         IHostEnvironment env = builder.Environment;

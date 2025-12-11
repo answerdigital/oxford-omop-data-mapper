@@ -635,15 +635,12 @@ CREATE TABLE dbo.run_analysis(
 CREATE TABLE omop_staging.concept_code_map(
 	source_concept_code varchar(50) NOT NULL,
 	source_concept_id integer NOT NULL,
-	target_concept_id integer NOT NULL,
-	domain_id varchar(50) NOT NULL,
-	mapped_from_standard bit NOT NULL,
- constraint PK_omop_staging_concept_code_map_source_concept_id_target_concept_id PRIMARY KEY 
-	(
-		source_concept_id,
-		target_concept_id 
-	)
+	target_concept_id integer NULL,
+    source_domain_id varchar(50) NOT NULL,
+	target_domain_id varchar(50) NULL,
+	mapped_from_standard tinyint NOT NULL
 );
+
 
 CREATE TABLE omop_staging.cosd_staging_81(
 	SubmissionName varchar(200) NOT NULL,
@@ -2530,7 +2527,8 @@ insert into omop_staging.concept_code_map
  	source_concept_code,
 	source_concept_id,
  	target_concept_id,
- 	domain_id,
+ 	source_domain_id,
+  target_domain_id,
  	mapped_from_standard
  )
  with InvalidConceptMap as (
@@ -2538,7 +2536,8 @@ insert into omop_staging.concept_code_map
  		c1.concept_code as source_concept_code,
 		c1.concept_id as source_concept_id,
 		c2.concept_id as target_concept_id,
-		c2.domain_id
+    c1.domain_id as source_domain_id,
+		c2.domain_id as target_domain_id
  	from cdm.concept c1
 		inner join cdm.concept_relationship cr
 			on c1.concept_id = cr.concept_id_1
@@ -2560,7 +2559,8 @@ insert into omop_staging.concept_code_map
  		c.concept_code as source_concept_code,
 		c.concept_id as source_concept_id,
  		c.concept_id as target_concept_id,
- 		c.domain_id as domain_id,
+        c.domain_id as source_domain_id,
+        c.domain_id as target_domain_id,
  		1 as mapped_from_standard
  	from cdm.concept c
  	where c.standard_concept is not null
@@ -2573,7 +2573,8 @@ insert into omop_staging.concept_code_map
  		icm.source_concept_code,
 		icm.source_concept_id,
  		icm.target_concept_id as concept_id,
- 		c.domain_id,
+ 		icm.source_domain_id,
+		icm.target_domain_id, 
  		0 as mapped_from_standard
  	from InvalidConceptMap icm
  		inner join cdm.concept c
@@ -2586,7 +2587,8 @@ insert into omop_staging.concept_code_map
 		source_concept_code,
 		source_concept_id,
  		target_concept_id,
- 		domain_id,
+ 		source_domain_id,
+    target_domain_id,
  		mapped_from_standard
 from Mapped;
 
@@ -2595,14 +2597,16 @@ insert into omop_staging.concept_code_map
 	source_concept_code,
 	source_concept_id,
 	target_concept_id,
-	domain_id,
+	source_domain_id,
+  target_domain_id,
 	mapped_from_standard
 )
 select
 	c.concept_code as source_concept_code,
 	c.concept_id as source_concept_id,
 	rxnormConcept.concept_id as target_concept_id,
-	'Drug' as domain_id, 
+	'Drug' as source_domain_id, 
+  'Drug' as target_domain_id,
 	1 as mapped_from_standard
 from cdm.concept c
 	inner join cdm.concept dmdConcept 
@@ -2625,6 +2629,30 @@ where c.vocabulary_id = 'SNOMED'
 	and rxnormConcept.standard_concept = 'S'
 	and rxnormConcept.domain_id = 'Drug'
 	and rxnormConcept.vocabulary_id in ('RxNorm', 'RxNorm Extension');
+
+insert into omop_staging.concept_code_map
+(
+  source_concept_code,
+  source_concept_id,
+  target_concept_id,
+  source_domain_id,
+  target_domain_id,
+  mapped_from_standard
+)
+select
+    c.concept_code,
+    c.concept_id,
+    null,
+    c.domain_id,
+    null,
+    0
+from cdm.concept c
+where c.standard_concept is null
+  and not exists (
+    select *
+    from omop_staging.concept_code_map ccm
+    where ccm.source_concept_id = c.concept_id
+  )
 ");
 
 

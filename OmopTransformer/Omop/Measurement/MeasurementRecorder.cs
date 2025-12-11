@@ -144,6 +144,7 @@ where
             and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
             and r.RecordConnectionIdentifier is null
             and r.HospitalProviderSpellNumber is null
+            and (m.measurement_concept_id != 0 or ((m.value_source_value is null and r.value_source_value is null) or m.value_source_value = r.value_source_value))
     )
     and not exists (
         select 1
@@ -154,6 +155,7 @@ where
             and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
             and r.RecordConnectionIdentifier is not null
             and m.RecordConnectionIdentifier = r.RecordConnectionIdentifier
+            and (m.measurement_concept_id != 0 or ((m.value_source_value is null and r.value_source_value is null) or m.value_source_value = r.value_source_value))
     )
     and not exists (
         select 1
@@ -164,6 +166,7 @@ where
             and (r.measurement_source_concept_id is null or m.measurement_source_concept_id = r.measurement_source_concept_id)
             and r.HospitalProviderSpellNumber is not null
             and m.HospitalProviderSpellNumber = r.HospitalProviderSpellNumber
+            and (m.measurement_concept_id != 0 or ((m.value_source_value is null and r.value_source_value is null) or m.value_source_value = r.value_source_value))
     );
 
 truncate table omop_staging.measurement_row;",
