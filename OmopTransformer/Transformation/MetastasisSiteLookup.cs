@@ -8,6 +8,7 @@ internal class MetastasisSiteLookup : ILookup
     public Dictionary<string, ValueWithNote> Mappings { get; } =
         new()
         {
+            { "01",   new ValueWithNote("36769301",     "Metastasis to bone") },
             { "02",   new ValueWithNote("36768862",     "Metastasis to brain") },
             { "03",   new ValueWithNote("36770544",     "Metastasis to liver") },
             { "04",   new ValueWithNote("36770283",     "Metastasis to lung") },
