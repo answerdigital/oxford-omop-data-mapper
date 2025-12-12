@@ -1,4 +1,5 @@
 ﻿using OmopTransformer.Annotations;
+using OmopTransformer.ConceptResolution;
 using OmopTransformer.Transformation;
 
 namespace OmopTransformer;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using OmopTransformer.ConceptResolution;
 using OmopTransformer.Omop;
 using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Omop.ConditionOccurrence;
@@ -86,6 +87,9 @@ internal class SusAPCTransformer : Transformer
             runAnalysisRecorder,
             loggerFactory)
     {
+        conceptResolver.GetConcepts(45543078, "Measurement");
+
+
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
         _measurementRecorder = measurementRecorder;
