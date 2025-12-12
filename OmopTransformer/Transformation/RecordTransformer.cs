@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using OmopTransformer.Annotations;
+using OmopTransformer.ConceptResolution;
 using OmopTransformer.Omop;
 using System.Reflection;
 

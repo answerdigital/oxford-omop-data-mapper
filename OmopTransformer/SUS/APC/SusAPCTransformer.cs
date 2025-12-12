@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using OmopTransformer.ConceptResolution;
 using OmopTransformer.Omop;
 using OmopTransformer.Omop.CareSite;
 using OmopTransformer.Omop.ConditionOccurrence;

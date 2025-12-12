@@ -19,6 +19,7 @@ using OmopTransformer.OxfordGP.VisitOccurrence;
 using OmopTransformer.OxfordGP.DrugExposure;
 using OmopTransformer.OxfordGP.DeviceExposure;
 using OmopTransformer.Transformation;
+using OmopTransformer.ConceptResolution;
 
 namespace OmopTransformer.OxfordGP;
 
