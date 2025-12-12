@@ -87,9 +87,6 @@ internal class SusAPCTransformer : Transformer
             runAnalysisRecorder,
             loggerFactory)
     {
-        conceptResolver.GetConcepts(45543078, "Measurement");
-
-
         _locationRecorder = locationRecorder;
         _personRecorder = personRecorder;
         _measurementRecorder = measurementRecorder;
