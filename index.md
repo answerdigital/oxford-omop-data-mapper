@@ -120,7 +120,7 @@ Guidance on SUS & SUS+ can be found on the [NHS Digital Website](https://digital
 
 # Supported Transformations
 
-| OMOP Table             | SUS APC | SUS OP | SUS AE | SUS CCMDS | COSD | RTDS  | SACT |
+| OMOP Table             | SUS APC | SUS OP | SUS AE | SUS CCMDS | COSD[<sup>1</sup>](#supported-cosd-cancer-areas) | RTDS  | SACT |
 |------------------------|---------|-------|---------|-----------|------|-------|------|
 | *Location*             | ✔️     | ✔️   | ✔️     |             | ✔️   | ✔️   | ✔️  |
 | *Person*               | ✔️     | ✔️   | ✔️     |             | ✔️   | ✔️   | ✔️  |
