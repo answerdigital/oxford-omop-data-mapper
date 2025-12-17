@@ -8,15 +8,15 @@ internal class MetastasisSiteLookup : ILookup
     public Dictionary<string, ValueWithNote> Mappings { get; } =
         new()
         {
-            { "01",   new ValueWithNote("36769301",     "Metastasis to bone") },
+            { "01",   new ValueWithNote("36769301",     "Metastasis to bone") }, // Bone (Retired 1 July 2012)
             { "02",   new ValueWithNote("36768862",     "Metastasis to brain") },
             { "03",   new ValueWithNote("36770544",     "Metastasis to liver") },
             { "04",   new ValueWithNote("36770283",     "Metastasis to lung") },
             { "07",   new ValueWithNote("36769180",     "Metastasis to the Unknown Site") },
             { "08",   new ValueWithNote("35225673",     "Metastasis to skin") },
             { "09",   new ValueWithNote("36769243",     "Distant spread to lymph node") },
-            { "10",   new ValueWithNote("36769301",     "Metastasis to bone") },
-            { "11",   new ValueWithNote("35226074",     "Metastasis to bone marrow") },
+            { "10",   new ValueWithNote("36769301",     "Metastasis to bone") }, // Bone (excluding Bone Marrow)
+            { "11",   new ValueWithNote("35226074",     "Metastasis to bone marrow") }, // Bone marrow
             { "12",   new ValueWithNote("36769269",     "Regional spread to lymph node") },
             { "98",   new ValueWithNote("36769180",     "Metastasis") },
             { "99",   new ValueWithNote("36769180",     "Metastasis") }
