@@ -127,15 +127,32 @@ Guidance on SUS & SUS+ can be found on the [NHS Digital Website](https://digital
 | *Condition Occurrence* | ✔️     | ✔️   | ✔️     |             | ✔️   | ✔️   | ✔️  |
 | *Visit Occurrence*     | ✔️     | ✔️   | ✔️     |             |      |  ✔️  |      |
 | *Visit Details*        | ✔️     | ✔️   | ✔️     | ✔️          |      |      |      |
-| *Measurement*          | ✔️     | ✔️   | ✔️     | ✔️          | ✔️   |      |      |
+| *Measurement*          | ✔️     | ✔️   | ✔️     | ✔️          | ✔️   |      | ✔️  |
 | *Death*                | ✔️     | ✔️   | ✔️     |             | ✔️   |      |      |
-| *Procedure Occurrence* | ✔️     | ✔️   | ✔️     |             | ✔️   |  ✔️  | ✔️  |
-| *Drug Exposure*        |         |      |         |            |      |       |      |
-| *Care Site*            | ✔️     | ✔️   | ✔️     |             |      |      |       |
-| *Provider*             | ✔️     | ✔️   |         |             |      |      |      |
+| *Procedure Occurrence* | ✔️     | ✔️   | ✔️     | ✔️          | ✔️   |  ✔️  | ✔️  |
+| *Drug Exposure*        |         |      |         |             |      |       | ✔️  |
+| *Care Site*            | ✔️     | ✔️   | ✔️     |             |      |      |  ✔️  |
+| *Provider*             | ✔️     | ✔️   |         |             |      |  ✔️  |  ✔️  |
 | *Device Exposure*      | ✔️     | ✔️   | ✔️     | ✔️          |      |      |      |
-| *Observation*          | ✔️     | ✔️   | ✔️     | ✔️          | ✔️   |      |      |
+| *Observation*          | ✔️     | ✔️   | ✔️     | ✔️          | ✔️   |  ✔️  | ✔️  |
 
+# Supported COSD Cancer Areas
+
+| COSD Cancer Area       | v8 | v9  |
+|------------------------|---------|-----|
+| *Core*              | ✔️  | ✔️ |
+| *Brain/CNS*         |      |    |
+| *Breast*            |      |    |
+| *Colorectal*        | ✔️  | ✔️ |
+| *Gynaecological*    |      |    |
+| *Head and Neck*     |      |    |
+| *Lung*              | ✔️  | ✔️ |
+| *Liver*             |      |    |
+| *Oesophago-Gastric* |      |    |
+| *Prostate*          |      |    |
+| *Sarcoma*           |      |    |
+| *Skin*              |      |    |
+| *Urological*        |      |    |
 
 # Future Aims
 
