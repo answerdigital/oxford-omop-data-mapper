@@ -1,74 +1,26 @@
 ﻿using System.Collections.Concurrent;
-using Dapper;
-using DuckDB.NET.Data;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
-namespace OmopTransformer;
+namespace OmopTransformer.ConceptResolution;
 
 internal class StandardConceptResolver
 {
-    private readonly Configuration _configuration;
     private readonly ILogger<StandardConceptResolver> _logger;
+    private readonly IStandardConceptResolverDataProvider _dataProvider;
 
-    private Dictionary<int, IGrouping<int, Row>>? _mappings;
+    private Dictionary<int, IGrouping<int, ConceptCodeMapRow>>? _mappings;
     private Dictionary<int, IReadOnlyCollection<int>>? _devicesByConceptId;
 
     private readonly object _loadingLock = new();
     private DomainMapResults? _domainMappingResults;
 
-    public StandardConceptResolver(IOptions<Configuration> configuration, ILogger<StandardConceptResolver> logger)
+    public StandardConceptResolver(ILogger<StandardConceptResolver> logger, IStandardConceptResolverDataProvider dataProvider)
     {
         _logger = logger;
-        _configuration = configuration.Value;
+        _dataProvider = dataProvider;
     }
 
-    private Dictionary<int, IGrouping<int, Row>> GetMappings()
-    {
-        _logger.LogInformation("Loading mappings codes.");
-
-        var connection = new DuckDBConnection(_configuration.ConnectionString!);
-        connection.Open();
-
-        var results = connection.Query<Row>("select * from omop_staging.concept_code_map", CancellationToken.None);
-
-        return
-            results
-                .GroupBy(row => row.source_concept_id!)
-                .ToDictionary(row => row.Key!);
-    }
-
-    private Dictionary<int, IReadOnlyCollection<int>> GetDevices()
-    {
-        _logger.LogInformation("Loading concept device relationships.");
-
-        var connection = new DuckDBConnection(_configuration.ConnectionString!);
-        connection.Open();
-
-        var results = 
-            connection
-                .Query<ConceptRelationshipRow>(
-                @"select distinct
-	                    cm.source_concept_id as concept_id,
-	                    device.concept_id as device_concept_id
-                    from omop_staging.concept_code_map cm
-	                    inner join cdm.concept_relationship cr
-		                    on cm.target_concept_id = cr.concept_id_1
-	                    inner join cdm.concept device
-		                    on cr.concept_id_2 = device.concept_id
-                    where device.standard_concept = 'S'
-	                    and cr.relationship_id like '%device%'
-	                    and device.domain_id = 'Device'",
-                CancellationToken.None);
-
-        return
-            results
-                .GroupBy(group => group.concept_id)
-                .ToDictionary(
-                    row => row.Key,
-                    row => (IReadOnlyCollection<int>)row.Select(map => map.device_concept_id).ToList());
-    }
-
+    
     private void EnsureMapping()
     {
         if (_mappings != null) 
@@ -76,7 +28,7 @@ internal class StandardConceptResolver
 
         lock (_loadingLock)
         {
-            _mappings ??= GetMappings();
+            _mappings ??= _dataProvider.GetMappings();
 
             if (_mappings.Count == 0)
             {
@@ -89,37 +41,37 @@ internal class StandardConceptResolver
     {
         lock (_loadingLock)
         {
-            _devicesByConceptId ??= GetDevices();
+            _devicesByConceptId ??= _dataProvider.GetDevices();
         }
     }
     
-    private static int? ResolveConcept(Row row, string domain)
+    private static int? ResolveConcept(ConceptCodeMapRow conceptCodeMapRow, string domain)
     {
         const int unknownConceptId = 0;
 
         // Standard or non standard with relationship with standard concept in concept correct domain
-        if (row.target_domain_id == domain && row.target_concept_id.HasValue)
+        if (conceptCodeMapRow.target_domain_id == domain && conceptCodeMapRow.target_concept_id.HasValue)
         {
-            return row.target_concept_id;
+            return conceptCodeMapRow.target_concept_id;
         }
 
 
         //Non standard or Standard concept in wrong domain
 
-        if (row.target_domain_id != domain && row.target_concept_id.HasValue)
+        if (conceptCodeMapRow.target_domain_id != domain && conceptCodeMapRow.target_concept_id.HasValue)
         {
             return null;
         }
 
         //Non standard concept in wrong domain with no relationship to standard 
 
-        if (row.mapped_from_standard == 0 && row.source_domain_id != domain && row.target_concept_id.HasValue == false)
+        if (conceptCodeMapRow.mapped_from_standard == 0 && conceptCodeMapRow.source_domain_id != domain && conceptCodeMapRow.target_concept_id.HasValue == false)
         {
             return null;
         }
 
         // Non standard concept in correct domain with no relationship to standard
-        if (row.mapped_from_standard == 0 && row.source_domain_id == domain && row.target_concept_id.HasValue == false)
+        if (conceptCodeMapRow.mapped_from_standard == 0 && conceptCodeMapRow.source_domain_id == domain && conceptCodeMapRow.target_concept_id.HasValue == false)
         {
             return unknownConceptId;
         }
@@ -197,6 +149,8 @@ internal class StandardConceptResolver
                     if (row.target_domain_id != null)
                         _domainMappingResults.Record(row.target_domain_id!);
                 }
+
+                return resolvedConcepts;
             }
 
             return unknownConcept;
@@ -219,22 +173,6 @@ internal class StandardConceptResolver
     {
         _domainMappingResults?.PrintResults(_logger);
         _domainMappingResults = null;
-    }
-
-    private class Row
-    {
-        public int source_concept_id { get; init; }
-        public int? target_concept_id { get; init; }
-
-        public string? source_domain_id { get; init; }
-        public string? target_domain_id { get; init; }
-        public byte mapped_from_standard { get; init; }
-    }
-
-    private class ConceptRelationshipRow
-    {
-        public int concept_id { get; init; }
-        public int device_concept_id { get; init; }
     }
 
     private class DomainMapResults
@@ -266,7 +204,7 @@ internal class StandardConceptResolver
 
             foreach (var domainCount in _domainCounts.OrderByDescending(count => count.Value))
             {
-                var percentage = (domainCount.Value * 100d) / total;
+                var percentage = domainCount.Value * 100d / total;
                 logText += $"   - Domain: {domainCount.Key}. Count: {domainCount.Value}. Percentage: {Math.Round(percentage, 2)}%." + Environment.NewLine;
             }
 

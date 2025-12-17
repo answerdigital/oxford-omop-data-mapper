@@ -23,6 +23,7 @@ using OmopTransformer.Transformation;
 using OmopTransformer.Omop;
 using OmopTransformer.SUS.AE.DeviceExposure.ProcedureDevice;
 using OmopTransformer.SUS.AE.DeviceExposure.InvestigationDevice;
+using OmopTransformer.ConceptResolution;
 
 namespace OmopTransformer.SUS.AE;
 
