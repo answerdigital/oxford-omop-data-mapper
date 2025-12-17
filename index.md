@@ -120,22 +120,39 @@ Guidance on SUS & SUS+ can be found on the [NHS Digital Website](https://digital
 
 # Supported Transformations
 
-| OMOP Table             | SUS APC | SUS OP | SUS AE | SUS CCMDS | COSD | RTDS  | SACT |
+| OMOP Table             | SUS APC | SUS OP | SUS AE | SUS CCMDS | COSD[<sup>1</sup>](#supported-cosd-cancer-areas) | RTDS  | SACT |
 |------------------------|---------|-------|---------|-----------|------|-------|------|
 | *Location*             | ✔️     | ✔️   | ✔️     |             | ✔️   | ✔️   | ✔️  |
 | *Person*               | ✔️     | ✔️   | ✔️     |             | ✔️   | ✔️   | ✔️  |
 | *Condition Occurrence* | ✔️     | ✔️   | ✔️     |             | ✔️   | ✔️   | ✔️  |
 | *Visit Occurrence*     | ✔️     | ✔️   | ✔️     |             |      |  ✔️  |      |
 | *Visit Details*        | ✔️     | ✔️   | ✔️     | ✔️          |      |      |      |
-| *Measurement*          | ✔️     | ✔️   | ✔️     | ✔️          | ✔️   |      |      |
+| *Measurement*          | ✔️     | ✔️   | ✔️     | ✔️          | ✔️   |      | ✔️  |
 | *Death*                | ✔️     | ✔️   | ✔️     |             | ✔️   |      |      |
-| *Procedure Occurrence* | ✔️     | ✔️   | ✔️     |             | ✔️   |  ✔️  | ✔️  |
-| *Drug Exposure*        |         |      |         |            |      |       |      |
-| *Care Site*            | ✔️     | ✔️   | ✔️     |             |      |      |       |
-| *Provider*             | ✔️     | ✔️   |         |             |      |      |      |
+| *Procedure Occurrence* | ✔️     | ✔️   | ✔️     | ✔️          | ✔️   |  ✔️  | ✔️  |
+| *Drug Exposure*        |         |      |         |             |      |       | ✔️  |
+| *Care Site*            | ✔️     | ✔️   | ✔️     |             |      |      |  ✔️  |
+| *Provider*             | ✔️     | ✔️   |         |             |      |  ✔️  |  ✔️  |
 | *Device Exposure*      | ✔️     | ✔️   | ✔️     | ✔️          |      |      |      |
-| *Observation*          | ✔️     | ✔️   | ✔️     | ✔️          | ✔️   |      |      |
+| *Observation*          | ✔️     | ✔️   | ✔️     | ✔️          | ✔️   |  ✔️  | ✔️  |
 
+# Supported COSD Cancer Areas
+
+| COSD Cancer Area       | v8 | v9  |
+|------------------------|---------|-----|
+| *Core*              | ✔️  | ✔️ |
+| *Brain/CNS*         |      |    |
+| *Breast*            |      |    |
+| *Colorectal*        | ✔️  | ✔️ |
+| *Gynaecological*    |      |    |
+| *Head and Neck*     |      |    |
+| *Lung*              | ✔️  | ✔️ |
+| *Liver*             |      |    |
+| *Oesophago-Gastric* |      |    |
+| *Prostate*          |      |    |
+| *Sarcoma*           |      |    |
+| *Skin*              |      |    |
+| *Urological*        |      |    |
 
 # Future Aims
 
