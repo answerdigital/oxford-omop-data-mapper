@@ -323,6 +323,7 @@ Lookup MetastasisSite concepts.
 
 |MetastaticSite|measurement_concept_id|notes|
 |------|-----|-----|
+|01|36769301|Metastasis to bone|
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
@@ -369,6 +370,7 @@ Lookup MetastasisSite concepts.
 
 |MetastaticSite|measurement_concept_id|notes|
 |------|-----|-----|
+|01|36769301|Metastasis to bone|
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
@@ -415,6 +417,7 @@ Lookup MetastasisSite concepts.
 
 |MetastaticSite|measurement_concept_id|notes|
 |------|-----|-----|
+|01|36769301|Metastasis to bone|
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
@@ -974,6 +977,7 @@ Lookup MetastasisSite concepts.
 
 |MetastaticSite|measurement_concept_id|notes|
 |------|-----|-----|
+|01|36769301|Metastasis to bone|
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
@@ -1029,6 +1033,7 @@ Lookup MetastasisSite concepts.
 
 |MetastaticSite|measurement_concept_id|notes|
 |------|-----|-----|
+|01|36769301|Metastasis to bone|
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
@@ -1622,6 +1627,7 @@ Lookup MetastasisSite concepts.
 
 |MetastaticSite|measurement_concept_id|notes|
 |------|-----|-----|
+|01|36769301|Metastasis to bone|
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
@@ -1674,6 +1680,7 @@ Lookup MetastasisSite concepts.
 
 |MetastaticSite|measurement_concept_id|notes|
 |------|-----|-----|
+|01|36769301|Metastasis to bone|
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
@@ -1726,6 +1733,7 @@ Lookup MetastasisSite concepts.
 
 |MetastaticSite|measurement_concept_id|notes|
 |------|-----|-----|
+|01|36769301|Metastasis to bone|
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
@@ -2323,6 +2331,7 @@ Lookup MetastasisSite concepts.
 
 |MetastaticSite|measurement_concept_id|notes|
 |------|-----|-----|
+|01|36769301|Metastasis to bone|
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
@@ -2376,6 +2385,7 @@ Lookup MetastasisSite concepts.
 
 |MetastaticSite|measurement_concept_id|notes|
 |------|-----|-----|
+|01|36769301|Metastasis to bone|
 |02|36768862|Metastasis to brain|
 |03|36770544|Metastasis to liver|
 |04|36770283|Metastasis to lung|
@@ -2647,6 +2657,193 @@ where GradeOfDifferentiationAtDiagnosis is not null;
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Measurement%20Grade%20of%20Differentiation%20(At%20Diagnosis)%20mapping){: .btn }
+### COSD V8 Breast Measurement N Category Integrated Stage
+Source column  `NCategoryIntegratedStage`.
+Lookup NCategory concepts.
+
+
+|NCategoryIntegratedStage|measurement_concept_id|notes|
+|------|-----|-----|
+|0|1633440|AJCC/UICC N0 Category|
+|0a|1633621|AJCC/UICC N0a Category|
+|0b|1635244|AJCC/UICC N0b Category|
+|1|1634434|AJCC/UICC N1 Category|
+|1a|1633735|AJCC/UICC N1a Category|
+|1b|1635130|AJCC/UICC N1b Category|
+|1c|1634620|AJCC/UICC N1c Category|
+|2|1634119|AJCC/UICC N2 Category|
+|2a|1635644|AJCC/UICC N2a Category|
+|2b|1634134|AJCC/UICC N2b Category|
+|2c|1634080|AJCC/UICC N2c Category|
+|3|1635320|AJCC/UICC N3 Category|
+|3a|1635590|AJCC/UICC N3a Category|
+|3b|1633422|AJCC/UICC N3b Category|
+|3c|1634735|AJCC/UICC N3c Category|
+|4|1635445|AJCC/UICC N4 Category|
+|X|1633885|AJCC/UICC NX Category|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=tnm&boosts)
+
+* `NCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the presence or absence of regional lymph node metastases after all information from treatment is available during a Cancer Care Spell. [N CATEGORY (INTEGRATED STAGE)](https://www.datadictionary.nhs.uk/data_elements/n_category__integrated_stage_.html)
+
+```sql
+with BR as (
+    select 
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Breast.BreastCore.BreastCoreStaging.IntegratedStageNCategory' as NCategoryIntegratedStage,
+        Record ->> '$.Breast.BreastCore.BreastCoreStaging.IntegratedStageTNMStageGroupingDate' as StageDateIntegratedStage
+    from omop_staging.cosd_staging_81
+    where Type = 'BR'
+)
+select distinct
+    NhsNumber,
+    coalesce(StageDateIntegratedStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
+    NCategoryIntegratedStage
+from BR
+where NCategoryIntegratedStage is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Breast%20Measurement%20N%20Category%20Integrated%20Stage%20mapping){: .btn }
+### COSD V8 Breast Measurement N Category Final Pre Treatment Stage
+Source column  `NcategoryFinalPreTreatment`.
+Lookup NCategory concepts.
+
+
+|NcategoryFinalPreTreatment|measurement_concept_id|notes|
+|------|-----|-----|
+|0|1633440|AJCC/UICC N0 Category|
+|0a|1633621|AJCC/UICC N0a Category|
+|0b|1635244|AJCC/UICC N0b Category|
+|1|1634434|AJCC/UICC N1 Category|
+|1a|1633735|AJCC/UICC N1a Category|
+|1b|1635130|AJCC/UICC N1b Category|
+|1c|1634620|AJCC/UICC N1c Category|
+|2|1634119|AJCC/UICC N2 Category|
+|2a|1635644|AJCC/UICC N2a Category|
+|2b|1634134|AJCC/UICC N2b Category|
+|2c|1634080|AJCC/UICC N2c Category|
+|3|1635320|AJCC/UICC N3 Category|
+|3a|1635590|AJCC/UICC N3a Category|
+|3b|1633422|AJCC/UICC N3b Category|
+|3c|1634735|AJCC/UICC N3c Category|
+|4|1635445|AJCC/UICC N4 Category|
+|X|1633885|AJCC/UICC NX Category|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=tnm&boosts)
+
+* `NcategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the presence or absence of regional lymph node metastases before treatment during a Cancer Care Spell. [N CATEGORY (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/n_category__final_pretreatment_.html)
+
+```sql
+with BR as (
+    select 
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentNCategory' as NcategoryFinalPreTreatment,
+        Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as StageDateFinalPretreatmentStage
+    from omop_staging.cosd_staging_81
+    where Type = 'BR'
+)
+select distinct
+    NhsNumber,
+    coalesce(StageDateFinalPretreatmentStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
+    NcategoryFinalPreTreatment
+from BR
+where NcategoryFinalPreTreatment is not null
+and NhsNumber is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Breast%20Measurement%20N%20Category%20Final%20Pre%20Treatment%20Stage%20mapping){: .btn }
+### COSD V8 Breast Measurement M Category Integrated Stage
+Source column  `MCategoryIntegratedStage`.
+Lookup  concepts.
+
+
+|MCategoryIntegratedStage|measurement_concept_id|notes|
+|------|-----|-----|
+|0|1635624|AJCC/UICC M0 Category|
+|1|1635142|AJCC/UICC M1 Category|
+|1a|1635100|AJCC/UICC M1a Category|
+|1b|1634463|AJCC/UICC M1b Category|
+|1c|1635519|AJCC/UICC M1c Category|
+|1d|1634064|AJCC/UICC M1d Category|
+|X  |1633547|AJCC/UICC MX Category|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=tnm&boosts)
+
+* `MCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases after all information from treatment is available during a Cancer Care Spell. [M CATEGORY (INTEGRATED STAGE)](https://www.datadictionary.nhs.uk/data_elements/m_category__integrated_stage_.html)
+
+```sql
+with BR as (
+    select 
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Breast.BreastCore.BreastCoreStaging.IntegratedStageMCategory' as MCategoryIntegratedStage,
+        Record ->> '$.Breast.BreastCore.BreastCoreStaging.IntegratedStageTNMStageGroupingDate' as StageDateIntegratedStage
+    from omop_staging.cosd_staging_81
+    where Type = 'BR'
+)
+select distinct
+    NhsNumber,
+    coalesce(StageDateIntegratedStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
+    MCategoryIntegratedStage
+from BR
+where MCategoryIntegratedStage is not null
+and NhsNumber is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Breast%20Measurement%20M%20Category%20Integrated%20Stage%20mapping){: .btn }
+### COSD V8 Breast Measurement M Category Final Pre Treatment Stage
+Source column  `McategoryFinalPreTreatment`.
+Lookup  concepts.
+
+
+|McategoryFinalPreTreatment|measurement_concept_id|notes|
+|------|-----|-----|
+|0|1635624|AJCC/UICC M0 Category|
+|1|1635142|AJCC/UICC M1 Category|
+|1a|1635100|AJCC/UICC M1a Category|
+|1b|1634463|AJCC/UICC M1b Category|
+|1c|1635519|AJCC/UICC M1c Category|
+|1d|1634064|AJCC/UICC M1d Category|
+|X  |1633547|AJCC/UICC MX Category|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=tnm&boosts)
+
+* `McategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases before treatment during a Cancer Care Spell. [M CATEGORY (FINAL PRETREATMENT)](https://www.datadictionary.nhs.uk/data_elements/m_category__final_pretreatment_.html)
+
+```sql
+with BR as (
+    select 
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentMCategory' as McategoryFinalPreTreatment,
+        Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as StageDateFinalPretreatmentStage
+    from omop_staging.cosd_staging_81
+    where Type = 'BR'
+)
+select distinct
+    NHSNumber,
+    coalesce(StageDateFinalPretreatmentStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
+    McategoryFinalPreTreatment
+from BR
+where McategoryFinalPreTreatment is not null
+and NHSNumber is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Breast%20Measurement%20M%20Category%20Final%20Pre%20Treatment%20Stage%20mapping){: .btn }
 ### COSD V8 Breast Measurement Grade of Differentiation (At Diagnosis)
 Source column  `GradeOfDifferentiationAtDiagnosis`.
 Lookup GradeDifferentiation concepts.
