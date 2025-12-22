@@ -2,7 +2,7 @@
     <Sql>
 with BR as (
     select 
-        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
         Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
         Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentNCategory' as NcategoryFinalPreTreatment,
         Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as StageDateFinalPretreatmentStage
@@ -10,15 +10,15 @@ with BR as (
     where Type = 'BR'
 )
 select distinct
-    NhsNumber,
+    NHSNumber,
     coalesce(StageDateFinalPretreatmentStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
     NcategoryFinalPreTreatment
 from BR
 where NcategoryFinalPreTreatment is not null
-and NhsNumber is not null;
+and NHSNumber is not null;
 	</Sql>
     <Explanations>
-	    <Explanation columnName="NhsNumber">
+	    <Explanation columnName="NHSNumber">
 		    <Description>Patient NHS Number</Description>
 		    <Origin>NHS NUMBER</Origin>
 	    </Explanation>
