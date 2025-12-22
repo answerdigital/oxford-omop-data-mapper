@@ -1606,7 +1606,7 @@ and NhsNumber is not null;
 ```sql
 with BR as (
     select 
-        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
         Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
         Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentMCategory' as McategoryFinalPreTreatment,
         Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as StageDateFinalPretreatmentStage
@@ -1614,12 +1614,12 @@ with BR as (
     where Type = 'BR'
 )
 select distinct
-    NHSNumber,
+    NhsNumber,
     coalesce(StageDateFinalPretreatmentStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
     McategoryFinalPreTreatment
 from BR
 where McategoryFinalPreTreatment is not null
-and NHSNumber is not null;
+and NhsNumber is not null;
 	
 ```
 
