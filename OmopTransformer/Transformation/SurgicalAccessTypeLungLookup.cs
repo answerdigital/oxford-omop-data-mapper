@@ -12,7 +12,8 @@ internal class SurgicalAccessTypeLungLookup : ILookup
             { "2",   new ValueWithNote("4044378", "Laparoscopic/Thoracoscopic with planned conversion to open surgery") },
             { "3",   new ValueWithNote("4044378", "Laparoscopic/Thoracoscopic with unplanned conversion to open surgery") },
             { "4",   new ValueWithNote("44808608", "Laparoscopic/Thoracoscopic completed") },
-            { "5",   new ValueWithNote("44790026", "Robotic surgery") }
+            { "5",   new ValueWithNote("44790026", "Robotic surgery") },
+            { "Z",   new ValueWithNote("0", "Other") }
         };
 
     public string[] ColumnNotes =>
