@@ -1436,7 +1436,7 @@ where GradeOfDifferentiationAtDiagnosis is not null;
 ```sql
 with BR as (
     select 
-        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
         Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
         Record ->> '$.Breast.BreastCore.BreastCoreStaging.IntegratedStageNCategory' as NCategoryIntegratedStage,
         Record ->> '$.Breast.BreastCore.BreastCoreStaging.IntegratedStageTNMStageGroupingDate' as StageDateIntegratedStage
@@ -1444,7 +1444,7 @@ with BR as (
     where Type = 'BR'
 )
 select distinct
-    NhsNumber,
+    NHSNumber,
     coalesce(StageDateIntegratedStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
     NCategoryIntegratedStage
 from BR
@@ -1462,7 +1462,7 @@ where NCategoryIntegratedStage is not null;
 ```sql
 with BR as (
     select 
-        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
         Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
         Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentNCategory' as NcategoryFinalPreTreatment,
         Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as StageDateFinalPretreatmentStage
@@ -1470,12 +1470,12 @@ with BR as (
     where Type = 'BR'
 )
 select distinct
-    NhsNumber,
+    NHSNumber,
     coalesce(StageDateFinalPretreatmentStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
     NcategoryFinalPreTreatment
 from BR
 where NcategoryFinalPreTreatment is not null
-and NhsNumber is not null;
+and NHSNumber is not null;
 	
 ```
 
@@ -1489,7 +1489,7 @@ and NhsNumber is not null;
 ```sql
 with BR as (
     select 
-        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
         Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
         Record ->> '$.Breast.BreastCore.BreastCoreStaging.IntegratedStageMCategory' as MCategoryIntegratedStage,
         Record ->> '$.Breast.BreastCore.BreastCoreStaging.IntegratedStageTNMStageGroupingDate' as StageDateIntegratedStage
@@ -1497,12 +1497,12 @@ with BR as (
     where Type = 'BR'
 )
 select distinct
-    NhsNumber,
+    NHSNumber,
     coalesce(StageDateIntegratedStage, ClinicalDateCancerDiagnosis) as MeasurementDate,
     MCategoryIntegratedStage
 from BR
 where MCategoryIntegratedStage is not null
-and NhsNumber is not null;
+and NHSNumber is not null;
 	
 ```
 
@@ -1543,7 +1543,7 @@ and NHSNumber is not null;
 ```sql
 with BR as (
     select 
-        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NHSNumber,
         Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
         Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
         Record ->> '$.Breast.BreastCore.BreastCoreDiagnosis.DiagnosisGradeOfDifferentiation.@code' as GradeOfDifferentiationAtDiagnosis
@@ -1551,7 +1551,7 @@ with BR as (
     where Type = 'BR'
 )
 select distinct
-    NhsNumber,
+    NHSNumber,
     coalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,
     GradeOfDifferentiationAtDiagnosis
 from BR
