@@ -23,6 +23,11 @@ using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementMcategoryF
 using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementMcategoryIntegratedStage;
 using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementNcategoryFinalPreTreatmentStage;
 using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementNcategoryIntegratedStage;
+using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementNonPrimaryPathwayMetastasis;
+using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementPrimaryPathwayMetastasis;
+using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementTcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementTcategoryIntegratedStage;
+using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage;
 using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosis;
 using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography;
 using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrenceProgression;
@@ -1059,6 +1064,36 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV8BreastMeasurementNcategoryIntegratedStageRecord, CosdV8BreastMeasurementNcategoryIntegratedStage>(
             _measurementRecorder.InsertUpdateMeasurements,
             "CosdV8BreastMeasurementNcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8BreastMeasurementNonPrimaryPathwayMetastasisRecord, CosdV8BreastMeasurementNonPrimaryPathwayMetastasis>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8BreastMeasurementNonPrimaryPathwayMetastasis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8BreastMeasurementPrimaryPathwayMetastasisRecord, CosdV8BreastMeasurementPrimaryPathwayMetastasis>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8BreastMeasurementPrimaryPathwayMetastasis",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8BreastMeasurementTcategoryFinalPreTreatmentStageRecord, CosdV8BreastMeasurementTcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8BreastMeasurementTcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8BreastMeasurementTcategoryIntegratedStageRecord, CosdV8BreastMeasurementTcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8BreastMeasurementTcategoryIntegratedStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStageRecord, CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage",
             runId,
             cancellationToken);
     }
