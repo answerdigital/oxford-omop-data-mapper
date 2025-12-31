@@ -12,6 +12,7 @@ using OmopTransformer.SACT.ConditionOccurrence;
 using OmopTransformer.SACT.Provider;
 using OmopTransformer.Omop.Provider;
 using OmopTransformer.Omop.CareSite;
+using OmopTransformer.Omop.Episode;
 using OmopTransformer.Omop.Measurement;
 using OmopTransformer.SACT.Measurements.SactMeasurementHeight;
 using OmopTransformer.SACT.Measurements.SactMeasurementWeightAtStartOfCycle;
@@ -20,6 +21,7 @@ using OmopTransformer.SACT.CareSite;
 using OmopTransformer.Omop.VisitOccurrence;
 using OmopTransformer.SACT.VisitOccurrence;
 using OmopTransformer.Omop.Observation;
+using OmopTransformer.SACT.Episode;
 using OmopTransformer.SACT.Observation;
 
 namespace OmopTransformer.SACT;
@@ -34,6 +36,7 @@ internal class SactTransformer : Transformer
     private readonly ICareSiteRecorder _careSiteRecorder;
     private readonly IMeasurementRecorder _measurementRecorder;
     private readonly IObservationRecorder _observationRecorder;
+    private readonly IEpisodeRecorder _episodeRecorder;
 
     public SactTransformer(
         IRecordTransformer recordTransformer,
@@ -49,7 +52,8 @@ internal class SactTransformer : Transformer
         ICareSiteRecorder careSiteRecorder,
         IObservationRecorder observationRecorder,
         IRunAnalysisRecorder runAnalysisRecorder,
-        ILoggerFactory loggerFactory)
+        ILoggerFactory loggerFactory, 
+        IEpisodeRecorder episodeRecorder)
         : base(
             recordTransformer,
             transformOptions,
@@ -67,6 +71,7 @@ internal class SactTransformer : Transformer
         _providerRecorder = providerRecorder;
         _careSiteRecorder = careSiteRecorder;
         _observationRecorder = observationRecorder;
+        _episodeRecorder = episodeRecorder;
     }
 
     public async Task Transform(CancellationToken cancellationToken)
@@ -154,6 +159,12 @@ internal class SactTransformer : Transformer
         await Transform<SactClinicalTrialRecord, SactClinicalTrial>(
             _observationRecorder.InsertUpdateObservations,
             "SACT Observation - Clinical Trial",
+            newId,
+            cancellationToken);
+
+        await Transform<SactEpisodeRecord, SactEpisode>(
+            _episodeRecorder.InsertUpdateEpisodes,
+            "SACT Episode",
             newId,
             cancellationToken);
     }

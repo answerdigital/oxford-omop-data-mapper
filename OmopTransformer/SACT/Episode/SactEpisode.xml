@@ -1,0 +1,24 @@
+﻿<Query>
+    <Sql>
+select 
+	distinct
+	    NHS_Number,
+	    Start_Date_Of_Regimen,
+	    Regimen,
+from omop_staging.sact_staging
+	</Sql>
+	<Explanations>
+		<Explanation columnName="NHS_Number">
+			<Description>Patient NHS Number</Description>
+			<Origin>NHS NUMBER</Origin>
+		</Explanation>
+
+		<Explanation columnName="Start_Date_Of_Regimen">
+			<Description>Regimen StartDate</Description>
+		</Explanation>
+
+		<Explanation columnName="Regimen">
+			<Description>Cancer treatment regimen</Description>
+		</Explanation>
+	</Explanations>
+</Query>

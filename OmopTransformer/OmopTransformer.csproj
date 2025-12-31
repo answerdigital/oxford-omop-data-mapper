@@ -518,6 +518,9 @@
     <None Update="RTDS\Observation\RtdsTreatmentAnatomicalSite\RtdsTreatmentAnatomicalSite.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SACT\Episode\SactEpisode.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SACT\Person\SactPerson.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

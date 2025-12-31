@@ -1910,7 +1910,25 @@ CREATE table omop_staging.visit_occurrence_row (
 	discharged_to_concept_id integer NULL,
 	discharged_to_source_value varchar(50) NULL,
 	data_source varchar(100) NOT NULL
-);", cancellationToken);
+);
+
+CREATE TABLE omop_staging.episode_row (
+	episode_concept_id integer NOT NULL,
+	episode_start_date date NOT NULL,
+	episode_start_datetime datetime NULL,
+	episode_end_date date NULL,
+	episode_end_datetime datetime NULL,
+	episode_parent_id integer NULL,
+	episode_number integer NULL,
+	episode_object_concept_id integer NOT NULL,
+	episode_type_concept_id integer NOT NULL,
+	episode_source_value varchar(50) NULL,
+	episode_source_concept_id integer NULL
+	nhs_number varchar(500) NULL,
+);
+
+
+", cancellationToken);
 
 			
             _logger.LogInformation($"Importing Vocabulary from {_configuration.VocabularyDirectory!}");

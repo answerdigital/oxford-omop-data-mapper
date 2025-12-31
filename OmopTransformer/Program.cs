@@ -40,6 +40,7 @@ using OmopTransformer.SUS.Staging.Inpatient.Clearing;
 using OmopTransformer.SUS.Staging.Inpatient;
 using OmopTransformer.SUS.Staging.Inpatient.CCMDS;
 using OmopTransformer.Omop;
+using OmopTransformer.Omop.Episode;
 using OmopTransformer.OxfordGP;
 using OmopTransformer.OxfordGP.Staging;
 using OmopTransformer.OxfordGP.Staging.Clearing;
@@ -284,6 +285,7 @@ internal class Program
             builder.Services.AddTransient<IMeasurementRecorder, MeasurementRecorder>();
             builder.Services.AddTransient<ICareSiteRecorder, CareSiteRecorder>();
             builder.Services.AddTransient<IProviderRecorder, ProviderRecorder>();
+            builder.Services.AddTransient<IEpisodeRecorder, EpisodeRecorder>();
 
             if (string.Equals(transformOptions.Type, "cosd", StringComparison.OrdinalIgnoreCase))
             {
