@@ -12,7 +12,7 @@ namespace OmopTransformer.SACT.Episode
         [ConstantValue(32531, "Treatment Regimen")]
         public override int? episode_concept_id { get; set; }
 
-        [Transform(typeof(DateConverter), (nameof(Source.Start_Date_Of_Regimen)))]
+        [Transform(typeof(DateOnlyConverter), (nameof(Source.Start_Date_Of_Regimen)))]
         public override DateOnly? episode_start_date { get; set; }
 
         [CopyValue(nameof(Source.Regimen))]

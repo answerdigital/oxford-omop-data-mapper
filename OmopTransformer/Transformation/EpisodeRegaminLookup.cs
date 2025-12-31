@@ -181,6 +181,7 @@ internal class EpisodeRegimenLookup : ILookup
             { "Inotuzumab ozogamicin cycle 1", new ValueWithNote("35804064", "Inotuzumab ozogamicin monotherapy") }, // 86.87%
             { "ORACLE Azacitidine (Trial)", new ValueWithNote("35803465", "Azacitidine monotherapy") }, // 86.77%
             { "Carboplatin Etoposide (EDTA)", new ValueWithNote("35806400", "Carboplatin and Etoposide (CE)") }, // 86.72%
+            { "Zoledronic acid 6 weekly (support)", new ValueWithNote("35806301", "Zoledronic acid therapy") }, // 82.52000000000001%
 
             { "Lutetium-177 vipivotide tetraxetan (without support medication) (EAMS)", new ValueWithNote("1525150", "Lutetium Lu 177 vipivotide tetraxetan monotherapy") }, // 86.72%
             { "Mobocertinib", new ValueWithNote("1525157", "Mobocertinib monotherapy") }, // 86.67%
@@ -620,6 +621,11 @@ internal class EpisodeRegimenLookup : ILookup
             { "Brightline-1 Doxorubicin (Trial)", new ValueWithNote("35804134", "Doxorubicin monotherapy") }, // 71.44%
             { "ALL Consolidation cycle 3 days 1-28 (25-60 years)", new ValueWithNote("37557464", "International ALL Trial consolidation") }, // 71.34%
             { "BEP 3 day adjuvant (BEP 111)", new ValueWithNote("35807017", "Accelerated BEP") }, // 70.56%
+            { "DTPACE (cyclophosphamide bolus)", new ValueWithNote("35806327", "DTPACE") }, // 83.00999999999999%
+            { "Busulfan Fludarabine ATG RIC (myelofibrosis) (Allograft)", new ValueWithNote("35803623", "Fludarabine, Busulfan, ATG") }, // 82.47%
+            { "Niraparib (Expanded access programme)", new ValueWithNote("35806485", "Niraparib monotherapy") }, // 82.47%
+            { "rEECur Topotecan Cyclophosphamide (TC) (NCRN Trial)", new ValueWithNote("35805453", "Cyclophosphamide and Topotecan") }, // 84.91%
+
 
             { "Docetaxel Carboplatin Trastuzumab (TCH)", new ValueWithNote("", "No mapping") },
             { "Ixazomib Lenalidomide Dexamethasone", new ValueWithNote("", "No mapping") },

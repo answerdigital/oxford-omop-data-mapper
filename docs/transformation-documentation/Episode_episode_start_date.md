@@ -17,7 +17,7 @@ select
 	distinct
 	    NHS_Number,
 	    Start_Date_Of_Regimen,
-	    Regimen,
+	    trim(Regimen, ' =') as Regimen,
 from omop_staging.sact_staging
 	
 ```

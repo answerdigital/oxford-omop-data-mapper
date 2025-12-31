@@ -186,6 +186,7 @@ Lookup Cancer treatment regimens concept.
 |Inotuzumab ozogamicin cycle 1|35804064|Inotuzumab ozogamicin monotherapy|
 |ORACLE Azacitidine (Trial)|35803465|Azacitidine monotherapy|
 |Carboplatin Etoposide (EDTA)|35806400|Carboplatin and Etoposide (CE)|
+|Zoledronic acid 6 weekly (support)|35806301|Zoledronic acid therapy|
 |Lutetium-177 vipivotide tetraxetan (without support medication) (EAMS)|1525150|Lutetium Lu 177 vipivotide tetraxetan monotherapy|
 |Mobocertinib|1525157|Mobocertinib monotherapy|
 |Cisplatin (100) with concurrent RT|35804144|Cisplatin and RT|
@@ -612,6 +613,10 @@ Lookup Cancer treatment regimens concept.
 |Brightline-1 Doxorubicin (Trial)|35804134|Doxorubicin monotherapy|
 |ALL Consolidation cycle 3 days 1-28 (25-60 years)|37557464|International ALL Trial consolidation|
 |BEP 3 day adjuvant (BEP 111)|35807017|Accelerated BEP|
+|DTPACE (cyclophosphamide bolus)|35806327|DTPACE|
+|Busulfan Fludarabine ATG RIC (myelofibrosis) (Allograft)|35803623|Fludarabine, Busulfan, ATG|
+|Niraparib (Expanded access programme)|35806485|Niraparib monotherapy|
+|rEECur Topotecan Cyclophosphamide (TC) (NCRN Trial)|35805453|Cyclophosphamide and Topotecan|
 |Docetaxel Carboplatin Trastuzumab (TCH)||No mapping|
 |Ixazomib Lenalidomide Dexamethasone||No mapping|
 |Pertuzumab Trastuzumab Docetaxel||No mapping|
@@ -1428,7 +1433,7 @@ select
 	distinct
 	    NHS_Number,
 	    Start_Date_Of_Regimen,
-	    Regimen,
+	    trim(Regimen, ' =') as Regimen,
 from omop_staging.sact_staging
 	
 ```

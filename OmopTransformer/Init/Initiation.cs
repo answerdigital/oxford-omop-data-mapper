@@ -1923,7 +1923,7 @@ CREATE TABLE omop_staging.episode_row (
 	episode_object_concept_id integer NOT NULL,
 	episode_type_concept_id integer NOT NULL,
 	episode_source_value varchar(50) NULL,
-	episode_source_concept_id integer NULL
+	episode_source_concept_id integer NULL,
 	nhs_number varchar(500) NULL,
 );
 
