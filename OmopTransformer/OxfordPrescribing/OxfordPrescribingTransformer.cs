@@ -4,6 +4,7 @@ using OmopTransformer.OxfordPrescribing.DrugExposure;
 using OmopTransformer.Transformation;
 using OmopTransformer.Omop.DrugExposure;
 using OmopTransformer.OxfordPrescribing.DrugExposureWithSnomed;
+using OmopTransformer.ConceptResolution;
 
 namespace OmopTransformer.OxfordPrescribing;
 

@@ -18,6 +18,7 @@ Lookup SurgicalAccessType concepts for lung cancer procedures.
 |3|4044378|Laparoscopic/Thoracoscopic with unplanned conversion to open surgery|
 |4|44808608|Laparoscopic/Thoracoscopic completed|
 |5|44790026|Robotic surgery|
+|Z|0|Other|
 
 Notes
 * [OMOP Open approach](https://athena.ohdsi.org/search-terms/terms/4044378)
@@ -82,6 +83,7 @@ Lookup SurgicalAccessType concepts for lung cancer procedures.
 |3|4044378|Laparoscopic/Thoracoscopic with unplanned conversion to open surgery|
 |4|44808608|Laparoscopic/Thoracoscopic completed|
 |5|44790026|Robotic surgery|
+|Z|0|Other|
 
 Notes
 * [OMOP Open approach](https://athena.ohdsi.org/search-terms/terms/4044378)
