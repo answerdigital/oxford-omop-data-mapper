@@ -49,6 +49,7 @@ internal class EpisodeRecorder : IEpisodeRecorder
                             .AppendValue(row.episode_source_value)
                             .AppendValue(row.episode_source_concept_id)
                             .AppendValue(row.nhs_number)
+                            .AppendValue(dataSource)
                             .EndRow();
                     }
                 }
@@ -78,7 +79,8 @@ insert into cdm.episode
     episode_object_concept_id,
     episode_type_concept_id,
     episode_source_value,
-    episode_source_concept_id
+    episode_source_concept_id,
+    data_source
 )
 select
     distinct
@@ -94,6 +96,7 @@ select
         r.episode_type_concept_id,
         r.episode_source_value,
         r.episode_source_concept_id,
+        r.data_source
  from omop_staging.episode_row r
     inner join cdm.person p 
         on r.nhs_number = p.person_source_value
