@@ -26,4 +26,7 @@ internal class SusOPICDDiagnosisObservation : OmopObservation<SusOPICDDiagnosisO
 
     [Transform(typeof(Icd10StandardNonStandardSelector), nameof(Source.DiagnosisICD))]
     public override int? observation_source_concept_id { get; set; }
+
+    [CopyValue(nameof(Source.DiagnosisICD))]
+    public override string? observation_source_value { get; set; }
 }

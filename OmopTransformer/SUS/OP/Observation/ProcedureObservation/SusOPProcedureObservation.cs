@@ -26,4 +26,7 @@ internal class SusOPProcedureObservation : OmopObservation<SusOPProcedureObserva
 
     [Transform(typeof(Opcs4Selector), nameof(Source.PrimaryProcedure))]
     public override int? observation_source_concept_id { get; set; }
+
+    [CopyValue(nameof(Source.PrimaryProcedure))]
+    public override string? observation_source_value { get; set; }
 }
