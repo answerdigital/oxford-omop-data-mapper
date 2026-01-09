@@ -151,7 +151,6 @@ inner join cdm.location cdm on l.address_1 is not distinct from cdm.address_1
     and l.state is not distinct from cdm.state
     and l.zip is not distinct from cdm.zip
     and l.county is not distinct from cdm.county
-    and l.location_source_value is not distinct from cdm.location_source_value
     and l.country_concept_id is not distinct from cdm.country_concept_id
     and l.country_source_value is not distinct from cdm.country_source_value
     and l.latitude is not distinct from cdm.latitude
