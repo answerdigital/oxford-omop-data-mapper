@@ -89,6 +89,24 @@
       "lookup_table_markdown": null
     },
     {
+      "name": "value_as_string",
+      "operation_description": "Value copied from `DiagnosisICD`",
+      "dataSource": [
+        {
+          "name": "DiagnosisICD",
+          "description": "ICD10 diagnosis code",
+          "origins": [
+            {
+              "origin": "PRIMARY DIAGNOSIS (ICD)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n    distinct\n        d.DiagnosisICD,\n        apc.GeneratedRecordIdentifier,\n        apc.NHSNumber,\n        apc.CDSActivityDate\nfrom omop_staging.sus_ICDDiagnosis d\n    inner join omop_staging.sus_APC apc\n        on d.MessageId = apc.MessageId\nwhere apc.NHSNumber is not null\norder by\n\td.DiagnosisICD,\n    apc.GeneratedRecordIdentifier,\n    apc.NHSNumber,\n    apc.CDSActivityDate\n\t",
+      "lookup_table_markdown": null
+    },
+    {
       "name": "observation_source_concept_id",
       "operation_description": "Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.",
       "dataSource": [
