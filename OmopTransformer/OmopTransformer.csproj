@@ -101,6 +101,21 @@
     <None Update="COSD\Breast\Measurements\CosdV8BreastMeasurementNcategoryIntegratedStage\CosdV8BreastMeasurementNcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Breast\Measurements\CosdV8BreastMeasurementNonPrimaryPathwayMetastasis\CosdV8BreastMeasurementNonPrimaryPathwayMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\Measurements\CosdV8BreastMeasurementPrimaryPathwayMetastasis\CosdV8BreastMeasurementPrimaryPathwayMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\Measurements\CosdV8BreastMeasurementTcategoryFinalPreTreatmentStage\CosdV8BreastMeasurementTcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\Measurements\CosdV8BreastMeasurementTcategoryIntegratedStage\CosdV8BreastMeasurementTcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\Measurements\CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage\CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Lung\ConditionOccurrence\CosdV8LungConditionOccurrencePrimaryDiagnosis\CosdV8LungConditionOccurrencePrimaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

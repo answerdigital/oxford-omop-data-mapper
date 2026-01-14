@@ -1,0 +1,39 @@
+<Query>
+    <Sql>
+with br as (
+    select distinct
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+        unnest(
+            [
+                [ Record ->> '$.Breast.BreastCore.BreastCoreNonPrimaryCancerPathwayRoute.MetastaticSite.@code' ],
+                Record ->> '$.Breast.BreastCore.BreastCoreNonPrimaryCancerPathwayRoute.MetastaticSite[*].@code'
+            ],
+            recursive := true
+        ) as MetastaticSite
+    from omop_staging.cosd_staging_81
+    where type = 'BR'
+)
+select distinct
+    NhsNumber,
+    DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+    MetastaticSite
+from br
+where MetastaticSite is not null
+  and MetastaticSite != '97';
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NhsNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="DateOfNonPrimaryCancerDiagnosisClinicallyAgreed">
+			<Description>The date on which Non-Primary Cancer Diagnosis was clinically agreed.</Description>
+			<Origin>DATE OF NON PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+		</Explanation>
+		<Explanation columnName="MetastaticSite">
+			<Description>The site of metastatic cancer on the Non-Primary Cancer Pathway.</Description>
+			<Origin>METASTATIC SITE</Origin>
+		</Explanation>
+	</Explanations>
+</Query>
