@@ -128,6 +128,18 @@
     <None Update="COSD\Breast\Measurements\CosdV9BreastMeasurementMcategoryIntegratedStage\CosdV9BreastMeasurementMcategoryIntegratedStage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="COSD\Breast\Measurements\CosdV9BreastMeasurementNcategoryFinalPreTreatmentStage\CosdV9BreastMeasurementNcategoryFinalPreTreatmentStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\Measurements\CosdV9BreastMeasurementNcategoryIntegratedStage\CosdV9BreastMeasurementNcategoryIntegratedStage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\Measurements\CosdV9BreastMeasurementNonPrimaryPathwayProgressionMetastasis\CosdV9BreastMeasurementNonPrimaryPathwayProgressionMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="COSD\Breast\Measurements\CosdV9BreastMeasurementNonPrimaryPathwayRecurrenceMetastasis\CosdV9BreastMeasurementNonPrimaryPathwayRecurrenceMetastasis.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="COSD\Lung\ConditionOccurrence\CosdV8LungConditionOccurrencePrimaryDiagnosis\CosdV8LungConditionOccurrencePrimaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
