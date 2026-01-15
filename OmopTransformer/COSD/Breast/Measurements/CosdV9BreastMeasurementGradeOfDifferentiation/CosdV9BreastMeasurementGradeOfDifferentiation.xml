@@ -1,0 +1,26 @@
+<Query>
+    <Sql>
+select
+    distinct
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' as GradeOfDifferentiationAtDiagnosis
+from omop_staging.cosd_staging_901
+where Type = 'BR'
+  and Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' is not null;
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NhsNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="DateOfPrimaryDiagnosisClinicallyAgreed">
+			<Description>The date the primary cancer diagnosis was clinically agreed.</Description>
+			<Origin>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+		</Explanation>
+		<Explanation columnName="GradeOfDifferentiationAtDiagnosis">
+			<Description>The grade of differentiation of the cancer at diagnosis, indicating how much the cancer cells differ from normal cells.</Description>
+			<Origin>GRADE OF DIFFERENTIATION AT DIAGNOSIS</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

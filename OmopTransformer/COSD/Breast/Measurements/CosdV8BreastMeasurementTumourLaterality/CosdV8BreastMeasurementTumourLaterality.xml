@@ -1,0 +1,35 @@
+<Query>
+    <Sql>
+with br as (
+    select
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.TumourLaterality.@code' as TumourLaterality
+    from omop_staging.cosd_staging_81
+    where Type = 'BR'
+)
+select distinct
+    NhsNumber,
+    coalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,
+    TumourLaterality
+from br
+where TumourLaterality is not null
+  and TumourLaterality in ('L','R','M','B');
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NhsNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="MeasurementDate">
+			<Description>Measurement Date is the clinical date of cancer diagnosis if available, otherwise the date of non-primary cancer diagnosis clinically agreed.</Description>
+			<Origin>CLINICAL DATE CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+			<Origin>DATE OF NON-PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+		</Explanation>
+		<Explanation columnName="TumourLaterality">
+			<Description>The laterality of the tumour in relation to the midline of the body (Left, Right, Midline, Bilateral).</Description>
+			<Origin>TUMOUR LATERALITY</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

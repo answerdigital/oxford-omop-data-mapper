@@ -28,6 +28,10 @@ using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementPrimaryPat
 using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementTcategoryFinalPreTreatmentStage;
 using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementTcategoryIntegratedStage;
 using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementTumourLaterality;
+using OmopTransformer.COSD.Breast.Measurements.CosdV9BreastMeasurementGradeOfDifferentiation;
+using OmopTransformer.COSD.Breast.Measurements.CosdV9BreastMeasurementMcategoryFinalPreTreatmentStage;
+using OmopTransformer.COSD.Breast.Measurements.CosdV9BreastMeasurementMcategoryIntegratedStage;
 using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosis;
 using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrencePrimaryDiagnosisHistologyTopography;
 using OmopTransformer.COSD.Lung.ConditionOccurrence.CosdV8LungConditionOccurrenceProgression;
@@ -1094,6 +1098,30 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStageRecord, CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage>(
             _measurementRecorder.InsertUpdateMeasurements,
             "CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV8BreastMeasurementTumourLateralityRecord, CosdV8BreastMeasurementTumourLaterality>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV8BreastMeasurementTumourLaterality",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9BreastMeasurementGradeOfDifferentiationRecord, CosdV9BreastMeasurementGradeOfDifferentiation>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9BreastMeasurementGradeOfDifferentiation",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9BreastMeasurementMcategoryFinalPreTreatmentStageRecord, CosdV9BreastMeasurementMcategoryFinalPreTreatmentStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9BreastMeasurementMcategoryFinalPreTreatmentStage",
+            runId,
+            cancellationToken);
+
+        await Transform<CosdV9BreastMeasurementMcategoryIntegratedStageRecord, CosdV9BreastMeasurementMcategoryIntegratedStage>(
+            _measurementRecorder.InsertUpdateMeasurements,
+            "CosdV9BreastMeasurementMcategoryIntegratedStage",
             runId,
             cancellationToken);
     }
