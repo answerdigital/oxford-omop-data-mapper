@@ -1580,14 +1580,20 @@ where McategoryFinalPreTreatment is not null;
 * `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
 
 ```sql
-select
-    distinct
+with BR as (
+    select
         Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
         Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
         Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' as GradeOfDifferentiationAtDiagnosis
-from omop_staging.cosd_staging_901
-where Type = 'BR'
-  and Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' is not null;
+    from omop_staging.cosd_staging_901
+    where Type = 'BR'
+)
+select distinct
+    NhsNumber,
+    DateOfPrimaryDiagnosisClinicallyAgreed,
+    GradeOfDifferentiationAtDiagnosis
+from BR
+where GradeOfDifferentiationAtDiagnosis is not null;
 	
 ```
 

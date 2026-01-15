@@ -1644,14 +1644,20 @@ Converts text to dates.
 * `DateOfPrimaryDiagnosisClinicallyAgreed` The date the primary cancer diagnosis was clinically agreed. [DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)](https://www.datadictionary.nhs.uk/data_elements/date_of_primary_cancer_diagnosis__clinically_agreed_.html)
 
 ```sql
-select
-    distinct
+with BR as (
+    select
         Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
         Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
         Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' as GradeOfDifferentiationAtDiagnosis
-from omop_staging.cosd_staging_901
-where Type = 'BR'
-  and Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' is not null;
+    from omop_staging.cosd_staging_901
+    where Type = 'BR'
+)
+select distinct
+    NhsNumber,
+    DateOfPrimaryDiagnosisClinicallyAgreed,
+    GradeOfDifferentiationAtDiagnosis
+from BR
+where GradeOfDifferentiationAtDiagnosis is not null;
 	
 ```
 

@@ -2763,14 +2763,20 @@ Notes
 * `GradeOfDifferentiationAtDiagnosis` The grade of differentiation of the cancer at diagnosis, indicating how much the cancer cells differ from normal cells. [GRADE OF DIFFERENTIATION AT DIAGNOSIS]()
 
 ```sql
-select
-    distinct
+with BR as (
+    select
         Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
         Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
         Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' as GradeOfDifferentiationAtDiagnosis
-from omop_staging.cosd_staging_901
-where Type = 'BR'
-  and Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' is not null;
+    from omop_staging.cosd_staging_901
+    where Type = 'BR'
+)
+select distinct
+    NhsNumber,
+    DateOfPrimaryDiagnosisClinicallyAgreed,
+    GradeOfDifferentiationAtDiagnosis
+from BR
+where GradeOfDifferentiationAtDiagnosis is not null;
 	
 ```
 
