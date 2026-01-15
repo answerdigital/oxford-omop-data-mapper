@@ -267,6 +267,22 @@ has_toc: false
 <a href="CosdV8MeasurementGradeOfDifferentiation.svg" target="_blank"><img src="CosdV8MeasurementGradeOfDifferentiation.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8MeasurementGradeOfDifferentiation%20mapping){: .btn }
+## CosdV9BreastMeasurementNonPrimaryPathwayRecurrenceMetastasis
+<a href="CosdV9BreastMeasurementNonPrimaryPathwayRecurrenceMetastasis.svg" target="_blank"><img src="CosdV9BreastMeasurementNonPrimaryPathwayRecurrenceMetastasis.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementNonPrimaryPathwayRecurrenceMetastasis%20mapping){: .btn }
+## CosdV9BreastMeasurementNonPrimaryPathwayProgressionMetastasis
+<a href="CosdV9BreastMeasurementNonPrimaryPathwayProgressionMetastasis.svg" target="_blank"><img src="CosdV9BreastMeasurementNonPrimaryPathwayProgressionMetastasis.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementNonPrimaryPathwayProgressionMetastasis%20mapping){: .btn }
+## CosdV9BreastMeasurementNcategoryIntegratedStage
+<a href="CosdV9BreastMeasurementNcategoryIntegratedStage.svg" target="_blank"><img src="CosdV9BreastMeasurementNcategoryIntegratedStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementNcategoryIntegratedStage%20mapping){: .btn }
+## CosdV9BreastMeasurementNcategoryFinalPreTreatmentStage
+<a href="CosdV9BreastMeasurementNcategoryFinalPreTreatmentStage.svg" target="_blank"><img src="CosdV9BreastMeasurementNcategoryFinalPreTreatmentStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementNcategoryFinalPreTreatmentStage%20mapping){: .btn }
 ## CosdV9BreastMeasurementMcategoryIntegratedStage
 <a href="CosdV9BreastMeasurementMcategoryIntegratedStage.svg" target="_blank"><img src="CosdV9BreastMeasurementMcategoryIntegratedStage.svg" /></a>
 
