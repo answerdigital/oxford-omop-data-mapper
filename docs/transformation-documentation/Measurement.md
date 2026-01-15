@@ -267,6 +267,22 @@ has_toc: false
 <a href="CosdV8MeasurementGradeOfDifferentiation.svg" target="_blank"><img src="CosdV8MeasurementGradeOfDifferentiation.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8MeasurementGradeOfDifferentiation%20mapping){: .btn }
+## CosdV9BreastMeasurementMcategoryIntegratedStage
+<a href="CosdV9BreastMeasurementMcategoryIntegratedStage.svg" target="_blank"><img src="CosdV9BreastMeasurementMcategoryIntegratedStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementMcategoryIntegratedStage%20mapping){: .btn }
+## CosdV9BreastMeasurementMcategoryFinalPreTreatmentStage
+<a href="CosdV9BreastMeasurementMcategoryFinalPreTreatmentStage.svg" target="_blank"><img src="CosdV9BreastMeasurementMcategoryFinalPreTreatmentStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementMcategoryFinalPreTreatmentStage%20mapping){: .btn }
+## CosdV9BreastMeasurementGradeOfDifferentiation
+<a href="CosdV9BreastMeasurementGradeOfDifferentiation.svg" target="_blank"><img src="CosdV9BreastMeasurementGradeOfDifferentiation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementGradeOfDifferentiation%20mapping){: .btn }
+## CosdV8BreastMeasurementTumourLaterality
+<a href="CosdV8BreastMeasurementTumourLaterality.svg" target="_blank"><img src="CosdV8BreastMeasurementTumourLaterality.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8BreastMeasurementTumourLaterality%20mapping){: .btn }
 ## CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage
 <a href="CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage.svg" target="_blank"><img src="CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage.svg" /></a>
 

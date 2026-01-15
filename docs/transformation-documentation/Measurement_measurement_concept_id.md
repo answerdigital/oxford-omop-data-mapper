@@ -2657,6 +2657,165 @@ where GradeOfDifferentiationAtDiagnosis is not null;
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Measurement%20Grade%20of%20Differentiation%20(At%20Diagnosis)%20mapping){: .btn }
+### COSD V9 Breast Measurement M Category Integrated Stage
+Source column  `MCategoryIntegratedStage`.
+Lookup  concepts.
+
+
+|MCategoryIntegratedStage|measurement_concept_id|notes|
+|------|-----|-----|
+|0|1635624|AJCC/UICC M0 Category|
+|1|1635142|AJCC/UICC M1 Category|
+|1a|1635100|AJCC/UICC M1a Category|
+|1b|1634463|AJCC/UICC M1b Category|
+|1c|1635519|AJCC/UICC M1c Category|
+|1d|1634064|AJCC/UICC M1d Category|
+|X  |1633547|AJCC/UICC MX Category|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=tnm&boosts)
+
+* `MCategoryIntegratedStage` Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases after treatment and/or after all available evidence has been collected during a Cancer Care Spell. [M CATEGORY (INTEGRATED STAGE)](https://www.datadictionary.nhs.uk/data_elements/m_category__integrated_stage_.html)
+
+```sql
+with BR as (
+    select 
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        coalesce(
+            Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage',
+            Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed'
+        ) as MeasurementDate,
+        Record ->> '$.PrimaryPathway.Staging.MCategoryIntegratedStage' as MCategoryIntegratedStage
+    from omop_staging.cosd_staging_901
+    where Type = 'BR'
+)
+select distinct
+    NhsNumber,
+    MeasurementDate,
+    MCategoryIntegratedStage
+from BR
+where MCategoryIntegratedStage is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V9%20Breast%20Measurement%20M%20Category%20Integrated%20Stage%20mapping){: .btn }
+### COSD V9 Breast Measurement M Category Final Pre-Treatment Stage
+Source column  `McategoryFinalPreTreatment`.
+Lookup  concepts.
+
+
+|McategoryFinalPreTreatment|measurement_concept_id|notes|
+|------|-----|-----|
+|0|1635624|AJCC/UICC M0 Category|
+|1|1635142|AJCC/UICC M1 Category|
+|1a|1635100|AJCC/UICC M1a Category|
+|1b|1634463|AJCC/UICC M1b Category|
+|1c|1635519|AJCC/UICC M1c Category|
+|1d|1634064|AJCC/UICC M1d Category|
+|X  |1633547|AJCC/UICC MX Category|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&page=1&pageSize=500&query=tnm&boosts)
+
+* `McategoryFinalPreTreatment` Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases before treatment during a Cancer Care Spell. [M CATEGORY (FINAL PRE-TREATMENT STAGE)]()
+
+```sql
+with BR as (
+    select 
+        record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        coalesce(
+            record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage',
+            record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed'
+        ) as MeasurementDate,
+        record ->> '$.PrimaryPathway.Staging.MCategoryFinalPretreatment' as McategoryFinalPreTreatment
+    from omop_staging.cosd_staging_901
+    where type = 'BR'
+)
+select distinct
+    NhsNumber,
+    MeasurementDate,
+    McategoryFinalPreTreatment
+from BR
+where McategoryFinalPreTreatment is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V9%20Breast%20Measurement%20M%20Category%20Final%20Pre-Treatment%20Stage%20mapping){: .btn }
+### COSD V9 Breast Measurement Grade of Differentiation
+Source column  `GradeOfDifferentiationAtDiagnosis`.
+Lookup GradeDifferentiation concepts.
+
+
+|GradeOfDifferentiationAtDiagnosis|measurement_concept_id|notes|
+|------|-----|-----|
+|GX||GX grade|
+|G1|36768162|Grade 1: Well differentiated|
+|G2|36770626|Grade 2: Moderately differentiated|
+|G3|36769666|Grade 3: Poorly differentiated|
+|G4|36769737|Grade 4: Undifferentiated|
+
+Notes
+* [OMOP Grade Differentiation](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&conceptClass=Histopattern&page=1&pageSize=500&query=grade&boosts)
+* [NHS - Grade of Differentiation (At Diagnosis)](https://www.datadictionary.nhs.uk/data_elements/grade_of_differentiation__at_diagnosis_.html?hl=grade%2Cdifferentiation)
+
+* `GradeOfDifferentiationAtDiagnosis` The grade of differentiation of the cancer at diagnosis, indicating how much the cancer cells differ from normal cells. [GRADE OF DIFFERENTIATION AT DIAGNOSIS]()
+
+```sql
+select
+    distinct
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' as GradeOfDifferentiationAtDiagnosis
+from omop_staging.cosd_staging_901
+where Type = 'BR'
+  and Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V9%20Breast%20Measurement%20Grade%20of%20Differentiation%20mapping){: .btn }
+### COSD V8 Breast Measurement Tumour Laterality
+Source column  `TumourLaterality`.
+Lookup TumourLaterality concepts.
+
+
+|TumourLaterality|measurement_concept_id|notes|
+|------|-----|-----|
+|L|36770232|Left|
+|R|36770058|Right|
+|M|36769853|Midline|
+|B|36770109|Bilateral|
+
+Notes
+* [OMOP Laterality](https://athena.ohdsi.org/search-terms/terms?vocabulary=Cancer+Modifier&conceptClass=Topography&page=1&pageSize=500&query=&boosts)
+* [NHS - Tumour Laterality](https://www.datadictionary.nhs.uk/data_elements/tumour_laterality.html?hl=tumour%2Claterality)
+
+* `TumourLaterality` The laterality of the tumour in relation to the midline of the body (Left, Right, Midline, Bilateral). [TUMOUR LATERALITY](https://www.datadictionary.nhs.uk/data_elements/tumour_laterality.html)
+
+```sql
+with br as (
+    select
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.TumourLaterality.@code' as TumourLaterality
+    from omop_staging.cosd_staging_81
+    where Type = 'BR'
+)
+select distinct
+    NhsNumber,
+    coalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,
+    TumourLaterality
+from br
+where TumourLaterality is not null
+  and TumourLaterality in ('L','R','M','B');
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_concept_id%20field%20COSD%20V8%20Breast%20Measurement%20Tumour%20Laterality%20mapping){: .btn }
 ### COSD V8 Breast Measurement TNM Category Final Pre Treatment Stage
 Source column  `TnmStageGroupingFinalPretreatment`.
 Lookup TNMCategory concepts.
