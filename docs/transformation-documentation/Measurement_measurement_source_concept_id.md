@@ -1777,11 +1777,11 @@ where lower(EVENT) not like '%comment%'
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V8%20Measurement%20M%20Category%20Final%20Pre%20Treatment%20Stage%20mapping){: .btn }
 ### COSD V9 Breast Measurement Non Primary Pathway Recurrence Metastasis
-* Constant value set to `2000500022`. MetastaticSite
+* Constant value set to `2000500010`. NonPrimaryPathwayRecurrenceMetastasis
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V9%20Breast%20Measurement%20Non%20Primary%20Pathway%20Recurrence%20Metastasis%20mapping){: .btn }
 ### COSD V9 Breast Measurement Non Primary Pathway Progression Metastasis
-* Constant value set to `2000500022`. MetastaticSite
+* Constant value set to `2000500008`. NonPrimaryPathwayRecurrenceMetastasis
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V9%20Breast%20Measurement%20Non%20Primary%20Pathway%20Progression%20Metastasis%20mapping){: .btn }
 ### COSD V9 Breast Measurement N Category Integrated Stage
@@ -1804,10 +1804,6 @@ where lower(EVENT) not like '%comment%'
 * Constant value set to `2000500003`. GradeOfDifferentiationAtDiagnosis
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V9%20Breast%20Measurement%20Grade%20of%20Differentiation%20mapping){: .btn }
-### COSD V8 Breast Measurement Tumour Laterality
-* Constant value set to `2000500036`. TumourLaterality
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V8%20Breast%20Measurement%20Tumour%20Laterality%20mapping){: .btn }
 ### COSD V8 Breast Measurement TNM Category Final Pre Treatment Stage
 * Constant value set to `2000500017`. TNMCategoryFinalPreTreatmentStage
 

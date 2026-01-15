@@ -72,13 +72,6 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "measurement_source_concept_id",
-      "operation_description": "Constant value set to `2000500036`. TumourLaterality",
-      "dataSource": null,
-      "query": null,
-      "lookup_table_markdown": null
-    },
-    {
       "name": "measurement_concept_id",
       "operation_description": "Lookup TumourLaterality concepts.",
       "dataSource": [
