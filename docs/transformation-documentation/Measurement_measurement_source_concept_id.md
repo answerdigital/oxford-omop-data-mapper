@@ -1781,7 +1781,7 @@ where lower(EVENT) not like '%comment%'
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V9%20Breast%20Measurement%20Non%20Primary%20Pathway%20Recurrence%20Metastasis%20mapping){: .btn }
 ### COSD V9 Breast Measurement Non Primary Pathway Progression Metastasis
-* Constant value set to `2000500008`. NonPrimaryPathwayRecurrenceMetastasis
+* Constant value set to `2000500008`. NonPrimaryPathwayProgressionMetastasis
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V9%20Breast%20Measurement%20Non%20Primary%20Pathway%20Progression%20Metastasis%20mapping){: .btn }
 ### COSD V9 Breast Measurement N Category Integrated Stage
