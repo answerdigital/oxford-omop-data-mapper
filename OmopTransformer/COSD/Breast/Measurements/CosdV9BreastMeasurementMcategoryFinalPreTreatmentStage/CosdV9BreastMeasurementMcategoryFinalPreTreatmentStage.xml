@@ -1,0 +1,36 @@
+<Query>
+    <Sql>
+with BR as (
+    select 
+        record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        coalesce(
+            record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage',
+            record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed'
+        ) as MeasurementDate,
+        record ->> '$.PrimaryPathway.Staging.MCategoryFinalPretreatment' as McategoryFinalPreTreatment
+    from omop_staging.cosd_staging_901
+    where type = 'BR'
+)
+select distinct
+    NhsNumber,
+    MeasurementDate,
+    McategoryFinalPreTreatment
+from BR
+where McategoryFinalPreTreatment is not null;
+	</Sql>
+    <Explanations>
+	    <Explanation columnName="NhsNumber">
+		    <Description>Patient NHS Number</Description>
+		    <Origin>NHS NUMBER</Origin>
+	    </Explanation>
+	    <Explanation columnName="MeasurementDate">
+			<Description>Measurement Date is the date on which TNM Stage Grouping (Final Pre-treatment) was recorded, but if this is not available, then it is the date the Primary Cancer was confirmed or the Primary Cancer diagnosis was agreed.</Description>
+			<Origin>DATE OF PRIMARY CANCER DIAGNOSIS (CLINICALLY AGREED)</Origin>
+			<Origin>TNM STAGE GROUPING DATE (FINAL PRE-TREATMENT)</Origin>
+		</Explanation>
+		<Explanation columnName="McategoryFinalPreTreatment">
+			<Description>Is the code, using a TNM CODING EDITION, which classifies the absence or presence of distant metastases before treatment during a Cancer Care Spell.</Description>
+			<Origin>M CATEGORY (FINAL PRE-TREATMENT STAGE)</Origin>
+		</Explanation>
+	</Explanations>
+</Query>

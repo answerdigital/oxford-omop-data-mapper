@@ -89,6 +89,24 @@
       "lookup_table_markdown": null
     },
     {
+      "name": "observation_source_value",
+      "operation_description": "Value copied from `PrimaryProcedure`",
+      "dataSource": [
+        {
+          "name": "PrimaryProcedure",
+          "description": "OPCS-4 Procedure code.",
+          "origins": [
+            {
+              "origin": "PROCEDURE (OPCS)",
+              "url": "https://www.datadictionary.nhs.uk/data_elements/procedure__opcs_.html"
+            }
+          ]
+        }
+      ],
+      "query": "\nselect\n\tdistinct\n\t\tapc.GeneratedRecordIdentifier,\n\t\tapc.NHSNumber,\n\t\tp.ProcedureDateOPCS as PrimaryProcedureDate,\n\t\tp.ProcedureOPCS as PrimaryProcedure\nfrom omop_staging.sus_APC apc\n\tinner join omop_staging.sus_OPCSProcedure p\n\t\ton apc.MessageId = p.MessageId\nwhere NHSNumber is not null\norder by\n\tapc.GeneratedRecordIdentifier,\n\tapc.NHSNumber,\n\tp.ProcedureDateOPCS,\n\tp.ProcedureOPCS\n\t",
+      "lookup_table_markdown": null
+    },
+    {
       "name": "observation_source_concept_id",
       "operation_description": "Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.",
       "dataSource": [

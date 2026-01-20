@@ -267,6 +267,38 @@ has_toc: false
 <a href="CosdV8MeasurementGradeOfDifferentiation.svg" target="_blank"><img src="CosdV8MeasurementGradeOfDifferentiation.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8MeasurementGradeOfDifferentiation%20mapping){: .btn }
+## CosdV9BreastMeasurementNonPrimaryPathwayRecurrenceMetastasis
+<a href="CosdV9BreastMeasurementNonPrimaryPathwayRecurrenceMetastasis.svg" target="_blank"><img src="CosdV9BreastMeasurementNonPrimaryPathwayRecurrenceMetastasis.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementNonPrimaryPathwayRecurrenceMetastasis%20mapping){: .btn }
+## CosdV9BreastMeasurementNonPrimaryPathwayProgressionMetastasis
+<a href="CosdV9BreastMeasurementNonPrimaryPathwayProgressionMetastasis.svg" target="_blank"><img src="CosdV9BreastMeasurementNonPrimaryPathwayProgressionMetastasis.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementNonPrimaryPathwayProgressionMetastasis%20mapping){: .btn }
+## CosdV9BreastMeasurementNcategoryIntegratedStage
+<a href="CosdV9BreastMeasurementNcategoryIntegratedStage.svg" target="_blank"><img src="CosdV9BreastMeasurementNcategoryIntegratedStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementNcategoryIntegratedStage%20mapping){: .btn }
+## CosdV9BreastMeasurementNcategoryFinalPreTreatmentStage
+<a href="CosdV9BreastMeasurementNcategoryFinalPreTreatmentStage.svg" target="_blank"><img src="CosdV9BreastMeasurementNcategoryFinalPreTreatmentStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementNcategoryFinalPreTreatmentStage%20mapping){: .btn }
+## CosdV9BreastMeasurementMcategoryIntegratedStage
+<a href="CosdV9BreastMeasurementMcategoryIntegratedStage.svg" target="_blank"><img src="CosdV9BreastMeasurementMcategoryIntegratedStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementMcategoryIntegratedStage%20mapping){: .btn }
+## CosdV9BreastMeasurementMcategoryFinalPreTreatmentStage
+<a href="CosdV9BreastMeasurementMcategoryFinalPreTreatmentStage.svg" target="_blank"><img src="CosdV9BreastMeasurementMcategoryFinalPreTreatmentStage.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementMcategoryFinalPreTreatmentStage%20mapping){: .btn }
+## CosdV9BreastMeasurementGradeOfDifferentiation
+<a href="CosdV9BreastMeasurementGradeOfDifferentiation.svg" target="_blank"><img src="CosdV9BreastMeasurementGradeOfDifferentiation.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV9BreastMeasurementGradeOfDifferentiation%20mapping){: .btn }
+## CosdV8BreastMeasurementTumourLaterality
+<a href="CosdV8BreastMeasurementTumourLaterality.svg" target="_blank"><img src="CosdV8BreastMeasurementTumourLaterality.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8BreastMeasurementTumourLaterality%20mapping){: .btn }
 ## CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage
 <a href="CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage.svg" target="_blank"><img src="CosdV8BreastMeasurementTNMcategoryFinalPreTreatmentStage.svg" /></a>
 

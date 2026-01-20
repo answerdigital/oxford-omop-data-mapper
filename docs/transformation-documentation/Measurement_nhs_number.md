@@ -1518,6 +1518,234 @@ where GradeOfDifferentiationAtDiagnosis is not null;
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20COSD%20V8%20Measurement%20Grade%20of%20Differentiation%20(At%20Diagnosis)%20mapping){: .btn }
+### COSD V9 Breast Measurement Non Primary Pathway Recurrence Metastasis
+* Value copied from `NhsNumber`
+
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+with BR as (
+    select distinct
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        Record ->> '$.NonPrimaryPathway.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+        unnest(
+            [
+                [ Record ->> '$.NonPrimaryPathway.Recurrence.MetastaticTypeAndSiteRecurrence.MetastaticSite.@code' ],
+                Record ->> '$.NonPrimaryPathway.Recurrence.MetastaticTypeAndSiteRecurrence[*].MetastaticSite.@code'
+            ],
+            recursive := true
+        ) as MetastaticSite
+    from omop_staging.cosd_staging_901
+    where type = 'BR'
+)
+select distinct
+    NhsNumber,
+    DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+    MetastaticSite
+from BR
+where MetastaticSite is not null
+  and MetastaticSite != '97';
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20COSD%20V9%20Breast%20Measurement%20Non%20Primary%20Pathway%20Recurrence%20Metastasis%20mapping){: .btn }
+### COSD V9 Breast Measurement Non Primary Pathway Progression Metastasis
+* Value copied from `NhsNumber`
+
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+with BR as (
+    select distinct
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        Record ->> '$.NonPrimaryPathway.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+        unnest(
+            [
+                [ Record ->> '$.NonPrimaryPathway.Progression.MetastaticTypeAndSiteProgression.MetastaticSite.@code' ],
+                Record ->> '$.NonPrimaryPathway.Progression.MetastaticTypeAndSiteProgression[*].MetastaticSite.@code'
+            ],
+            recursive := true
+        ) as MetastaticSite
+    from omop_staging.cosd_staging_901
+    where type = 'BR'
+)
+select distinct
+    NhsNumber,
+    DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+    MetastaticSite
+from BR
+where MetastaticSite is not null
+  and MetastaticSite != '97';
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20COSD%20V9%20Breast%20Measurement%20Non%20Primary%20Pathway%20Progression%20Metastasis%20mapping){: .btn }
+### COSD V9 Breast Measurement N Category Integrated Stage
+* Value copied from `NhsNumber`
+
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+with BR as (
+    select distinct
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        coalesce(
+            Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage',
+            Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed'
+        ) as MeasurementDate,
+        Record ->> '$.PrimaryPathway.Staging.NCategoryIntegratedStage' as NCategoryIntegratedStage
+    from omop_staging.cosd_staging_901
+    where type = 'BR'
+)
+select distinct
+    NhsNumber,
+    MeasurementDate,
+    NCategoryIntegratedStage
+from BR
+where NCategoryIntegratedStage is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20COSD%20V9%20Breast%20Measurement%20N%20Category%20Integrated%20Stage%20mapping){: .btn }
+### COSD V9 Breast Measurement N Category Final Pre-Treatment Stage
+* Value copied from `NhsNumber`
+
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+with BR as (
+    select distinct
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        coalesce(
+            Record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage',
+            Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed'
+        ) as MeasurementDate,
+        Record ->> '$.PrimaryPathway.Staging.NCategoryFinalPretreatment' as NcategoryFinalPreTreatment
+    from omop_staging.cosd_staging_901
+    where type = 'BR'
+)
+select distinct
+    NhsNumber,
+    MeasurementDate,
+    NcategoryFinalPreTreatment
+from BR
+where NcategoryFinalPreTreatment is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20COSD%20V9%20Breast%20Measurement%20N%20Category%20Final%20Pre-Treatment%20Stage%20mapping){: .btn }
+### COSD V9 Breast Measurement M Category Integrated Stage
+* Value copied from `NhsNumber`
+
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+with BR as (
+    select 
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        coalesce(
+            Record ->> '$.PrimaryPathway.Staging.StageDateIntegratedStage',
+            Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed'
+        ) as MeasurementDate,
+        Record ->> '$.PrimaryPathway.Staging.MCategoryIntegratedStage' as MCategoryIntegratedStage
+    from omop_staging.cosd_staging_901
+    where Type = 'BR'
+)
+select distinct
+    NhsNumber,
+    MeasurementDate,
+    MCategoryIntegratedStage
+from BR
+where MCategoryIntegratedStage is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20COSD%20V9%20Breast%20Measurement%20M%20Category%20Integrated%20Stage%20mapping){: .btn }
+### COSD V9 Breast Measurement M Category Final Pre-Treatment Stage
+* Value copied from `NhsNumber`
+
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+with BR as (
+    select 
+        record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        coalesce(
+            record ->> '$.PrimaryPathway.Staging.StageDateFinalPretreatmentStage',
+            record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed'
+        ) as MeasurementDate,
+        record ->> '$.PrimaryPathway.Staging.MCategoryFinalPretreatment' as McategoryFinalPreTreatment
+    from omop_staging.cosd_staging_901
+    where type = 'BR'
+)
+select distinct
+    NhsNumber,
+    MeasurementDate,
+    McategoryFinalPreTreatment
+from BR
+where McategoryFinalPreTreatment is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20COSD%20V9%20Breast%20Measurement%20M%20Category%20Final%20Pre-Treatment%20Stage%20mapping){: .btn }
+### COSD V9 Breast Measurement Grade of Differentiation
+* Value copied from `NhsNumber`
+
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+with BR as (
+    select
+        Record ->> '$.LinkagePatientId.NhsNumber.@extension' as NhsNumber,
+        Record ->> '$.PrimaryPathway.LinkageDiagnosticDetails.DateOfPrimaryDiagnosisClinicallyAgreed' as DateOfPrimaryDiagnosisClinicallyAgreed,
+        Record ->> '$.PrimaryPathway.Diagnosis.GradeOfDifferentiationAtDiagnosis.@code' as GradeOfDifferentiationAtDiagnosis
+    from omop_staging.cosd_staging_901
+    where Type = 'BR'
+)
+select distinct
+    NhsNumber,
+    DateOfPrimaryDiagnosisClinicallyAgreed,
+    GradeOfDifferentiationAtDiagnosis
+from BR
+where GradeOfDifferentiationAtDiagnosis is not null;
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20COSD%20V9%20Breast%20Measurement%20Grade%20of%20Differentiation%20mapping){: .btn }
+### COSD V8 Breast Measurement Tumour Laterality
+* Value copied from `NhsNumber`
+
+* `NhsNumber` Patient NHS Number [NHS NUMBER](https://www.datadictionary.nhs.uk/data_elements/nhs_number.html)
+
+```sql
+with br as (
+    select
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.DateOfNonPrimaryCancerDiagnosisClinicallyAgreed' as DateOfNonPrimaryCancerDiagnosisClinicallyAgreed,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.TumourLaterality.@code' as TumourLaterality
+    from omop_staging.cosd_staging_81
+    where Type = 'BR'
+)
+select distinct
+    NhsNumber,
+    coalesce(ClinicalDateCancerDiagnosis, DateOfNonPrimaryCancerDiagnosisClinicallyAgreed) as MeasurementDate,
+    TumourLaterality
+from br
+where TumourLaterality is not null
+  and TumourLaterality in ('L','R','M','B');
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20nhs_number%20field%20COSD%20V8%20Breast%20Measurement%20Tumour%20Laterality%20mapping){: .btn }
 ### COSD V8 Breast Measurement TNM Category Final Pre Treatment Stage
 * Value copied from `NhsNumber`
 

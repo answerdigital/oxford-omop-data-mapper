@@ -148,32 +148,6 @@ where NHSNumber is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20SUS%20APC%20Referral%20Received%20Date%20For%20Inpatients%20mapping){: .btn }
-### Sus APC Diagnosis Table
-* Value copied from `DiagnosisICD`
-
-* `DiagnosisICD` ICD10 diagnosis code [PRIMARY DIAGNOSIS (ICD)](https://www.datadictionary.nhs.uk/data_elements/primary_diagnosis__icd_.html)
-
-```sql
-select
-    distinct
-        d.DiagnosisICD,
-        apc.GeneratedRecordIdentifier,
-        apc.NHSNumber,
-        apc.CDSActivityDate
-from omop_staging.sus_ICDDiagnosis d
-    inner join omop_staging.sus_APC apc
-        on d.MessageId = apc.MessageId
-where apc.NHSNumber is not null
-order by
-	d.DiagnosisICD,
-    apc.GeneratedRecordIdentifier,
-    apc.NHSNumber,
-    apc.CDSActivityDate
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_string%20field%20Sus%20APC%20Diagnosis%20Table%20mapping){: .btn }
 ### SUS Inpatient Carer Support Indicator Observation
 * Value copied from `CarerSupportIndicator`
 

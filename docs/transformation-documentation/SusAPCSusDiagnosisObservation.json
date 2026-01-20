@@ -89,7 +89,7 @@
       "lookup_table_markdown": null
     },
     {
-      "name": "value_as_string",
+      "name": "observation_source_value",
       "operation_description": "Value copied from `DiagnosisICD`",
       "dataSource": [
         {
