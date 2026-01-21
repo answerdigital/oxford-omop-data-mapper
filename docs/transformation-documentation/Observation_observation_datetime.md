@@ -2866,3 +2866,156 @@ where o.AdultComorbidityEvaluation is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_datetime%20field%20CosdV8AdultComorbidityEvaluation%20mapping){: .btn }
+### COSD V8 Breast Alcohol History Cancer Before Last Three Months
+* Value copied from `Date`
+
+* `Date` Approximated date from earliest available date field (first seen, diagnosis, staging, or treatment dates) [Multiple date sources]()
+
+```sql
+with BR as (
+select 
+    Record ->> '$.Breast.BreastCore.BreastCoreReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+    Record ->> '$.Breast.BreastCore.BreastCoreReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as SpecialistDateFirstSeen,
+    Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+    Record ->> '$.Breast.BreastCore.BreastCoreStaging.IntegratedStageTNMStageGroupingDate' as IntegratedStageTNMStageGroupingDate,
+    Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as FinalPreTreatmentTNMStageGroupingDate,
+    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.CancerTreatmentStartDate' as CancerTreatmentStartDate,
+    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgery.ProcedureDate' as ProcedureDate,
+    Record ->> '$.Breast.BreastCore.BreastCoreClinicalNurseSpecialistAndRiskFactorAssessments.AlcoholHistoryCancer.@code' as AlcoholHistoryCancerBeforeLastThreeMonths,
+    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber
+from omop_staging.cosd_staging_81
+where Type = 'BR'
+)
+select
+      distinct
+          AlcoholHistoryCancerBeforeLastThreeMonths,
+          NhsNumber,
+          least(
+                cast (DateFirstSeen as date),
+                cast (SpecialistDateFirstSeen as date),
+                cast (ClinicalDateCancerDiagnosis as date),
+                cast (IntegratedStageTNMStageGroupingDate as date),
+                cast (FinalPreTreatmentTNMStageGroupingDate as date),
+                cast (CancerTreatmentStartDate as date),
+                cast (ProcedureDate as date)
+              ) as Date
+from BR o
+where o.AlcoholHistoryCancerBeforeLastThreeMonths is not null
+  and not (
+    DateFirstSeen is null and
+    SpecialistDateFirstSeen is null and
+    ClinicalDateCancerDiagnosis is null and
+    IntegratedStageTNMStageGroupingDate is null and
+    FinalPreTreatmentTNMStageGroupingDate is null and
+    CancerTreatmentStartDate is null and
+    ProcedureDate is null
+    );
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_datetime%20field%20COSD%20V8%20Breast%20Alcohol%20History%20Cancer%20Before%20Last%20Three%20Months%20mapping){: .btn }
+### COSD V8 Breast Adult Performance Status
+* Value copied from `Date`
+
+* `Date` Approximated date from earliest available date field (first seen, diagnosis, staging, or treatment dates) [Multiple date sources]()
+
+```sql
+with BR as (
+select 
+    Record ->> '$.Breast.BreastCore.BreastCoreReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+    Record ->> '$.Breast.BreastCore.BreastCoreReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as SpecialistDateFirstSeen,
+    Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+    Record ->> '$.Breast.BreastCore.BreastCoreStaging.IntegratedStageTNMStageGroupingDate' as IntegratedStageTNMStageGroupingDate,
+    Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as FinalPreTreatmentTNMStageGroupingDate,
+    coalesce(
+        Record ->> '$.Breast.BreastCore.BreastCoreTreatment[0].CancerTreatmentStartDate', 
+        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.CancerTreatmentStartDate'
+    ) as CancerTreatmentStartDate,
+    coalesce(
+        Record ->> '$.Breast.BreastCore.BreastCoreTreatment[0].BreastCoreSurgery.ProcedureDate', 
+        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgery.ProcedureDate'
+    ) as ProcedureDate,
+    Record ->> '$.Breast.BreastCore.BreastCoreDiagnosis.PerformanceStatusAdult.@code' as AdultPerformanceStatus,
+    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber
+from omop_staging.cosd_staging_81
+where Type = 'BR'
+)
+select
+      distinct
+          AdultPerformanceStatus,
+          NhsNumber,
+          least(
+                cast (DateFirstSeen as date),
+                cast (SpecialistDateFirstSeen as date),
+                cast (ClinicalDateCancerDiagnosis as date),
+                cast (IntegratedStageTNMStageGroupingDate as date),
+                cast (FinalPreTreatmentTNMStageGroupingDate as date),
+                cast (CancerTreatmentStartDate as date),
+                cast (ProcedureDate as date)
+              ) as Date
+from BR o
+where o.AdultPerformanceStatus is not null
+ and not (
+    DateFirstSeen is null  and
+    SpecialistDateFirstSeen is null  and
+    ClinicalDateCancerDiagnosis is null  and
+    IntegratedStageTNMStageGroupingDate is null  and
+    FinalPreTreatmentTNMStageGroupingDate is null and
+    CancerTreatmentStartDate is null and
+    ProcedureDate is null 
+  );
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_datetime%20field%20COSD%20V8%20Breast%20Adult%20Performance%20Status%20mapping){: .btn }
+### COSD V8 Breast Adult Comorbidity Evaluation
+* Value copied from `Date`
+
+* `Date` Approximated date from earliest available date field (first seen, diagnosis, staging, or treatment dates) [Multiple date sources]()
+
+```sql
+with BR as (
+    select 
+        Record ->> '$.Breast.BreastCore.BreastCoreReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
+        Record ->> '$.Breast.BreastCore.BreastCoreReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as DateFirstSeenCancerSpecialist,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
+        Record ->> '$.Breast.BreastCore.BreastCoreStaging.IntegratedStageTNMStageGroupingDate' as IntegratedStageTNMStageGroupingDate,
+        Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as FinalPreTreatmentTNMStageGroupingDate,
+        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.CancerTreatmentStartDate' as CancerTreatmentStartDate,
+        Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgery.ProcedureDate' as ProcedureDate,
+        Record ->> '$.Breast.BreastCore.BreastCoreCancerCarePlan.AdultComorbidityEvaluation-27Score.@code' as AdultComorbidityEvaluation,
+        Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber
+    from omop_staging.cosd_staging_81
+    where Type = 'BR'
+)
+select
+      distinct
+          AdultComorbidityEvaluation,
+          NhsNumber,
+          least(
+                cast (DateFirstSeen as date),
+                cast (DateFirstSeenCancerSpecialist as date),
+                cast (ClinicalDateCancerDiagnosis as date),
+                cast (IntegratedStageTNMStageGroupingDate as date),
+                cast (FinalPreTreatmentTNMStageGroupingDate as date),
+                cast (CancerTreatmentStartDate as date),
+                cast (ProcedureDate as date)
+              ) as Date
+from BR o
+where o.AdultComorbidityEvaluation is not null
+  and not (
+        DateFirstSeen is null and
+        DateFirstSeenCancerSpecialist is null and
+        ClinicalDateCancerDiagnosis is null and
+        IntegratedStageTNMStageGroupingDate is null and
+        FinalPreTreatmentTNMStageGroupingDate is null and
+        CancerTreatmentStartDate is null and
+        ProcedureDate is null
+    );
+	
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_datetime%20field%20COSD%20V8%20Breast%20Adult%20Comorbidity%20Evaluation%20mapping){: .btn }
