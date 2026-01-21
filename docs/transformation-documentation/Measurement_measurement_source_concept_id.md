@@ -1776,12 +1776,8 @@ where lower(EVENT) not like '%comment%'
 * Constant value set to `2000500014`. MCategoryFinalPreTreatmentStage
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V8%20Measurement%20M%20Category%20Final%20Pre%20Treatment%20Stage%20mapping){: .btn }
-### COSD V9 Breast Measurement Tumour Laterality
-* Constant value set to `2000500023`. TumourLaterality
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V9%20Breast%20Measurement%20Tumour%20Laterality%20mapping){: .btn }
 ### COSD V9 Breast Measurement TNM Category Integrated Stage
-* Constant value set to `2000500020`. TNMCategoryIntegratedStage
+* Constant value set to `2000500013`. TNMCategoryIntegratedStage
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20measurement_source_concept_id%20field%20COSD%20V9%20Breast%20Measurement%20TNM%20Category%20Integrated%20Stage%20mapping){: .btn }
 ### COSD V9 Breast Measurement TNM Category Final Pre-Treatment Stage
