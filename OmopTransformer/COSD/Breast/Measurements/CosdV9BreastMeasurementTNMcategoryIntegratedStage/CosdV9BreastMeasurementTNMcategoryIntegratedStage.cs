@@ -24,6 +24,6 @@ internal class CosdV9BreastMeasurementTNMcategoryIntegratedStage : OmopMeasureme
     [Transform(typeof(TNMCategoryLookup), nameof(Source.TnmStageGroupingIntegrated))]
     public override int[]? measurement_concept_id { get; set; }
 
-    [ConstantValue(2000500020, "TNMCategoryIntegratedStage")]
+    [ConstantValue(2000500013, "TNMCategoryIntegratedStage")]
     public override int? measurement_source_concept_id { get; set; }
 }
