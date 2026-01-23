@@ -188,7 +188,3 @@ order by
 * Constant value set to `2000500004`. History Of Alcohol (Past)
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20CosdV8AlcoholHistoryCancerBeforeLastThreeMonths%20mapping){: .btn }
-### COSD V8 Breast Alcohol History Cancer Before Last Three Months
-* Constant value set to `2000500004`. History Of Alcohol (Past)
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20COSD%20V8%20Breast%20Alcohol%20History%20Cancer%20Before%20Last%20Three%20Months%20mapping){: .btn }

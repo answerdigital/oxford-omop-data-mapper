@@ -161,12 +161,6 @@
     <None Update="COSD\Breast\Observation\CosdV8BreastAdultComorbidityEvaluation\CosdV8BreastAdultComorbidityEvaluation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="COSD\Breast\Observation\CosdV8BreastAdultPerformanceStatus\CosdV8BreastAdultPerformanceStatus.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="COSD\Breast\Observation\CosdV8BreastAlcoholHistoryCancerBeforeLastThreeMonths\CosdV8BreastAlcoholHistoryCancerBeforeLastThreeMonths.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="COSD\Lung\ConditionOccurrence\CosdV8LungConditionOccurrencePrimaryDiagnosis\CosdV8LungConditionOccurrencePrimaryDiagnosis.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

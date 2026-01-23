@@ -19,8 +19,6 @@ using OmopTransformer.COSD.Breast.ProcedureOccurrence.CosdV8BreastProcedureOccur
 using OmopTransformer.COSD.Breast.ProcedureOccurrence.CosdV9BreastProcedureOccurrenceProcedureOpcs;
 using OmopTransformer.COSD.Breast.ProcedureOccurrence.CosdV9BreastProcedureOccurrencePrimaryProcedureOpcs;
 using OmopTransformer.COSD.Breast.Observation.CosdV8BreastAdultComorbidityEvaluation;
-using OmopTransformer.COSD.Breast.Observation.CosdV8BreastAdultPerformanceStatus;
-using OmopTransformer.COSD.Breast.Observation.CosdV8BreastAlcoholHistoryCancerBeforeLastThreeMonths;
 using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementGradeOfDifferentiation;
 using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementMcategoryFinalPreTreatmentStage;
 using OmopTransformer.COSD.Breast.Measurements.CosdV8BreastMeasurementMcategoryIntegratedStage;
@@ -565,18 +563,6 @@ internal class CosdTransformer : Transformer
         await Transform<CosdV8BreastAdultComorbidityEvaluationRecord, CosdV8BreastAdultComorbidityEvaluation>(
             _observationRecorder.InsertUpdateObservations,
             "Cosd CosdV8BreastAdultComorbidityEvaluation",
-            runId,
-            cancellationToken);
-
-        await Transform<CosdV8BreastAdultPerformanceStatusRecord, CosdV8BreastAdultPerformanceStatus>(
-            _observationRecorder.InsertUpdateObservations,
-            "Cosd CosdV8BreastAdultPerformanceStatus",
-            runId,
-            cancellationToken);
-
-        await Transform<CosdV8BreastAlcoholHistoryCancerBeforeLastThreeMonthsRecord, CosdV8BreastAlcoholHistoryCancerBeforeLastThreeMonths>(
-            _observationRecorder.InsertUpdateObservations,
-            "Cosd CosdV8BreastAlcoholHistoryCancerBeforeLastThreeMonths",
             runId,
             cancellationToken);
 

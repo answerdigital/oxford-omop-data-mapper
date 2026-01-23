@@ -749,26 +749,6 @@ has_toc: false
 >
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8AdultComorbidityEvaluation%20mapping){: .btn }
-## CosdV8BreastAlcoholHistoryCancerBeforeLastThreeMonths
-<a href="CosdV8BreastAlcoholHistoryCancerBeforeLastThreeMonths.svg" target="_blank"><img src="CosdV8BreastAlcoholHistoryCancerBeforeLastThreeMonths.svg" /></a>
-
-{: .important-title }
-> Notes
->
-> Observation dates are approximated using other date fields.
->
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8BreastAlcoholHistoryCancerBeforeLastThreeMonths%20mapping){: .btn }
-## CosdV8BreastAdultPerformanceStatus
-<a href="CosdV8BreastAdultPerformanceStatus.svg" target="_blank"><img src="CosdV8BreastAdultPerformanceStatus.svg" /></a>
-
-{: .important-title }
-> Notes
->
-> Observation dates are approximated using other date fields.
->
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=CosdV8BreastAdultPerformanceStatus%20mapping){: .btn }
 ## CosdV8BreastAdultComorbidityEvaluation
 <a href="CosdV8BreastAdultComorbidityEvaluation.svg" target="_blank"><img src="CosdV8BreastAdultComorbidityEvaluation.svg" /></a>
 

@@ -990,56 +990,6 @@ where o.AdultComorbidityEvaluation is not null
 
 
 [Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV8AdultComorbidityEvaluation%20mapping){: .btn }
-### COSD V8 Breast Adult Performance Status
-Source column  `AdultPerformanceStatus`.
-Converts text to number.
-
-* `AdultPerformanceStatus` Performance status indicating the patient's physical capability [PERFORMANCE STATUS (ADULT)](https://www.datadictionary.nhs.uk/data_elements/performance_status__adult_.html)
-
-```sql
-with BR as (
-select 
-    Record ->> '$.Breast.BreastCore.BreastCoreReferralAndFirstStageOfPatientPathway.DateFirstSeen' as DateFirstSeen,
-    Record ->> '$.Breast.BreastCore.BreastCoreReferralAndFirstStageOfPatientPathway.DateFirstSeenCancerSpecialist' as SpecialistDateFirstSeen,
-    Record ->> '$.Breast.BreastCore.BreastCoreLinkageDiagnosticDetails.ClinicalDateCancerDiagnosis' as ClinicalDateCancerDiagnosis,
-    Record ->> '$.Breast.BreastCore.BreastCoreStaging.IntegratedStageTNMStageGroupingDate' as IntegratedStageTNMStageGroupingDate,
-    Record ->> '$.Breast.BreastCore.BreastCoreStaging.FinalPreTreatmentTNMStageGroupingDate' as FinalPreTreatmentTNMStageGroupingDate,
-    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.CancerTreatmentStartDate' as CancerTreatmentStartDate,
-    Record ->> '$.Breast.BreastCore.BreastCoreTreatment.BreastCoreSurgeryAndOtherProcedures.ProcedureDate' as ProcedureDate,
-    Record ->> '$.Breast.BreastCore.BreastCoreDiagnosis.PerformanceStatusAdult.@code' as AdultPerformanceStatus,
-    Record ->> '$.Breast.BreastCore.BreastCoreLinkagePatientId.NHSNumber.@extension' as NhsNumber
-from omop_staging.cosd_staging_81
-where Type = 'BR'
-)
-select
-      distinct
-          AdultPerformanceStatus,
-          NhsNumber,
-          least(
-                cast (DateFirstSeen as date),
-                cast (SpecialistDateFirstSeen as date),
-                cast (ClinicalDateCancerDiagnosis as date),
-                cast (IntegratedStageTNMStageGroupingDate as date),
-                cast (FinalPreTreatmentTNMStageGroupingDate as date),
-                cast (CancerTreatmentStartDate as date),
-                cast (ProcedureDate as date)
-              ) as Date
-from BR o
-where o.AdultPerformanceStatus is not null
- and not (
-    DateFirstSeen is null  and
-    SpecialistDateFirstSeen is null  and
-    ClinicalDateCancerDiagnosis is null  and
-    IntegratedStageTNMStageGroupingDate is null  and
-    FinalPreTreatmentTNMStageGroupingDate is null and
-    CancerTreatmentStartDate is null and
-    ProcedureDate is null 
-  );
-	
-```
-
-
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20COSD%20V8%20Breast%20Adult%20Performance%20Status%20mapping){: .btn }
 ### COSD V8 Breast Adult Comorbidity Evaluation
 Source column  `AdultComorbidityEvaluation`.
 Converts text to number.
