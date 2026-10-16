@@ -36,6 +36,11 @@ has_toc: false
 * Note: This is specific to US-based data mappings and is in regards to being “Hispanic “ and “Not Hispanic”. All our data is UK-based.
 
 [Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20ethnicity_concept_id%20field%20Oxford%20GP%20Person%20mapping){: .btn }
+### Oxford demographics from databricks_demographics.parquet
+* Constant value set to `0`. Unknown concept
+* OMOP ethnicity represents Hispanic or non-Hispanic ethnicity. UK ethnic groups are mapped to race instead.
+
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20ethnicity_concept_id%20field%20Oxford%20demographics%20from%20databricks_demographics.parquet%20mapping){: .btn }
 ### COSD Demographics
 * Constant value set to `0`. Unknown concept
 * Note: This is specific to US-based data mappings and is in regards to being “Hispanic “ and “Not Hispanic”. All our data is UK-based.

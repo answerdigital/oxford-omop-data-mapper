@@ -1,0 +1,24 @@
+<Query>
+    <Sql type="duckdb">
+select
+    cast(date_of_birth as varchar) as date_of_birth,
+    ethnic_group,
+    sex,
+    cast(nhs_number as varchar) as nhs_number
+from ##duckdb_source##
+    </Sql>
+    <Explanations>
+        <Explanation columnName="date_of_birth">
+            <Description>Patient date of birth.</Description>
+        </Explanation>
+        <Explanation columnName="ethnic_group">
+            <Description>Databricks ethnic group, mapped to an OMOP race concept.</Description>
+        </Explanation>
+        <Explanation columnName="sex">
+            <Description>Patient sex (Male or Female).</Description>
+        </Explanation>
+        <Explanation columnName="nhs_number">
+            <Description>Patient NHS Number.</Description>
+        </Explanation>
+    </Explanations>
+</Query>

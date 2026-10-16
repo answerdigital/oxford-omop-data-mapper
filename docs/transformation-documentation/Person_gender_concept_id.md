@@ -162,3 +162,30 @@ group by PatientId
 
 
 [Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20gender_concept_id%20field%20Rtds%20Person%20mapping){: .btn }
+### Oxford demographics from databricks_demographics.parquet
+Source column  `sex`.
+Lookup Databricks gender concept.
+
+
+|sex|gender_concept_id|notes|
+|------|-----|-----|
+|Male|8507|Male|
+|Female|8532|Female|
+||0|No data|
+
+Notes
+* [OMOP Gender](https://athena.ohdsi.org/search-terms/terms?conceptClass=Gender&invalidReason=Valid&vocabulary=Gender&page=1&pageSize=50&query=)
+
+* `sex` Patient sex (Male or Female). 
+
+```sql
+select
+    cast(date_of_birth as varchar) as date_of_birth,
+    ethnic_group,
+    sex,
+    cast(nhs_number as varchar) as nhs_number
+from ##duckdb_source##
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20gender_concept_id%20field%20Oxford%20demographics%20from%20databricks_demographics.parquet%20mapping){: .btn }

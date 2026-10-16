@@ -265,7 +265,7 @@ Transforms the staged data (and records data provenance) into the OMOP tables.
 
 | Option                          | Remarks                                                                                                                                                |
 |---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `-t, --type <type>`             | Required. One of `sus-apc`, `sus-op`, `sus-ae`, `cosd`, `sact`, `rtds`, `oxford-gp`, `oxford-prescribing`, `oxford-lab`, `oxford-death`.                |
+| `-t, --type <type>`             | Required. One of `sus-apc`, `sus-op`, `sus-ae`, `cosd`, `sact`, `rtds`, `oxford-gp`, `oxford-demographics`, `oxford-prescribing`, `oxford-lab`, `oxford-death`.                |
 | `-d, --duckdb-source <expr>`    | Optional. A DuckDB source expression used in place of the default staging table, eg `"read_csv('/data/medication_results_short.csv', all_varchar=true)"`. Useful for transforming directly from a CSV without a separate staging step. |
 | `--dry-run`                     | Optional. Runs the transformation without writing to the OMOP tables. Defaults to `false`.                                                              |
 | `--batch-size <n>`              | Optional. Number of records to process per batch. Defaults to `4000000`.                                                                                |
@@ -294,9 +294,29 @@ docker run \
         --duckdb-source "read_csv('/input/medication_results_short.csv', all_varchar=true)"
 ```
 
+### Example - transform Oxford demographics directly from Parquet
+
+```
+docker run \
+      -e ConnectionString="DataSource=/data/omop.db;memory_limit=4GB" \
+      --rm \
+      -v /path/to/database/folder:/data \
+      -v /path/to/your/data:/input \
+      ghcr.io/answerdigital/oxford-omop-data-mapper:latest \
+      transform --type oxford-demographics \
+        --duckdb-source "read_parquet('/input/databricks_demographics.parquet')"
+```
+
+The demographics source must contain `date_of_birth`, `ethnic_group`, `sex` and `nhs_number`.
+The transformation creates or updates OMOP Person records, using the NHS number as `person_source_value`.
+`Male` and `Female` map to gender concepts `8507` and `8532`. UK ethnic groups map to the same
+OMOP race concepts as the NHS ethnicity lookup; the original ethnic group is preserved in
+`race_source_value`. No data, not known, not stated and unmapped "Other" groups map to race concept `0`.
+OMOP `ethnicity_concept_id` is `0`, as it represents Hispanic/non-Hispanic ethnicity rather than UK ethnic groups.
+
 ### Remarks
 
-Note that `oxford-prescribing`, `oxford-lab` and `oxford-death` are transform-only types - there is no `stage load` path for them. They are typically used with `--duckdb-source` against a CSV, or against data materialised into the `omop_staging` schema by an earlier process.
+Note that `oxford-demographics`, `oxford-prescribing`, `oxford-lab` and `oxford-death` are transform-only types - there is no `stage load` path for them. They require `--duckdb-source` against a Parquet file, CSV, or another DuckDB source expression.
 
 The OMOP data provenance is recorded as each data set is transformed. [See data provenance.]({% link docs/data-provenance.md %}#data-provenance)
 
