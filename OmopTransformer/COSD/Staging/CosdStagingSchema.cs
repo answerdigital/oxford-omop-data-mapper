@@ -12,6 +12,7 @@ internal class CosdStagingSchema : StagingSchema, ICosdStagingSchema
     protected override string[] ClearStagingSql =>
         new[]
         {
-            "truncate table omop_staging.cosd_staging;"
+            "truncate table omop_staging.cosd_staging_81;",
+            "truncate table omop_staging.cosd_staging_901;"
         };
 }

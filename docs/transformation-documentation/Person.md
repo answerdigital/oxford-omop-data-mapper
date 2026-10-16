@@ -43,6 +43,10 @@ has_toc: false
 <a href="OxfordGPPerson.svg" target="_blank"><img src="OxfordGPPerson.svg" /></a>
 
 [Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OxfordGPPerson%20mapping){: .btn }
+## OxfordDemographicsPerson
+<a href="OxfordDemographicsPerson.svg" target="_blank"><img src="OxfordDemographicsPerson.svg" /></a>
+
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OxfordDemographicsPerson%20mapping){: .btn }
 ## CosdPersonV9
 <a href="CosdPersonV9.svg" target="_blank"><img src="CosdPersonV9.svg" /></a>
 
