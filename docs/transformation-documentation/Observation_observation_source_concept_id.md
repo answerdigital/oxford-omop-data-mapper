@@ -40,7 +40,7 @@ order by
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20SUS%20Outpatient%20Procedure%20Observation%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20SUS%20Outpatient%20Procedure%20Observation%20mapping){: .btn }
 ### Sus OP ICDDiagnosis table
 Source column  `DiagnosisICD`.
 Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
@@ -63,7 +63,7 @@ where op.NHSNumber is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20Sus%20OP%20ICDDiagnosis%20table%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20Sus%20OP%20ICDDiagnosis%20table%20mapping){: .btn }
 ### Sus CCMDS High Cost Drugs
 Source column  `ObservationSourceValue`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
@@ -85,7 +85,7 @@ Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the pa
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20Sus%20CCMDS%20High%20Cost%20Drugs%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20Sus%20CCMDS%20High%20Cost%20Drugs%20mapping){: .btn }
 ### SUS APC Procedure Occurrence
 Source column  `PrimaryProcedure`.
 Resolve OPCS4 codes to OMOP concepts. If code cannot be mapped, map using the parent code.
@@ -112,7 +112,7 @@ order by
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20SUS%20APC%20Procedure%20Occurrence%20mapping){: .btn }
 ### Sus APC Diagnosis Table
 Source column  `DiagnosisICD`.
 Resolve ICD10 codes to standard or non standard OMOP concepts. If code cannot be mapped, map using the parent code.
@@ -139,20 +139,20 @@ order by
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20Sus%20APC%20Diagnosis%20Table%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20Sus%20APC%20Diagnosis%20Table%20mapping){: .btn }
 ### SUS APC Anaesthetic Given Post Labour Delivery Observation
 * Constant value set to `2000500002`. ANAESTHETIC GIVEN POST LABOUR OR DELIVERY CODE
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20SUS%20APC%20Anaesthetic%20Given%20Post%20Labour%20Delivery%20Observation%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20SUS%20APC%20Anaesthetic%20Given%20Post%20Labour%20Delivery%20Observation%20mapping){: .btn }
 ### SUS APC Anaesthetic During Labour Delivery Observation
 * Constant value set to `2000500001`. ANAESTHETIC GIVEN DURING LABOUR OR DELIVERY CODE
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20SUS%20APC%20Anaesthetic%20During%20Labour%20Delivery%20Observation%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20SUS%20APC%20Anaesthetic%20During%20Labour%20Delivery%20Observation%20mapping){: .btn }
 ### CosdV9FamilialCancerSyndromeSubsidiaryComment
 * Constant value set to `2000500006`. Familial Cancer (Comment)
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20CosdV9FamilialCancerSyndromeSubsidiaryComment%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20CosdV9FamilialCancerSyndromeSubsidiaryComment%20mapping){: .btn }
 ### CosdV9BreastFamilialCancerSyndromeSubsidiaryComment
 * Constant value set to `2000500006`. Familial Cancer (Comment)
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20CosdV9BreastFamilialCancerSyndromeSubsidiaryComment%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20observation_source_concept_id%20field%20CosdV9BreastFamilialCancerSyndromeSubsidiaryComment%20mapping){: .btn }

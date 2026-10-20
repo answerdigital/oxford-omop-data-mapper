@@ -65,7 +65,7 @@ where o.SurgicalAccessType is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20value_as_concept_id%20field%20COSD%20V9%20Lung%20Measurement%20Surgical%20Access%20Type%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20value_as_concept_id%20field%20COSD%20V9%20Lung%20Measurement%20Surgical%20Access%20Type%20mapping){: .btn }
 ### COSD V8 Lung Measurement Surgical Access Type
 Source column  `SurgicalAccessType`.
 Lookup SurgicalAccessType concepts for lung cancer procedures.
@@ -125,4 +125,4 @@ where o.SurgicalAccessType is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20value_as_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20Surgical%20Access%20Type%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Measurement%20table%20value_as_concept_id%20field%20COSD%20V8%20Lung%20Measurement%20Surgical%20Access%20Type%20mapping){: .btn }

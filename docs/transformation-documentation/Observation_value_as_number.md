@@ -33,7 +33,7 @@ group by
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20Total%20Previous%20Pregnancies%20Observation%20mapping){: .btn }
 ### SUS Inpatient NumberofBabies Observation
 Source column  `NumberofBabies`.
 Converts text to number.
@@ -61,7 +61,7 @@ group by
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20NumberofBabies%20Observation%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20NumberofBabies%20Observation%20mapping){: .btn }
 ### SUS Inpatient Gestation Length Labour Onset Observation
 Source column  `GestationLengthLabourOnset`.
 Converts text to number.
@@ -89,7 +89,7 @@ group by
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20Gestation%20Length%20Labour%20Onset%20Observation%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20SUS%20Inpatient%20Gestation%20Length%20Labour%20Onset%20Observation%20mapping){: .btn }
 ### RTDS External Beam Radiation Therapy Energy
 Source column  `CalculatedNominalEnergy`.
 Converts text to number.
@@ -111,7 +111,7 @@ Converts text to number.
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20RTDS%20External%20Beam%20Radiation%20Therapy%20Energy%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20RTDS%20External%20Beam%20Radiation%20Therapy%20Energy%20mapping){: .btn }
 ### RTDS Number Of Fractions
 Source column  `NoFracs`.
 Converts text to number.
@@ -131,7 +131,7 @@ Converts text to number.
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20RTDS%20Number%20Of%20Fractions%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20RTDS%20Number%20Of%20Fractions%20mapping){: .btn }
 ### CosdV9LungPerformanceStatusAdult
 Source column  `PerformanceStatusAdult`.
 Converts text to number.
@@ -180,7 +180,7 @@ where o.PerformanceStatusAdult is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9LungPerformanceStatusAdult%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9LungPerformanceStatusAdult%20mapping){: .btn }
 ### CosdV8LungAdultPerformanceStatus
 Source column  `AdultPerformanceStatus`.
 Converts text to number.
@@ -229,7 +229,7 @@ where o.AdultPerformanceStatus is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV8LungAdultPerformanceStatus%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV8LungAdultPerformanceStatus%20mapping){: .btn }
 ### CosdV9TobaccoSmokingCessation
 Source column  `TobaccoSmokingCessation`.
 Converts text to number.
@@ -279,7 +279,7 @@ and o.TobaccoSmokingCessation = '3'
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9TobaccoSmokingCessation%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9TobaccoSmokingCessation%20mapping){: .btn }
 ### CosdV9PerformanceStatusAdult
 Source column  `PerformanceStatusAdult`.
 Converts text to number.
@@ -328,7 +328,7 @@ where o.PerformanceStatusAdult is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9PerformanceStatusAdult%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9PerformanceStatusAdult%20mapping){: .btn }
 ### CosdV8AdultPerformanceStatus
 Source column  `AdultPerformanceStatus`.
 Converts text to number.
@@ -377,7 +377,7 @@ where o.AdultPerformanceStatus is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV8AdultPerformanceStatus%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV8AdultPerformanceStatus%20mapping){: .btn }
 ### CosdV9BreastPerformanceStatusAdult
 Source column  `PerformanceStatusAdult`.
 Converts text to number.
@@ -432,4 +432,4 @@ where o.PerformanceStatusAdult is not null
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9BreastPerformanceStatusAdult%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Observation%20table%20value_as_number%20field%20CosdV9BreastPerformanceStatusAdult%20mapping){: .btn }

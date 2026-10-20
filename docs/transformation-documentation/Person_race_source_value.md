@@ -24,7 +24,7 @@ has_toc: false
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_value%20field%20SUS%20Outpatient%20Person%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_value%20field%20SUS%20Outpatient%20Person%20mapping){: .btn }
 ### SUS Inpatient Person
 * Value copied from `EthnicCategory`
 
@@ -43,7 +43,7 @@ has_toc: false
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_value%20field%20SUS%20Inpatient%20Person%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_value%20field%20SUS%20Inpatient%20Person%20mapping){: .btn }
 ### SUS A&E Person
 * Value copied from `EthnicCategory`
 
@@ -62,7 +62,23 @@ has_toc: false
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_value%20field%20SUS%20A&E%20Person%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_value%20field%20SUS%20A&E%20Person%20mapping){: .btn }
+### Oxford demographics from databricks_demographics.parquet
+* Value copied from `ethnic_group`
+
+* `ethnic_group` Databricks ethnic group, mapped to an OMOP race concept. 
+
+```sql
+select
+    cast(date_of_birth as varchar) as date_of_birth,
+    ethnic_group,
+    sex,
+    cast(nhs_number as varchar) as nhs_number
+from ##duckdb_source##
+```
+
+
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_value%20field%20Oxford%20demographics%20from%20databricks_demographics.parquet%20mapping){: .btn }
 ### COSD Demographics
 * Value copied from `EthnicCategory`
 
@@ -96,4 +112,4 @@ group by NhsNumber
 ```
 
 
-[Comment or raise an issue for this mapping.](https://github.com/answerdigital/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_value%20field%20COSD%20Demographics%20mapping){: .btn }
+[Comment or raise an issue for this mapping.](https://github.com/tvs-sde/oxford-omop-data-mapper/issues/new?title=OMOP%20Person%20table%20race_source_value%20field%20COSD%20Demographics%20mapping){: .btn }

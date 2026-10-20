@@ -23,6 +23,7 @@ using OmopTransformer.Omop.Provider;
 using OmopTransformer.Omop.Prune;
 using OmopTransformer.Omop.VisitDetail;
 using OmopTransformer.Omop.VisitOccurrence;
+using OmopTransformer.OxfordDemographics;
 using OmopTransformer.OxfordGP;
 using OmopTransformer.OxfordGP.Staging;
 using OmopTransformer.OxfordGP.Staging.Clearing;
@@ -320,6 +321,11 @@ internal class Program
             {
                 builder.Services.AddTransient<OxfordGPTransformer>();
                 builder.Services.AddHostedService<OxfordGPTransformHostedService>();
+            }
+            else if (string.Equals(transformOptions.Type, "oxford-demographics", StringComparison.OrdinalIgnoreCase))
+            {
+                builder.Services.AddTransient<OxfordDemographicsTransformer>();
+                builder.Services.AddHostedService<OxfordDemographicsTransformHostedService>();
             }
             else if (string.Equals(transformOptions.Type, "oxford-prescribing", StringComparison.OrdinalIgnoreCase))
             {
