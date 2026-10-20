@@ -18,7 +18,7 @@ Lookup SurgicalAccessType concepts for lung cancer procedures.
 |3|45882426|Laparoscopic/Thoracoscopic with unplanned conversion to open surgery|
 |4|45884447|Laparoscopic/Thoracoscopic completed|
 |5|45884446|Robotic surgery|
-|Z|0|Other|
+|Z||Other|
 
 Notes
 * [SURGICAL ACCESS TYPE](https://www.datadictionary.nhs.uk/data_elements/surgical_access_type.html)
@@ -78,7 +78,7 @@ Lookup SurgicalAccessType concepts for lung cancer procedures.
 |3|45882426|Laparoscopic/Thoracoscopic with unplanned conversion to open surgery|
 |4|45884447|Laparoscopic/Thoracoscopic completed|
 |5|45884446|Robotic surgery|
-|Z|0|Other|
+|Z||Other|
 
 Notes
 * [SURGICAL ACCESS TYPE](https://www.datadictionary.nhs.uk/data_elements/surgical_access_type.html)
